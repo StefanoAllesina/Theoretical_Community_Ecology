@@ -120,7 +120,7 @@ But how do we know whether dynamics will cycle toward the equilibrium, spiral aw
 
 ## Local stability analysis
 
-Suppose that a feasible equilibrium $x^\star$ exists. Then we can ask whether it is **attractive**, i.e. if trajectories started at initial condition $x(0)$ will eventually reach $x^\star$. This problem is in general difficult to solve (but see below); as an alternative, we can test for **local asymptotic stability**, i.e., ask whether **the system will return to the equilibrium if perturbed infinitesimally away from it**. In general, whenever we describe an ecological community as a system of nonlinear, autonomous ODEs:
+Suppose that a feasible (i.e., positive) equilibrium $x^\star$ exists for a given model. Then we can ask whether it is **attractive**, i.e. if trajectories started at initial condition $x(0)$ will eventually reach $x^\star$. This problem is in general difficult to solve (but see below); as an alternative, we can test for **local asymptotic stability**, i.e., ask whether **the system will return to the equilibrium if perturbed infinitesimally away from it**. In general, whenever we describe an ecological community as a system of nonlinear, autonomous ODEs:
 
 $$
 \frac{d x_i (t)}{d t} = f_i (x(t)) \;,
@@ -145,9 +145,9 @@ $$
 f(x) = \sum_{k = 0}^\infty \dfrac{D^{k} f(a)}{k!} (x-a)^k = f(a) + \left. \dfrac{d f}{d x} \right|_{a} (x-a)+ \dfrac{1}{2}\left. \dfrac{d^2 f}{d x^2} \right|_{a} (x-a)^2 + \cdots
 $$
 
-where $D^{k} f(a)$ is the k-th derivative w.r.t. $x$ evaluated at $a$.
+where $D^{k} f(a)$ is the $k$-th derivative of $f(x)$ w.r.t. $x$, evaluated at $a$.
 
-*Vector-valued functions*: now $f(x)$ is a function of a vector $x$. To expand around the point $a$, we need to define the Jacobian matrix
+*Vector-valued functions*: now $f(x)$ is a vector-valued function, and $x$ a vector. To expand around the point $a$, we need to define the Jacobian matrix
 
 $$
 J = Df(x)
@@ -165,7 +165,7 @@ $$
 H_{ijk} = \dfrac{\partial^2 f_i(x)}{\partial x_j\, \partial x_k}
 $$
 
-It is convenient to write the expansion in component form:
+It is convenient to write the Taylor expansion in component form:
 
 $$
 f_i(x) \approx f_i(a) + \sum_j \left . J_{ij} \right|_{a} (x_j - a_j) +\dfrac{1}{2} \sum_j \sum_k \left. H_{ijk} \right|_a (x_j-a_j)(x_k-a_k)
@@ -236,13 +236,14 @@ x_1 + 3 x_2(x_2 - 3) + 5
 \end{pmatrix}
 $$
 
+Note that considering the first two terms of the Taylor expansion results in second-degree polynomials; adding a cubic terms would in general yield a better approximation, etc. 
 
 :::
 
 Suppose that a system is resting at an equilibrium $x^\star$, and that it is slightly perturbed away from it. $\Delta x(0) = x(0)-x^\star$ is the state of the system immediately after the perturbation. Taylor-expanding around $x^\star$ and taking only the linear term, we have:
 
 $$
-f(\Delta x(0)) = f(x^\star)+ \left. J \right|_{x^\star} \Delta x(0)
+f(\Delta x(0)) = f(x^\star)+ \left. J \right|_{x^\star} \Delta x(0) = \left. J \right|_{x^\star} \Delta x(0)
 $$
 
 Where $J$ is the Jacobian matrix of the system, whose elements are defined as:
@@ -251,7 +252,7 @@ $$
 J_{ij} = \frac{\partial f_i({x})}{\partial x_j} 
 $$
 
-Each element of this matrix is therefore a function, whose value depends on ${x}$. When we evaluate the Jacobian matrix at an equilibrium point ${x}^\star$, we obtain the so-called "community matrix" ${M}$:
+Each element of this matrix is therefore a function, whose value depends on $x$. When we evaluate the Jacobian matrix at an equilibrium point $x^\star$, we obtain the so-called "community matrix" $M$:
 
 $$
   M = \left. {J} \right|_{ {x}^\star}
@@ -264,6 +265,125 @@ We can therefore write the differential equation:
 $$
 \frac{d \Delta x(t)}{dt} \approx M \Delta x(t)
 $$
+
+which is a system of linear differential equations---i.e., the simplest type of system of ODEs, which can be solved in full generality. 
+
+To solve the system, we need to recap a few important concepts from linear algebra.
+
+:::boxmath
+
+**Eigenvalues and eigenvectors**
+
+For a matrix $M$, we have that if $M v = \lambda v$ with $v$ different from the zero vector, then $\lambda$ is an eigenvalue and $v$ the corresponding eigenvector. Practically, you can think of a matrix as an operator that turns a vector into another vector. If the resulting vector is a rescaled version of the initial vector, then you've found an eigenvector of the matrix, and the rescaling factor is the associated eigenvalue.
+
+For example, show that $(1, 1)^t$ is an eigenvector of the matrix:
+
+$$
+A = 
+\begin{pmatrix}
+1 + a & 1-a\\
+2a + 2 & -2a
+\end{pmatrix}
+$$
+
+We have:
+
+$$
+Av = \begin{pmatrix}
+(1 + a) v_1 + (1-a) v_2\\
+(2a + 2) v_1 - 2a v_2 
+\end{pmatrix}
+$$
+
+if $v = (1, 1)^t$, we have:
+
+$$
+Av = \begin{pmatrix}
+2\\
+2 
+\end{pmatrix}
+$$
+
+and as such $v$ is an eigenvector of $M$, with associated eigenvalue $\lambda = 2$.
+
+**Finding eigenvalues**
+
+The eigenvalues of a matrix $M$ are the roots (zeros) of the chacteristic polynomial:
+
+$$
+p(\lambda) = \text{Det}(\lambda I - M) = 0
+$$
+
+Where does this equation come from? We write:
+
+$$
+\begin{aligned}
+A v = \lambda v\\
+\lambda v - Av = 0\\
+(\lambda I - A)v = 0
+\end{aligned}
+$$
+
+if $v$ is nonzero, then the matrix $\lambda I - A$ must be singular (i.e., have at least one eigenvalue equal to zero). Because the determinant is the product of the eigenvalues, then the determinant must also be zero. 
+
+For a $2 \times 2$ matrix, we have:
+
+$$
+\begin{aligned}
+\text{Det} \begin{pmatrix}
+\lambda - a_{11} & -a_{12}\\
+-a_{21} & \lambda -a_{22}
+\end{pmatrix} &= (\lambda - a_{11}) (\lambda - a_{22}) - a_{12} a_{21}\\
+&= \lambda^2 - \lambda (a_{11} + a_{22}) + a_{11} a_{22} -  a_{12} a_{21}
+\end{aligned}
+$$
+
+More compactly,
+
+$$
+p(\lambda) = \lambda^2 - \lambda \text{Tr(A)} + \text{Det}(A)
+$$
+
+where $\text{Tr}(M) = \sum_i M_{ii} = \sum_i \lambda_i$, and $\text{Det(M)} = \prod_i \lambda_i$. We therefore find:
+
+$$
+\lambda = \frac{\text{Tr}(M) \pm \sqrt{(\text{Tr}(M))^2 - 4 \text{Det}(M)}}{2}
+$$
+Find the eigenvalues for the matrix $A$ above:
+
+$$
+\begin{aligned}
+\lambda &= \frac{1-a \pm \sqrt{(1-a)^2+8(1+a)}}{2}\\
+&= \frac{1-a \pm \sqrt{(1+a^2 -2 a + 8 a + 8)}}{2} \\
+&= \frac{1-a \pm (a+ 3)}{2}
+\end{aligned}
+$$
+
+The eigenvalues are therefore $\lambda_1 = 2$ and $\lambda_2 = -(1+a)$.
+
+**Facts about eigenvalues and eigenvectors**
+
+Given a matrix $A$, of size $n \times n$, a complex number $\lambda$ is an eigenvalue of $A$ if there is a nonzero (complex) vector $v$ such that $A v = \lambda v$. The vector $v$ is called the eigenvector of $A$ associated with $\lambda$. Note that eigenvectors are defined up to multiplication: if $v$ is an eigenvector, then $\alpha\, v$, with $\alpha$ real is also an eigenvector. Often, we choose $v$ such that its norm $\sqrt{\sum_i v_i^2} = 1$ (called "unit" eigenvector).
+
+A matrix of size $n$ has at most $n$ distinct eigenvalues. If all eigenvalues are distinct then the eigenvectors are linearly independent. This means that if we build the matrix $V = (v_1, v_2, \ldots, v_n)$, then $V$ is invertible. 
+
+Because of the fact above, and diagonalizable matrix (e.g., a sufficient condition is to have all eigenvalues distinct), then we can write:
+
+$$
+A = V \Lambda V^{-1}
+$$
+
+where $V$ is the matrix of eigenvectors, and $\Lambda$ a diagonal matrix with the eigenvalues of $A$ on the diagonal. As such, $V^{-1} A V = \Lambda$. This is a "similarity transformation", meaning that the eigenvalues of $A$ and $\Lambda$ are (obviously) the same.
+
+If the matrix $A$ contains only real numbers (as always the case in population models), then the eigenvalues of $A$ are either real, or form pairs of complex conjugate eigenvalues of form $\alpha \pm i\, \beta$. This means for example that all odd-sized real matrices have at least one real eigenvalue. If $A$ is real and symmetric, all eigenvalues are real, and all eigenvectors are orthogonal. A diagonal matrix $A$ has eigenvalues $\lambda_i = A_{ii}$
+
+If $A$ has eigenvalues $\lambda$, $B = \beta\, A$ has eigenvalues $\beta\, \lambda$, and $C = A + \gamma\, I$ has eigenvalues $\lambda + \gamma$. The eigenvalues of $A^2 = A \times A$ are $\lambda^2$, and the eigenvalues of $A^{-1}$ are $\lambda^{-1}$. The eigenvalues of $A^t$ are the same as those of $A$ (but the eigenvectors are not the same in general). $A + A^T$ (this matrix is symmetric) has only real eigenvalues, and $A - A^T$ (this matrix is skew-symmetric) has purely imaginary eigenvalues.
+
+A matrix is positive definite if all its eigenvalues are real and positive. It is positive semi-definite if eigenvalues can be zero. The matrices $AA^T$ and $A^T A$ are positive semi-definite, and have the same eigenvalues up to some zeros (used in PCA). Correlation and covariance matrices have these forms.
+
+A matrix with all positive entries has a unique largest real eigenvalue with a corresponding eigenvector that can be chosen to have strictly positive components (Perron-Frobenius). A matrix with constant row sums $\theta$ has $\theta$ as the largest eigenvalue, and $v = 1$ as the corresponding eigenvector (e.g., Markov Chains).
+
+:::
 
 :::boxmath
 
@@ -329,107 +449,6 @@ $$
 
 To understand how to get from this equation to the stability of the equilibrium, we need to take a detour on eigenvalues and eigenvectors.
 
-## Eigenvalues and eigenvectors
-
-For a matrix $M$, we have that if $M v = \lambda v$ with $v$ different from the zero vector, then $\lambda$ is an eigenvalue and $v$ the corresponding eigenvector. Practically, you can think of a matrix as an operator that turns a vector into another vector. If the resulting vector is a rescaled version of the initial vector, then you've found an eigenvector of the matrix, and the rescaling factor is the associated eigenvalue.
-
-For example, show that $(1, 1)^t$ is an eigenvector of the matrix:
-
-$$
-A = 
-\begin{pmatrix}
-1 + a & 1-a\\
-2a + 2 & -2a
-\end{pmatrix}
-$$
-
-We have:
-
-$$
-Av = \begin{pmatrix}
-(1 + a) v_1 + (1-a) v_2\\
-(2a + 2) v_1 - 2a v_2 
-\end{pmatrix}
-$$
-
-if $v = (1, 1)^t$, we have:
-
-$$
-Av = \begin{pmatrix}
-2\\
-2 
-\end{pmatrix}
-$$
-
-and as such $v$ is an eigenvector of $M$, with associated eigenvalue $\lambda = 2$.
-
-### Finding eigenvalues
-
-The eigenvalues of a matrix $M$ are the roots (zeros) of the chacteristic polynomial:
-
-$$
-p(\lambda) = \text{Det}(\lambda I - M) = 0
-$$
-
-Where does this equation come from? We write:
-
-$$
-\begin{aligned}
-A v = \lambda v\\
-\lambda v - Av = 0\\
-(\lambda I - A)v = 0
-\end{aligned}
-$$
-
-if $v$ is nonzero, then the matrix $\lambda I - A$ must be singular (i.e., have at least one eigenvalue equal to zero). Because the determinant is the product of the eigenvalues, then the determinant must also be zero. 
-
-For a $2 \times 2$ matrix, we have:
-
-$$
-\text{Det} \begin{pmatrix}
-\lambda - a_{11} & -a_{12}\\
--a_{21} & \lambda -a_{22}
-\end{pmatrix} = (\lambda - a_{11}) (\lambda - a_{22}) - a_{12} a_{21} = \lambda^2 - \lambda (a_{11} + a_{22}) + a_{11} a_{22} -  a_{12} a_{21}
-$$
-
-More compactly,
-
-$$
-p(\lambda) = \lambda^2 - \lambda \text{Tr(A)} + \text{Det}(A)
-$$
-where $\text{Tr}(M) = \sum_i M_{ii} = \sum_i \lambda_i$, and $\text{Det(M)} = \prod_i \lambda_i$. We therefore find:
-
-$$
-\lambda = \frac{\text{Tr}(M) \pm \sqrt{(\text{Tr}(M))^2 - 4 \text{Det}(M)}}{2}
-$$
-Find the eigenvalues for the matrix $A$ above:
-
-$$
-\lambda = \frac{1-a \pm \sqrt{(1-a)^2+8(1+a)}}{2} = \frac{1-a \pm \sqrt{(1+a^2 -2 a + 8 a + 8)}}{2} = \frac{1-a \pm (a+ 3)}{2}
-$$
-The eigenvalues are therefore $\lambda_1 = 2$ and $\lambda_2 = -(1+a)$.
-
-### Facts about eigenvalues and eigenvectors
-
-Given a matrix $A$, of size $n \times n$, a complex number $\lambda$ is an eigenvalue of $A$ if there is a nonzero (complex) vector $v$ such that $A v = \lambda v$. The vector $v$ is called the eigenvector of $A$ associated with $\lambda$. Note that eigenvectors are defined up to multiplication: if $v$ is an eigenvector, then $c v$, with $c$ real is also an eigenvector. Often, we choose $v$ such that its norm $\sqrt{\sum_i v_i^2} = 1$ (called "unit" eigenvector).
-
-A matrix of size $n$ has at most $n$ distinct eigenvalues. If all eigenvalues are distinct then the eigenvectors are linearly independent. This means that if we build the matrix $V = (v_1, v_2, \ldots, v_n)$, then $V$ is invertible. 
-
-Because of the fact above, and diagonalizable matrix (e.g., a sufficient condition is to have all eigenvalues distinct), then we can write:
-
-$$
-A = V \Lambda V^{-1}
-$$
-
-where $V$ is the matrix of eigenvectors, and $\Lambda$ a diagonal matrix with the eigenvalues of $A$ on the diagonal. As such, $V^{-1} A V = \Lambda$. This is a "similarity transformation", meaning that the eigenvalues of $A$ and $\Lambda$ are (obviously) the same.
-
-If the matrix $A$ contains only real numbers (as always the case in population models), then the eigenvalues of $A$ are either real, or form pairs of complex conjugate eigenvalues of form $a \pm i b$. This means for example that all odd-sized real matrices have at least one real eigenvalue. If $A$ is real and symmetric, all eigenvalues are real, and all eigenvectors are orthogonal. A diagonal matrix $A$ has eigenvalues $\lambda_i = A_{ii}$
-
-If $A$ has eigenvalues $\lambda$, $B = b A$ has eigenvalues $b \lambda$, and $C = A + cI$ has eigenvalues $\lambda + c$. The eigenvalues of $A^2 = A \times A$ are $\lambda^2$, and the eigenvalues of $A^{-1}$ are $\lambda^{-1}$. The eigenvalues of $A^t$ are the same as those of $A$ (but the eigenvectors are not the same in general). $A + A^t$ (this matrix is symmetric) has only real eigenvalues, and $A - A^t$ (this matrix is skew-symmetric) has purely imaginary eigenvalues.
-
-A matrix is positive definite if all its eigenvalues are real and positive. It is positive semi-definite if eigenvalues can be zero. The matrices $AA^t$ and $A^tA$ are positive semi-definite, and have the same eigenvalues up to some zeros (used in PCA). Correlation and covariance matrices have these forms.
-
-A matrix with all positive entries has a unique largest real eigenvalue with a corresponding eigenvector that can be chosen to have strictly positive components (Perron-Frobenius). A matrix with constant row sums $\theta$ has $\theta$ as the largest eigenvalue, and $v = 1$ as the corresponding eigenvector (e.g., Markov Chains).
 
 ### Matrix exponential
 
