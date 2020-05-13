@@ -29,7 +29,7 @@ pre code {
   background: #A1C6EA 5px center/3em no-repeat;
 }
 
-.boxpaper {
+.boxmath {
   color: white;
   padding: 1em 1em 1em 4em;
   margin-bottom: 10px;
@@ -38,10 +38,12 @@ pre code {
   background: #507DBC 5px center/3em no-repeat;
 }
 
-.boxmath {
+.boxpaper {
   padding: 1em 1em 1em 4em;
   margin-bottom: 10px;
   border: 2px solid black;
   border-radius: 10px;
   background: #BBD1EA 5px center/3em no-repeat;
 }
+
+

@@ -1,0 +1,1382 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Serif DrawPlus 11, 0, 3, 23 (Feb 25, 14:12:55) (http://www.serif.com) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   width="822.11023"
+   height="747.08008"
+   id="svg233"
+   sodipodi:docname="Phase_plane_nodes.svg"
+   inkscape:version="0.92.5 (0.92.5+68)"
+   inkscape:export-filename="/home/sallesina/Downloads/Phase_plane_nodes.png"
+   inkscape:export-xdpi="200"
+   inkscape:export-ydpi="200">
+  <metadata
+     id="metadata239">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs237" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1853"
+     inkscape:window-height="1145"
+     id="namedview235"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="1"
+     inkscape:cx="340.45413"
+     inkscape:cy="371.8129"
+     inkscape:window-x="67"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="dp_group001" />
+  <g
+     id="dp_group001"
+     transform="translate(-297.74639,-162.48332)">
+    <g
+       id="dp_group002"
+       transform="translate(0,-4)">
+      <text
+         id="dp_text001"
+         transform="translate(794.192,887.408)"
+         xml:space="preserve"
+         font-size="19"
+         font-weight="400"
+         x="0"
+         y="0"
+         style="font-weight:400;font-size:19px;font-family:Arial;fill:#000000">2</text>
+      <text
+         id="dp_text002"
+         transform="translate(794.192,887.408)"
+         xml:space="preserve"
+         font-size="19"
+         font-weight="400"
+         x="10.504"
+         y="0"
+         style="font-weight:400;font-size:19px;font-family:'Euclid Symbol';fill:#000000"> </text>
+      <path
+         id="dp_path005"
+         d="m 745.641,901.864 -9.84,-19.765 c -0.113,-0.208 -0.284,-0.314 -0.512,-0.314 h -0.256 c -0.246,0 -0.417,0.106 -0.512,0.314 l -9.84,19.765 c -0.037,0.076 -0.037,0.148 0,0.213 0.039,0.067 0.104,0.1 0.199,0.1 h 20.563 c 0.094,0 0.161,-0.033 0.198,-0.1 0.039,-0.065 0.039,-0.137 0,-0.213 z m -3.497,-1.701 h -15.643 l 7.822,-15.699 z"
+         inkscape:connector-curvature="0"
+         style="fill:#000000;fill-rule:evenodd" />
+      <text
+         id="dp_text003"
+         xml:space="preserve"
+         font-size="28"
+         font-weight="400"
+         font-style="italic"
+         x="768.633"
+         y="902.75098"
+         style="font-style:italic;font-weight:400;font-size:28px;font-family:Arial;fill:#000000">Tr  </text>
+      <text
+         id="dp_text004"
+         transform="translate(776.633,902.751)"
+         xml:space="preserve"
+         font-size="28"
+         font-weight="400"
+         x="31.626699"
+         y="0"
+         style="font-weight:400;font-size:28px;font-family:Arial;fill:#000000">−</text>
+      <text
+         id="dp_text005"
+         transform="translate(776.633,902.751)"
+         xml:space="preserve"
+         font-size="28"
+         font-weight="400"
+         font-style="italic"
+         x="48.234699"
+         y="0"
+         style="font-style:italic;font-weight:400;font-size:28px;font-family:Arial;fill:#000000"> </text>
+      <text
+         id="dp_text006"
+         transform="translate(776.633,902.751)"
+         xml:space="preserve"
+         font-size="28"
+         font-weight="400"
+         x="56.1227"
+         y="0"
+         style="font-weight:400;font-size:28px;font-family:Arial;fill:#000000">4</text>
+      <text
+         id="dp_text007"
+         transform="translate(776.633,902.751)"
+         xml:space="preserve"
+         font-size="28"
+         font-weight="400"
+         font-style="italic"
+         x="71.973297"
+         y="0"
+         style="font-style:italic;font-weight:400;font-size:28px;font-family:Arial;fill:#000000">Det</text>
+      <text
+         id="dp_text008"
+         transform="translate(776.633,902.751)"
+         xml:space="preserve"
+         font-size="16"
+         font-weight="400"
+         x="87.823997"
+         y="0"
+         style="font-weight:400;font-size:16px;font-family:'Times New Roman';fill:#000000"> </text>
+      <text
+         id="dp_text009"
+         transform="translate(750.948,901.252)"
+         xml:space="preserve"
+         font-size="28"
+         font-weight="400"
+         font-style="italic"
+         x="0"
+         y="0"
+         style="font-style:italic;font-weight:400;font-size:28px;font-family:Arial;fill:#000000">=</text>
+      <text
+         id="dp_text010"
+         transform="translate(750.948,901.252)"
+         xml:space="preserve"
+         font-size="16"
+         font-weight="400"
+         x="16.609301"
+         y="0"
+         style="font-weight:400;font-size:16px;font-family:'Times New Roman';fill:#000000"> </text>
+    </g>
+    <path
+       id="dp_path014"
+       d="M 1081.48,198.985 H 694.589 v 565.152 h 386.891 z"
+       inkscape:connector-curvature="0"
+       style="fill:#00b050;fill-opacity:0.4;fill-rule:evenodd;stroke:none;stroke-width:3.33332992" />
+    <path
+       id="dp_path015"
+       d="m 365.577,200.088 c 60.954,150.46 205.19,366.809 329.008,366.719 0.098,-131.164 -0.649,-237.236 -0.44,-365.342"
+       inkscape:connector-curvature="0"
+       style="fill:#1616ef;fill-opacity:0.4;fill-rule:evenodd;stroke:#1616ef;stroke-width:3.33332992" />
+    <path
+       id="dp_path016"
+       d="m 1022.71,200.088 c -60.95,150.46 -205.186,366.809 -329.005,366.719 -0.097,-131.164 0.65,-237.236 0.44,-365.342"
+       inkscape:connector-curvature="0"
+       style="fill:#00b050;fill-opacity:0.564706;fill-rule:evenodd;stroke:#009442;stroke-width:3.33332992" />
+    <g
+       id="dp_group017">
+      <g
+         id="dp_group018">
+        <path
+           id="dp_path019"
+           d="m 693.144,208.985 h 2 4 l -5,-10 -5,10 z"
+           inkscape:connector-curvature="0"
+           style="fill:#000000;fill-rule:evenodd" />
+        <path
+           id="dp_path020"
+           d="m 695.145,764.141 -10e-4,-555.156 h -2 l 10e-4,555.156 z"
+           inkscape:connector-curvature="0"
+           style="fill:#000000" />
+      </g>
+    </g>
+    <g
+       id="dp_group021">
+      <path
+         id="dp_path022"
+         d="m 801.473,319.795 c -43.654,10.038 -47.748,47.21 -44.948,65.54 3.367,22.053 15.36,36.241 28.388,43.693 18.994,10.865 38.487,10.26 53.82,2.952 18.36,-8.749 32.011,-32.149 27.798,-56.092 -2.639,-14.995 -13.21,-25.648 -23.822,-30.545 -3.621,-1.671 -7.338,-3.124 -11.073,-3.702 -17.053,-2.638 -32.012,0.859 -40.808,11.81 -9.281,11.554 -12.856,27.933 -7.689,40.741 6.678,16.553 17.649,21.523 32.529,21.256 14.388,-0.257 26.919,-13.992 25.431,-28.341 -1.536,-14.827 -16.792,-21.223 -26.614,-14.171 -6.34,4.552 -7.014,18.673 3.764,22.913"
+         inkscape:connector-curvature="0"
+         style="fill:none;fill-rule:evenodd;stroke:#a8ed13;stroke-width:2" />
+      <path
+         id="dp_path023"
+         d="M 845.06,346.273 832.363,334.4 827.677,346.515 Z"
+         inkscape:connector-curvature="0"
+         style="fill:#a8ed13;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path024"
+         d="m 784.515,428.555 10.888,13.552 6.354,-11.332 z"
+         inkscape:connector-curvature="0"
+         style="fill:#a8ed13;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path025"
+         d="m 821.764,385.62 c -2.485,0 -4.5,2.031 -4.5,4.536 0,2.505 2.015,4.536 4.5,4.536 2.485,0 4.5,-2.031 4.5,-4.536 0,-2.505 -2.015,-4.536 -4.5,-4.536 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:2" />
+    </g>
+    <g
+       id="dp_group026">
+      <path
+         id="dp_path027"
+         d="M 1062.03,213.563 941.225,295.935"
+         inkscape:connector-curvature="0"
+         style="fill:none;fill-rule:evenodd;stroke:#bd0ea0;stroke-width:2" />
+      <path
+         id="dp_path028"
+         d="m 1035.63,303.787 c 0.94,-3.527 4.47,-27.354 4.29,-30.464 -1.14,-19.398 -22.32,-29.599 -40.713,-16.555 -13.716,9.729 -49.35,4.979 -53.982,-14.337 -2.568,-10.708 2.4,-22.338 6.4,-38.644"
+         inkscape:connector-curvature="0"
+         style="fill:none;fill-rule:evenodd;stroke:#a8ed13;stroke-width:2" />
+      <path
+         id="dp_path029"
+         d="m 917.689,229.313 -8.342,11.286 10.854,2.522 z"
+         inkscape:connector-curvature="0"
+         style="fill:#bd0ea0;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path030"
+         d="m 1052.17,293.571 c 2.58,-15.62 6.54,-26.222 -1.28,-37.202 -9.36,-13.14 -33.29,-12.645 -51.683,0.399 -13.716,9.729 -50.252,14.727 -63.582,0 -8.968,-9.908 -6.4,-25.319 -2.4,-41.625"
+         inkscape:connector-curvature="0"
+         style="fill:none;fill-rule:evenodd;stroke:#a8ed13;stroke-width:2" />
+      <path
+         id="dp_path031"
+         d="m 1066.32,283.724 c 4.57,-21.969 4.41,-34.477 -6.46,-42.447 -13.21,-9.678 -42.26,2.447 -60.653,15.491 -13.716,9.729 -64.482,23.067 -77.811,8.34 -8.968,-9.908 -6.4,-25.319 -2.4,-41.625"
+         inkscape:connector-curvature="0"
+         style="fill:none;fill-rule:evenodd;stroke:#bd0ea0;stroke-width:2" />
+      <path
+         id="dp_path032"
+         d="m 931.4,221.081 -8.343,11.286 10.855,2.522 z"
+         inkscape:connector-curvature="0"
+         style="fill:#bd0ea0;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path033"
+         d="m 949.16,212.805 -8.343,11.286 10.855,2.522 z"
+         inkscape:connector-curvature="0"
+         style="fill:#bd0ea0;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path034"
+         d="m 1035.91,297.079 8.34,-11.286 -10.86,-2.522 z"
+         inkscape:connector-curvature="0"
+         style="fill:#bd0ea0;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path035"
+         d="m 1052.62,288.847 8.34,-11.286 -10.86,-2.522 z"
+         inkscape:connector-curvature="0"
+         style="fill:#bd0ea0;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path036"
+         d="m 1066.41,282.008 8.34,-11.285 -10.85,-2.523 z"
+         inkscape:connector-curvature="0"
+         style="fill:#bd0ea0;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path037"
+         d="m 1054.18,218.952 -13.79,2.603 6.24,9.23 z"
+         inkscape:connector-curvature="0"
+         style="fill:#bd0ea0;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path038"
+         d="m 951.419,288.945 13.79,-2.602 -6.245,-9.231 z"
+         inkscape:connector-curvature="0"
+         style="fill:#bd0ea0;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path039"
+         d="m 1035.63,303.787 c 0.94,-3.527 4.47,-27.354 4.29,-30.464 -1.14,-19.398 -22.32,-29.599 -40.713,-16.555 -13.716,9.729 -49.35,4.979 -53.982,-14.337 -2.568,-10.708 2.4,-22.338 6.4,-38.644"
+         inkscape:connector-curvature="0"
+         style="fill:none;fill-rule:evenodd;stroke:#bd0ea0;stroke-width:2" />
+      <path
+         id="dp_path040"
+         d="m 1052.17,293.571 c 2.58,-15.62 6.54,-26.222 -1.28,-37.202 -9.36,-13.14 -33.29,-12.645 -51.683,0.399 -13.716,9.729 -50.252,14.727 -63.582,0 -8.968,-9.908 -6.4,-25.319 -2.4,-41.625"
+         inkscape:connector-curvature="0"
+         style="fill:none;fill-rule:evenodd;stroke:#bd0ea0;stroke-width:2" />
+      <path
+         id="dp_path041"
+         d="m 996.311,253.584 c -2.486,0 -4.5,2.031 -4.5,4.536 0,2.505 2.014,4.536 4.5,4.536 2.485,0 4.499,-2.031 4.499,-4.536 0,-2.505 -2.014,-4.536 -4.499,-4.536 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:2" />
+    </g>
+    <g
+       id="dp_group042">
+      <path
+         id="dp_path043"
+         d="M 1034.62,380.524 958.161,505.149"
+         inkscape:connector-curvature="0"
+         style="fill:none;fill-rule:evenodd;stroke:#ee0000;stroke-width:2" />
+      <path
+         id="dp_path044"
+         d="m 970.34,363.724 c 20.891,30.319 34,73.423 19.379,87.6 -14.621,14.177 -55.91,6.225 -89.3,-14.568"
+         inkscape:connector-curvature="0"
+         style="fill:none;fill-rule:evenodd;stroke:#ee0000;stroke-width:2" />
+      <path
+         id="dp_path045"
+         d="m 998.477,378.145 -4.53,13.283 11.113,-0.887 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path046"
+         d="m 980.155,380.308 1.064,13.993 9.862,-5.186 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path047"
+         d="m 918.849,445.775 9.523,10.308 4.511,-10.19 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path048"
+         d="m 918.596,476.881 13.312,4.446 -0.957,-11.103 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path049"
+         d="m 1029.67,388.655 -11.51,8.022 9.47,5.863 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path050"
+         d="m 964.596,494.597 11.515,-8.022 -9.478,-5.863 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path051"
+         d="m 991.064,354.957 c 11.906,33.879 18.006,85.706 -7.841,103.498 -25.847,17.792 -44.23,18.465 -77.318,17.461"
+         inkscape:connector-curvature="0"
+         style="fill:none;fill-rule:evenodd;stroke:#ee0000;stroke-width:2" />
+      <path
+         id="dp_path052"
+         d="m 952.651,381.241 76.459,124.626"
+         inkscape:connector-curvature="0"
+         style="fill:none;fill-rule:evenodd;stroke:#ee0000;stroke-width:2" />
+      <path
+         id="dp_path053"
+         d="m 957.601,389.372 11.515,8.023 -9.477,5.862 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path054"
+         d="m 1022.68,495.315 -11.52,-8.023 9.48,-5.863 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path055"
+         d="m 1016.64,531.956 c -20.895,-30.319 -34.008,-73.423 -19.383,-87.6 14.625,-14.177 55.913,-6.225 89.303,14.568"
+         inkscape:connector-curvature="0"
+         style="fill:none;fill-rule:evenodd;stroke:#ee0000;stroke-width:2" />
+      <path
+         id="dp_path056"
+         d="m 995.912,540.723 c -11.904,-33.879 -18.008,-85.706 7.838,-103.498 25.846,-17.792 44.23,-18.465 77.32,-17.461"
+         inkscape:connector-curvature="0"
+         style="fill:none;fill-rule:evenodd;stroke:#ee0000;stroke-width:2" />
+      <path
+         id="dp_path057"
+         d="m 989.109,513.417 3.33,-13.633 -10.986,1.872 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path058"
+         d="m 1002.75,508.1 0.42,-14.028 -10.351,4.117 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path059"
+         d="m 1067.58,449.257 -9.52,-10.308 -4.51,10.19 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path060"
+         d="m 1067.83,418.151 -13.31,-4.446 0.96,11.103 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path061"
+         d="m 991.065,443.951 c -2.266,1.018 -3.273,3.696 -2.246,5.981 1.025,2.285 3.696,3.313 5.962,2.295 2.267,-1.018 3.274,-3.695 2.247,-5.982 -1.025,-2.285 -3.695,-3.312 -5.963,-2.294 z"
+         inkscape:connector-curvature="0"
+         style="fill:#feffff;fill-rule:evenodd;stroke:#000000;stroke-width:2" />
+    </g>
+    <g
+       id="dp_group062">
+      <text
+         id="dp_text011"
+         transform="translate(1016.97,184.634)"
+         xml:space="preserve"
+         font-size="28"
+         font-weight="400"
+         x="0"
+         y="-0.0013333299"
+         style="font-weight:400;font-size:28px;font-family:'Euclid Symbol';fill:#000000"> </text>
+      <text
+         id="dp_text012"
+         transform="translate(1016.97,184.634)"
+         xml:space="preserve"
+         font-size="28"
+         font-weight="400"
+         x="7.1293302"
+         y="-0.0013333299"
+         style="font-weight:400;font-size:28px;font-family:Arial;fill:#000000">= 0</text>
+      <text
+         id="dp_text013"
+         transform="translate(1016.97,184.634)"
+         xml:space="preserve"
+         font-size="28"
+         font-weight="400"
+         x="47.476002"
+         y="-0.0013333299"
+         style="font-weight:400;font-size:28px;font-family:'Euclid Symbol';fill:#000000"> </text>
+      <path
+         id="dp_path066"
+         d="m 1015.66,185.112 -9.84,-19.767 c -0.11,-0.208 -0.28,-0.312 -0.51,-0.312 h -0.25 c -0.25,0 -0.42,0.104 -0.52,0.312 l -9.837,19.767 c -0.038,0.076 -0.038,0.148 0,0.213 0.038,0.067 0.104,0.1 0.2,0.1 h 20.567 c 0.09,0 0.16,-0.033 0.19,-0.1 0.04,-0.065 0.04,-0.137 0,-0.213 z m -3.49,-1.701 h -15.647 l 7.817,-15.7 z"
+         inkscape:connector-curvature="0"
+         style="fill:#000000;fill-rule:evenodd" />
+    </g>
+    <text
+       id="dp_text014"
+       xml:space="preserve"
+       font-size="28"
+       font-weight="400"
+       font-style="italic"
+       x="670.21997"
+       y="181.74699"
+       style="font-style:italic;font-weight:400;font-size:28px;font-family:Arial;fill:#000000">Det</text>
+    <text
+       id="dp_text015"
+       transform="translate(686.22,175.747)"
+       xml:space="preserve"
+       font-size="28"
+       font-weight="400"
+       font-style="italic"
+       x="15.8507"
+       y="0"
+       style="font-style:italic;font-weight:400;font-size:28px;font-family:'Euclid Symbol';fill:#000000"> </text>
+    <path
+       id="dp_path069"
+       d="M 303.761,198.985 H 694.585 V 764.139 H 303.761 Z"
+       inkscape:connector-curvature="0"
+       style="fill:#1616ef;fill-opacity:0.4;fill-rule:evenodd;stroke:none;stroke-width:3.33332992" />
+    <path
+       id="dp_path070"
+       d="m 328.171,217.455 120.8,82.372"
+       inkscape:connector-curvature="0"
+       style="fill:none;fill-rule:evenodd;stroke:#bd0ea0;stroke-width:2" />
+    <path
+       id="dp_path071"
+       d="m 354.571,307.679 c -0.944,-3.527 -4.478,-27.354 -4.295,-30.464 1.139,-19.398 22.323,-29.599 40.713,-16.555 13.716,9.729 49.35,4.979 53.982,-14.337 2.568,-10.708 -2.4,-22.338 -6.4,-38.644"
+       inkscape:connector-curvature="0"
+       style="fill:none;fill-rule:evenodd;stroke:#bd0ea0;stroke-width:2" />
+    <path
+       id="dp_path072"
+       d="m 444.925,232.427 -8.342,-11.286 10.854,-2.522 z"
+       inkscape:connector-curvature="0"
+       style="fill:#bd0ea0;fill-rule:evenodd;stroke:none;stroke-width:2" />
+    <path
+       id="dp_path073"
+       d="m 338.031,297.463 c -2.586,-15.62 -6.547,-26.222 1.276,-37.202 9.361,-13.14 33.292,-12.645 51.682,0.399 13.716,9.729 50.252,14.727 63.582,0 8.968,-9.908 6.4,-25.319 2.4,-41.625"
+       inkscape:connector-curvature="0"
+       style="fill:none;fill-rule:evenodd;stroke:#bd0ea0;stroke-width:2" />
+    <path
+       id="dp_path074"
+       d="m 323.876,287.616 c -4.569,-21.969 -4.413,-34.477 6.461,-42.447 13.208,-9.678 42.262,2.447 60.652,15.491 13.716,9.729 64.482,23.067 77.811,8.34 8.968,-9.908 6.4,-25.319 2.4,-41.625"
+       inkscape:connector-curvature="0"
+       style="fill:none;fill-rule:evenodd;stroke:#bd0ea0;stroke-width:2" />
+    <path
+       id="dp_path075"
+       d="m 460.636,240.659 -8.343,-11.286 10.855,-2.522 z"
+       inkscape:connector-curvature="0"
+       style="fill:#bd0ea0;fill-rule:evenodd;stroke:none;stroke-width:2" />
+    <path
+       id="dp_path076"
+       d="m 475.396,248.935 -8.343,-11.286 10.855,-2.522 z"
+       inkscape:connector-curvature="0"
+       style="fill:#bd0ea0;fill-rule:evenodd;stroke:none;stroke-width:2" />
+    <path
+       id="dp_path077"
+       d="m 350.401,284.241 8.343,11.286 -10.855,2.522 z"
+       inkscape:connector-curvature="0"
+       style="fill:#bd0ea0;fill-rule:evenodd;stroke:none;stroke-width:2" />
+    <path
+       id="dp_path078"
+       d="m 334.691,276.009 8.342,11.286 -10.854,2.522 z"
+       inkscape:connector-curvature="0"
+       style="fill:#bd0ea0;fill-rule:evenodd;stroke:none;stroke-width:2" />
+    <path
+       id="dp_path079"
+       d="m 319.931,267.733 8.342,11.286 -10.854,2.522 z"
+       inkscape:connector-curvature="0"
+       style="fill:#bd0ea0;fill-rule:evenodd;stroke:none;stroke-width:2" />
+    <path
+       id="dp_path080"
+       d="m 350.244,232.468 -13.791,-2.603 6.246,-9.23 z"
+       inkscape:connector-curvature="0"
+       style="fill:#bd0ea0;fill-rule:evenodd;stroke:none;stroke-width:2" />
+    <path
+       id="dp_path081"
+       d="m 424.551,283.213 13.79,2.603 -6.245,9.231 z"
+       inkscape:connector-curvature="0"
+       style="fill:#bd0ea0;fill-rule:evenodd;stroke:none;stroke-width:2" />
+    <path
+       id="dp_path082"
+       d="m 393.885,257.476 c 2.486,0 4.5,2.031 4.5,4.536 0,2.505 -2.014,4.536 -4.5,4.536 -2.485,0 -4.5,-2.031 -4.5,-4.536 0,-2.505 2.015,-4.536 4.5,-4.536 z"
+       inkscape:connector-curvature="0"
+       style="fill:#000000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+    <g
+       id="dp_group083">
+      <path
+         id="dp_path084"
+         d="m 572.26,314.611 c 43.655,10.038 47.748,47.21 44.948,65.54 -3.367,22.053 -15.36,36.241 -28.388,43.693 -18.993,10.865 -38.487,10.26 -53.82,2.952 -18.36,-8.749 -32.011,-32.149 -27.797,-56.092 2.638,-14.995 13.209,-25.648 23.821,-30.545 3.621,-1.671 7.339,-3.124 11.073,-3.702 17.054,-2.638 32.012,0.859 40.808,11.81 9.282,11.554 12.856,27.933 7.69,40.741 -6.679,16.553 -17.65,21.523 -32.53,21.256 -14.388,-0.257 -26.918,-13.992 -25.43,-28.341 1.536,-14.827 16.792,-21.223 26.613,-14.171 6.34,4.552 7.015,18.673 -3.764,22.913"
+         inkscape:connector-curvature="0"
+         style="fill:none;fill-rule:evenodd;stroke:#a8ed13;stroke-width:2" />
+      <path
+         id="dp_path085"
+         d="m 549.152,334.691 -14.153,10.096 -3.046,-12.63 z"
+         inkscape:connector-curvature="0"
+         style="fill:#a8ed13;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path086"
+         d="m 569.389,431.149 14.154,-10.096 3.045,12.63 z"
+         inkscape:connector-curvature="0"
+         style="fill:#a8ed13;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path087"
+         d="m 551.969,380.436 c 2.486,0 4.5,2.031 4.5,4.536 0,2.505 -2.014,4.536 -4.5,4.536 -2.485,0 -4.5,-2.031 -4.5,-4.536 0,-2.505 2.015,-4.536 4.5,-4.536 z"
+         inkscape:connector-curvature="0"
+         style="fill:#000000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+    </g>
+    <g
+       id="dp_group088">
+      <text
+         id="dp_text016"
+         transform="translate(517.663,702.279)"
+         xml:space="preserve"
+         font-size="28"
+         font-weight="400"
+         x="0"
+         y="-0.0013333299"
+         style="font-weight:400;font-size:28px;font-family:'Euclid Symbol';fill:#000000"> </text>
+      <g
+         id="dp_dp017"
+         transform="translate(517.663,702.279)">
+        <text
+           id="dp_text018"
+           xml:space="preserve"
+           font-size="28"
+           font-weight="400"
+           x="7.1293302"
+           y="-0.0013333299"
+           style="font-weight:400;font-size:28px;font-family:Arial;fill:#000000">&gt;</text>
+        <text
+           id="dp_text019"
+           xml:space="preserve"
+           font-size="28"
+           font-weight="400"
+           x="23.4813"
+           y="-0.0013333299"
+           style="font-weight:400;font-size:28px;font-family:Arial;fill:#000000"> 0</text>
+      </g>
+      <text
+         id="dp_text020"
+         transform="translate(517.663,702.279)"
+         xml:space="preserve"
+         font-size="28"
+         font-weight="400"
+         x="47.476002"
+         y="-0.0013333299"
+         style="font-weight:400;font-size:28px;font-family:'Euclid Symbol';fill:#000000"> </text>
+      <path
+         id="dp_path092"
+         d="m 516.355,702.757 -9.84,-19.766 c -0.115,-0.208 -0.286,-0.312 -0.512,-0.312 h -0.256 c -0.247,0 -0.418,0.104 -0.512,0.312 l -9.842,19.766 c -0.037,0.076 -0.037,0.148 0,0.214 0.039,0.066 0.104,0.1 0.2,0.1 h 20.563 c 0.095,0 0.161,-0.034 0.199,-0.1 0.038,-0.066 0.038,-0.138 0,-0.214 z m -3.499,-1.701 h -15.643 l 7.822,-15.7 z"
+         inkscape:connector-curvature="0"
+         style="fill:#000000;fill-rule:evenodd" />
+    </g>
+    <g
+       id="dp_group093">
+      <path
+         id="dp_path094"
+         d="m 682.252,275.339 c 38.552,-14.211 75.047,-10.083 81.512,9.218 6.465,19.303 -19.547,46.47 -58.099,60.68 -38.553,14.21 -75.046,10.082 -81.512,-9.22 -6.465,-19.302 19.547,-46.469 58.099,-60.678 z"
+         inkscape:connector-curvature="0"
+         style="fill:none;fill-rule:evenodd;stroke:#a8ed13;stroke-width:2" />
+      <path
+         id="dp_path095"
+         d="m 686.585,288.275 c 28.408,-10.471 54.738,-9.103 58.81,3.053 4.072,12.157 -15.656,30.501 -44.063,40.972 -28.408,10.471 -54.737,9.103 -58.809,-3.055 -4.072,-12.156 15.654,-30.5 44.062,-40.97 z"
+         inkscape:connector-curvature="0"
+         style="fill:none;fill-rule:evenodd;stroke:#a8ed13;stroke-width:2" />
+      <path
+         id="dp_path096"
+         d="m 689.815,297.913 c 18.237,-6.722 34.877,-6.632 37.166,0.203 2.29,6.833 -10.638,17.823 -28.877,24.545 -18.237,6.723 -34.877,6.632 -37.167,-0.202 -2.288,-6.835 10.64,-17.823 28.878,-24.546 z"
+         inkscape:connector-curvature="0"
+         style="fill:none;fill-rule:evenodd;stroke:#a8ed13;stroke-width:2" />
+      <path
+         id="dp_path097"
+         d="m 693.957,305.751 c 2.486,0 4.5,2.03 4.5,4.536 0,2.505 -2.014,4.536 -4.5,4.536 -2.485,0 -4.5,-2.031 -4.5,-4.536 0,-2.506 2.015,-4.536 4.5,-4.536 z"
+         inkscape:connector-curvature="0"
+         style="fill:#000000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path098"
+         d="m 680.213,275.796 -12.317,12.268 -5.064,-11.965 z"
+         inkscape:connector-curvature="0"
+         style="fill:#a8ed13;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path099"
+         d="m 706.224,330.385 11.909,-12.665 5.454,11.792 z"
+         inkscape:connector-curvature="0"
+         style="fill:#a8ed13;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path100"
+         d="m 680.367,301.995 -9.431,14.605 -7.491,-10.615 z"
+         inkscape:connector-curvature="0"
+         style="fill:#a8ed13;fill-rule:evenodd;stroke:none;stroke-width:2" />
+    </g>
+    <g
+       id="dp_group101">
+      <path
+         id="dp_path102"
+         d="m 350.211,381.941 76.46,124.626"
+         inkscape:connector-curvature="0"
+         style="fill:none;fill-rule:evenodd;stroke:#ee0000;stroke-width:2" />
+      <path
+         id="dp_path103"
+         d="m 414.492,365.141 c -20.891,30.319 -34.004,73.423 -19.379,87.6 14.625,14.177 55.91,6.226 89.3,-14.568"
+         inkscape:connector-curvature="0"
+         style="fill:none;fill-rule:evenodd;stroke:#ee0000;stroke-width:2" />
+      <path
+         id="dp_path104"
+         d="m 384.991,396.683 -4.531,-13.283 11.109,0.887 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path105"
+         d="m 396.683,396.928 1.064,-13.993 9.862,5.186 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path106"
+         d="m 450.279,454.145 9.522,-10.308 4.511,10.19 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path107"
+         d="m 449.123,476.825 13.312,-4.445 -0.958,11.103 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path108"
+         d="m 364.197,404.679 -11.514,-8.023 9.477,-5.863 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path109"
+         d="m 411.199,481.408 11.514,8.023 -9.477,5.862 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path110"
+         d="m 393.768,356.375 c -11.904,33.878 -18.008,85.705 7.841,103.497 25.849,17.792 44.23,18.465 77.318,17.461"
+         inkscape:connector-curvature="0"
+         style="fill:none;fill-rule:evenodd;stroke:#ee0000;stroke-width:2" />
+      <path
+         id="dp_path111"
+         d="m 432.181,382.659 -76.46,124.625"
+         inkscape:connector-curvature="0"
+         style="fill:none;fill-rule:evenodd;stroke:#ee0000;stroke-width:2" />
+      <path
+         id="dp_path112"
+         d="m 418.195,405.396 11.514,-8.023 -9.477,-5.862 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path113"
+         d="m 371.193,482.125 -11.514,8.023 9.477,5.863 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path114"
+         d="m 368.196,533.373 c 20.891,-30.318 34.004,-73.422 19.379,-87.6 -14.625,-14.178 -55.91,-6.225 -89.3,14.568"
+         inkscape:connector-curvature="0"
+         style="fill:none;fill-rule:evenodd;stroke:#ee0000;stroke-width:2" />
+      <path
+         id="dp_path115"
+         d="m 388.92,542.14 c 11.904,-33.879 18.008,-85.705 -7.841,-103.497 -25.849,-17.792 -44.23,-18.466 -77.318,-17.462"
+         inkscape:connector-curvature="0"
+         style="fill:none;fill-rule:evenodd;stroke:#ee0000;stroke-width:2" />
+      <path
+         id="dp_path116"
+         d="m 398.605,497.904 3.33,13.633 -10.986,-1.872 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path117"
+         d="m 388.421,493.557 0.419,14.028 -10.355,-4.117 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path118"
+         d="m 332.956,443.721 -9.523,10.308 -4.51,-10.189 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path119"
+         d="m 334.112,421.041 -13.312,4.446 0.957,-11.103 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path120"
+         d="m 393.767,445.368 c 2.266,1.019 3.273,3.696 2.246,5.981 -1.025,2.286 -3.696,3.314 -5.962,2.295 -2.267,-1.017 -3.274,-3.695 -2.247,-5.981 1.025,-2.286 3.695,-3.312 5.963,-2.295 z"
+         inkscape:connector-curvature="0"
+         style="fill:#000000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+    </g>
+    <g
+       id="dp_group121">
+      <text
+         id="dp_text021"
+         transform="translate(831.833,252.102)"
+         xml:space="preserve"
+         font-size="28"
+         font-weight="400"
+         x="0"
+         y="-0.0013333299"
+         style="font-weight:400;font-size:28px;font-family:'Euclid Symbol';fill:#000000"> </text>
+      <g
+         id="dp_dp022"
+         transform="translate(831.833,252.102)">
+        <text
+           id="dp_text023"
+           xml:space="preserve"
+           font-size="28"
+           font-weight="400"
+           x="7.1293302"
+           y="-0.0013333299"
+           style="font-weight:400;font-size:28px;font-family:Arial;fill:#000000">&lt;</text>
+        <text
+           id="dp_text024"
+           xml:space="preserve"
+           font-size="28"
+           font-weight="400"
+           x="23.4813"
+           y="-0.0013333299"
+           style="font-weight:400;font-size:28px;font-family:Arial;fill:#000000"> 0</text>
+      </g>
+      <text
+         id="dp_text025"
+         transform="translate(831.833,252.102)"
+         xml:space="preserve"
+         font-size="28"
+         font-weight="400"
+         x="47.476002"
+         y="-0.0013333299"
+         style="font-weight:400;font-size:28px;font-family:'Euclid Symbol';fill:#000000"> </text>
+      <path
+         id="dp_path125"
+         d="m 830.525,252.58 -9.84,-19.767 c -0.114,-0.208 -0.285,-0.312 -0.512,-0.312 h -0.256 c -0.246,0 -0.417,0.104 -0.512,0.312 l -9.841,19.767 c -0.037,0.076 -0.037,0.148 0,0.213 0.039,0.067 0.104,0.1 0.2,0.1 h 20.563 c 0.094,0 0.161,-0.033 0.198,-0.1 0.039,-0.065 0.039,-0.137 0,-0.213 z m -3.498,-1.701 h -15.643 l 7.821,-15.7 z"
+         inkscape:connector-curvature="0"
+         style="fill:#000000;fill-rule:evenodd" />
+    </g>
+    <g
+       id="dp_group126">
+      <text
+         id="dp_text026"
+         transform="translate(820.699,702.279)"
+         xml:space="preserve"
+         font-size="28"
+         font-weight="400"
+         x="0"
+         y="-0.0013333299"
+         style="font-weight:400;font-size:28px;font-family:'Euclid Symbol';fill:#000000"> </text>
+      <g
+         id="dp_dp027"
+         transform="translate(820.699,702.279)">
+        <text
+           id="dp_text028"
+           xml:space="preserve"
+           font-size="28"
+           font-weight="400"
+           x="7.1293302"
+           y="-0.0013333299"
+           style="font-weight:400;font-size:28px;font-family:Arial;fill:#000000">&gt;</text>
+        <text
+           id="dp_text029"
+           xml:space="preserve"
+           font-size="28"
+           font-weight="400"
+           x="23.4813"
+           y="-0.0013333299"
+           style="font-weight:400;font-size:28px;font-family:Arial;fill:#000000"> 0</text>
+      </g>
+      <text
+         id="dp_text030"
+         transform="translate(820.699,702.279)"
+         xml:space="preserve"
+         font-size="28"
+         font-weight="400"
+         x="47.476002"
+         y="-0.0013333299"
+         style="font-weight:400;font-size:28px;font-family:'Euclid Symbol';fill:#000000"> </text>
+      <path
+         id="dp_path130"
+         d="m 819.391,702.757 -9.84,-19.766 c -0.115,-0.208 -0.286,-0.312 -0.512,-0.312 h -0.256 c -0.247,0 -0.418,0.104 -0.512,0.312 l -9.842,19.766 c -0.037,0.076 -0.037,0.148 0,0.214 0.039,0.066 0.104,0.1 0.2,0.1 h 20.563 c 0.095,0 0.161,-0.034 0.199,-0.1 0.038,-0.066 0.038,-0.138 0,-0.214 z m -3.499,-1.701 h -15.643 l 7.822,-15.7 z"
+         inkscape:connector-curvature="0"
+         style="fill:#000000;fill-rule:evenodd" />
+    </g>
+    <g
+       id="dp_group131">
+      <text
+         id="dp_text031"
+         transform="translate(517.663,252.102)"
+         xml:space="preserve"
+         font-size="28"
+         font-weight="400"
+         x="0"
+         y="-0.0013333299"
+         style="font-weight:400;font-size:28px;font-family:'Euclid Symbol';fill:#000000"> </text>
+      <g
+         id="dp_dp032"
+         transform="translate(517.663,252.102)">
+        <text
+           id="dp_text033"
+           xml:space="preserve"
+           font-size="28"
+           font-weight="400"
+           x="7.1293302"
+           y="-0.0013333299"
+           style="font-weight:400;font-size:28px;font-family:Arial;fill:#000000">&lt;</text>
+        <text
+           id="dp_text034"
+           xml:space="preserve"
+           font-size="28"
+           font-weight="400"
+           x="23.4813"
+           y="-0.0013333299"
+           style="font-weight:400;font-size:28px;font-family:Arial;fill:#000000"> 0</text>
+      </g>
+      <text
+         id="dp_text035"
+         transform="translate(517.663,252.102)"
+         xml:space="preserve"
+         font-size="28"
+         font-weight="400"
+         x="47.476002"
+         y="-0.0013333299"
+         style="font-weight:400;font-size:28px;font-family:'Euclid Symbol';fill:#000000"> </text>
+      <path
+         id="dp_path135"
+         d="m 516.355,252.58 -9.84,-19.767 c -0.115,-0.208 -0.286,-0.312 -0.512,-0.312 h -0.256 c -0.247,0 -0.418,0.104 -0.512,0.312 l -9.842,19.767 c -0.037,0.076 -0.037,0.148 0,0.213 0.039,0.067 0.104,0.1 0.2,0.1 h 20.563 c 0.095,0 0.161,-0.033 0.199,-0.1 0.038,-0.065 0.038,-0.137 0,-0.213 z m -3.499,-1.701 h -15.643 l 7.822,-15.7 z"
+         inkscape:connector-curvature="0"
+         style="fill:#000000;fill-rule:evenodd" />
+    </g>
+    <g
+       id="dp_group136">
+      <g
+         id="dp_group137">
+        <path
+           id="dp_path138"
+           d="m 1074.44,565.807 v 2 4 l 10,-5 -10,-5 z"
+           inkscape:connector-curvature="0"
+           style="fill:#000000;fill-rule:evenodd" />
+        <path
+           id="dp_path139"
+           d="m 303.849,567.808 770.591,-10e-4 v -2 l -770.591,10e-4 z"
+           inkscape:connector-curvature="0"
+           style="fill:#000000" />
+      </g>
+    </g>
+    <text
+       id="dp_text036"
+       transform="translate(1094.55,575.576)"
+       xml:space="preserve"
+       font-size="28"
+       font-weight="400"
+       font-style="italic"
+       x="0"
+       y="0"
+       style="font-style:italic;font-weight:400;font-size:28px;font-family:Arial;fill:#000000">Tr</text>
+    <text
+       id="dp_text037"
+       transform="translate(1094.55,575.576)"
+       xml:space="preserve"
+       font-size="28"
+       font-weight="400"
+       font-style="italic"
+       x="15.8507"
+       y="0"
+       style="font-style:italic;font-weight:400;font-size:28px;font-family:'Euclid Symbol';fill:#000000"> </text>
+    <g
+       id="dp_group142">
+      <path
+         id="dp_path143"
+         d="m 454.219,510.907 131.802,63.289"
+         inkscape:connector-curvature="0"
+         style="fill:none;fill-rule:evenodd;stroke:#ee0000;stroke-width:2" />
+      <path
+         id="dp_path144"
+         d="m 478.296,522.433 -14.024,-0.501 4.787,-10.064 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path145"
+         d="m 559.384,561.44 14.024,0.501 -4.787,10.064 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path146"
+         d="m 458.629,534.837 131.803,63.29"
+         inkscape:connector-curvature="0"
+         style="fill:none;fill-rule:evenodd;stroke:#ee0000;stroke-width:2" />
+      <path
+         id="dp_path147"
+         d="m 482.707,546.364 -14.024,-0.501 4.786,-10.064 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path148"
+         d="m 563.795,585.371 14.024,0.501 -4.787,10.064 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path149"
+         d="m 462.629,561.237 131.803,63.29"
+         inkscape:connector-curvature="0"
+         style="fill:none;fill-rule:evenodd;stroke:#ee0000;stroke-width:2" />
+      <path
+         id="dp_path150"
+         d="m 486.707,572.764 -14.024,-0.501 4.786,-10.064 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path151"
+         d="m 567.795,611.771 14.024,0.501 -4.787,10.064 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path152"
+         d="m 516.496,518.544 17.723,104.405"
+         inkscape:connector-curvature="0"
+         style="fill:none;fill-rule:evenodd;stroke:#ee0000;stroke-width:2" />
+      <path
+         id="dp_path153"
+         d="m 522.933,562.388 c -2.266,1.019 -3.273,3.696 -2.246,5.981 1.025,2.286 3.696,3.314 5.962,2.295 2.267,-1.017 3.274,-3.695 2.247,-5.981 -1.025,-2.286 -3.695,-3.312 -5.963,-2.295 z"
+         inkscape:connector-curvature="0"
+         style="fill:#000000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path154"
+         d="m 526.933,588.788 c -2.266,1.019 -3.273,3.696 -2.246,5.981 1.025,2.286 3.696,3.314 5.962,2.295 2.267,-1.017 3.274,-3.695 2.247,-5.981 -1.025,-2.286 -3.695,-3.312 -5.963,-2.295 z"
+         inkscape:connector-curvature="0"
+         style="fill:#000000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path155"
+         d="m 518.523,538.46 c -2.267,1.019 -3.274,3.696 -2.247,5.981 1.025,2.286 3.696,3.314 5.963,2.295 2.266,-1.017 3.273,-3.695 2.246,-5.981 -1.025,-2.286 -3.694,-3.312 -5.962,-2.295 z"
+         inkscape:connector-curvature="0"
+         style="fill:#000000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+    </g>
+    <g
+       id="dp_group156">
+      <path
+         id="dp_path157"
+         d="M 938.807,510.612 807.004,573.901"
+         inkscape:connector-curvature="0"
+         style="fill:none;fill-rule:evenodd;stroke:#ee0000;stroke-width:2" />
+      <path
+         id="dp_path158"
+         d="m 818.013,568.58 14.024,-0.501 -4.786,-10.064 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path159"
+         d="m 929.447,515.403 -14.024,0.501 4.786,10.064 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path160"
+         d="M 934.396,534.543 802.593,597.832"
+         inkscape:connector-curvature="0"
+         style="fill:none;fill-rule:evenodd;stroke:#ee0000;stroke-width:2" />
+      <path
+         id="dp_path161"
+         d="m 813.603,592.511 14.024,-0.502 -4.787,-10.064 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path162"
+         d="m 925.036,539.333 -14.024,0.502 4.787,10.064 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path163"
+         d="M 930.396,560.943 798.593,624.232"
+         inkscape:connector-curvature="0"
+         style="fill:none;fill-rule:evenodd;stroke:#ee0000;stroke-width:2" />
+      <path
+         id="dp_path164"
+         d="m 809.603,618.911 14.024,-0.502 -4.787,-10.064 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path165"
+         d="m 921.036,565.733 -14.024,0.502 4.787,10.064 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <g
+         id="dp_group166">
+        <path
+           id="dp_path167"
+           d="M 876.529,518.249 858.807,622.655"
+           inkscape:connector-curvature="0"
+           style="fill:#feffff;fill-rule:evenodd;stroke:#ee0000;stroke-width:2" />
+        <path
+           id="dp_path168"
+           d="m 870.092,562.093 c 2.267,1.019 3.273,3.696 2.247,5.982 -1.026,2.285 -3.696,3.313 -5.963,2.294 -2.267,-1.017 -3.273,-3.694 -2.247,-5.981 1.026,-2.285 3.695,-3.312 5.963,-2.295 z"
+           inkscape:connector-curvature="0"
+           style="fill:#feffff;fill-rule:evenodd;stroke:#000000;stroke-width:2" />
+        <path
+           id="dp_path169"
+           d="m 866.092,588.493 c 2.267,1.019 3.273,3.696 2.247,5.982 -1.026,2.285 -3.696,3.313 -5.963,2.294 -2.267,-1.017 -3.273,-3.694 -2.247,-5.981 1.026,-2.285 3.695,-3.312 5.963,-2.295 z"
+           inkscape:connector-curvature="0"
+           style="fill:#feffff;fill-rule:evenodd;stroke:#000000;stroke-width:2" />
+        <path
+           id="dp_path170"
+           d="m 874.503,538.165 c 2.266,1.019 3.273,3.696 2.246,5.982 -1.025,2.285 -3.696,3.313 -5.962,2.294 -2.267,-1.017 -3.274,-3.694 -2.247,-5.981 1.025,-2.285 3.695,-3.312 5.963,-2.295 z"
+           inkscape:connector-curvature="0"
+           style="fill:#feffff;fill-rule:evenodd;stroke:#000000;stroke-width:2" />
+      </g>
+    </g>
+    <text
+       id="dp_text038"
+       xml:space="preserve"
+       font-size="28"
+       font-weight="400"
+       font-style="italic"
+       x="504.37097"
+       y="829.99597"
+       style="font-style:italic;font-weight:400;font-size:28px;font-family:Arial;fill:#000000">= </text>
+    <text
+       id="dp_text039"
+       xml:space="preserve"
+       font-size="28"
+       font-weight="400"
+       font-style="italic"
+       x="527.80701"
+       y="829.99597"
+       style="font-style:italic;font-weight:400;font-size:28px;font-family:Arial;fill:#000000">A<tspan
+   style="font-size:64.99999762%;baseline-shift:sub"
+   id="tspan4749">11</tspan>x + A<tspan
+   style="font-size:64.99999762%;baseline-shift:sub"
+   id="tspan4751">12</tspan>y</text>
+    <text
+       id="dp_text041"
+       xml:space="preserve"
+       font-size="28"
+       font-weight="400"
+       font-style="italic"
+       x="626.63"
+       y="829.99597"
+       style="font-style:italic;font-weight:400;font-size:28px;font-family:'Euclid Symbol';fill:#000000"> </text>
+    <text
+       id="dp_text042"
+       xml:space="preserve"
+       font-size="28"
+       font-weight="400"
+       x="457.75699"
+       y="810.92401"
+       style="font-weight:400;font-size:28px;font-family:Arial;fill:#000000">d</text>
+    <text
+       id="dp_text043"
+       xml:space="preserve"
+       font-size="28"
+       font-weight="400"
+       font-style="italic"
+       x="473.60901"
+       y="810.92401"
+       style="font-style:italic;font-weight:400;font-size:28px;font-family:Arial;fill:#000000">x</text>
+    <text
+       id="dp_text044"
+       xml:space="preserve"
+       font-size="28"
+       font-weight="400"
+       font-style="italic"
+       x="487.86768"
+       y="810.92401"
+       style="font-style:italic;font-weight:400;font-size:28px;font-family:Arial;fill:#000000"> </text>
+    <text
+       id="dp_text045"
+       xml:space="preserve"
+       font-size="28"
+       font-weight="400"
+       x="457.75699"
+       y="843.53601"
+       style="font-weight:400;font-size:28px;font-family:Arial;fill:#000000">d</text>
+    <text
+       id="dp_text046"
+       xml:space="preserve"
+       font-size="28"
+       font-weight="400"
+       font-style="italic"
+       x="473.60901"
+       y="843.53601"
+       style="font-style:italic;font-weight:400;font-size:28px;font-family:Arial;fill:#000000">t</text>
+    <text
+       id="dp_text047"
+       xml:space="preserve"
+       font-size="28"
+       font-weight="400"
+       font-style="italic"
+       x="481.49573"
+       y="843.53601"
+       style="font-style:italic;font-weight:400;font-size:28px;font-family:'Euclid Symbol';fill:#000000"> </text>
+    <path
+       id="dp_path181"
+       d="m 450.145,820.228 h 45.334"
+       inkscape:connector-curvature="0"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2" />
+    <text
+       id="dp_text048"
+       xml:space="preserve"
+       font-size="28"
+       font-weight="400"
+       font-style="italic"
+       x="504.36902"
+       y="895.75"
+       style="font-style:italic;font-weight:400;font-size:28px;font-family:Arial;fill:#000000">= </text>
+    <text
+       id="dp_text052"
+       xml:space="preserve"
+       font-size="28"
+       font-weight="400"
+       font-style="italic"
+       x="630.87402"
+       y="895.75"
+       style="font-style:italic;font-weight:400;font-size:28px;font-family:'Euclid Symbol';fill:#000000"> </text>
+    <text
+       id="dp_text053"
+       xml:space="preserve"
+       font-size="28"
+       font-weight="400"
+       x="457.75601"
+       y="876.67798"
+       style="font-weight:400;font-size:28px;font-family:Arial;fill:#000000">d</text>
+    <text
+       id="dp_text054"
+       xml:space="preserve"
+       font-size="28"
+       font-weight="400"
+       font-style="italic"
+       x="473.608"
+       y="876.67798"
+       style="font-style:italic;font-weight:400;font-size:28px;font-family:Arial;fill:#000000">y</text>
+    <text
+       id="dp_text055"
+       xml:space="preserve"
+       font-size="28"
+       font-weight="400"
+       font-style="italic"
+       x="487.8667"
+       y="876.67798"
+       style="font-style:italic;font-weight:400;font-size:28px;font-family:Arial;fill:#000000"> </text>
+    <text
+       id="dp_text056"
+       xml:space="preserve"
+       font-size="28"
+       font-weight="400"
+       x="457.75601"
+       y="909.28998"
+       style="font-weight:400;font-size:28px;font-family:Arial;fill:#000000">d</text>
+    <text
+       id="dp_text057"
+       xml:space="preserve"
+       font-size="28"
+       font-weight="400"
+       font-style="italic"
+       x="473.608"
+       y="909.28998"
+       style="font-style:italic;font-weight:400;font-size:28px;font-family:Arial;fill:#000000">t</text>
+    <text
+       id="dp_text058"
+       xml:space="preserve"
+       font-size="28"
+       font-weight="400"
+       font-style="italic"
+       x="481.49469"
+       y="909.28998"
+       style="font-style:italic;font-weight:400;font-size:28px;font-family:'Euclid Symbol';fill:#000000"> </text>
+    <path
+       id="dp_path193"
+       d="m 450.144,885.981 h 45.333"
+       inkscape:connector-curvature="0"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2" />
+    <g
+       id="dp_group194">
+      <path
+         id="dp_path195"
+         d="m 633.872,729.995 124.625,-76.46"
+         inkscape:connector-curvature="0"
+         style="fill:none;fill-rule:evenodd;stroke:#ee0000;stroke-width:2" />
+      <path
+         id="dp_path196"
+         d="m 633.872,654.055 124.625,76.46"
+         inkscape:connector-curvature="0"
+         style="fill:none;fill-rule:evenodd;stroke:#ee0000;stroke-width:2" />
+      <path
+         id="dp_path197"
+         d="m 642.003,725.044 8.022,-11.515 5.863,9.478 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path198"
+         d="m 631.325,660.271 c 19.274,10.949 32.231,19.748 32.396,30.842 0.165,11.094 -12.341,19.483 -31.678,34.651"
+         inkscape:connector-curvature="0"
+         style="fill:none;fill-rule:evenodd;stroke:#ee0000;stroke-width:2" />
+      <path
+         id="dp_path199"
+         d="m 656.609,668.041 -8.022,-11.514 -5.863,9.477 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path200"
+         d="m 733.339,715.043 8.022,11.514 5.863,-9.477 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path201"
+         d="m 747.945,659.969 -8.022,11.515 -5.863,-9.477 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path202"
+         d="m 618.929,660.271 c 13.098,10.949 24.666,19.748 24.792,30.842 0.126,11.094 -8.893,21.883 -24.242,34.651"
+         inkscape:connector-curvature="0"
+         style="fill:none;fill-rule:evenodd;stroke:#ee0000;stroke-width:2" />
+      <path
+         id="dp_path203"
+         d="m 664.249,694.044 3.624,-13.557 -11.024,1.633 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path204"
+         d="m 644.349,694.175 4.614,-13.254 -11.114,0.816 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path205"
+         d="m 760.247,723.555 c -19.274,-10.95 -32.231,-19.748 -32.396,-30.843 -0.165,-11.095 12.341,-19.483 31.678,-34.651"
+         inkscape:connector-curvature="0"
+         style="fill:none;fill-rule:evenodd;stroke:#ee0000;stroke-width:2" />
+      <path
+         id="dp_path206"
+         d="m 772.643,723.555 c -13.098,-10.95 -24.666,-19.748 -24.792,-30.843 -0.126,-11.095 8.893,-21.883 24.242,-34.651"
+         inkscape:connector-curvature="0"
+         style="fill:none;fill-rule:evenodd;stroke:#ee0000;stroke-width:2" />
+      <path
+         id="dp_path207"
+         d="m 727.323,689.781 -3.624,13.558 11.024,-1.634 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path208"
+         d="m 748.223,687.651 -4.614,13.253 11.114,-0.816 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path209"
+         d="m 642.579,651.621 c 18.082,11.738 32.613,19.627 50.934,19.727 18.321,0.1 32.175,-7.515 57.224,-19.289"
+         inkscape:connector-curvature="0"
+         style="fill:none;fill-rule:evenodd;stroke:#ee0000;stroke-width:2" />
+      <path
+         id="dp_path210"
+         d="m 642.579,644.073 c 18.082,7.975 32.613,15.02 50.934,15.098 18.321,0.078 36.139,-5.416 57.224,-14.763"
+         inkscape:connector-curvature="0"
+         style="fill:none;fill-rule:evenodd;stroke:#ee0000;stroke-width:2" />
+      <path
+         id="dp_path211"
+         d="m 702.079,671.348 -13.135,4.943 0.539,-11.131 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path212"
+         d="m 702.101,659.019 -12.937,5.438 0.115,-11.144 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path213"
+         d="m 747.223,733.865 c -18.083,-11.737 -32.614,-19.626 -50.935,-19.726 -18.321,-0.1 -32.175,7.514 -57.224,19.289"
+         inkscape:connector-curvature="0"
+         style="fill:none;fill-rule:evenodd;stroke:#ee0000;stroke-width:2" />
+      <path
+         id="dp_path214"
+         d="m 747.223,741.413 c -18.083,-7.974 -32.614,-15.02 -50.935,-15.097 -18.321,-0.077 -36.139,5.416 -57.224,14.763"
+         inkscape:connector-curvature="0"
+         style="fill:none;fill-rule:evenodd;stroke:#ee0000;stroke-width:2" />
+      <path
+         id="dp_path215"
+         d="m 687.723,714.139 13.134,-4.943 -0.538,11.131 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path216"
+         d="m 687.7,726.468 12.937,-5.439 -0.114,11.144 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ee0000;fill-rule:evenodd;stroke:none;stroke-width:2" />
+      <path
+         id="dp_path217"
+         d="m 696.36,688.659 c 2.267,1.018 3.273,3.696 2.247,5.981 -1.026,2.285 -3.696,3.313 -5.963,2.295 -2.267,-1.018 -3.273,-3.695 -2.247,-5.982 1.026,-2.285 3.695,-3.312 5.963,-2.294 z"
+         inkscape:connector-curvature="0"
+         style="fill:#feffff;fill-rule:evenodd;stroke:#000000;stroke-width:2" />
+    </g>
+    <text
+       id="dp_text059"
+       transform="translate(726.501,855.603)"
+       xml:space="preserve"
+       font-size="28"
+       font-weight="400"
+       font-style="italic"
+       x="0"
+       y="0"
+       style="font-style:italic;font-weight:400;font-size:28px;font-family:Arial;fill:#000000">Det A = A<tspan
+   style="font-size:64.99999762%;baseline-shift:sub"
+   id="tspan4780">11</tspan>A<tspan
+   style="font-size:64.99999762%;baseline-shift:sub"
+   id="tspan4782">22</tspan> - A<tspan
+   style="font-size:64.99999762%;baseline-shift:sub"
+   id="tspan4784">21</tspan>A<tspan
+   style="font-size:64.99999762%;baseline-shift:sub"
+   id="tspan4786">12</tspan> </text>
+    <text
+       id="dp_text062"
+       transform="translate(726.501,855.603)"
+       xml:space="preserve"
+       font-size="16"
+       font-weight="400"
+       x="158.584"
+       y="0"
+       style="font-weight:400;font-size:16px;font-family:'Times New Roman';fill:#000000"> </text>
+    <text
+       id="dp_text063"
+       xml:space="preserve"
+       font-size="28"
+       font-weight="400"
+       font-style="italic"
+       x="725.68103"
+       y="814.26001"
+       style="font-style:italic;font-weight:400;font-size:28px;font-family:Arial;fill:#000000">Tr A = A<tspan
+   style="font-size:64.99999762%;baseline-shift:sub"
+   id="tspan4778">11</tspan> + A<tspan
+   style="font-size:64.99999762%;baseline-shift:sub"
+   id="tspan4776">22</tspan></text>
+    <text
+       id="dp_text064"
+       transform="translate(725.681,820.26)"
+       xml:space="preserve"
+       font-size="16"
+       font-weight="400"
+       x="118.012"
+       y="0"
+       style="font-weight:400;font-size:16px;font-family:'Times New Roman';fill:#000000"> </text>
+    <text
+       id="dp_text039-0"
+       xml:space="preserve"
+       font-size="28"
+       font-weight="400"
+       font-style="italic"
+       x="525.06201"
+       y="890.92059"
+       style="font-style:italic;font-weight:400;font-size:28px;font-family:Arial;fill:#000000">A<tspan
+   style="font-size:64.99999762%;baseline-shift:sub"
+   id="tspan4774">2</tspan><tspan
+   style="font-size:64.99999762%;baseline-shift:sub"
+   id="tspan4749-8">1</tspan>x + A<tspan
+   style="font-size:64.99999762%;baseline-shift:sub"
+   id="tspan4751-0">22</tspan>y</text>
+  </g>
+</svg>

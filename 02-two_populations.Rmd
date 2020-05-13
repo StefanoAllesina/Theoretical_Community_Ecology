@@ -114,7 +114,7 @@ pl + geom_vline(xintercept = d / b, linetype = 2, colour = "darkgreen") +
   geom_point(x = 0, y = 0, colour = "black", shape = 1, size = 2)
 ```
 
-Clearly, a possible equilibrium of the system is $(x^\star, y^\star) = (0, 0)$ (often called the "trivial" equilibrium). You can see that there is another equilibrium where the two isoclines meet $(x^\star, y^\star) = (\delta / \beta, \rho / \alpha)$, and that the dynamics will tend to cycle around the equilibrium.
+Clearly, a possible equilibrium of the system is $(x^\star, y^\star)^T = (0, 0)^T$ (often called the "trivial" equilibrium). You can see that there is another equilibrium where the two isoclines meet $(x^\star, y^\star)^T = (\delta / \beta, \rho / \alpha)^T$, and that the dynamics will tend to cycle around the equilibrium.
 
 But how do we know whether dynamics will cycle toward the equilibrium, spiral away from it, or describe closed orbits? To answer this question, we can try to extend our linear analysis by Taylor-expanding the dynamics around the equilibrium.
 
@@ -385,14 +385,124 @@ A matrix with all positive entries has a unique largest real eigenvalue with a c
 
 :::
 
+We can now analyze systems of linear ODEs.
+
 :::boxmath
 
-**Solution of linear system of ODEs**
+**Solution of linear systems of ODEs**
 
+*Matrix exponential*
+
+In analogy with the power series
+
+$$
+e^x = \sum_{n=0}^{\infty} \dfrac{x^n}{n!} = 1 + x + \dfrac{x^2}{2} + \dfrac{x^3}{6} + \dfrac{x^4}{24} + \ldots
+$$
+
+we define the matrix exponential
+
+$$
+e^X = \sum_{n=0}^{\infty} \dfrac{1}{n!}X^n = I + X + \dfrac{1}{2}X^2 + \dfrac{1}{6}X^3 + \dfrac{1}{24}X^4 + \ldots
+$$
+
+where $X^2 = X \times X$ and so on. 
+
+*Solution of systems of linear ODEs*
+
+This allows us to solve the system of linear differential equations
+
+$$
+\dfrac{d x(t)}{dt}  = A x(t)
+$$
+
+with $x(0) = x_0$. When the determinant of $A$, $\det A \neq 0$, the only equilibrium of the system is $x^\star = 0$. If $\det A = 0$ (and $A \neq 0$), on the other hand, there are infinitely many equilibria, all belonging to the same line (in 2-d). By writing the solution we can determine whether trajectories will approach or move away from an equilibrium. We write the solution as:
+
+$$
+x(t) = e^{A t} x_0
+$$
+
+Importantly, we have that, if $A$ is diagonalizable, 
+
+$$
+e^{A t} = V e^{\Lambda t}V^{-1}
+$$
+
+where $\Lambda$ is the diagonal matrix containing the eigenvalues of $A$. Because $\Lambda$ is diagonal, we can solve the exponential explicitly:
+
+$$
+e^{\Lambda t} = \begin{pmatrix}e^{\lambda_{1}t} & 0 & \ldots & 0\\0& e^{\lambda_{2}t} & \ldots & 0\\\vdots & \vdots & \ddots & \vdots \\0& 0& \ldots & e^{\lambda_{n}t}
+\end{pmatrix}
+$$
+
+Now we want to study the dynamics of the system. To keep the complexity to a minimum, we define $y(t) = V^{-1} x(t)$, meaning that we are choosing the most appropriate coordinates to study our trajectories. Our equation becomes:
+
+$$
+\begin{aligned}
+x(t) &= V e^{\Lambda t} V^{-1} x_0\\
+V^{-1}x(t) &= V^{-1}V e^{\Lambda t} V^{-1} x_0\\
+y(t) = e^{\Lambda t} y_0
+\end{aligned}
+$$
+
+And therefore $y_j(t) = e^{(\lambda_j)t} y_j(0)$. Clealry, if all $\lambda_j$ are real and negative, the trajectories will die out, and the origin $y^\star = 0$ will be stable. Similarly, if any eigenvalue is real and positive, then the perturbation will amplify in at least one direction. Next, we consider $\lambda_j$ to be complex. In this case, $\lambda_j = \alpha + i\, \beta$. Using Euler's formula, we have
+
+$$
+y_j(t) = y_j(0)\, e^{(\alpha + i\, \beta) t} = y_j(0)\, e^{\alpha\, t} (\cos(\beta\, t) + i \sin(\beta\, t))
+$$
+
+As such, the solution will oscillate, with damped oscillations whenever $a < 0$ and increasing oscillations when $a > 0$. For example, a case of damped oscillations:
+
+```{r,echo=FALSE}
+x0 <- c(0.01, 1) # initial state
+# matrix yielding complex eigenvalues
+A <- matrix(c(-0.1, 1, -0.99, 0), 2, 2, byrow = TRUE) 
+# find eigenvectors and eigenvalues
+V <- eigen(A)$vectors
+Lambda <- eigen(A)$values
+# transform
+y0 <- solve(V) %*% x0
+t <- seq(0, 40, length.out = 200)
+yt1 <- y0[1] * exp(Re(Lambda[1]) * t) * (cos(Im(Lambda[1]) * t) + 1i * sin(Im(Lambda[1]) * t))
+yt2 <- y0[2] * exp(Re(Lambda[2]) * t) * (cos(Im(Lambda[2]) * t) + 1i * sin(Im(Lambda[2]) * t))
+# transform back to plot xt
+xt <- V %*% rbind(yt1, yt2)
+ggplot(data = tibble(t = t, x = Re(xt[2,]))) + aes(x = t, y = x) + geom_line() + scale_y_continuous("x(t)") + scale_x_continuous("t") + my_theme
+```
+
+and of increasing oscillations:
+
+```{r,echo=FALSE}
+x0 <- c(0.01, 1) # initial state
+# matrix yielding complex eigenvalues
+A <- matrix(c(+0.1, 1, -0.99, 0), 2, 2, byrow = TRUE) 
+# find eigenvectors and eigenvalues
+V <- eigen(A)$vectors
+Lambda <- eigen(A)$values
+# transform
+y0 <- solve(V) %*% x0
+t <- seq(0, 40, length.out = 200)
+yt1 <- y0[1] * exp(Re(Lambda[1]) * t) * (cos(Im(Lambda[1]) * t) + 1i * sin(Im(Lambda[1]) * t))
+yt2 <- y0[2] * exp(Re(Lambda[2]) * t) * (cos(Im(Lambda[2]) * t) + 1i * sin(Im(Lambda[2]) * t))
+# transform back to plot xt
+xt <- V %*% rbind(yt1, yt2)
+ggplot(data = tibble(t = t, x = Re(xt[2,]))) + aes(x = t, y = x) + geom_line() + scale_y_continuous("x(t)") + scale_x_continuous("t") + my_theme
+```
+
+In fact, all the possible trajectories in planar systems can be classified using only the determinant (product of eigenvalues) and the trace (sum of the eigenvalues) of the matrix $A$:
+
+
+```{r, echo=FALSE,out.width = "95%"}
+knitr::include_graphics('img/phase.jpg')
+```
 :::
 
+Now we can solve the system of ODEs:
 
-with solution:
+$$
+\frac{d \Delta x(t)}{dt} \approx M \Delta x(t)
+$$
+
+obtaining:
 
 $$
 \Delta x(t) = \Delta x(0) e^{Mt} = \Delta x(0) Q e^{\Lambda t} Q^{-1}
@@ -407,159 +517,111 @@ $$
   \end{cases}
 $$
 
-Local asymptotic stability means that the equilibrium is stable with respect to infinitesimal perturbations ("local"), and that returning to the equilibrium could take a long time ("asymptotic"). Ecologists have also studied stronger forms of stability (e.g., "global stability", in which all trajectories started at positive densities lead to the equilibrium). 
+## Stability analysis of the Lotka-Volterra Predator-Prey model
 
-For the GLV model, the Jacobian is easy to compute:
-
-$$
-J_{ij} = \frac{\partial f_i}{\partial x_j} = a_{ij} x_i
-$$
-
-and 
+We still haven't figured out whether the coexistence equilibrium for the model
 
 $$
-J_{ii} = \frac{\partial f_i}{\partial x_i} = r_i + \sum_j a_{ij} x_j + a_{ii} x_i
+\begin{cases}
+\dfrac{d x(t)}{dt} = \rho\, x(t) - \alpha\, x(t)\, y(t)\\
+\dfrac{d y(t)}{dt} = -\delta\, y(t)  + \beta\, x(t)\, y(t)
+\end{cases}
 $$
 
-At equilibrium $r_i + \sum_j a_{ij} x_j = 0$, and therefore:
+is stable or not. The Jacobian becomes:
 
 $$
-M = \left. {J} \right|_{ {x}^\star} = D(x^\star)A
+J = 
+\begin{pmatrix}
+\rho - \alpha\, y & -\alpha\, x\\
+\beta\, y & -\delta + \beta\, x
+\end{pmatrix} 
 $$
 
+The community matrix for the equilibrium $(x^\star, y^\star)^T = (0, 0)^T$ is:
 
 $$
-\frac{d \Delta x(t)}{dt} \approx \left . J \right |_{x^\star} \Delta x(t) 
+M_0 = \left . J \right|_{(0, 0)^T} = \begin{pmatrix}
+\rho & 0\\
+0 & -\delta 
+\end{pmatrix} 
 $$
 
-where now we have a matrix $J$ composed of four partial derivatives (Jacobian):
+which has eigenvalues $\rho > 0$ amd $-\delta < 0$ --- the equilibrium is unstable. The coexistence equilibrium $(x^\star, y^\star)^T = (\delta / \beta, \rho / \alpha)^T$ yields the community matrix:
 
 $$
-J = \begin{pmatrix}
-\dfrac{\partial \dfrac{d x_1(t)}{dt}}{\partial{x_1}} & \dfrac{\partial \dfrac{d x_1(t)}{dt}}{\partial{x_2}}\\
-\dfrac{\partial \dfrac{d x_2(t)}{dt}}{\partial{x_1}} & \dfrac{\partial \dfrac{d x_2(t)}{dt}}{\partial{x_2}}
-\end{pmatrix}
+M_c = \left . J \right|_{(\delta / \beta, \rho / \alpha)^T} = \begin{pmatrix}
+0 & \dfrac{\alpha\, \delta}{\beta} \\
+-\dfrac{\beta\, \rho}{\alpha} & 0
+\end{pmatrix} 
 $$
 
-Describing how the growth of the two species change when we change any of the other species. For a given equilibrium $x^\star$, we can evaluate the matrix $J$ at the point, obtaining the so-called "community matrix": $M_{x^\star} = \left . J \right |_{x^\star}$. As such, we approximate the (local) dynamics around an equilibrium as:
+which has purely imaginary eigenvalues $\lambda = \pm i \sqrt{\rho \, \delta}$. As such the equilibrium is not attractive nor unstable. In fact, Lotka and Volterra were (independently) able to prove that the system cycles neutrally around the equilibrium.
 
-$$
-\frac{d \Delta x(t)}{dt} \approx M_{x^\star} \Delta x(t) 
-$$
+:::boxhistory
 
-To understand how to get from this equation to the stability of the equilibrium, we need to take a detour on eigenvalues and eigenvectors.
+**Vito Volterra (1860-1940)**
 
-
-### Matrix exponential
-
-In analogy with the power series
-
-$$
-e^x = \sum_{n=0}^{\infty} \dfrac{x^n}{n!} = 1 + x + \dfrac{x^2}{2} + \dfrac{x^3}{6} + \dfrac{x^4}{24} + \ldots
-$$
-
-we define the matrix exponential
-
-$$
-e^X = \sum_{n=0}^{\infty} \dfrac{1}{n!}X^n = I + X + \dfrac{1}{2}X^2 + \dfrac{1}{6}X^3 + \dfrac{1}{24}X^4 + \ldots
-$$
-
-where $X^2 = X \times X$ and so on. This allows us to solve the linear system of differential equations
-
-$$
-\dfrac{d}{dt} x(t) = A x(t)
-$$
-with $x(0) = x_0$ as:
-
-$$
-x(t) = e^{A t} x_0
-$$
-Importantly, we have that, if $A$ is diagonalizable, 
-
-$$
-e^{A t} = V e^{\Lambda t}V^{-1}
-$$
-where $\Lambda$ is the diagonal matrix containing the eigenvalues of $A$. Because $\Lambda$ is diagonal, we can solve the exponential explicitly:
-
-$$
-e^{\Lambda t} = \begin{pmatrix}e^{\lambda_{1}t} & 0 & \ldots & 0\\0& e^{\lambda_{2}t} & \ldots & 0\\\vdots & \vdots & \ddots & \vdots \\0& 0& \ldots & e^{\lambda_{n}t}
-\end{pmatrix}
-$$
-
-Now we want to study the dynamics of the system. To keep the complexity to a minimum, we define $y(t) = V^{-1} x(t)$, meaning that we are choosing the most appropriate coordinates to study our perturbations. Our equation becomes:
-
-$$
-\begin{aligned}
-x(t) &= V e^{\Lambda t} V^{-1} x_0\\
-V^{-1}x(t) &= V^{-1}V e^{\Lambda t} V^{-1} x_0\\
-y(t) = e^{\Lambda t} y_0
-\end{aligned}
-$$
-
-And therefore $y_j(t) = e^{(\lambda_j)t} y_j(0)$. Clealry, if all $\lambda_j$ are real and negative, the perturbation will die out, and the origin $y^\star = 0$ is stable. Similarly, if any eigenvalue is real and positive, then the perturbation will amplify in at least one direction. Next, we consider $\lambda_j$ to be complex. In this case, $\lambda_j = a + i b$. Using Euler's formula, we have
-
-$$
-y_j(t) = y_j(0) e^{(a + ib) t} = y_j(0) e^{a t} (\cos(b t) + i \sin(bt))
-$$
-
-As such, the solution will oscillate, with damped oscillations whenever $a < 0$ and increasing oscillations when $a > 0$. For example, a case of damped oscillations:
-
-```{r}
-x0 <- c(0.01, 1) # initial state
-# matrix yielding complex eigenvalues
-A <- matrix(c(-0.1, 1, -0.99, 0), 2, 2, byrow = TRUE) 
-# find eigenvectors and eigenvalues
-V <- eigen(A)$vectors
-Lambda <- eigen(A)$values
-# transform
-y0 <- solve(V) %*% x0
-t <- seq(0, 20, length.out = 100)
-yt1 <- y0[1] * exp(Re(Lambda[1]) * t) * (cos(Im(Lambda[1]) * t) + 1i * sin(Im(Lambda[1]) * t))
-yt2 <- y0[2] * exp(Re(Lambda[2]) * t) * (cos(Im(Lambda[2]) * t) + 1i * sin(Im(Lambda[2]) * t))
-# transform back to plot xt
-xt <- V %*% rbind(yt1, yt2)
-plot(t, xt[1,], type = "l")
+```{r, volterra, echo=FALSE,out.width = "25%"}
+# All defaults
+knitr::include_graphics("img/Volterra.jpg")
 ```
 
-and of increasing oscillations:
+Vito Volterra was born in Ancona (then part of the Papal State) in a poor jewish family. The financial situation precipitated with the death of his father, when Vito was two. Vito and his mother went to live with relatives in Turin and then Florence. Volterra showed amazing mathematical talent at a very young age. Antonio Roiti, professor of physics in Florence, noticed the budding mathematician and hired him as his assistant, so that he could continue his studies. He went on to enroll at the Scuola Normale in Pisa, receiving a degree in Physics in 1882. At age 23 he was made full professor of Rational Mechanics in Pisa, and then in 1900 of Mathematical Physics in Rome. For thirty years, he contributed important studies in mathematics, and enriched academic life in Italy (for example, he was the first director of the National Center for Research). In 1931 he refused to take an oath of loyalty to the fascist regime (only 12 professors out of 1250 refused), and was therefore forced to resign (his take on the fascist enterprise: *"Empires die, but Euclid's theorems keep their youth forever"*). 
 
-```{r}
-x0 <- c(0.01, 1) # initial state
-# matrix yielding complex eigenvalues
-A <- matrix(c(+0.1, 1, -0.99, 0), 2, 2, byrow = TRUE) 
-# find eigenvectors and eigenvalues
-V <- eigen(A)$vectors
-Lambda <- eigen(A)$values
-# transform
-y0 <- solve(V) %*% x0
-t <- seq(0, 20, length.out = 100)
-yt1 <- y0[1] * exp(Re(Lambda[1]) * t) * (cos(Im(Lambda[1]) * t) + 1i * sin(Im(Lambda[1]) * t))
-yt2 <- y0[2] * exp(Re(Lambda[2]) * t) * (cos(Im(Lambda[2]) * t) + 1i * sin(Im(Lambda[2]) * t))
-# transform back to plot xt
-xt <- V %*% rbind(yt1, yt2)
-plot(t, xt[1,], type = "l")
-```
+His interest in mathematical ecology is due to Umberto D'Ancona (his son-in-law), who had studied the trends in fisheries in the Adriatic sea before and immediately after WWI. In 1914-1918 fisheries in the Adriatic had stopped completely because of the conflict. D'Ancona had noticed that, while herbivorous fish had remained about constant, the piscivorous fish had increased dramatically in numbers. The problem piqued Volterra who immediately published a sophisticated study, proposing the same equations studied by Lotka. In a short letter to Nature [@volterra1926fluctuations], he stated the so-called "Volterra's Effect" (which he termed "Law III"): *"a complete closure of the fishery was a form of 'protection' under which the voracious fishes were much the better and prospered accordingly, but the ordinary food-fishes, on which these are accustomed to prey, were worse off than before."* This brief paper was a summary of the much extensive @volterra1926variazioni.
 
-All the $2 \times 2$ cases can be mapped using only the trace and determinant of the community matrix:
+*Lotka-Volterra interactions*
 
+In 1927, Lotka wrote to Nature to raise the issue that the equations studied by Volterra and the figures presented in Volterra's brief article were identical to those found in *Elements of Physical Biology* (published in 1925). He concluded: *"It would be gratifying if Prof. Volterra's publication should direct attention to a field and method of inquiry which apparently has hitherto passed almost unnoticed."*
 
-## Local stability
+Volterra graciously conceded *"I recognize his priority, and am sorry not to have known his work, and therefore not have been able to mention it."* He however listed a few points in which the two authors had pursued different directions, and concluded *"Working independently the one from the other, we have found some common results, and this confirms the exactitude and the interest in the position of the problem. I agree with him in his conclusions that these studies and these methods of research deserve to receive greated attention from scholars, and should give rise to important applications."*
 
-The perturbation
+:::
+
+### Constant of motion
+
+Volterra wrote 
 
 $$
-\frac{d \Delta x(t)}{dt} \approx M_{x^\star} \Delta x(t) 
+\dfrac{d x(t)}{d y(t)} = \dfrac{\rho\, x(t) - \alpha\, x(t)\, y(t)}{-\delta\, y(t)  + \beta\, x(t)\, y(t)}
 $$
 
-can be solved as
+As such:
 
 $$
-\Delta x(t) \approx \Delta x(0)e^{M_{x^\star} t}
+(-\delta\, y  + \beta\, x\, y)\, d x = (\rho\, x - \alpha\, x\, y)\, d y
 $$
 
-meaning that the equilibrium is locally asymptotically stable if and only if all eigenvalues of $M$ have negative real part.
+dividing both sides by $x\, y$, we obtain:
 
-### Example: GLV predator prey
+$$
+\left(-\dfrac{\delta}{x}  + \beta \right)\, d x = \left(\dfrac{\rho}{y} - \alpha \right)\, d y
+$$
+
+Integrating both sides:
+
+$$
+\beta\, x - \delta\, \log x = - \alpha\, y + \rho\, \log y + C
+$$
+
+where $C$ is a constant of integration. Rearranging, and substituting $x^\star = \delta / \beta$ and $y^\star =  \rho / \alpha$, we obtain:
+
+$$
+\beta (x - x^\star \log x) + \rho (y - y^\star \log y) = C
+$$
+
+This means that the system has a constant of motion (a.k.a. "first integral"): the value of $C$ depends on the initial conditions, and then the system will cycle around the equilibrium in closed orbits.
+
+Note that this quantity works as a Lyapunov function: 
+
+$$
+V(x,y) = \beta (x - x^\star \log x) + \rho (y - y^\star \log y)
+$$
+
+$$
+\dfrac{d V(x,y)}{dt} = 
+$$
 
 Consider the system 
 
