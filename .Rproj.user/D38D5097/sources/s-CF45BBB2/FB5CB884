@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1589225180572.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "FB5CB884",
+    "lastKnownWriteTime" : 1589317200,
+    "last_content_update" : 1589317200596,
+    "path" : "~/GH/Theoretical_Community_Ecology/02-two_populations.Rmd",
+    "project_path" : "02-two_populations.Rmd",
+    "properties" : {
+        "cursorPosition" : "234,24",
+        "scrollLine" : "225"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

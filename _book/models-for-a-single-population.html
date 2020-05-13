@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Models for a single population | Theoretical Community Ecology</title>
+  <meta name="description" content="A graduate course in theoretical ecology focusing on systems with multiple species." />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Models for a single population | Theoretical Community Ecology" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="A graduate course in theoretical ecology focusing on systems with multiple species." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Models for a single population | Theoretical Community Ecology" />
+  
+  <meta name="twitter:description" content="A graduate course in theoretical ecology focusing on systems with multiple species." />
+  
+
+<meta name="author" content="Stefano Allesina" />
+
+
+<meta name="date" content="2020-05-13" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="models-for-two-populations.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Theoretical Community Ecology</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preliminaries</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#approach-and-target-audience"><i class="fa fa-check"></i><b>1.1</b> Approach and target audience</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#topics"><i class="fa fa-check"></i><b>1.2</b> Topics</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#notation"><i class="fa fa-check"></i><b>1.3</b> Notation</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#sources"><i class="fa fa-check"></i><b>1.4</b> Sources</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html"><i class="fa fa-check"></i><b>2</b> Models for a single population</a><ul>
+<li class="chapter" data-level="2.1" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#types-of-dynamical-systems"><i class="fa fa-check"></i><b>2.1</b> Types of dynamical systems</a></li>
+<li class="chapter" data-level="2.2" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#initial-value-problems"><i class="fa fa-check"></i><b>2.2</b> Initial-value problems</a></li>
+<li class="chapter" data-level="2.3" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#solvable-model-exponential-growth"><i class="fa fa-check"></i><b>2.3</b> Solvable model: Exponential growth</a></li>
+<li class="chapter" data-level="2.4" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#solvable-model-logistic-growth"><i class="fa fa-check"></i><b>2.4</b> Solvable model: Logistic growth</a></li>
+<li class="chapter" data-level="2.5" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#qualitative-analysis-of-models-for-a-single-population"><i class="fa fa-check"></i><b>2.5</b> Qualitative analysis of models for a single population</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#stability-using-derivatives"><i class="fa fa-check"></i><b>2.5.1</b> Stability using derivatives</a></li>
+<li class="chapter" data-level="2.5.2" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#what-are-we-doing-when-probing-stability-using-derivatives"><i class="fa fa-check"></i><b>2.5.2</b> What are we doing when probing stability using derivatives?</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#bifurcations"><i class="fa fa-check"></i><b>2.6</b> Bifurcations</a></li>
+<li class="chapter" data-level="2.7" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#long-term-behavior-of-1-d-systems"><i class="fa fa-check"></i><b>2.7</b> Long term behavior of 1-D systems</a></li>
+<li class="chapter" data-level="2.8" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#lyapunov-functions"><i class="fa fa-check"></i><b>2.8</b> Lyapunov functions</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html"><i class="fa fa-check"></i><b>3</b> Models for two populations</a><ul>
+<li class="chapter" data-level="3.1" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#qualitative-analysis-of-models-for-two-populations"><i class="fa fa-check"></i><b>3.1</b> Qualitative analysis of models for two populations</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#isoclines-of-null-growth"><i class="fa fa-check"></i><b>3.1.1</b> Isoclines of null growth</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#local-stability-analysis"><i class="fa fa-check"></i><b>3.2</b> Local stability analysis</a></li>
+<li class="chapter" data-level="3.3" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#eigenvalues-and-eigenvectors"><i class="fa fa-check"></i><b>3.3</b> Eigenvalues and eigenvectors</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#finding-eigenvalues"><i class="fa fa-check"></i><b>3.3.1</b> Finding eigenvalues</a></li>
+<li class="chapter" data-level="3.3.2" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#facts-about-eigenvalues-and-eigenvectors"><i class="fa fa-check"></i><b>3.3.2</b> Facts about eigenvalues and eigenvectors</a></li>
+<li class="chapter" data-level="3.3.3" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#matrix-exponential"><i class="fa fa-check"></i><b>3.3.3</b> Matrix exponential</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#local-stability"><i class="fa fa-check"></i><b>3.4</b> Local stability</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#example-glv-predator-prey"><i class="fa fa-check"></i><b>3.4.1</b> Example: GLV predator prey</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#stability-of-larger-matrices"><i class="fa fa-check"></i><b>3.5</b> Stability of larger matrices</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#descartes-rule-of-signs"><i class="fa fa-check"></i><b>3.5.1</b> Descartes’ rule of signs</a></li>
+<li class="chapter" data-level="3.5.2" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#routh-hurwitz-criterion"><i class="fa fa-check"></i><b>3.5.2</b> Routh-Hurwitz criterion</a></li>
+<li class="chapter" data-level="3.5.3" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#bounding-eigenvalues-using-the-symmetric-part"><i class="fa fa-check"></i><b>3.5.3</b> Bounding eigenvalues using the symmetric part</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#exercise"><i class="fa fa-check"></i><b>3.6</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="generalized-lotka-volterra-models.html"><a href="generalized-lotka-volterra-models.html"><i class="fa fa-check"></i><b>4</b> Generalized Lotka-Volterra models</a></li>
+<li class="chapter" data-level="5" data-path="ecological-assembly.html"><a href="ecological-assembly.html"><i class="fa fa-check"></i><b>5</b> Ecological assembly</a></li>
+<li class="chapter" data-level="6" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html"><i class="fa fa-check"></i><b>6</b> Game theory and replicator dynamics</a></li>
+<li class="chapter" data-level="7" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html"><i class="fa fa-check"></i><b>7</b> Quasi-polynomial systems</a></li>
+<li class="chapter" data-level="8" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html"><i class="fa fa-check"></i><b>8</b> Predicting coexistence in ecological communities</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Theoretical Community Ecology</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="models-for-a-single-population" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Models for a single population</h1>
+<p><strong>Lesson plan</strong>:</p>
+<ol style="list-style-type: decimal">
+<li>We start by discussing what it means to solve an initial-value problem: the solution is an expression that allows us to calculate <span class="math inline">\(x(t)\)</span> for any <span class="math inline">\(t\)</span>. A few ecologically-relevant models can be solved explicitly, for example the exponential and logistic growth models.</li>
+<li>Because, on the other hand, solving differential equations is a laborious process, and in many cases writing the solution is impossible or does not give us any insight on the dynamics, we introduce a graphical model that allows to effortlessly sketch the dyanmics of any first-order ODE (i.e., models with a single equation).</li>
+<li>This allow us to introduce essential concepts such as the notion of an equilibrium and its stability.</li>
+<li>We show that determining stability using this graphical method is equivalent to performing stability analysis via linearization around an equilibrium, a method that will be extended to systems of multiple ODEs in the next chapter.</li>
+<li>We briefly discuss the idea of bifurcation points — i.e., particular choices of parameters for which the dynamics of the system change qualitatively.</li>
+<li>We conclude by introducing the idea of Lyapunov functions, allowing us to determine global stability without the need to explicitly solve the model. We will see a lot of these functions when we study larger systems.</li>
+</ol>
+<div id="types-of-dynamical-systems" class="section level2">
+<h2><span class="header-section-number">2.1</span> Types of dynamical systems</h2>
+<p>Dynamical systems describe the change of certain variables, typically in time, space or a combination of the two. They have found applications in all scientific disciplines, and were introduced in ecology and evolutionary biology at the beginning of the twentieth century.</p>
+<p>Broadly, dynamical systems can be divided into <strong>continuous</strong> (described by differential equations), or <strong>discrete</strong> (described by maps, or difference equations) models. Many models for population dynamics can be written as (systems of) first-order ordinary differential equations, i.e. equations containing functions of one (or more) independent variables and their derivatives (typically, with respect to time).</p>
+<p><strong>Ordinary</strong> means we’re not dealing with partial differential equations (used in ecology for example for reaction-diffusion equations, or spatial models). <strong>First-order</strong>, mean that they contain only the first derivative with respect to time. Here we will concentrate on <strong>autonomous</strong> systems, meaning that it they are time-invariant (e.g., coefficients do not change in time). We can write these systems as:</p>
+<p><span class="math display">\[
+\dfrac{d x(t)}{d t} = f(x(t))
+\]</span></p>
+<p>In general, we will examine cases in which <span class="math inline">\(f(x(t))\)</span> is a nonlinear function of <span class="math inline">\(x(t)\)</span>. We typically deal with <strong>deterministic</strong> systems, in which randomness plays no role in determining future states. Stochastic differential equations, on the other hand, include random components.</p>
+</div>
+<div id="initial-value-problems" class="section level2">
+<h2><span class="header-section-number">2.2</span> Initial-value problems</h2>
+<p>Typically, we would like to track the evolution of the system in time, starting from known initial conditions. For example,</p>
+<p><span class="math display">\[
+\dfrac{d x(t)}{d t} = f(x(t)), \;\; x(0) = x_0
+\]</span></p>
+<p>where the independent variable <span class="math inline">\(t\)</span> denotes time and is considered non-negative. <span class="math inline">\(x(t)\)</span> is the state of the system (e.g., the density of the species) at time <span class="math inline">\(t\)</span>, <span class="math inline">\(x(t) \in \mathbb{R}^n\)</span>, and the function <span class="math inline">\(f\)</span> models the evolution of the system, mapping <span class="math inline">\(\mathbb{R}^n \to \mathbb{R}^n\)</span>. The vector <span class="math inline">\(x_0 = x(0) \in \mathbb{R}^n\)</span> marks the <em>initial conditions</em> of the system.</p>
+<p>The simplest and most common case in ecology is that in which <span class="math inline">\(f\)</span> is (infinitely) many times continuously differentiable, a.k.a. <em>smooth</em>. If this is the case, then the solution <span class="math inline">\(x(t)\)</span> exists and is unique.</p>
+<p>In ecological models, dynamics are invariant with respect to the non-negative orthant <span class="math inline">\(\mathbb{R}^n_{0+}\)</span>, i.e., the vector <span class="math inline">\(x(t)\)</span> remains non-negative whenever initialized at non-negative initial conditions <span class="math inline">\(x_0 \in \mathbb{R}^n_{0+}\)</span>. The function <span class="math inline">\(f\)</span> is <em>essentially non-negative</em> if whenever <span class="math inline">\(x_i = 0\)</span>, then <span class="math inline">\(f_i(x) \geq 0\)</span> for all <span class="math inline">\(x \in \mathbb{R}^n_{0+}\)</span>. A dynamical system is non-negative only if <span class="math inline">\(f\)</span> is essentially non-negative.</p>
+<p>We can solve the (system of) ODE(s) if we can write an explicit equation for <span class="math inline">\(x(t)\)</span> given the parameters and the initial conditions. In practice, we rarely can solve the equations we’re interested in.</p>
+<p>We can however prove that, if <span class="math inline">\(f(x(t))\)</span> is sufficiently well-behaved (technically, if <span class="math inline">\(f(x)\)</span> is Lipschitz continuous, for example, if it has bounded derivatives), then the initial-value problem above has a solution, the solution is unique, and depends continuously on the intial conditions and the parameters. This means that if we start the system at any point <span class="math inline">\(x(t)= x_t\)</span>, we cannot have multiple trajectories intersecting.</p>
+</div>
+<div id="solvable-model-exponential-growth" class="section level2">
+<h2><span class="header-section-number">2.3</span> Solvable model: Exponential growth</h2>
+<div class="boxhistory">
+<p><strong>History: Pierre-François Verhulst (1804-1849)</strong></p>
+<p><img src="img/Verhulst.jpg" width="25%" style="display: block; margin: auto;" /></p>
+<p>Pierre-François Verhulst was born in 1804 in Brussels, Belgium. In 1835 became professor of mathematics at the newly-instituded Free University of Brussels.</p>
+<p>In 1838, inspired by the work of Malthus and Quetelet, he wrote a <em>Note on the law of population growth</em>, where he argued that the geometric progression imagined by Malthus would be unfeasible to sustain. He therefore introduced an <em>unknown function</em> that would slow down growth for large populations. <em>The simplest hypothesis one can make on the form of this function is to suppose that</em> it is quadratic in the size of the population. He went on to solve what is now known as the “logistic growth” model and contrasted it with data for the growth of populations in various countries.</p>
+</div>
+<p>An model of ecological interest that has an explicit solution is that for the exponential growth:</p>
+<p><span class="math display">\[
+\dfrac{d x(t)}{dt} = \rho \, x(t), \;\; x(0) = 0
+\]</span></p>
+<p>This is a <strong>separable</strong> differential equation, meaning that we can formally write:</p>
+<p><span class="math display">\[
+\dfrac{1}{x(t)} dx(t) = \rho\, dt
+\]</span>
+Integrate both sides (the left in <span class="math inline">\(d x(t)\)</span>, the right in <span class="math inline">\(dt\)</span>):</p>
+<p><span class="math display">\[
+\begin{aligned}
+\int \dfrac{1}{x(t)} d x(t) = \rho \int dt
+\end{aligned}
+\]</span></p>
+<p>Obtaining (<span class="math inline">\(C_i\)</span> are constants of integration):</p>
+<p><span class="math display">\[
+\begin{aligned}
+\log x(t) + C_1= \rho\, t + C_2\\
+\log x(t) = \rho\, t + C_3\\
+x(t) = e^{\rho\,t + C_3}\\
+x(t) = C_4 e^{\rho\, t}
+\end{aligned}
+\]</span></p>
+<p>Substituting the initial condition <span class="math inline">\(x(0) = x_0\)</span> we find that <span class="math inline">\(C_4 = x_0\)</span>:</p>
+<p><span class="math display">\[
+x(t) = x_0 e^{\rho\, t}
+\]</span></p>
+<p>which is our solution. If we know the value of <span class="math inline">\(\rho\)</span> and the initial density <span class="math inline">\(x_0\)</span>, we can directly write the population density <span class="math inline">\(x(t)\)</span> for any <span class="math inline">\(t\)</span>.</p>
+</div>
+<div id="solvable-model-logistic-growth" class="section level2">
+<h2><span class="header-section-number">2.4</span> Solvable model: Logistic growth</h2>
+<p>Another model that can be solved explicitly is that of the logistic growth:</p>
+<p><span class="math display">\[
+\dfrac{d x(t)}{dt} = \rho\, x(t) (1 - \alpha\, x(t)), \;\; x(0) = 0
+\]</span></p>
+<p>again, we can separate the equation:</p>
+<p><span class="math display">\[
+\dfrac{1}{x(t) (1 - \alpha\, x(t))} d x(t) = \rho\,  dt
+\]</span>
+the r.h.s. is trivial to integrate, but the l.h.s. is trickier. We can transform it into a simpler expression by using partial fractions. We want to write:</p>
+<p><span class="math display">\[
+\dfrac{1}{x(t) (1 - \alpha\, x(t))} = \dfrac{A}{x(t)} + \dfrac{B}{1 - \alpha\, x(t)}
+\]</span></p>
+<p>where <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are appropriate constants. Multiplying both sides by <span class="math inline">\(x(t) (1 - \alpha\, x(t))\)</span>, we obtain:</p>
+<p><span class="math display">\[
+1 = A (1 - \alpha\, x(t)) + B \, x(t) = A + x(t)\, (B - A\, \alpha)
+\]</span></p>
+<p>The l.h.s. does not contain <span class="math inline">\(x(t)\)</span>, and therefore we want to set <span class="math inline">\(x(t)\, (B - A\, \alpha) = 0\)</span>, choosing <span class="math inline">\(B = A\, \alpha\)</span>, and therefore <span class="math inline">\(A = 1\)</span>. We can integrate the simpler form:</p>
+<p><span class="math display">\[
+\int \dfrac{1}{x(t)} \,d x(t) + \int \dfrac{\alpha}{(1 - \alpha\, x(t))}\, d x(t) = \rho\,  dt
+\]</span></p>
+<p>obtaining:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\log x(t) - \log (1 - \alpha\, x(t)) = \rho\, t  + C_1\\
+\log \dfrac{x(t)}{1 -  \alpha\, x(t)} = \rho\, t  + C_1\\
+\dfrac{x(t)}{1 -  \alpha\, x(t)} = e^{\rho\, t + C_1}\\
+x(t) = \dfrac{e^{\rho\, t + C_1}}{1 + \alpha\, e^{\rho\, t + C_1}}\\
+x(t) = \dfrac{1}{\alpha + e^{-(\rho\, t + C_1)}}
+\end{aligned}
+\]</span></p>
+<p>To find the value of <span class="math inline">\(C_1\)</span>, substitute the initial condition <span class="math inline">\(x(0) = x_0\)</span>, and solve for <span class="math inline">\(C_1\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+x_0 = \dfrac{1}{\alpha + e^{-C_1}}\\
+C_1 = \log \dfrac{x_0}{1 - \alpha \, x_0}
+\end{aligned}
+\]</span></p>
+<p>Finally, substituting, we find:</p>
+<p><span class="math display">\[
+x(t) = \dfrac{x_0 \, e^{\rho\, t}}{1 + \alpha\, x_0 \, (e^{\rho\, t} - 1)}
+\]</span></p>
+<p>which provides an explicit solution for this (very simple) model.</p>
+<div class="boxhomework">
+<p><strong>Homework</strong></p>
+<p>Find the solution for the logistic growth with harvesting:</p>
+<p><span class="math display">\[
+\dfrac{d x(t)}{dt} = \rho\, x(t) (1 - \alpha\, x(t)) - \eta\, x(t)
+\]</span>
+where <span class="math inline">\(1 &gt; \eta &gt; 0\)</span> is the proportion of individuals being harvested.</p>
+</div>
+</div>
+<div id="qualitative-analysis-of-models-for-a-single-population" class="section level2">
+<h2><span class="header-section-number">2.5</span> Qualitative analysis of models for a single population</h2>
+<p>Because in general we cannot write an explicit solution for the model, we attempt a qualitative analysis by: a) finding fixed points (equilibria); b) provide a qualitative description of the dynamics; c) probe the stability of fixed points; d) gain an understanding of the system (nature of attractors, changes of behavior for different parameters) without deriving an explicit solution.</p>
+<p>When we are dealing with a single population, we can use a graphical method. Simply, plot <span class="math inline">\(dx(t) /dt\)</span> against <span class="math inline">\(x(t)\)</span>. We think of <span class="math inline">\(x(t)\)</span> as moving along the <span class="math inline">\(x\)</span> axis, at a velocity determined by the <span class="math inline">\(y\)</span> coordinate. For the exponential growth function:</p>
+<p><span class="math display">\[
+\dfrac{d x(t)}{dt} = \rho \, x(t)
+\]</span></p>
+<p>the graph becomes:</p>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-4-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>The only point where the curve intercepts the <span class="math inline">\(x\)</span> axis is the point <span class="math inline">\(x^\star = 0\)</span>. A point <span class="math inline">\(x^\star\)</span> for which <span class="math inline">\(\left . \dfrac{d x(t)}{dt} \right|_{x^\star} = 0\)</span> is an <strong>equilibrium</strong> (or fixed-point) for the system, meaning that if we initialize the system at <span class="math inline">\(x^\star\)</span>, it will remain there unless perturbed. Whenever we apply a (small) perturbation to a <strong>stable equilibrium</strong>, the system returns to it; when we perturb an <strong>unstable equilibrium</strong>, on the other hand, the system moves away from it.</p>
+<p>Now think of a perturbation: if we were to perturb <span class="math inline">\(x^\star = 0\)</span> by introducing a few individuals, we would find that the population starts growing (i.e., <span class="math inline">\(dx(t) / dt &gt; 0\)</span>), meaning that the point is unstable. Thus, using the graphical method introduced above, we can easily identify equilibria (i.e., where the curve intercepts the x-axis), and their stability (i.e., by determining whether the curve around the equilibrium is above or below <span class="math inline">\(d x(t)/dt = 0\)</span>).</p>
+<p>Next, let’s consider the logistic growth equation:</p>
+<p><span class="math display">\[
+\dfrac{d x(t)}{dt} = \rho\, x(t) (1 - \alpha\, x(t))
+\]</span></p>
+<p>We can draw the graph (note the quadratic term—we’re describing a parabola):</p>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-5-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>Now we have two equilibria, at <span class="math inline">\(x^\star = 0\)</span> and <span class="math inline">\(x^\star = 1 / \alpha\)</span>. If we perturb <span class="math inline">\(x^\star = 0\)</span>, the system moves away from it (unstable), while if we perturb <span class="math inline">\(x^\star = 1 / \alpha\)</span> the system goes back to it (stable).</p>
+<div class="boxhistory">
+<p><strong>History: Warder Clyde Allee (1885-1955)</strong></p>
+<p><img src="img/Allee.jpg" width="25%" style="display: block; margin: auto;" /></p>
+<p>Born in Indiana, Allee received his in 1912 PhD from the University of Chicago, where he returned in 1921. He was the Dean in the College of Arts, Literature, and Science (1924-1926) and Secretary of the Department of Zoology (1927-1934). He stayed at U. Chicago until his retirement (1950).</p>
+<p>He performed a series of studies on animal aggregation. He found that goldfish would growing in a tank laced with colloidal silver would grow faster when more individuals were present. Today, <strong>Allee effect</strong> applies to populations that grow faster when a certain threshold population is surpassed.</p>
+</div>
+<p>Now a more complex model, in which the population experiences an Allee effect:</p>
+<p><span class="math display">\[
+\dfrac{d x(t)}{dt} = \rho\, x(t) (x(t) - \gamma) (1 - \alpha\, x(t))
+\]</span></p>
+<p>where <span class="math inline">\(0&lt;\gamma&lt;1 / \alpha\)</span>. Plotting,</p>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-7-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>In this model, there are two stable equilibria (<span class="math inline">\(x^\star = 0\)</span> and <span class="math inline">\(x^\star = 1 / \alpha\)</span>), separated by an unstable equilibrium (<span class="math inline">\(x^\star= \gamma\)</span>). Depending on the initial condition, we might end up with either—we call this situation bistability.</p>
+<p>Note that bistability makes it clear that we can only apply small perturbations to the equilibrium to probe its stability—for example, imagine being at <span class="math inline">\(x^\star = 1 / \alpha\)</span> and perturbing the population by bringing it below <span class="math inline">\(\gamma\)</span>; then we would find that the population goes extinct, suggesting that <span class="math inline">\(x^\star = 1 / \alpha\)</span> is “somewhat unstable”.</p>
+<div id="stability-using-derivatives" class="section level3">
+<h3><span class="header-section-number">2.5.1</span> Stability using derivatives</h3>
+<p>You might have noticed in the previous graphs that whenever the curve <span class="math inline">\(dx(t) /dt\)</span> is negative on the left of a point and positive on its right we find that the point is unstable, while conversely a point for which <span class="math inline">\(dx(t) /dt\)</span> is positive on the left and negative on the right is stable. We can formalize this by taking the derivative of <span class="math inline">\(dx(t) /d t\)</span> with respect to <span class="math inline">\(x(t)\)</span>, and evaluating this function at different equilibria.</p>
+<p>For example, for the exponential growth model, we have:</p>
+<p><span class="math display">\[
+\dfrac{\partial}{\partial x} \dfrac{dx}{dt} = \dfrac{\partial f(x)}{\partial x} = \dfrac{\partial (r x)}{\partial x} = \rho
+\]</span>
+This is always posive when <span class="math inline">\(\rho &gt; 0\)</span>, and as such the only equilibrium (<span class="math inline">\(x^\star = 0\)</span>) is unstable.</p>
+<p>For the logistic growth, we find:</p>
+<p><span class="math display">\[
+\dfrac{\partial f(x)}{\partial x} = \dfrac{\partial (\rho\, x - \rho\, \alpha\, x^2)}{\partial x}  = \rho - 2 \rho\, \alpha\, x
+\]</span></p>
+<p>When we evaluate this function at the equilibrium <span class="math inline">\(x^\star = 0\)</span>, we obtain <span class="math inline">\(\rho &gt; 0\)</span>, and as such the equilibrium is unstable. Conversely, when we evaluate the fuction at <span class="math inline">\(x^\star = 1 / \alpha\)</span>, we obtain <span class="math inline">\(\rho - 2 \rho \to -\rho\)</span> and therefore the equilibrium is stable.</p>
+<p>Finally, for the model with Allee effect, we have:</p>
+<p><span class="math display">\[
+\dfrac{\partial (\rho\, x (x-\gamma)(1-\alpha\, x))}{\partial x}  = - \rho\, \gamma + 2 \rho\, x(1 + \alpha) - 3 \rho\, \alpha\, x^2
+\]</span>
+At <span class="math inline">\(x^\star = 0\)</span>, we find <span class="math inline">\(-\rho\, \gamma\)</span> which is always negative, and as such <span class="math inline">\(x^\star = 0\)</span> is stable. At <span class="math inline">\(x^\star = \gamma\)</span> we have <span class="math inline">\(\rho\, \gamma\, (1- \gamma\, \alpha)\)</span> which is positive (as <span class="math inline">\(\gamma\, \alpha &lt; 1\)</span>) and as such is an unstable equilibrium. Finally, for <span class="math inline">\(x^\star = 1/\alpha\)</span> we have <span class="math inline">\(\rho (\gamma - 1/\alpha)\)</span> which is always negative.</p>
+</div>
+<div id="what-are-we-doing-when-probing-stability-using-derivatives" class="section level3">
+<h3><span class="header-section-number">2.5.2</span> What are we doing when probing stability using derivatives?</h3>
+<p>More formally, we can think of describing the dynamics of a perturbation around the equilibrium. Call <span class="math inline">\(\Delta x(0) = x(0) - x^\star\)</span>, and approximate the dynamics around the equilibrium. We want to write the dynamics of <span class="math inline">\(\Delta x(t)\)</span>. By chain rule, <span class="math inline">\(\frac{d \Delta x(t)}{dt} = \frac{d \Delta x(t)}{d x(t)} \frac{d x(t)}{dt}\)</span>, and as such</p>
+<p><span class="math display">\[
+\frac{d \Delta x(t)}{dt} = f(\Delta x(t) + x^\star)
+\]</span></p>
+<p>If we think of the perturbation as infinitesimally small, we can Taylor expand around <span class="math inline">\(x^\star\)</span>:</p>
+<p><span class="math display">\[
+f(\Delta x(t) + x^\star) = f(x^\star) + \left . \frac{df(x)}{dx} \right |_{x^\star} \Delta x(t) + \frac{1}{2}\left . \frac{d^2 f(x)}{dx^2} \right |_{x^\star} (\Delta x(t))^2 + \ldots
+\]</span></p>
+<p>Taking only the linear term, and noticing that <span class="math inline">\(f(x^\star) = 0\)</span> by definition, we have:</p>
+<p><span class="math display">\[
+\frac{d \Delta x(t)}{dt} \approx \left . \frac{d f(x)}{dx} \right |_{x^\star} \Delta x(t) = \rho\, \Delta x(t)
+\]</span></p>
+<p>which is the equation for the exponential growth we have seen above. If <span class="math inline">\(\left . \frac{d f(x)}{d x}\right |_{x^\star} &lt; 0\)</span> the perturbation <span class="math inline">\(\Delta x(t)\)</span> will die out, while if it is positive it will increase fast.</p>
+</div>
+</div>
+<div id="bifurcations" class="section level2">
+<h2><span class="header-section-number">2.6</span> Bifurcations</h2>
+<p>The shape of the graphs above might depend on the value of parameters. When a small change in one or several parameters causes a qualitative change in the behavior of the system, we say the system has crossed a <strong>bifurcation</strong> point (the term “bifurcation” was introduced by Henri Poincaré in 1885). At a bifurcation point, equilibria could disappear or be created, change their stability, the system could start cycling, etc.</p>
+<p>In low-dimensional system, there are a variety of different behaviors, each of which has its own name (e.g., saddle-node, pitchfork, transcritical, Hopf, period-doubling, …, bifurcation). The <strong>codimension</strong> of a bifurcation is the number of parameters we need to change the behavior of the system. Clearly, codimension-1 and -2 bifurcations are the simplest and most studied.</p>
+<p>Here we just show the main idea using a simple example. For a detailed and accessible introduction, see <span class="citation">Strogatz (<a href="#ref-strogatz2018nonlinear" role="doc-biblioref">2018</a>)</span> and <span class="citation">Seydel (<a href="#ref-seydel2009practical" role="doc-biblioref">2009</a>)</span>.</p>
+<p>Consider the model:</p>
+<p><span class="math display">\[
+\dfrac{d x}{dt} = \rho + x^2
+\]</span></p>
+<p>The equilibria of the system, when they exist, are given by <span class="math inline">\(x^\star = \pm \sqrt{-\rho}\)</span>. It is clear that, when <span class="math inline">\(\rho &lt; 0\)</span> we will have two equilibria, when <span class="math inline">\(\rho = 0\)</span> a single equilibrium <span class="math inline">\(x^\star = 0\)</span>, and that when <span class="math inline">\(\rho &gt; 0\)</span> no (real) equilibrium exists. As such, the shape of the diagrams we have sketched above depend on <span class="math inline">\(\rho\)</span>. For example, when <span class="math inline">\(\rho = -4\)</span>, we have:</p>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-8-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>The equilibrium on the left is stable, while the one on the right is unstable. The graph is qualitatively the same for any <span class="math inline">\(\rho &lt; 0\)</span>. When <span class="math inline">\(\rho = 0\)</span>, however, the two equilibria “collide”, and merge into the single “half-stable” equilibrium:</p>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-9-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>The equilibrium <span class="math inline">\(x^\star = 0\)</span> is stable if we approach it from the left, while unstable if we are reaching it from the right. When we cross the bifurcation <span class="math inline">\(\rho_c = 0\)</span>, the equilibrium disappears altogether, leading to unbounded growth:</p>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-10-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>We can summarize the behavior of the system for different values of <span class="math inline">\(\rho\)</span> in a <strong>bifurcation diagram</strong>: on the x-axis we have the parameter we are varying (in this case <span class="math inline">\(\rho\)</span>), and on the y-axis we report <span class="math inline">\(x(t)\)</span>, marking the position of all the equilibria, with a solid line indicating stable equilibria and a dashed line the unstable ones:</p>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-11-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>Note that the rate at which the system approaches (moves away from) the stable (unstable) equilibrium depends on <span class="math inline">\(\rho\)</span>. When <span class="math inline">\(\rho \ll 0\)</span> the system moves fast, while when <span class="math inline">\(\rho \to \rho_c = 0\)</span> the system moves more slowly. This phenomenon is called “critical slowing down” and has been proposed as a generic indicator that a system is approaching a bifurcation point.</p>
+<div class="boxhomework">
+<p><strong>Homework</strong></p>
+<p>Draw the bifurcation diagram for the Allee effect model with harvesting:</p>
+<p><span class="math display">\[
+\dfrac{d x(t)}{dt} = \rho\, x(t) (1 - \alpha\, x(t)) - \eta\, x(t)
+\]</span>
+where <span class="math inline">\(1 &gt; \eta &gt; 0\)</span> is the proportion of individuals being harvested.</p>
+<p><em>Details</em></p>
+<ul>
+<li>take <span class="math inline">\(\rho = 1\)</span>, <span class="math inline">\(\alpha = 1\)</span> and vary <span class="math inline">\(\eta\)</span> between 0 and 1.</li>
+<li>write code to solve the initial value problem from a random initial condition <span class="math inline">\(x(0) \sim \mathcal U[0, 2]\)</span> (i.e., sampled independently from a uniform distribution between 0 and 2); document the possible outcomes.</li>
+<li>write code to plot the bifurcation diagram—for each value of <span class="math inline">\(\eta\)</span>, mark stable and unstable equilibria.</li>
+<li>what is the critical <span class="math inline">\(\eta_c\)</span> where a bifurcation occurs?</li>
+</ul>
+</div>
+<p>A few interesting references on detecting the approaching of a bifurcation in experimental systems:</p>
+<div class="boxpaper">
+<p><strong>Key paper: <span class="citation">Scheffer et al. (<a href="#ref-scheffer2009early" role="doc-biblioref">2009</a>)</span></strong></p>
+<p>Starting in the early 2000s, much work went into trying to anticipate dramatic changes in natural and man-made systems (e.g., lakes turning eutrophic, fisheries collapsing). In this review, Scheffer <em>et al.</em> summarize previous work and present an accessible introduction to the problem.</p>
+<p><strong>Key paper: <span class="citation">Dai et al. (<a href="#ref-dai2012generic" role="doc-biblioref">2012</a>)</span></strong></p>
+<p>Dai <em>et al.</em> grew populations of <em>Saccharomyces cerevisiae</em> on sucrose. Because sucrose is split outside the cell, it creates an Allee effect: when the population density is high, it is energetically convenient to produce the enzyme to spit the sucrose, as the different cells pool their efforts; when population density is low, the gain is not sufficient to balance the cost. By tuning the mortality (dilution), they were able to experimentally recreate the bifurcation diagram of the exercise above. The data from the experiments are <a href="https://doi.org/10.5061/dryad.p2481134">here</a>.</p>
+</div>
+</div>
+<div id="long-term-behavior-of-1-d-systems" class="section level2">
+<h2><span class="header-section-number">2.7</span> Long term behavior of 1-D systems</h2>
+<p>First-order (i.e., single-equation) ODEs can produce a very limited variety of long-terms behaviors: for <span class="math inline">\(t \to \infty\)</span> we can only have <span class="math inline">\(x(t) \to \pm \infty\)</span> or <span class="math inline">\(x(t) \to x^\star\)</span>. For population models, this means that either growth is unbounded (e.g., exponential growth model), or the population will reach an equilibrium point (possibly, out of many).</p>
+<p>This is a direct consequence of the uniqueness of trajectories: because we are moving in a 1-dimensional space, the fact that trajectories cannot cross means that if we are at a certain point <span class="math inline">\(x(t) = x_t\)</span>, then either <span class="math inline">\(dx(t)/dt &gt;0\)</span>, <span class="math inline">\(dx(t)/dt &lt;0\)</span>, or <span class="math inline">\(dx(t)/dt =0\)</span>, but can take only one value, preventing more complex behaviors such as cycles or chaos.</p>
+<p>For smooth functions and autonomous systems, one needs at least two equations to produce cycles and three equations to produce chaos. This is in stark contrast with difference equations—a single, innocent-looking difference equation can give rise to all sorts of dynamics.</p>
+<div class="boxpaper">
+<p><strong>Key paper: <span class="citation">May (<a href="#ref-may1976simple" role="doc-biblioref">1976</a>)</span></strong></p>
+<p>May takes a possible model for the logistic growth in discrete time, and shows how this very simple model can give rise to equilibria, cycles and chaos. This is one of the papers that launched an all-out effort to explore chaotic dynamics that lasted for all of the 1980s.</p>
+</div>
+</div>
+<div id="lyapunov-functions" class="section level2">
+<h2><span class="header-section-number">2.8</span> Lyapunov functions</h2>
+<p>While in many cases we cannot write an explicit solution for a (system of) differential equation(s), we might be able to determine the stability of equilibria and their basin of attraction (i.e., the set of initial conditions eventually leading to the equilibrium <span class="math inline">\(x^\star\)</span>) by considering functions that change monotonically through the dynamics.</p>
+<p>Suppose that <span class="math inline">\(\dfrac{d x(t)}{dt} =f(x(t))\)</span>, and that <span class="math inline">\(x^\star\)</span> is an equilibrium. Let <span class="math inline">\(V(x)\)</span> be a function defined in an open set <span class="math inline">\(\mathcal O\)</span> containing <span class="math inline">\(x^\star\)</span>, such that a) <span class="math inline">\(V(x^\star) = 0\)</span> and <span class="math inline">\(V(x) &gt; 0\)</span> for any <span class="math inline">\(x \neq x^\star\)</span>, and b) <span class="math inline">\(d V /dt \leq 0\)</span> for all <span class="math inline">\(x \in \mathcal O - x^\star\)</span>. Then <span class="math inline">\(V\)</span> is a <em>Lyapunov function</em> for the model, and <span class="math inline">\(x^\star\)</span> is stable. The Lyapunov function is called <em>strict</em>, and the equilibrium <span class="math inline">\(x^\star\)</span> <em>asymptotically stable</em> if <span class="math inline">\(d V /dt &lt; 0\)</span>.</p>
+<p>While Lyapunov functions are great, because we can prove stability without the need to solve the system, there is no general rule to construct such a function. Often, “candidate” Lyapunov functions are available, but the process of finding the right function typically requires a lot of ingenuity and trial and errors.</p>
+<p>Fortunately, for system with a single state a quadratic function is guaranteed to solve the problem. Take the model for logistic growth (with <span class="math inline">\(\rho &gt; 0\)</span> and <span class="math inline">\(\alpha &gt; 0\)</span>, and the candidate Lyapunov function:</p>
+<p><span class="math display">\[
+V(x(t)) = (x(t) - x^\star)^2
+\]</span></p>
+<p>with <span class="math inline">\(x^\star = 1 / \alpha\)</span>. The function is positive for any <span class="math inline">\(x(t) \neq x^\star\)</span>. Next, we derive with respect to <span class="math inline">\(t\)</span>:</p>
+<p><span class="math display">\[
+\dfrac{d V(x(t))}{t} = \dfrac{d V(x(t))}{x(t)}\dfrac{d x(t)}{t} = 2 \left(x(t) - \dfrac{1}{\alpha}\right)\rho\, x(t) (1 - \alpha\, x(t))
+\]</span></p>
+<p>The derivative is negative whenever <span class="math inline">\(x(t) &gt; 0\)</span> and <span class="math inline">\(x(t) \neq x^\star\)</span>:</p>
+<p><span class="math display">\[
+\dfrac{d V(x(t))}{t} = 2 \rho\, x(t) \left(x(t) - \dfrac{1}{\alpha}\right) (1 - \alpha\, x(t))= -\dfrac{\rho\, x(t)}{\alpha}\left(x(t) - \dfrac{1}{\alpha}\right)^2
+\]</span></p>
+<p>and as such <span class="math inline">\(x^\star\)</span> is asymptotically stable. The basin of attraction (i.e., where the Lyapunov function has the desired properties) is <span class="math inline">\(x \in \mathbb{R}_+\)</span>. There can be several alternative Lyapunov functions. For example, consider:</p>
+<p><span class="math display">\[
+V(x(t)) = x(t) - x^\star - x^\star \log \dfrac{x(t)}{x^\star}
+\]</span>
+which is positive for <span class="math inline">\(x(t) &gt; 0\)</span> and <span class="math inline">\(x(t) \neq x^\star\)</span>, taking the derivative w.r.t. time, we find:</p>
+<p><span class="math display">\[
+\dfrac{d V(x(t))}{t} = \left(1 - \dfrac{x^\star}{x(t)}\right)\rho\, x(t) (1 - \alpha\, x(t)) = -\rho\, x^\star (x(t) - x^\star)^2 
+\]</span>
+which again is negative whenever <span class="math inline">\(x^\star &gt; 0\)</span>, <span class="math inline">\(\rho &gt;0\)</span> and <span class="math inline">\(x(t) \neq x^\star\)</span>.</p>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-dai2012generic">
+<p>Dai, Lei, Daan Vorselen, Kirill S Korolev, and Jeff Gore. 2012. “Generic Indicators for Loss of Resilience Before a Tipping Point Leading to Population Collapse.” <em>Science</em> 336 (6085): 1175–7.</p>
+</div>
+<div id="ref-may1976simple">
+<p>May, Robert M. 1976. “Simple Mathematical Models with Very Complicated Dynamics.” <em>Nature</em> 261 (5560): 459–67.</p>
+</div>
+<div id="ref-scheffer2009early">
+<p>Scheffer, Marten, Jordi Bascompte, William A Brock, Victor Brovkin, Stephen R Carpenter, Vasilis Dakos, Hermann Held, Egbert H Van Nes, Max Rietkerk, and George Sugihara. 2009. “Early-Warning Signals for Critical Transitions.” <em>Nature</em> 461 (7260): 53–59.</p>
+</div>
+<div id="ref-seydel2009practical">
+<p>Seydel, Rüdiger. 2009. <em>Practical Bifurcation and Stability Analysis</em>. Vol. 5. Springer Science &amp; Business Media.</p>
+</div>
+<div id="ref-strogatz2018nonlinear">
+<p>Strogatz, Steven H. 2018. <em>Nonlinear Dynamics and Chaos: With Applications to Physics, Biology, Chemistry, and Engineering</em>. CRC Press.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="models-for-two-populations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Theoretical_Community_Ecology.pdf", "Theoretical_Community_Ecology.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

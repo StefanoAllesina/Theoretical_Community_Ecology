@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1588970760965.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "747FE071",
+    "lastKnownWriteTime" : 1589209230,
+    "last_content_update" : 1589209230746,
+    "path" : "~/GH/Theoretical_Community_Ecology/style.css",
+    "project_path" : "style.css",
+    "properties" : {
+        "cursorPosition" : "24,10",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "css"
+}

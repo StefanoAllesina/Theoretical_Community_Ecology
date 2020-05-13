@@ -1,0 +1,66 @@
+--- 
+title: "Theoretical Community Ecology"
+author: "Stefano Allesina"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: "A graduate course in theoretical ecology focusing on systems with multiple species."
+---
+# Preliminaries
+
+## Approach and target audience
+
+The material was prepared for the graduate class *Theoretical Community Ecology* taught at the University of Chicago --- AY 2020/2021. Following the material requires some familiarity with calculus (multivariable integration, derivatives, chain rule) and linear algebra (vector spaces, eigenvalues, eigenvectors). Also, a good working knowledge of `R` (functions, packages `deSolve` and `tidyverse`) is needed to follow the code.
+
+The approach taken throughout the course is to alternate between code/simulations and mathematical derivations. While several theorems are (informally) stated, proofs are included only when elementary and/or informative of the underlying biological processes.
+
+The class builds upon material typically presented in classes on population, community and theoretical ecology.
+
+## Topics
+
+Focus on continuous time, time-invariant models
+
+Multispecies dynamics
+
+Metapopulations
+
+Evolutionary Game Theory
+
+Models for Infectious Diseases
+
+## Notation
+
+Unless specified or for obvious exceptions, Greek letters stand for scalars (i.e., real or complex numbers), lower case roman letters for vectors, and capital roman letters for matrices (as such $a_i$ or $A_{ij}$ are scalars). We typically work in $\mathbb{R}^n$ (the $n$-dimensional Euclidean space), $\mathbb{R}^n_+$ (i.e., the positive orthant of $\mathbb{R}^n$), or $\mathbb{R}^n_{0+}$ (non-negative orthant).  $D(x)$ is a diagonal matrix with $x$ on the diagonal, sometimes written $D(x) = X$. The matrix $A^T$ is the transpose of $A$. Whenever it is clear what I mean, I will drop the dependency on time of certain variables. 
+
+The Generalized Lotka-Volterra model:
+
+$$
+\dfrac{d x_i(t)}{d t} = x_i(t) \left(a_i + \sum_{j} B_{ij} x_j(t) \right)
+$$
+
+can be written in compact form as:
+
+$$
+\dfrac{d x}{d t} = X (a + B x)
+$$
+
+## Sources
+
+Many excellent books are available on these topics. Here are the main references I've used in preparing these lectures:
+
+- @strogatz2018nonlinear --- a clear, concise introduction to dynamical systems.
+- @ellner2011dynamic --- an introduction to dynamical models focusing on biology.
+- @hofbauer1998evolutionary --- a great resource for models of population dynamics and evolutionary game theory.
+- @szederkenyi2018analysis --- an introduction to quasi-polynomial systems and reaction networks.
+- @hadeler2017topics --- a more mathematically-focused reading.
+- @hirsch2012differential --- an extensive, clearly written and rigorous introduction to dynamical systems.
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```
