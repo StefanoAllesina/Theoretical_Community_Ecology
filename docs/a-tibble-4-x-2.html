@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 6 A tibble: 4 x 2 | Theoretical Community Ecology</title>
+  <meta name="description" content="A graduate course in theoretical ecology focusing on systems with multiple species." />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 6 A tibble: 4 x 2 | Theoretical Community Ecology" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="A graduate course in theoretical ecology focusing on systems with multiple species." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 6 A tibble: 4 x 2 | Theoretical Community Ecology" />
+  
+  <meta name="twitter:description" content="A graduate course in theoretical ecology focusing on systems with multiple species." />
+  
+
+<meta name="author" content="Stefano Allesina" />
+
+
+<meta name="date" content="2020-05-14" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="a-tibble-3-x-2.html"/>
+<link rel="next" href="ecological-assembly.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Theoretical Community Ecology</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preliminaries</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#approach-and-target-audience"><i class="fa fa-check"></i><b>1.1</b> Approach and target audience</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#topics"><i class="fa fa-check"></i><b>1.2</b> Topics</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#notation"><i class="fa fa-check"></i><b>1.3</b> Notation</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#sources"><i class="fa fa-check"></i><b>1.4</b> Sources</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html"><i class="fa fa-check"></i><b>2</b> Models for a single population</a><ul>
+<li class="chapter" data-level="2.1" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#types-of-dynamical-systems"><i class="fa fa-check"></i><b>2.1</b> Types of dynamical systems</a></li>
+<li class="chapter" data-level="2.2" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#initial-value-problems"><i class="fa fa-check"></i><b>2.2</b> Initial-value problems</a></li>
+<li class="chapter" data-level="2.3" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#solvable-model-exponential-growth"><i class="fa fa-check"></i><b>2.3</b> Solvable model: Exponential growth</a></li>
+<li class="chapter" data-level="2.4" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#solvable-model-logistic-growth"><i class="fa fa-check"></i><b>2.4</b> Solvable model: Logistic growth</a></li>
+<li class="chapter" data-level="2.5" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#qualitative-analysis-of-models-for-a-single-population"><i class="fa fa-check"></i><b>2.5</b> Qualitative analysis of models for a single population</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#stability-using-derivatives"><i class="fa fa-check"></i><b>2.5.1</b> Stability using derivatives</a></li>
+<li class="chapter" data-level="2.5.2" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#what-are-we-doing-when-probing-stability-using-derivatives"><i class="fa fa-check"></i><b>2.5.2</b> What are we doing when probing stability using derivatives?</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#bifurcations"><i class="fa fa-check"></i><b>2.6</b> Bifurcations</a></li>
+<li class="chapter" data-level="2.7" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#long-term-behavior-of-1-d-systems"><i class="fa fa-check"></i><b>2.7</b> Long term behavior of 1-D systems</a></li>
+<li class="chapter" data-level="2.8" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#lyapunov-functions"><i class="fa fa-check"></i><b>2.8</b> Lyapunov functions</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html"><i class="fa fa-check"></i><b>3</b> Models for two populations</a><ul>
+<li class="chapter" data-level="3.1" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#qualitative-analysis-of-models-for-two-populations"><i class="fa fa-check"></i><b>3.1</b> Qualitative analysis of models for two populations</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#isoclines-of-null-growth"><i class="fa fa-check"></i><b>3.1.1</b> Isoclines of null growth</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#local-stability-analysis"><i class="fa fa-check"></i><b>3.2</b> Local stability analysis</a></li>
+<li class="chapter" data-level="3.3" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#stability-analysis-of-the-lotka-volterra-predator-prey-model"><i class="fa fa-check"></i><b>3.3</b> Stability analysis of the Lotka-Volterra Predator-Prey model</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#constant-of-motion-for-lotka-volterra-predator-prey"><i class="fa fa-check"></i><b>3.3.1</b> Constant of motion for Lotka-Volterra Predator-Prey</a></li>
+<li class="chapter" data-level="3.3.2" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#analysis-of-predator-prey-model-with-logistic-growth-for-the-prey"><i class="fa fa-check"></i><b>3.3.2</b> Analysis of Predator-Prey model with logistic growth for the prey</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="generalized-lotka-volterra-models.html"><a href="generalized-lotka-volterra-models.html"><i class="fa fa-check"></i><b>4</b> Generalized Lotka-Volterra models</a><ul>
+<li class="chapter" data-level="4.1" data-path="generalized-lotka-volterra-models.html"><a href="generalized-lotka-volterra-models.html#a-single-population"><i class="fa fa-check"></i><b>4.1</b> A single population</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="generalized-lotka-volterra-models.html"><a href="generalized-lotka-volterra-models.html#metapopulation-dynamics"><i class="fa fa-check"></i><b>4.1.1</b> Metapopulation dynamics</a></li>
+<li class="chapter" data-level="4.1.2" data-path="generalized-lotka-volterra-models.html"><a href="generalized-lotka-volterra-models.html#s-i-s-model"><i class="fa fa-check"></i><b>4.1.2</b> S-I-S model</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="generalized-lotka-volterra-models.html"><a href="generalized-lotka-volterra-models.html#multi-species-dynamics"><i class="fa fa-check"></i><b>4.2</b> Multi-species dynamics</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="generalized-lotka-volterra-models.html"><a href="generalized-lotka-volterra-models.html#existence-of-an-equilibrium"><i class="fa fa-check"></i><b>4.2.1</b> Existence of an equilibrium</a></li>
+<li class="chapter" data-level="4.2.2" data-path="generalized-lotka-volterra-models.html"><a href="generalized-lotka-volterra-models.html#stability-of-the-coexistence-equilibrium"><i class="fa fa-check"></i><b>4.2.2</b> Stability of the coexistence equilibrium</a></li>
+<li class="chapter" data-level="4.2.3" data-path="generalized-lotka-volterra-models.html"><a href="generalized-lotka-volterra-models.html#types-of-dynamics"><i class="fa fa-check"></i><b>4.2.3</b> Types of dynamics</a></li>
+<li class="chapter" data-level="4.2.4" data-path="generalized-lotka-volterra-models.html"><a href="generalized-lotka-volterra-models.html#the-equilibrium-is-the-time-average"><i class="fa fa-check"></i><b>4.2.4</b> The equilibrium is the time-average</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="a-tibble-3-x-2.html"><a href="a-tibble-3-x-2.html"><i class="fa fa-check"></i><b>5</b> A tibble: 3 x 2</a></li>
+<li class="chapter" data-level="6" data-path="a-tibble-4-x-2.html"><a href="a-tibble-4-x-2.html"><i class="fa fa-check"></i><b>6</b> A tibble: 4 x 2</a><ul>
+<li class="chapter" data-level="6.0.1" data-path="a-tibble-4-x-2.html"><a href="a-tibble-4-x-2.html#lyapunov-diagonal-stability-and-global-stability"><i class="fa fa-check"></i><b>6.0.1</b> Lyapunov diagonal stability and global stability</a></li>
+<li class="chapter" data-level="6.1" data-path="a-tibble-4-x-2.html"><a href="a-tibble-4-x-2.html#stability-of-large-random-communities"><i class="fa fa-check"></i><b>6.1</b> Stability of large random communities</a></li>
+<li class="chapter" data-level="6.2" data-path="a-tibble-4-x-2.html"><a href="a-tibble-4-x-2.html#further-readings"><i class="fa fa-check"></i><b>6.2</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="ecological-assembly.html"><a href="ecological-assembly.html"><i class="fa fa-check"></i><b>7</b> Ecological assembly</a></li>
+<li class="chapter" data-level="8" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html"><i class="fa fa-check"></i><b>8</b> Game theory and replicator dynamics</a></li>
+<li class="chapter" data-level="9" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html"><i class="fa fa-check"></i><b>9</b> Quasi-polynomial systems</a></li>
+<li class="chapter" data-level="10" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html"><i class="fa fa-check"></i><b>10</b> Predicting coexistence in ecological communities</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="11" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html"><i class="fa fa-check"></i><b>11</b> Random bits and pieces</a><ul>
+<li class="chapter" data-level="11.1" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#stability-of-larger-matrices"><i class="fa fa-check"></i><b>11.1</b> Stability of larger matrices</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#descartes-rule-of-signs"><i class="fa fa-check"></i><b>11.1.1</b> Descartes’ rule of signs</a></li>
+<li class="chapter" data-level="11.1.2" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#routh-hurwitz-criterion"><i class="fa fa-check"></i><b>11.1.2</b> Routh-Hurwitz criterion</a></li>
+<li class="chapter" data-level="11.1.3" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#bounding-eigenvalues-using-the-symmetric-part"><i class="fa fa-check"></i><b>11.1.3</b> Bounding eigenvalues using the symmetric part</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#exercise"><i class="fa fa-check"></i><b>11.2</b> Exercise</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Theoretical Community Ecology</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="a-tibble-4-x-2" class="section level1">
+<h1><span class="header-section-number">Chapter 6</span> A tibble: 4 x 2</h1>
+<p>species average
+<chr> <dbl>
+1 sp_1 0.303
+2 sp_2 0.463
+3 sp_3 0.126
+4 sp_4 0.354</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="a-tibble-4-x-2.html#cb12-1"></a><span class="co"># compare with equilibrium</span></span>
+<span id="cb12-2"><a href="a-tibble-4-x-2.html#cb12-2"></a><span class="kw">solve</span>(A_<span class="dv">4</span>, <span class="op">-</span>r_<span class="dv">4</span>)</span></code></pre></div>
+<p>[1] 0.3013030 0.4586546 0.1307655 0.3557416</p>
+<div id="lyapunov-diagonal-stability-and-global-stability" class="section level3">
+<h3><span class="header-section-number">6.0.1</span> Lyapunov diagonal stability and global stability</h3>
+<p>Suppose that there is a positive diagonal matrix <span class="math inline">\(C\)</span> such that <span class="math inline">\(C A + A^t C\)</span> is negative definite (i.e., has only negative eigenvalues; the eigenvalues are real because the matrix is symmetric). Then <span class="math inline">\(A\)</span> is <strong>Lyapunov-diagonally stable</strong>. If this is the case, then <span class="math inline">\(A\)</span> is stable, and any <span class="math inline">\(D A\)</span> with <span class="math inline">\(D\)</span> positive is also stable (called <span class="math inline">\(D-\)</span>stability).</p>
+<p>Further, suppose that the GLV system with parameters <span class="math inline">\(A\)</span> and <span class="math inline">\(r\)</span> has a feasible equilibrium point <span class="math inline">\(x^\star\)</span>. Then the function:</p>
+<p><span class="math display">\[
+V(x(t)) = 1^t C \left( x(t) -D(x^\star) \log x(t)\right)
+\]</span>
+is a Lyapunov function for the GLV system.</p>
+<p>To prove this point, we start from <span class="math inline">\(r = -Ax^\star\)</span>. Substituting, we can write the GLV system as <span class="math inline">\(dx(t)/dt = D(x)A(x - x^\star)\)</span>; similarly, we can write <span class="math inline">\(d \log x(t)/dt = A(x - x^\star)\)</span>. Taking the derivative of <span class="math inline">\(V\)</span> with respect to time:</p>
+<p><span class="math display">\[
+\begin{aligned}
+ \frac{d V(x(t))}{dt} &amp;= 1^t C \left(\frac{d x(t)}{dt}  + D(x^*) \frac{d \log x(t)}{dt} \right)\\
+ &amp;= 1^t C \left(A (x - x^\star)  + D(x^*) A (x - x^\star) \right)\\
+ &amp;= 1^t C \left(D(x - x^\star)  A (x - x^\star) \right)\\
+ &amp;= 1^t \left(D(x - x^\star)  C A (x - x^\star) \right)\\
+ &amp;= (x - x^\star)^t  CA (x - x^\star)\\
+ &amp;= \frac{1}{2}(x - x^\star)^t  (CA + A^t C) (x - x^\star)\\
+\end{aligned}
+\]</span></p>
+<p>A matrix <span class="math inline">\(B\)</span> is negative definite if <span class="math inline">\(y^t B y &lt; 0\)</span> for all <span class="math inline">\(y \neq 0\)</span>. As such <span class="math inline">\(\frac{d V(x(t))}{dt} \leq 0\)</span>, i.e., will decrease in time (starting from any <span class="math inline">\(x(0)\)</span>) until the equilibrium <span class="math inline">\(x^\star\)</span> is reached.</p>
+<p>The results above show that <strong>if <span class="math inline">\(A\)</span> is Lyapunov diagonally-stable and a feasible equilibrium <span class="math inline">\(x^\star\)</span> exists, than all trajectories starting at a positive density will converge to the equilibrium</strong>. This property is often used to prove <strong>global stability</strong>.</p>
+<p>A simple numerical example with two species:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="a-tibble-4-x-2.html#cb13-1"></a>r &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb13-2"><a href="a-tibble-4-x-2.html#cb13-2"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">3</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">-1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">-1</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb13-3"><a href="a-tibble-4-x-2.html#cb13-3"></a><span class="co"># the eigenvalues of A + A^t are -1 and -3, hence A is Lyapunov Diagonally-stable</span></span>
+<span id="cb13-4"><a href="a-tibble-4-x-2.html#cb13-4"></a><span class="kw">eigen</span>(A <span class="op">+</span><span class="st"> </span><span class="kw">t</span>(A))<span class="op">$</span>values</span></code></pre></div>
+<p>[1] -1 -3</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="a-tibble-4-x-2.html#cb14-1"></a><span class="co"># now integrate from random initial condition---this should always </span></span>
+<span id="cb14-2"><a href="a-tibble-4-x-2.html#cb14-2"></a><span class="co"># converge to the equilibrium</span></span>
+<span id="cb14-3"><a href="a-tibble-4-x-2.html#cb14-3"></a><span class="kw">solve</span>(A, <span class="op">-</span>r)</span></code></pre></div>
+<p>[1] 0.2857143 1.4285714</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="a-tibble-4-x-2.html#cb15-1"></a>res &lt;-<span class="st"> </span><span class="kw">integrate_GLV</span>(r, A, <span class="kw">abs</span>(<span class="kw">rnorm</span>(<span class="dv">2</span>)))</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/globalst2-1.png" width="480" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="a-tibble-4-x-2.html#cb16-1"></a>res &lt;-<span class="st"> </span><span class="kw">integrate_GLV</span>(r, A, <span class="kw">abs</span>(<span class="kw">rnorm</span>(<span class="dv">2</span>)))</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/globalst2-2.png" width="480" style="display: block; margin: auto;" /></p>
+</div>
+<div id="stability-of-large-random-communities" class="section level2">
+<h2><span class="header-section-number">6.1</span> Stability of large random communities</h2>
+<p>As we have seen above, an equilibrium <span class="math inline">\(x^\star\)</span> is stable if the community matrix for the equilibrium has all eigenvalues with negative real part. In general, to determine the equilibrium and its stability, we would need to specify all the growth rates (<span class="math inline">\(r\)</span>, <span class="math inline">\(n\)</span> values), as well as the matrix of interactions (<span class="math inline">\(A\)</span>, <span class="math inline">\(n^2\)</span> values). This is impractical to do for large systems (though we will try this out later). But can something quite general be said about the limit in which many species are in the community?</p>
+<p><span class="citation">May (<a href="#ref-may1972will" role="doc-biblioref">1972</a>)</span> attempted to answer this question by considering a <strong>random community matrix</strong>. In a GLV system, the diagonal elements <span class="math inline">\(m_{ii} = a_{ii} x_i^\star\)</span> are influenced by self-regulation (i.e., as in a carrying capacity), while the off-diagonal elements <span class="math inline">\(m_{ij} = a_{ij} x_i^\star\)</span> model the effect of species <span class="math inline">\(j\)</span> on the equilibrium of species <span class="math inline">\(i\)</span>. May considered the following algorithm to build a random community matrix. Take a large community, resting at an unspecified, feasible equilibrium; we build the community matrix by setting:</p>
+<ul>
+<li><span class="math inline">\(m_{ij} = 0\)</span> with probability <span class="math inline">\((1-C)\)</span>; with probability <span class="math inline">\(C\)</span> we draw <span class="math inline">\(m_{ij}\)</span> from a distribution with mean zero and variance <span class="math inline">\(\sigma^2\)</span>. <span class="math inline">\(C\)</span> is the proportion of realized connections, termed the “connectance” of the system.</li>
+<li>the diagonal elements are set to <span class="math inline">\(-d\)</span>, modeling self-regulation.</li>
+</ul>
+<p>For example, the code uses a normal distribution:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="a-tibble-4-x-2.html#cb17-1"></a>build_May_normal &lt;-<span class="st"> </span><span class="cf">function</span>(n, C, d, sigma){</span>
+<span id="cb17-2"><a href="a-tibble-4-x-2.html#cb17-2"></a>  <span class="co"># fill the whole matrix</span></span>
+<span id="cb17-3"><a href="a-tibble-4-x-2.html#cb17-3"></a>  M &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(n <span class="op">*</span><span class="st"> </span>n, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> sigma), n, n)</span>
+<span id="cb17-4"><a href="a-tibble-4-x-2.html#cb17-4"></a>  <span class="co"># remove connections </span></span>
+<span id="cb17-5"><a href="a-tibble-4-x-2.html#cb17-5"></a>  M &lt;-<span class="st"> </span>M <span class="op">*</span><span class="st"> </span><span class="kw">matrix</span>(<span class="kw">runif</span>(n <span class="op">*</span><span class="st"> </span>n) <span class="op">&lt;=</span><span class="st"> </span>C, n, n)</span>
+<span id="cb17-6"><a href="a-tibble-4-x-2.html#cb17-6"></a>  <span class="co"># set diagonals</span></span>
+<span id="cb17-7"><a href="a-tibble-4-x-2.html#cb17-7"></a>  <span class="kw">diag</span>(M) &lt;-<span class="st"> </span><span class="op">-</span>d</span>
+<span id="cb17-8"><a href="a-tibble-4-x-2.html#cb17-8"></a>  <span class="kw">return</span>(M)</span>
+<span id="cb17-9"><a href="a-tibble-4-x-2.html#cb17-9"></a>}</span></code></pre></div>
+<p>Note that the average of the eigenvalues of a matrix <span class="math inline">\(A\)</span> is given by the average of its diagonal elements <span class="math inline">\(\frac{1}{n}\sum_i \lambda_i = \frac{1}{n} \text{Tr}(A) = \frac{1}{n} \sum_i A_{ii}\)</span>. As such, if <span class="math inline">\(A = dI + B\)</span>, the eigenvalues of <span class="math inline">\(A\)</span> will be those of <span class="math inline">\(B\)</span> shifted by <span class="math inline">\(d\)</span>.</p>
+<p>We want to determine whether the equilibrium will be stable, given <span class="math inline">\(n\)</span>, <span class="math inline">\(C\)</span>, <span class="math inline">\(d\)</span> and <span class="math inline">\(\sigma^2\)</span>. To do so, we need to find the location of the “rightmost” eigenvalue of <span class="math inline">\(M\)</span>. For example, let’s plot the eigenvalues of a large matrix:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="a-tibble-4-x-2.html#cb18-1"></a>plot_eigenvalues &lt;-<span class="st"> </span><span class="cf">function</span>(M, <span class="dt">prediction =</span> <span class="ot">NULL</span>){</span>
+<span id="cb18-2"><a href="a-tibble-4-x-2.html#cb18-2"></a>  eig &lt;-<span class="st"> </span><span class="kw">eigen</span>(M, <span class="dt">only.values =</span> <span class="ot">TRUE</span>)<span class="op">$</span>values</span>
+<span id="cb18-3"><a href="a-tibble-4-x-2.html#cb18-3"></a>  dt &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">Real =</span> <span class="kw">Re</span>(eig), <span class="dt">Imaginary =</span> <span class="kw">Im</span>(eig))</span>
+<span id="cb18-4"><a href="a-tibble-4-x-2.html#cb18-4"></a>  pl &lt;-<span class="st"> </span><span class="kw">ggplot</span>(dt) <span class="op">+</span><span class="st"> </span><span class="kw">aes</span>(<span class="dt">x =</span> Real, <span class="dt">y =</span> Imaginary) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb18-5"><a href="a-tibble-4-x-2.html#cb18-5"></a><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb18-6"><a href="a-tibble-4-x-2.html#cb18-6"></a><span class="st">    </span><span class="kw">coord_equal</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb18-7"><a href="a-tibble-4-x-2.html#cb18-7"></a><span class="st">    </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="dv">0</span>, <span class="dt">colour =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">linetype =</span> <span class="dv">2</span>)</span>
+<span id="cb18-8"><a href="a-tibble-4-x-2.html#cb18-8"></a>  <span class="cf">if</span> (<span class="kw">is.null</span>(prediction) <span class="op">==</span><span class="st"> </span><span class="ot">FALSE</span>) {</span>
+<span id="cb18-9"><a href="a-tibble-4-x-2.html#cb18-9"></a>    pl &lt;-<span class="st"> </span>pl <span class="op">+</span><span class="st"> </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> prediction, <span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">linetype =</span> <span class="dv">2</span>)</span>
+<span id="cb18-10"><a href="a-tibble-4-x-2.html#cb18-10"></a>  }</span>
+<span id="cb18-11"><a href="a-tibble-4-x-2.html#cb18-11"></a>  <span class="kw">show</span>(pl)</span>
+<span id="cb18-12"><a href="a-tibble-4-x-2.html#cb18-12"></a>}</span>
+<span id="cb18-13"><a href="a-tibble-4-x-2.html#cb18-13"></a><span class="kw">set.seed</span>(<span class="dv">100</span>) <span class="co"># for reproducibility</span></span>
+<span id="cb18-14"><a href="a-tibble-4-x-2.html#cb18-14"></a><span class="co"># parameters</span></span>
+<span id="cb18-15"><a href="a-tibble-4-x-2.html#cb18-15"></a>n &lt;-<span class="st"> </span><span class="dv">500</span></span>
+<span id="cb18-16"><a href="a-tibble-4-x-2.html#cb18-16"></a>C &lt;-<span class="st"> </span><span class="fl">0.5</span></span>
+<span id="cb18-17"><a href="a-tibble-4-x-2.html#cb18-17"></a>d &lt;-<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb18-18"><a href="a-tibble-4-x-2.html#cb18-18"></a>sigma &lt;-<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb18-19"><a href="a-tibble-4-x-2.html#cb18-19"></a>M &lt;-<span class="st"> </span><span class="kw">build_May_normal</span>(n, C, d, sigma)</span>
+<span id="cb18-20"><a href="a-tibble-4-x-2.html#cb18-20"></a><span class="kw">plot_eigenvalues</span>(M)</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/exmay-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>The eigenvalues fall into an almost perfect circle! Turns out, that this is the behavior we should expect, as stated by the so-called “Circular Law”, one of the most beautiful results in random matrix theory.</p>
+<p><strong>Circular law:</strong> Take a non-symmetric, <span class="math inline">\(S \times S\)</span> random matrix in which all coefficients <span class="math inline">\(X_{ij}\)</span> are i.i.d. random variables with <span class="math inline">\(\mathbb E[X_{ij}] = 0\)</span> and <span class="math inline">\(\mathbb E[X_{ij}] = 1\)</span>. Then, as <span class="math inline">\(S \to \infty\)</span>, the e.s.d. of <span class="math inline">\({X} / \sqrt{S}\)</span> converges to the circular law:</p>
+<p><span class="math display">\[
+  \mu(\lambda) = \begin{cases}
+    \frac{1}{\pi} \; \; \; \text{if} \; (\text{Re}(\lambda))^2 +
+    (\text{Im}(\lambda))^2 \leq 1\\
+    0 \; \; \;\text{ otherwise}.
+  \end{cases}
+\]</span></p>
+<p>This result can be used to calculate the radius of the eigenvalue distribution of the matrices studied by May: when the off-diagonal coefficients <span class="math inline">\(M_{ij}\)</span> are 0 with probability <span class="math inline">\(1-C\)</span> and are sampled independently from a distribution with mean <span class="math inline">\(0\)</span> and variance <span class="math inline">\(\sigma^2\)</span> with probability <span class="math inline">\(C\)</span>, we have that <span class="math inline">\(\mathbb E[M_{ij}] = 0\)</span> and <span class="math inline">\(\mathbb E[M_{ij}^2] = C \sigma^2\)</span>. This means that if we were to divide the coefficients of <span class="math inline">\({M}\)</span> by <span class="math inline">\(\sqrt{C \sigma^2}\)</span> we would recover the unit variance, and the matrix would follow the circular law when <span class="math inline">\(S\)</span> is large. Armed with this, we can calculate the radius: if the radius of <span class="math inline">\({M} / \sqrt{S C \sigma^2}\)</span> converges to 1 when the matrix is large, then the radius of <span class="math inline">\({M}\)</span> is approximately <span class="math inline">\(\sqrt{S C \sigma^2}\)</span>. For stability, we need a sufficiently negative diagonal (setting the center of the circle), yielding May’s stability criterion:</p>
+<p><span class="math display">\[
+\sqrt{S C \sigma^2} &lt; d
+\]</span></p>
+<p>We can try this on our matrix:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="a-tibble-4-x-2.html#cb19-1"></a>prediction &lt;-<span class="st"> </span><span class="kw">sqrt</span>(n <span class="op">*</span><span class="st"> </span>C <span class="op">*</span><span class="st"> </span>sigma<span class="op">^</span><span class="dv">2</span>) <span class="op">-</span><span class="st"> </span>d</span>
+<span id="cb19-2"><a href="a-tibble-4-x-2.html#cb19-2"></a><span class="kw">plot_eigenvalues</span>(M, prediction)</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/maycrit-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>Showing that we accurately approximate the location of the rightmost eigenvalue. Note that, in the case of large <span class="math inline">\(n\)</span>, whenever the circle crosses zero, some eigenvalues will be positive, determining the instability of the equilibrium.</p>
+<p>Importantly, the distribution from which the coefficients are sampled does not matter—only that the mean is zero and that the variance is <span class="math inline">\(\sigma^2\)</span>. For example, build the matrix using coefficients from a uniform distribution:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="a-tibble-4-x-2.html#cb20-1"></a>build_May_uniform &lt;-<span class="st"> </span><span class="cf">function</span>(n, C, d, sigma){</span>
+<span id="cb20-2"><a href="a-tibble-4-x-2.html#cb20-2"></a>  <span class="co"># fill the whole matrix (sqrt(3) to ensure var = sigma^2)</span></span>
+<span id="cb20-3"><a href="a-tibble-4-x-2.html#cb20-3"></a>  M &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">runif</span>(n <span class="op">*</span><span class="st"> </span>n, <span class="dt">min =</span> <span class="op">-</span><span class="kw">sqrt</span>(<span class="dv">3</span>) <span class="op">*</span><span class="st"> </span>sigma, <span class="dt">max =</span> <span class="kw">sqrt</span>(<span class="dv">3</span>) <span class="op">*</span><span class="st"> </span>sigma), n, n)</span>
+<span id="cb20-4"><a href="a-tibble-4-x-2.html#cb20-4"></a>  <span class="co"># remove connections </span></span>
+<span id="cb20-5"><a href="a-tibble-4-x-2.html#cb20-5"></a>  M &lt;-<span class="st"> </span>M <span class="op">*</span><span class="st"> </span><span class="kw">matrix</span>(<span class="kw">runif</span>(n <span class="op">*</span><span class="st"> </span>n) <span class="op">&lt;=</span><span class="st"> </span>C, n, n)</span>
+<span id="cb20-6"><a href="a-tibble-4-x-2.html#cb20-6"></a>  <span class="co"># set diagonals</span></span>
+<span id="cb20-7"><a href="a-tibble-4-x-2.html#cb20-7"></a>  <span class="kw">diag</span>(M) &lt;-<span class="st"> </span><span class="op">-</span>d</span>
+<span id="cb20-8"><a href="a-tibble-4-x-2.html#cb20-8"></a>  <span class="kw">return</span>(M)</span>
+<span id="cb20-9"><a href="a-tibble-4-x-2.html#cb20-9"></a>}</span>
+<span id="cb20-10"><a href="a-tibble-4-x-2.html#cb20-10"></a><span class="co"># parameters</span></span>
+<span id="cb20-11"><a href="a-tibble-4-x-2.html#cb20-11"></a>n &lt;-<span class="st"> </span><span class="dv">500</span></span>
+<span id="cb20-12"><a href="a-tibble-4-x-2.html#cb20-12"></a>C &lt;-<span class="st"> </span><span class="fl">0.5</span></span>
+<span id="cb20-13"><a href="a-tibble-4-x-2.html#cb20-13"></a>d &lt;-<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb20-14"><a href="a-tibble-4-x-2.html#cb20-14"></a>sigma &lt;-<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb20-15"><a href="a-tibble-4-x-2.html#cb20-15"></a>M &lt;-<span class="st"> </span><span class="kw">build_May_uniform</span>(n, C, d, sigma)</span>
+<span id="cb20-16"><a href="a-tibble-4-x-2.html#cb20-16"></a>prediction &lt;-<span class="st"> </span><span class="kw">sqrt</span>(n <span class="op">*</span><span class="st"> </span>C <span class="op">*</span><span class="st"> </span>sigma<span class="op">^</span><span class="dv">2</span>) <span class="op">-</span><span class="st"> </span>d</span>
+<span id="cb20-17"><a href="a-tibble-4-x-2.html#cb20-17"></a><span class="kw">plot_eigenvalues</span>(M, prediction)</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/exmay2-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>This property is called <strong>universality</strong> in random matrix theory.</p>
+<p>In ecological communities, the effect of species <span class="math inline">\(i\)</span> on <span class="math inline">\(j\)</span> and that of <span class="math inline">\(j\)</span> on <span class="math inline">\(i\)</span> are typically not independent (as assumed above): in the case of competition between species, we expect them both to be negative; for consumption, if one is positive, the other is negative, and so forth. A more refined model of a random matrix would therefore sample interactions in pairs from a bivariate distribution. The elliptic law can deal with this case:</p>
+<p><strong>Elliptic law:</strong> Take a non-symmetric, <span class="math inline">\(S \times S\)</span> random matrix in which the pairs of coefficients <span class="math inline">\((X_{ij}, X_{ji})\)</span> are sampled independently from a bivariate distribution defined by a vector of means <span class="math inline">\(m = (0,0)^t\)</span> and a covariance matrix <span class="math inline">\(\Sigma = \begin{pmatrix} 1 &amp; \rho\\ \rho &amp; 1 \end{pmatrix}\)</span>. Then, as <span class="math inline">\(S \to \infty\)</span>, the e.s.d. of <span class="math inline">\({X} / \sqrt{S}\)</span> converges to the elliptic law:</p>
+<p><span class="math display">\[
+  \mu(\lambda) = \begin{cases} \frac{1}{\pi (1 - \rho^2) } \quad
+    \text{if} \; \frac{(\text{Re}(\lambda))^2}{(1 + \rho)^2} +
+    \frac{(\text{Im}(\lambda))^2}{(1 -\rho)^2} \leq
+    1\\ 0 \quad \quad \quad \text{ otherwise}
+  \end{cases}
+\]</span></p>
+<p>Note that when <span class="math inline">\(\rho = 0\)</span>, the elliptic law reduces to the circular law. Using the elliptic law, <span class="citation">Allesina and Tang (<a href="#ref-allesina2012stability" role="doc-biblioref">2012</a>)</span> were able to extend May’s criterion to ecological networks with different mixtures of interaction types. In particular, the stability criterion becomes:</p>
+<p><span class="math display">\[
+\sqrt{S C \sigma^2}(1 + \rho) &lt; d
+\]</span></p>
+<p>To see the elliptic law in action, we can build matrices in which we sample the coefficients in pairs from a bivariate normal distribution:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="a-tibble-4-x-2.html#cb21-1"></a>build_Allesina_Tang_normal &lt;-<span class="st"> </span><span class="cf">function</span>(n, C, d, sigma, rho){</span>
+<span id="cb21-2"><a href="a-tibble-4-x-2.html#cb21-2"></a>  <span class="co"># sample coefficients in pairs</span></span>
+<span id="cb21-3"><a href="a-tibble-4-x-2.html#cb21-3"></a>  pairs &lt;-<span class="st"> </span>MASS<span class="op">::</span><span class="kw">mvrnorm</span>(<span class="dt">n =</span> n <span class="op">*</span><span class="st"> </span>(n<span class="dv">-1</span>) <span class="op">/</span><span class="st"> </span><span class="dv">2</span>,</span>
+<span id="cb21-4"><a href="a-tibble-4-x-2.html#cb21-4"></a>                         <span class="dt">mu =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb21-5"><a href="a-tibble-4-x-2.html#cb21-5"></a>                         <span class="dt">Sigma =</span> sigma<span class="op">^</span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, rho, rho, <span class="dv">1</span>), <span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb21-6"><a href="a-tibble-4-x-2.html#cb21-6"></a>  <span class="co"># build a completely filled matrix</span></span>
+<span id="cb21-7"><a href="a-tibble-4-x-2.html#cb21-7"></a>  M &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, n, n)</span>
+<span id="cb21-8"><a href="a-tibble-4-x-2.html#cb21-8"></a>  M[<span class="kw">upper.tri</span>(M)] &lt;-<span class="st"> </span>pairs[,<span class="dv">1</span>]</span>
+<span id="cb21-9"><a href="a-tibble-4-x-2.html#cb21-9"></a>  M &lt;-<span class="st"> </span><span class="kw">t</span>(M)</span>
+<span id="cb21-10"><a href="a-tibble-4-x-2.html#cb21-10"></a>  M[<span class="kw">upper.tri</span>(M)] &lt;-<span class="st"> </span>pairs[,<span class="dv">2</span>]</span>
+<span id="cb21-11"><a href="a-tibble-4-x-2.html#cb21-11"></a>  <span class="co"># determine which connections to retain</span></span>
+<span id="cb21-12"><a href="a-tibble-4-x-2.html#cb21-12"></a>  Connections &lt;-<span class="st"> </span>(<span class="kw">matrix</span>(<span class="kw">runif</span>(n <span class="op">*</span><span class="st"> </span>n), n, n) <span class="op">&lt;=</span><span class="st"> </span>C) <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb21-13"><a href="a-tibble-4-x-2.html#cb21-13"></a>  Connections[<span class="kw">lower.tri</span>(Connections)] &lt;-<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb21-14"><a href="a-tibble-4-x-2.html#cb21-14"></a>  <span class="kw">diag</span>(Connections) &lt;-<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb21-15"><a href="a-tibble-4-x-2.html#cb21-15"></a>  Connections &lt;-<span class="st"> </span>Connections <span class="op">+</span><span class="st"> </span><span class="kw">t</span>(Connections)</span>
+<span id="cb21-16"><a href="a-tibble-4-x-2.html#cb21-16"></a>  M &lt;-<span class="st"> </span>M <span class="op">*</span><span class="st"> </span>Connections</span>
+<span id="cb21-17"><a href="a-tibble-4-x-2.html#cb21-17"></a>  <span class="kw">diag</span>(M) &lt;-<span class="st"> </span><span class="op">-</span>d</span>
+<span id="cb21-18"><a href="a-tibble-4-x-2.html#cb21-18"></a>  <span class="kw">return</span>(M)</span>
+<span id="cb21-19"><a href="a-tibble-4-x-2.html#cb21-19"></a>}</span></code></pre></div>
+<p>We can see that a positive connectance leads to an eigenvalue distribution that describes an horizontally-stretched ellipse (and hence, more difficult to stabilize than the circle):</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="a-tibble-4-x-2.html#cb22-1"></a><span class="co"># parameters</span></span>
+<span id="cb22-2"><a href="a-tibble-4-x-2.html#cb22-2"></a>n &lt;-<span class="st"> </span><span class="dv">500</span></span>
+<span id="cb22-3"><a href="a-tibble-4-x-2.html#cb22-3"></a>C &lt;-<span class="st"> </span><span class="fl">0.5</span></span>
+<span id="cb22-4"><a href="a-tibble-4-x-2.html#cb22-4"></a>d &lt;-<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb22-5"><a href="a-tibble-4-x-2.html#cb22-5"></a>sigma &lt;-<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb22-6"><a href="a-tibble-4-x-2.html#cb22-6"></a>rho &lt;-<span class="st"> </span><span class="fl">0.4</span></span>
+<span id="cb22-7"><a href="a-tibble-4-x-2.html#cb22-7"></a>M &lt;-<span class="st"> </span><span class="kw">build_Allesina_Tang_normal</span>(n, C, d, sigma, rho)</span>
+<span id="cb22-8"><a href="a-tibble-4-x-2.html#cb22-8"></a>prediction &lt;-<span class="st"> </span><span class="kw">sqrt</span>(n <span class="op">*</span><span class="st"> </span>C <span class="op">*</span><span class="st"> </span>sigma<span class="op">^</span><span class="dv">2</span>) <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>rho) <span class="op">-</span><span class="st"> </span>d</span>
+<span id="cb22-9"><a href="a-tibble-4-x-2.html#cb22-9"></a><span class="kw">plot_eigenvalues</span>(M, prediction)</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/allesinatangex1-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>Similarly, a negative correlation (e.g., as in predator-prey) would make the system easier to stabilize:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="a-tibble-4-x-2.html#cb23-1"></a><span class="co"># parameters</span></span>
+<span id="cb23-2"><a href="a-tibble-4-x-2.html#cb23-2"></a>n &lt;-<span class="st"> </span><span class="dv">500</span></span>
+<span id="cb23-3"><a href="a-tibble-4-x-2.html#cb23-3"></a>C &lt;-<span class="st"> </span><span class="fl">0.5</span></span>
+<span id="cb23-4"><a href="a-tibble-4-x-2.html#cb23-4"></a>d &lt;-<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb23-5"><a href="a-tibble-4-x-2.html#cb23-5"></a>sigma &lt;-<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb23-6"><a href="a-tibble-4-x-2.html#cb23-6"></a>rho &lt;-<span class="st"> </span><span class="fl">-0.4</span></span>
+<span id="cb23-7"><a href="a-tibble-4-x-2.html#cb23-7"></a>M &lt;-<span class="st"> </span><span class="kw">build_Allesina_Tang_normal</span>(n, C, d, sigma, rho)</span>
+<span id="cb23-8"><a href="a-tibble-4-x-2.html#cb23-8"></a>prediction &lt;-<span class="st"> </span><span class="kw">sqrt</span>(n <span class="op">*</span><span class="st"> </span>C <span class="op">*</span><span class="st"> </span>sigma<span class="op">^</span><span class="dv">2</span>) <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>rho) <span class="op">-</span><span class="st"> </span>d</span>
+<span id="cb23-9"><a href="a-tibble-4-x-2.html#cb23-9"></a><span class="kw">plot_eigenvalues</span>(M, prediction)</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/allesinatangex2-1.png" width="480" style="display: block; margin: auto;" /></p>
+</div>
+<div id="further-readings" class="section level2">
+<h2><span class="header-section-number">6.2</span> Further readings</h2>
+<p>On the theory of GLV:</p>
+<ul>
+<li><p><span class="citation">Strogatz (<a href="#ref-strogatz2018nonlinear" role="doc-biblioref">2018</a>)</span> is a simple introduction to dynamical systems and bifurcation theory.</p></li>
+<li><p><span class="citation">Hofbauer and Sigmund (<a href="#ref-hofbauer1998evolutionary" role="doc-biblioref">1998</a>)</span> is a wonderful introduction to dynamical systems in ecology and population genetics, with a nice introduction to evolutionary game theory.</p></li>
+<li><p><span class="citation">Hadeler, Mackey, and Stevens (<a href="#ref-hadeler2017topics" role="doc-biblioref">2017</a>)</span> contains a more mathematically-oriented treatment of the material covered in the first part of this lecture.</p></li>
+<li><p><span class="citation">Baigent (<a href="#ref-baigent2016lotka" role="doc-biblioref">2016</a>)</span> is a mathematical introduction to Lotka-Volterra dynamics.</p></li>
+</ul>
+<p>On random matrices and stability:</p>
+<ul>
+<li><span class="citation">Allesina and Tang (<a href="#ref-allesina2015stability" role="doc-biblioref">2015</a>)</span> is an opinionated review on applications of random matrices in ecology.</li>
+</ul>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-allesina2012stability">
+<p>Allesina, Stefano, and Si Tang. 2012. “Stability Criteria for Complex Ecosystems.” <em>Nature</em> 483 (7388): 205.</p>
+</div>
+<div id="ref-allesina2015stability">
+<p>Allesina, Stefano, and Si Tang. 2015. “The Stability–Complexity Relationship at Age 40: A Random Matrix Perspective.” <em>Population Ecology</em> 57 (1): 63–75.</p>
+</div>
+<div id="ref-baigent2016lotka">
+<p>Baigent, Stephen A. 2016. “Lotka-Volterra Dynamics: An Introduction.” In. World Scientific.</p>
+</div>
+<div id="ref-hadeler2017topics">
+<p>Hadeler, Karl Peter, Michael C Mackey, and Angela Stevens. 2017. <em>Topics in Mathematical Biology</em>. Springer.</p>
+</div>
+<div id="ref-hofbauer1998evolutionary">
+<p>Hofbauer, Josef, and Karl Sigmund. 1998. <em>Evolutionary Games and Population Dynamics</em>. Cambridge University Press.</p>
+</div>
+<div id="ref-may1972will">
+<p>May, Robert M. 1972. “Will a Large Complex System Be Stable?” <em>Nature</em> 238 (5364): 413–14.</p>
+</div>
+<div id="ref-strogatz2018nonlinear">
+<p>Strogatz, Steven H. 2018. <em>Nonlinear Dynamics and Chaos: With Applications to Physics, Biology, Chemistry, and Engineering</em>. CRC Press.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="a-tibble-3-x-2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ecological-assembly.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Theoretical_Community_Ecology.pdf", "Theoretical_Community_Ecology.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
