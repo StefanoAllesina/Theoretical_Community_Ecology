@@ -14,3 +14,6 @@ knitr::opts_chunk$set(
 
 my_theme <- theme_bw() + theme(legend.position = "bottom")
 my_colors_7 <- c('#005a74', '#2b7689', '#4a949d', '#a7a88b', '#e4abd8', '#b45fbb', '#6c2b81')
+
+mylarrow <- arrow(length = unit(0.1, "inches"), ends = "first", type = "closed")
+myrarrow <- arrow(length = unit(0.1, "inches"), ends = "last", type = "closed")

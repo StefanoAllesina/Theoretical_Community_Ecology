@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Ecological assembly | Theoretical Community Ecology</title>
+  <title>Chapter 9 Random bits and pieces | Theoretical Community Ecology</title>
   <meta name="description" content="A graduate course in theoretical ecology focusing on systems with multiple species." />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Ecological assembly | Theoretical Community Ecology" />
+  <meta property="og:title" content="Chapter 9 Random bits and pieces | Theoretical Community Ecology" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Ecological assembly | Theoretical Community Ecology" />
+  <meta name="twitter:title" content="Chapter 9 Random bits and pieces | Theoretical Community Ecology" />
   
   <meta name="twitter:description" content="A graduate course in theoretical ecology focusing on systems with multiple species." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="generalized-lotka-volterra-models.html"/>
-<link rel="next" href="game-theory-and-replicator-dynamics.html"/>
+<link rel="prev" href="references.html"/>
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -132,17 +132,138 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="ecological-assembly" class="section level1">
-<h1><span class="header-section-number">Chapter 5</span> Ecological assembly</h1>
+<div id="random-bits-and-pieces" class="section level1">
+<h1><span class="header-section-number">Chapter 9</span> Random bits and pieces</h1>
+<div id="stability-of-larger-matrices" class="section level2">
+<h2><span class="header-section-number">9.1</span> Stability of larger matrices</h2>
+<p>There are a number of techniques that can be used to prove the stability of larger systems.</p>
+<div id="descartes-rule-of-signs" class="section level3">
+<h3><span class="header-section-number">9.1.1</span> Descartes’ rule of signs</h3>
+<p>For a single-variable polynomial with real coefficients are ordered by descending variable exponent, then the number of positive roots of the polynomial is either equal to the number of sign differences between consecutive nonzero coefficients, or is less than it by an even number. Multiple roots of the same value are counted separately. As such, if a polynomial has all coefficients of the same sign, it has no positive roots.</p>
+<p>By considering <span class="math inline">\(p(-\lambda)\)</span> we can find the maximum number of negative roots. For example, for the Lotka-Volterra predator-prey model, we have</p>
+<p><span class="math display">\[
+M = \begin{pmatrix}
+0 &amp; -\dfrac{ad}{b}\\
+\dfrac{bg}{d} &amp; 0
+\end{pmatrix}
+\]</span>
+The characteristic polynomial is</p>
+<p><span class="math display">\[
+p(\lambda) = \lambda^2 + \dfrac{g}{d}
+\]</span></p>
+<p>Meaning that the number of positve roots is zero. Taking <span class="math inline">\(p(-\lambda) = (-\lambda)^2 + \dfrac{g}{d}\)</span> which again has only positive coefficients, meaning that the number of negative roots is also zero. As such, the eigenvalues are purely imaginary (center), <span class="math inline">\(\lambda = \pm i \sqrt{g / d}\)</span>.</p>
+</div>
+<div id="routh-hurwitz-criterion" class="section level3">
+<h3><span class="header-section-number">9.1.2</span> Routh-Hurwitz criterion</h3>
+<p>You can use the coefficients of the polynomial to determine stability. The polynomial</p>
+<p><span class="math display">\[
+p(\lambda) = \lambda^2 + a_1 \lambda + a_0
+\]</span></p>
+<p>has all roots in the left half-plane (stable equilibrium) if <span class="math inline">\(a_0 &gt; 0\)</span> and <span class="math inline">\(a_1 &gt; 0\)</span>. Note that, in this case <span class="math inline">\(a_0 = \det(A)\)</span> and <span class="math inline">\(a_1 = -\text{tr}(A)\)</span>.</p>
+<p>Similarly, the polynomial</p>
+<p><span class="math display">\[
+p(\lambda) = \lambda^3 + a_2 \lambda^2 + a_1 \lambda + a_0
+\]</span></p>
+<p>has roots in the left half-plane if <span class="math inline">\(a_2 &gt; 0\)</span>, <span class="math inline">\(a_0 &gt; 0\)</span>, and <span class="math inline">\(a_2 a_1 &gt; a_0\)</span>.</p>
+<p>These conditions can be extended to larger matrices, but they become increasingly involved.</p>
+</div>
+<div id="bounding-eigenvalues-using-the-symmetric-part" class="section level3">
+<h3><span class="header-section-number">9.1.3</span> Bounding eigenvalues using the symmetric part</h3>
+<p>Call <span class="math inline">\(\lambda_1 (A)\)</span> the eigenvalue of <span class="math inline">\(A\)</span> with the largest real part (i.e., the “rightmost” eigenvalue). Then</p>
+<p><span class="math display">\[
+\Re (\lambda_1 (A)) \leq \lambda_1 ((A + A^T ) / 2)
+\]</span></p>
+<p>if <span class="math inline">\(\lambda_1 ((A + A^T ) / 2) &lt; 0\)</span>, then <span class="math inline">\(A\)</span> is stable, and any matrix <span class="math inline">\(DA\)</span> with <span class="math inline">\(D\)</span> diagonal and positive is stable (<span class="math inline">\(D-\)</span>stability).</p>
+</div>
+</div>
+<div id="exercise" class="section level2">
+<h2><span class="header-section-number">9.2</span> Exercise</h2>
+<p>To make sure you can work with stability, consider the following model that Carlos and I are studying. We consider a simple variation on the LV predator-prey system, in which predators are divided into two classes, linked by reproduction (e.g., males and females), and each class has a different mortality rate:</p>
+<p><span class="math display">\[
+ \begin{cases}
+    \dfrac{d x(t)}{d t} = x(t) \left(r - a \left(y^{(1)}(t) +
+    y^{(2)}(t) \right) )\right)\\ \dfrac{d y^{(1)}(t)}{d t} =
+    -d^{(1)}y^{(1)}(t) + \dfrac{e a x(t)}{2}\left(y^{(1)}(t) +
+    y^{(2)}(t) \right) \\ \dfrac{d y^{(2)}(t)}{d t} =
+    -d^{(2)}y^{(2)}(t) + \dfrac{e a x(t)}{2}\left(y^{(1)}(t) +
+    y^{(2)}(t) \right)
+  \end{cases}\quad. 
+\]</span></p>
+<p>where we take <span class="math inline">\(d^{(1)} = d (1 + \epsilon)\)</span> and <span class="math inline">\(d^{(2)} = d (1 - \epsilon)\)</span>, with <span class="math inline">\(|\epsilon| &lt; 1\)</span> to ensure that predators cannot grow by themselves. Each class of predators has its own mortality, but the reproduction term is pooled and divided equally.</p>
+<p>The analysis of the model is simplified by considering the variables <span class="math inline">\(y(t) = y^{(1)}(t) + y^{(2)}(t)\)</span> (i.e., the total density for the predator), and <span class="math inline">\(z(t) = y^{(2)}(t) - y^{(1)}(t)\)</span> (i.e., the difference between the densities of the predator classes), yielding:</p>
+<p><span class="math display">\[
+  \begin{cases}
+    \dfrac{d x(t)}{d t} = x(t) \left(r - a y(t))\right)\\
+    \dfrac{d y(t)}{d t} = y(t) \left( -d + e a x(t) \right) + d
+    \epsilon z(t)\\
+    \dfrac{d z(t)}{d t} = -d z(t) + d \epsilon y(t)
+  \end{cases}\quad. 
+\]</span></p>
+<p>Find the two equilibria of the system, and perform the stability analysis.</p>
+<p>We describe our methods in this chapter.</p>
 
+<div id="refs" class="references">
+<div>
+<p>Dai, Lei, Daan Vorselen, Kirill S Korolev, and Jeff Gore. 2012. “Generic Indicators for Loss of Resilience Before a Tipping Point Leading to Population Collapse.” <em>Science</em> 336 (6085): 1175–7.</p>
+</div>
+<div>
+<p>Dambacher, Jeffrey M, Hang-Kwang Luh, Hiram W Li, and Philippe A Rossignol. 2003. “Qualitative Stability and Ambiguity in Model Ecosystems.” <em>The American Naturalist</em> 161 (6): 876–88.</p>
+</div>
+<div>
+<p>Ellner, Stephen P, and John Guckenheimer. 2011. <em>Dynamic Models in Biology</em>. Princeton University Press.</p>
+</div>
+<div>
+<p>Hadeler, Karl Peter, Michael C Mackey, and Angela Stevens. 2017. <em>Topics in Mathematical Biology</em>. Springer.</p>
+</div>
+<div>
+<p>Hirsch, Morris W, Stephen Smale, and Robert L Devaney. 2012. <em>Differential Equations, Dynamical Systems, and an Introduction to Chaos</em>. Academic press.</p>
+</div>
+<div>
+<p>Hofbauer, Josef, and Karl Sigmund. 1998. <em>Evolutionary Games and Population Dynamics</em>. Cambridge University Press.</p>
+</div>
+<div>
+<p>Lotka, Alfred J. 1920. “Analytical Note on Certain Rhythmic Relations in Organic Systems.” <em>Proceedings of the National Academy of Sciences</em> 6 (7): 410–15.</p>
+</div>
+<div>
+<p>———. 1926. “The Frequency Distribution of Scientific Productivity.” <em>Journal of the Washington Academy of Sciences</em> 16 (12): 317–23.</p>
+</div>
+<div>
+<p>———. 2002. “Contribution to the Theory of Periodic Reactions.” <em>The Journal of Physical Chemistry</em> 14 (3): 271–74.</p>
+</div>
+<div>
+<p>May, Robert M. 1973. “Qualitative Stability in Model Ecosystems.” <em>Ecology</em> 54 (3): 638–41.</p>
+</div>
+<div>
+<p>———. 1976. “Simple Mathematical Models with Very Complicated Dynamics.” <em>Nature</em> 261 (5560): 459–67.</p>
+</div>
+<div>
+<p>Scheffer, Marten, Jordi Bascompte, William A Brock, Victor Brovkin, Stephen R Carpenter, Vasilis Dakos, Hermann Held, Egbert H Van Nes, Max Rietkerk, and George Sugihara. 2009. “Early-Warning Signals for Critical Transitions.” <em>Nature</em> 461 (7260): 53–59.</p>
+</div>
+<div>
+<p>Seydel, Rüdiger. 2009. <em>Practical Bifurcation and Stability Analysis</em>. Vol. 5. Springer Science &amp; Business Media.</p>
+</div>
+<div>
+<p>Strogatz, Steven H. 2018. <em>Nonlinear Dynamics and Chaos: With Applications to Physics, Biology, Chemistry, and Engineering</em>. CRC Press.</p>
+</div>
+<div>
+<p>Szederkenyi, Gabor, Attila Magyar, and Katalin M Hangos. 2018. <em>Analysis and Control of Polynomial Dynamic Models with Biological Applications</em>. Academic Press.</p>
+</div>
+<div>
+<p>Volterra, Vito. 1926a. “Fluctuations in the Abundance of a Species Considered Mathematically.” <em>Nature</em> 118: 558–60.</p>
+</div>
+<div>
+<p>———. 1926b. “Variazioni E Fluttuazioni Del Numero d’individui in Specie Animali Conviventi.” <em>Memor. Accad. Lincei.</em> 6: 31–113.</p>
+</div>
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="generalized-lotka-volterra-models.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="game-theory-and-replicator-dynamics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="references.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

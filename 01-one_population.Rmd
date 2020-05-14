@@ -184,9 +184,6 @@ $$
 the graph becomes:
 
 ```{r, echo = FALSE}
-library(tidyverse)
-mylarrow <- arrow(length = unit(0.1, "inches"), ends = "first", type = "closed")
-myrarrow <- arrow(length = unit(0.1, "inches"), ends = "last", type = "closed")
 r <- 0.5 # only makes sense if positive
 x <- seq(0, 10, length.out = 100)
 dxdt <- r * x

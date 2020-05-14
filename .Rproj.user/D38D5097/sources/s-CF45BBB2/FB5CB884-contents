@@ -6,9 +6,11 @@ source("common_settings.R")
 
 **Lesson plan**:
 
-1. 
-1. 
-1. 
+1. We discuss the concepts introduced in the previous chapter in the context of two-dimensional ("planar") systems of differential equation.
+1. We summarize important concepts from linear algebra: eigenvalues and eigenvectors, the matrix exponential.
+1. We show how these concepts can be used to solve linear systems of differential equations.
+1. We introduce the "community matrix", allowing us to determine the local asymptotic stability of equilibria. 
+1. We analyze in detail the classic Lotka-Volterra predator-prey model, and a version of the model in which the prey grows logistically.
 
 ## Qualitative analysis of models for two populations
 
@@ -301,7 +303,7 @@ $$
 Av = \begin{pmatrix}
 2\\
 2 
-\end{pmatrix}
+\end{pmatrix} = 2\, v
 $$
 
 and as such $v$ is an eigenvector of $M$, with associated eigenvalue $\lambda = 2$.
@@ -311,7 +313,7 @@ and as such $v$ is an eigenvector of $M$, with associated eigenvalue $\lambda = 
 The eigenvalues of a matrix $M$ are the roots (zeros) of the chacteristic polynomial:
 
 $$
-p(\lambda) = \text{Det}(\lambda I - M) = 0
+p(\lambda) = \det(\lambda I - M) = 0
 $$
 
 Where does this equation come from? We write:
@@ -330,7 +332,7 @@ For a $2 \times 2$ matrix, we have:
 
 $$
 \begin{aligned}
-\text{Det} \begin{pmatrix}
+\det \begin{pmatrix}
 \lambda - a_{11} & -a_{12}\\
 -a_{21} & \lambda -a_{22}
 \end{pmatrix} &= (\lambda - a_{11}) (\lambda - a_{22}) - a_{12} a_{21}\\
@@ -341,13 +343,13 @@ $$
 More compactly,
 
 $$
-p(\lambda) = \lambda^2 - \lambda \text{Tr(A)} + \text{Det}(A)
+p(\lambda) = \lambda^2 - \lambda\, \text{tr}(A) + \det(A)
 $$
 
-where $\text{Tr}(M) = \sum_i M_{ii} = \sum_i \lambda_i$, and $\text{Det(M)} = \prod_i \lambda_i$. We therefore find:
+where $\text{tr}(M) = \sum_i M_{ii} = \sum_i \lambda_i$, and $\det(M) = \prod_i \lambda_i$. We therefore find:
 
 $$
-\lambda = \frac{\text{Tr}(M) \pm \sqrt{(\text{Tr}(M))^2 - 4 \text{Det}(M)}}{2}
+\lambda = \frac{\text{tr}(M) \pm \sqrt{(\text{tr}(M))^2 - 4 \det(M)}}{2}
 $$
 Find the eigenvalues for the matrix $A$ above:
 
@@ -377,13 +379,39 @@ where $V$ is the matrix of eigenvectors, and $\Lambda$ a diagonal matrix with th
 
 If the matrix $A$ contains only real numbers (as always the case in population models), then the eigenvalues of $A$ are either real, or form pairs of complex conjugate eigenvalues of form $\alpha \pm i\, \beta$. This means for example that all odd-sized real matrices have at least one real eigenvalue. If $A$ is real and symmetric, all eigenvalues are real, and all eigenvectors are orthogonal. A diagonal matrix $A$ has eigenvalues $\lambda_i = A_{ii}$
 
-If $A$ has eigenvalues $\lambda$, $B = \beta\, A$ has eigenvalues $\beta\, \lambda$, and $C = A + \gamma\, I$ has eigenvalues $\lambda + \gamma$. The eigenvalues of $A^2 = A \times A$ are $\lambda^2$, and the eigenvalues of $A^{-1}$ are $\lambda^{-1}$. The eigenvalues of $A^t$ are the same as those of $A$ (but the eigenvectors are not the same in general). $A + A^T$ (this matrix is symmetric) has only real eigenvalues, and $A - A^T$ (this matrix is skew-symmetric) has purely imaginary eigenvalues.
+If $A$ has eigenvalues $\lambda$, $B = \beta\, A$ has eigenvalues $\beta\, \lambda$, and $C = A + \gamma\, I$ has eigenvalues $\lambda + \gamma$. The eigenvalues of $A^2 = A \times A$ are $\lambda^2$, and the eigenvalues of $A^{-1}$ are $\lambda^{-1}$. The eigenvalues of $A^T$ are the same as those of $A$ (but the eigenvectors are not the same in general). $A + A^T$ (this matrix is symmetric) has only real eigenvalues, and $A - A^T$ (this matrix is skew-symmetric) has purely imaginary eigenvalues.
 
 A matrix is positive definite if all its eigenvalues are real and positive. It is positive semi-definite if eigenvalues can be zero. The matrices $AA^T$ and $A^T A$ are positive semi-definite, and have the same eigenvalues up to some zeros (used in PCA). Correlation and covariance matrices have these forms.
 
 A matrix with all positive entries has a unique largest real eigenvalue with a corresponding eigenvector that can be chosen to have strictly positive components (Perron-Frobenius). A matrix with constant row sums $\theta$ has $\theta$ as the largest eigenvalue, and $v = 1$ as the corresponding eigenvector (e.g., Markov Chains).
 
 :::
+
+:::boxhomework
+
+**Homework**
+
+Show that a matrix $A$ with sign-pattern:
+
+$$
+S(A) = \begin{pmatrix}
+- & +\\
+- & 0
+\end{pmatrix}
+$$
+
+has eigenvalues with negative real part. When a matrix is stable due to its sign-pattern (rather than specific values of the coefficients), it is called *qualitatively stable*.
+
+:::
+
+:::boxpaper
+
+**Key paper: @may1973qualitative**
+
+The idea of "sign-stability" was first introduced in economics. May borrowed the idea to analyze simple food webs. Analysis of ecological models based on sign (rather than magnitude) of coefficients was further developed by Richard Levins and collaborators. A good modern summary, along with a few new results, are provided by @dambacher2003qualitative.
+
+:::
+
 
 We can now analyze systems of linear ODEs.
 
@@ -579,9 +607,9 @@ Volterra graciously conceded *"I recognize his priority, and am sorry not to hav
 
 :::
 
-### Constant of motion
+### Constant of motion for Lotka-Volterra Predator-Prey 
 
-Volterra wrote 
+Volterra wrote:
 
 $$
 \dfrac{d x(t)}{d y(t)} = \dfrac{\rho\, x(t) - \alpha\, x(t)\, y(t)}{-\delta\, y(t)  + \beta\, x(t)\, y(t)}
@@ -608,7 +636,7 @@ $$
 where $C$ is a constant of integration. Rearranging, and substituting $x^\star = \delta / \beta$ and $y^\star =  \rho / \alpha$, we obtain:
 
 $$
-\beta (x - x^\star \log x) + \rho (y - y^\star \log y) = C
+\beta (x - x^\star \log x) + \alpha (y - y^\star \log y) = C
 $$
 
 This means that the system has a constant of motion (a.k.a. "first integral"): the value of $C$ depends on the initial conditions, and then the system will cycle around the equilibrium in closed orbits.
@@ -616,14 +644,18 @@ This means that the system has a constant of motion (a.k.a. "first integral"): t
 Note that this quantity works as a Lyapunov function: 
 
 $$
-V(x,y) = \beta (x - x^\star \log x) + \rho (y - y^\star \log y)
+V(x,y) = \beta (x - x^\star \log x) + \alpha (y - y^\star \log y)
 $$
 
 $$
-\dfrac{d V(x,y)}{dt} = 
+\dfrac{d V(x,y)}{dt} = \left(\beta - \dfrac{\delta}{x} \right) \dfrac{dx}{dt}+\left(\alpha - \dfrac{\rho}{y} \right) \dfrac{dy}{dt} = 0
 $$
 
-Consider the system 
+As such, the dynamics are such that $V(x,y)$ remains constant.
+
+### Analysis of Predator-Prey model with logistic growth for the prey
+
+In the classic Lotka-Volterra model, the local stability analysis of the coexistence equilibrium is inconclusive. When however the prey grows logistically it is easy to show that the equilibrium is now stable. For example, consider the system 
 
 $$
 \begin{cases}
@@ -632,11 +664,9 @@ $$
 \end{cases}
 $$
 
-Finding the equilibria. From the first equation, we have $x = 0$, or $y = 1 - x/2$; from the second equation, we have $y = 0$ or $x = 1$. Combining them, we find that either $(x^\star, y^\star) = (0, 0)$ (trival), $(x^\star, y^\star) = (2, 0)$ (boundary), or $(x^\star, y^\star) = (1, 1/2)$ (coexistence). 
+First, we find the equilibria. From the first equation, we have $x^\star = 0$, or $y^\star = 1 - x^\star /2$; from the second equation, we have $y^\star = 0$ or $x^\star = 1$. Combining them, we find that either $(x^\star, y^\star) = (0, 0)$ (trival), $(x^\star, y^\star) = (2, 0)$ (boundary), or $(x^\star, y^\star) = (1, 1/2)$ (coexistence). 
 
-The isoclines of zero growth are $y = 1 - x/2$ for the prey, and $x = 1$ for the predator.
-
-The Jacobian for the system is
+The isoclines of zero growth are $y = 1 - x/2$ for the prey, and $x = 1$ for the predator. The Jacobian for the system is
 
 $$
 J = \begin{pmatrix}
@@ -668,7 +698,7 @@ $$
 
 And as such small perturbations will oscillate back to equilibrium. Numerically:
 
-```{r}
+```{r, echo = FALSE}
 library(deSolve)
 library(tidyverse)
 glv <- function(t, x, parameters){
@@ -693,93 +723,39 @@ pl <- ggplot(out %>% arrange(time),
   geom_point() + geom_path() + 
   xlab("x(t)") + ylab("y(t)") + 
   geom_abline(slope = -1/2, intercept = 1, colour = "darkgreen") + 
-  geom_vline(xintercept = 1, colour = "darkred")
+  geom_vline(xintercept = 1, colour = "darkred") + my_theme + scale_x_continuous(expression(x(t))) + 
+  scale_y_continuous(expression(y(t)))
 show(pl)
 ```
 
+#### Global stability
 
-## Stability of larger matrices
-
-There are a number of techniques that can be used to prove the stability of larger systems. 
-
-### Descartes' rule of signs
-
-For a single-variable polynomial with real coefficients are ordered by descending variable exponent, then the number of positive roots of the polynomial is either equal to the number of sign differences between consecutive nonzero coefficients, or is less than it by an even number. Multiple roots of the same value are counted separately. As such, if a polynomial has all coefficients of the same sign, it has no positive roots. 
-
-By considering $p(-\lambda)$ we can find the maximum number of negative roots. For example, for the Lotka-Volterra predator-prey model, we have 
+We can write a Lyapunov function for the system above. Take:
 
 $$
-M = \begin{pmatrix}
-0 & -\dfrac{ad}{b}\\
-\dfrac{bg}{d} & 0
-\end{pmatrix}
-$$
-The characteristic polynomial is 
-
-$$
-p(\lambda) = \lambda^2 + \dfrac{g}{d}
+V(x,y) = \left(x - x^\star - x^\star \log \dfrac{x}{x^\star} \right) + 
+\left(y - y^\star - y^\star \log \dfrac{y}{y^\star} \right) = (x - 1 - \log x) + \left(y - \dfrac{1}{2} - \dfrac{1}{2} \log 2y \right)
 $$
 
-Meaning that the number of positve roots is zero. Taking $p(-\lambda) =  (-\lambda)^2 + \dfrac{g}{d}$ which again has only positive coefficients, meaning that the number of negative roots is also zero. As such, the eigenvalues are purely imaginary (center), $\lambda = \pm i \sqrt{g / d}$.
-
-### Routh-Hurwitz criterion
-
-You can use the coefficients of the polynomial to determine stability. The polynomial 
+Derive with respect to time to obtain:
 
 $$
-p(\lambda) = \lambda^2 + a_1 \lambda + a_0
+\dfrac{d V(x,y)}{dt} = -\dfrac{1}{2}(1-x)^2 < 0
 $$
 
-has all roots in the left half-plane (stable equilibrium) if $a_0 > 0$ and $a_1 > 0$. Note that, in this case $a_0 = \text{Det}(A)$ and $a_1 = -\text{Tr}(A)$.
+As such, the equilibrium $(x^\star, y^\star) = (1, 1/2)$ is globally stable. 
 
-Similarly, the polynomial
+:::boxhomework
 
-$$
-p(\lambda) = \lambda^3 + a_2 \lambda^2 + a_1 \lambda + a_0
-$$
+**Homework**
 
-has roots in the left half-plane if $a_2 > 0$, $a_0 > 0$, and $a_2 a_1 > a_0$.
-
-These conditions can be extended to larger matrices, but they become increasingly involved.
-
-### Bounding eigenvalues using the symmetric part
-
-Call $\lambda_1 (A)$ the eigenvalue of $A$ with the largest real part (i.e., the "rightmost" eigenvalue). Then 
+Take the competitive Lotka-Volterra model:
 
 $$
-\Re (\lambda_1 (A)) \leq \lambda_1 ((A + A^t ) / 2)
+\dfrac{dx}{dt} = D(x) (r - Ax)
 $$
 
-if $\lambda_1 ((A + A^t ) / 2) < 0$, then $A$ is stable, and any matrix $DA$ with $D$ diagonal and positive is stable ($D-$stability).
+with the coefficients of $r = (r_1, r_2)^T$ and $A$ all positive. Discuss the existence of a coexistence equilibrium and its stability. Write a Lyapunov function for the case in which $A_{11} = A_{22} > A_{12} = A_{21}$.
 
-## Exercise
+:::
 
-To make sure you can work with stability, consider the following model that Carlos and I are studying. We consider a simple variation on the LV predator-prey system, in which predators are divided into two classes, linked by reproduction (e.g., males and females), and each class has a different mortality rate:
-
-$$
- \begin{cases}
-    \dfrac{d x(t)}{d t} = x(t) \left(r - a \left(y^{(1)}(t) +
-    y^{(2)}(t) \right) )\right)\\ \dfrac{d y^{(1)}(t)}{d t} =
-    -d^{(1)}y^{(1)}(t) + \dfrac{e a x(t)}{2}\left(y^{(1)}(t) +
-    y^{(2)}(t) \right) \\ \dfrac{d y^{(2)}(t)}{d t} =
-    -d^{(2)}y^{(2)}(t) + \dfrac{e a x(t)}{2}\left(y^{(1)}(t) +
-    y^{(2)}(t) \right)
-  \end{cases}\quad. 
-$$
-
-where we take $d^{(1)} = d (1 + \epsilon)$ and $d^{(2)} = d (1 - \epsilon)$, with $|\epsilon| < 1$ to ensure that predators cannot grow by themselves. Each class of predators has its own mortality, but the reproduction term is pooled and divided equally.
-
-The analysis of the model is simplified by considering the variables $y(t) = y^{(1)}(t) + y^{(2)}(t)$ (i.e., the total density for the predator), and $z(t) = y^{(2)}(t) - y^{(1)}(t)$ (i.e., the difference between the densities of the predator classes), yielding:
-
-$$
-  \begin{cases}
-    \dfrac{d x(t)}{d t} = x(t) \left(r - a y(t))\right)\\
-    \dfrac{d y(t)}{d t} = y(t) \left( -d + e a x(t) \right) + d
-    \epsilon z(t)\\
-    \dfrac{d z(t)}{d t} = -d z(t) + d \epsilon y(t)
-  \end{cases}\quad. 
-$$
-
-Find the two equilibria of the system, and perform the stability analysis.
-
-We describe our methods in this chapter.

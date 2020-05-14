@@ -1,1 +1,2 @@
-This is a minimal example of a book based on R Markdown and **bookdown** (https://github.com/rstudio/bookdown). Please see the page "Get Started" at https://bookdown.org/home/about/ for how to compile this example.
+Lecture notes for a course in Theoretical Community Ecology, with a focus on multi-species dynamical models. 
+See https://stefanoallesina.github.io/Theoretical_Community_Ecology/ for the website.

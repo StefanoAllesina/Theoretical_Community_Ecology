@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "972563778",
+    "hash" : "0",
     "id" : "FB5CB884",
-    "lastKnownWriteTime" : 1589413718,
-    "last_content_update" : 1589413718152,
+    "lastKnownWriteTime" : 1589486288,
+    "last_content_update" : 1589486288332,
     "path" : "~/GH/Theoretical_Community_Ecology/02-two_populations.Rmd",
     "project_path" : "02-two_populations.Rmd",
     "properties" : {
-        "cursorPosition" : "622,23",
-        "scrollLine" : "610"
+        "cursorPosition" : "757,220",
+        "scrollLine" : "731"
     },
     "read_only" : false,
     "read_only_alternatives" : [

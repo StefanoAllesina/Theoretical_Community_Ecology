@@ -24,7 +24,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2020-05-13" />
+<meta name="date" content="2020-05-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="predicting-coexistence-in-ecological-communities.html"/>
-
+<link rel="next" href="random-bits-and-pieces.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -52,70 +52,6 @@
 
 
 
-<style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -158,14 +94,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#local-stability-analysis"><i class="fa fa-check"></i><b>3.2</b> Local stability analysis</a></li>
 <li class="chapter" data-level="3.3" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#stability-analysis-of-the-lotka-volterra-predator-prey-model"><i class="fa fa-check"></i><b>3.3</b> Stability analysis of the Lotka-Volterra Predator-Prey model</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#constant-of-motion"><i class="fa fa-check"></i><b>3.3.1</b> Constant of motion</a></li>
+<li class="chapter" data-level="3.3.1" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#constant-of-motion-for-lotka-volterra-predator-prey"><i class="fa fa-check"></i><b>3.3.1</b> Constant of motion for Lotka-Volterra Predator-Prey</a></li>
+<li class="chapter" data-level="3.3.2" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#analysis-of-predator-prey-model-with-logistic-growth-for-the-prey"><i class="fa fa-check"></i><b>3.3.2</b> Analysis of Predator-Prey model with logistic growth for the prey</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#stability-of-larger-matrices"><i class="fa fa-check"></i><b>3.4</b> Stability of larger matrices</a><ul>
-<li class="chapter" data-level="3.4.1" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#descartes-rule-of-signs"><i class="fa fa-check"></i><b>3.4.1</b> Descartes’ rule of signs</a></li>
-<li class="chapter" data-level="3.4.2" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#routh-hurwitz-criterion"><i class="fa fa-check"></i><b>3.4.2</b> Routh-Hurwitz criterion</a></li>
-<li class="chapter" data-level="3.4.3" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#bounding-eigenvalues-using-the-symmetric-part"><i class="fa fa-check"></i><b>3.4.3</b> Bounding eigenvalues using the symmetric part</a></li>
-</ul></li>
-<li class="chapter" data-level="3.5" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#exercise"><i class="fa fa-check"></i><b>3.5</b> Exercise</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="generalized-lotka-volterra-models.html"><a href="generalized-lotka-volterra-models.html"><i class="fa fa-check"></i><b>4</b> Generalized Lotka-Volterra models</a></li>
 <li class="chapter" data-level="5" data-path="ecological-assembly.html"><a href="ecological-assembly.html"><i class="fa fa-check"></i><b>5</b> Ecological assembly</a></li>
@@ -173,6 +104,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html"><i class="fa fa-check"></i><b>7</b> Quasi-polynomial systems</a></li>
 <li class="chapter" data-level="8" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html"><i class="fa fa-check"></i><b>8</b> Predicting coexistence in ecological communities</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="9" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html"><i class="fa fa-check"></i><b>9</b> Random bits and pieces</a><ul>
+<li class="chapter" data-level="9.1" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#stability-of-larger-matrices"><i class="fa fa-check"></i><b>9.1</b> Stability of larger matrices</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#descartes-rule-of-signs"><i class="fa fa-check"></i><b>9.1.1</b> Descartes’ rule of signs</a></li>
+<li class="chapter" data-level="9.1.2" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#routh-hurwitz-criterion"><i class="fa fa-check"></i><b>9.1.2</b> Routh-Hurwitz criterion</a></li>
+<li class="chapter" data-level="9.1.3" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#bounding-eigenvalues-using-the-symmetric-part"><i class="fa fa-check"></i><b>9.1.3</b> Bounding eigenvalues using the symmetric part</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#exercise"><i class="fa fa-check"></i><b>9.2</b> Exercise</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -196,61 +135,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="references" class="section level1 unnumbered">
 <h1>References</h1>
 
-<div id="refs" class="references">
-<div>
-<p>Dai, Lei, Daan Vorselen, Kirill S Korolev, and Jeff Gore. 2012. “Generic Indicators for Loss of Resilience Before a Tipping Point Leading to Population Collapse.” <em>Science</em> 336 (6085): 1175–7.</p>
-</div>
-<div>
-<p>Ellner, Stephen P, and John Guckenheimer. 2011. <em>Dynamic Models in Biology</em>. Princeton University Press.</p>
-</div>
-<div>
-<p>Hadeler, Karl Peter, Michael C Mackey, and Angela Stevens. 2017. <em>Topics in Mathematical Biology</em>. Springer.</p>
-</div>
-<div>
-<p>Hirsch, Morris W, Stephen Smale, and Robert L Devaney. 2012. <em>Differential Equations, Dynamical Systems, and an Introduction to Chaos</em>. Academic press.</p>
-</div>
-<div>
-<p>Hofbauer, Josef, and Karl Sigmund. 1998. <em>Evolutionary Games and Population Dynamics</em>. Cambridge University Press.</p>
-</div>
-<div>
-<p>Lotka, Alfred J. 1920. “Analytical Note on Certain Rhythmic Relations in Organic Systems.” <em>Proceedings of the National Academy of Sciences</em> 6 (7): 410–15.</p>
-</div>
-<div>
-<p>———. 1926. “The Frequency Distribution of Scientific Productivity.” <em>Journal of the Washington Academy of Sciences</em> 16 (12): 317–23.</p>
-</div>
-<div>
-<p>———. 2002. “Contribution to the Theory of Periodic Reactions.” <em>The Journal of Physical Chemistry</em> 14 (3): 271–74.</p>
-</div>
-<div>
-<p>May, Robert M. 1976. “Simple Mathematical Models with Very Complicated Dynamics.” <em>Nature</em> 261 (5560): 459–67.</p>
-</div>
-<div>
-<p>Scheffer, Marten, Jordi Bascompte, William A Brock, Victor Brovkin, Stephen R Carpenter, Vasilis Dakos, Hermann Held, Egbert H Van Nes, Max Rietkerk, and George Sugihara. 2009. “Early-Warning Signals for Critical Transitions.” <em>Nature</em> 461 (7260): 53–59.</p>
-</div>
-<div>
-<p>Seydel, Rüdiger. 2009. <em>Practical Bifurcation and Stability Analysis</em>. Vol. 5. Springer Science &amp; Business Media.</p>
-</div>
-<div>
-<p>Strogatz, Steven H. 2018. <em>Nonlinear Dynamics and Chaos: With Applications to Physics, Biology, Chemistry, and Engineering</em>. CRC Press.</p>
-</div>
-<div>
-<p>Szederkenyi, Gabor, Attila Magyar, and Katalin M Hangos. 2018. <em>Analysis and Control of Polynomial Dynamic Models with Biological Applications</em>. Academic Press.</p>
-</div>
-<div>
-<p>Volterra, Vito. 1926a. “Fluctuations in the Abundance of a Species Considered Mathematically.” <em>Nature</em> 118: 558–60.</p>
-</div>
-<div>
-<p>———. 1926b. “Variazioni E Fluttuazioni Del Numero d’individui in Specie Animali Conviventi.” <em>Memor. Accad. Lincei.</em> 6: 31–113.</p>
-</div>
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="predicting-coexistence-in-ecological-communities.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="predicting-coexistence-in-ecological-communities.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="random-bits-and-pieces.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
