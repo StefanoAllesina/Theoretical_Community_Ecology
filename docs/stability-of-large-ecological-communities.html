@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 A tibble: 4 x 2 | Theoretical Community Ecology</title>
+  <title>Chapter 5 Stability of large ecological communities | Theoretical Community Ecology</title>
   <meta name="description" content="A graduate course in theoretical ecology focusing on systems with multiple species." />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 A tibble: 4 x 2 | Theoretical Community Ecology" />
+  <meta property="og:title" content="Chapter 5 Stability of large ecological communities | Theoretical Community Ecology" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 A tibble: 4 x 2 | Theoretical Community Ecology" />
+  <meta name="twitter:title" content="Chapter 5 Stability of large ecological communities | Theoretical Community Ecology" />
   
   <meta name="twitter:description" content="A graduate course in theoretical ecology focusing on systems with multiple species." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2020-05-14" />
+<meta name="date" content="2020-06-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -172,12 +172,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2.2" data-path="generalized-lotka-volterra-models.html"><a href="generalized-lotka-volterra-models.html#stability-of-the-coexistence-equilibrium"><i class="fa fa-check"></i><b>4.2.2</b> Stability of the coexistence equilibrium</a></li>
 <li class="chapter" data-level="4.2.3" data-path="generalized-lotka-volterra-models.html"><a href="generalized-lotka-volterra-models.html#types-of-dynamics"><i class="fa fa-check"></i><b>4.2.3</b> Types of dynamics</a></li>
 <li class="chapter" data-level="4.2.4" data-path="generalized-lotka-volterra-models.html"><a href="generalized-lotka-volterra-models.html#the-equilibrium-is-the-time-average"><i class="fa fa-check"></i><b>4.2.4</b> The equilibrium is the time-average</a></li>
+<li class="chapter" data-level="4.2.5" data-path="generalized-lotka-volterra-models.html"><a href="generalized-lotka-volterra-models.html#lyapunov-diagonal-stability-and-global-stability"><i class="fa fa-check"></i><b>4.2.5</b> Lyapunov diagonal stability and global stability</a></li>
 </ul></li>
+<li class="chapter" data-level="4.3" data-path="generalized-lotka-volterra-models.html"><a href="generalized-lotka-volterra-models.html#further-readings"><i class="fa fa-check"></i><b>4.3</b> Further readings</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="a-tibble-4-x-2.html"><a href="a-tibble-4-x-2.html"><i class="fa fa-check"></i><b>5</b> A tibble: 4 x 2</a><ul>
-<li class="chapter" data-level="5.0.1" data-path="a-tibble-4-x-2.html"><a href="a-tibble-4-x-2.html#lyapunov-diagonal-stability-and-global-stability"><i class="fa fa-check"></i><b>5.0.1</b> Lyapunov diagonal stability and global stability</a></li>
-<li class="chapter" data-level="5.1" data-path="a-tibble-4-x-2.html"><a href="a-tibble-4-x-2.html#stability-of-large-random-communities"><i class="fa fa-check"></i><b>5.1</b> Stability of large random communities</a></li>
-<li class="chapter" data-level="5.2" data-path="a-tibble-4-x-2.html"><a href="a-tibble-4-x-2.html#further-readings"><i class="fa fa-check"></i><b>5.2</b> Further readings</a></li>
+<li class="chapter" data-level="5" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html"><i class="fa fa-check"></i><b>5</b> Stability of large ecological communities</a><ul>
+<li class="chapter" data-level="5.1" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#further-readings-1"><i class="fa fa-check"></i><b>5.1</b> Further readings</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="ecological-assembly.html"><a href="ecological-assembly.html"><i class="fa fa-check"></i><b>6</b> Ecological assembly</a></li>
 <li class="chapter" data-level="7" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html"><i class="fa fa-check"></i><b>7</b> Game theory and replicator dynamics</a></li>
@@ -212,93 +212,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="a-tibble-4-x-2" class="section level1">
-<h1><span class="header-section-number">Chapter 5</span> A tibble: 4 x 2</h1>
-<p>species average
-<chr> <dbl>
-1 sp_1 0.303
-2 sp_2 0.463
-3 sp_3 0.126
-4 sp_4 0.354</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="a-tibble-4-x-2.html#cb2-1"></a><span class="co"># compare with equilibrium</span></span>
-<span id="cb2-2"><a href="a-tibble-4-x-2.html#cb2-2"></a><span class="kw">solve</span>(A_<span class="dv">4</span>, <span class="op">-</span>r_<span class="dv">4</span>)</span></code></pre></div>
-<p>[1] 0.3013030 0.4586546 0.1307655 0.3557416</p>
-<div id="lyapunov-diagonal-stability-and-global-stability" class="section level3">
-<h3><span class="header-section-number">5.0.1</span> Lyapunov diagonal stability and global stability</h3>
-<p>Suppose that there is a positive diagonal matrix <span class="math inline">\(C\)</span> such that <span class="math inline">\(C A + A^t C\)</span> is negative definite (i.e., has only negative eigenvalues; the eigenvalues are real because the matrix is symmetric). Then <span class="math inline">\(A\)</span> is <strong>Lyapunov-diagonally stable</strong>. If this is the case, then <span class="math inline">\(A\)</span> is stable, and any <span class="math inline">\(D A\)</span> with <span class="math inline">\(D\)</span> positive is also stable (called <span class="math inline">\(D-\)</span>stability).</p>
-<p>Further, suppose that the GLV system with parameters <span class="math inline">\(A\)</span> and <span class="math inline">\(r\)</span> has a feasible equilibrium point <span class="math inline">\(x^\star\)</span>. Then the function:</p>
-<p><span class="math display">\[
-V(x(t)) = 1^t C \left( x(t) -D(x^\star) \log x(t)\right)
-\]</span>
-is a Lyapunov function for the GLV system.</p>
-<p>To prove this point, we start from <span class="math inline">\(r = -Ax^\star\)</span>. Substituting, we can write the GLV system as <span class="math inline">\(dx(t)/dt = D(x)A(x - x^\star)\)</span>; similarly, we can write <span class="math inline">\(d \log x(t)/dt = A(x - x^\star)\)</span>. Taking the derivative of <span class="math inline">\(V\)</span> with respect to time:</p>
-<p><span class="math display">\[
-\begin{aligned}
- \frac{d V(x(t))}{dt} &amp;= 1^t C \left(\frac{d x(t)}{dt}  + D(x^*) \frac{d \log x(t)}{dt} \right)\\
- &amp;= 1^t C \left(A (x - x^\star)  + D(x^*) A (x - x^\star) \right)\\
- &amp;= 1^t C \left(D(x - x^\star)  A (x - x^\star) \right)\\
- &amp;= 1^t \left(D(x - x^\star)  C A (x - x^\star) \right)\\
- &amp;= (x - x^\star)^t  CA (x - x^\star)\\
- &amp;= \frac{1}{2}(x - x^\star)^t  (CA + A^t C) (x - x^\star)\\
-\end{aligned}
-\]</span></p>
-<p>A matrix <span class="math inline">\(B\)</span> is negative definite if <span class="math inline">\(y^t B y &lt; 0\)</span> for all <span class="math inline">\(y \neq 0\)</span>. As such <span class="math inline">\(\frac{d V(x(t))}{dt} \leq 0\)</span>, i.e., will decrease in time (starting from any <span class="math inline">\(x(0)\)</span>) until the equilibrium <span class="math inline">\(x^\star\)</span> is reached.</p>
-<p>The results above show that <strong>if <span class="math inline">\(A\)</span> is Lyapunov diagonally-stable and a feasible equilibrium <span class="math inline">\(x^\star\)</span> exists, than all trajectories starting at a positive density will converge to the equilibrium</strong>. This property is often used to prove <strong>global stability</strong>.</p>
-<p>A simple numerical example with two species:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="a-tibble-4-x-2.html#cb3-1"></a>r &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>)</span>
-<span id="cb3-2"><a href="a-tibble-4-x-2.html#cb3-2"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">3</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">-1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">-1</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb3-3"><a href="a-tibble-4-x-2.html#cb3-3"></a><span class="co"># the eigenvalues of A + A^t are -1 and -3, hence A is Lyapunov Diagonally-stable</span></span>
-<span id="cb3-4"><a href="a-tibble-4-x-2.html#cb3-4"></a><span class="kw">eigen</span>(A <span class="op">+</span><span class="st"> </span><span class="kw">t</span>(A))<span class="op">$</span>values</span></code></pre></div>
-<p>[1] -1 -3</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="a-tibble-4-x-2.html#cb4-1"></a><span class="co"># now integrate from random initial condition---this should always </span></span>
-<span id="cb4-2"><a href="a-tibble-4-x-2.html#cb4-2"></a><span class="co"># converge to the equilibrium</span></span>
-<span id="cb4-3"><a href="a-tibble-4-x-2.html#cb4-3"></a><span class="kw">solve</span>(A, <span class="op">-</span>r)</span></code></pre></div>
-<p>[1] 0.2857143 1.4285714</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="a-tibble-4-x-2.html#cb5-1"></a>res &lt;-<span class="st"> </span><span class="kw">integrate_GLV</span>(r, A, <span class="kw">abs</span>(<span class="kw">rnorm</span>(<span class="dv">2</span>)))</span></code></pre></div>
-<p><img src="Theoretical_Community_Ecology_files/figure-html/globalst2-1.png" width="480" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="a-tibble-4-x-2.html#cb6-1"></a>res &lt;-<span class="st"> </span><span class="kw">integrate_GLV</span>(r, A, <span class="kw">abs</span>(<span class="kw">rnorm</span>(<span class="dv">2</span>)))</span></code></pre></div>
-<p><img src="Theoretical_Community_Ecology_files/figure-html/globalst2-2.png" width="480" style="display: block; margin: auto;" /></p>
-</div>
-<div id="stability-of-large-random-communities" class="section level2">
-<h2><span class="header-section-number">5.1</span> Stability of large random communities</h2>
-<p>As we have seen above, an equilibrium <span class="math inline">\(x^\star\)</span> is stable if the community matrix for the equilibrium has all eigenvalues with negative real part. In general, to determine the equilibrium and its stability, we would need to specify all the growth rates (<span class="math inline">\(r\)</span>, <span class="math inline">\(n\)</span> values), as well as the matrix of interactions (<span class="math inline">\(A\)</span>, <span class="math inline">\(n^2\)</span> values). This is impractical to do for large systems (though we will try this out later). But can something quite general be said about the limit in which many species are in the community?</p>
+<div id="stability-of-large-ecological-communities" class="section level1">
+<h1><span class="header-section-number">Chapter 5</span> Stability of large ecological communities</h1>
+<p>As we have seen before, an equilibrium <span class="math inline">\(x^\star\)</span> is stable if the community matrix for the equilibrium has all eigenvalues with negative real part. In general, to determine the equilibrium and its stability, we would need to specify all the growth rates (<span class="math inline">\(r\)</span>, <span class="math inline">\(n\)</span> values), as well as the matrix of interactions (<span class="math inline">\(A\)</span>, <span class="math inline">\(n^2\)</span> values). This is impractical to do for large systems (though we will try this out later). But can something quite general be said about the limit in which many species are in the community?</p>
 <p><span class="citation">May (<a href="#ref-may1972will" role="doc-biblioref">1972</a>)</span> attempted to answer this question by considering a <strong>random community matrix</strong>. In a GLV system, the diagonal elements <span class="math inline">\(m_{ii} = a_{ii} x_i^\star\)</span> are influenced by self-regulation (i.e., as in a carrying capacity), while the off-diagonal elements <span class="math inline">\(m_{ij} = a_{ij} x_i^\star\)</span> model the effect of species <span class="math inline">\(j\)</span> on the equilibrium of species <span class="math inline">\(i\)</span>. May considered the following algorithm to build a random community matrix. Take a large community, resting at an unspecified, feasible equilibrium; we build the community matrix by setting:</p>
 <ul>
 <li><span class="math inline">\(m_{ij} = 0\)</span> with probability <span class="math inline">\((1-C)\)</span>; with probability <span class="math inline">\(C\)</span> we draw <span class="math inline">\(m_{ij}\)</span> from a distribution with mean zero and variance <span class="math inline">\(\sigma^2\)</span>. <span class="math inline">\(C\)</span> is the proportion of realized connections, termed the “connectance” of the system.</li>
 <li>the diagonal elements are set to <span class="math inline">\(-d\)</span>, modeling self-regulation.</li>
 </ul>
 <p>For example, the code uses a normal distribution:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="a-tibble-4-x-2.html#cb7-1"></a>build_May_normal &lt;-<span class="st"> </span><span class="cf">function</span>(n, C, d, sigma){</span>
-<span id="cb7-2"><a href="a-tibble-4-x-2.html#cb7-2"></a>  <span class="co"># fill the whole matrix</span></span>
-<span id="cb7-3"><a href="a-tibble-4-x-2.html#cb7-3"></a>  M &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(n <span class="op">*</span><span class="st"> </span>n, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> sigma), n, n)</span>
-<span id="cb7-4"><a href="a-tibble-4-x-2.html#cb7-4"></a>  <span class="co"># remove connections </span></span>
-<span id="cb7-5"><a href="a-tibble-4-x-2.html#cb7-5"></a>  M &lt;-<span class="st"> </span>M <span class="op">*</span><span class="st"> </span><span class="kw">matrix</span>(<span class="kw">runif</span>(n <span class="op">*</span><span class="st"> </span>n) <span class="op">&lt;=</span><span class="st"> </span>C, n, n)</span>
-<span id="cb7-6"><a href="a-tibble-4-x-2.html#cb7-6"></a>  <span class="co"># set diagonals</span></span>
-<span id="cb7-7"><a href="a-tibble-4-x-2.html#cb7-7"></a>  <span class="kw">diag</span>(M) &lt;-<span class="st"> </span><span class="op">-</span>d</span>
-<span id="cb7-8"><a href="a-tibble-4-x-2.html#cb7-8"></a>  <span class="kw">return</span>(M)</span>
-<span id="cb7-9"><a href="a-tibble-4-x-2.html#cb7-9"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="stability-of-large-ecological-communities.html#cb1-1"></a>build_May_normal &lt;-<span class="st"> </span><span class="cf">function</span>(n, C, d, sigma){</span>
+<span id="cb1-2"><a href="stability-of-large-ecological-communities.html#cb1-2"></a>  <span class="co"># fill the whole matrix</span></span>
+<span id="cb1-3"><a href="stability-of-large-ecological-communities.html#cb1-3"></a>  M &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(n <span class="op">*</span><span class="st"> </span>n, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> sigma), n, n)</span>
+<span id="cb1-4"><a href="stability-of-large-ecological-communities.html#cb1-4"></a>  <span class="co"># remove connections </span></span>
+<span id="cb1-5"><a href="stability-of-large-ecological-communities.html#cb1-5"></a>  M &lt;-<span class="st"> </span>M <span class="op">*</span><span class="st"> </span><span class="kw">matrix</span>(<span class="kw">runif</span>(n <span class="op">*</span><span class="st"> </span>n) <span class="op">&lt;=</span><span class="st"> </span>C, n, n)</span>
+<span id="cb1-6"><a href="stability-of-large-ecological-communities.html#cb1-6"></a>  <span class="co"># set diagonals</span></span>
+<span id="cb1-7"><a href="stability-of-large-ecological-communities.html#cb1-7"></a>  <span class="kw">diag</span>(M) &lt;-<span class="st"> </span><span class="op">-</span>d</span>
+<span id="cb1-8"><a href="stability-of-large-ecological-communities.html#cb1-8"></a>  <span class="kw">return</span>(M)</span>
+<span id="cb1-9"><a href="stability-of-large-ecological-communities.html#cb1-9"></a>}</span></code></pre></div>
 <p>Note that the average of the eigenvalues of a matrix <span class="math inline">\(A\)</span> is given by the average of its diagonal elements <span class="math inline">\(\frac{1}{n}\sum_i \lambda_i = \frac{1}{n} \text{Tr}(A) = \frac{1}{n} \sum_i A_{ii}\)</span>. As such, if <span class="math inline">\(A = dI + B\)</span>, the eigenvalues of <span class="math inline">\(A\)</span> will be those of <span class="math inline">\(B\)</span> shifted by <span class="math inline">\(d\)</span>.</p>
 <p>We want to determine whether the equilibrium will be stable, given <span class="math inline">\(n\)</span>, <span class="math inline">\(C\)</span>, <span class="math inline">\(d\)</span> and <span class="math inline">\(\sigma^2\)</span>. To do so, we need to find the location of the “rightmost” eigenvalue of <span class="math inline">\(M\)</span>. For example, let’s plot the eigenvalues of a large matrix:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="a-tibble-4-x-2.html#cb8-1"></a>plot_eigenvalues &lt;-<span class="st"> </span><span class="cf">function</span>(M, <span class="dt">prediction =</span> <span class="ot">NULL</span>){</span>
-<span id="cb8-2"><a href="a-tibble-4-x-2.html#cb8-2"></a>  eig &lt;-<span class="st"> </span><span class="kw">eigen</span>(M, <span class="dt">only.values =</span> <span class="ot">TRUE</span>)<span class="op">$</span>values</span>
-<span id="cb8-3"><a href="a-tibble-4-x-2.html#cb8-3"></a>  dt &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">Real =</span> <span class="kw">Re</span>(eig), <span class="dt">Imaginary =</span> <span class="kw">Im</span>(eig))</span>
-<span id="cb8-4"><a href="a-tibble-4-x-2.html#cb8-4"></a>  pl &lt;-<span class="st"> </span><span class="kw">ggplot</span>(dt) <span class="op">+</span><span class="st"> </span><span class="kw">aes</span>(<span class="dt">x =</span> Real, <span class="dt">y =</span> Imaginary) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb8-5"><a href="a-tibble-4-x-2.html#cb8-5"></a><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></span>
-<span id="cb8-6"><a href="a-tibble-4-x-2.html#cb8-6"></a><span class="st">    </span><span class="kw">coord_equal</span>() <span class="op">+</span><span class="st"> </span></span>
-<span id="cb8-7"><a href="a-tibble-4-x-2.html#cb8-7"></a><span class="st">    </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="dv">0</span>, <span class="dt">colour =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">linetype =</span> <span class="dv">2</span>)</span>
-<span id="cb8-8"><a href="a-tibble-4-x-2.html#cb8-8"></a>  <span class="cf">if</span> (<span class="kw">is.null</span>(prediction) <span class="op">==</span><span class="st"> </span><span class="ot">FALSE</span>) {</span>
-<span id="cb8-9"><a href="a-tibble-4-x-2.html#cb8-9"></a>    pl &lt;-<span class="st"> </span>pl <span class="op">+</span><span class="st"> </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> prediction, <span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">linetype =</span> <span class="dv">2</span>)</span>
-<span id="cb8-10"><a href="a-tibble-4-x-2.html#cb8-10"></a>  }</span>
-<span id="cb8-11"><a href="a-tibble-4-x-2.html#cb8-11"></a>  <span class="kw">show</span>(pl)</span>
-<span id="cb8-12"><a href="a-tibble-4-x-2.html#cb8-12"></a>}</span>
-<span id="cb8-13"><a href="a-tibble-4-x-2.html#cb8-13"></a><span class="kw">set.seed</span>(<span class="dv">100</span>) <span class="co"># for reproducibility</span></span>
-<span id="cb8-14"><a href="a-tibble-4-x-2.html#cb8-14"></a><span class="co"># parameters</span></span>
-<span id="cb8-15"><a href="a-tibble-4-x-2.html#cb8-15"></a>n &lt;-<span class="st"> </span><span class="dv">500</span></span>
-<span id="cb8-16"><a href="a-tibble-4-x-2.html#cb8-16"></a>C &lt;-<span class="st"> </span><span class="fl">0.5</span></span>
-<span id="cb8-17"><a href="a-tibble-4-x-2.html#cb8-17"></a>d &lt;-<span class="st"> </span><span class="dv">10</span></span>
-<span id="cb8-18"><a href="a-tibble-4-x-2.html#cb8-18"></a>sigma &lt;-<span class="st"> </span><span class="dv">1</span></span>
-<span id="cb8-19"><a href="a-tibble-4-x-2.html#cb8-19"></a>M &lt;-<span class="st"> </span><span class="kw">build_May_normal</span>(n, C, d, sigma)</span>
-<span id="cb8-20"><a href="a-tibble-4-x-2.html#cb8-20"></a><span class="kw">plot_eigenvalues</span>(M)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="stability-of-large-ecological-communities.html#cb2-1"></a>plot_eigenvalues &lt;-<span class="st"> </span><span class="cf">function</span>(M, <span class="dt">prediction =</span> <span class="ot">NULL</span>){</span>
+<span id="cb2-2"><a href="stability-of-large-ecological-communities.html#cb2-2"></a>  eig &lt;-<span class="st"> </span><span class="kw">eigen</span>(M, <span class="dt">only.values =</span> <span class="ot">TRUE</span>)<span class="op">$</span>values</span>
+<span id="cb2-3"><a href="stability-of-large-ecological-communities.html#cb2-3"></a>  dt &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">Real =</span> <span class="kw">Re</span>(eig), <span class="dt">Imaginary =</span> <span class="kw">Im</span>(eig))</span>
+<span id="cb2-4"><a href="stability-of-large-ecological-communities.html#cb2-4"></a>  pl &lt;-<span class="st"> </span><span class="kw">ggplot</span>(dt) <span class="op">+</span><span class="st"> </span><span class="kw">aes</span>(<span class="dt">x =</span> Real, <span class="dt">y =</span> Imaginary) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb2-5"><a href="stability-of-large-ecological-communities.html#cb2-5"></a><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb2-6"><a href="stability-of-large-ecological-communities.html#cb2-6"></a><span class="st">    </span><span class="kw">coord_equal</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb2-7"><a href="stability-of-large-ecological-communities.html#cb2-7"></a><span class="st">    </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="dv">0</span>, <span class="dt">colour =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">linetype =</span> <span class="dv">2</span>)</span>
+<span id="cb2-8"><a href="stability-of-large-ecological-communities.html#cb2-8"></a>  <span class="cf">if</span> (<span class="kw">is.null</span>(prediction) <span class="op">==</span><span class="st"> </span><span class="ot">FALSE</span>) {</span>
+<span id="cb2-9"><a href="stability-of-large-ecological-communities.html#cb2-9"></a>    pl &lt;-<span class="st"> </span>pl <span class="op">+</span><span class="st"> </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> prediction, <span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">linetype =</span> <span class="dv">2</span>)</span>
+<span id="cb2-10"><a href="stability-of-large-ecological-communities.html#cb2-10"></a>  }</span>
+<span id="cb2-11"><a href="stability-of-large-ecological-communities.html#cb2-11"></a>  <span class="kw">show</span>(pl)</span>
+<span id="cb2-12"><a href="stability-of-large-ecological-communities.html#cb2-12"></a>}</span>
+<span id="cb2-13"><a href="stability-of-large-ecological-communities.html#cb2-13"></a><span class="kw">set.seed</span>(<span class="dv">100</span>) <span class="co"># for reproducibility</span></span>
+<span id="cb2-14"><a href="stability-of-large-ecological-communities.html#cb2-14"></a><span class="co"># parameters</span></span>
+<span id="cb2-15"><a href="stability-of-large-ecological-communities.html#cb2-15"></a>n &lt;-<span class="st"> </span><span class="dv">500</span></span>
+<span id="cb2-16"><a href="stability-of-large-ecological-communities.html#cb2-16"></a>C &lt;-<span class="st"> </span><span class="fl">0.5</span></span>
+<span id="cb2-17"><a href="stability-of-large-ecological-communities.html#cb2-17"></a>d &lt;-<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb2-18"><a href="stability-of-large-ecological-communities.html#cb2-18"></a>sigma &lt;-<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb2-19"><a href="stability-of-large-ecological-communities.html#cb2-19"></a>M &lt;-<span class="st"> </span><span class="kw">build_May_normal</span>(n, C, d, sigma)</span>
+<span id="cb2-20"><a href="stability-of-large-ecological-communities.html#cb2-20"></a><span class="kw">plot_eigenvalues</span>(M)</span></code></pre></div>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/exmay-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>The eigenvalues fall into an almost perfect circle! Turns out, that this is the behavior we should expect, as stated by the so-called “Circular Law”, one of the most beautiful results in random matrix theory.</p>
 <p><strong>Circular law:</strong> Take a non-symmetric, <span class="math inline">\(S \times S\)</span> random matrix in which all coefficients <span class="math inline">\(X_{ij}\)</span> are i.i.d. random variables with <span class="math inline">\(\mathbb E[X_{ij}] = 0\)</span> and <span class="math inline">\(\mathbb E[X_{ij}] = 1\)</span>. Then, as <span class="math inline">\(S \to \infty\)</span>, the e.s.d. of <span class="math inline">\({X} / \sqrt{S}\)</span> converges to the circular law:</p>
@@ -314,28 +267,28 @@ is a Lyapunov function for the GLV system.</p>
 \sqrt{S C \sigma^2} &lt; d
 \]</span></p>
 <p>We can try this on our matrix:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="a-tibble-4-x-2.html#cb9-1"></a>prediction &lt;-<span class="st"> </span><span class="kw">sqrt</span>(n <span class="op">*</span><span class="st"> </span>C <span class="op">*</span><span class="st"> </span>sigma<span class="op">^</span><span class="dv">2</span>) <span class="op">-</span><span class="st"> </span>d</span>
-<span id="cb9-2"><a href="a-tibble-4-x-2.html#cb9-2"></a><span class="kw">plot_eigenvalues</span>(M, prediction)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="stability-of-large-ecological-communities.html#cb3-1"></a>prediction &lt;-<span class="st"> </span><span class="kw">sqrt</span>(n <span class="op">*</span><span class="st"> </span>C <span class="op">*</span><span class="st"> </span>sigma<span class="op">^</span><span class="dv">2</span>) <span class="op">-</span><span class="st"> </span>d</span>
+<span id="cb3-2"><a href="stability-of-large-ecological-communities.html#cb3-2"></a><span class="kw">plot_eigenvalues</span>(M, prediction)</span></code></pre></div>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/maycrit-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>Showing that we accurately approximate the location of the rightmost eigenvalue. Note that, in the case of large <span class="math inline">\(n\)</span>, whenever the circle crosses zero, some eigenvalues will be positive, determining the instability of the equilibrium.</p>
 <p>Importantly, the distribution from which the coefficients are sampled does not matter—only that the mean is zero and that the variance is <span class="math inline">\(\sigma^2\)</span>. For example, build the matrix using coefficients from a uniform distribution:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="a-tibble-4-x-2.html#cb10-1"></a>build_May_uniform &lt;-<span class="st"> </span><span class="cf">function</span>(n, C, d, sigma){</span>
-<span id="cb10-2"><a href="a-tibble-4-x-2.html#cb10-2"></a>  <span class="co"># fill the whole matrix (sqrt(3) to ensure var = sigma^2)</span></span>
-<span id="cb10-3"><a href="a-tibble-4-x-2.html#cb10-3"></a>  M &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">runif</span>(n <span class="op">*</span><span class="st"> </span>n, <span class="dt">min =</span> <span class="op">-</span><span class="kw">sqrt</span>(<span class="dv">3</span>) <span class="op">*</span><span class="st"> </span>sigma, <span class="dt">max =</span> <span class="kw">sqrt</span>(<span class="dv">3</span>) <span class="op">*</span><span class="st"> </span>sigma), n, n)</span>
-<span id="cb10-4"><a href="a-tibble-4-x-2.html#cb10-4"></a>  <span class="co"># remove connections </span></span>
-<span id="cb10-5"><a href="a-tibble-4-x-2.html#cb10-5"></a>  M &lt;-<span class="st"> </span>M <span class="op">*</span><span class="st"> </span><span class="kw">matrix</span>(<span class="kw">runif</span>(n <span class="op">*</span><span class="st"> </span>n) <span class="op">&lt;=</span><span class="st"> </span>C, n, n)</span>
-<span id="cb10-6"><a href="a-tibble-4-x-2.html#cb10-6"></a>  <span class="co"># set diagonals</span></span>
-<span id="cb10-7"><a href="a-tibble-4-x-2.html#cb10-7"></a>  <span class="kw">diag</span>(M) &lt;-<span class="st"> </span><span class="op">-</span>d</span>
-<span id="cb10-8"><a href="a-tibble-4-x-2.html#cb10-8"></a>  <span class="kw">return</span>(M)</span>
-<span id="cb10-9"><a href="a-tibble-4-x-2.html#cb10-9"></a>}</span>
-<span id="cb10-10"><a href="a-tibble-4-x-2.html#cb10-10"></a><span class="co"># parameters</span></span>
-<span id="cb10-11"><a href="a-tibble-4-x-2.html#cb10-11"></a>n &lt;-<span class="st"> </span><span class="dv">500</span></span>
-<span id="cb10-12"><a href="a-tibble-4-x-2.html#cb10-12"></a>C &lt;-<span class="st"> </span><span class="fl">0.5</span></span>
-<span id="cb10-13"><a href="a-tibble-4-x-2.html#cb10-13"></a>d &lt;-<span class="st"> </span><span class="dv">10</span></span>
-<span id="cb10-14"><a href="a-tibble-4-x-2.html#cb10-14"></a>sigma &lt;-<span class="st"> </span><span class="dv">1</span></span>
-<span id="cb10-15"><a href="a-tibble-4-x-2.html#cb10-15"></a>M &lt;-<span class="st"> </span><span class="kw">build_May_uniform</span>(n, C, d, sigma)</span>
-<span id="cb10-16"><a href="a-tibble-4-x-2.html#cb10-16"></a>prediction &lt;-<span class="st"> </span><span class="kw">sqrt</span>(n <span class="op">*</span><span class="st"> </span>C <span class="op">*</span><span class="st"> </span>sigma<span class="op">^</span><span class="dv">2</span>) <span class="op">-</span><span class="st"> </span>d</span>
-<span id="cb10-17"><a href="a-tibble-4-x-2.html#cb10-17"></a><span class="kw">plot_eigenvalues</span>(M, prediction)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="stability-of-large-ecological-communities.html#cb4-1"></a>build_May_uniform &lt;-<span class="st"> </span><span class="cf">function</span>(n, C, d, sigma){</span>
+<span id="cb4-2"><a href="stability-of-large-ecological-communities.html#cb4-2"></a>  <span class="co"># fill the whole matrix (sqrt(3) to ensure var = sigma^2)</span></span>
+<span id="cb4-3"><a href="stability-of-large-ecological-communities.html#cb4-3"></a>  M &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">runif</span>(n <span class="op">*</span><span class="st"> </span>n, <span class="dt">min =</span> <span class="op">-</span><span class="kw">sqrt</span>(<span class="dv">3</span>) <span class="op">*</span><span class="st"> </span>sigma, <span class="dt">max =</span> <span class="kw">sqrt</span>(<span class="dv">3</span>) <span class="op">*</span><span class="st"> </span>sigma), n, n)</span>
+<span id="cb4-4"><a href="stability-of-large-ecological-communities.html#cb4-4"></a>  <span class="co"># remove connections </span></span>
+<span id="cb4-5"><a href="stability-of-large-ecological-communities.html#cb4-5"></a>  M &lt;-<span class="st"> </span>M <span class="op">*</span><span class="st"> </span><span class="kw">matrix</span>(<span class="kw">runif</span>(n <span class="op">*</span><span class="st"> </span>n) <span class="op">&lt;=</span><span class="st"> </span>C, n, n)</span>
+<span id="cb4-6"><a href="stability-of-large-ecological-communities.html#cb4-6"></a>  <span class="co"># set diagonals</span></span>
+<span id="cb4-7"><a href="stability-of-large-ecological-communities.html#cb4-7"></a>  <span class="kw">diag</span>(M) &lt;-<span class="st"> </span><span class="op">-</span>d</span>
+<span id="cb4-8"><a href="stability-of-large-ecological-communities.html#cb4-8"></a>  <span class="kw">return</span>(M)</span>
+<span id="cb4-9"><a href="stability-of-large-ecological-communities.html#cb4-9"></a>}</span>
+<span id="cb4-10"><a href="stability-of-large-ecological-communities.html#cb4-10"></a><span class="co"># parameters</span></span>
+<span id="cb4-11"><a href="stability-of-large-ecological-communities.html#cb4-11"></a>n &lt;-<span class="st"> </span><span class="dv">500</span></span>
+<span id="cb4-12"><a href="stability-of-large-ecological-communities.html#cb4-12"></a>C &lt;-<span class="st"> </span><span class="fl">0.5</span></span>
+<span id="cb4-13"><a href="stability-of-large-ecological-communities.html#cb4-13"></a>d &lt;-<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb4-14"><a href="stability-of-large-ecological-communities.html#cb4-14"></a>sigma &lt;-<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb4-15"><a href="stability-of-large-ecological-communities.html#cb4-15"></a>M &lt;-<span class="st"> </span><span class="kw">build_May_uniform</span>(n, C, d, sigma)</span>
+<span id="cb4-16"><a href="stability-of-large-ecological-communities.html#cb4-16"></a>prediction &lt;-<span class="st"> </span><span class="kw">sqrt</span>(n <span class="op">*</span><span class="st"> </span>C <span class="op">*</span><span class="st"> </span>sigma<span class="op">^</span><span class="dv">2</span>) <span class="op">-</span><span class="st"> </span>d</span>
+<span id="cb4-17"><a href="stability-of-large-ecological-communities.html#cb4-17"></a><span class="kw">plot_eigenvalues</span>(M, prediction)</span></code></pre></div>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/exmay2-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>This property is called <strong>universality</strong> in random matrix theory.</p>
 <p>In ecological communities, the effect of species <span class="math inline">\(i\)</span> on <span class="math inline">\(j\)</span> and that of <span class="math inline">\(j\)</span> on <span class="math inline">\(i\)</span> are typically not independent (as assumed above): in the case of competition between species, we expect them both to be negative; for consumption, if one is positive, the other is negative, and so forth. A more refined model of a random matrix would therefore sample interactions in pairs from a bivariate distribution. The elliptic law can deal with this case:</p>
@@ -352,57 +305,49 @@ is a Lyapunov function for the GLV system.</p>
 \sqrt{S C \sigma^2}(1 + \rho) &lt; d
 \]</span></p>
 <p>To see the elliptic law in action, we can build matrices in which we sample the coefficients in pairs from a bivariate normal distribution:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="a-tibble-4-x-2.html#cb11-1"></a>build_Allesina_Tang_normal &lt;-<span class="st"> </span><span class="cf">function</span>(n, C, d, sigma, rho){</span>
-<span id="cb11-2"><a href="a-tibble-4-x-2.html#cb11-2"></a>  <span class="co"># sample coefficients in pairs</span></span>
-<span id="cb11-3"><a href="a-tibble-4-x-2.html#cb11-3"></a>  pairs &lt;-<span class="st"> </span>MASS<span class="op">::</span><span class="kw">mvrnorm</span>(<span class="dt">n =</span> n <span class="op">*</span><span class="st"> </span>(n<span class="dv">-1</span>) <span class="op">/</span><span class="st"> </span><span class="dv">2</span>,</span>
-<span id="cb11-4"><a href="a-tibble-4-x-2.html#cb11-4"></a>                         <span class="dt">mu =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>),</span>
-<span id="cb11-5"><a href="a-tibble-4-x-2.html#cb11-5"></a>                         <span class="dt">Sigma =</span> sigma<span class="op">^</span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, rho, rho, <span class="dv">1</span>), <span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb11-6"><a href="a-tibble-4-x-2.html#cb11-6"></a>  <span class="co"># build a completely filled matrix</span></span>
-<span id="cb11-7"><a href="a-tibble-4-x-2.html#cb11-7"></a>  M &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, n, n)</span>
-<span id="cb11-8"><a href="a-tibble-4-x-2.html#cb11-8"></a>  M[<span class="kw">upper.tri</span>(M)] &lt;-<span class="st"> </span>pairs[,<span class="dv">1</span>]</span>
-<span id="cb11-9"><a href="a-tibble-4-x-2.html#cb11-9"></a>  M &lt;-<span class="st"> </span><span class="kw">t</span>(M)</span>
-<span id="cb11-10"><a href="a-tibble-4-x-2.html#cb11-10"></a>  M[<span class="kw">upper.tri</span>(M)] &lt;-<span class="st"> </span>pairs[,<span class="dv">2</span>]</span>
-<span id="cb11-11"><a href="a-tibble-4-x-2.html#cb11-11"></a>  <span class="co"># determine which connections to retain</span></span>
-<span id="cb11-12"><a href="a-tibble-4-x-2.html#cb11-12"></a>  Connections &lt;-<span class="st"> </span>(<span class="kw">matrix</span>(<span class="kw">runif</span>(n <span class="op">*</span><span class="st"> </span>n), n, n) <span class="op">&lt;=</span><span class="st"> </span>C) <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb11-13"><a href="a-tibble-4-x-2.html#cb11-13"></a>  Connections[<span class="kw">lower.tri</span>(Connections)] &lt;-<span class="st"> </span><span class="dv">0</span></span>
-<span id="cb11-14"><a href="a-tibble-4-x-2.html#cb11-14"></a>  <span class="kw">diag</span>(Connections) &lt;-<span class="st"> </span><span class="dv">0</span></span>
-<span id="cb11-15"><a href="a-tibble-4-x-2.html#cb11-15"></a>  Connections &lt;-<span class="st"> </span>Connections <span class="op">+</span><span class="st"> </span><span class="kw">t</span>(Connections)</span>
-<span id="cb11-16"><a href="a-tibble-4-x-2.html#cb11-16"></a>  M &lt;-<span class="st"> </span>M <span class="op">*</span><span class="st"> </span>Connections</span>
-<span id="cb11-17"><a href="a-tibble-4-x-2.html#cb11-17"></a>  <span class="kw">diag</span>(M) &lt;-<span class="st"> </span><span class="op">-</span>d</span>
-<span id="cb11-18"><a href="a-tibble-4-x-2.html#cb11-18"></a>  <span class="kw">return</span>(M)</span>
-<span id="cb11-19"><a href="a-tibble-4-x-2.html#cb11-19"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="stability-of-large-ecological-communities.html#cb5-1"></a>build_Allesina_Tang_normal &lt;-<span class="st"> </span><span class="cf">function</span>(n, C, d, sigma, rho){</span>
+<span id="cb5-2"><a href="stability-of-large-ecological-communities.html#cb5-2"></a>  <span class="co"># sample coefficients in pairs</span></span>
+<span id="cb5-3"><a href="stability-of-large-ecological-communities.html#cb5-3"></a>  pairs &lt;-<span class="st"> </span>MASS<span class="op">::</span><span class="kw">mvrnorm</span>(<span class="dt">n =</span> n <span class="op">*</span><span class="st"> </span>(n<span class="dv">-1</span>) <span class="op">/</span><span class="st"> </span><span class="dv">2</span>,</span>
+<span id="cb5-4"><a href="stability-of-large-ecological-communities.html#cb5-4"></a>                         <span class="dt">mu =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb5-5"><a href="stability-of-large-ecological-communities.html#cb5-5"></a>                         <span class="dt">Sigma =</span> sigma<span class="op">^</span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, rho, rho, <span class="dv">1</span>), <span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb5-6"><a href="stability-of-large-ecological-communities.html#cb5-6"></a>  <span class="co"># build a completely filled matrix</span></span>
+<span id="cb5-7"><a href="stability-of-large-ecological-communities.html#cb5-7"></a>  M &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, n, n)</span>
+<span id="cb5-8"><a href="stability-of-large-ecological-communities.html#cb5-8"></a>  M[<span class="kw">upper.tri</span>(M)] &lt;-<span class="st"> </span>pairs[,<span class="dv">1</span>]</span>
+<span id="cb5-9"><a href="stability-of-large-ecological-communities.html#cb5-9"></a>  M &lt;-<span class="st"> </span><span class="kw">t</span>(M)</span>
+<span id="cb5-10"><a href="stability-of-large-ecological-communities.html#cb5-10"></a>  M[<span class="kw">upper.tri</span>(M)] &lt;-<span class="st"> </span>pairs[,<span class="dv">2</span>]</span>
+<span id="cb5-11"><a href="stability-of-large-ecological-communities.html#cb5-11"></a>  <span class="co"># determine which connections to retain</span></span>
+<span id="cb5-12"><a href="stability-of-large-ecological-communities.html#cb5-12"></a>  Connections &lt;-<span class="st"> </span>(<span class="kw">matrix</span>(<span class="kw">runif</span>(n <span class="op">*</span><span class="st"> </span>n), n, n) <span class="op">&lt;=</span><span class="st"> </span>C) <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb5-13"><a href="stability-of-large-ecological-communities.html#cb5-13"></a>  Connections[<span class="kw">lower.tri</span>(Connections)] &lt;-<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb5-14"><a href="stability-of-large-ecological-communities.html#cb5-14"></a>  <span class="kw">diag</span>(Connections) &lt;-<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb5-15"><a href="stability-of-large-ecological-communities.html#cb5-15"></a>  Connections &lt;-<span class="st"> </span>Connections <span class="op">+</span><span class="st"> </span><span class="kw">t</span>(Connections)</span>
+<span id="cb5-16"><a href="stability-of-large-ecological-communities.html#cb5-16"></a>  M &lt;-<span class="st"> </span>M <span class="op">*</span><span class="st"> </span>Connections</span>
+<span id="cb5-17"><a href="stability-of-large-ecological-communities.html#cb5-17"></a>  <span class="kw">diag</span>(M) &lt;-<span class="st"> </span><span class="op">-</span>d</span>
+<span id="cb5-18"><a href="stability-of-large-ecological-communities.html#cb5-18"></a>  <span class="kw">return</span>(M)</span>
+<span id="cb5-19"><a href="stability-of-large-ecological-communities.html#cb5-19"></a>}</span></code></pre></div>
 <p>We can see that a positive connectance leads to an eigenvalue distribution that describes an horizontally-stretched ellipse (and hence, more difficult to stabilize than the circle):</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="a-tibble-4-x-2.html#cb12-1"></a><span class="co"># parameters</span></span>
-<span id="cb12-2"><a href="a-tibble-4-x-2.html#cb12-2"></a>n &lt;-<span class="st"> </span><span class="dv">500</span></span>
-<span id="cb12-3"><a href="a-tibble-4-x-2.html#cb12-3"></a>C &lt;-<span class="st"> </span><span class="fl">0.5</span></span>
-<span id="cb12-4"><a href="a-tibble-4-x-2.html#cb12-4"></a>d &lt;-<span class="st"> </span><span class="dv">10</span></span>
-<span id="cb12-5"><a href="a-tibble-4-x-2.html#cb12-5"></a>sigma &lt;-<span class="st"> </span><span class="dv">1</span></span>
-<span id="cb12-6"><a href="a-tibble-4-x-2.html#cb12-6"></a>rho &lt;-<span class="st"> </span><span class="fl">0.4</span></span>
-<span id="cb12-7"><a href="a-tibble-4-x-2.html#cb12-7"></a>M &lt;-<span class="st"> </span><span class="kw">build_Allesina_Tang_normal</span>(n, C, d, sigma, rho)</span>
-<span id="cb12-8"><a href="a-tibble-4-x-2.html#cb12-8"></a>prediction &lt;-<span class="st"> </span><span class="kw">sqrt</span>(n <span class="op">*</span><span class="st"> </span>C <span class="op">*</span><span class="st"> </span>sigma<span class="op">^</span><span class="dv">2</span>) <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>rho) <span class="op">-</span><span class="st"> </span>d</span>
-<span id="cb12-9"><a href="a-tibble-4-x-2.html#cb12-9"></a><span class="kw">plot_eigenvalues</span>(M, prediction)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="stability-of-large-ecological-communities.html#cb6-1"></a><span class="co"># parameters</span></span>
+<span id="cb6-2"><a href="stability-of-large-ecological-communities.html#cb6-2"></a>n &lt;-<span class="st"> </span><span class="dv">500</span></span>
+<span id="cb6-3"><a href="stability-of-large-ecological-communities.html#cb6-3"></a>C &lt;-<span class="st"> </span><span class="fl">0.5</span></span>
+<span id="cb6-4"><a href="stability-of-large-ecological-communities.html#cb6-4"></a>d &lt;-<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb6-5"><a href="stability-of-large-ecological-communities.html#cb6-5"></a>sigma &lt;-<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb6-6"><a href="stability-of-large-ecological-communities.html#cb6-6"></a>rho &lt;-<span class="st"> </span><span class="fl">0.4</span></span>
+<span id="cb6-7"><a href="stability-of-large-ecological-communities.html#cb6-7"></a>M &lt;-<span class="st"> </span><span class="kw">build_Allesina_Tang_normal</span>(n, C, d, sigma, rho)</span>
+<span id="cb6-8"><a href="stability-of-large-ecological-communities.html#cb6-8"></a>prediction &lt;-<span class="st"> </span><span class="kw">sqrt</span>(n <span class="op">*</span><span class="st"> </span>C <span class="op">*</span><span class="st"> </span>sigma<span class="op">^</span><span class="dv">2</span>) <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>rho) <span class="op">-</span><span class="st"> </span>d</span>
+<span id="cb6-9"><a href="stability-of-large-ecological-communities.html#cb6-9"></a><span class="kw">plot_eigenvalues</span>(M, prediction)</span></code></pre></div>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/allesinatangex1-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>Similarly, a negative correlation (e.g., as in predator-prey) would make the system easier to stabilize:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="a-tibble-4-x-2.html#cb13-1"></a><span class="co"># parameters</span></span>
-<span id="cb13-2"><a href="a-tibble-4-x-2.html#cb13-2"></a>n &lt;-<span class="st"> </span><span class="dv">500</span></span>
-<span id="cb13-3"><a href="a-tibble-4-x-2.html#cb13-3"></a>C &lt;-<span class="st"> </span><span class="fl">0.5</span></span>
-<span id="cb13-4"><a href="a-tibble-4-x-2.html#cb13-4"></a>d &lt;-<span class="st"> </span><span class="dv">10</span></span>
-<span id="cb13-5"><a href="a-tibble-4-x-2.html#cb13-5"></a>sigma &lt;-<span class="st"> </span><span class="dv">1</span></span>
-<span id="cb13-6"><a href="a-tibble-4-x-2.html#cb13-6"></a>rho &lt;-<span class="st"> </span><span class="fl">-0.4</span></span>
-<span id="cb13-7"><a href="a-tibble-4-x-2.html#cb13-7"></a>M &lt;-<span class="st"> </span><span class="kw">build_Allesina_Tang_normal</span>(n, C, d, sigma, rho)</span>
-<span id="cb13-8"><a href="a-tibble-4-x-2.html#cb13-8"></a>prediction &lt;-<span class="st"> </span><span class="kw">sqrt</span>(n <span class="op">*</span><span class="st"> </span>C <span class="op">*</span><span class="st"> </span>sigma<span class="op">^</span><span class="dv">2</span>) <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>rho) <span class="op">-</span><span class="st"> </span>d</span>
-<span id="cb13-9"><a href="a-tibble-4-x-2.html#cb13-9"></a><span class="kw">plot_eigenvalues</span>(M, prediction)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="stability-of-large-ecological-communities.html#cb7-1"></a><span class="co"># parameters</span></span>
+<span id="cb7-2"><a href="stability-of-large-ecological-communities.html#cb7-2"></a>n &lt;-<span class="st"> </span><span class="dv">500</span></span>
+<span id="cb7-3"><a href="stability-of-large-ecological-communities.html#cb7-3"></a>C &lt;-<span class="st"> </span><span class="fl">0.5</span></span>
+<span id="cb7-4"><a href="stability-of-large-ecological-communities.html#cb7-4"></a>d &lt;-<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb7-5"><a href="stability-of-large-ecological-communities.html#cb7-5"></a>sigma &lt;-<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb7-6"><a href="stability-of-large-ecological-communities.html#cb7-6"></a>rho &lt;-<span class="st"> </span><span class="fl">-0.4</span></span>
+<span id="cb7-7"><a href="stability-of-large-ecological-communities.html#cb7-7"></a>M &lt;-<span class="st"> </span><span class="kw">build_Allesina_Tang_normal</span>(n, C, d, sigma, rho)</span>
+<span id="cb7-8"><a href="stability-of-large-ecological-communities.html#cb7-8"></a>prediction &lt;-<span class="st"> </span><span class="kw">sqrt</span>(n <span class="op">*</span><span class="st"> </span>C <span class="op">*</span><span class="st"> </span>sigma<span class="op">^</span><span class="dv">2</span>) <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>rho) <span class="op">-</span><span class="st"> </span>d</span>
+<span id="cb7-9"><a href="stability-of-large-ecological-communities.html#cb7-9"></a><span class="kw">plot_eigenvalues</span>(M, prediction)</span></code></pre></div>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/allesinatangex2-1.png" width="480" style="display: block; margin: auto;" /></p>
-</div>
-<div id="further-readings" class="section level2">
-<h2><span class="header-section-number">5.2</span> Further readings</h2>
-<p>On the theory of GLV:</p>
-<ul>
-<li><p><span class="citation">Strogatz (<a href="#ref-strogatz2018nonlinear" role="doc-biblioref">2018</a>)</span> is a simple introduction to dynamical systems and bifurcation theory.</p></li>
-<li><p><span class="citation">Hofbauer and Sigmund (<a href="#ref-hofbauer1998evolutionary" role="doc-biblioref">1998</a>)</span> is a wonderful introduction to dynamical systems in ecology and population genetics, with a nice introduction to evolutionary game theory.</p></li>
-<li><p><span class="citation">Hadeler, Mackey, and Stevens (<a href="#ref-hadeler2017topics" role="doc-biblioref">2017</a>)</span> contains a more mathematically-oriented treatment of the material covered in the first part of this lecture.</p></li>
-<li><p><span class="citation">Baigent (<a href="#ref-baigent2016lotka" role="doc-biblioref">2016</a>)</span> is a mathematical introduction to Lotka-Volterra dynamics.</p></li>
-</ul>
+<div id="further-readings-1" class="section level2">
+<h2><span class="header-section-number">5.1</span> Further readings</h2>
 <p>On random matrices and stability:</p>
 <ul>
 <li><span class="citation">Allesina and Tang (<a href="#ref-allesina2015stability" role="doc-biblioref">2015</a>)</span> is an opinionated review on applications of random matrices in ecology.</li>
@@ -418,20 +363,8 @@ is a Lyapunov function for the GLV system.</p>
 <div id="ref-allesina2015stability">
 <p>Allesina, Stefano, and Si Tang. 2015. “The Stability–Complexity Relationship at Age 40: A Random Matrix Perspective.” <em>Population Ecology</em> 57 (1): 63–75.</p>
 </div>
-<div id="ref-baigent2016lotka">
-<p>Baigent, Stephen A. 2016. “Lotka-Volterra Dynamics: An Introduction.” In. World Scientific.</p>
-</div>
-<div id="ref-hadeler2017topics">
-<p>Hadeler, Karl Peter, Michael C Mackey, and Angela Stevens. 2017. <em>Topics in Mathematical Biology</em>. Springer.</p>
-</div>
-<div id="ref-hofbauer1998evolutionary">
-<p>Hofbauer, Josef, and Karl Sigmund. 1998. <em>Evolutionary Games and Population Dynamics</em>. Cambridge University Press.</p>
-</div>
 <div id="ref-may1972will">
 <p>May, Robert M. 1972. “Will a Large Complex System Be Stable?” <em>Nature</em> 238 (5364): 413–14.</p>
-</div>
-<div id="ref-strogatz2018nonlinear">
-<p>Strogatz, Steven H. 2018. <em>Nonlinear Dynamics and Chaos: With Applications to Physics, Biology, Chemistry, and Engineering</em>. CRC Press.</p>
 </div>
 </div>
             </section>

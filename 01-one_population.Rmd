@@ -7,11 +7,11 @@ source("common_settings.R")
 **Lesson plan**:
 
 1. We start by discussing what it means to solve an initial-value problem: the solution is an expression that allows us to calculate $x(t)$ for any $t$. A few ecologically-relevant models can be solved explicitly, for example the exponential and logistic growth models.
-1. Because, on the other hand, solving differential equations is a laborious process, and in many cases writing the solution is impossible or does not give us any insight on the dynamics, we introduce a graphical model that allows to effortlessly sketch the dyanmics of any first-order ODE (i.e., models with a single equation).
+1. Because, on the other hand, solving differential equations is a laborious process, and in many cases writing the solution is impossible or does not give us any insight on the dynamics, we introduce a graphical model that allows to effortlessly sketch the dynamics of any first-order ODE (i.e., models with a single equation).
 1. This allow us to introduce essential concepts such as the notion of an equilibrium and its stability.
 1. We show that determining stability using this graphical method is equivalent to performing stability analysis via linearization around an equilibrium, a method that will be extended to systems of multiple ODEs in the next chapter.
 1. We briefly discuss the idea of bifurcation points --- i.e., particular choices of parameters for which the dynamics of the system change qualitatively.
-1. We conclude by introducing the idea of Lyapunov functions, allowing us to determine global stability without the need to explicitly solve the model. We will see a lot of these functions when we study larger systems.
+1. We conclude by introducing the idea of Lyapunov functions, allowing us to determine global stability of an equilibrium without the need to explicitly solve the model. We will see a lot of these functions when we study larger systems.
 
 ## Types of dynamical systems
 
@@ -173,7 +173,7 @@ where $1 > \eta > 0$ is the proportion of individuals being harvested.
 
 ## Qualitative analysis of models for a single population
 
-Because in general we cannot write an explicit solution for the model, we attempt a qualitative analysis by: a) finding fixed points (equilibria); b) provide a qualitative description of the dynamics; c) probe the stability of fixed points; d) gain an understanding of the system (nature of attractors, changes of behavior for different parameters) without deriving an explicit solution.
+Because in general we cannot write an explicit solution for our models of interest, we attempt a qualitative analysis by: a) finding fixed points (equilibria); b) provide a qualitative description of the dynamics; c) probe the stability of fixed points; d) gain an understanding of the system (nature of attractors, changes of behavior for different parameters) without deriving an explicit solution.
 
 When we are dealing with a single population, we can use a graphical method. Simply, plot $dx(t) /dt$ against $x(t)$. We think of $x(t)$ as moving along the $x$ axis, at a velocity determined by the $y$ coordinate. For the exponential growth function:
 
@@ -240,7 +240,7 @@ knitr::include_graphics('img/Allee.jpg')
 
 Born in Indiana, Allee received his in 1912 PhD from the University of Chicago, where he returned in 1921. He was the Dean in the College of Arts, Literature, and Science (1924-1926) and Secretary of the Department of Zoology (1927-1934). He stayed at U. Chicago until his retirement (1950).
 
-He performed a series of studies on animal aggregation. He found that goldfish would growing in a tank laced with colloidal silver would grow faster when more individuals were present. Today, **Allee effect** applies to populations that grow faster when a certain threshold population is surpassed.
+He performed a series of studies on animal aggregation, finding that goldfish growing in a tank laced with colloidal silver would grow faster when more individuals were present. Today, the **Allee effect** applies to any population that grows faster when a certain threshold population is surpassed.
 :::
 
 

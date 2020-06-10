@@ -220,13 +220,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 1 sp_1 0.0568
 2 sp_2 0.0147
 3 sp_3 0.0284</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="a-tibble-3-x-2.html#cb10-1"></a><span class="co"># compare with equilibrium</span></span>
-<span id="cb10-2"><a href="a-tibble-3-x-2.html#cb10-2"></a><span class="kw">solve</span>(A_<span class="dv">3</span>, <span class="op">-</span>r_<span class="dv">3</span>)</span></code></pre></div>
-<p>[1] 0.05714286 0.01428571 0.02857143</p>
 <p>Repeat for the chaotic system:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="a-tibble-3-x-2.html#cb11-1"></a>res_<span class="dv">4</span> <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(time <span class="op">&gt;</span><span class="st"> </span><span class="dv">50</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb11-2"><a href="a-tibble-3-x-2.html#cb11-2"></a><span class="st">  </span><span class="kw">group_by</span>(species) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb11-3"><a href="a-tibble-3-x-2.html#cb11-3"></a><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">average =</span> <span class="kw">mean</span>(density))</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="a-tibble-3-x-2.html#cb1-1"></a><span class="kw">print</span>(res_<span class="dv">4</span> <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(time <span class="op">&gt;</span><span class="st"> </span><span class="dv">50</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1-2"><a href="a-tibble-3-x-2.html#cb1-2"></a><span class="st">  </span><span class="kw">group_by</span>(species) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1-3"><a href="a-tibble-3-x-2.html#cb1-3"></a><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">average =</span> <span class="kw">mean</span>(density)))</span></code></pre></div>
 </div>
             </section>
 
