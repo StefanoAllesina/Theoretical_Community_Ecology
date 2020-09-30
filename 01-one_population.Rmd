@@ -62,7 +62,7 @@ In 1838, inspired by the work of Malthus and Quetelet, he wrote a *Note on the l
 An model of ecological interest that has an explicit solution is that for the exponential growth:
 
 $$
-\dfrac{d x(t)}{dt} = \rho \, x(t), \;\; x(0) = 0
+\dfrac{d x(t)}{dt} = \rho \, x(t), \;\; x(0) = x_0
 $$
 
 This is a **separable** differential equation, meaning that we can formally write:
@@ -238,7 +238,7 @@ Now we have two equilibria, at $x^\star = 0$ and $x^\star = 1 / \alpha$. If we p
 knitr::include_graphics('img/Allee.jpg')
 ```
 
-Born in Indiana, Allee received his in 1912 PhD from the University of Chicago, where he returned in 1921. He was the Dean in the College of Arts, Literature, and Science (1924-1926) and Secretary of the Department of Zoology (1927-1934). He stayed at U. Chicago until his retirement (1950).
+Born in Indiana, Allee received his PhD in 1912 from the University of Chicago, where he returned in 1921. He was the Dean in the College of Arts, Literature, and Science (1924-1926) and Secretary of the Department of Zoology (1927-1934). He stayed at U. Chicago until his retirement (1950).
 
 He performed a series of studies on animal aggregation, finding that goldfish growing in a tank laced with colloidal silver would grow faster when more individuals were present. Today, the **Allee effect** applies to any population that grows faster when a certain threshold population is surpassed.
 :::
@@ -456,7 +456,7 @@ For smooth functions and autonomous systems, one needs at least two equations to
 :::boxpaper
 **Key paper: @may1976simple**
 
-May takes a possible model for the logistic growth in discrete time, and shows how this very simple model can give rise to equilibria, cycles and chaos. This is one of the papers that launched an all-out effort to explore chaotic dynamics that lasted for all of the 1980s.
+May takes a possible model for the logistic growth in discrete time, and shows how this very simple model can give rise to equilibria, cycles and chaos. This is one of the papers that launched an all-out effort to explore chaotic dynamics that lasted for the best part of the 1980s.
 
 :::
 

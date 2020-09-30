@@ -52,70 +52,6 @@
 
 
 
-<style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -182,7 +118,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.4" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#further-readings"><i class="fa fa-check"></i><b>3.4</b> Further readings</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html"><i class="fa fa-check"></i><b>4</b> Stability of large ecological communities</a><ul>
-<li class="chapter" data-level="4.1" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#further-readings-1"><i class="fa fa-check"></i><b>4.1</b> Further readings</a></li>
+<li class="chapter" data-level="4.1" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#the-stability-of-random-ecosystems"><i class="fa fa-check"></i><b>4.1</b> The stability of random ecosystems</a></li>
+<li class="chapter" data-level="4.2" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#accounting-for-interaction-types"><i class="fa fa-check"></i><b>4.2</b> Accounting for interaction types</a></li>
+<li class="chapter" data-level="4.3" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#further-readings-1"><i class="fa fa-check"></i><b>4.3</b> Further readings</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="ecological-assembly.html"><a href="ecological-assembly.html"><i class="fa fa-check"></i><b>5</b> Ecological assembly</a></li>
 <li class="chapter" data-level="6" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html"><i class="fa fa-check"></i><b>6</b> Game theory and replicator dynamics</a></li>
@@ -219,44 +157,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="stability-of-large-ecological-communities" class="section level1">
 <h1><span class="header-section-number">Lecture 4</span> Stability of large ecological communities</h1>
+<p><strong>Lesson plan</strong>:</p>
+<ol style="list-style-type: decimal">
+<li>We introduce the so-called diversity-stability debate, by discussing the seminal contributions of MacArthur (1959) and May (1972).</li>
+<li>We show how the celebrated May’s stability criterion can be derived using elementary results from random matrix theory.</li>
+<li>We extend May’s results to the case in which interactions between the species are correlated.</li>
+<li>We discuss a few tools from random matrix theory that are useful for ecology.</li>
+</ol>
+<div class="boxpaper">
+<p><strong>Complexity and stability</strong></p>
+<p><strong>Key paper: <span class="citation">MacArthur (<a href="#ref-macarthur1955fluctuations" role="doc-biblioref">1955</a>)</span></strong></p>
+<p>In 1955, MacArthur used an information-theoretic argument to suggest more speciose communities would be more “stable”: having a food web with many species would open several “channels” for energy to flow from resources to consumers, such that if a channel was to go dry, another channel could take its place.</p>
+<p><strong>Key paper: <span class="citation">May (<a href="#ref-may1972will" role="doc-biblioref">1972</a>)</span></strong></p>
+<p>This idea was challenged by May, who showed that, all other things being equal, larger communities would be less likely to be <em>dynamically stable</em>. This paper set the so-called “diversity-stability” debate that still populates the literature.</p>
+<p><strong>Key paper: <span class="citation">McCann (<a href="#ref-mccann2000diversity" role="doc-biblioref">2000</a>)</span></strong></p>
+<p>In this review, McCann summarizes the development of the diversity-stability debate over the span of three decades.</p>
+</div>
 <p>As we have seen before, an equilibrium <span class="math inline">\(x^\star\)</span> is stable if the community matrix for the equilibrium has all eigenvalues with negative real part. In general, to determine the equilibrium and its stability, we would need to specify all the growth rates (<span class="math inline">\(r\)</span>, <span class="math inline">\(n\)</span> values), as well as the matrix of interactions (<span class="math inline">\(A\)</span>, <span class="math inline">\(n^2\)</span> values). This is impractical to do for large systems (though we will try this out later). But can something quite general be said about the limit in which many species are in the community?</p>
-<p><span class="citation">May (<a href="#ref-may1972will" role="doc-biblioref">1972</a>)</span> attempted to answer this question by considering a <strong>random community matrix</strong>. In a GLV system, the diagonal elements <span class="math inline">\(m_{ii} = a_{ii} x_i^\star\)</span> are influenced by self-regulation (i.e., as in a carrying capacity), while the off-diagonal elements <span class="math inline">\(m_{ij} = a_{ij} x_i^\star\)</span> model the effect of species <span class="math inline">\(j\)</span> on the equilibrium of species <span class="math inline">\(i\)</span>. May considered the following algorithm to build a random community matrix. Take a large community, resting at an unspecified, feasible equilibrium; we build the community matrix by setting:</p>
+<div class="boxhistory">
+<p><strong>History: Robert M. May (1936-2020)</strong></p>
+<p><img src="img/May.jpg" width="25%" style="display: block; margin: auto;" /></p>
+<p>Born and educated in Sidney, May received a PhD in theoretical physics from the University of Sidney in 1959. Having started his career in the physics of super-conductivity, May became interested in ecology. When visiting Princeton during his stay at the Institute for Advanced Studies, he met MacArthur, and decided to change fields.</p>
+<p>He ended up changing the field of ecology, with an incredible number of contributions on population dynamics and chaos (see key papers in preceding lectures), the dynamics of infectious diseases (with Roy Anderson, <span class="citation">Anderson and May (<a href="#ref-anderson1992infectious" role="doc-biblioref">1992</a>)</span>), evolutionary game theory (<span class="citation">Nowak and May (<a href="#ref-nowak1992evolutionary" role="doc-biblioref">1992</a>)</span>), the estimation of the number of species on Earth (<span class="citation">May (<a href="#ref-may1988many" role="doc-biblioref">1988</a>)</span>), bibliometrics (<span class="citation">May (<a href="#ref-may1997scientific" role="doc-biblioref">1997</a>)</span>), and even banking (by modeling systemic risks, <span class="citation">Haldane and May (<a href="#ref-haldane2011systemic" role="doc-biblioref">2011</a>)</span>). He succeeded MacArthur at Princeton, and concluded his career in England (University of Oxford).</p>
+<p>He won a large number of prizes, and was created a life peer (Lord May, Baron of Oxford). He served as president of the Royal Society and as Chief Scientific Adviser to the government.</p>
+</div>
+<div id="the-stability-of-random-ecosystems" class="section level2">
+<h2><span class="header-section-number">4.1</span> The stability of random ecosystems</h2>
+<p><span class="citation">May (<a href="#ref-may1972will" role="doc-biblioref">1972</a>)</span> attempted to answer this question by considering a <strong>random community matrix</strong>. In a GLV system, the diagonal elements <span class="math inline">\(M_{ii} = A_{ii} x_i^\star\)</span> are influenced by self-regulation (i.e., as in a carrying capacity), while the off-diagonal elements <span class="math inline">\(M_{ij} = A_{ij} x_i^\star\)</span> model the effect of species <span class="math inline">\(j\)</span> on the equilibrium of species <span class="math inline">\(i\)</span>. May considered the following algorithm to build a random community matrix. Take a large community, resting at an unspecified, feasible equilibrium; we build the community matrix by setting:</p>
 <ul>
-<li><span class="math inline">\(m_{ij} = 0\)</span> with probability <span class="math inline">\((1-C)\)</span>; with probability <span class="math inline">\(C\)</span> we draw <span class="math inline">\(m_{ij}\)</span> from a distribution with mean zero and variance <span class="math inline">\(\sigma^2\)</span>. <span class="math inline">\(C\)</span> is the proportion of realized connections, termed the “connectance” of the system.</li>
+<li><span class="math inline">\(M_{ij} = 0\)</span> with probability <span class="math inline">\((1-C)\)</span>; with probability <span class="math inline">\(C\)</span> we draw <span class="math inline">\(M_{ij}\)</span> from a distribution with mean zero and variance <span class="math inline">\(\sigma^2\)</span>. <span class="math inline">\(C\)</span> is the proportion of realized connections, termed the “connectance” of the system.</li>
 <li>the diagonal elements are set to <span class="math inline">\(-d\)</span>, modeling self-regulation.</li>
 </ul>
-<p>For example, the code uses a normal distribution:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="stability-of-large-ecological-communities.html#cb1-1"></a>build_May_normal &lt;-<span class="st"> </span><span class="cf">function</span>(n, C, d, sigma){</span>
-<span id="cb1-2"><a href="stability-of-large-ecological-communities.html#cb1-2"></a>  <span class="co"># fill the whole matrix</span></span>
-<span id="cb1-3"><a href="stability-of-large-ecological-communities.html#cb1-3"></a>  M &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(n <span class="op">*</span><span class="st"> </span>n, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> sigma), n, n)</span>
-<span id="cb1-4"><a href="stability-of-large-ecological-communities.html#cb1-4"></a>  <span class="co"># remove connections </span></span>
-<span id="cb1-5"><a href="stability-of-large-ecological-communities.html#cb1-5"></a>  M &lt;-<span class="st"> </span>M <span class="op">*</span><span class="st"> </span><span class="kw">matrix</span>(<span class="kw">runif</span>(n <span class="op">*</span><span class="st"> </span>n) <span class="op">&lt;=</span><span class="st"> </span>C, n, n)</span>
-<span id="cb1-6"><a href="stability-of-large-ecological-communities.html#cb1-6"></a>  <span class="co"># set diagonals</span></span>
-<span id="cb1-7"><a href="stability-of-large-ecological-communities.html#cb1-7"></a>  <span class="kw">diag</span>(M) &lt;-<span class="st"> </span><span class="op">-</span>d</span>
-<span id="cb1-8"><a href="stability-of-large-ecological-communities.html#cb1-8"></a>  <span class="kw">return</span>(M)</span>
-<span id="cb1-9"><a href="stability-of-large-ecological-communities.html#cb1-9"></a>}</span></code></pre></div>
+<p>May did not specify the distribution from which one would draw the nonzero interactions (more on this later). For the moment, let’s assume it’s a Normal distribution with mean zero and variance <span class="math inline">\(\sigma^2\)</span>.</p>
 <p>Note that the average of the eigenvalues of a matrix <span class="math inline">\(A\)</span> is given by the average of its diagonal elements <span class="math inline">\(\frac{1}{n}\sum_i \lambda_i = \frac{1}{n} \text{Tr}(A) = \frac{1}{n} \sum_i A_{ii}\)</span>. As such, if <span class="math inline">\(A = dI + B\)</span>, the eigenvalues of <span class="math inline">\(A\)</span> will be those of <span class="math inline">\(B\)</span> shifted by <span class="math inline">\(d\)</span>.</p>
-<p>We want to determine whether the equilibrium will be stable, given <span class="math inline">\(n\)</span>, <span class="math inline">\(C\)</span>, <span class="math inline">\(d\)</span> and <span class="math inline">\(\sigma^2\)</span>. To do so, we need to find the location of the “rightmost” eigenvalue of <span class="math inline">\(M\)</span>. For example, let’s plot the eigenvalues of a large matrix:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="stability-of-large-ecological-communities.html#cb2-1"></a>plot_eigenvalues &lt;-<span class="st"> </span><span class="cf">function</span>(M, <span class="dt">prediction =</span> <span class="ot">NULL</span>){</span>
-<span id="cb2-2"><a href="stability-of-large-ecological-communities.html#cb2-2"></a>  eig &lt;-<span class="st"> </span><span class="kw">eigen</span>(M, <span class="dt">only.values =</span> <span class="ot">TRUE</span>)<span class="op">$</span>values</span>
-<span id="cb2-3"><a href="stability-of-large-ecological-communities.html#cb2-3"></a>  dt &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">Real =</span> <span class="kw">Re</span>(eig), <span class="dt">Imaginary =</span> <span class="kw">Im</span>(eig))</span>
-<span id="cb2-4"><a href="stability-of-large-ecological-communities.html#cb2-4"></a>  pl &lt;-<span class="st"> </span><span class="kw">ggplot</span>(dt) <span class="op">+</span><span class="st"> </span><span class="kw">aes</span>(<span class="dt">x =</span> Real, <span class="dt">y =</span> Imaginary) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb2-5"><a href="stability-of-large-ecological-communities.html#cb2-5"></a><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></span>
-<span id="cb2-6"><a href="stability-of-large-ecological-communities.html#cb2-6"></a><span class="st">    </span><span class="kw">coord_equal</span>() <span class="op">+</span><span class="st"> </span></span>
-<span id="cb2-7"><a href="stability-of-large-ecological-communities.html#cb2-7"></a><span class="st">    </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="dv">0</span>, <span class="dt">colour =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">linetype =</span> <span class="dv">2</span>)</span>
-<span id="cb2-8"><a href="stability-of-large-ecological-communities.html#cb2-8"></a>  <span class="cf">if</span> (<span class="kw">is.null</span>(prediction) <span class="op">==</span><span class="st"> </span><span class="ot">FALSE</span>) {</span>
-<span id="cb2-9"><a href="stability-of-large-ecological-communities.html#cb2-9"></a>    pl &lt;-<span class="st"> </span>pl <span class="op">+</span><span class="st"> </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> prediction, <span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">linetype =</span> <span class="dv">2</span>)</span>
-<span id="cb2-10"><a href="stability-of-large-ecological-communities.html#cb2-10"></a>  }</span>
-<span id="cb2-11"><a href="stability-of-large-ecological-communities.html#cb2-11"></a>  <span class="kw">show</span>(pl)</span>
-<span id="cb2-12"><a href="stability-of-large-ecological-communities.html#cb2-12"></a>}</span>
-<span id="cb2-13"><a href="stability-of-large-ecological-communities.html#cb2-13"></a><span class="kw">set.seed</span>(<span class="dv">100</span>) <span class="co"># for reproducibility</span></span>
-<span id="cb2-14"><a href="stability-of-large-ecological-communities.html#cb2-14"></a><span class="co"># parameters</span></span>
-<span id="cb2-15"><a href="stability-of-large-ecological-communities.html#cb2-15"></a>n &lt;-<span class="st"> </span><span class="dv">500</span></span>
-<span id="cb2-16"><a href="stability-of-large-ecological-communities.html#cb2-16"></a>C &lt;-<span class="st"> </span><span class="fl">0.5</span></span>
-<span id="cb2-17"><a href="stability-of-large-ecological-communities.html#cb2-17"></a>d &lt;-<span class="st"> </span><span class="dv">10</span></span>
-<span id="cb2-18"><a href="stability-of-large-ecological-communities.html#cb2-18"></a>sigma &lt;-<span class="st"> </span><span class="dv">1</span></span>
-<span id="cb2-19"><a href="stability-of-large-ecological-communities.html#cb2-19"></a>M &lt;-<span class="st"> </span><span class="kw">build_May_normal</span>(n, C, d, sigma)</span>
-<span id="cb2-20"><a href="stability-of-large-ecological-communities.html#cb2-20"></a><span class="kw">plot_eigenvalues</span>(M)</span></code></pre></div>
+<p>We want to determine whether the equilibrium will be stable, given <span class="math inline">\(n\)</span>, <span class="math inline">\(C\)</span>, <span class="math inline">\(d\)</span> and <span class="math inline">\(\sigma^2\)</span>. To do so, we need to find the location of the “rightmost” eigenvalue of <span class="math inline">\(M\)</span>. For example, let’s plot the eigenvalues of a large matrix (<span class="math inline">\(500 \times 500\)</span>, the red-dashed line marks the location of zero on the x axis):</p>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/exmay-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>The eigenvalues fall into an almost perfect circle! Turns out, that this is the behavior we should expect, as stated by the so-called “Circular Law”, one of the most beautiful results in random matrix theory.</p>
 <p><strong>Circular law:</strong> Take a non-symmetric, <span class="math inline">\(S \times S\)</span> random matrix in which all coefficients <span class="math inline">\(X_{ij}\)</span> are i.i.d. random variables with <span class="math inline">\(\mathbb E[X_{ij}] = 0\)</span> and <span class="math inline">\(\mathbb E[X_{ij}] = 1\)</span>. Then, as <span class="math inline">\(S \to \infty\)</span>, the e.s.d. of <span class="math inline">\({X} / \sqrt{S}\)</span> converges to the circular law:</p>
@@ -271,31 +205,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math display">\[
 \sqrt{S C \sigma^2} &lt; d
 \]</span></p>
-<p>We can try this on our matrix:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="stability-of-large-ecological-communities.html#cb3-1"></a>prediction &lt;-<span class="st"> </span><span class="kw">sqrt</span>(n <span class="op">*</span><span class="st"> </span>C <span class="op">*</span><span class="st"> </span>sigma<span class="op">^</span><span class="dv">2</span>) <span class="op">-</span><span class="st"> </span>d</span>
-<span id="cb3-2"><a href="stability-of-large-ecological-communities.html#cb3-2"></a><span class="kw">plot_eigenvalues</span>(M, prediction)</span></code></pre></div>
+<p>We can try this on our matrix (black dashed line):</p>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/maycrit-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>Showing that we accurately approximate the location of the rightmost eigenvalue. Note that, in the case of large <span class="math inline">\(n\)</span>, whenever the circle crosses zero, some eigenvalues will be positive, determining the instability of the equilibrium.</p>
 <p>Importantly, the distribution from which the coefficients are sampled does not matter—only that the mean is zero and that the variance is <span class="math inline">\(\sigma^2\)</span>. For example, build the matrix using coefficients from a uniform distribution:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="stability-of-large-ecological-communities.html#cb4-1"></a>build_May_uniform &lt;-<span class="st"> </span><span class="cf">function</span>(n, C, d, sigma){</span>
-<span id="cb4-2"><a href="stability-of-large-ecological-communities.html#cb4-2"></a>  <span class="co"># fill the whole matrix (sqrt(3) to ensure var = sigma^2)</span></span>
-<span id="cb4-3"><a href="stability-of-large-ecological-communities.html#cb4-3"></a>  M &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">runif</span>(n <span class="op">*</span><span class="st"> </span>n, <span class="dt">min =</span> <span class="op">-</span><span class="kw">sqrt</span>(<span class="dv">3</span>) <span class="op">*</span><span class="st"> </span>sigma, <span class="dt">max =</span> <span class="kw">sqrt</span>(<span class="dv">3</span>) <span class="op">*</span><span class="st"> </span>sigma), n, n)</span>
-<span id="cb4-4"><a href="stability-of-large-ecological-communities.html#cb4-4"></a>  <span class="co"># remove connections </span></span>
-<span id="cb4-5"><a href="stability-of-large-ecological-communities.html#cb4-5"></a>  M &lt;-<span class="st"> </span>M <span class="op">*</span><span class="st"> </span><span class="kw">matrix</span>(<span class="kw">runif</span>(n <span class="op">*</span><span class="st"> </span>n) <span class="op">&lt;=</span><span class="st"> </span>C, n, n)</span>
-<span id="cb4-6"><a href="stability-of-large-ecological-communities.html#cb4-6"></a>  <span class="co"># set diagonals</span></span>
-<span id="cb4-7"><a href="stability-of-large-ecological-communities.html#cb4-7"></a>  <span class="kw">diag</span>(M) &lt;-<span class="st"> </span><span class="op">-</span>d</span>
-<span id="cb4-8"><a href="stability-of-large-ecological-communities.html#cb4-8"></a>  <span class="kw">return</span>(M)</span>
-<span id="cb4-9"><a href="stability-of-large-ecological-communities.html#cb4-9"></a>}</span>
-<span id="cb4-10"><a href="stability-of-large-ecological-communities.html#cb4-10"></a><span class="co"># parameters</span></span>
-<span id="cb4-11"><a href="stability-of-large-ecological-communities.html#cb4-11"></a>n &lt;-<span class="st"> </span><span class="dv">500</span></span>
-<span id="cb4-12"><a href="stability-of-large-ecological-communities.html#cb4-12"></a>C &lt;-<span class="st"> </span><span class="fl">0.5</span></span>
-<span id="cb4-13"><a href="stability-of-large-ecological-communities.html#cb4-13"></a>d &lt;-<span class="st"> </span><span class="dv">10</span></span>
-<span id="cb4-14"><a href="stability-of-large-ecological-communities.html#cb4-14"></a>sigma &lt;-<span class="st"> </span><span class="dv">1</span></span>
-<span id="cb4-15"><a href="stability-of-large-ecological-communities.html#cb4-15"></a>M &lt;-<span class="st"> </span><span class="kw">build_May_uniform</span>(n, C, d, sigma)</span>
-<span id="cb4-16"><a href="stability-of-large-ecological-communities.html#cb4-16"></a>prediction &lt;-<span class="st"> </span><span class="kw">sqrt</span>(n <span class="op">*</span><span class="st"> </span>C <span class="op">*</span><span class="st"> </span>sigma<span class="op">^</span><span class="dv">2</span>) <span class="op">-</span><span class="st"> </span>d</span>
-<span id="cb4-17"><a href="stability-of-large-ecological-communities.html#cb4-17"></a><span class="kw">plot_eigenvalues</span>(M, prediction)</span></code></pre></div>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/exmay2-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>This property is called <strong>universality</strong> in random matrix theory.</p>
+</div>
+<div id="accounting-for-interaction-types" class="section level2">
+<h2><span class="header-section-number">4.2</span> Accounting for interaction types</h2>
 <p>In ecological communities, the effect of species <span class="math inline">\(i\)</span> on <span class="math inline">\(j\)</span> and that of <span class="math inline">\(j\)</span> on <span class="math inline">\(i\)</span> are typically not independent (as assumed above): in the case of competition between species, we expect them both to be negative; for consumption, if one is positive, the other is negative, and so forth. A more refined model of a random matrix would therefore sample interactions in pairs from a bivariate distribution. The elliptic law can deal with this case:</p>
 <p><strong>Elliptic law:</strong> Take a non-symmetric, <span class="math inline">\(S \times S\)</span> random matrix in which the pairs of coefficients <span class="math inline">\((X_{ij}, X_{ji})\)</span> are sampled independently from a bivariate distribution defined by a vector of means <span class="math inline">\(m = (0,0)^t\)</span> and a covariance matrix <span class="math inline">\(\Sigma = \begin{pmatrix} 1 &amp; \rho\\ \rho &amp; 1 \end{pmatrix}\)</span>. Then, as <span class="math inline">\(S \to \infty\)</span>, the e.s.d. of <span class="math inline">\({X} / \sqrt{S}\)</span> converges to the elliptic law:</p>
 <p><span class="math display">\[
@@ -305,54 +223,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     1\\ 0 \quad \quad \quad \text{ otherwise}
   \end{cases}
 \]</span></p>
-<p>Note that when <span class="math inline">\(\rho = 0\)</span>, the elliptic law reduces to the circular law. Using the elliptic law, <span class="citation">Allesina and Tang (<a href="#ref-allesina2012stability" role="doc-biblioref">2012</a>)</span> were able to extend May’s criterion to ecological networks with different mixtures of interaction types. In particular, the stability criterion becomes:</p>
+<p>Note that when <span class="math inline">\(\rho = 0\)</span>, the elliptic law reduces to the circular law. Using the elliptic law, <span class="citation">Allesina and Tang (<a href="#ref-allesina2012stability" role="doc-biblioref">2012</a>)</span> were able to extend May’s criterion to ecological networks with different mixtures of interaction types.</p>
+<p>Build a matrix <span class="math inline">\(M\)</span> by sampling the entries in pairs: <span class="math inline">\((M_{ij}, M_{ji})\)</span> are zero with probability <span class="math inline">\((1-C)\)</span>, and with probability <span class="math inline">\(C\)</span> sampled independently from a bivariate distribution with mean <span class="math inline">\(\nu = (0, 0)^T\)</span>, and covariance matrix <span class="math inline">\(\Sigma = \sigma^2 \begin{pmatrix} 1 &amp; \rho\\ \rho &amp; 1\end{pmatrix}\)</span>. Then <span class="math inline">\(\mathbb E[M_{ij}] = 0\)</span>, <span class="math inline">\(\mathbb E[M_{ij}^2] = C \sigma^2\)</span>, and <span class="math inline">\(E[M_{ij} M_{ji}] = C \sigma^2 \rho\)</span>. By dividing the entries <span class="math inline">\({M}\)</span> by <span class="math inline">\(\sqrt{C \sigma^2}\)</span>, we obtain a matrix following the elliptic law. As such, the stability criterion becomes:</p>
 <p><span class="math display">\[
 \sqrt{S C \sigma^2}(1 + \rho) &lt; d
 \]</span></p>
-<p>To see the elliptic law in action, we can build matrices in which we sample the coefficients in pairs from a bivariate normal distribution:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="stability-of-large-ecological-communities.html#cb5-1"></a>build_Allesina_Tang_normal &lt;-<span class="st"> </span><span class="cf">function</span>(n, C, d, sigma, rho){</span>
-<span id="cb5-2"><a href="stability-of-large-ecological-communities.html#cb5-2"></a>  <span class="co"># sample coefficients in pairs</span></span>
-<span id="cb5-3"><a href="stability-of-large-ecological-communities.html#cb5-3"></a>  pairs &lt;-<span class="st"> </span>MASS<span class="op">::</span><span class="kw">mvrnorm</span>(<span class="dt">n =</span> n <span class="op">*</span><span class="st"> </span>(n<span class="dv">-1</span>) <span class="op">/</span><span class="st"> </span><span class="dv">2</span>,</span>
-<span id="cb5-4"><a href="stability-of-large-ecological-communities.html#cb5-4"></a>                         <span class="dt">mu =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>),</span>
-<span id="cb5-5"><a href="stability-of-large-ecological-communities.html#cb5-5"></a>                         <span class="dt">Sigma =</span> sigma<span class="op">^</span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, rho, rho, <span class="dv">1</span>), <span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb5-6"><a href="stability-of-large-ecological-communities.html#cb5-6"></a>  <span class="co"># build a completely filled matrix</span></span>
-<span id="cb5-7"><a href="stability-of-large-ecological-communities.html#cb5-7"></a>  M &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, n, n)</span>
-<span id="cb5-8"><a href="stability-of-large-ecological-communities.html#cb5-8"></a>  M[<span class="kw">upper.tri</span>(M)] &lt;-<span class="st"> </span>pairs[,<span class="dv">1</span>]</span>
-<span id="cb5-9"><a href="stability-of-large-ecological-communities.html#cb5-9"></a>  M &lt;-<span class="st"> </span><span class="kw">t</span>(M)</span>
-<span id="cb5-10"><a href="stability-of-large-ecological-communities.html#cb5-10"></a>  M[<span class="kw">upper.tri</span>(M)] &lt;-<span class="st"> </span>pairs[,<span class="dv">2</span>]</span>
-<span id="cb5-11"><a href="stability-of-large-ecological-communities.html#cb5-11"></a>  <span class="co"># determine which connections to retain</span></span>
-<span id="cb5-12"><a href="stability-of-large-ecological-communities.html#cb5-12"></a>  Connections &lt;-<span class="st"> </span>(<span class="kw">matrix</span>(<span class="kw">runif</span>(n <span class="op">*</span><span class="st"> </span>n), n, n) <span class="op">&lt;=</span><span class="st"> </span>C) <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb5-13"><a href="stability-of-large-ecological-communities.html#cb5-13"></a>  Connections[<span class="kw">lower.tri</span>(Connections)] &lt;-<span class="st"> </span><span class="dv">0</span></span>
-<span id="cb5-14"><a href="stability-of-large-ecological-communities.html#cb5-14"></a>  <span class="kw">diag</span>(Connections) &lt;-<span class="st"> </span><span class="dv">0</span></span>
-<span id="cb5-15"><a href="stability-of-large-ecological-communities.html#cb5-15"></a>  Connections &lt;-<span class="st"> </span>Connections <span class="op">+</span><span class="st"> </span><span class="kw">t</span>(Connections)</span>
-<span id="cb5-16"><a href="stability-of-large-ecological-communities.html#cb5-16"></a>  M &lt;-<span class="st"> </span>M <span class="op">*</span><span class="st"> </span>Connections</span>
-<span id="cb5-17"><a href="stability-of-large-ecological-communities.html#cb5-17"></a>  <span class="kw">diag</span>(M) &lt;-<span class="st"> </span><span class="op">-</span>d</span>
-<span id="cb5-18"><a href="stability-of-large-ecological-communities.html#cb5-18"></a>  <span class="kw">return</span>(M)</span>
-<span id="cb5-19"><a href="stability-of-large-ecological-communities.html#cb5-19"></a>}</span></code></pre></div>
-<p>We can see that a positive connectance leads to an eigenvalue distribution that describes an horizontally-stretched ellipse (and hence, more difficult to stabilize than the circle):</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="stability-of-large-ecological-communities.html#cb6-1"></a><span class="co"># parameters</span></span>
-<span id="cb6-2"><a href="stability-of-large-ecological-communities.html#cb6-2"></a>n &lt;-<span class="st"> </span><span class="dv">500</span></span>
-<span id="cb6-3"><a href="stability-of-large-ecological-communities.html#cb6-3"></a>C &lt;-<span class="st"> </span><span class="fl">0.5</span></span>
-<span id="cb6-4"><a href="stability-of-large-ecological-communities.html#cb6-4"></a>d &lt;-<span class="st"> </span><span class="dv">10</span></span>
-<span id="cb6-5"><a href="stability-of-large-ecological-communities.html#cb6-5"></a>sigma &lt;-<span class="st"> </span><span class="dv">1</span></span>
-<span id="cb6-6"><a href="stability-of-large-ecological-communities.html#cb6-6"></a>rho &lt;-<span class="st"> </span><span class="fl">0.4</span></span>
-<span id="cb6-7"><a href="stability-of-large-ecological-communities.html#cb6-7"></a>M &lt;-<span class="st"> </span><span class="kw">build_Allesina_Tang_normal</span>(n, C, d, sigma, rho)</span>
-<span id="cb6-8"><a href="stability-of-large-ecological-communities.html#cb6-8"></a>prediction &lt;-<span class="st"> </span><span class="kw">sqrt</span>(n <span class="op">*</span><span class="st"> </span>C <span class="op">*</span><span class="st"> </span>sigma<span class="op">^</span><span class="dv">2</span>) <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>rho) <span class="op">-</span><span class="st"> </span>d</span>
-<span id="cb6-9"><a href="stability-of-large-ecological-communities.html#cb6-9"></a><span class="kw">plot_eigenvalues</span>(M, prediction)</span></code></pre></div>
+<p>To see the elliptic law in action, we can build matrices in which we sample the coefficients in pairs from a bivariate normal distribution. If we sample the entries from a distribution with a positive correlation, we obtain a horizontally-stretched ellipse (and hence, more difficult to stabilize than the circle):</p>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/allesinatangex1-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>Similarly, a negative correlation (e.g., as in predator-prey) would make the system easier to stabilize:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="stability-of-large-ecological-communities.html#cb7-1"></a><span class="co"># parameters</span></span>
-<span id="cb7-2"><a href="stability-of-large-ecological-communities.html#cb7-2"></a>n &lt;-<span class="st"> </span><span class="dv">500</span></span>
-<span id="cb7-3"><a href="stability-of-large-ecological-communities.html#cb7-3"></a>C &lt;-<span class="st"> </span><span class="fl">0.5</span></span>
-<span id="cb7-4"><a href="stability-of-large-ecological-communities.html#cb7-4"></a>d &lt;-<span class="st"> </span><span class="dv">10</span></span>
-<span id="cb7-5"><a href="stability-of-large-ecological-communities.html#cb7-5"></a>sigma &lt;-<span class="st"> </span><span class="dv">1</span></span>
-<span id="cb7-6"><a href="stability-of-large-ecological-communities.html#cb7-6"></a>rho &lt;-<span class="st"> </span><span class="fl">-0.4</span></span>
-<span id="cb7-7"><a href="stability-of-large-ecological-communities.html#cb7-7"></a>M &lt;-<span class="st"> </span><span class="kw">build_Allesina_Tang_normal</span>(n, C, d, sigma, rho)</span>
-<span id="cb7-8"><a href="stability-of-large-ecological-communities.html#cb7-8"></a>prediction &lt;-<span class="st"> </span><span class="kw">sqrt</span>(n <span class="op">*</span><span class="st"> </span>C <span class="op">*</span><span class="st"> </span>sigma<span class="op">^</span><span class="dv">2</span>) <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>rho) <span class="op">-</span><span class="st"> </span>d</span>
-<span id="cb7-9"><a href="stability-of-large-ecological-communities.html#cb7-9"></a><span class="kw">plot_eigenvalues</span>(M, prediction)</span></code></pre></div>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/allesinatangex2-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>Allesina and Tang therefore concluded that, all other things being equal, ecological communities in which predator-prey interactions are prevalent (and as such <span class="math inline">\(E[M_{ij} M_{ji}] &lt; 0\)</span>) are easier to stabilize than those dominated by competition/mutualism (<span class="math inline">\(E[M_{ij} M_{ji}] &gt; 0\)</span>).</p>
+</div>
 <div id="further-readings-1" class="section level2">
-<h2><span class="header-section-number">4.1</span> Further readings</h2>
+<h2><span class="header-section-number">4.3</span> Further readings</h2>
 <p>On random matrices and stability:</p>
 <ul>
 <li><span class="citation">Allesina and Tang (<a href="#ref-allesina2015stability" role="doc-biblioref">2015</a>)</span> is an opinionated review on applications of random matrices in ecology.</li>
@@ -368,8 +251,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="ref-allesina2015stability">
 <p>Allesina, Stefano, and Si Tang. 2015. “The Stability–Complexity Relationship at Age 40: A Random Matrix Perspective.” <em>Population Ecology</em> 57 (1): 63–75.</p>
 </div>
+<div id="ref-anderson1992infectious">
+<p>Anderson, Roy M, and Robert M May. 1992. <em>Infectious Diseases of Humans: Dynamics and Control</em>. Oxford university press.</p>
+</div>
+<div id="ref-haldane2011systemic">
+<p>Haldane, Andrew G, and Robert M May. 2011. “Systemic Risk in Banking Ecosystems.” <em>Nature</em> 469 (7330): 351–55.</p>
+</div>
+<div id="ref-macarthur1955fluctuations">
+<p>MacArthur, Robert. 1955. “Fluctuations of Animal Populations and a Measure of Community Stability.” <em>Ecology</em> 36 (3): 533–36.</p>
+</div>
 <div id="ref-may1972will">
 <p>May, Robert M. 1972. “Will a Large Complex System Be Stable?” <em>Nature</em> 238 (5364): 413–14.</p>
+</div>
+<div id="ref-may1988many">
+<p>May, Robert M. 1988. “How Many Species Are There on Earth?” <em>Science</em> 241 (4872): 1441–9.</p>
+</div>
+<div id="ref-may1997scientific">
+<p>May, Robert M. 1997. “The Scientific Wealth of Nations.” <em>Science</em> 275 (5301): 793–96.</p>
+</div>
+<div id="ref-mccann2000diversity">
+<p>McCann, Kevin Shear. 2000. “The Diversity–Stability Debate.” <em>Nature</em> 405 (6783): 228–33.</p>
+</div>
+<div id="ref-nowak1992evolutionary">
+<p>Nowak, Martin A, and Robert M May. 1992. “Evolutionary Games and Spatial Chaos.” <em>Nature</em> 359 (6398): 826–29.</p>
 </div>
 </div>
             </section>

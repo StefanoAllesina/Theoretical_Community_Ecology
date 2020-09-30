@@ -747,7 +747,7 @@ As such, the equilibrium $(x^\star, y^\star) = (1, 1/2)$ is globally stable.
 
 :::boxhomework
 
-**Homework 1b**
+**Homework 2b**
 
 Take the competitive Lotka-Volterra model:
 

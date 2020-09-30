@@ -3,16 +3,58 @@
 ```{r, include=FALSE}
 source("common_settings.R")
 ```
+**Lesson plan**:
+
+1. We introduce the so-called diversity-stability debate, by discussing the seminal contributions of MacArthur (1959) and May (1972).
+1. We show how the celebrated May's stability criterion can be derived using elementary results from random matrix theory.
+1. We extend May's results to the case in which interactions between the species are correlated.
+1. We discuss a few tools from random matrix theory that are useful for ecology.
+
+## Complexity and stability
+
+:::boxpaper
+
+**Key paper: @macarthur1955fluctuations** 
+
+In 1955, MacArthur used an information-theoretic argument to suggest more speciose communities would be more "stable": having a food web with many species would open several "channels" for energy to flow from resources to consumers, such that if a channel was to go dry, another channel could take its place.
+
+**Key paper: @may1972will**
+
+This idea was challenged by May, who showed that, all other things being equal, larger communities would be less likely to be *dynamically stable*. This paper set the so-called "diversity-stability" debate that still populates the literature.
+
+**Key paper: @mccann2000diversity** 
+
+In this review, McCann summarizes the development of the diversity-stability debate over the span of three decades.
+
+:::
 
 As we have seen before, an equilibrium $x^\star$ is stable if the community matrix for the equilibrium has all eigenvalues with negative real part. In general, to determine the equilibrium and its stability, we would need to specify all the growth rates ($r$, $n$ values), as well as the matrix of interactions ($A$, $n^2$ values). This is impractical to do for large systems (though we will try this out later). But can something quite general be said about the limit in which many species are in the community?
 
-@may1972will attempted to answer this question by considering a **random community matrix**. In a GLV system, the diagonal elements $m_{ii} = a_{ii} x_i^\star$ are influenced by self-regulation (i.e., as in a carrying capacity), while the off-diagonal elements $m_{ij} = a_{ij} x_i^\star$ model the effect of species $j$ on the equilibrium of species $i$. May considered the following algorithm to build a random community matrix. Take a large community, resting at an unspecified, feasible equilibrium; we build the community matrix by setting:
 
-- $m_{ij} = 0$  with probability $(1-C)$; with probability $C$ we draw $m_{ij}$ from a distribution with mean zero and variance $\sigma^2$. $C$ is the proportion of realized connections, termed the "connectance" of the system.
+## The stability of random ecosystems
+
+:::boxhistory
+
+**History: Robert M. May (1936-2020)**
+
+```{r, echo=FALSE,out.width = "25%"}
+knitr::include_graphics('img/May.jpg')
+```
+
+Born and educated in Sidney, May received a PhD in theoretical physics from the University of Sidney in 1959. Having started his career in the physics of super-conductivity, May became interested in ecology. When visiting Princeton during his stay at the Institute for Advanced Studies, he met MacArthur, and decided to change fields. 
+
+He ended up changing the field of ecology, with an incredible number of contributions on population dynamics and chaos (see key papers in preceding lectures), the dynamics of infectious diseases (with Roy Anderson, @anderson1992infectious), evolutionary game theory (@nowak1992evolutionary), the estimation of the number of species on Earth (@may1988many), bibliometrics (@may1997scientific), and even banking (by modeling systemic risks, @haldane2011systemic). He succeeded MacArthur at Princeton, and concluded his career in England (University of Oxford). 
+
+He won a large number of prizes, and was created a life peer (Lord May, Baron of Oxford). He served as president of the Royal Society and as Chief Scientific Adviser to the government.
+
+:::
+
+@may1972will attempted to answer this question by considering a **random community matrix**. In a GLV system, the diagonal elements $M_{ii} = A_{ii} x_i^\star$ are influenced by self-regulation (i.e., as in a carrying capacity), while the off-diagonal elements $M_{ij} = A_{ij} x_i^\star$ model the effect of species $j$ on the equilibrium of species $i$. May considered the following algorithm to build a random community matrix. Take a large community, resting at an unspecified, feasible equilibrium; we build the community matrix by setting:
+
+- $M_{ij} = 0$  with probability $(1-C)$; with probability $C$ we draw $M_{ij}$ from a distribution with mean zero and variance $\sigma^2$. $C$ is the proportion of realized connections, termed the "connectance" of the system.
 - the diagonal elements are set to $-d$, modeling self-regulation.
 
-For example, the code uses a normal distribution:
-```{r, buildmay}
+```{r, buildmay, echo=FALSE}
 build_May_normal <- function(n, C, d, sigma){
   # fill the whole matrix
   M <- matrix(rnorm(n * n, mean = 0, sd = sigma), n, n)
@@ -24,10 +66,13 @@ build_May_normal <- function(n, C, d, sigma){
 }
 ```
 
+May did not specify the distribution from which one would draw the nonzero interactions (more on this later). For the moment, let's assume it's a Normal distribution with mean zero and variance $\sigma^2$.
+
 Note that the average of the eigenvalues of a matrix $A$ is given by the average of its diagonal elements $\frac{1}{n}\sum_i \lambda_i = \frac{1}{n} \text{Tr}(A) = \frac{1}{n} \sum_i A_{ii}$. As such, if $A = dI + B$, the eigenvalues of $A$ will be those of $B$ shifted by $d$.
 
-We want to determine whether the equilibrium will be stable, given $n$, $C$, $d$ and $\sigma^2$. To do so, we need to find the location of the "rightmost" eigenvalue of $M$. For example, let's plot the eigenvalues of a large matrix:
-```{r, exmay}
+We want to determine whether the equilibrium will be stable, given $n$, $C$, $d$ and $\sigma^2$. To do so, we need to find the location of the "rightmost" eigenvalue of $M$. For example, let's plot the eigenvalues of a large matrix ($500 \times 500$, the red-dashed line marks the location of zero on the x axis):
+
+```{r, exmay, echo = FALSE}
 plot_eigenvalues <- function(M, prediction = NULL){
   eig <- eigen(M, only.values = TRUE)$values
   dt <- tibble(Real = Re(eig), Imaginary = Im(eig))
@@ -52,7 +97,7 @@ plot_eigenvalues(M)
 
 The eigenvalues fall into an almost perfect circle! Turns out, that this is the behavior we should expect, as stated by the so-called "Circular Law", one of the most beautiful results in random matrix theory. 
 
-**Circular law:** Take a non-symmetric, $S \times S$ random matrix in which all coefficients $X_{ij}$ are i.i.d. random variables with $\mathbb E[X_{ij}] = 0$ and $\mathbb E[X_{ij}] = 1$. Then, as $S \to \infty$, the e.s.d. of ${X} / \sqrt{S}$ converges to the circular law:
+**Circular law:** Take a non-symmetric, $n \times n$ random matrix in which all coefficients $X_{ij}$ are i.i.d. random variables with $\mathbb E[X_{ij}] = 0$ and $\mathbb E[X_{ij}] = 1$. Then, as $S \to \infty$, the e.s.d. of ${X} / \sqrt{n}$ converges to the circular law:
 
 $$
   \mu(\lambda) = \begin{cases}
@@ -62,15 +107,15 @@ $$
   \end{cases}
 $$
 
-This result can be used to calculate the radius of the eigenvalue distribution of the matrices studied by May: when the off-diagonal coefficients $M_{ij}$ are 0 with probability $1-C$ and are sampled independently from a distribution with mean $0$ and variance $\sigma^2$ with probability $C$, we have that $\mathbb E[M_{ij}] = 0$ and $\mathbb E[M_{ij}^2] = C \sigma^2$. This means that if we were to divide the coefficients of ${M}$ by $\sqrt{C \sigma^2}$ we would recover the unit variance, and the matrix would follow the circular law when $S$ is large. Armed with this, we can calculate the radius: if the radius of ${M} / \sqrt{S C \sigma^2}$ converges to 1 when the matrix is large, then the radius of ${M}$ is approximately $\sqrt{S C \sigma^2}$. For stability, we need a sufficiently negative diagonal (setting the center of the circle), yielding May's stability criterion:
+This result can be used to calculate the radius of the eigenvalue distribution of the matrices studied by May: when the off-diagonal coefficients $M_{ij}$ are 0 with probability $1-C$ and are sampled independently from a distribution with mean $0$ and variance $\sigma^2$ with probability $C$, we have that $\mathbb E[M_{ij}] = 0$ and $\mathbb E[M_{ij}^2] = C \sigma^2$. This means that if we were to divide the coefficients of ${M}$ by $\sqrt{C \sigma^2}$ we would recover the unit variance, and the matrix would follow the circular law when $S$ is large. Armed with this, we can calculate the radius: if the radius of ${M} / \sqrt{n C \sigma^2}$ converges to 1 when the matrix is large, then the radius of ${M}$ is approximately $\sqrt{n C \sigma^2}$. For stability, we need a sufficiently negative diagonal (setting the center of the circle), yielding May's stability criterion:
 
 $$
-\sqrt{S C \sigma^2} < d
+\sqrt{n C \sigma^2} < d
 $$
 
-We can try this on our matrix:
+We can try this on our matrix (black dashed line):
 
-```{r, maycrit}
+```{r, maycrit, echo = FALSE}
 prediction <- sqrt(n * C * sigma^2) - d
 plot_eigenvalues(M, prediction)
 ```
@@ -79,7 +124,7 @@ Showing that we accurately approximate the location of the rightmost eigenvalue.
 
 Importantly, the distribution from which the coefficients are sampled does not matter---only that the mean is zero and that the variance is $\sigma^2$. For example, build the matrix using coefficients from a uniform distribution:
 
-```{r, exmay2}
+```{r, exmay2,echo=FALSE}
 build_May_uniform <- function(n, C, d, sigma){
   # fill the whole matrix (sqrt(3) to ensure var = sigma^2)
   M <- matrix(runif(n * n, min = -sqrt(3) * sigma, max = sqrt(3) * sigma), n, n)
@@ -101,6 +146,17 @@ plot_eigenvalues(M, prediction)
 
 This property is called **universality** in random matrix theory.
 
+:::boxhomework
+
+**Homework 4a**
+
+The probability that a matrix is stable, given $C$, $\sigma$ and $n$ is close to 1 when the stability criterion is satisfied, and close to 0 when it is not. The point $\sqrt{n C \sigma^2} = d$ is the critical point. In theory, the results only hold in the limit $n \to \infty$ (to be accurate, $nC \to \infty$), as eigenvalues can fall outside the circle with small probability. 
+
+:::
+
+
+## Accounting for interaction types
+
 In ecological communities, the effect of species $i$ on $j$ and that of $j$ on $i$ are typically not independent (as assumed above): in the case of competition between species, we expect them both to be negative; for consumption, if one is positive, the other is negative, and so forth. A more refined model of a random matrix would therefore sample interactions in pairs from a bivariate distribution. The elliptic law can deal with this case:
 
 **Elliptic law:** Take a non-symmetric, $S \times S$ random matrix in which the pairs of coefficients $(X_{ij}, X_{ji})$ are sampled independently from a bivariate distribution defined by a vector of means $m = (0,0)^t$ and a covariance matrix $\Sigma = \begin{pmatrix} 1 & \rho\\ \rho & 1 \end{pmatrix}$. Then, as $S \to \infty$, the e.s.d. of ${X} / \sqrt{S}$ converges to the elliptic law:
@@ -113,15 +169,17 @@ $$
   \end{cases}
 $$
 
-Note that when $\rho = 0$, the elliptic law reduces to the circular law. Using the elliptic law, @allesina2012stability were able to extend May's criterion to ecological networks with different mixtures of interaction types. In particular, the stability criterion becomes:
+Note that when $\rho = 0$, the elliptic law reduces to the circular law. Using the elliptic law, @allesina2012stability were able to extend May's criterion to ecological networks with different mixtures of interaction types. 
+
+Build a matrix $M$ by sampling the entries in pairs: $(M_{ij}, M_{ji})$ are zero with probability $(1-C)$, and with probability $C$ sampled independently from a bivariate distribution with mean $\nu = (0, 0)^T$, and covariance matrix $\Sigma = \sigma^2 \begin{pmatrix} 1 & \rho\\ \rho & 1\end{pmatrix}$. Then $\mathbb E[M_{ij}] = 0$, $\mathbb E[M_{ij}^2] = C \sigma^2$, and $E[M_{ij} M_{ji}] = C \sigma^2 \rho$. By dividing the entries ${M}$ by $\sqrt{C \sigma^2}$, we obtain a matrix following the elliptic law. As such, the stability criterion becomes:
 
 $$
 \sqrt{S C \sigma^2}(1 + \rho) < d
 $$
 
-To see the elliptic law in action, we can build matrices in which we sample the coefficients in pairs from a bivariate normal distribution:
+To see the elliptic law in action, we can build matrices in which we sample the coefficients in pairs from a bivariate normal distribution. If we sample the entries from a distribution with a positive correlation, we obtain a horizontally-stretched ellipse (and hence, more difficult to stabilize than the circle):
 
-```{r, allesinatangbuild}
+```{r, allesinatangbuild,echo= FALSE}
 build_Allesina_Tang_normal <- function(n, C, d, sigma, rho){
   # sample coefficients in pairs
   pairs <- MASS::mvrnorm(n = n * (n-1) / 2,
@@ -143,9 +201,7 @@ build_Allesina_Tang_normal <- function(n, C, d, sigma, rho){
 }
 ```
 
-We can see that a positive connectance leads to an eigenvalue distribution that describes an horizontally-stretched ellipse (and hence, more difficult to stabilize than the circle):
-
-```{r, allesinatangex1}
+```{r, allesinatangex1, echo = FALSE}
 # parameters
 n <- 500
 C <- 0.5
@@ -159,7 +215,7 @@ plot_eigenvalues(M, prediction)
 
 Similarly, a negative correlation (e.g., as in predator-prey) would make the system easier to stabilize:
 
-```{r, allesinatangex2}
+```{r, allesinatangex2, echo = FALSE}
 # parameters
 n <- 500
 C <- 0.5
@@ -170,6 +226,10 @@ M <- build_Allesina_Tang_normal(n, C, d, sigma, rho)
 prediction <- sqrt(n * C * sigma^2) * (1 + rho) - d
 plot_eigenvalues(M, prediction)
 ```
+
+Allesina and Tang therefore concluded that, all other things being equal, ecological communities in which predator-prey interactions are prevalent (and as such $E[M_{ij} M_{ji}] < 0$) are easier to stabilize than those dominated by competition/mutualism ($E[M_{ij} M_{ji}] > 0$).
+
+
 
 ## Further readings
 
