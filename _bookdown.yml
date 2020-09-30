@@ -2,5 +2,5 @@ book_filename: "Theoretical_Community_Ecology"
 delete_merged_file: true
 language:
   ui:
-    chapter_name: "Chapter "
+    chapter_name: "Lecture "
 output_dir: "docs"

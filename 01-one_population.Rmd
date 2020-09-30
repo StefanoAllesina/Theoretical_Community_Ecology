@@ -8,7 +8,7 @@ source("common_settings.R")
 
 1. We start by discussing what it means to solve an initial-value problem: the solution is an expression that allows us to calculate $x(t)$ for any $t$. A few ecologically-relevant models can be solved explicitly, for example the exponential and logistic growth models.
 1. Because, on the other hand, solving differential equations is a laborious process, and in many cases writing the solution is impossible or does not give us any insight on the dynamics, we introduce a graphical model that allows to effortlessly sketch the dynamics of any first-order ODE (i.e., models with a single equation).
-1. This allow us to introduce essential concepts such as the notion of an equilibrium and its stability.
+1. This allows us to introduce essential concepts such as the notion of an equilibrium and its stability.
 1. We show that determining stability using this graphical method is equivalent to performing stability analysis via linearization around an equilibrium, a method that will be extended to systems of multiple ODEs in the next chapter.
 1. We briefly discuss the idea of bifurcation points --- i.e., particular choices of parameters for which the dynamics of the system change qualitatively.
 1. We conclude by introducing the idea of Lyapunov functions, allowing us to determine global stability of an equilibrium without the need to explicitly solve the model. We will see a lot of these functions when we study larger systems.
@@ -56,7 +56,7 @@ knitr::include_graphics('img/Verhulst.jpg')
 
 Pierre-François Verhulst was born in 1804 in Brussels, Belgium. In 1835 became professor of mathematics at the newly-instituded Free University of Brussels. 
 
-In 1838, inspired by the work of Malthus and Quetelet, he wrote a *Note on the law of population growth*, where he argued that the geometric progression imagined by Malthus would be unfeasible to sustain. He therefore introduced an *unknown function* that would slow down growth for large populations. *The simplest hypothesis one can make on the form of this function is to suppose that* it is quadratic in the size of the population. He went on to solve what is now known as the "logistic growth" model and contrasted it with data for the growth of populations in various countries.
+In 1838, inspired by the work of Malthus and Quetelet, he wrote a *Note on the law of population growth*, where he argued that the geometric progression imagined by Malthus would be unfeasible to sustain. He therefore introduced an *unknown function* that would slow down growth for large populations" *"The simplest hypothesis one can make on the form of this function is to suppose that"* the unknown function would be quadratic in the size of the population. He went on to solve what is now known as the "logistic growth" model and contrasted it with data for the growth of populations in various countries.
 :::
 
 An model of ecological interest that has an explicit solution is that for the exponential growth:
@@ -159,7 +159,7 @@ which provides an explicit solution for this (very simple) model.
 
 :::boxhomework
 
-**Homework**
+**Homework 1a**
 
 
 Find the solution for the logistic growth with harvesting:
@@ -414,9 +414,9 @@ Note that the rate at which the system approaches (moves away from) the stable (
 
 :::boxhomework
 
-**Homework**
+**Homework 1b**
 
-Draw the bifurcation diagram for the Allee effect model with harvesting:
+Draw the bifurcation diagram for logistic growth model with harvesting:
 
 
 $$
@@ -477,13 +477,13 @@ $$
 with $x^\star = 1 / \alpha$. The function is positive for any $x(t) \neq x^\star$. Next, we derive with respect to $t$:
 
 $$
-\dfrac{d V(x(t))}{t} = \dfrac{d V(x(t))}{x(t)}\dfrac{d x(t)}{t} = 2 \left(x(t) - \dfrac{1}{\alpha}\right)\rho\, x(t) (1 - \alpha\, x(t))
+\dfrac{d V(x(t))}{d t} = \dfrac{d V(x(t))}{d x(t)}\dfrac{d x(t)}{d t} = 2 \left(x(t) - \dfrac{1}{\alpha}\right)\rho\, x(t) (1 - \alpha\, x(t))
 $$
 
 The derivative is negative whenever $x(t) > 0$ and $x(t) \neq x^\star$:
 
 $$
-\dfrac{d V(x(t))}{t} = 2 \rho\, x(t) \left(x(t) - \dfrac{1}{\alpha}\right) (1 - \alpha\, x(t))= -\dfrac{\rho\, x(t)}{\alpha}\left(x(t) - \dfrac{1}{\alpha}\right)^2
+\dfrac{d V(x(t))}{d t} = 2 \rho\, x(t) \left(x(t) - \dfrac{1}{\alpha}\right) (1 - \alpha\, x(t))= -\dfrac{\rho\, x(t)}{\alpha}\left(x(t) - \dfrac{1}{\alpha}\right)^2
 $$
 
 and as such $x^\star$ is asymptotically stable. The basin of attraction (i.e., where the Lyapunov function has the desired properties) is $x \in \mathbb{R}_+$. There can be several alternative Lyapunov functions. For example, consider:
@@ -494,7 +494,7 @@ $$
 which is positive for $x(t) > 0$ and $x(t) \neq x^\star$, taking the derivative w.r.t. time, we find:
 
 $$
-\dfrac{d V(x(t))}{t} = \left(1 - \dfrac{x^\star}{x(t)}\right)\rho\, x(t) (1 - \alpha\, x(t)) = -\rho\, x^\star (x(t) - x^\star)^2 
+\dfrac{d V(x(t))}{d t} = \left(1 - \dfrac{x^\star}{x(t)}\right)\rho\, x(t) (1 - \alpha\, x(t)) = -\rho\, x^\star (x(t) - x^\star)^2 
 $$
 which again is negative whenever $x^\star > 0$, $\rho >0$ and $x(t) \neq x^\star$.
 

@@ -383,13 +383,13 @@ If $A$ has eigenvalues $\lambda$, $B = \beta\, A$ has eigenvalues $\beta\, \lamb
 
 A matrix is positive definite if all its eigenvalues are real and positive. It is positive semi-definite if eigenvalues can be zero. The matrices $AA^T$ and $A^T A$ are positive semi-definite, and have the same eigenvalues up to some zeros (used in PCA). Correlation and covariance matrices have these forms.
 
-A matrix with all positive entries has a unique largest real eigenvalue with a corresponding eigenvector that can be chosen to have strictly positive components (Perron-Frobenius). A matrix with constant row sums $\theta$ has $\theta$ as the largest eigenvalue, and $v = 1$ as the corresponding eigenvector (e.g., Markov Chains).
+Provided that some mild conditions are satisfied, a matrix with non-negative entries has a unique largest real eigenvalue with a corresponding eigenvector that can be chosen to have strictly positive components (Perron-Frobenius). A matrix with constant row sums $\theta$ has $\theta$ as the largest eigenvalue, and $v = 1$ as the corresponding eigenvector (e.g., Markov Chains).
 
 :::
 
 :::boxhomework
 
-**Homework**
+**Homework 2a**
 
 Show that a matrix $A$ with sign-pattern:
 
@@ -472,7 +472,7 @@ y(t) = e^{\Lambda t} y_0
 \end{aligned}
 $$
 
-And therefore $y_j(t) = e^{(\lambda_j)t} y_j(0)$. Clealry, if all $\lambda_j$ are real and negative, the trajectories will die out, and the origin $y^\star = 0$ will be stable. Similarly, if any eigenvalue is real and positive, then the perturbation will amplify in at least one direction. Next, we consider $\lambda_j$ to be complex. In this case, $\lambda_j = \alpha + i\, \beta$. Using Euler's formula, we have
+And therefore $y_j(t) = e^{(\lambda_j)t} y_j(0)$. Clealry, if all $\lambda_j$ are real and negative, the trajectories will die out, and the origin $y^\star = 0$ is stable. Similarly, if any eigenvalue is real and positive, then the perturbation will amplify in at least one direction. Next, we consider $\lambda_j$ to be complex. In this case, $\lambda_j = \alpha + i\, \beta$. Using Euler's formula, we have
 
 $$
 y_j(t) = y_j(0)\, e^{(\alpha + i\, \beta) t} = y_j(0)\, e^{\alpha\, t} (\cos(\beta\, t) + i \sin(\beta\, t))
@@ -639,9 +639,9 @@ $$
 \beta (x - x^\star \log x) + \alpha (y - y^\star \log y) = C
 $$
 
-This means that the system has a constant of motion (a.k.a. "first integral"): the value of $C$ depends on the initial conditions, and then the system will cycle around the equilibrium in closed orbits.
+This means that the system has a constant of motion (a.k.a. "first integral"): the value of $C$ depends on the initial conditions, and then the system will cycle around the equilibrium in closed orbits. Note that a) $C>0$ if the initial conditions are different from the equilibrium; b) $C = C_m > 0$ if we are at equilibrium; and therefore c) $C \geq C_m$ for all (positive) initial conditions.
 
-Note that this quantity works as a Lyapunov function: 
+We can use $C$ as a Lyapunov function: 
 
 $$
 V(x,y) = \beta (x - x^\star \log x) + \alpha (y - y^\star \log y)
@@ -747,7 +747,7 @@ As such, the equilibrium $(x^\star, y^\star) = (1, 1/2)$ is globally stable.
 
 :::boxhomework
 
-**Homework**
+**Homework 1b**
 
 Take the competitive Lotka-Volterra model:
 

@@ -1,4 +1,4 @@
-# Generalized Lotka-Volterra models
+# Generalized Lotka-Volterra model
 
 ```{r, include=FALSE}
 source("common_settings.R")
@@ -86,6 +86,19 @@ M = \left. {J} \right|_{ {x}^\star} = D(x^\star)A
 $$
 
 If the eigenvalues of $M$ have all negative real part, then $x^\star$ is locally asymptotically stable.
+
+:::boxmath
+
+**D-stability and Lyapunov-Diagonal Stability**
+
+A matrix $A$ is called *stable* if all its eigenvalues have negative real part. A matrix $A$ is called *D-stable* if $D(x) A$ is stable for every choice of $x$ such $x_i > 0\; \forall i$. While conditions for *D-stability* are not known for matrices of size greater than 3, a **sufficient** condtion for *D-stability* is that there exists a diagonal matrix $D$ with positive elements on the diagonal such that $DA + A^T D$ is negative definite (i.e., has negative eigenvalues). 
+
+**Consequences for Lotka-Volterra dynamics**
+
+- If a matrix $A$ is stable and symmetric, it is *D-stable* (just take $D = I$).
+- Take a stable, non symmetric matrix $A$ such that $A + A^T$ is negative definite. Then any feasible equilibrium is stable: we have $M = D(x^\star)A$, but if $A$ is *D-stable* then $M$ is stable.
+
+:::
 
 ### Types of dynamics
 
@@ -243,10 +256,16 @@ $$
 \frac{1}{T} \int_0^T x(t) dt
 $$
 
-We perform the change of variable $y = \log(x(t))$, finding $\dfrac{d x(t)}{dt} = \dfrac{d x(t)}{d \log(x(t))}\dfrac{d \log(x(t))}{dt} = x(t)\dfrac{d \log(x(t))}{dt}$. Then:
+First, we assume that $x(t) > 0$ and write the dynamics of its logarithm:
 
 $$
-\frac{d \log(x(t))}{dt} = r + Ax(t)
+\dfrac{d \log(x_i(t))}{dt} = \dfrac{1}{x_i(t)}\dfrac{d x_i(t)}{dt} = r_i + \sum_j A_{ij} x_j(t)
+$$
+
+In vector form:
+
+$$
+\dfrac{d \log x(t)}{d t} = r + A x(t)
 $$
 
 Compute the average on both sides:
@@ -260,7 +279,7 @@ yielding:
 $$
 \frac{1}{T}(\log(x(T)) - \log(x(0))) = 0 = r + A \left( \frac{1}{T} \int_0^T x(t) dt \right)
 $$
-multiplying by the matrix inverse and rearranging:
+Note that the l.h.s. is zero because  $x(0) = x(T)$. Multiplying by the matrix inverse and rearranging:
 
 $$
 -A^{-1} r = x^\star =  \frac{1}{T} \int_0^T x(t) dt 
@@ -270,12 +289,12 @@ showing that **the average density is** in fact **the equilibrium**. With a simi
 
 ### Lyapunov diagonal stability and global stability
 
-Suppose that there is a positive diagonal matrix $C$ such that $C A + A^t C$ is negative definite (i.e., has only negative eigenvalues; the eigenvalues are real because the matrix is symmetric).  Then $A$ is **Lyapunov-diagonally stable**. If this is the case, then $A$ is stable, and any $D A$ with $D$ positive is also stable (called $D-$stability).
+Suppose that there is a positive diagonal matrix $C$ such that $C A + A^T C$ is negative definite (i.e., has only negative eigenvalues; the eigenvalues are real because the matrix is symmetric).  Then $A$ is **Lyapunov-diagonally stable**. If this is the case, then $A$ is stable, and any $D A$ with $D$ positive is also stable (called $D-$stability).
 
 Further, suppose that the GLV system with parameters $A$ and $r$ has a feasible equilibrium point $x^\star$. Then the function:
 
 $$
-V(x(t)) = 1^t C \left( x(t) -D(x^\star) \log x(t)\right)
+V(x(t)) = 1^T C \left( x(t) -D(x^\star) \log x(t)\right)
 $$
 
 is a Lyapunov function for the GLV system. 
@@ -284,18 +303,45 @@ To prove this point, we start from $r = -Ax^\star$. Substituting, we can write t
 
 $$
 \begin{aligned}
- \frac{d V(x(t))}{dt} &= 1^t C \left(\frac{d x(t)}{dt}  + D(x^*) \frac{d \log x(t)}{dt} \right)\\
- &= 1^t C \left(A (x - x^\star)  + D(x^*) A (x - x^\star) \right)\\
- &= 1^t C \left(D(x - x^\star)  A (x - x^\star) \right)\\
- &= 1^t \left(D(x - x^\star)  C A (x - x^\star) \right)\\
- &= (x - x^\star)^t  CA (x - x^\star)\\
- &= \frac{1}{2}(x - x^\star)^t  (CA + A^t C) (x - x^\star)\\
+ \frac{d V(x(t))}{dt} &= 1^T C \left(\frac{d x(t)}{dt}  + D(x^*) \frac{d \log x(t)}{dt} \right)\\
+ &= 1^T C \left(A (x - x^\star)  + D(x^*) A (x - x^\star) \right)\\
+ &= 1^T C \left(D(x - x^\star)  A (x - x^\star) \right)\\
+ &= 1^T \left(D(x - x^\star)  C A (x - x^\star) \right)\\
+ &= (x - x^\star)^T  CA (x - x^\star)\\
+ &= \frac{1}{2}(x - x^\star)^T  (CA + A^T C) (x - x^\star)\\
 \end{aligned}
 $$
 
-A matrix $B$ is negative definite if $y^t B y < 0$ for all $y \neq 0$. As such $\frac{d V(x(t))}{dt} \leq 0$, i.e., will decrease in time (starting from any $x(0)$) until the equilibrium $x^\star$ is reached. 
+A matrix $B$ is negative definite if $y^T B y < 0$ for all $y \neq 0$. As such $\frac{d V(x(t))}{dt} \leq 0$, i.e., will decrease in time (starting from any $x(0)$) until the equilibrium $x^\star$ is reached. 
 
 The results above show that **if $A$ is Lyapunov diagonally-stable and a feasible equilibrium $x^\star$ exists, than all trajectories starting at a positive density will converge to the equilibrium**. This property is often used to prove **global stability**.
+
+EXERCISE ON TYPE OF DYNAMICS
+
+
+
+
+## MacArthur's consumer-resource model
+
+:::boxhistory
+**History: Robert H. MacArthur (1930-1972)**
+
+```{r, echo=FALSE,out.width = "25%"}
+knitr::include_graphics('img/MacArthur.jpg')
+```
+
+Robert MacArthur was born in Toronto, and moved to Vermont when his father (a geneticist) became a professor at Marlboro College.
+
+He studied mathematics first at Marlboro College and then at Brown University. He enrolled as a PhD student in mathematics at Yale, but quickly switched to studying ecology with George Evelyn Hutchinson. 
+
+He was a professor first at the University of Pennsylvania and then at Princeton University. In his brief career (he died at age 45) he revolutionized ecology, by making it into a rigorous, predictive science based on general principles.
+
+He is recognized for developing the *Theory of Island Biogeography* (with E. O. Wilson, @macarthur2001theory), the investigation of limiting similarity (with R. Levins, @macarthur1967limiting), the contributions to the complexity-stability debate (@macarthur1955fluctuations, see next lecture). The consumer-resource model he proposed in 1969 now bears his name (published also in @macarthur1970species in a longer form---the first paper in the journal Theoretical Population Biology!).
+
+:::
+
+Consumer-resource; separation of time-scales; turn into symmetric Lotka-Volterra; Lyapunov function
+
 
 
 ## Further readings

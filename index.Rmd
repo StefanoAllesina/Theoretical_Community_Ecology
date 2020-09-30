@@ -9,17 +9,17 @@ biblio-style: apalike
 link-citations: yes
 description: "A graduate course in theoretical ecology focusing on systems with multiple species."
 ---
-# Preliminaries
+# Preliminaries {-}
 
-## Approach and target audience
+## Approach and target audience {-}
 
-The material was prepared for the graduate class *Theoretical Community Ecology* taught at the University of Chicago --- AY 2020/2021. Following the material requires some familiarity with calculus (multivariable integration, derivatives, chain rule) and linear algebra (vector spaces, eigenvalues, eigenvectors). Also, a good working knowledge of `R` (functions, packages `deSolve` and `tidyverse`) is needed to follow the code.
+The material was prepared for the graduate class *Theoretical Community Ecology* taught at the University of Chicago --- AY 2020/2021. Following the material requires some familiarity with calculus (multivariable integration, derivatives, chain rule) and linear algebra (vector spaces, eigenvalues, eigenvectors). Also, a good working knowledge of `R` (writing functions, working with the packages `deSolve` and `tidyverse`) is needed to follow the code.
 
 The approach taken throughout the course is to alternate between code/simulations and mathematical derivations. While several theorems are (informally) stated, proofs are included only when elementary and/or informative of the underlying biological processes.
 
 The class builds upon material typically presented in classes on population, community and theoretical ecology.
 
-## Topics
+## Topics {-}
 
 Focus on continuous time, time-invariant models
 
@@ -31,7 +31,7 @@ Evolutionary Game Theory
 
 Models for Infectious Diseases
 
-## Notation
+## Notation {-}
 
 Unless specified or for obvious exceptions, Greek letters stand for scalars (i.e., real or complex numbers), lower case roman letters for vectors, and capital roman letters for matrices (as such $a_i$ or $A_{ij}$ are scalars). We typically work in $\mathbb{R}^n$ (the $n$-dimensional Euclidean space), $\mathbb{R}^n_+$ (i.e., the positive orthant of $\mathbb{R}^n$), or $\mathbb{R}^n_{0+}$ (non-negative orthant).  $D(x)$ is a diagonal matrix with $x$ on the diagonal, sometimes written $D(x) = X$. The matrix $A^T$ is the transpose of $A$. Whenever it is clear what I mean, I will drop the dependency on time of certain variables. 
 
@@ -47,7 +47,19 @@ $$
 \dfrac{d x}{d t} = X (a + B x)
 $$
 
-## Sources
+## Grading and code of conduct {-}
+
+You should follow the rules and regulations set out by [University policy](https://studentmanual.uchicago.edu/academic-policies/). I am expecting all students to a) participate in all classes (please contact me if you are going to be absent for a class); b) actively contribute to discussions and lectures; c) be punctual (both for class and in turning in the homework); d) be professional and honest (no copying/cheating/plagiarizing).
+
+### Homework (80%) {-}
+
+Each of the lectures contains exercises that should be completed as graded homework. The homework should be submitted through Canvas as one or more `Rmd` files, containing the derivations (you can use `LaTex` to typeset mathematics within `Rmd`, see [here](https://rpruim.github.io/s341/S19/from-class/MathinRmd.html) for commonly used commands), and code. The code must run and be correct to get a passing grade.
+
+### Review (20%) {-}
+
+The remaining 20% of the grade is based on a review. Take an interesting (important, provocative, etc.) published paper or preprint in theoretical community ecology, and produce a review (of the kind you would submit to a journal if solicited for comments). The review must contain two sections: a) comments to the Authors, and b) Recommendation for the Editor. You can find good advice on writing reviews [here](https://dynamicecology.wordpress.com/2013/01/03/advice-how-to-review-a-manuscript-for-a-journal/).
+
+## Sources {-}
 
 Many excellent books are available on these topics. Here are the main references I've used in preparing these lectures:
 
