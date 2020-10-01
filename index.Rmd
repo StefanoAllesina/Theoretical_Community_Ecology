@@ -7,7 +7,7 @@ documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-description: "A graduate course in theoretical ecology focusing on systems with multiple species."
+description: "A graduate course in theoretical community ecology focusing on systems with multiple species."
 ---
 # Preliminaries {-}
 
@@ -49,7 +49,7 @@ $$
 
 ## Grading and code of conduct {-}
 
-You should follow the rules and regulations set out by [University policy](https://studentmanual.uchicago.edu/academic-policies/). I am expecting all students to a) participate in all classes (please contact me if you are going to be absent for a class); b) actively contribute to discussions and lectures; c) be punctual (both for class and in turning in the homework); d) be professional and honest (no copying/cheating/plagiarizing).
+Students should follow the rules and regulations set out by [University policy](https://studentmanual.uchicago.edu/academic-policies/). I am expecting all students to a) participate in all classes (please contact me if you are going to be absent); b) actively contribute to discussions and lectures; c) be punctual (both for class and in turning in the homework); d) be professional and honest (no copying/cheating/plagiarizing).
 
 ### Homework (80%) {-}
 
@@ -69,6 +69,13 @@ Many excellent books are available on these topics. Here are the main references
 - @szederkenyi2018analysis --- an introduction to quasi-polynomial systems and reaction networks.
 - @hadeler2017topics --- a more mathematically-focused reading.
 - @hirsch2012differential --- an extensive, clearly written and rigorous introduction to dynamical systems.
+
+
+## Acknowledgements {-}
+
+These lectures grew out of a set of four lectures I have presented at the ICTP-SAIFR/IFT-UNESP ["School on Community Ecology: from patterns to principles"](https://www.ictp-saifr.org/community-ecology-from-patterns-to-principles/), held on January 20-25, 2020 in São Paulo, Brazil. Thanks to the organizers (Marcus Aguiar, Jacopo Grilli, Roberto Kraenkel, Ricardo Martinez-Garcia and Paulo Inácio Prado) for the invitation and for prompting me to start working on the material. Thanks also to the students for useful feedback. 
+
+The preparation of this material was supported by the National Science Foundation ([DEB #2022742](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2022742)). Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author and do not necessarily reflect the views of the National Science Foundation.
 
 ```{r include=FALSE}
 # automatically create a bib database for R packages
