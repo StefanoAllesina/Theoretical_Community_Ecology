@@ -294,17 +294,17 @@ Suppose that there is a positive diagonal matrix $C$ such that $C A + A^T C$ is 
 Further, suppose that the GLV system with parameters $A$ and $r$ has a feasible equilibrium point $x^\star$. Then the function:
 
 $$
-V(x(t)) = 1^T C \left( x(t) -D(x^\star) \log x(t)\right)
+V(x(t)) = 1^T C \left( x(t) -D(x^\star) -D(x^\star) \log D(x(t) / x^\star)\right)
 $$
 
-is a Lyapunov function for the GLV system. 
+is a Lyapunov function for the GLV system. It is clear that $V(x(t))$ is positive everywhere in the positive orthant besides at equilibrium. Then, we need to show that the function decreases along the trajectories of the system.
 
 To prove this point, we start from $r = -Ax^\star$. Substituting, we can write the GLV system as $dx(t)/dt = D(x)A(x - x^\star)$; similarly, we can write $d \log x(t)/dt = A(x - x^\star)$. Taking the derivative of $V$ with respect to time:
 
 $$
 \begin{aligned}
  \frac{d V(x(t))}{dt} &= 1^T C \left(\frac{d x(t)}{dt}  + D(x^*) \frac{d \log x(t)}{dt} \right)\\
- &= 1^T C \left(A (x - x^\star)  + D(x^*) A (x - x^\star) \right)\\
+ &= 1^T C \left(D(x)(A (x - x^\star)  - D(x^*) A (x - x^\star) \right)\\
  &= 1^T C \left(D(x - x^\star)  A (x - x^\star) \right)\\
  &= 1^T \left(D(x - x^\star)  C A (x - x^\star) \right)\\
  &= (x - x^\star)^T  CA (x - x^\star)\\
@@ -340,7 +340,144 @@ He is recognized for developing the *Theory of Island Biogeography* (with E. O. 
 
 :::
 
-Consumer-resource; separation of time-scales; turn into symmetric Lotka-Volterra; Lyapunov function
+MacArtur considered a system with two classes of equations: those describing the dynamics of consumers $(x_i)$ and resources ($y_i$). Resources do not interact with each other, and consumers interact only through the sharing of resources:
+
+$$
+\begin{cases}
+\dfrac{d y_i}{dt} = y_i \left(r_i - b_i\, y_i - \sum_j P_{ij}\, x_j \right)\\
+\dfrac{d x_j}{dt} = x_j \left(- m_j + \sum_i v_j\, P_{ij}\, y_i \right)\\
+\end{cases}
+$$
+
+In the absence of consumers, each resource grows logistically. In the absence of resources, consumers go extinct. In the model, all parameters are taken to be positive: $r_i$ is the growth rate for resource $i$, $b_i$ models its self-regulation; $m_j$ is the death rate of consumer $j$, and $v_j$ models the efficiency of transformation of resources into consumers. The matrix $P$ is in general rectangular ($n \times k$, where $n$ is the number of resources and $k$ that of consumers). 
+
+:::boxmath
+
+**Block matrices**
+
+Any matrix can be rewritten as a series of smaller matrices stitched together. For squared matrices, it is often convenient to partition a matrix into blocks such that diagonal blocks are square matrices and off-diagonal blocks are (in general) rectangular. 
+
+For example:
+
+$$
+M = \begin{pmatrix}
+1 & 2 & 3 & 4 & 5\\
+6 & 7 & 8 & 9 & 10\\
+11 & 12 & 13 & 14 & 15\\
+16 & 17 & 18 & 19 & 20\\
+21 & 22 & 23 & 24 & 25\\
+\end{pmatrix}
+$$
+
+Can be written as:
+
+$$
+M = \begin{pmatrix}
+M_{11} & M_{12}\\
+M_{21} & M_{22}
+\end{pmatrix}
+$$
+with:
+
+$$
+M_{11} = \begin{pmatrix}
+1 & 2 \\
+6 & 7 
+\end{pmatrix}
+\;
+M_{21} = \begin{pmatrix}
+3 & 4 & 5\\
+8 & 9 & 10\\
+\end{pmatrix}
+\;\ldots
+$$
+
+**Multiplication of block matrices**
+
+The multiplication of two block matrices with square diagonal blocks is very easy:
+
+$$
+\begin{pmatrix}
+A_{11} & A_{12}\\
+A_{21} & A_{22}
+\end{pmatrix} \begin{pmatrix}
+B_{11} & B_{12}\\
+B_{21} & B_{22}
+\end{pmatrix} = \begin{pmatrix}
+A_{11}B_{11}  + A_{12} B_{21}& A_{11}B_{12} + A_{12} B_{22}\\
+A_{21}B_{11} + A_{22} B_{21} &A_{21}B_{12} + A_{22} B_{22}
+\end{pmatrix}
+$$
+
+**Determinant of block matrices**
+
+Take
+
+$$
+A = \begin{pmatrix}
+A_{11} & A_{12}\\
+A_{21} & A_{22}
+\end{pmatrix} 
+$$
+
+and assume that $A_{22}$ is invertible. Then $\det(A) = \det(A_{22})\det(A_{11} - A_{12}A_{22}^{-1} A_{21})$
+
+**Inverse of block matrix**
+
+Similarly, if $A_{22}$ is invertible, and $\det(A) \neq 0$ (and hence the [Schur complement](https://en.wikipedia.org/wiki/Schur_complement) $A_{11} - A_{12}A_{22}^{-1} A_{21}$ is nonsingular) then
+
+$$
+A^{-1} = \begin{pmatrix}
+S & -S A_{12}A_{22}^{-1}\\
+-A_{22}^{-1} A_{21} S & A_{22}^{-1} +  A_{22}^{-1} A_{21}SA_{21}A_{22}^{-1}
+\end{pmatrix}
+$$
+
+where $S = (A_{11} - A_{12}A_{22}^{-1} A_{21})^{-1}$
+
+:::
+
+
+
+We can rewrite the system as a generalized Lotka-Volterra model (see @case1979global). We define:
+
+$$
+z = (y,x)^T\;\;s = (r, -m)^T
+$$
+
+And the block structured matrix $A$:
+
+$$
+A = \begin{pmatrix}
+A_{11} & A_{12}\\
+A_{21} & A_{22}
+\end{pmatrix}\; \text{with}\; A_{11} = -D(b),\; A_{12}=-P,\; A_{21} = D(v)P^T, A_{22} = 0_{k,k}
+$$
+where $0_{k,k}$ is a $k \times k$ matrix of zeros. Now the system becomes:
+
+$$
+\dfrac{d z}{d t} = D(z)(s + Az)
+$$
+
+### Existence of an equilibrium
+
+For simplicity, we concentrate on the study of the feasibility and stability of the coexistence equilibrium. If an equilibrium $z^\star \neq 0$ exists, it is the solution of $Az^\star = -s$, which requires matrix $A$ to be non-singular. Matrix $A$ is nonsingular only if $w = 0$ is the only solution of $Aw = 0$. We prove that $A$ is nonsingular whenever $A_{12}$ is of rank $k$, and $A_{11}$ is negative definite. We do so by contradiction. First, because the matrix $A$ has a special structure, we can split $w$ into $(w_1, w_2)^T$, and write:
+
+$$
+A \begin{pmatrix} w_1\\ w_2 \end{pmatrix} = \begin{pmatrix} A_{11}w_1 + A_{12} w_2\\ A_{21}w_1 \end{pmatrix} = \begin{pmatrix} 0_n\\ 0_k \end{pmatrix}
+$$
+
+We therefore have $A_{21} w_1 = 0$ and $A_{11}w_1 + A_{12} w_2 = 0$. Suppose that $w_1 =0$ and $w_2 \neq 0$; then we find $A_{12} w_2 = 0$ with $w_2 \neq 0$, which is not possible when $A_{12}$ has rank $k$. Now suppose that $w_1 \neq 0$ and $w_2 = 0$, but this implies $A_{11}w_1 = 0$ with $w_1 \neq 0$, which is impossible given that $A_{11}$ is clearly of full rank. We are left with the case in which both $w_1 \neq 0$ and $w_2 \neq 0$. Then, multiply the first set of equations by $w_1^T$ and the second by $w_2^T$. We obtain $w_1^T A_{11} w_1 + w_1^T A_{12} w_2 = 0$ and $w_2^T A_{21} w_1 = 0$. But $A_{21} = -D(v) A_{12}$ (with $D(v) > 0$), and as such $w_2^T A_{21} w_1 = 0$ implies $w_1^T A_{12} w_2 = 0$, leaving us with $w_1^T A_{11} w_1 = 0$ with $w_1 \neq 0$, which is again a contradiction because $A_{11}$ is clearly negative definite (and as such $w_1^T A_{11} w_1 \leq 0$, with equality implying $w_1 = 0$).
+
+We have proven that $A$ is nonsingular, and therefore a unique equilibrium point for the system exists (the equilibrium for the moment needs not to be feasible) whenever $A_{11} = -D(b)$ is negative definite (which is always the case whenever resources are self-regulating) and, importantly, $A_{12}$ has rank $k$ (the number of consumers). This in turn implies that **the number of resources must be larger (or equal) than the number of consumers**. A similar argument is developed in the classic @levin1970community.
+
+## Global stability
+
+Next, we prove that if a feasible equilibrium for the system exists, it is globally stable. Again, we follow @case1979global to show that $A$ is indeed Lyapunov-diagonally stable. Consider:
+
+$$
+A = D_1\, \tilde{A}\, D_2
+$$
 
 
 
@@ -348,13 +485,9 @@ Consumer-resource; separation of time-scales; turn into symmetric Lotka-Volterra
 
 On the theory of GLV:
 
-- @strogatz2018nonlinear is a simple introduction to dynamical systems and bifurcation theory.
-
 - @hofbauer1998evolutionary is a wonderful introduction to dynamical systems in ecology and population genetics, with a nice introduction to evolutionary game theory.
 
 - @hadeler2017topics contains a more mathematically-oriented treatment of the material covered in the first part of this lecture.
 
 - @baigent2016lotka is a mathematical introduction to Lotka-Volterra dynamics.
-
-
 

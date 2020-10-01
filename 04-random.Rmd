@@ -81,7 +81,7 @@ plot_eigenvalues <- function(M, prediction = NULL){
     coord_equal() + 
     geom_vline(xintercept = 0, colour = "red", linetype = 2)
   if (is.null(prediction) == FALSE) {
-    pl <- pl + geom_vline(xintercept = prediction, colour = "black", linetype = 2)
+    pl <- pl + geom_vline(xintercept = prediction, colour = "black", linetype = 2) + my_theme
   }
   show(pl)
 }
@@ -97,7 +97,7 @@ plot_eigenvalues(M)
 
 The eigenvalues fall into an almost perfect circle! Turns out, that this is the behavior we should expect, as stated by the so-called "Circular Law", one of the most beautiful results in random matrix theory. 
 
-**Circular law:** Take a non-symmetric, $n \times n$ random matrix in which all coefficients $X_{ij}$ are i.i.d. random variables with $\mathbb E[X_{ij}] = 0$ and $\mathbb E[X_{ij}] = 1$. Then, as $S \to \infty$, the e.s.d. of ${X} / \sqrt{n}$ converges to the circular law:
+**Circular law:** Take a non-symmetric, $n \times n$ random matrix in which all coefficients $X_{ij}$ are i.i.d. random variables with $\mathbb E[X_{ij}] = 0$ and $\mathbb E[X_{ij}] = 1$. Then, as $n \to \infty$, the e.s.d. of ${X} / \sqrt{n}$ converges to the circular law:
 
 $$
   \mu(\lambda) = \begin{cases}
@@ -150,16 +150,36 @@ This property is called **universality** in random matrix theory.
 
 **Homework 4a**
 
-The probability that a matrix is stable, given $C$, $\sigma$ and $n$ is close to 1 when the stability criterion is satisfied, and close to 0 when it is not. The point $\sqrt{n C \sigma^2} = d$ is the critical point. In theory, the results only hold in the limit $n \to \infty$ (to be accurate, $nC \to \infty$), as eigenvalues can fall outside the circle with small probability. 
+The probability that a matrix is stable, given $C$, $\sigma$ and $n$ is close to 1 when the stability criterion is satisfied, and close to 0 when it is not. Matrices satisfying $\sqrt{n C \sigma^2} = d$ are the critical point. In theory, the results only hold in the limit $n \to \infty$ (to be accurate, $nC \to \infty$), as eigenvalues can fall outside the circle with small probability. 
+
+* Write code to compute the real part for the "rightmost" eigenvalue of a random matrix (Note: computing eigenvalues is fairly expensive in terms of computing time. Use `eigen(M, only.values = TRUE)$values` to speed up calculations).
+* Write code to build matrices like those studied by May (nonzero elements sampled from a normal distribution).
+* Set $d = 10$ and choose parameters $n$, $C$ and $\sigma^2$ such that you are close to the critical point (make sure $n$ and $C$ are large enough, for example $nC > 10$). Draw 1000 random matrices and compute the probability drawing a stable matrix.
+* Vary $n$, $C$ and $\sigma^2$ in turn, making them cross the critical point. Draw a graph where the probability of stability is on the y axis, the x axis measures $\sqrt{nC\sigma^2}$. The graph should look like the one reported below:
+
+```{r, exercisemay, message=FALSE, warning=FALSE,echo=FALSE}
+library(latex2exp)
+dt <- read.csv("dat/MayExercise.csv")
+pl_p <- ggplot(dt) + 
+  aes(x = complexity, y = probability, shape = change) + 
+  geom_point(size = 2) + 
+  geom_vline(xintercept = 10, linetype = 2) + 
+  scale_shape_manual(name = "Varying:", labels = expression(C[phantom(2)] ~~ 0.1 %->% 0.3,
+                                                            sigma^2 ~~ 0.5 %->% 1.5, 
+                                                            n ~~250 %->% 750),  
+                     values = c(1, 4, 3)) + 
+  xlab(label = latex2exp::TeX('$\\sqrt{n C \\sigma^2}$')) + 
+  ylab("Probability of stability") + my_theme + scale_colour_manual(values = my_colors_7)
+pl_p
+```
 
 :::
-
 
 ## Accounting for interaction types
 
 In ecological communities, the effect of species $i$ on $j$ and that of $j$ on $i$ are typically not independent (as assumed above): in the case of competition between species, we expect them both to be negative; for consumption, if one is positive, the other is negative, and so forth. A more refined model of a random matrix would therefore sample interactions in pairs from a bivariate distribution. The elliptic law can deal with this case:
 
-**Elliptic law:** Take a non-symmetric, $S \times S$ random matrix in which the pairs of coefficients $(X_{ij}, X_{ji})$ are sampled independently from a bivariate distribution defined by a vector of means $m = (0,0)^t$ and a covariance matrix $\Sigma = \begin{pmatrix} 1 & \rho\\ \rho & 1 \end{pmatrix}$. Then, as $S \to \infty$, the e.s.d. of ${X} / \sqrt{S}$ converges to the elliptic law:
+**Elliptic law:** Take a non-symmetric, $n \times n$ random matrix in which the pairs of coefficients $(X_{ij}, X_{ji})$ are sampled independently from a bivariate distribution defined by a vector of means $m = (0,0)^t$ and a covariance matrix $\Sigma = \begin{pmatrix} 1 & \rho\\ \rho & 1 \end{pmatrix}$. Then, as $n \to \infty$, the e.s.d. of ${n} / \sqrt{S}$ converges to the elliptic law:
 
 $$
   \mu(\lambda) = \begin{cases} \frac{1}{\pi (1 - \rho^2) } \quad
@@ -174,7 +194,7 @@ Note that when $\rho = 0$, the elliptic law reduces to the circular law. Using t
 Build a matrix $M$ by sampling the entries in pairs: $(M_{ij}, M_{ji})$ are zero with probability $(1-C)$, and with probability $C$ sampled independently from a bivariate distribution with mean $\nu = (0, 0)^T$, and covariance matrix $\Sigma = \sigma^2 \begin{pmatrix} 1 & \rho\\ \rho & 1\end{pmatrix}$. Then $\mathbb E[M_{ij}] = 0$, $\mathbb E[M_{ij}^2] = C \sigma^2$, and $E[M_{ij} M_{ji}] = C \sigma^2 \rho$. By dividing the entries ${M}$ by $\sqrt{C \sigma^2}$, we obtain a matrix following the elliptic law. As such, the stability criterion becomes:
 
 $$
-\sqrt{S C \sigma^2}(1 + \rho) < d
+\sqrt{n C \sigma^2}(1 + \rho) < d
 $$
 
 To see the elliptic law in action, we can build matrices in which we sample the coefficients in pairs from a bivariate normal distribution. If we sample the entries from a distribution with a positive correlation, we obtain a horizontally-stretched ellipse (and hence, more difficult to stabilize than the circle):
@@ -228,6 +248,67 @@ plot_eigenvalues(M, prediction)
 ```
 
 Allesina and Tang therefore concluded that, all other things being equal, ecological communities in which predator-prey interactions are prevalent (and as such $E[M_{ij} M_{ji}] < 0$) are easier to stabilize than those dominated by competition/mutualism ($E[M_{ij} M_{ji}] > 0$).
+
+## Symmetric matrices
+
+Build a random symmetric matrix $X$ by sampling the coefficients $X_{ij}$ in the upper-triangular part (i.e., $i < j$) independently from a distribution such that $\mathbb E[X_{ij}] = 0$ and $\mathbb E[X_{ij}] = 1$. Set $X_{ji} = X_{ij}$, thereby building a symmetric matrix. The diagonal elements are sampled from a distribution with mean zero and finite variance. Then, as $n \to \infty$, the empirical spectral distribution of $\mat{X} / \sqrt{n}$ (i.e., of the matrix in
+which all the coefficients have been divided by the $\sqrt{n}$) converges almost surely to the Wigner's semicirle distribution:
+
+\begin{equation}
+  \mu(\lambda) = \begin{cases} \frac{1}{2 \pi} \sqrt{4 - \lambda^2}\;
+    \; \; \text{if}\; \lambda \in [-2, 2]\\
+    0 \; \; \;\text{ otherwise}.
+  \end{cases}
+\end{equation}
+
+Importantly, we have not defined the distribution of the $X_{ij}$: as long as the coefficients have mean zero, and unit variance, the result holds (universality).
+
+```{r, wigner, echo=FALSE, warning=FALSE, message=FALSE}
+set.seed(3)
+n <- 1000
+A <- matrix(rnorm(n * n), n, n)
+A[lower.tri(A)] <- 0
+A <- A + t(A)
+A <- A / sqrt(n)
+diag(A) <- 0
+
+eA <- eigen(A, only.values = TRUE, symmetric = TRUE)$values
+deA <- data.frame(eigenvalue = eA)
+
+pl <- ggplot(deA) + aes(x = eigenvalue) + 
+  geom_histogram(aes(y = stat(density)), binwidth = 0.1) + 
+  geom_hline(yintercept = 0) 
+
+dwigner <- function(x, center, n, var){
+  x <- (x - center) / sqrt(n)
+  return((1 / (2 * pi * var)) * sqrt(4 * var - x^2) / sqrt(n))
+}
+
+to_plot <- seq(min(eA) - 0.1, max(eA) + 0.1, by = 0.01)
+df_dens <- data.frame(eigenvalue = to_plot, density = dwigner(to_plot, center = 0, n = 1, var = 1))
+df_dens[is.na(df_dens)] <- 0
+
+pl <- pl + geom_path(data = df_dens, aes(x = eigenvalue, y = density)) + my_theme + 
+  xlab(label = latex2exp::TeX('$\\lambda_i$'))
+pl 
+```
+
+## Covariance matrices
+
+Take a $p \times n$ rectangular matrix $X$, with $p < n$ and i.i.d. coefficients with $\mathbb E[X_{ij}] = 0$ and $\mathbb E[X_{ij}] = 1$. When $n \to \infty$, the ratio $p/n \to y$ (i.e., the number of rows and columns grow proportionally). Then the eigenvalue distribution of the scaled covariance matrix $S = \frac{1}{n} X X^T$ converges to the Marchenko-Pastur distribution:
+
+$$
+\begin{equation}
+  \mu(\lambda) = \begin{cases} \frac{1}{2 \pi \lambda y}
+    \sqrt{\left((1 + \sqrt{y})^2 - \lambda \right) \left(\lambda - (1 -
+      \sqrt{y})^2 \right)}\; \; \; \text{if} \; (1 - \sqrt{y})^2 \leq
+    \lambda \leq (1 + \sqrt{y})^2\\ 0 \; \; \;\text{ otherwise}.
+  \end{cases}
+\end{equation}
+$$
+
+
+## Small-rank perturbations
 
 
 

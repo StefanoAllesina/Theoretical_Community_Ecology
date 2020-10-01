@@ -24,7 +24,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2020-09-30" />
+<meta name="date" content="2020-10-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -114,13 +114,20 @@
 <li class="chapter" data-level="3.2.4" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#the-equilibrium-is-the-time-average"><i class="fa fa-check"></i><b>3.2.4</b> The equilibrium is the time-average</a></li>
 <li class="chapter" data-level="3.2.5" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#lyapunov-diagonal-stability-and-global-stability"><i class="fa fa-check"></i><b>3.2.5</b> Lyapunov diagonal stability and global stability</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#macarthurs-consumer-resource-model"><i class="fa fa-check"></i><b>3.3</b> MacArthur’s consumer-resource model</a></li>
-<li class="chapter" data-level="3.4" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#further-readings"><i class="fa fa-check"></i><b>3.4</b> Further readings</a></li>
+<li class="chapter" data-level="3.3" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#macarthurs-consumer-resource-model"><i class="fa fa-check"></i><b>3.3</b> MacArthur’s consumer-resource model</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#existence-of-an-equilibrium-1"><i class="fa fa-check"></i><b>3.3.1</b> Existence of an equilibrium</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#global-stability-1"><i class="fa fa-check"></i><b>3.4</b> Global stability</a></li>
+<li class="chapter" data-level="3.5" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#further-readings"><i class="fa fa-check"></i><b>3.5</b> Further readings</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html"><i class="fa fa-check"></i><b>4</b> Stability of large ecological communities</a><ul>
-<li class="chapter" data-level="4.1" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#the-stability-of-random-ecosystems"><i class="fa fa-check"></i><b>4.1</b> The stability of random ecosystems</a></li>
-<li class="chapter" data-level="4.2" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#accounting-for-interaction-types"><i class="fa fa-check"></i><b>4.2</b> Accounting for interaction types</a></li>
-<li class="chapter" data-level="4.3" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#further-readings-1"><i class="fa fa-check"></i><b>4.3</b> Further readings</a></li>
+<li class="chapter" data-level="4.1" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#complexity-and-stability"><i class="fa fa-check"></i><b>4.1</b> Complexity and stability</a></li>
+<li class="chapter" data-level="4.2" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#the-stability-of-random-ecosystems"><i class="fa fa-check"></i><b>4.2</b> The stability of random ecosystems</a></li>
+<li class="chapter" data-level="4.3" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#accounting-for-interaction-types"><i class="fa fa-check"></i><b>4.3</b> Accounting for interaction types</a></li>
+<li class="chapter" data-level="4.4" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#symmetric-matrices"><i class="fa fa-check"></i><b>4.4</b> Symmetric matrices</a></li>
+<li class="chapter" data-level="4.5" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#covariance-matrices"><i class="fa fa-check"></i><b>4.5</b> Covariance matrices</a></li>
+<li class="chapter" data-level="4.6" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#small-rank-perturbations"><i class="fa fa-check"></i><b>4.6</b> Small-rank perturbations</a></li>
+<li class="chapter" data-level="4.7" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#further-readings-1"><i class="fa fa-check"></i><b>4.7</b> Further readings</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="ecological-assembly.html"><a href="ecological-assembly.html"><i class="fa fa-check"></i><b>5</b> Ecological assembly</a></li>
 <li class="chapter" data-level="6" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html"><i class="fa fa-check"></i><b>6</b> Game theory and replicator dynamics</a></li>
@@ -316,14 +323,14 @@ Note that the l.h.s. is zero because <span class="math inline">\(x(0) = x(T)\)</
 <p>Suppose that there is a positive diagonal matrix <span class="math inline">\(C\)</span> such that <span class="math inline">\(C A + A^T C\)</span> is negative definite (i.e., has only negative eigenvalues; the eigenvalues are real because the matrix is symmetric). Then <span class="math inline">\(A\)</span> is <strong>Lyapunov-diagonally stable</strong>. If this is the case, then <span class="math inline">\(A\)</span> is stable, and any <span class="math inline">\(D A\)</span> with <span class="math inline">\(D\)</span> positive is also stable (called <span class="math inline">\(D-\)</span>stability).</p>
 <p>Further, suppose that the GLV system with parameters <span class="math inline">\(A\)</span> and <span class="math inline">\(r\)</span> has a feasible equilibrium point <span class="math inline">\(x^\star\)</span>. Then the function:</p>
 <p><span class="math display">\[
-V(x(t)) = 1^T C \left( x(t) -D(x^\star) \log x(t)\right)
+V(x(t)) = 1^T C \left( x(t) -D(x^\star) -D(x^\star) \log D(x(t) / x^\star)\right)
 \]</span></p>
-<p>is a Lyapunov function for the GLV system.</p>
+<p>is a Lyapunov function for the GLV system. It is clear that <span class="math inline">\(V(x(t))\)</span> is positive everywhere in the positive orthant besides at equilibrium. Then, we need to show that the function decreases along the trajectories of the system.</p>
 <p>To prove this point, we start from <span class="math inline">\(r = -Ax^\star\)</span>. Substituting, we can write the GLV system as <span class="math inline">\(dx(t)/dt = D(x)A(x - x^\star)\)</span>; similarly, we can write <span class="math inline">\(d \log x(t)/dt = A(x - x^\star)\)</span>. Taking the derivative of <span class="math inline">\(V\)</span> with respect to time:</p>
 <p><span class="math display">\[
 \begin{aligned}
  \frac{d V(x(t))}{dt} &amp;= 1^T C \left(\frac{d x(t)}{dt}  + D(x^*) \frac{d \log x(t)}{dt} \right)\\
- &amp;= 1^T C \left(A (x - x^\star)  + D(x^*) A (x - x^\star) \right)\\
+ &amp;= 1^T C \left(D(x)(A (x - x^\star)  - D(x^*) A (x - x^\star) \right)\\
  &amp;= 1^T C \left(D(x - x^\star)  A (x - x^\star) \right)\\
  &amp;= 1^T \left(D(x - x^\star)  C A (x - x^\star) \right)\\
  &amp;= (x - x^\star)^T  CA (x - x^\star)\\
@@ -345,13 +352,116 @@ V(x(t)) = 1^T C \left( x(t) -D(x^\star) \log x(t)\right)
 <p>He was a professor first at the University of Pennsylvania and then at Princeton University. In his brief career (he died at age 45) he revolutionized ecology, by making it into a rigorous, predictive science based on general principles.</p>
 <p>He is recognized for developing the <em>Theory of Island Biogeography</em> (with E. O. Wilson, <span class="citation">MacArthur and Wilson (<a href="#ref-macarthur2001theory" role="doc-biblioref">2001</a>)</span>), the investigation of limiting similarity (with R. Levins, <span class="citation">MacArthur and Levins (<a href="#ref-macarthur1967limiting" role="doc-biblioref">1967</a>)</span>), the contributions to the complexity-stability debate (<span class="citation">MacArthur (<a href="#ref-macarthur1955fluctuations" role="doc-biblioref">1955</a>)</span>, see next lecture). The consumer-resource model he proposed in 1969 now bears his name (published also in <span class="citation">MacArthur (<a href="#ref-macarthur1970species" role="doc-biblioref">1970</a>)</span> in a longer form—the first paper in the journal Theoretical Population Biology!).</p>
 </div>
-<p>Consumer-resource; separation of time-scales; turn into symmetric Lotka-Volterra; Lyapunov function</p>
+<p>MacArtur considered a system with two classes of equations: those describing the dynamics of consumers <span class="math inline">\((x_i)\)</span> and resources (<span class="math inline">\(y_i\)</span>). Resources do not interact with each other, and consumers interact only through the sharing of resources:</p>
+<p><span class="math display">\[
+\begin{cases}
+\dfrac{d y_i}{dt} = y_i \left(r_i - b_i\, y_i - \sum_j P_{ij}\, x_j \right)\\
+\dfrac{d x_j}{dt} = x_j \left(- m_j + \sum_i v_j\, P_{ij}\, y_i \right)\\
+\end{cases}
+\]</span></p>
+<p>In the absence of consumers, each resource grows logistically. In the absence of resources, consumers go extinct. In the model, all parameters are taken to be positive: <span class="math inline">\(r_i\)</span> is the growth rate for resource <span class="math inline">\(i\)</span>, <span class="math inline">\(b_i\)</span> models its self-regulation; <span class="math inline">\(m_j\)</span> is the death rate of consumer <span class="math inline">\(j\)</span>, and <span class="math inline">\(v_j\)</span> models the efficiency of transformation of resources into consumers. The matrix <span class="math inline">\(P\)</span> is in general rectangular (<span class="math inline">\(n \times k\)</span>, where <span class="math inline">\(n\)</span> is the number of resources and <span class="math inline">\(k\)</span> that of consumers).</p>
+<div class="boxmath">
+<p><strong>Block matrices</strong></p>
+<p>Any matrix can be rewritten as a series of smaller matrices stitched together. For squared matrices, it is often convenient to partition a matrix into blocks such that diagonal blocks are square matrices and off-diagonal blocks are (in general) rectangular.</p>
+<p>For example:</p>
+<p><span class="math display">\[
+M = \begin{pmatrix}
+1 &amp; 2 &amp; 3 &amp; 4 &amp; 5\\
+6 &amp; 7 &amp; 8 &amp; 9 &amp; 10\\
+11 &amp; 12 &amp; 13 &amp; 14 &amp; 15\\
+16 &amp; 17 &amp; 18 &amp; 19 &amp; 20\\
+21 &amp; 22 &amp; 23 &amp; 24 &amp; 25\\
+\end{pmatrix}
+\]</span></p>
+<p>Can be written as:</p>
+<p><span class="math display">\[
+M = \begin{pmatrix}
+M_{11} &amp; M_{12}\\
+M_{21} &amp; M_{22}
+\end{pmatrix}
+\]</span>
+with:</p>
+<p><span class="math display">\[
+M_{11} = \begin{pmatrix}
+1 &amp; 2 \\
+6 &amp; 7 
+\end{pmatrix}
+\;
+M_{21} = \begin{pmatrix}
+3 &amp; 4 &amp; 5\\
+8 &amp; 9 &amp; 10\\
+\end{pmatrix}
+\;\ldots
+\]</span></p>
+<p><strong>Multiplication of block matrices</strong></p>
+<p>The multiplication of two block matrices with square diagonal blocks is very easy:</p>
+<p><span class="math display">\[
+\begin{pmatrix}
+A_{11} &amp; A_{12}\\
+A_{21} &amp; A_{22}
+\end{pmatrix} \begin{pmatrix}
+B_{11} &amp; B_{12}\\
+B_{21} &amp; B_{22}
+\end{pmatrix} = \begin{pmatrix}
+A_{11}B_{11}  + A_{12} B_{21}&amp; A_{11}B_{12} + A_{12} B_{22}\\
+A_{21}B_{11} + A_{22} B_{21} &amp;A_{21}B_{12} + A_{22} B_{22}
+\end{pmatrix}
+\]</span></p>
+<p><strong>Determinant of block matrices</strong></p>
+<p>Take</p>
+<p><span class="math display">\[
+A = \begin{pmatrix}
+A_{11} &amp; A_{12}\\
+A_{21} &amp; A_{22}
+\end{pmatrix} 
+\]</span></p>
+<p>and assume that <span class="math inline">\(A_{22}\)</span> is invertible. Then <span class="math inline">\(\det(A) = \det(A_{22})\det(A_{11} - A_{12}A_{22}^{-1} A_{21})\)</span></p>
+<p><strong>Inverse of block matrix</strong></p>
+<p>Similarly, if <span class="math inline">\(A_{22}\)</span> is invertible, and <span class="math inline">\(\det(A) \neq 0\)</span> (and hence the <a href="https://en.wikipedia.org/wiki/Schur_complement">Schur complement</a> <span class="math inline">\(A_{11} - A_{12}A_{22}^{-1} A_{21}\)</span> is nonsingular) then</p>
+<p><span class="math display">\[
+A^{-1} = \begin{pmatrix}
+S &amp; -S A_{12}A_{22}^{-1}\\
+-A_{22}^{-1} A_{21} S &amp; A_{22}^{-1} +  A_{22}^{-1} A_{21}SA_{21}A_{22}^{-1}
+\end{pmatrix}
+\]</span></p>
+<p>where <span class="math inline">\(S = (A_{11} - A_{12}A_{22}^{-1} A_{21})^{-1}\)</span></p>
+</div>
+<p>We can rewrite the system as a generalized Lotka-Volterra model (see <span class="citation">Case and Casten (<a href="#ref-case1979global" role="doc-biblioref">1979</a>)</span>). We define:</p>
+<p><span class="math display">\[
+z = (y,x)^T\;\;s = (r, -m)^T
+\]</span></p>
+<p>And the block structured matrix <span class="math inline">\(A\)</span>:</p>
+<p><span class="math display">\[
+A = \begin{pmatrix}
+A_{11} &amp; A_{12}\\
+A_{21} &amp; A_{22}
+\end{pmatrix}\; \text{with}\; A_{11} = -D(b),\; A_{12}=-P,\; A_{21} = D(v)P^T, A_{22} = 0_{k,k}
+\]</span>
+where <span class="math inline">\(0_{k,k}\)</span> is a <span class="math inline">\(k \times k\)</span> matrix of zeros. Now the system becomes:</p>
+<p><span class="math display">\[
+\dfrac{d z}{d t} = D(z)(s + Az)
+\]</span></p>
+<div id="existence-of-an-equilibrium-1" class="section level3">
+<h3><span class="header-section-number">3.3.1</span> Existence of an equilibrium</h3>
+<p>For simplicity, we concentrate on the study of the feasibility and stability of the coexistence equilibrium. If an equilibrium <span class="math inline">\(z^\star \neq 0\)</span> exists, it is the solution of <span class="math inline">\(Az^\star = -s\)</span>, which requires matrix <span class="math inline">\(A\)</span> to be non-singular. Matrix <span class="math inline">\(A\)</span> is nonsingular only if <span class="math inline">\(w = 0\)</span> is the only solution of <span class="math inline">\(Aw = 0\)</span>. We prove that <span class="math inline">\(A\)</span> is nonsingular whenever <span class="math inline">\(A_{12}\)</span> is of rank <span class="math inline">\(k\)</span>, and <span class="math inline">\(A_{11}\)</span> is negative definite. We do so by contradiction. First, because the matrix <span class="math inline">\(A\)</span> has a special structure, we can split <span class="math inline">\(w\)</span> into <span class="math inline">\((w_1, w_2)^T\)</span>, and write:</p>
+<p><span class="math display">\[
+A \begin{pmatrix} w_1\\ w_2 \end{pmatrix} = \begin{pmatrix} A_{11}w_1 + A_{12} w_2\\ A_{21}w_1 \end{pmatrix} = \begin{pmatrix} 0_n\\ 0_k \end{pmatrix}
+\]</span></p>
+<p>We therefore have <span class="math inline">\(A_{21} w_1 = 0\)</span> and <span class="math inline">\(A_{11}w_1 + A_{12} w_2 = 0\)</span>. Suppose that <span class="math inline">\(w_1 =0\)</span> and <span class="math inline">\(w_2 \neq 0\)</span>; then we find <span class="math inline">\(A_{12} w_2 = 0\)</span> with <span class="math inline">\(w_2 \neq 0\)</span>, which is not possible when <span class="math inline">\(A_{12}\)</span> has rank <span class="math inline">\(k\)</span>. Now suppose that <span class="math inline">\(w_1 \neq 0\)</span> and <span class="math inline">\(w_2 = 0\)</span>, but this implies <span class="math inline">\(A_{11}w_1 = 0\)</span> with <span class="math inline">\(w_1 \neq 0\)</span>, which is impossible given that <span class="math inline">\(A_{11}\)</span> is clearly of full rank. We are left with the case in which both <span class="math inline">\(w_1 \neq 0\)</span> and <span class="math inline">\(w_2 \neq 0\)</span>. Then, multiply the first set of equations by <span class="math inline">\(w_1^T\)</span> and the second by <span class="math inline">\(w_2^T\)</span>. We obtain <span class="math inline">\(w_1^T A_{11} w_1 + w_1^T A_{12} w_2 = 0\)</span> and <span class="math inline">\(w_2^T A_{21} w_1 = 0\)</span>. But <span class="math inline">\(A_{21} = -D(v) A_{12}\)</span> (with <span class="math inline">\(D(v) &gt; 0\)</span>), and as such <span class="math inline">\(w_2^T A_{21} w_1 = 0\)</span> implies <span class="math inline">\(w_1^T A_{12} w_2 = 0\)</span>, leaving us with <span class="math inline">\(w_1^T A_{11} w_1 = 0\)</span> with <span class="math inline">\(w_1 \neq 0\)</span>, which is again a contradiction because <span class="math inline">\(A_{11}\)</span> is clearly negative definite (and as such <span class="math inline">\(w_1^T A_{11} w_1 \leq 0\)</span>, with equality implying <span class="math inline">\(w_1 = 0\)</span>).</p>
+<p>We have proven that <span class="math inline">\(A\)</span> is nonsingular, and therefore a unique equilibrium point for the system exists (the equilibrium for the moment needs not to be feasible) whenever <span class="math inline">\(A_{11} = -D(b)\)</span> is negative definite (which is always the case whenever resources are self-regulating) and, importantly, <span class="math inline">\(A_{12}\)</span> has rank <span class="math inline">\(k\)</span> (the number of consumers). This in turn implies that <strong>the number of resources must be larger (or equal) than the number of consumers</strong>. A similar argument is developed in the classic <span class="citation">Levin (<a href="#ref-levin1970community" role="doc-biblioref">1970</a>)</span>.</p>
+</div>
+</div>
+<div id="global-stability-1" class="section level2">
+<h2><span class="header-section-number">3.4</span> Global stability</h2>
+<p>Next, we prove that if a feasible equilibrium for the system exists, it is globally stable. Again, we follow <span class="citation">Case and Casten (<a href="#ref-case1979global" role="doc-biblioref">1979</a>)</span> to show that <span class="math inline">\(A\)</span> is indeed Lyapunov-diagonally stable. Consider:</p>
+<p><span class="math display">\[
+A = D_1\, \tilde{A}\, D_2
+\]</span></p>
 </div>
 <div id="further-readings" class="section level2">
-<h2><span class="header-section-number">3.4</span> Further readings</h2>
+<h2><span class="header-section-number">3.5</span> Further readings</h2>
 <p>On the theory of GLV:</p>
 <ul>
-<li><p><span class="citation">Strogatz (<a href="#ref-strogatz2018nonlinear" role="doc-biblioref">2018</a>)</span> is a simple introduction to dynamical systems and bifurcation theory.</p></li>
 <li><p><span class="citation">Hofbauer and Sigmund (<a href="#ref-hofbauer1998evolutionary" role="doc-biblioref">1998</a>)</span> is a wonderful introduction to dynamical systems in ecology and population genetics, with a nice introduction to evolutionary game theory.</p></li>
 <li><p><span class="citation">Hadeler, Mackey, and Stevens (<a href="#ref-hadeler2017topics" role="doc-biblioref">2017</a>)</span> contains a more mathematically-oriented treatment of the material covered in the first part of this lecture.</p></li>
 <li><p><span class="citation">Baigent (<a href="#ref-baigent2016lotka" role="doc-biblioref">2016</a>)</span> is a mathematical introduction to Lotka-Volterra dynamics.</p></li>
@@ -367,6 +477,9 @@ V(x(t)) = 1^T C \left( x(t) -D(x^\star) \log x(t)\right)
 <div id="ref-barabas2016effect">
 <p>Barabás, György, Matthew J. Michalska-Smith, and Stefano Allesina. 2016. “The Effect of Intra-and Interspecific Competition on Coexistence in Multispecies Communities.” <em>The American Naturalist</em> 188 (1): E1–E12.</p>
 </div>
+<div id="ref-case1979global">
+<p>Case, Ted J, and Richard G Casten. 1979. “Global Stability and Multiple Domains of Attraction in Ecological Systems.” <em>The American Naturalist</em> 113 (5): 705–14.</p>
+</div>
 <div id="ref-hadeler2017topics">
 <p>Hadeler, Karl Peter, Michael C Mackey, and Angela Stevens. 2017. <em>Topics in Mathematical Biology</em>. Springer.</p>
 </div>
@@ -375,6 +488,9 @@ V(x(t)) = 1^T C \left( x(t) -D(x^\star) \log x(t)\right)
 </div>
 <div id="ref-hofbauer1998evolutionary">
 <p>Hofbauer, Josef, and Karl Sigmund. 1998. <em>Evolutionary Games and Population Dynamics</em>. Cambridge University Press.</p>
+</div>
+<div id="ref-levin1970community">
+<p>Levin, Simon A. 1970. “Community Equilibria and Stability, and an Extension of the Competitive Exclusion Principle.” <em>The American Naturalist</em> 104 (939): 413–23.</p>
 </div>
 <div id="ref-levins1969some">
 <p>Levins, Richard. 1969. “Some Demographic and Genetic Consequences of Environmental Heterogeneity for Biological Control.” <em>American Entomologist</em> 15 (3): 237–40.</p>
@@ -393,9 +509,6 @@ V(x(t)) = 1^T C \left( x(t) -D(x^\star) \log x(t)\right)
 </div>
 <div id="ref-smale1976differential">
 <p>Smale, Steve. 1976. “On the Differential Equations of Species in Competition.” <em>Journal of Mathematical Biology</em> 3 (1): 5–7.</p>
-</div>
-<div id="ref-strogatz2018nonlinear">
-<p>Strogatz, Steven H. 2018. <em>Nonlinear Dynamics and Chaos: With Applications to Physics, Biology, Chemistry, and Engineering</em>. CRC Press.</p>
 </div>
 </div>
             </section>
