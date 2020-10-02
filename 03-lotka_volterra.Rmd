@@ -1,5 +1,17 @@
 # Generalized Lotka-Volterra model
 
+**Lesson plan**:
+
+1. We start by discussing the Generalized Lotka-Volterra model, which we are going to see over and over again in the remainder of the lectures.
+1. We discuss the existence of a "coexistence" equilibrium, as well as its local stability.
+1. We show that the GLV model can give rise to all sort of dynamics, including limit cycles and chaos.
+1. Despite this fact, the persistence of all species requires the existence of a feasible equilibrium, which is the time-average of the species' densities for complex attractors. 
+1. We introduce D-stability, allowing us to write a Lyapunov function to determine global stability in GLV models.
+1. We conclude by analyzing the MacArthur's consumer-resource model, highlighting its deep connection to GLV.
+
+
+## Formulation
+
 ```{r, include=FALSE}
 source("common_settings.R")
 ```
@@ -7,7 +19,7 @@ source("common_settings.R")
 We can write the Generalized Lotka-Volterra model in a compact form as:
 
 $$
-\dfrac{dx(t)}{dt} = D(x(t))(r + A x(t)) = X(r + Ax)
+\dfrac{dx(t)}{dt} = D(x(t))(r + A x(t)) 
 $$
 
 where $x(t)$ is a (column) vector of length $n$ containing the densities of all populations $1, \ldots, n$ at time $t$, $r$ is a vector of "intrinsic growth rates" (or death rates, when negative), measuring the growth (decline) of population $i$ when grown alone at low density, and $A$ is a $n \times n$ matrix of interaction coefficients. We use $D(x)$ to denote the diagonal matrix with $x$ on the diagonal. 
@@ -205,7 +217,7 @@ $$
 \end{pmatrix}
 $$
 
-and locally stable (the eigenvalues of $D(x^\star) A)$ have negative real part). For a symmetric matrix, local stability implies global stability. Hence, starting from positive initial conditions for all species, we will eventually converge to the equilibrium:
+and locally stable (the eigenvalues of $D(x^\star) A)$ have negative real part). Hence, there are initial conditions for which we will eventually converge to the equilibrium:
 
 ```{r, glvex2, echo = FALSE}
 set.seed(2) # for reproducibility
@@ -312,14 +324,9 @@ $$
 \end{aligned}
 $$
 
-A matrix $B$ is negative definite if $y^T B y < 0$ for all $y \neq 0$. As such $\frac{d V(x(t))}{dt} \leq 0$, i.e., will decrease in time (starting from any $x(0)$) until the equilibrium $x^\star$ is reached. 
+A matrix $B$ is negative definite if $y^T B y < 0$ for all $y \neq 0$. As such, if $C A + A^T C$, then $\frac{d V(x(t))}{dt} \leq 0$, i.e., will decrease in time (starting from any $x(0)$) until the equilibrium $x^\star$ is reached. 
 
 The results above show that **if $A$ is Lyapunov diagonally-stable and a feasible equilibrium $x^\star$ exists, than all trajectories starting at a positive density will converge to the equilibrium**. This property is often used to prove **global stability**.
-
-EXERCISE ON TYPE OF DYNAMICS
-
-
-
 
 ## MacArthur's consumer-resource model
 
@@ -340,7 +347,7 @@ He is recognized for developing the *Theory of Island Biogeography* (with E. O. 
 
 :::
 
-MacArtur considered a system with two classes of equations: those describing the dynamics of consumers $(x_i)$ and resources ($y_i$). Resources do not interact with each other, and consumers interact only through the sharing of resources:
+MacArtur considered a system with two classes of equations: those describing the dynamics of consumers $(x_i)$ and resources ($y_i$). Resources do not interact with each other, and consumers interact only through the sharing of resources. Several parameterizations are possible---here we choose a simple formulation that retains the main features of the model (see @case1979global for a slightly more general model):
 
 $$
 \begin{cases}
@@ -355,7 +362,7 @@ In the absence of consumers, each resource grows logistically. In the absence of
 
 **Block matrices**
 
-Any matrix can be rewritten as a series of smaller matrices stitched together. For squared matrices, it is often convenient to partition a matrix into blocks such that diagonal blocks are square matrices and off-diagonal blocks are (in general) rectangular. 
+Any matrix can be rewritten as a series of smaller matrices stitched together. For square matrices, it is often convenient to partition a matrix into blocks such that diagonal blocks are square matrices and off-diagonal blocks are (in general) rectangular. 
 
 For example:
 
@@ -424,7 +431,7 @@ and assume that $A_{22}$ is invertible. Then $\det(A) = \det(A_{22})\det(A_{11} 
 
 **Inverse of block matrix**
 
-Similarly, if $A_{22}$ is invertible, and $\det(A) \neq 0$ (and hence the [Schur complement](https://en.wikipedia.org/wiki/Schur_complement) $A_{11} - A_{12}A_{22}^{-1} A_{21}$ is nonsingular) then
+Similarly, if $A_{22}$ is invertible, and $\det(A) \neq 0$ (and hence the Schur complement $A_{11} - A_{12}A_{22}^{-1} A_{21}$ is nonsingular) then
 
 $$
 A^{-1} = \begin{pmatrix}
@@ -436,8 +443,6 @@ $$
 where $S = (A_{11} - A_{12}A_{22}^{-1} A_{21})^{-1}$
 
 :::
-
-
 
 We can rewrite the system as a generalized Lotka-Volterra model (see @case1979global). We define:
 
@@ -467,18 +472,57 @@ $$
 A \begin{pmatrix} w_1\\ w_2 \end{pmatrix} = \begin{pmatrix} A_{11}w_1 + A_{12} w_2\\ A_{21}w_1 \end{pmatrix} = \begin{pmatrix} 0_n\\ 0_k \end{pmatrix}
 $$
 
-We therefore have $A_{21} w_1 = 0$ and $A_{11}w_1 + A_{12} w_2 = 0$. Suppose that $w_1 =0$ and $w_2 \neq 0$; then we find $A_{12} w_2 = 0$ with $w_2 \neq 0$, which is not possible when $A_{12}$ has rank $k$. Now suppose that $w_1 \neq 0$ and $w_2 = 0$, but this implies $A_{11}w_1 = 0$ with $w_1 \neq 0$, which is impossible given that $A_{11}$ is clearly of full rank. We are left with the case in which both $w_1 \neq 0$ and $w_2 \neq 0$. Then, multiply the first set of equations by $w_1^T$ and the second by $w_2^T$. We obtain $w_1^T A_{11} w_1 + w_1^T A_{12} w_2 = 0$ and $w_2^T A_{21} w_1 = 0$. But $A_{21} = -D(v) A_{12}$ (with $D(v) > 0$), and as such $w_2^T A_{21} w_1 = 0$ implies $w_1^T A_{12} w_2 = 0$, leaving us with $w_1^T A_{11} w_1 = 0$ with $w_1 \neq 0$, which is again a contradiction because $A_{11}$ is clearly negative definite (and as such $w_1^T A_{11} w_1 \leq 0$, with equality implying $w_1 = 0$).
+We therefore have $A_{21} w_1 = 0$ and $A_{11}w_1 + A_{12} w_2 = 0$.
+
+* Suppose that $w_1 =0$ and $w_2 \neq 0$; then we find $A_{12} w_2 = 0$ with $w_2 \neq 0$, which is not possible when $A_{12}$ has rank $k$. 
+* Now suppose that $w_1 \neq 0$ and $w_2 = 0$, but this implies $A_{11}w_1 = 0$ with $w_1 \neq 0$, which is impossible given that $A_{11}$ is clearly of full rank. 
+* We are left with the case in which both $w_1 \neq 0$ and $w_2 \neq 0$. We have $A_{21} w_1 = 0$, but $A_{21} w_1= D(v)P^T w_1 = 0$, which implies $P^T w_1 = 0$ because all $v_i > 0$. Then, multiply the first set of equations by $w_1^T$ and the second by $w_2^T$. We obtain $w_1^T A_{11} w_1 - w_1^T P w_2 = 0$ and $w_2^T  D(v)P^T w_1 = 0 = w_2^T  P^T w_1$. But then $w_1^T P w_2 = 0$, leaving us with $w_1^T A_{11} w_1 = 0$ with $w_1 \neq 0$, which is again a contradiction because $A_{11}$ is clearly negative definite (and as such $w_1^T A_{11} w_1 \leq 0$, with equality implying $w_1 = 0$).
 
 We have proven that $A$ is nonsingular, and therefore a unique equilibrium point for the system exists (the equilibrium for the moment needs not to be feasible) whenever $A_{11} = -D(b)$ is negative definite (which is always the case whenever resources are self-regulating) and, importantly, $A_{12}$ has rank $k$ (the number of consumers). This in turn implies that **the number of resources must be larger (or equal) than the number of consumers**. A similar argument is developed in the classic @levin1970community.
 
-## Global stability
+### Global stability
 
-Next, we prove that if a feasible equilibrium for the system exists, it is globally stable. Again, we follow @case1979global to show that $A$ is indeed Lyapunov-diagonally stable. Consider:
+Next, we prove that if a feasible equilibrium for the system exists, it is globally stable. First, we choose a diagonal matrix $G$ 
 
 $$
-A = D_1\, \tilde{A}\, D_2
+G = \begin{pmatrix}
+I_n & 0_{n,k}\\
+0_{k,n} & D(v)^-1
+\end{pmatrix}
 $$
 
+We have:
+
+$$
+B = GA = \begin{pmatrix}
+-D(b) & -P\\
+P^T & 0_{k,k}
+\end{pmatrix}
+$$
+
+$B$ is therefore negative semi-definite:
+
+$$ 
+\frac{1}{2}(B + B^T) = \begin{pmatrix}
+-D(b) & 0_{n,k}\\
+0_{k,n} & 0_{k,k}
+\end{pmatrix}
+$$
+
+with eigenvalues $-b$ and $0$ (with multiplicity $k$). Therefore, 
+
+$$
+\begin{align}
+\frac{d V(z(t))}{dt} &= 1^T G \left(\frac{d z(t)}{dt}  + D(z^*) \frac{d \log z(t)}{dt} \right)\\
+ &= \frac{1}{2}(z - z^\star)^T  (GA + A^T G) (z - z^\star)\\
+ &= \frac{1}{2}(z - z^\star)^T  (B + B^T) (z - z^\star)\\
+ &= (y - y^\star)^T  (-D(b)) (y - y^\star)
+ \end{align}
+$$
+
+which is zero only at equilibrium. This proves that any feasible equilibrium is stable.
+
+### Separation of time-scales
 
 
 ## Further readings
