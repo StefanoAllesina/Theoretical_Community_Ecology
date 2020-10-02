@@ -49,15 +49,15 @@ $$
 
 ## Grading and code of conduct {-}
 
-Students should follow the rules and regulations set out by [University policy](https://studentmanual.uchicago.edu/academic-policies/). I am expecting all students to a) participate in all classes (please contact me if you are going to be absent); b) actively contribute to discussions and lectures; c) be punctual (both for class and in turning in the homework); d) be professional and honest (no copying/cheating/plagiarizing).
+Students should follow the rules and regulations set out by [University policy](https://studentmanual.uchicago.edu/academic-policies/). I am expecting all students to a) participate in all classes (please contact me if you are going to be absent); b) actively contribute to discussions and lectures; c) be punctual (both for class and when submitting the homework); d) be professional and honest (no copying/cheating/plagiarizing).
 
 ### Homework (80%) {-}
 
-Each of the lectures contains exercises that should be completed as graded homework. The homework should be submitted through Canvas as one or more `Rmd` files, containing the derivations (you can use `LaTex` to typeset mathematics within `Rmd`, see [here](https://rpruim.github.io/s341/S19/from-class/MathinRmd.html) for commonly used commands), and code. The code must run and be correct to get a passing grade.
+Each of the lectures contains exercises that should be completed as graded homework. The homework should be submitted through Canvas as one or more `pdf` files obtained by compiling `Rmd` files. The homework should contain the derivations (you can use `LaTex` to typeset mathematics within `Rmd`, see [here](https://rpruim.github.io/s341/S19/from-class/MathinRmd.html) for commonly used commands), and code. The code must run and be correct to get a passing grade.
 
 ### Review (20%) {-}
 
-The remaining 20% of the grade is based on a review. Take an interesting (important, provocative, etc.) published paper or preprint in theoretical community ecology, and produce a review (of the kind you would submit to a journal if solicited for comments). The review must contain two sections: a) comments to the Authors, and b) Recommendation for the Editor. You can find good advice on writing reviews [here](https://dynamicecology.wordpress.com/2013/01/03/advice-how-to-review-a-manuscript-for-a-journal/).
+The remaining 20% of the grade is based on a graded review. Each student should choose an interesting (important, provocative, etc.) published paper or preprint in theoretical community ecology, and produce a review (of the kind one would submit to a journal if solicited for comments). The review must contain two sections: a) Comments to the Authors, and b) Recommendation for the Editor. Good advice on writing reviews can be found [here](https://dynamicecology.wordpress.com/2013/01/03/advice-how-to-review-a-manuscript-for-a-journal/).
 
 ## Sources {-}
 
@@ -73,9 +73,9 @@ Many excellent books are available on these topics. Here are the main references
 
 ## Acknowledgements {-}
 
-These lectures grew out of a set of four lectures I have presented at the ICTP-SAIFR/IFT-UNESP ["School on Community Ecology: from patterns to principles"](https://www.ictp-saifr.org/community-ecology-from-patterns-to-principles/), held on January 20-25, 2020 in São Paulo, Brazil. Thanks to the organizers (Marcus Aguiar, Jacopo Grilli, Roberto Kraenkel, Ricardo Martinez-Garcia and Paulo Inácio Prado) for the invitation and for prompting me to start working on the material. Thanks also to the students for useful feedback. 
+These lectures grew out of a set of four lectures I have presented at the ICTP-SAIFR/IFT-UNESP ["School on Community Ecology: from patterns to principles"](https://www.ictp-saifr.org/community-ecology-from-patterns-to-principles/), held on January 20-25, 2020 in São Paulo, Brazil. Thanks to the organizers (Marcus Aguiar, Jacopo Grilli, Roberto Kraenkel, Ricardo Martinez-Garcia and Paulo Inácio Prado) for the invitation and for prompting me to start working on the material. I am grateful to the students for useful feedback. 
 
-The preparation of this material was supported by the National Science Foundation ([DEB #2022742](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2022742)). Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author and do not necessarily reflect the views of the National Science Foundation.
+The development of this material was supported by the National Science Foundation ([DEB #2022742](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2022742)). Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author and do not necessarily reflect the views of the National Science Foundation.
 
 ```{r include=FALSE}
 # automatically create a bib database for R packages
