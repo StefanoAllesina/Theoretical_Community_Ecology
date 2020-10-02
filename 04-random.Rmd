@@ -5,7 +5,7 @@ source("common_settings.R")
 ```
 **Lesson plan**:
 
-1. We introduce the so-called diversity-stability debate, by discussing the seminal contributions of MacArthur (1959) and May (1972).
+1. We introduce the so-called diversity-stability debate, by discussing the seminal contributions of MacArthur (1955) and May (1972).
 1. We show how the celebrated May's stability criterion can be derived using elementary results from random matrix theory.
 1. We extend May's results to the case in which interactions between the species are correlated.
 1. We discuss a few tools from random matrix theory that are useful for ecology.
@@ -251,8 +251,7 @@ Allesina and Tang therefore concluded that, all other things being equal, ecolog
 
 ## Symmetric matrices
 
-Build a random symmetric matrix $X$ by sampling the coefficients $X_{ij}$ in the upper-triangular part (i.e., $i < j$) independently from a distribution such that $\mathbb E[X_{ij}] = 0$ and $\mathbb E[X_{ij}] = 1$. Set $X_{ji} = X_{ij}$, thereby building a symmetric matrix. The diagonal elements are sampled from a distribution with mean zero and finite variance. Then, as $n \to \infty$, the empirical spectral distribution of $\mat{X} / \sqrt{n}$ (i.e., of the matrix in
-which all the coefficients have been divided by the $\sqrt{n}$) converges almost surely to the Wigner's semicirle distribution:
+Build a random symmetric matrix $X$ by sampling the coefficients $X_{ij}$ in the upper-triangular part (i.e., $i < j$) independently from a distribution such that $\mathbb E[X_{ij}] = 0$ and $\mathbb E[X_{ij}] = 1$. Set $X_{ji} = X_{ij}$, thereby building a symmetric matrix. The diagonal elements are sampled from a distribution with mean zero and finite variance. Then, as $n \to \infty$, the empirical spectral distribution of $X / \sqrt{n}$ (i.e., of the matrix in which all the coefficients have been divided by the $\sqrt{n}$) converges almost surely to the Wigner's semicirle distribution:
 
 \begin{equation}
   \mu(\lambda) = \begin{cases} \frac{1}{2 \pi} \sqrt{4 - \lambda^2}\;
@@ -306,7 +305,6 @@ $$
   \end{cases}
 \end{equation}
 $$
-
 
 ## Small-rank perturbations
 

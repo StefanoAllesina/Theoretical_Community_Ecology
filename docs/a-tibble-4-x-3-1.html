@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Lecture 10 A tibble: 4 x 3 | Theoretical Community Ecology</title>
+  <meta name="description" content="A graduate course in theoretical community ecology focusing on systems with multiple species." />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Lecture 10 A tibble: 4 x 3 | Theoretical Community Ecology" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="A graduate course in theoretical community ecology focusing on systems with multiple species." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Lecture 10 A tibble: 4 x 3 | Theoretical Community Ecology" />
+  
+  <meta name="twitter:description" content="A graduate course in theoretical community ecology focusing on systems with multiple species." />
+  
+
+<meta name="author" content="Stefano Allesina" />
+
+
+<meta name="date" content="2020-10-02" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="a-tibble-4-x-3.html"/>
+<link rel="next" href="metapopulation-dynamics-on-networks.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Theoretical Community Ecology</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preliminaries</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#approach-and-target-audience"><i class="fa fa-check"></i>Approach and target audience</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#topics"><i class="fa fa-check"></i>Topics</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#notation"><i class="fa fa-check"></i>Notation</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#grading-and-code-of-conduct"><i class="fa fa-check"></i>Grading and code of conduct</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#homework-80"><i class="fa fa-check"></i>Homework (80%)</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#review-20"><i class="fa fa-check"></i>Review (20%)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#a-note-about-biographies"><i class="fa fa-check"></i>A note about biographies</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#sources"><i class="fa fa-check"></i>Sources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html"><i class="fa fa-check"></i><b>1</b> Models for a single population</a><ul>
+<li class="chapter" data-level="1.1" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#types-of-dynamical-systems"><i class="fa fa-check"></i><b>1.1</b> Types of dynamical systems</a></li>
+<li class="chapter" data-level="1.2" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#initial-value-problems"><i class="fa fa-check"></i><b>1.2</b> Initial-value problems</a></li>
+<li class="chapter" data-level="1.3" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#solvable-model-exponential-growth"><i class="fa fa-check"></i><b>1.3</b> Solvable model: Exponential growth</a></li>
+<li class="chapter" data-level="1.4" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#solvable-model-logistic-growth"><i class="fa fa-check"></i><b>1.4</b> Solvable model: Logistic growth</a></li>
+<li class="chapter" data-level="1.5" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#qualitative-analysis-of-models-for-a-single-population"><i class="fa fa-check"></i><b>1.5</b> Qualitative analysis of models for a single population</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#stability-using-derivatives"><i class="fa fa-check"></i><b>1.5.1</b> Stability using derivatives</a></li>
+<li class="chapter" data-level="1.5.2" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#what-are-we-doing-when-probing-stability-using-derivatives"><i class="fa fa-check"></i><b>1.5.2</b> What are we doing when probing stability using derivatives?</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#bifurcations"><i class="fa fa-check"></i><b>1.6</b> Bifurcations</a></li>
+<li class="chapter" data-level="1.7" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#long-term-behavior-of-1-d-systems"><i class="fa fa-check"></i><b>1.7</b> Long term behavior of 1-D systems</a></li>
+<li class="chapter" data-level="1.8" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#lyapunov-functions"><i class="fa fa-check"></i><b>1.8</b> Lyapunov functions</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html"><i class="fa fa-check"></i><b>2</b> Models for two populations</a><ul>
+<li class="chapter" data-level="2.1" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#qualitative-analysis-of-models-for-two-populations"><i class="fa fa-check"></i><b>2.1</b> Qualitative analysis of models for two populations</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#isoclines-of-null-growth"><i class="fa fa-check"></i><b>2.1.1</b> Isoclines of null growth</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#local-stability-analysis"><i class="fa fa-check"></i><b>2.2</b> Local stability analysis</a></li>
+<li class="chapter" data-level="2.3" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#stability-analysis-of-the-lotka-volterra-predator-prey-model"><i class="fa fa-check"></i><b>2.3</b> Stability analysis of the Lotka-Volterra Predator-Prey model</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#constant-of-motion-for-lotka-volterra-predator-prey"><i class="fa fa-check"></i><b>2.3.1</b> Constant of motion for Lotka-Volterra Predator-Prey</a></li>
+<li class="chapter" data-level="2.3.2" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#analysis-of-predator-prey-model-with-logistic-growth-for-the-prey"><i class="fa fa-check"></i><b>2.3.2</b> Analysis of Predator-Prey model with logistic growth for the prey</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html"><i class="fa fa-check"></i><b>3</b> Generalized Lotka-Volterra model</a><ul>
+<li class="chapter" data-level="3.1" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#formulation"><i class="fa fa-check"></i><b>3.1</b> Formulation</a></li>
+<li class="chapter" data-level="3.2" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#a-single-population"><i class="fa fa-check"></i><b>3.2</b> A single population</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#metapopulation-dynamics"><i class="fa fa-check"></i><b>3.2.1</b> Metapopulation dynamics</a></li>
+<li class="chapter" data-level="3.2.2" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#s-i-s-model"><i class="fa fa-check"></i><b>3.2.2</b> S-I-S model</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#multi-species-dynamics"><i class="fa fa-check"></i><b>3.3</b> Multi-species dynamics</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#existence-of-an-equilibrium"><i class="fa fa-check"></i><b>3.3.1</b> Existence of an equilibrium</a></li>
+<li class="chapter" data-level="3.3.2" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#stability-of-the-coexistence-equilibrium"><i class="fa fa-check"></i><b>3.3.2</b> Stability of the coexistence equilibrium</a></li>
+<li class="chapter" data-level="3.3.3" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#types-of-dynamics"><i class="fa fa-check"></i><b>3.3.3</b> Types of dynamics</a></li>
+<li class="chapter" data-level="3.3.4" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#the-equilibrium-is-the-time-average"><i class="fa fa-check"></i><b>3.3.4</b> The equilibrium is the time-average</a></li>
+<li class="chapter" data-level="3.3.5" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#lyapunov-diagonal-stability-and-global-stability"><i class="fa fa-check"></i><b>3.3.5</b> Lyapunov diagonal stability and global stability</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#macarthurs-consumer-resource-model"><i class="fa fa-check"></i><b>3.4</b> MacArthur’s consumer-resource model</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#existence-of-an-equilibrium-1"><i class="fa fa-check"></i><b>3.4.1</b> Existence of an equilibrium</a></li>
+<li class="chapter" data-level="3.4.2" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#global-stability-1"><i class="fa fa-check"></i><b>3.4.2</b> Global stability</a></li>
+<li class="chapter" data-level="3.4.3" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#separation-of-time-scales"><i class="fa fa-check"></i><b>3.4.3</b> Separation of time-scales</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#further-readings"><i class="fa fa-check"></i><b>3.5</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html"><i class="fa fa-check"></i><b>4</b> Stability of large ecological communities</a><ul>
+<li class="chapter" data-level="4.1" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#complexity-and-stability"><i class="fa fa-check"></i><b>4.1</b> Complexity and stability</a></li>
+<li class="chapter" data-level="4.2" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#the-stability-of-random-ecosystems"><i class="fa fa-check"></i><b>4.2</b> The stability of random ecosystems</a></li>
+<li class="chapter" data-level="4.3" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#accounting-for-interaction-types"><i class="fa fa-check"></i><b>4.3</b> Accounting for interaction types</a></li>
+<li class="chapter" data-level="4.4" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#symmetric-matrices"><i class="fa fa-check"></i><b>4.4</b> Symmetric matrices</a></li>
+<li class="chapter" data-level="4.5" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#covariance-matrices"><i class="fa fa-check"></i><b>4.5</b> Covariance matrices</a></li>
+<li class="chapter" data-level="4.6" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#small-rank-perturbations"><i class="fa fa-check"></i><b>4.6</b> Small-rank perturbations</a></li>
+<li class="chapter" data-level="4.7" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#further-readings-1"><i class="fa fa-check"></i><b>4.7</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="ecological-assembly.html"><a href="ecological-assembly.html"><i class="fa fa-check"></i><b>5</b> Ecological assembly</a><ul>
+<li class="chapter" data-level="5.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#assembly"><i class="fa fa-check"></i><b>5.1</b> Assembly</a></li>
+<li class="chapter" data-level="5.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#invasion-in-multispecies-communities"><i class="fa fa-check"></i><b>5.2</b> Invasion in multispecies communities</a></li>
+<li class="chapter" data-level="5.3" data-path="ecological-assembly.html"><a href="ecological-assembly.html#lyapunov-stability-and-saturated-equilibria"><i class="fa fa-check"></i><b>5.3</b> Lyapunov stability and saturated equilibria</a></li>
+<li class="chapter" data-level="5.4" data-path="ecological-assembly.html"><a href="ecological-assembly.html#how-many-species-will-coexist"><i class="fa fa-check"></i><b>5.4</b> How many species will coexist?</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#a-trivial-case"><i class="fa fa-check"></i><b>5.4.1</b> A trivial case</a></li>
+<li class="chapter" data-level="5.4.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#simulating-final-composition"><i class="fa fa-check"></i><b>5.4.2</b> Simulating final composition</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="ecological-assembly.html"><a href="ecological-assembly.html#a-random-zoo"><i class="fa fa-check"></i><b>5.5</b> A random zoo</a></li>
+<li class="chapter" data-level="5.6" data-path="ecological-assembly.html"><a href="ecological-assembly.html#assembly-and-saturated-equilibrium"><i class="fa fa-check"></i><b>5.6</b> Assembly and saturated equilibrium</a></li>
+<li class="chapter" data-level="5.7" data-path="ecological-assembly.html"><a href="ecological-assembly.html#network-spandrels"><i class="fa fa-check"></i><b>5.7</b> Network spandrels</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html"><i class="fa fa-check"></i><b>6</b> Predicting coexistence in ecological communities</a><ul>
+<li class="chapter" data-level="6.1" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#synthetic-communities-using-the-glv-model"><i class="fa fa-check"></i><b>6.1</b> Synthetic communities using the GLV model</a></li>
+<li class="chapter" data-level="6.2" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#total-biomass"><i class="fa fa-check"></i><b>6.2</b> Total biomass</a></li>
+<li class="chapter" data-level="6.3" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#hyperplanes"><i class="fa fa-check"></i><b>6.3</b> Hyperplanes</a></li>
+<li class="chapter" data-level="6.4" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#fitting-real-data"><i class="fa fa-check"></i><b>6.4</b> Fitting real data</a></li>
+<li class="chapter" data-level="6.5" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#predicting-real-data-out-of-fit"><i class="fa fa-check"></i><b>6.5</b> Predicting real data out of fit</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html"><i class="fa fa-check"></i><b>7</b> Game theory and replicator dynamics</a><ul>
+<li class="chapter" data-level="7.1" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#game-theory"><i class="fa fa-check"></i><b>7.1</b> Game theory</a></li>
+<li class="chapter" data-level="7.2" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#two-player-matrix-games"><i class="fa fa-check"></i><b>7.2</b> Two-player matrix games</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#example-the-prisoners-dilemma"><i class="fa fa-check"></i><b>7.2.1</b> Example: the prisoner’s dilemma</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#mixed-strategies"><i class="fa fa-check"></i><b>7.3</b> Mixed strategies</a></li>
+<li class="chapter" data-level="7.4" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#nash-equilibria"><i class="fa fa-check"></i><b>7.4</b> Nash Equilibria</a></li>
+<li class="chapter" data-level="7.5" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#evolutionary-stable-strategies"><i class="fa fa-check"></i><b>7.5</b> Evolutionary stable strategies</a></li>
+<li class="chapter" data-level="7.6" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#replicator-dynamics"><i class="fa fa-check"></i><b>7.6</b> Replicator dynamics</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#invariants"><i class="fa fa-check"></i><b>7.6.1</b> Invariants</a></li>
+<li class="chapter" data-level="7.6.2" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#rock-paper-scissor"><i class="fa fa-check"></i><b>7.6.2</b> Rock-paper-scissor</a></li>
+<li class="chapter" data-level="7.6.3" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#equivalence-with-glv"><i class="fa fa-check"></i><b>7.6.3</b> Equivalence with GLV</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="a-tibble-3-x-3.html"><a href="a-tibble-3-x-3.html"><i class="fa fa-check"></i><b>8</b> A tibble: 3 x 3</a></li>
+<li class="chapter" data-level="9" data-path="a-tibble-4-x-3.html"><a href="a-tibble-4-x-3.html"><i class="fa fa-check"></i><b>9</b> A tibble: 4 x 3</a></li>
+<li class="chapter" data-level="10" data-path="a-tibble-4-x-3-1.html"><a href="a-tibble-4-x-3-1.html"><i class="fa fa-check"></i><b>10</b> A tibble: 4 x 3</a><ul>
+<li class="chapter" data-level="10.0.1" data-path="a-tibble-4-x-3-1.html"><a href="a-tibble-4-x-3-1.html#hypertournament-games"><i class="fa fa-check"></i><b>10.0.1</b> Hypertournament games</a></li>
+<li class="chapter" data-level="10.0.2" data-path="a-tibble-4-x-3-1.html"><a href="a-tibble-4-x-3-1.html#lyapunov-function"><i class="fa fa-check"></i><b>10.0.2</b> Lyapunov function</a></li>
+<li class="chapter" data-level="10.0.3" data-path="a-tibble-4-x-3-1.html"><a href="a-tibble-4-x-3-1.html#higher-order-interactions"><i class="fa fa-check"></i><b>10.0.3</b> Higher-order interactions</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html"><i class="fa fa-check"></i><b>11</b> Metapopulation dynamics on networks</a><ul>
+<li class="chapter" data-level="11.1" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#levins-bio"><i class="fa fa-check"></i><b>11.1</b> Levins Bio</a></li>
+<li class="chapter" data-level="11.2" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#levins-model"><i class="fa fa-check"></i><b>11.2</b> Levins model</a></li>
+<li class="chapter" data-level="11.3" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#hanski-ovaskainen-2000"><i class="fa fa-check"></i><b>11.3</b> Hanski Ovaskainen 2000</a></li>
+<li class="chapter" data-level="11.4" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#sis-on-a-network-van-mieghem"><i class="fa fa-check"></i><b>11.4</b> SIS on a network Van Mieghem</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html"><i class="fa fa-check"></i><b>12</b> Quasi-polynomial systems</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="13" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html"><i class="fa fa-check"></i><b>13</b> Random bits and pieces</a><ul>
+<li class="chapter" data-level="13.1" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#stability-of-larger-matrices"><i class="fa fa-check"></i><b>13.1</b> Stability of larger matrices</a><ul>
+<li class="chapter" data-level="13.1.1" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#descartes-rule-of-signs"><i class="fa fa-check"></i><b>13.1.1</b> Descartes’ rule of signs</a></li>
+<li class="chapter" data-level="13.1.2" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#routh-hurwitz-criterion"><i class="fa fa-check"></i><b>13.1.2</b> Routh-Hurwitz criterion</a></li>
+<li class="chapter" data-level="13.1.3" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#bounding-eigenvalues-using-the-symmetric-part"><i class="fa fa-check"></i><b>13.1.3</b> Bounding eigenvalues using the symmetric part</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#exercise"><i class="fa fa-check"></i><b>13.2</b> Exercise</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Theoretical Community Ecology</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="a-tibble-4-x-3-1" class="section level1">
+<h1><span class="header-section-number">Lecture 10</span> A tibble: 4 x 3</h1>
+<p>time species density
+<dbl> <chr> <dbl>
+1 40 sp_1 1.32
+2 40 sp_2 0.538
+3 40 sp_3 0.521
+4 40 sp_4 1</p>
+<p>Not only the equilibria are the same, but also the dynamics are the same once time has been properly rescaled. Similarly, for each RE system we can always recover a matrix with zero in the last row by applying the transformations detailed above, and therefore recover the corresponding GLV. For example, take the matrix for the RPS above, and make each coefficient in the last row zero by adding the appropriate constant to each column. Then one recovers some sort of a predator-prey system:</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="a-tibble-4-x-3-1.html#cb81-1"></a>r &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb81-2"><a href="a-tibble-4-x-3-1.html#cb81-2"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">2</span>,</span>
+<span id="cb81-3"><a href="a-tibble-4-x-3-1.html#cb81-3"></a>              <span class="dv">-2</span>, <span class="dv">1</span>), <span class="dv">2</span>, <span class="dv">2</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb81-4"><a href="a-tibble-4-x-3-1.html#cb81-4"></a>x0 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.9</span>, <span class="fl">1.1</span>)</span>
+<span id="cb81-5"><a href="a-tibble-4-x-3-1.html#cb81-5"></a>glvex &lt;-<span class="st"> </span><span class="kw">integrate_GLV</span>(r, A, x0, <span class="dt">maxtime =</span> <span class="dv">15</span>, <span class="dt">steptime =</span> <span class="fl">0.01</span>)</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/exampleretoglv1-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>in which the species oscillate around one.</p>
+<div id="hypertournament-games" class="section level3">
+<h3><span class="header-section-number">10.0.1</span> Hypertournament games</h3>
+<p>The rock-paper-scissor game above is a simple case of a “hypertournament” game. Take the zero-sum payoff matrix <span class="math inline">\(A = -A^t\)</span>. Then, we have</p>
+<p><span class="math display">\[
+\sum_i \sum_j A_{ij} x_i x_j = 0
+\]</span>
+and the RE simplifies to</p>
+<p><span class="math display">\[
+\dfrac{d x}{dt} = D(x) A x
+\]</span></p>
+<p>At equilibrium, either some elements of <span class="math inline">\(x\)</span> are zero, or</p>
+<p><span class="math display">\[
+A x^\star = 0
+\]</span>
+meaning that if a feasible equilibrium <span class="math inline">\(x^\star\)</span> exists, it is an eigenvector of <span class="math inline">\(A\)</span> corresponding to a zero eigenvalue.</p>
+<div id="number-of-coexisting-species" class="section level4">
+<h4><span class="header-section-number">10.0.1.1</span> Number of coexisting species</h4>
+<p>We now show how the equations above can arise when modeling ecological dynamics. Suppose that a forest is composed of a fixed number of trees. Each time a tree dies (with rate <span class="math inline">\(d = 1\)</span> for all species), a gap in the canopy opens, and species will compete to colonize it. Let’s assume that two seeds (sampled with probability proportional to the density of the species) land in the empty patch, and that they compete to fill the gap. Call <span class="math inline">\(H_{ij}\)</span> the probability that <span class="math inline">\(i\)</span> wins when competing with <span class="math inline">\(j\)</span>; we have <span class="math inline">\(H_{ij} + H_{ji} = 1\)</span>. We can write the dynamics <span class="citation">(Grilli et al. <a href="#ref-grilli2017higher" role="doc-biblioref">2017</a>)</span> as:</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \dfrac{d x}{dt} &amp;= x_i \left(\sum_j 2 H_{ij} x_j - 1 \right) \\
+  &amp;=x_i \sum_j (2 H_{ij} x_j - x_j) \\
+  &amp;= x_i \sum_j (H_{ij} x_j  + (1 - H_{ji}) x_j - x_j) \\
+  &amp;= x_i \sum_j (H_{ij} - H_{ji}) x_j \\
+  &amp;= x_i  \sum_j A_{ij} x_j
+\end{aligned}
+\]</span></p>
+<p>I.e., we recover the RE for a zero-sum game. What happens if we draw <span class="math inline">\(H\)</span> (and therefore <span class="math inline">\(A\)</span>) at random? <span class="citation">Allesina and Levine (<a href="#ref-allesina2011competitive" role="doc-biblioref">2011</a>)</span> and <span class="citation">Grilli et al. (<a href="#ref-grilli2017higher" role="doc-biblioref">2017</a>)</span> applied the results of <span class="citation">Fisher and Reeves (<a href="#ref-fisher1995optimal" role="doc-biblioref">1995</a>)</span> and <span class="citation">Brandl (<a href="#ref-brandl2017distribution" role="doc-biblioref">2017</a>)</span> to show that, when <span class="math inline">\(n\)</span> species compete, the probability of observing <span class="math inline">\(k\)</span> coexisting is <span class="math inline">\(p(k|n) = \binom{n}{k} 2^{1-n}\)</span> when <span class="math inline">\(k\)</span> is odd, and <span class="math inline">\(p(k|n) = 0\)</span> when <span class="math inline">\(k\)</span> is even.</p>
+<p>Importantly, to find the set of coexisting species we do not need to integrate dynamics. One can use linear programming to solve for the set of species that will coexist.</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="a-tibble-4-x-3-1.html#cb82-1"></a><span class="kw">library</span>(lpSolve)</span>
+<span id="cb82-2"><a href="a-tibble-4-x-3-1.html#cb82-2"></a><span class="co"># Build a random matrix H such that H_ij + H_ji = 1</span></span>
+<span id="cb82-3"><a href="a-tibble-4-x-3-1.html#cb82-3"></a>random_H &lt;-<span class="st"> </span><span class="cf">function</span>(n){</span>
+<span id="cb82-4"><a href="a-tibble-4-x-3-1.html#cb82-4"></a>  <span class="co"># build random hypertournament H</span></span>
+<span id="cb82-5"><a href="a-tibble-4-x-3-1.html#cb82-5"></a>  H &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">runif</span>(n <span class="op">*</span><span class="st"> </span>n), n, n)</span>
+<span id="cb82-6"><a href="a-tibble-4-x-3-1.html#cb82-6"></a>  <span class="kw">return</span>(H <span class="op">/</span><span class="st"> </span>(H <span class="op">+</span><span class="st"> </span><span class="kw">t</span>(H)))</span>
+<span id="cb82-7"><a href="a-tibble-4-x-3-1.html#cb82-7"></a>}</span>
+<span id="cb82-8"><a href="a-tibble-4-x-3-1.html#cb82-8"></a><span class="co"># Find the optimal strategy for the two-person game encoded in H</span></span>
+<span id="cb82-9"><a href="a-tibble-4-x-3-1.html#cb82-9"></a><span class="co"># using linear programming.</span></span>
+<span id="cb82-10"><a href="a-tibble-4-x-3-1.html#cb82-10"></a><span class="co"># This is also the coexistence equilibrium of the dynamical system.</span></span>
+<span id="cb82-11"><a href="a-tibble-4-x-3-1.html#cb82-11"></a>find_optimal_strategy &lt;-<span class="st"> </span><span class="cf">function</span>(H){</span>
+<span id="cb82-12"><a href="a-tibble-4-x-3-1.html#cb82-12"></a>  n &lt;-<span class="st"> </span><span class="kw">dim</span>(H)[<span class="dv">1</span>]</span>
+<span id="cb82-13"><a href="a-tibble-4-x-3-1.html#cb82-13"></a>  f.obj &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span>, n)</span>
+<span id="cb82-14"><a href="a-tibble-4-x-3-1.html#cb82-14"></a>  f.con &lt;-<span class="st"> </span>H</span>
+<span id="cb82-15"><a href="a-tibble-4-x-3-1.html#cb82-15"></a>  f.rhs &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span>, n)</span>
+<span id="cb82-16"><a href="a-tibble-4-x-3-1.html#cb82-16"></a>  f.dir &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="st">&quot;&lt;=&quot;</span>, n)</span>
+<span id="cb82-17"><a href="a-tibble-4-x-3-1.html#cb82-17"></a>  z &lt;-<span class="st"> </span><span class="kw">lp</span> (<span class="st">&quot;max&quot;</span>, f.obj, f.con, f.dir, f.rhs)</span>
+<span id="cb82-18"><a href="a-tibble-4-x-3-1.html#cb82-18"></a>  <span class="kw">return</span>(z<span class="op">$</span>solution <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(z<span class="op">$</span>solution))</span>
+<span id="cb82-19"><a href="a-tibble-4-x-3-1.html#cb82-19"></a>}</span></code></pre></div>
+<p>Now let’s try to count how many species suvive when starting with 10:</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="a-tibble-4-x-3-1.html#cb83-1"></a>n &lt;-<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb83-2"><a href="a-tibble-4-x-3-1.html#cb83-2"></a>num_simulations &lt;-<span class="st"> </span><span class="dv">5000</span></span>
+<span id="cb83-3"><a href="a-tibble-4-x-3-1.html#cb83-3"></a>results &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">simulation =</span> <span class="dv">1</span><span class="op">:</span>num_simulations, <span class="dt">coexisting =</span> <span class="dv">0</span>)</span>
+<span id="cb83-4"><a href="a-tibble-4-x-3-1.html#cb83-4"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>num_simulations){</span>
+<span id="cb83-5"><a href="a-tibble-4-x-3-1.html#cb83-5"></a>  H &lt;-<span class="st"> </span><span class="kw">random_H</span>(n)</span>
+<span id="cb83-6"><a href="a-tibble-4-x-3-1.html#cb83-6"></a>  coexisting &lt;-<span class="st"> </span><span class="kw">find_optimal_strategy</span>(H)</span>
+<span id="cb83-7"><a href="a-tibble-4-x-3-1.html#cb83-7"></a>  results[i,<span class="st">&quot;coexisting&quot;</span>] &lt;-<span class="st"> </span><span class="kw">sum</span>((coexisting <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>)<span class="op">*</span><span class="dv">1</span>)</span>
+<span id="cb83-8"><a href="a-tibble-4-x-3-1.html#cb83-8"></a>}</span>
+<span id="cb83-9"><a href="a-tibble-4-x-3-1.html#cb83-9"></a><span class="co"># and plot</span></span>
+<span id="cb83-10"><a href="a-tibble-4-x-3-1.html#cb83-10"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> results) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb83-11"><a href="a-tibble-4-x-3-1.html#cb83-11"></a><span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> coexisting) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb83-12"><a href="a-tibble-4-x-3-1.html#cb83-12"></a><span class="st">  </span><span class="kw">geom_bar</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb83-13"><a href="a-tibble-4-x-3-1.html#cb83-13"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">10</span>)</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/coexistlphist-1.png" width="480" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="lyapunov-function" class="section level3">
+<h3><span class="header-section-number">10.0.2</span> Lyapunov function</h3>
+<p>In the rock-paper-scissor example above, species cycled neutrally around the unique equilibrium point. To show that this is in fact the behavior of this type of RE, we write a Lyapunov function. By finding a constant of motion we can show that the species will follow closed orbits.</p>
+<p>Suppose <span class="math inline">\(x_{i}^\star &gt; 0\)</span> is the equilibrium for the system. We write:</p>
+<p><span class="math display">\[
+V(x) = -\sum_i x_i^\star \log \frac{x_i}{x_i^\star} .
+\]</span></p>
+<p>Because of Gibbs’ inequality, <span class="math inline">\(V(x) \geq 0\)</span> for any <span class="math inline">\(x\)</span>, and is equal to zero only if <span class="math inline">\(x = x^\star\)</span>. Note also that at equilibrium <span class="math inline">\(2 \sum_j H_{ij} x_j^\star = 1\)</span>. We write:</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \dfrac{d V}{d t} &amp;= \sum_i \dfrac{\partial V}{\partial x_i}
+  \dfrac{d x_i}{d t}\\
+  &amp;= - \sum_i \frac{x_i^\star}{x_i} \dfrac{d x_i}{d t} \\
+  &amp;= -2 \sum_{i,j} x_i^\star H_{ij}x_j + \sum_i x_i^\star\\
+  &amp;= -2 \sum_{i,j} x_i^\star H_{ij}x_j + 1\\
+  &amp;= \sum_j \left(-2 \sum_i H_{ij}x_i^\star \right) x_j + 1\\
+  &amp;= \sum_j \left(-2 \sum_i (1 - H_{ji}) x_i^\star \right) x_j + 1\\
+  &amp;= \sum_j \left(-2 \sum_i x_i^\star + 2 \sum_i H_{ji} x_i^\star \right) x_j
+  + 1 \\
+  &amp;= \sum_j \left(-2 + 1 \right) x_j  + 1 \\
+  &amp;=- \sum_j x_j + 1\\
+  &amp;= 0 
+\end{aligned}
+\]</span></p>
+<p>We have found a constant of motion, meaning that the system will follow closed orbits. Hence, unless we start the system precisely at <span class="math inline">\(x^\star\)</span>, the abundances will cycle neutrally around the equilibrium.</p>
+<p>Let’s try with a larger system:</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="a-tibble-4-x-3-1.html#cb84-1"></a>n &lt;-<span class="st"> </span><span class="dv">5</span></span>
+<span id="cb84-2"><a href="a-tibble-4-x-3-1.html#cb84-2"></a><span class="co"># search for random H yielding all species coexisting</span></span>
+<span id="cb84-3"><a href="a-tibble-4-x-3-1.html#cb84-3"></a>i &lt;-<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb84-4"><a href="a-tibble-4-x-3-1.html#cb84-4"></a><span class="cf">while</span>(<span class="ot">TRUE</span>){</span>
+<span id="cb84-5"><a href="a-tibble-4-x-3-1.html#cb84-5"></a>  i &lt;-<span class="st"> </span>i <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
+<span id="cb84-6"><a href="a-tibble-4-x-3-1.html#cb84-6"></a>  <span class="kw">set.seed</span>(i)</span>
+<span id="cb84-7"><a href="a-tibble-4-x-3-1.html#cb84-7"></a>  H &lt;-<span class="st"> </span><span class="kw">random_H</span>(n)</span>
+<span id="cb84-8"><a href="a-tibble-4-x-3-1.html#cb84-8"></a>  x_star &lt;-<span class="st"> </span><span class="kw">find_optimal_strategy</span>(H)</span>
+<span id="cb84-9"><a href="a-tibble-4-x-3-1.html#cb84-9"></a>  <span class="cf">if</span> (<span class="kw">all</span>(x_star) <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="cf">break</span></span>
+<span id="cb84-10"><a href="a-tibble-4-x-3-1.html#cb84-10"></a>}</span>
+<span id="cb84-11"><a href="a-tibble-4-x-3-1.html#cb84-11"></a><span class="co"># payoff matrix</span></span>
+<span id="cb84-12"><a href="a-tibble-4-x-3-1.html#cb84-12"></a>A &lt;-<span class="st"> </span>H <span class="op">-</span><span class="st"> </span><span class="kw">t</span>(H)</span>
+<span id="cb84-13"><a href="a-tibble-4-x-3-1.html#cb84-13"></a><span class="co"># initial conditions close to equilibrium</span></span>
+<span id="cb84-14"><a href="a-tibble-4-x-3-1.html#cb84-14"></a>x0 &lt;-<span class="st"> </span>x_star <span class="op">+</span><span class="st"> </span><span class="kw">runif</span>(n) <span class="op">*</span><span class="st"> </span><span class="fl">0.2</span></span>
+<span id="cb84-15"><a href="a-tibble-4-x-3-1.html#cb84-15"></a>x0 &lt;-<span class="st"> </span>x0 <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(x0)</span>
+<span id="cb84-16"><a href="a-tibble-4-x-3-1.html#cb84-16"></a>fivespp &lt;-<span class="st"> </span><span class="kw">integrate_RE</span>(A, x0, <span class="dt">maxtime =</span> <span class="dv">400</span>, <span class="dt">steptime =</span> <span class="fl">0.1</span>)</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/reneutral-1.png" width="480" style="display: block; margin: auto;" /></p>
+</div>
+<div id="higher-order-interactions" class="section level3">
+<h3><span class="header-section-number">10.0.3</span> Higher-order interactions</h3>
+<p>We can extend the game above to the case in which three (or more) seeds compete to fill each patch. <span class="citation">Grilli et al. (<a href="#ref-grilli2017higher" role="doc-biblioref">2017</a>)</span> showed that in this case, one can write the replicator equation:</p>
+<p><span class="math display">\[
+\dfrac{d x_i}{dt} = x_i \sum_{j,k} A_{ijk} x_j x_k
+\]</span>
+where the tensor <span class="math inline">\(A\)</span> (a three-dimensional matrix) encodes the effect of a pair of species (<span class="math inline">\(j\)</span> and <span class="math inline">\(k\)</span>) on the density of <span class="math inline">\(i\)</span>. Importantly, one can choose the tensor such that the equilibrium is the same as for the two-player replicator equation: take <span class="math inline">\(A_{ijk} = 2 H_{ij} H_{ik} - H_{ji} H_{jk} - H_{ki} H_{kj}\)</span>, which can be derived from first principles by writing the stochastic dynamics. What is surprising is that, while the equilibrium is unchanged, the dynamics are now globally stable:</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="a-tibble-4-x-3-1.html#cb85-1"></a><span class="co"># Now payoff is a tensor</span></span>
+<span id="cb85-2"><a href="a-tibble-4-x-3-1.html#cb85-2"></a>RE_<span class="dv">3</span> &lt;-<span class="st"> </span><span class="cf">function</span>(t, x, parameters){</span>
+<span id="cb85-3"><a href="a-tibble-4-x-3-1.html#cb85-3"></a>  <span class="kw">with</span>(<span class="kw">as.list</span>(<span class="kw">c</span>(x, parameters)), {</span>
+<span id="cb85-4"><a href="a-tibble-4-x-3-1.html#cb85-4"></a>    x[x <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span><span class="op">^-</span><span class="dv">8</span>] &lt;-<span class="st"> </span><span class="dv">0</span> <span class="co"># prevent numerical problems</span></span>
+<span id="cb85-5"><a href="a-tibble-4-x-3-1.html#cb85-5"></a>    x &lt;-<span class="st"> </span>x <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(x) <span class="co"># keep on simplex</span></span>
+<span id="cb85-6"><a href="a-tibble-4-x-3-1.html#cb85-6"></a>    n &lt;-<span class="st"> </span><span class="kw">length</span>(x)</span>
+<span id="cb85-7"><a href="a-tibble-4-x-3-1.html#cb85-7"></a>    dxidt &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>, n)</span>
+<span id="cb85-8"><a href="a-tibble-4-x-3-1.html#cb85-8"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n){</span>
+<span id="cb85-9"><a href="a-tibble-4-x-3-1.html#cb85-9"></a>      dxidt[i] &lt;-<span class="st"> </span>x[i] <span class="op">*</span><span class="st"> </span>x <span class="op">%*%</span><span class="st"> </span>P3[i,,] <span class="op">%*%</span><span class="st"> </span>x</span>
+<span id="cb85-10"><a href="a-tibble-4-x-3-1.html#cb85-10"></a>    }</span>
+<span id="cb85-11"><a href="a-tibble-4-x-3-1.html#cb85-11"></a>    <span class="kw">list</span>(dxidt)</span>
+<span id="cb85-12"><a href="a-tibble-4-x-3-1.html#cb85-12"></a>  })</span>
+<span id="cb85-13"><a href="a-tibble-4-x-3-1.html#cb85-13"></a>}</span>
+<span id="cb85-14"><a href="a-tibble-4-x-3-1.html#cb85-14"></a><span class="co"># general function to integrate RE_3</span></span>
+<span id="cb85-15"><a href="a-tibble-4-x-3-1.html#cb85-15"></a>integrate_RE_<span class="dv">3</span> &lt;-<span class="st"> </span><span class="cf">function</span>(H, x0, <span class="dt">maxtime =</span> <span class="dv">40</span>, <span class="dt">steptime =</span> <span class="fl">0.05</span>){</span>
+<span id="cb85-16"><a href="a-tibble-4-x-3-1.html#cb85-16"></a>  times &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>, maxtime, <span class="dt">by =</span> steptime)</span>
+<span id="cb85-17"><a href="a-tibble-4-x-3-1.html#cb85-17"></a>  n &lt;-<span class="st"> </span><span class="kw">nrow</span>(H)</span>
+<span id="cb85-18"><a href="a-tibble-4-x-3-1.html#cb85-18"></a>  P3 &lt;-<span class="st"> </span><span class="kw">array</span>(<span class="dv">0</span>, <span class="kw">c</span>(n, n, n))</span>
+<span id="cb85-19"><a href="a-tibble-4-x-3-1.html#cb85-19"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n){</span>
+<span id="cb85-20"><a href="a-tibble-4-x-3-1.html#cb85-20"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n){</span>
+<span id="cb85-21"><a href="a-tibble-4-x-3-1.html#cb85-21"></a>      <span class="cf">for</span> (k <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n){</span>
+<span id="cb85-22"><a href="a-tibble-4-x-3-1.html#cb85-22"></a>        P3[i,j,k] &lt;-<span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>H[i,j] <span class="op">*</span><span class="st"> </span>H[i,k] <span class="op">-</span><span class="st">  </span>H[j,i] <span class="op">*</span><span class="st"> </span>H[j,k] <span class="op">-</span><span class="st"> </span>H[k,i] <span class="op">*</span><span class="st"> </span>H[k,j]</span>
+<span id="cb85-23"><a href="a-tibble-4-x-3-1.html#cb85-23"></a>      }</span>
+<span id="cb85-24"><a href="a-tibble-4-x-3-1.html#cb85-24"></a>    }</span>
+<span id="cb85-25"><a href="a-tibble-4-x-3-1.html#cb85-25"></a>  }</span>
+<span id="cb85-26"><a href="a-tibble-4-x-3-1.html#cb85-26"></a>  parameters &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">P3 =</span> P3)</span>
+<span id="cb85-27"><a href="a-tibble-4-x-3-1.html#cb85-27"></a>  <span class="co"># solve numerically</span></span>
+<span id="cb85-28"><a href="a-tibble-4-x-3-1.html#cb85-28"></a>  out &lt;-<span class="st"> </span><span class="kw">ode</span>(<span class="dt">y =</span> x0, <span class="dt">times =</span> times, </span>
+<span id="cb85-29"><a href="a-tibble-4-x-3-1.html#cb85-29"></a>           <span class="dt">func =</span> RE_<span class="dv">3</span>, <span class="dt">parms =</span> parameters, </span>
+<span id="cb85-30"><a href="a-tibble-4-x-3-1.html#cb85-30"></a>           <span class="dt">method =</span> <span class="st">&quot;ode45&quot;</span>)</span>
+<span id="cb85-31"><a href="a-tibble-4-x-3-1.html#cb85-31"></a>  <span class="co"># plot and make into tidy form</span></span>
+<span id="cb85-32"><a href="a-tibble-4-x-3-1.html#cb85-32"></a>  out &lt;-<span class="st"> </span><span class="kw">plot_ODE_output</span>(out)</span>
+<span id="cb85-33"><a href="a-tibble-4-x-3-1.html#cb85-33"></a>  <span class="kw">return</span>(out)</span>
+<span id="cb85-34"><a href="a-tibble-4-x-3-1.html#cb85-34"></a>}</span>
+<span id="cb85-35"><a href="a-tibble-4-x-3-1.html#cb85-35"></a><span class="co"># integrate the system above</span></span>
+<span id="cb85-36"><a href="a-tibble-4-x-3-1.html#cb85-36"></a>fivespp &lt;-<span class="st"> </span><span class="kw">integrate_RE_3</span>(H, x0, <span class="dt">maxtime =</span> <span class="dv">800</span>, <span class="dt">steptime =</span> <span class="fl">0.1</span>)</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/rehoi-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>And the rock-paper-scissors:</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="a-tibble-4-x-3-1.html#cb86-1"></a>H &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>,</span>
+<span id="cb86-2"><a href="a-tibble-4-x-3-1.html#cb86-2"></a>              <span class="dv">0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span>,</span>
+<span id="cb86-3"><a href="a-tibble-4-x-3-1.html#cb86-3"></a>              <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>), <span class="dv">3</span>, <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb86-4"><a href="a-tibble-4-x-3-1.html#cb86-4"></a>x0 &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">3</span>)</span>
+<span id="cb86-5"><a href="a-tibble-4-x-3-1.html#cb86-5"></a>x0 &lt;-<span class="st"> </span>x0 <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(x0)</span>
+<span id="cb86-6"><a href="a-tibble-4-x-3-1.html#cb86-6"></a>rps &lt;-<span class="st"> </span><span class="kw">integrate_RE_3</span>(H, x0, <span class="dt">maxtime =</span> <span class="dv">50</span>, <span class="dt">steptime =</span> <span class="fl">0.1</span>)</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/rpshoi-1.png" width="480" style="display: block; margin: auto;" /></p>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-allesina2011competitive">
+<p>Allesina, Stefano, and Jonathan M Levine. 2011. “A Competitive Network Theory of Species Diversity.” <em>Proceedings of the National Academy of Sciences</em> 108 (14): 5638–42.</p>
+</div>
+<div id="ref-brandl2017distribution">
+<p>Brandl, Florian. 2017. “The Distribution of Optimal Strategies in Symmetric Zero-Sum Games.” <em>Games and Economic Behavior</em> 104: 674–80.</p>
+</div>
+<div id="ref-fisher1995optimal">
+<p>Fisher, David C, and Richard B Reeves. 1995. “Optimal Strategies for Random Tournament Games.” <em>Linear Algebra and Its Applications</em> 217: 83–85.</p>
+</div>
+<div id="ref-grilli2017higher">
+<p>Grilli, Jacopo, György Barabás, Matthew J Michalska-Smith, and Stefano Allesina. 2017. “Higher-Order Interactions Stabilize Dynamics in Competitive Network Models.” <em>Nature</em> 548 (7666): 210.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="a-tibble-4-x-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="metapopulation-dynamics-on-networks.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Theoretical_Community_Ecology.pdf", "Theoretical_Community_Ecology.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

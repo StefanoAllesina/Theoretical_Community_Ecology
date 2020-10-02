@@ -1,0 +1,6 @@
+# Metapopulation dynamics on networks
+
+## Levins Bio
+## Levins model
+## Hanski Ovaskainen 2000
+## SIS on a network Van Mieghem

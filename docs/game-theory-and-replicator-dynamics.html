@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Lecture 6 Game theory and replicator dynamics | Theoretical Community Ecology</title>
+  <title>Lecture 7 Game theory and replicator dynamics | Theoretical Community Ecology</title>
   <meta name="description" content="A graduate course in theoretical community ecology focusing on systems with multiple species." />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Lecture 6 Game theory and replicator dynamics | Theoretical Community Ecology" />
+  <meta property="og:title" content="Lecture 7 Game theory and replicator dynamics | Theoretical Community Ecology" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Lecture 6 Game theory and replicator dynamics | Theoretical Community Ecology" />
+  <meta name="twitter:title" content="Lecture 7 Game theory and replicator dynamics | Theoretical Community Ecology" />
   
   <meta name="twitter:description" content="A graduate course in theoretical community ecology focusing on systems with multiple species." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="ecological-assembly.html"/>
-<link rel="next" href="quasi-polynomial-systems.html"/>
+<link rel="prev" href="predicting-coexistence-in-ecological-communities.html"/>
+<link rel="next" href="a-tibble-3-x-3.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -52,6 +52,70 @@
 
 
 
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -77,6 +141,7 @@
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#homework-80"><i class="fa fa-check"></i>Homework (80%)</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#review-20"><i class="fa fa-check"></i>Review (20%)</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#a-note-about-biographies"><i class="fa fa-check"></i>A note about biographies</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#sources"><i class="fa fa-check"></i>Sources</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
 </ul></li>
@@ -132,18 +197,61 @@
 <li class="chapter" data-level="4.6" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#small-rank-perturbations"><i class="fa fa-check"></i><b>4.6</b> Small-rank perturbations</a></li>
 <li class="chapter" data-level="4.7" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#further-readings-1"><i class="fa fa-check"></i><b>4.7</b> Further readings</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="ecological-assembly.html"><a href="ecological-assembly.html"><i class="fa fa-check"></i><b>5</b> Ecological assembly</a></li>
-<li class="chapter" data-level="6" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html"><i class="fa fa-check"></i><b>6</b> Game theory and replicator dynamics</a></li>
-<li class="chapter" data-level="7" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html"><i class="fa fa-check"></i><b>7</b> Quasi-polynomial systems</a></li>
-<li class="chapter" data-level="8" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html"><i class="fa fa-check"></i><b>8</b> Predicting coexistence in ecological communities</a></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
-<li class="chapter" data-level="9" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html"><i class="fa fa-check"></i><b>9</b> Random bits and pieces</a><ul>
-<li class="chapter" data-level="9.1" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#stability-of-larger-matrices"><i class="fa fa-check"></i><b>9.1</b> Stability of larger matrices</a><ul>
-<li class="chapter" data-level="9.1.1" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#descartes-rule-of-signs"><i class="fa fa-check"></i><b>9.1.1</b> Descartes’ rule of signs</a></li>
-<li class="chapter" data-level="9.1.2" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#routh-hurwitz-criterion"><i class="fa fa-check"></i><b>9.1.2</b> Routh-Hurwitz criterion</a></li>
-<li class="chapter" data-level="9.1.3" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#bounding-eigenvalues-using-the-symmetric-part"><i class="fa fa-check"></i><b>9.1.3</b> Bounding eigenvalues using the symmetric part</a></li>
+<li class="chapter" data-level="5" data-path="ecological-assembly.html"><a href="ecological-assembly.html"><i class="fa fa-check"></i><b>5</b> Ecological assembly</a><ul>
+<li class="chapter" data-level="5.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#assembly"><i class="fa fa-check"></i><b>5.1</b> Assembly</a></li>
+<li class="chapter" data-level="5.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#invasion-in-multispecies-communities"><i class="fa fa-check"></i><b>5.2</b> Invasion in multispecies communities</a></li>
+<li class="chapter" data-level="5.3" data-path="ecological-assembly.html"><a href="ecological-assembly.html#lyapunov-stability-and-saturated-equilibria"><i class="fa fa-check"></i><b>5.3</b> Lyapunov stability and saturated equilibria</a></li>
+<li class="chapter" data-level="5.4" data-path="ecological-assembly.html"><a href="ecological-assembly.html#how-many-species-will-coexist"><i class="fa fa-check"></i><b>5.4</b> How many species will coexist?</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#a-trivial-case"><i class="fa fa-check"></i><b>5.4.1</b> A trivial case</a></li>
+<li class="chapter" data-level="5.4.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#simulating-final-composition"><i class="fa fa-check"></i><b>5.4.2</b> Simulating final composition</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#exercise"><i class="fa fa-check"></i><b>9.2</b> Exercise</a></li>
+<li class="chapter" data-level="5.5" data-path="ecological-assembly.html"><a href="ecological-assembly.html#a-random-zoo"><i class="fa fa-check"></i><b>5.5</b> A random zoo</a></li>
+<li class="chapter" data-level="5.6" data-path="ecological-assembly.html"><a href="ecological-assembly.html#assembly-and-saturated-equilibrium"><i class="fa fa-check"></i><b>5.6</b> Assembly and saturated equilibrium</a></li>
+<li class="chapter" data-level="5.7" data-path="ecological-assembly.html"><a href="ecological-assembly.html#network-spandrels"><i class="fa fa-check"></i><b>5.7</b> Network spandrels</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html"><i class="fa fa-check"></i><b>6</b> Predicting coexistence in ecological communities</a><ul>
+<li class="chapter" data-level="6.1" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#synthetic-communities-using-the-glv-model"><i class="fa fa-check"></i><b>6.1</b> Synthetic communities using the GLV model</a></li>
+<li class="chapter" data-level="6.2" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#total-biomass"><i class="fa fa-check"></i><b>6.2</b> Total biomass</a></li>
+<li class="chapter" data-level="6.3" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#hyperplanes"><i class="fa fa-check"></i><b>6.3</b> Hyperplanes</a></li>
+<li class="chapter" data-level="6.4" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#fitting-real-data"><i class="fa fa-check"></i><b>6.4</b> Fitting real data</a></li>
+<li class="chapter" data-level="6.5" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#predicting-real-data-out-of-fit"><i class="fa fa-check"></i><b>6.5</b> Predicting real data out of fit</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html"><i class="fa fa-check"></i><b>7</b> Game theory and replicator dynamics</a><ul>
+<li class="chapter" data-level="7.1" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#game-theory"><i class="fa fa-check"></i><b>7.1</b> Game theory</a></li>
+<li class="chapter" data-level="7.2" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#two-player-matrix-games"><i class="fa fa-check"></i><b>7.2</b> Two-player matrix games</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#example-the-prisoners-dilemma"><i class="fa fa-check"></i><b>7.2.1</b> Example: the prisoner’s dilemma</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#mixed-strategies"><i class="fa fa-check"></i><b>7.3</b> Mixed strategies</a></li>
+<li class="chapter" data-level="7.4" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#nash-equilibria"><i class="fa fa-check"></i><b>7.4</b> Nash Equilibria</a></li>
+<li class="chapter" data-level="7.5" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#evolutionary-stable-strategies"><i class="fa fa-check"></i><b>7.5</b> Evolutionary stable strategies</a></li>
+<li class="chapter" data-level="7.6" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#replicator-dynamics"><i class="fa fa-check"></i><b>7.6</b> Replicator dynamics</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#invariants"><i class="fa fa-check"></i><b>7.6.1</b> Invariants</a></li>
+<li class="chapter" data-level="7.6.2" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#rock-paper-scissor"><i class="fa fa-check"></i><b>7.6.2</b> Rock-paper-scissor</a></li>
+<li class="chapter" data-level="7.6.3" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#equivalence-with-glv"><i class="fa fa-check"></i><b>7.6.3</b> Equivalence with GLV</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="a-tibble-3-x-3.html"><a href="a-tibble-3-x-3.html"><i class="fa fa-check"></i><b>8</b> A tibble: 3 x 3</a></li>
+<li class="chapter" data-level="9" data-path="a-tibble-4-x-3.html"><a href="a-tibble-4-x-3.html"><i class="fa fa-check"></i><b>9</b> A tibble: 4 x 3</a></li>
+<li class="chapter" data-level="10" data-path="a-tibble-4-x-3-1.html"><a href="a-tibble-4-x-3-1.html"><i class="fa fa-check"></i><b>10</b> A tibble: 4 x 3</a><ul>
+<li class="chapter" data-level="10.0.1" data-path="a-tibble-4-x-3-1.html"><a href="a-tibble-4-x-3-1.html#hypertournament-games"><i class="fa fa-check"></i><b>10.0.1</b> Hypertournament games</a></li>
+<li class="chapter" data-level="10.0.2" data-path="a-tibble-4-x-3-1.html"><a href="a-tibble-4-x-3-1.html#lyapunov-function"><i class="fa fa-check"></i><b>10.0.2</b> Lyapunov function</a></li>
+<li class="chapter" data-level="10.0.3" data-path="a-tibble-4-x-3-1.html"><a href="a-tibble-4-x-3-1.html#higher-order-interactions"><i class="fa fa-check"></i><b>10.0.3</b> Higher-order interactions</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html"><i class="fa fa-check"></i><b>11</b> Metapopulation dynamics on networks</a><ul>
+<li class="chapter" data-level="11.1" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#levins-bio"><i class="fa fa-check"></i><b>11.1</b> Levins Bio</a></li>
+<li class="chapter" data-level="11.2" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#levins-model"><i class="fa fa-check"></i><b>11.2</b> Levins model</a></li>
+<li class="chapter" data-level="11.3" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#hanski-ovaskainen-2000"><i class="fa fa-check"></i><b>11.3</b> Hanski Ovaskainen 2000</a></li>
+<li class="chapter" data-level="11.4" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#sis-on-a-network-van-mieghem"><i class="fa fa-check"></i><b>11.4</b> SIS on a network Van Mieghem</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html"><i class="fa fa-check"></i><b>12</b> Quasi-polynomial systems</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="13" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html"><i class="fa fa-check"></i><b>13</b> Random bits and pieces</a><ul>
+<li class="chapter" data-level="13.1" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#stability-of-larger-matrices"><i class="fa fa-check"></i><b>13.1</b> Stability of larger matrices</a><ul>
+<li class="chapter" data-level="13.1.1" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#descartes-rule-of-signs"><i class="fa fa-check"></i><b>13.1.1</b> Descartes’ rule of signs</a></li>
+<li class="chapter" data-level="13.1.2" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#routh-hurwitz-criterion"><i class="fa fa-check"></i><b>13.1.2</b> Routh-Hurwitz criterion</a></li>
+<li class="chapter" data-level="13.1.3" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#bounding-eigenvalues-using-the-symmetric-part"><i class="fa fa-check"></i><b>13.1.3</b> Bounding eigenvalues using the symmetric part</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#exercise"><i class="fa fa-check"></i><b>13.2</b> Exercise</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -166,16 +274,223 @@
 
             <section class="normal" id="section-">
 <div id="game-theory-and-replicator-dynamics" class="section level1">
-<h1><span class="header-section-number">Lecture 6</span> Game theory and replicator dynamics</h1>
-
+<h1><span class="header-section-number">Lecture 7</span> Game theory and replicator dynamics</h1>
+<div id="game-theory" class="section level2">
+<h2><span class="header-section-number">7.1</span> Game theory</h2>
+<p>We briefly introduce the study of mathematical models of games, and their relations to the GLV model. While the origin of game theory can be traced back to the 1700s, modern game theory started with von Neumann’s paper <em>On the Theory of Games of Strategy</em>, published in 1928, and with the subsequent 1944 book with Morgensten <em>Theory of Games and Economic Behavior</em>. John Nash’s paper <span class="citation">(Nash <a href="#ref-nash1950equilibrium" role="doc-biblioref">1950</a>)</span> introduced the notion of a <strong>Nash Equilibrium</strong> (NE). Originally, game theory was studied by economists and mathematicians, but with the 1973 book <em>Evolution and the Theory of Games</em> <span class="citation">(Maynard Smith <a href="#ref-smith1982evolution" role="doc-biblioref">1982</a>)</span>, John Maynard Smith showed how the same tools could be used to study evolutionary dynamics, introducing the influential concept of an <strong>Evolutionary Stable Strategy</strong> (ESS). Evolutionary game theory was greatly advanced through the introduction of the <strong>Replicator Equation</strong> (RE), which, as we will see later, has strong connection with the GLV model. For a detailaed introduction to evolutionary game theory see <span class="citation">Hofbauer and Sigmund (<a href="#ref-hofbauer1998evolutionary" role="doc-biblioref">1998</a>)</span>.</p>
+</div>
+<div id="two-player-matrix-games" class="section level2">
+<h2><span class="header-section-number">7.2</span> Two-player matrix games</h2>
+<p>We start by anayzing games in which two players face each other, each choosing one strategy out of a set. Importantly, we consider static games in which each player makes their decision without having knowledge of the decision of the other player. Player 1 chooses a “pure” strategy <span class="math inline">\(s_1\)</span> from the set of pure strategies <span class="math inline">\(S_1\)</span>, while player 2 chooses <span class="math inline">\(s_2 \in S_2\)</span>. We call <span class="math inline">\(\pi_k (s_1, s_2)\)</span> the <strong>payoff</strong> for player <span class="math inline">\(k\)</span> when player 1 chooses <span class="math inline">\(s_1\)</span> and player 2 <span class="math inline">\(s_2\)</span>. In a matrix game, we can arrange the payoffs for each player in a matrix. We call <span class="math inline">\(A\)</span> the matrix of payoffs for player one and <span class="math inline">\(B\)</span> that for player two.</p>
+<div id="example-the-prisoners-dilemma" class="section level3">
+<h3><span class="header-section-number">7.2.1</span> Example: the prisoner’s dilemma</h3>
+<p>Two prisoners alleggedly committed a crime, but the police do not have enough evidence to convict them. They therefore approach each prisoner separately, proposing a deal: if the prisoner confesses (“defect” the other prisoner), then their sentence will be reduced. In particular: i) if both confess (both “defect”), they are sentenced to 4 years in prison; ii) if one confesses (“defect”) and the other keeps quiet (“cooperate” with the other prisoner), then the one who has confessed is let free, and the other sentenced to 5 years; iii) if both keep quiet (“cooperate”), then they are both sentenced to two years of detention for some accessory crime.</p>
+<p>In matrix form, we have (rows for pl 1 strategy C/D; cols for pl 2 strategy):</p>
+<p><span class="math display">\[
+A = \begin{pmatrix}
+-2 &amp; -5\\
+0 &amp; -4
+\end{pmatrix} \quad
+B = \begin{pmatrix}
+-2 &amp; -5\\
+0 &amp; -4
+\end{pmatrix}
+\]</span></p>
+<p>What is the best strategy player 1 can play—without knowing whether player 2 will confess or not? If player 2 were to keep quiet, player 1 should confess and be let free; if player 2 confesses, on the other hand, player 1 should also confess and get a reduced sentence. As such, each player would rationally choose to confess, thereby getting sentenced to four years in prison; note that if they could trust the other player, they could cooperate to get a much reduced sentence.</p>
+<p>The defect/defect is called a <strong>Nash Equilibrium</strong>: no player can improve their payoff by changing only their own strategy.</p>
+</div>
+</div>
+<div id="mixed-strategies" class="section level2">
+<h2><span class="header-section-number">7.3</span> Mixed strategies</h2>
+<p>Above, the player could choose one out of two strategies. A generalization of this situation is one in which players play <strong>mixed</strong> strategies, i.e., play a given strategy at random according to a set of probabilities. Call <span class="math inline">\(x_i\)</span> the probability that player 1 plays strategy <span class="math inline">\(i\)</span>; then <span class="math inline">\(\sum_i x_i = 1\)</span>. Similarly, <span class="math inline">\(y_i\)</span> is the probability that player 2 plays strategy <span class="math inline">\(i\)</span>. A natural choice for the payoff of player 1 is therefore:</p>
+<p><span class="math display">\[
+\sum_{i=1}^m \sum_{j = 1}^n x_i y_j \pi_1 (s_1, s_2) = x^t A y
+\]</span>
+Similarly, we have <span class="math inline">\(y^t B x\)</span> for player 2.</p>
+<p>A mixed strategy <span class="math inline">\(x\)</span> is dominated by mixed strategy <span class="math inline">\(\tilde{x}\)</span> if <span class="math inline">\(\tilde{x}^t A y \geq x A y\)</span> for every <span class="math inline">\(y\)</span>. The condition can be written as <span class="math inline">\((\tilde{x}^t - x) A y \geq 0\)</span>.</p>
+</div>
+<div id="nash-equilibria" class="section level2">
+<h2><span class="header-section-number">7.4</span> Nash Equilibria</h2>
+<p>A pair of mixed strategies <span class="math inline">\(\tilde{x}\)</span> and <span class="math inline">\(\tilde{y}\)</span> is called a Nash Equilibrium for a two person matrix game if:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\tilde{x}^t A \tilde{y} \geq x^t A \tilde{y} &amp;\quad \text{for all } x\\
+\tilde{y}^t B \tilde{x} \geq y^t B \tilde{x} &amp;\quad \text{for all } y
+\end{aligned}
+\]</span></p>
+<p>Nash proved that every two-person game has at least one Nash Equilibrium.</p>
+</div>
+<div id="evolutionary-stable-strategies" class="section level2">
+<h2><span class="header-section-number">7.5</span> Evolutionary stable strategies</h2>
+<p>In the context of evolution, one can consider <span class="math inline">\(x\)</span> to be the proportion of individuals (e.g., of different species, or phenotypes) displaying different characteristics. When playing against each other, they win or lose, and their payoffs are invested in reproduction. Because the different “strategies” (populations, phenotypes) play against each other, the payoff matrix is the same for all players, and encoded in matrix <span class="math inline">\(A\)</span>.</p>
+<p>In this context, a strategy <span class="math inline">\(x\)</span> is called an evolutionary stable strategy if two conditions are met:
+<span class="math display">\[
+x^t A x \geq y^t A x \quad \text{for all } y
+\]</span>
+meaning that <span class="math inline">\(x\)</span> plays against itself not worse than any other strategy, and</p>
+<p><span class="math display">\[
+\text{If } y \neq x \text{ then } y^t A x = x^t A x \text{ implies } x^t A y &gt; y^t A y
+\]</span></p>
+<p>meaning that if <span class="math inline">\(y\)</span> plays as well as <span class="math inline">\(x\)</span> against <span class="math inline">\(x\)</span>, then <span class="math inline">\(x\)</span> plays against <span class="math inline">\(y\)</span> better than <span class="math inline">\(y\)</span> against itself.</p>
+<p>We next connect NE and ESS with dynamical systems.</p>
+</div>
+<div id="replicator-dynamics" class="section level2">
+<h2><span class="header-section-number">7.6</span> Replicator dynamics</h2>
+<p>The replicator equation for this type of games can be written as:</p>
+<p><span class="math display">\[
+\dfrac{d x_i}{dt} = x_i \left( \sum_j A_{ij} x_j - \sum_{jk} x_j A_{jk} x_k \right)
+\]</span></p>
+<p>If we define <span class="math inline">\(f = A x\)</span> as a vector reporting the “fitness”" of each population at time <span class="math inline">\(t\)</span>, and <span class="math inline">\(\bar{f} = \sum_{jk} x_j A_{jk} x_k = x^t A t\)</span> as the average fitness at time <span class="math inline">\(t\)</span> we can write the replicator equation more compactly as:</p>
+<p><span class="math display">\[
+\dfrac{d x_i}{dt} = x_i (f_i - \bar{f})
+\]</span></p>
+<p>The RE is essentially equivalent to a GLV model in which we track frequencies instead of abundances.</p>
+<p>Importantly, we can see <span class="math inline">\(x\)</span> as a “mixed strategy” for the symmetric game encoded in <span class="math inline">\(A\)</span>. In this context, <strong>an equilibrium of the replicator equation is a Nash Equilibrium for the game</strong>; similarly, <strong>a stable equilibrium for the replicator equation is an Evolutionary Stable Strategy</strong>.</p>
+<div id="invariants" class="section level3">
+<h3><span class="header-section-number">7.6.1</span> Invariants</h3>
+<p>Adding a constant to each column of <span class="math inline">\(A\)</span> does not alter the dynamics. We have <span class="math inline">\(B = A + e b^t\)</span>, where <span class="math inline">\(e\)</span> is a vector of ones. Then:</p>
+<p><span class="math display">\[
+\begin{aligned}
+x_i \left( \sum_j B_{ij} x_j - \sum_{kj} x_k B_{kj} x_j \right) &amp; = x_i \left( \sum_j (A_{ij} + b_j) x_j - \sum_{kj} x_k (A_{kj} + b_j) x_j \right)\\
+&amp;= x_i \left(\sum_j A_{ij} x_j + \sum_j b_j x_j  - \sum_{kj} x_k A_{kj} x_j - \sum_{kj} x_k b_{j} x_j \right)\\
+&amp;= x_i \left(\sum_j A_{ij} x_j + \sum_j b_j x_j  - \sum_{kj} x_k A_{kj} x_j - \sum_{j} b_{j} x_j \right)\\
+&amp;= x_i \left(\sum_j A_{ij} x_j - \sum_{kj} x_k A_{kj} x_j \right)\\
+\end{aligned}
+\]</span></p>
+<p>Similarly, multiplying each column of <span class="math inline">\(A\)</span> by a (possibly different) positive constant does not alter dynamics (it just rescales time). As such, if <span class="math inline">\(A_2 = A_1 D + eb^t\)</span> the replicator equations formed using <span class="math inline">\(A_1\)</span> and <span class="math inline">\(A_2\)</span> are equivalent.</p>
+</div>
+<div id="rock-paper-scissor" class="section level3">
+<h3><span class="header-section-number">7.6.2</span> Rock-paper-scissor</h3>
+<p>Let’s try our hand with a simple zero-sum (i.e., <span class="math inline">\(A = -A^t\)</span>) replicator equation. We have three populations (“rock”, “paper”, and “scissors”) with payoff matrix:</p>
+<p><span class="math display">\[
+A = \begin{pmatrix}
+0 &amp; -1 &amp; 1\\
+1 &amp; 0 &amp; -1\\
+-1 &amp; 1 &amp; 0
+\end{pmatrix}
+\]</span></p>
+<p>We start the population at a random initial condition, and track dynamics:</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="game-theory-and-replicator-dynamics.html#cb70-1"></a><span class="kw">library</span>(deSolve) <span class="co"># integrate ODEs</span></span>
+<span id="cb70-2"><a href="game-theory-and-replicator-dynamics.html#cb70-2"></a><span class="kw">library</span>(tidyverse) <span class="co"># plotting and wrangling</span></span>
+<span id="cb70-3"><a href="game-theory-and-replicator-dynamics.html#cb70-3"></a><span class="co"># define the differential equation</span></span>
+<span id="cb70-4"><a href="game-theory-and-replicator-dynamics.html#cb70-4"></a>RE &lt;-<span class="cf">function</span>(t, x, parameters){</span>
+<span id="cb70-5"><a href="game-theory-and-replicator-dynamics.html#cb70-5"></a>  <span class="kw">with</span>(<span class="kw">as.list</span>(<span class="kw">c</span>(x, parameters)), {</span>
+<span id="cb70-6"><a href="game-theory-and-replicator-dynamics.html#cb70-6"></a>    x[x <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span><span class="op">^-</span><span class="dv">8</span>] &lt;-<span class="st"> </span><span class="dv">0</span> <span class="co"># prevent numerical problems</span></span>
+<span id="cb70-7"><a href="game-theory-and-replicator-dynamics.html#cb70-7"></a>    x &lt;-<span class="st"> </span>x <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(x) <span class="co"># keep on simplex</span></span>
+<span id="cb70-8"><a href="game-theory-and-replicator-dynamics.html#cb70-8"></a>    dxdt &lt;-<span class="st"> </span>x <span class="op">*</span><span class="st"> </span>(A <span class="op">%*%</span><span class="st"> </span>x <span class="op">-</span><span class="st"> </span><span class="kw">sum</span>(x <span class="op">*</span><span class="st"> </span>A <span class="op">%*%</span><span class="st"> </span>x))</span>
+<span id="cb70-9"><a href="game-theory-and-replicator-dynamics.html#cb70-9"></a>    <span class="kw">list</span>(dxdt)</span>
+<span id="cb70-10"><a href="game-theory-and-replicator-dynamics.html#cb70-10"></a>  })</span>
+<span id="cb70-11"><a href="game-theory-and-replicator-dynamics.html#cb70-11"></a>}</span>
+<span id="cb70-12"><a href="game-theory-and-replicator-dynamics.html#cb70-12"></a><span class="co"># function to plot output</span></span>
+<span id="cb70-13"><a href="game-theory-and-replicator-dynamics.html#cb70-13"></a>plot_ODE_output &lt;-<span class="st"> </span><span class="cf">function</span>(out){</span>
+<span id="cb70-14"><a href="game-theory-and-replicator-dynamics.html#cb70-14"></a>  out &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(out)</span>
+<span id="cb70-15"><a href="game-theory-and-replicator-dynamics.html#cb70-15"></a>  <span class="kw">colnames</span>(out) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;time&quot;</span>, <span class="kw">paste</span>(<span class="st">&quot;sp&quot;</span>, <span class="dv">1</span><span class="op">:</span>(<span class="kw">ncol</span>(out) <span class="dv">-1</span>), <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>))</span>
+<span id="cb70-16"><a href="game-theory-and-replicator-dynamics.html#cb70-16"></a>  out &lt;-<span class="st"> </span><span class="kw">as_tibble</span>(out) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">gather</span>(species, density, <span class="op">-</span>time)</span>
+<span id="cb70-17"><a href="game-theory-and-replicator-dynamics.html#cb70-17"></a>  pl &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> out) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb70-18"><a href="game-theory-and-replicator-dynamics.html#cb70-18"></a><span class="st">    </span><span class="kw">aes</span>(<span class="dt">x =</span> time, <span class="dt">y =</span> density, <span class="dt">colour =</span> species) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb70-19"><a href="game-theory-and-replicator-dynamics.html#cb70-19"></a><span class="st">    </span><span class="kw">geom_line</span>()</span>
+<span id="cb70-20"><a href="game-theory-and-replicator-dynamics.html#cb70-20"></a>  <span class="kw">show</span>(pl)</span>
+<span id="cb70-21"><a href="game-theory-and-replicator-dynamics.html#cb70-21"></a>  <span class="kw">return</span>(out)</span>
+<span id="cb70-22"><a href="game-theory-and-replicator-dynamics.html#cb70-22"></a>}</span>
+<span id="cb70-23"><a href="game-theory-and-replicator-dynamics.html#cb70-23"></a><span class="co"># general function to integrate RE</span></span>
+<span id="cb70-24"><a href="game-theory-and-replicator-dynamics.html#cb70-24"></a>integrate_RE &lt;-<span class="st"> </span><span class="cf">function</span>(A, x0, <span class="dt">maxtime =</span> <span class="dv">40</span>, <span class="dt">steptime =</span> <span class="fl">0.05</span>){</span>
+<span id="cb70-25"><a href="game-theory-and-replicator-dynamics.html#cb70-25"></a>  times &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>, maxtime, <span class="dt">by =</span> steptime)</span>
+<span id="cb70-26"><a href="game-theory-and-replicator-dynamics.html#cb70-26"></a>  parameters &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">A =</span> A)</span>
+<span id="cb70-27"><a href="game-theory-and-replicator-dynamics.html#cb70-27"></a>  <span class="co"># solve numerically</span></span>
+<span id="cb70-28"><a href="game-theory-and-replicator-dynamics.html#cb70-28"></a>  out &lt;-<span class="st"> </span><span class="kw">ode</span>(<span class="dt">y =</span> x0, <span class="dt">times =</span> times, </span>
+<span id="cb70-29"><a href="game-theory-and-replicator-dynamics.html#cb70-29"></a>           <span class="dt">func =</span> RE, <span class="dt">parms =</span> parameters, </span>
+<span id="cb70-30"><a href="game-theory-and-replicator-dynamics.html#cb70-30"></a>           <span class="dt">method =</span> <span class="st">&quot;ode45&quot;</span>)</span>
+<span id="cb70-31"><a href="game-theory-and-replicator-dynamics.html#cb70-31"></a>  <span class="co"># plot and make into tidy form</span></span>
+<span id="cb70-32"><a href="game-theory-and-replicator-dynamics.html#cb70-32"></a>  out &lt;-<span class="st"> </span><span class="kw">plot_ODE_output</span>(out)</span>
+<span id="cb70-33"><a href="game-theory-and-replicator-dynamics.html#cb70-33"></a>  <span class="kw">return</span>(out)</span>
+<span id="cb70-34"><a href="game-theory-and-replicator-dynamics.html#cb70-34"></a>}</span>
+<span id="cb70-35"><a href="game-theory-and-replicator-dynamics.html#cb70-35"></a><span class="co"># payoff matrix</span></span>
+<span id="cb70-36"><a href="game-theory-and-replicator-dynamics.html#cb70-36"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">-1</span>, <span class="dv">1</span>,</span>
+<span id="cb70-37"><a href="game-theory-and-replicator-dynamics.html#cb70-37"></a>              <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">-1</span>,</span>
+<span id="cb70-38"><a href="game-theory-and-replicator-dynamics.html#cb70-38"></a>              <span class="dv">-1</span>, <span class="dv">1</span>, <span class="dv">0</span>), <span class="dv">3</span>, <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb70-39"><a href="game-theory-and-replicator-dynamics.html#cb70-39"></a><span class="co"># initial conditions</span></span>
+<span id="cb70-40"><a href="game-theory-and-replicator-dynamics.html#cb70-40"></a>x0 &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">3</span>)</span>
+<span id="cb70-41"><a href="game-theory-and-replicator-dynamics.html#cb70-41"></a>x0 &lt;-<span class="st"> </span>x0 <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(x0)</span>
+<span id="cb70-42"><a href="game-theory-and-replicator-dynamics.html#cb70-42"></a>rps &lt;-<span class="st"> </span><span class="kw">integrate_RE</span>(A, x0)</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/refuctions-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>What if we start all populations at the same density?</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="game-theory-and-replicator-dynamics.html#cb71-1"></a>x0 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span> <span class="op">/</span><span class="st"> </span><span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb71-2"><a href="game-theory-and-replicator-dynamics.html#cb71-2"></a>rps &lt;-<span class="st"> </span><span class="kw">integrate_RE</span>(A, x0)</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/rps2-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>And if they are close to the 1/3?</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="game-theory-and-replicator-dynamics.html#cb72-1"></a>x0 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>, <span class="dv">3</span>) <span class="op">+</span><span class="st"> </span><span class="fl">0.05</span> <span class="op">*</span><span class="st"> </span><span class="kw">runif</span>(<span class="dv">3</span>)</span>
+<span id="cb72-2"><a href="game-theory-and-replicator-dynamics.html#cb72-2"></a>x0 &lt;-<span class="st"> </span>x0 <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(x0)</span>
+<span id="cb72-3"><a href="game-theory-and-replicator-dynamics.html#cb72-3"></a>rps &lt;-<span class="st"> </span><span class="kw">integrate_RE</span>(A, x0)</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/rps3-1.png" width="480" style="display: block; margin: auto;" /></p>
+</div>
+<div id="equivalence-with-glv" class="section level3">
+<h3><span class="header-section-number">7.6.3</span> Equivalence with GLV</h3>
+<p>For a given <span class="math inline">\(n-\)</span>species GLV system, there is an equivalent <span class="math inline">\((n+1)-\)</span>dimensional replicator equation with zeros in the last row of the matrix. To show this, let’s take our functions for integrating GLV:</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="game-theory-and-replicator-dynamics.html#cb73-1"></a><span class="co"># Generalized Lotka-Volterra model</span></span>
+<span id="cb73-2"><a href="game-theory-and-replicator-dynamics.html#cb73-2"></a>GLV &lt;-<span class="st"> </span><span class="cf">function</span>(t, x, parameters){</span>
+<span id="cb73-3"><a href="game-theory-and-replicator-dynamics.html#cb73-3"></a>  <span class="kw">with</span>(<span class="kw">as.list</span>(<span class="kw">c</span>(x, parameters)), {</span>
+<span id="cb73-4"><a href="game-theory-and-replicator-dynamics.html#cb73-4"></a>    x[x <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span><span class="op">^-</span><span class="dv">8</span>] &lt;-<span class="st"> </span><span class="dv">0</span> <span class="co"># prevent numerical problems</span></span>
+<span id="cb73-5"><a href="game-theory-and-replicator-dynamics.html#cb73-5"></a>    dxdt &lt;-<span class="st"> </span>x <span class="op">*</span><span class="st"> </span>(r <span class="op">+</span><span class="st"> </span>A <span class="op">%*%</span><span class="st"> </span>x)</span>
+<span id="cb73-6"><a href="game-theory-and-replicator-dynamics.html#cb73-6"></a>    <span class="kw">list</span>(dxdt)</span>
+<span id="cb73-7"><a href="game-theory-and-replicator-dynamics.html#cb73-7"></a>  })</span>
+<span id="cb73-8"><a href="game-theory-and-replicator-dynamics.html#cb73-8"></a>}</span>
+<span id="cb73-9"><a href="game-theory-and-replicator-dynamics.html#cb73-9"></a><span class="co"># general function to integrate GLV</span></span>
+<span id="cb73-10"><a href="game-theory-and-replicator-dynamics.html#cb73-10"></a>integrate_GLV &lt;-<span class="st"> </span><span class="cf">function</span>(r, A, x0, <span class="dt">maxtime =</span> <span class="dv">100</span>, <span class="dt">steptime =</span> <span class="fl">0.5</span>){</span>
+<span id="cb73-11"><a href="game-theory-and-replicator-dynamics.html#cb73-11"></a>  times &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>, maxtime, <span class="dt">by =</span> steptime)</span>
+<span id="cb73-12"><a href="game-theory-and-replicator-dynamics.html#cb73-12"></a>  parameters &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">r =</span> r, <span class="dt">A =</span> A)</span>
+<span id="cb73-13"><a href="game-theory-and-replicator-dynamics.html#cb73-13"></a>  <span class="co"># solve numerically</span></span>
+<span id="cb73-14"><a href="game-theory-and-replicator-dynamics.html#cb73-14"></a>  out &lt;-<span class="st"> </span><span class="kw">ode</span>(<span class="dt">y =</span> x0, <span class="dt">times =</span> times, </span>
+<span id="cb73-15"><a href="game-theory-and-replicator-dynamics.html#cb73-15"></a>           <span class="dt">func =</span> GLV, <span class="dt">parms =</span> parameters, </span>
+<span id="cb73-16"><a href="game-theory-and-replicator-dynamics.html#cb73-16"></a>           <span class="dt">method =</span> <span class="st">&quot;ode45&quot;</span>)</span>
+<span id="cb73-17"><a href="game-theory-and-replicator-dynamics.html#cb73-17"></a>  <span class="co"># plot and make into tidy form</span></span>
+<span id="cb73-18"><a href="game-theory-and-replicator-dynamics.html#cb73-18"></a>  out &lt;-<span class="st"> </span><span class="kw">plot_ODE_output</span>(out)</span>
+<span id="cb73-19"><a href="game-theory-and-replicator-dynamics.html#cb73-19"></a>  <span class="kw">return</span>(out)</span>
+<span id="cb73-20"><a href="game-theory-and-replicator-dynamics.html#cb73-20"></a>}</span></code></pre></div>
+<p>And integrate the simple system:</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="game-theory-and-replicator-dynamics.html#cb74-1"></a>r &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb74-2"><a href="game-theory-and-replicator-dynamics.html#cb74-2"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="fl">0.5</span>, <span class="fl">0.1</span>,</span>
+<span id="cb74-3"><a href="game-theory-and-replicator-dynamics.html#cb74-3"></a>              <span class="fl">-0.7</span>, <span class="dv">-2</span>, <span class="dv">0</span>,</span>
+<span id="cb74-4"><a href="game-theory-and-replicator-dynamics.html#cb74-4"></a>              <span class="fl">-0.3</span>, <span class="dv">0</span>, <span class="dv">-5</span>), <span class="dv">3</span>, <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb74-5"><a href="game-theory-and-replicator-dynamics.html#cb74-5"></a>x0 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.1</span>, <span class="dv">3</span>, <span class="dv">1</span>)</span>
+<span id="cb74-6"><a href="game-theory-and-replicator-dynamics.html#cb74-6"></a>glvex &lt;-<span class="st"> </span><span class="kw">integrate_GLV</span>(r, A, x0)</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/exampleglvtore1-1.png" width="480" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="game-theory-and-replicator-dynamics.html#cb75-1"></a>B &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">4</span>)</span>
+<span id="cb75-2"><a href="game-theory-and-replicator-dynamics.html#cb75-2"></a>B[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>] &lt;-<span class="st"> </span>A</span>
+<span id="cb75-3"><a href="game-theory-and-replicator-dynamics.html#cb75-3"></a>B[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dv">4</span>] &lt;-<span class="st"> </span>r</span>
+<span id="cb75-4"><a href="game-theory-and-replicator-dynamics.html#cb75-4"></a>B</span></code></pre></div>
+<pre><code> [,1] [,2] [,3] [,4]</code></pre>
+<p>[1,] -1.0 0.5 0.1 1
+[2,] -0.7 -2.0 0.0 2
+[3,] -0.3 0.0 -5.0 3
+[4,] 0.0 0.0 0.0 0</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="game-theory-and-replicator-dynamics.html#cb77-1"></a>y0 &lt;-<span class="st"> </span><span class="kw">c</span>(x0, <span class="dv">1</span>)</span>
+<span id="cb77-2"><a href="game-theory-and-replicator-dynamics.html#cb77-2"></a>y0 &lt;-<span class="st"> </span>y0 <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(y0)</span>
+<span id="cb77-3"><a href="game-theory-and-replicator-dynamics.html#cb77-3"></a>reex &lt;-<span class="st"> </span><span class="kw">integrate_RE</span>(B, y0)</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/redynamicsfromglv-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>Now let’s look at the equilibrium of the GLV model:</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="game-theory-and-replicator-dynamics.html#cb78-1"></a>glvex <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(time <span class="op">==</span><span class="st"> </span><span class="dv">100</span>)</span></code></pre></div>
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-hofbauer1998evolutionary">
+<p>Hofbauer, Josef, and Karl Sigmund. 1998. <em>Evolutionary Games and Population Dynamics</em>. Cambridge University Press.</p>
+</div>
+<div id="ref-smith1982evolution">
+<p>Maynard Smith, John. 1982. <em>Evolution and the Theory of Games</em>. Cambridge university press.</p>
+</div>
+<div id="ref-nash1950equilibrium">
+<p>Nash, John F. 1950. “Equilibrium Points in N-Person Games.” <em>Proceedings of the National Academy of Sciences</em> 36 (1): 48–49.</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="ecological-assembly.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="quasi-polynomial-systems.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="predicting-coexistence-in-ecological-communities.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="a-tibble-3-x-3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

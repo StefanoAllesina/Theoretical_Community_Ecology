@@ -11,3 +11,5 @@ forcats
 knitr
 deSolve
 latex2exp
+igraph
+lpSolve

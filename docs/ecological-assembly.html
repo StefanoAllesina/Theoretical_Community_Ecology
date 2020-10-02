@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="stability-of-large-ecological-communities.html"/>
-<link rel="next" href="game-theory-and-replicator-dynamics.html"/>
+<link rel="next" href="predicting-coexistence-in-ecological-communities.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -52,6 +52,70 @@
 
 
 
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -77,6 +141,7 @@
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#homework-80"><i class="fa fa-check"></i>Homework (80%)</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#review-20"><i class="fa fa-check"></i>Review (20%)</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#a-note-about-biographies"><i class="fa fa-check"></i>A note about biographies</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#sources"><i class="fa fa-check"></i>Sources</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
 </ul></li>
@@ -132,18 +197,61 @@
 <li class="chapter" data-level="4.6" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#small-rank-perturbations"><i class="fa fa-check"></i><b>4.6</b> Small-rank perturbations</a></li>
 <li class="chapter" data-level="4.7" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#further-readings-1"><i class="fa fa-check"></i><b>4.7</b> Further readings</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="ecological-assembly.html"><a href="ecological-assembly.html"><i class="fa fa-check"></i><b>5</b> Ecological assembly</a></li>
-<li class="chapter" data-level="6" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html"><i class="fa fa-check"></i><b>6</b> Game theory and replicator dynamics</a></li>
-<li class="chapter" data-level="7" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html"><i class="fa fa-check"></i><b>7</b> Quasi-polynomial systems</a></li>
-<li class="chapter" data-level="8" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html"><i class="fa fa-check"></i><b>8</b> Predicting coexistence in ecological communities</a></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
-<li class="chapter" data-level="9" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html"><i class="fa fa-check"></i><b>9</b> Random bits and pieces</a><ul>
-<li class="chapter" data-level="9.1" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#stability-of-larger-matrices"><i class="fa fa-check"></i><b>9.1</b> Stability of larger matrices</a><ul>
-<li class="chapter" data-level="9.1.1" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#descartes-rule-of-signs"><i class="fa fa-check"></i><b>9.1.1</b> Descartes’ rule of signs</a></li>
-<li class="chapter" data-level="9.1.2" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#routh-hurwitz-criterion"><i class="fa fa-check"></i><b>9.1.2</b> Routh-Hurwitz criterion</a></li>
-<li class="chapter" data-level="9.1.3" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#bounding-eigenvalues-using-the-symmetric-part"><i class="fa fa-check"></i><b>9.1.3</b> Bounding eigenvalues using the symmetric part</a></li>
+<li class="chapter" data-level="5" data-path="ecological-assembly.html"><a href="ecological-assembly.html"><i class="fa fa-check"></i><b>5</b> Ecological assembly</a><ul>
+<li class="chapter" data-level="5.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#assembly"><i class="fa fa-check"></i><b>5.1</b> Assembly</a></li>
+<li class="chapter" data-level="5.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#invasion-in-multispecies-communities"><i class="fa fa-check"></i><b>5.2</b> Invasion in multispecies communities</a></li>
+<li class="chapter" data-level="5.3" data-path="ecological-assembly.html"><a href="ecological-assembly.html#lyapunov-stability-and-saturated-equilibria"><i class="fa fa-check"></i><b>5.3</b> Lyapunov stability and saturated equilibria</a></li>
+<li class="chapter" data-level="5.4" data-path="ecological-assembly.html"><a href="ecological-assembly.html#how-many-species-will-coexist"><i class="fa fa-check"></i><b>5.4</b> How many species will coexist?</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#a-trivial-case"><i class="fa fa-check"></i><b>5.4.1</b> A trivial case</a></li>
+<li class="chapter" data-level="5.4.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#simulating-final-composition"><i class="fa fa-check"></i><b>5.4.2</b> Simulating final composition</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#exercise"><i class="fa fa-check"></i><b>9.2</b> Exercise</a></li>
+<li class="chapter" data-level="5.5" data-path="ecological-assembly.html"><a href="ecological-assembly.html#a-random-zoo"><i class="fa fa-check"></i><b>5.5</b> A random zoo</a></li>
+<li class="chapter" data-level="5.6" data-path="ecological-assembly.html"><a href="ecological-assembly.html#assembly-and-saturated-equilibrium"><i class="fa fa-check"></i><b>5.6</b> Assembly and saturated equilibrium</a></li>
+<li class="chapter" data-level="5.7" data-path="ecological-assembly.html"><a href="ecological-assembly.html#network-spandrels"><i class="fa fa-check"></i><b>5.7</b> Network spandrels</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html"><i class="fa fa-check"></i><b>6</b> Predicting coexistence in ecological communities</a><ul>
+<li class="chapter" data-level="6.1" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#synthetic-communities-using-the-glv-model"><i class="fa fa-check"></i><b>6.1</b> Synthetic communities using the GLV model</a></li>
+<li class="chapter" data-level="6.2" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#total-biomass"><i class="fa fa-check"></i><b>6.2</b> Total biomass</a></li>
+<li class="chapter" data-level="6.3" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#hyperplanes"><i class="fa fa-check"></i><b>6.3</b> Hyperplanes</a></li>
+<li class="chapter" data-level="6.4" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#fitting-real-data"><i class="fa fa-check"></i><b>6.4</b> Fitting real data</a></li>
+<li class="chapter" data-level="6.5" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#predicting-real-data-out-of-fit"><i class="fa fa-check"></i><b>6.5</b> Predicting real data out of fit</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html"><i class="fa fa-check"></i><b>7</b> Game theory and replicator dynamics</a><ul>
+<li class="chapter" data-level="7.1" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#game-theory"><i class="fa fa-check"></i><b>7.1</b> Game theory</a></li>
+<li class="chapter" data-level="7.2" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#two-player-matrix-games"><i class="fa fa-check"></i><b>7.2</b> Two-player matrix games</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#example-the-prisoners-dilemma"><i class="fa fa-check"></i><b>7.2.1</b> Example: the prisoner’s dilemma</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#mixed-strategies"><i class="fa fa-check"></i><b>7.3</b> Mixed strategies</a></li>
+<li class="chapter" data-level="7.4" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#nash-equilibria"><i class="fa fa-check"></i><b>7.4</b> Nash Equilibria</a></li>
+<li class="chapter" data-level="7.5" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#evolutionary-stable-strategies"><i class="fa fa-check"></i><b>7.5</b> Evolutionary stable strategies</a></li>
+<li class="chapter" data-level="7.6" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#replicator-dynamics"><i class="fa fa-check"></i><b>7.6</b> Replicator dynamics</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#invariants"><i class="fa fa-check"></i><b>7.6.1</b> Invariants</a></li>
+<li class="chapter" data-level="7.6.2" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#rock-paper-scissor"><i class="fa fa-check"></i><b>7.6.2</b> Rock-paper-scissor</a></li>
+<li class="chapter" data-level="7.6.3" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#equivalence-with-glv"><i class="fa fa-check"></i><b>7.6.3</b> Equivalence with GLV</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="a-tibble-3-x-3.html"><a href="a-tibble-3-x-3.html"><i class="fa fa-check"></i><b>8</b> A tibble: 3 x 3</a></li>
+<li class="chapter" data-level="9" data-path="a-tibble-4-x-3.html"><a href="a-tibble-4-x-3.html"><i class="fa fa-check"></i><b>9</b> A tibble: 4 x 3</a></li>
+<li class="chapter" data-level="10" data-path="a-tibble-4-x-3-1.html"><a href="a-tibble-4-x-3-1.html"><i class="fa fa-check"></i><b>10</b> A tibble: 4 x 3</a><ul>
+<li class="chapter" data-level="10.0.1" data-path="a-tibble-4-x-3-1.html"><a href="a-tibble-4-x-3-1.html#hypertournament-games"><i class="fa fa-check"></i><b>10.0.1</b> Hypertournament games</a></li>
+<li class="chapter" data-level="10.0.2" data-path="a-tibble-4-x-3-1.html"><a href="a-tibble-4-x-3-1.html#lyapunov-function"><i class="fa fa-check"></i><b>10.0.2</b> Lyapunov function</a></li>
+<li class="chapter" data-level="10.0.3" data-path="a-tibble-4-x-3-1.html"><a href="a-tibble-4-x-3-1.html#higher-order-interactions"><i class="fa fa-check"></i><b>10.0.3</b> Higher-order interactions</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html"><i class="fa fa-check"></i><b>11</b> Metapopulation dynamics on networks</a><ul>
+<li class="chapter" data-level="11.1" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#levins-bio"><i class="fa fa-check"></i><b>11.1</b> Levins Bio</a></li>
+<li class="chapter" data-level="11.2" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#levins-model"><i class="fa fa-check"></i><b>11.2</b> Levins model</a></li>
+<li class="chapter" data-level="11.3" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#hanski-ovaskainen-2000"><i class="fa fa-check"></i><b>11.3</b> Hanski Ovaskainen 2000</a></li>
+<li class="chapter" data-level="11.4" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#sis-on-a-network-van-mieghem"><i class="fa fa-check"></i><b>11.4</b> SIS on a network Van Mieghem</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html"><i class="fa fa-check"></i><b>12</b> Quasi-polynomial systems</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="13" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html"><i class="fa fa-check"></i><b>13</b> Random bits and pieces</a><ul>
+<li class="chapter" data-level="13.1" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#stability-of-larger-matrices"><i class="fa fa-check"></i><b>13.1</b> Stability of larger matrices</a><ul>
+<li class="chapter" data-level="13.1.1" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#descartes-rule-of-signs"><i class="fa fa-check"></i><b>13.1.1</b> Descartes’ rule of signs</a></li>
+<li class="chapter" data-level="13.1.2" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#routh-hurwitz-criterion"><i class="fa fa-check"></i><b>13.1.2</b> Routh-Hurwitz criterion</a></li>
+<li class="chapter" data-level="13.1.3" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#bounding-eigenvalues-using-the-symmetric-part"><i class="fa fa-check"></i><b>13.1.3</b> Bounding eigenvalues using the symmetric part</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#exercise"><i class="fa fa-check"></i><b>13.2</b> Exercise</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -167,7 +275,581 @@
             <section class="normal" id="section-">
 <div id="ecological-assembly" class="section level1">
 <h1><span class="header-section-number">Lecture 5</span> Ecological assembly</h1>
+<p><strong>Lesson plan</strong>:</p>
+<ol style="list-style-type: decimal">
+<li>We have seen in the previous lecture that a large ecological community will almost invariably be unstable, possibly leading to extinctions. It is therefore natural to ask what happens when either a feasible equilibrium does not exist, or it is unstable. In particular, we want to know how many species can persist.</li>
+<li>We show that the GLV model can give rise to all sort of dynamics, including limit cycles and chaos.</li>
+<li>Despite this fact, the persistence of all species requires the existence of a feasible equilibrium, which is the time-average of the species’ densities for complex attractors.</li>
+<li>We introduce D-stability, allowing us to write a Lyapunov function to determine global stability in GLV models.</li>
+<li>We conclude by analyzing the MacArthur’s consumer-resource model, highlighting its deep connection to GLV.</li>
+</ol>
+<div id="assembly" class="section level2">
+<h2><span class="header-section-number">5.1</span> Assembly</h2>
+<p>We call <strong>assembly the process by which a community is constituted by adding species sequentially</strong>. Imagine starting with a bare environment, and introducing the first species. If the species can grow in the new environment, it will establish, and if not, it will go extinct. Mathematically, we assume that <strong>new species are introduced at very low abundance</strong>, so that they do not experience self-limitation due to crowding, and that <strong>invasion are spaced in time</strong> so that the dynamics can play out before the next invasion happens. For example, consider the first species entering the system, and write the equation for the per-capita growth rate:</p>
+<p><span class="math display">\[
+\dfrac{1}{x_i(t)}\dfrac{dx_i(t)}{dt} = r_i + A_{ii} x_i(t)
+\]</span>
+If <span class="math inline">\(x_i(0) \ll 1\)</span>, we can set <span class="math inline">\(A_{ii} x_i(0) \approx 0\)</span>, obtaining</p>
+<p><span class="math display">\[
+\dfrac{1}{x_i(t)}\dfrac{dx_i(t)}{dt} \approx r_i
+\]</span></p>
+<p>That is, the species will establish if it has a positive growth rate in the new environment. Suppose that this is the case: then species <span class="math inline">\(i\)</span> will grow to its equilibrium abundance <span class="math inline">\(x_i^\star = -r_i / A_{ii}\)</span>. Now add a second species. Its initial per-capita growth rate is going to be:</p>
+<p><span class="math display">\[
+\dfrac{1}{x_j(t)}\dfrac{dx_j(t)}{dt} = r_j + \sum_k A_{jk} x_k(t) \approx r_j + A_{ji}x_i^\star
+\]</span></p>
+<p>Species <span class="math inline">\(j\)</span> can therefore grow when rare if <span class="math inline">\(r_j + A_{ji}x_i^\star &gt; 0\)</span>, i.e., <span class="math inline">\(r_j &gt; -A_{ji}x_i^\star\)</span>. We call this type of inequality an <strong>“invasion criterion”</strong>.</p>
+<p>If the species <span class="math inline">\(j\)</span> can grow when rare, in general, it could a) grow initially, but then go extinct; b) displace species <span class="math inline">\(i\)</span>, sending it to extinction; c) coexist with species <span class="math inline">\(i\)</span>. By reiterating invasions with different species, we can assemble a large ecological community.</p>
+</div>
+<div id="invasion-in-multispecies-communities" class="section level2">
+<h2><span class="header-section-number">5.2</span> Invasion in multispecies communities</h2>
+<p>Now consider a pool of species (e.g., a metacommunity) and an environment (e.g., an island) in which some of the species are present, and coexisting at an equilibrium. We have <span class="math inline">\(n\)</span> species in the pool, and <span class="math inline">\(k\)</span> species in the environment. We want to write conditions for the invasibility of the equilibrium. To this end, we can re-arrange the rows and columns of <span class="math inline">\(A\)</span>, and the elements of <span class="math inline">\(r\)</span> to obtain two blocks: one for the <span class="math inline">\(k\)</span> species already in the community, and one for the <span class="math inline">\(n-k\)</span> potential invaders.</p>
+<p>The fixed point <span class="math inline">\(\bar{x}\)</span> can be written as
+<span class="math display">\[
+\bar{x} = \left(\begin{array}{l}
+x^{(k)} \\
+0^{(n-k)} 
+\end{array} \right)
+\]</span>
+where <span class="math inline">\(x^{(k)}\)</span> contains the density of the coexisting species. Similarly, the growth rates are</p>
+<p><span class="math display">\[
+r = \left(\begin{array}{l}
+r^{(k)} \\
+r^{(n-k)} 
+\end{array} \right)
+\]</span>
+and the interaction matrix</p>
+<p><span class="math display">\[
+A = \begin{pmatrix}
+A^{(k,k)} &amp; A^{(k, n- k)}\\
+A^{(n-k,k)} &amp; A^{(n-k, n- k)}\\
+  \end{pmatrix}
+\]</span>
+where each block <span class="math inline">\(A^{(a,b)}\)</span> contains the effects of the species in set <span class="math inline">\(b\)</span> on the growth of the species in <span class="math inline">\(a\)</span>. For feasibility we need:</p>
+<p><span class="math display">\[
+x^{(k)} = -r^{(k)}\left(A^{(k,k)} \right)^{-1} &gt; 0
+\]</span>
+Now we want to write the condition for the non-invasibility of the resident community by the other species in the metacommunity. For each species in <span class="math inline">\((n-k)\)</span>, we need to have a negative growth rate when invading:</p>
+<p><span class="math display">\[
+r^{(n-k)} + A^{(n-k,k)}x^{(k)} &lt; 0
+\]</span></p>
+<p>an equilibrium <span class="math inline">\(\bar{x}\)</span> for which a) the <span class="math inline">\(x^{(k)}\)</span> is feasible and stable (when considering only the species in <span class="math inline">\(k\)</span>) and b) no other species can invade when rare is called the <strong>feasible, stable, non-invasible solution</strong> or the <strong>saturated equilibrium</strong>.</p>
+</div>
+<div id="lyapunov-stability-and-saturated-equilibria" class="section level2">
+<h2><span class="header-section-number">5.3</span> Lyapunov stability and saturated equilibria</h2>
+<p>We have seen in previous lectures that, whenever there exists a matrix <span class="math inline">\(C\)</span> such that <span class="math inline">\(CA + A^t C\)</span> is negative definite and we have a feasible equilibrium <span class="math inline">\(x^\star\)</span> then the equilibrium is globally stable. Now we consider the case in which a feasible equilibrium does not exist. However, we can prove that a <strong>saturated equilibrium</strong> exists and is unique: we have an equilibrium <span class="math inline">\(\bar{x}\)</span> in which some components are positive and some are zero such that <span class="math inline">\(k\)</span> species coexist at a globally stable equilibrium, and the remaining <span class="math inline">\((n-k)\)</span> species cannot invade it.</p>
+<p>Following <span class="citation">Hofbauer and Sigmund (<a href="#ref-hofbauer1998evolutionary" role="doc-biblioref">1998</a>)</span> (section 15.3), we write:</p>
+<p><span class="math display">\[
+V(x) = -\sum_i c_i (\bar{x}_i \log x_i - x_i)
+\]</span>
+yielding:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\dfrac{V(x)}{dt} &amp;= -\sum_i c_i \left(\bar{x}_i \frac{d \log x_i}{dt} - \frac{d x_i}{dt} \right) \\
+&amp;= -\sum_i c_i \left( \bar{x}_i - x_i \right)  \left( r_i + \sum_j A_{ij} x_j \right) \\
+&amp;= -\sum_i c_i \left( \bar{x}_i - x_i \right)  \left( r_i + \sum_j A_{ij} (x_j - \bar{x}_j) +  \sum_j A_{ij} \bar{x}_j \right) \\
+&amp;= \sum_{i,j} \left( \bar{x}_i - x_i \right) c_i A_{ij} \left( \bar{x}_j - x_j \right) - \sum_i c_i \left( \bar{x}_i - x_i \right) \left(r_i + \sum_j A_{ij} \bar{x}_j \right)
+\end{aligned}
+\]</span></p>
+<p>The first term is negative for all <span class="math inline">\(x \neq \bar{x}\)</span>, and is zero at the saturated equilibrium point. The second term is zero for all <span class="math inline">\(\bar{x}_i &gt; 0\)</span>: <span class="math inline">\(r_i + \sum_j A_{ij} \bar{x}_j = 0\)</span>, given that <span class="math inline">\(\bar{x}\)</span> is an equilibrium for the species at positive density; for the remaining species (for which <span class="math inline">\(\bar{x}_i = 0\)</span>), this amounts to the invasion criterion above, and must therefore be negative. As such <span class="math inline">\(V(x)\)</span> is a Lyapunov function for the system, assuming negative values everywhere but at <span class="math inline">\(\bar{x}\)</span>.</p>
+</div>
+<div id="how-many-species-will-coexist" class="section level2">
+<h2><span class="header-section-number">5.4</span> How many species will coexist?</h2>
+<p>Here we investigate the simplest case in which <span class="math inline">\(A\)</span> is symmetric and stable (and therefore Lyapunov Diagonally stable) matrix with random coefficients, and <span class="math inline">\(r\)</span> is a vector of growth rates with random coefficients. For simplicity, we take the off-diagonal elements of <span class="math inline">\(A\)</span> and the growth rates from a normal distribution centered at zero (the same would be found for any distribution symmetric about zero). This case was studied by <span class="citation">Serván et al. (<a href="#ref-servan2018coexistence" role="doc-biblioref">2018</a>)</span>.</p>
+<p>First, we are going to consider a trivial case, then simulate a more complex one, and finally outline the proof in <span class="citation">Serván et al. (<a href="#ref-servan2018coexistence" role="doc-biblioref">2018</a>)</span>.</p>
+<div id="a-trivial-case" class="section level3">
+<h3><span class="header-section-number">5.4.1</span> A trivial case</h3>
+<p>Suppose that the growth rates are drawn from a normal distribution centered at zero, and that the matrix <span class="math inline">\(A\)</span> is diagonal and stable (i.e., species do not interact with each other; each species is self regulating). As such, a species will persist if and only if <span class="math inline">\(r_i &gt; 0\)</span>. If we draw the growth rates from any distribution centered at zero, then the probability of having a positive growth rate is <span class="math inline">\(1/2\)</span>. Therefore, the number of coexisting species will follow the binomial distribution with parameters <span class="math inline">\(n\)</span> and <span class="math inline">\(1/2\)</span>.</p>
+</div>
+<div id="simulating-final-composition" class="section level3">
+<h3><span class="header-section-number">5.4.2</span> Simulating final composition</h3>
+<p>Now, let’s simulate cases in which species do interact with each other. First, we load the functions we’ve written before:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="ecological-assembly.html#cb1-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="ecological-assembly.html#cb1-2"></a><span class="kw">library</span>(deSolve)</span>
+<span id="cb1-3"><a href="ecological-assembly.html#cb1-3"></a><span class="co"># Generalized Lotka-Volterra model</span></span>
+<span id="cb1-4"><a href="ecological-assembly.html#cb1-4"></a>GLV &lt;-<span class="st"> </span><span class="cf">function</span>(t, x, parameters){</span>
+<span id="cb1-5"><a href="ecological-assembly.html#cb1-5"></a>  <span class="kw">with</span>(<span class="kw">as.list</span>(<span class="kw">c</span>(x, parameters)), {</span>
+<span id="cb1-6"><a href="ecological-assembly.html#cb1-6"></a>    x[x <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span><span class="op">^-</span><span class="dv">8</span>] &lt;-<span class="st"> </span><span class="dv">0</span> <span class="co"># prevent numerical problems</span></span>
+<span id="cb1-7"><a href="ecological-assembly.html#cb1-7"></a>    dxdt &lt;-<span class="st"> </span>x <span class="op">*</span><span class="st"> </span>(r <span class="op">+</span><span class="st"> </span>A <span class="op">%*%</span><span class="st"> </span>x)</span>
+<span id="cb1-8"><a href="ecological-assembly.html#cb1-8"></a>    <span class="kw">list</span>(dxdt)</span>
+<span id="cb1-9"><a href="ecological-assembly.html#cb1-9"></a>  })</span>
+<span id="cb1-10"><a href="ecological-assembly.html#cb1-10"></a>}</span>
+<span id="cb1-11"><a href="ecological-assembly.html#cb1-11"></a><span class="co"># function to plot output</span></span>
+<span id="cb1-12"><a href="ecological-assembly.html#cb1-12"></a>plot_ODE_output &lt;-<span class="st"> </span><span class="cf">function</span>(out){</span>
+<span id="cb1-13"><a href="ecological-assembly.html#cb1-13"></a>  out &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(out)</span>
+<span id="cb1-14"><a href="ecological-assembly.html#cb1-14"></a>  <span class="kw">colnames</span>(out) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;time&quot;</span>, <span class="kw">paste</span>(<span class="st">&quot;sp&quot;</span>, <span class="dv">1</span><span class="op">:</span>(<span class="kw">ncol</span>(out) <span class="dv">-1</span>), <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>))</span>
+<span id="cb1-15"><a href="ecological-assembly.html#cb1-15"></a>  out &lt;-<span class="st"> </span><span class="kw">as_tibble</span>(out) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">gather</span>(species, density, <span class="op">-</span>time)</span>
+<span id="cb1-16"><a href="ecological-assembly.html#cb1-16"></a>  pl &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> out) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb1-17"><a href="ecological-assembly.html#cb1-17"></a><span class="st">    </span><span class="kw">aes</span>(<span class="dt">x =</span> time, <span class="dt">y =</span> density, <span class="dt">colour =</span> species) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb1-18"><a href="ecological-assembly.html#cb1-18"></a><span class="st">    </span><span class="kw">geom_line</span>()</span>
+<span id="cb1-19"><a href="ecological-assembly.html#cb1-19"></a>  <span class="kw">show</span>(pl)</span>
+<span id="cb1-20"><a href="ecological-assembly.html#cb1-20"></a>  <span class="kw">return</span>(out)</span>
+<span id="cb1-21"><a href="ecological-assembly.html#cb1-21"></a>}</span>
+<span id="cb1-22"><a href="ecological-assembly.html#cb1-22"></a><span class="co"># general function to integrate GLV</span></span>
+<span id="cb1-23"><a href="ecological-assembly.html#cb1-23"></a>integrate_GLV &lt;-<span class="st"> </span><span class="cf">function</span>(r, A, x0, <span class="dt">maxtime =</span> <span class="dv">100</span>, <span class="dt">steptime =</span> <span class="fl">0.5</span>){</span>
+<span id="cb1-24"><a href="ecological-assembly.html#cb1-24"></a>  times &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>, maxtime, <span class="dt">by =</span> steptime)</span>
+<span id="cb1-25"><a href="ecological-assembly.html#cb1-25"></a>  parameters &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">r =</span> r, <span class="dt">A =</span> A)</span>
+<span id="cb1-26"><a href="ecological-assembly.html#cb1-26"></a>  <span class="co"># solve numerically</span></span>
+<span id="cb1-27"><a href="ecological-assembly.html#cb1-27"></a>  out &lt;-<span class="st"> </span><span class="kw">ode</span>(<span class="dt">y =</span> x0, <span class="dt">times =</span> times, </span>
+<span id="cb1-28"><a href="ecological-assembly.html#cb1-28"></a>           <span class="dt">func =</span> GLV, <span class="dt">parms =</span> parameters, </span>
+<span id="cb1-29"><a href="ecological-assembly.html#cb1-29"></a>           <span class="dt">method =</span> <span class="st">&quot;ode45&quot;</span>)</span>
+<span id="cb1-30"><a href="ecological-assembly.html#cb1-30"></a>  <span class="co"># plot and make into tidy form</span></span>
+<span id="cb1-31"><a href="ecological-assembly.html#cb1-31"></a>  out &lt;-<span class="st"> </span><span class="kw">plot_ODE_output</span>(out)</span>
+<span id="cb1-32"><a href="ecological-assembly.html#cb1-32"></a>  <span class="kw">return</span>(out)</span>
+<span id="cb1-33"><a href="ecological-assembly.html#cb1-33"></a>}</span></code></pre></div>
+<p>And then write functions to give us a (barely) stable, symmetric matrix <span class="math inline">\(A\)</span>, and random growth rates:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="ecological-assembly.html#cb2-1"></a><span class="co"># function to build symmetric, Lyapunov Diagonally-stable matrix</span></span>
+<span id="cb2-2"><a href="ecological-assembly.html#cb2-2"></a>build_LDstable &lt;-<span class="st"> </span><span class="cf">function</span>(n){</span>
+<span id="cb2-3"><a href="ecological-assembly.html#cb2-3"></a>  A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, n, n)</span>
+<span id="cb2-4"><a href="ecological-assembly.html#cb2-4"></a>  A[<span class="kw">upper.tri</span>(A)] &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n <span class="op">*</span><span class="st"> </span>(n <span class="op">-</span><span class="st"> </span><span class="dv">1</span>) <span class="op">/</span><span class="st"> </span><span class="dv">2</span>)</span>
+<span id="cb2-5"><a href="ecological-assembly.html#cb2-5"></a>  <span class="co"># make symmetric</span></span>
+<span id="cb2-6"><a href="ecological-assembly.html#cb2-6"></a>  A &lt;-<span class="st"> </span>A <span class="op">+</span><span class="st"> </span><span class="kw">t</span>(A)</span>
+<span id="cb2-7"><a href="ecological-assembly.html#cb2-7"></a>  <span class="co"># now find the largest eigenvalue</span></span>
+<span id="cb2-8"><a href="ecological-assembly.html#cb2-8"></a>  l1A &lt;-<span class="st"> </span><span class="kw">max</span>(<span class="kw">eigen</span>(A, <span class="dt">only.values =</span> <span class="ot">TRUE</span>, <span class="dt">symmetric =</span> <span class="ot">TRUE</span>)<span class="op">$</span>values)</span>
+<span id="cb2-9"><a href="ecological-assembly.html#cb2-9"></a>  <span class="cf">if</span> (l1A <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>){</span>
+<span id="cb2-10"><a href="ecological-assembly.html#cb2-10"></a>    <span class="co"># set the diagonal to make it stable</span></span>
+<span id="cb2-11"><a href="ecological-assembly.html#cb2-11"></a>    <span class="kw">diag</span>(A) &lt;-<span class="st"> </span><span class="kw">diag</span>(A) <span class="op">-</span><span class="st"> </span>l1A <span class="op">-</span><span class="st"> </span><span class="fl">0.01</span></span>
+<span id="cb2-12"><a href="ecological-assembly.html#cb2-12"></a>  }</span>
+<span id="cb2-13"><a href="ecological-assembly.html#cb2-13"></a>  <span class="kw">return</span>(A)</span>
+<span id="cb2-14"><a href="ecological-assembly.html#cb2-14"></a>}</span>
+<span id="cb2-15"><a href="ecological-assembly.html#cb2-15"></a></span>
+<span id="cb2-16"><a href="ecological-assembly.html#cb2-16"></a><span class="co"># function to get random growth rates</span></span>
+<span id="cb2-17"><a href="ecological-assembly.html#cb2-17"></a>build_randomr &lt;-<span class="st"> </span><span class="cf">function</span>(n){</span>
+<span id="cb2-18"><a href="ecological-assembly.html#cb2-18"></a>  <span class="kw">return</span>(<span class="kw">rnorm</span>(n))</span>
+<span id="cb2-19"><a href="ecological-assembly.html#cb2-19"></a>}</span></code></pre></div>
+<p>Now, we build a random system with seven species, and integrate the dynamics:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="ecological-assembly.html#cb3-1"></a><span class="kw">set.seed</span>(<span class="dv">5</span>) <span class="co"># for reproducibility</span></span>
+<span id="cb3-2"><a href="ecological-assembly.html#cb3-2"></a>n &lt;-<span class="st"> </span><span class="dv">7</span></span>
+<span id="cb3-3"><a href="ecological-assembly.html#cb3-3"></a>A &lt;-<span class="st"> </span><span class="kw">build_LDstable</span>(n)</span>
+<span id="cb3-4"><a href="ecological-assembly.html#cb3-4"></a>r &lt;-<span class="st"> </span><span class="kw">build_randomr</span>(n)</span>
+<span id="cb3-5"><a href="ecological-assembly.html#cb3-5"></a>x0 &lt;-<span class="st"> </span><span class="kw">runif</span>(n)</span>
+<span id="cb3-6"><a href="ecological-assembly.html#cb3-6"></a>out &lt;-<span class="st"> </span><span class="kw">integrate_GLV</span>(r, A, x0)</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/rndzooex1-1.png" width="480" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="ecological-assembly.html#cb4-1"></a>knitr<span class="op">::</span><span class="kw">kable</span>(</span>
+<span id="cb4-2"><a href="ecological-assembly.html#cb4-2"></a>out <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb4-3"><a href="ecological-assembly.html#cb4-3"></a><span class="st">  </span><span class="kw">filter</span>(out<span class="op">$</span>time <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(out<span class="op">$</span>time)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb4-4"><a href="ecological-assembly.html#cb4-4"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">density =</span> <span class="kw">ifelse</span>(density <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span><span class="op">^-</span><span class="dv">6</span>, <span class="dv">0</span>, density)) )</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">time</th>
+<th align="left">species</th>
+<th align="right">density</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">100</td>
+<td align="left">sp_1</td>
+<td align="right">0.4290300</td>
+</tr>
+<tr class="even">
+<td align="right">100</td>
+<td align="left">sp_2</td>
+<td align="right">0.2761030</td>
+</tr>
+<tr class="odd">
+<td align="right">100</td>
+<td align="left">sp_3</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="even">
+<td align="right">100</td>
+<td align="left">sp_4</td>
+<td align="right">0.4021761</td>
+</tr>
+<tr class="odd">
+<td align="right">100</td>
+<td align="left">sp_5</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="even">
+<td align="right">100</td>
+<td align="left">sp_6</td>
+<td align="right">0.6453202</td>
+</tr>
+<tr class="odd">
+<td align="right">100</td>
+<td align="left">sp_7</td>
+<td align="right">0.5776840</td>
+</tr>
+</tbody>
+</table>
+<p>As you can see, in this case, two species (3 and 5) go extinct, while the other ones reach a feasible equilibrium. Let’s try to start the system with species 3 and 5 at high abundance, to show that the equilibrium is indeed globally stable:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="ecological-assembly.html#cb5-1"></a>x0[<span class="dv">3</span>] &lt;-<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb5-2"><a href="ecological-assembly.html#cb5-2"></a>x0[<span class="dv">5</span>] &lt;-<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb5-3"><a href="ecological-assembly.html#cb5-3"></a>out &lt;-<span class="st"> </span><span class="kw">integrate_GLV</span>(r, A, x0)</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/rndzooex2-1.png" width="480" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="ecological-assembly.html#cb6-1"></a>knitr<span class="op">::</span><span class="kw">kable</span>(out <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb6-2"><a href="ecological-assembly.html#cb6-2"></a><span class="st">  </span><span class="kw">filter</span>(out<span class="op">$</span>time <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(out<span class="op">$</span>time)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb6-3"><a href="ecological-assembly.html#cb6-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">density =</span> <span class="kw">ifelse</span>(density <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span><span class="op">^-</span><span class="dv">6</span>, <span class="dv">0</span>, density)) )</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">time</th>
+<th align="left">species</th>
+<th align="right">density</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">100</td>
+<td align="left">sp_1</td>
+<td align="right">0.4290300</td>
+</tr>
+<tr class="even">
+<td align="right">100</td>
+<td align="left">sp_2</td>
+<td align="right">0.2761030</td>
+</tr>
+<tr class="odd">
+<td align="right">100</td>
+<td align="left">sp_3</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="even">
+<td align="right">100</td>
+<td align="left">sp_4</td>
+<td align="right">0.4021761</td>
+</tr>
+<tr class="odd">
+<td align="right">100</td>
+<td align="left">sp_5</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="even">
+<td align="right">100</td>
+<td align="left">sp_6</td>
+<td align="right">0.6453202</td>
+</tr>
+<tr class="odd">
+<td align="right">100</td>
+<td align="left">sp_7</td>
+<td align="right">0.5776840</td>
+</tr>
+</tbody>
+</table>
+<p>As you can see, the system still goes to the same equilibrium, with 3 and 5 extinct. Turns out, for this type of system, one does not even need to integrate dynamics: the Lemke–Howson algorithm can be adapted to solve the problem efficiently <span class="citation">(Serván et al. <a href="#ref-servan2018coexistence" role="doc-biblioref">2018</a>)</span>. I have coded up the algorithm already, and you can load the function <code>get_final_composition(A, r)</code> by typing:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="ecological-assembly.html#cb7-1"></a><span class="kw">source</span>(<span class="st">&quot;dat/L-H.R&quot;</span>)</span>
+<span id="cb7-2"><a href="ecological-assembly.html#cb7-2"></a><span class="kw">get_final_composition</span>(A, r) <span class="co"># use LH instead of integrating dynamics</span></span></code></pre></div>
+<p>[1] 0.4290300 0.2761030 0.0000000 0.4021761 0.0000000 0.6453202 0.5776840</p>
+</div>
+</div>
+<div id="a-random-zoo" class="section level2">
+<h2><span class="header-section-number">5.5</span> A random zoo</h2>
+<p>In the case above, 5 species persisted. We can ask how many species will coexist in general under this parametrization. A good metaphor is that of the random zoo: take a large zoo, open all the cages, and return after fifty years. How many species will you find?</p>
+<p>To simulate the random zoo, we take random matrices and random growth rates with <span class="math inline">\(n\)</span> species, and tally the number of coexisting species over several simulations:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="ecological-assembly.html#cb8-1"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb8-2"><a href="ecological-assembly.html#cb8-2"></a>n &lt;-<span class="st"> </span><span class="dv">5</span></span>
+<span id="cb8-3"><a href="ecological-assembly.html#cb8-3"></a>nsim &lt;-<span class="st"> </span><span class="dv">2000</span></span>
+<span id="cb8-4"><a href="ecological-assembly.html#cb8-4"></a>results &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">simulation =</span> <span class="dv">1</span><span class="op">:</span>nsim, <span class="dt">ncoexisting =</span> <span class="kw">rep</span>(<span class="ot">NA</span>, nsim))</span>
+<span id="cb8-5"><a href="ecological-assembly.html#cb8-5"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>nsim){</span>
+<span id="cb8-6"><a href="ecological-assembly.html#cb8-6"></a>  <span class="co"># build the matrix and vector</span></span>
+<span id="cb8-7"><a href="ecological-assembly.html#cb8-7"></a>  A &lt;-<span class="st"> </span><span class="kw">build_LDstable</span>(n)</span>
+<span id="cb8-8"><a href="ecological-assembly.html#cb8-8"></a>  r &lt;-<span class="st"> </span><span class="kw">build_randomr</span>(n)</span>
+<span id="cb8-9"><a href="ecological-assembly.html#cb8-9"></a>  xstar &lt;-<span class="st"> </span><span class="kw">get_final_composition</span>(A, r)</span>
+<span id="cb8-10"><a href="ecological-assembly.html#cb8-10"></a>  results<span class="op">$</span>ncoexisting[i] &lt;-<span class="st"> </span><span class="kw">sum</span>(xstar <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>)</span>
+<span id="cb8-11"><a href="ecological-assembly.html#cb8-11"></a>}</span>
+<span id="cb8-12"><a href="ecological-assembly.html#cb8-12"></a>pl &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> results) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb8-13"><a href="ecological-assembly.html#cb8-13"></a><span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> ncoexisting) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb8-14"><a href="ecological-assembly.html#cb8-14"></a><span class="st">  </span><span class="kw">geom_bar</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb8-15"><a href="ecological-assembly.html#cb8-15"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="st">&quot;number of species coexisting&quot;</span>, <span class="dt">breaks =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">10</span>)</span>
+<span id="cb8-16"><a href="ecological-assembly.html#cb8-16"></a><span class="kw">show</span>(pl)</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/randomzoo-1.png" width="480" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="ecological-assembly.html#cb9-1"></a><span class="co"># add binomial distribution</span></span>
+<span id="cb9-2"><a href="ecological-assembly.html#cb9-2"></a>tbinom &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">ncoexisting =</span> <span class="dv">0</span><span class="op">:</span>n, </span>
+<span id="cb9-3"><a href="ecological-assembly.html#cb9-3"></a>                 <span class="dt">expectation =</span> nsim <span class="op">*</span><span class="st"> </span><span class="kw">dbinom</span>(<span class="dv">0</span><span class="op">:</span>n, n, <span class="fl">0.5</span>))</span>
+<span id="cb9-4"><a href="ecological-assembly.html#cb9-4"></a>pl &lt;-<span class="st"> </span>pl <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">data =</span> tbinom, <span class="kw">aes</span>(<span class="dt">x =</span> ncoexisting, <span class="dt">y =</span> expectation))</span>
+<span id="cb9-5"><a href="ecological-assembly.html#cb9-5"></a><span class="kw">show</span>(pl)</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/randomzoo-2.png" width="480" style="display: block; margin: auto;" /></p>
+<p>We find again that the number of coexisting species follows the binomial distribution with parameters <span class="math inline">\(n\)</span> and <span class="math inline">\(1/2\)</span> (i.e., exactly the same result found for non interacting species). To prove this fact, let’s begin with showing that the probability of having all species coexisting is <span class="math inline">\(1 / 2^n\)</span>. For this, we need <span class="math inline">\(x^\star = -r A^{-1}\)</span> to be feasible. For each possible <span class="math inline">\(A\)</span> (invertible) and <span class="math inline">\(r\)</span>, we have that the vector <span class="math inline">\(-r A^{-1}\)</span> will display a certain pattern of signs. Proving that the probability that all <span class="math inline">\(n\)</span> species coexist is <span class="math inline">\(1 / 2^n\)</span> amounts to proving that all sign patterns are equally probable. To this end, define the matrix <span class="math inline">\(D_k = (-1)^{\delta_{ik}} \delta_{ij}\)</span>. This is like the identity matrix, but with element <span class="math inline">\(k\)</span> of the diagonal set to <span class="math inline">\(-1\)</span> instead of <span class="math inline">\(1\)</span>. We have that:</p>
+<p><span class="math display">\[
+(D_k A D_k) D_k x^\star = -D_k r
+\]</span></p>
+<p>That is, by setting the <span class="math inline">\(k^\text{th}\)</span> element of <span class="math inline">\(D_k\)</span> to -1, we flip the sign of the <span class="math inline">\(k^\text{th}\)</span> component of <span class="math inline">\(x^\star\)</span>. For example:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="ecological-assembly.html#cb10-1"></a><span class="kw">set.seed</span>(<span class="dv">2</span>)</span>
+<span id="cb10-2"><a href="ecological-assembly.html#cb10-2"></a>A &lt;-<span class="st"> </span><span class="kw">build_LDstable</span>(<span class="dv">3</span>)</span>
+<span id="cb10-3"><a href="ecological-assembly.html#cb10-3"></a>r &lt;-<span class="st"> </span><span class="kw">build_randomr</span>(<span class="dv">3</span>)</span>
+<span id="cb10-4"><a href="ecological-assembly.html#cb10-4"></a><span class="co"># the equilibrium is not feasible</span></span>
+<span id="cb10-5"><a href="ecological-assembly.html#cb10-5"></a><span class="kw">solve</span>(A, <span class="op">-</span>r)</span></code></pre></div>
+<p>[1] -11.75292 26.47508 22.73981</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="ecological-assembly.html#cb11-1"></a><span class="co"># build matrix D_1</span></span>
+<span id="cb11-2"><a href="ecological-assembly.html#cb11-2"></a>D_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">diag</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb11-3"><a href="ecological-assembly.html#cb11-3"></a><span class="co"># the multiplication changes the sign of a component of the solution</span></span>
+<span id="cb11-4"><a href="ecological-assembly.html#cb11-4"></a><span class="co"># making the equilibrium feasible</span></span>
+<span id="cb11-5"><a href="ecological-assembly.html#cb11-5"></a><span class="kw">solve</span>(D_<span class="dv">1</span> <span class="op">%*%</span><span class="st"> </span>A <span class="op">%*%</span><span class="st"> </span>D_<span class="dv">1</span>, <span class="op">-</span>D_<span class="dv">1</span> <span class="op">%*%</span><span class="st"> </span>r)</span></code></pre></div>
+<pre><code>     [,1]</code></pre>
+<p>[1,] 11.75292
+[2,] 26.47508
+[3,] 22.73981</p>
+<p>Because of the symmetry assumption (i.e., we sampled all growth rates and off-diagonal elements from a distribution centered at zero), <span class="math inline">\((D_k A D_k)\)</span> has the same distribution as <span class="math inline">\(A\)</span>, and <span class="math inline">\(D_k r\)</span> the same distribution as <span class="math inline">\(r\)</span>. In fact, one can see that <span class="math inline">\((D_k A D_k)\)</span> is also a similarity transformation, implying that the eigenvalues of <span class="math inline">\(A\)</span> and <span class="math inline">\((D_k A D_k)\)</span> are the same (i.e., the operation preserves stability):</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="ecological-assembly.html#cb13-1"></a><span class="kw">eigen</span>(A)<span class="op">$</span>values</span></code></pre></div>
+<p>[1] -0.010000 -1.601076 -3.665781</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="ecological-assembly.html#cb14-1"></a><span class="kw">eigen</span>(D_<span class="dv">1</span> <span class="op">%*%</span><span class="st"> </span>A <span class="op">%*%</span><span class="st"> </span>D_<span class="dv">1</span>)<span class="op">$</span>values</span></code></pre></div>
+<p>[1] -0.010000 -1.601076 -3.665781</p>
+<p>We can repeat the operation several times, connecting each possible starting point to the feasible solution. Therefore, the probability of all species coexisting amounts to the probability of having chosen the “right” sequence of <span class="math inline">\(D_k\)</span>, which happens with probability <span class="math inline">\(1 / 2^n\)</span>. Notice that the same proof holds when the coefficients of <span class="math inline">\(A\)</span> are sampled in pairs from a bivariate distribution (rather than having symmetric matrices), as long as the distribution is centered at zero, and the matrix is Lyapunov-Diagonally stable (<span class="citation">Serván et al. (<a href="#ref-servan2018coexistence" role="doc-biblioref">2018</a>)</span>). Using the same argument, one can prove that, under this parametrization, the probability of observing <span class="math inline">\(k\)</span> species coexisting and <span class="math inline">\(n -k\)</span> not being able to invade is exactly <span class="math inline">\(\binom{n}{k} \frac{1}{2^n}\)</span> (<span class="citation">Serván et al. (<a href="#ref-servan2018coexistence" role="doc-biblioref">2018</a>)</span>).</p>
+</div>
+<div id="assembly-and-saturated-equilibrium" class="section level2">
+<h2><span class="header-section-number">5.6</span> Assembly and saturated equilibrium</h2>
+<p>Now let’s make it more complicated: we assemble an ecological community from the ground up. At each step, we introduce a species at low abundance, starting from an empty community. We then compute the new equilibrium, completing a step of the assembly:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="ecological-assembly.html#cb15-1"></a>assembly_one_step &lt;-<span class="st"> </span><span class="cf">function</span>(x, r, A){</span>
+<span id="cb15-2"><a href="ecological-assembly.html#cb15-2"></a>  n &lt;-<span class="st"> </span><span class="kw">nrow</span>(A)</span>
+<span id="cb15-3"><a href="ecological-assembly.html#cb15-3"></a>  invader &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span>n, <span class="dv">1</span>)</span>
+<span id="cb15-4"><a href="ecological-assembly.html#cb15-4"></a>  x[invader] &lt;-<span class="st"> </span><span class="fl">0.001</span> <span class="co"># introduce the invader at low abundance</span></span>
+<span id="cb15-5"><a href="ecological-assembly.html#cb15-5"></a>  present &lt;-<span class="st"> </span>x <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> <span class="co"># these are the species present now</span></span>
+<span id="cb15-6"><a href="ecological-assembly.html#cb15-6"></a>  <span class="co"># compute new equilibrium</span></span>
+<span id="cb15-7"><a href="ecological-assembly.html#cb15-7"></a>  y &lt;-<span class="st"> </span><span class="kw">get_final_composition</span>(A[present, present, <span class="dt">drop =</span> <span class="ot">FALSE</span>], r[present])</span>
+<span id="cb15-8"><a href="ecological-assembly.html#cb15-8"></a>  x[present] &lt;-<span class="st"> </span>y</span>
+<span id="cb15-9"><a href="ecological-assembly.html#cb15-9"></a>  <span class="kw">return</span>(x)</span>
+<span id="cb15-10"><a href="ecological-assembly.html#cb15-10"></a>}</span></code></pre></div>
+<p>Now we can take a species pool along with their parameters, and try to assemble the system until we can no longer add any more species (i.e., until we reach a saturated equilibrium):</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="ecological-assembly.html#cb16-1"></a><span class="kw">set.seed</span>(<span class="dv">7</span>)</span>
+<span id="cb16-2"><a href="ecological-assembly.html#cb16-2"></a>n &lt;-<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb16-3"><a href="ecological-assembly.html#cb16-3"></a>A &lt;-<span class="st"> </span><span class="kw">build_LDstable</span>(n)</span>
+<span id="cb16-4"><a href="ecological-assembly.html#cb16-4"></a>r &lt;-<span class="st"> </span><span class="kw">build_randomr</span>(n)</span>
+<span id="cb16-5"><a href="ecological-assembly.html#cb16-5"></a><span class="co"># start with no species</span></span>
+<span id="cb16-6"><a href="ecological-assembly.html#cb16-6"></a>x &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>, n)</span>
+<span id="cb16-7"><a href="ecological-assembly.html#cb16-7"></a><span class="co"># assemble for 40 steps and keep track of richness and composition</span></span>
+<span id="cb16-8"><a href="ecological-assembly.html#cb16-8"></a>ninvasions &lt;-<span class="st"> </span><span class="dv">40</span></span>
+<span id="cb16-9"><a href="ecological-assembly.html#cb16-9"></a>results &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">invasion =</span> <span class="dv">1</span><span class="op">:</span>ninvasions, </span>
+<span id="cb16-10"><a href="ecological-assembly.html#cb16-10"></a>                  <span class="dt">richness =</span> <span class="kw">rep</span>(<span class="ot">NA</span>, ninvasions),</span>
+<span id="cb16-11"><a href="ecological-assembly.html#cb16-11"></a>                  <span class="dt">composition =</span> <span class="kw">rep</span>(<span class="ot">NA</span>, ninvasions))</span>
+<span id="cb16-12"><a href="ecological-assembly.html#cb16-12"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>ninvasions){</span>
+<span id="cb16-13"><a href="ecological-assembly.html#cb16-13"></a>  x &lt;-<span class="st"> </span><span class="kw">assembly_one_step</span>(x, r, A) </span>
+<span id="cb16-14"><a href="ecological-assembly.html#cb16-14"></a>  results<span class="op">$</span>richness[i] &lt;-<span class="st"> </span><span class="kw">sum</span>(x <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>)</span>
+<span id="cb16-15"><a href="ecological-assembly.html#cb16-15"></a>  results<span class="op">$</span>composition[i] &lt;-<span class="st"> </span><span class="kw">paste</span>((<span class="dv">1</span><span class="op">:</span>n)[x<span class="op">&gt;</span><span class="dv">0</span>], <span class="dt">collapse =</span> <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb16-16"><a href="ecological-assembly.html#cb16-16"></a>}</span>
+<span id="cb16-17"><a href="ecological-assembly.html#cb16-17"></a>knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(results))</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">invasion</th>
+<th align="right">richness</th>
+<th align="left">composition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">0</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">1</td>
+<td align="left">2</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">2</td>
+<td align="left">1-2</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">2</td>
+<td align="left">1-2</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">2</td>
+<td align="left">1-2</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="ecological-assembly.html#cb17-1"></a>pl &lt;-<span class="st"> </span><span class="kw">ggplot</span>(results) <span class="op">+</span><span class="st"> </span><span class="kw">aes</span>(<span class="dt">x =</span> invasion, <span class="dt">y =</span> richness, <span class="dt">label =</span> composition) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb17-2"><a href="ecological-assembly.html#cb17-2"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_text</span>(<span class="dt">hjust =</span> <span class="dv">0</span>, <span class="dt">nudge_y =</span> <span class="fl">0.25</span>, <span class="dt">angle =</span> <span class="dv">90</span>)<span class="op">+</span><span class="st"> </span></span>
+<span id="cb17-3"><a href="ecological-assembly.html#cb17-3"></a><span class="st">  </span><span class="kw">ylim</span>(<span class="kw">c</span>(<span class="dv">0</span>, n <span class="op">*</span><span class="st"> </span><span class="fl">1.25</span>))</span>
+<span id="cb17-4"><a href="ecological-assembly.html#cb17-4"></a><span class="kw">show</span>(pl)</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/rndzooassembly-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>Now let’s roll back history and assemble again:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="ecological-assembly.html#cb18-1"></a><span class="co"># start with no species</span></span>
+<span id="cb18-2"><a href="ecological-assembly.html#cb18-2"></a>x &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>, n)</span>
+<span id="cb18-3"><a href="ecological-assembly.html#cb18-3"></a><span class="co"># assemble for 40 steps and keep track of richness</span></span>
+<span id="cb18-4"><a href="ecological-assembly.html#cb18-4"></a>ninvasions &lt;-<span class="st"> </span><span class="dv">40</span></span>
+<span id="cb18-5"><a href="ecological-assembly.html#cb18-5"></a>results &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">invasion =</span> <span class="dv">1</span><span class="op">:</span>ninvasions, </span>
+<span id="cb18-6"><a href="ecological-assembly.html#cb18-6"></a>                  <span class="dt">richness =</span> <span class="kw">rep</span>(<span class="ot">NA</span>, ninvasions),</span>
+<span id="cb18-7"><a href="ecological-assembly.html#cb18-7"></a>                  <span class="dt">composition =</span> <span class="kw">rep</span>(<span class="ot">NA</span>, ninvasions))</span>
+<span id="cb18-8"><a href="ecological-assembly.html#cb18-8"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>ninvasions){</span>
+<span id="cb18-9"><a href="ecological-assembly.html#cb18-9"></a>  x &lt;-<span class="st"> </span><span class="kw">assembly_one_step</span>(x, r, A) </span>
+<span id="cb18-10"><a href="ecological-assembly.html#cb18-10"></a>  results<span class="op">$</span>richness[i] &lt;-<span class="st"> </span><span class="kw">sum</span>(x <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>)</span>
+<span id="cb18-11"><a href="ecological-assembly.html#cb18-11"></a>  results<span class="op">$</span>composition[i] &lt;-<span class="st"> </span><span class="kw">paste</span>((<span class="dv">1</span><span class="op">:</span>n)[x<span class="op">&gt;</span><span class="dv">0</span>], <span class="dt">collapse =</span> <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb18-12"><a href="ecological-assembly.html#cb18-12"></a>}</span>
+<span id="cb18-13"><a href="ecological-assembly.html#cb18-13"></a>knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(results))</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">invasion</th>
+<th align="right">richness</th>
+<th align="left">composition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="left">4</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="left">4</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">1</td>
+<td align="left">4</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">1</td>
+<td align="left">4</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">2</td>
+<td align="left">4-10</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">2</td>
+<td align="left">4-10</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="ecological-assembly.html#cb19-1"></a>pl &lt;-<span class="st"> </span><span class="kw">ggplot</span>(results) <span class="op">+</span><span class="st"> </span><span class="kw">aes</span>(<span class="dt">x =</span> invasion, <span class="dt">y =</span> richness, <span class="dt">label =</span> composition) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb19-2"><a href="ecological-assembly.html#cb19-2"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_text</span>(<span class="dt">hjust =</span> <span class="dv">0</span>, <span class="dt">nudge_y =</span> <span class="fl">0.25</span>, <span class="dt">angle =</span> <span class="dv">90</span>)<span class="op">+</span><span class="st"> </span></span>
+<span id="cb19-3"><a href="ecological-assembly.html#cb19-3"></a><span class="st">  </span><span class="kw">ylim</span>(<span class="kw">c</span>(<span class="dv">0</span>, n <span class="op">*</span><span class="st"> </span><span class="fl">1.25</span>))</span>
+<span id="cb19-4"><a href="ecological-assembly.html#cb19-4"></a><span class="kw">show</span>(pl)</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/alternativehistory-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>As you can see, despite taking a different assembly history, we reach the same final composition. In fact, this is exactly what we would expect if we were to throw all species in the environment at the same time:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="ecological-assembly.html#cb20-1"></a><span class="kw">get_final_composition</span>(A, r)</span></code></pre></div>
+<p>[1] 1.7588344 2.5440743 0.0000000 0.7860178 1.8730535 2.5502055 0.6961259
+[8] 1.6956878 0.0000000 0.0000000</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="ecological-assembly.html#cb21-1"></a>x</span></code></pre></div>
+<p>[1] 1.7588344 2.5440743 0.0000000 0.7860178 1.8730535 2.5502055 0.6961259
+[8] 1.6956878 0.0000000 0.0000000</p>
+<p>As such, given enough time, any assembly history for a symmetric, stable matrix <span class="math inline">\(A\)</span> will eventually reach the final composition represented by the saturated equilibrium (Serván, unpublished).</p>
+<p>Interestingly, this is not the case when the matrix is not symmetric. <span class="citation">Serván et al. (<a href="#ref-servan2018coexistence" role="doc-biblioref">2018</a>)</span> conjectured however that the probability of finding a system whose final composition cannot be assembled one species at a time decreases rapidly with the size of the pool, as long as <span class="math inline">\(A\)</span> is Lyapunov Diagonally stable.</p>
+</div>
+<div id="network-spandrels" class="section level2">
+<h2><span class="header-section-number">5.7</span> Network spandrels</h2>
+<p>What is the network structure of the assembled community vs. that of the initial pool? Can we detect a signature of the forces acting on the community such that some species can persist, while other go extinct? To answer these questions, we start by considering a larger pool of species:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="ecological-assembly.html#cb22-1"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb22-2"><a href="ecological-assembly.html#cb22-2"></a><span class="co"># initial pool</span></span>
+<span id="cb22-3"><a href="ecological-assembly.html#cb22-3"></a>A &lt;-<span class="st"> </span><span class="kw">build_LDstable</span>(<span class="dv">200</span>)</span>
+<span id="cb22-4"><a href="ecological-assembly.html#cb22-4"></a>r &lt;-<span class="st"> </span><span class="kw">build_randomr</span>(<span class="dv">200</span>)</span>
+<span id="cb22-5"><a href="ecological-assembly.html#cb22-5"></a><span class="co"># final composition</span></span>
+<span id="cb22-6"><a href="ecological-assembly.html#cb22-6"></a>xstar &lt;-<span class="st"> </span><span class="kw">get_final_composition</span>(A, r)</span>
+<span id="cb22-7"><a href="ecological-assembly.html#cb22-7"></a>A_pruned &lt;-<span class="st"> </span>A[xstar <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>, xstar <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>]</span>
+<span id="cb22-8"><a href="ecological-assembly.html#cb22-8"></a>r_pruned &lt;-<span class="st"> </span>r[xstar <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>]</span></code></pre></div>
+<p>Are the properties of matrix <span class="math inline">\(A\)</span> different from those of the pruned version <span class="math inline">\(\tilde{A}\)</span>? We probe this in two ways: first, we build a graph with the strongest interactions, and plot it.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="ecological-assembly.html#cb23-1"></a><span class="kw">library</span>(igraph)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;igraph&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:dplyr&#39;:
+## 
+##     as_data_frame, groups, union</code></pre>
+<pre><code>## The following objects are masked from &#39;package:purrr&#39;:
+## 
+##     compose, simplify</code></pre>
+<pre><code>## The following object is masked from &#39;package:tidyr&#39;:
+## 
+##     crossing</code></pre>
+<pre><code>## The following object is masked from &#39;package:tibble&#39;:
+## 
+##     as_data_frame</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     decompose, spectrum</code></pre>
+<pre><code>## The following object is masked from &#39;package:base&#39;:
+## 
+##     union</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="ecological-assembly.html#cb31-1"></a>plot_graph_strong &lt;-<span class="st"> </span><span class="cf">function</span>(B, <span class="dt">quantile =</span> <span class="fl">0.75</span>){</span>
+<span id="cb31-2"><a href="ecological-assembly.html#cb31-2"></a>  Bstrong &lt;-<span class="st"> </span><span class="kw">abs</span>(B)</span>
+<span id="cb31-3"><a href="ecological-assembly.html#cb31-3"></a>  <span class="kw">diag</span>(Bstrong) &lt;-<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb31-4"><a href="ecological-assembly.html#cb31-4"></a>  Bstrong[Bstrong <span class="op">&lt;</span><span class="st"> </span><span class="kw">quantile</span>(Bstrong, quantile)] &lt;-<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb31-5"><a href="ecological-assembly.html#cb31-5"></a>  gr &lt;-<span class="st"> </span><span class="kw">graph_from_adjacency_matrix</span>((Bstrong <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="op">*</span><span class="st"> </span><span class="dv">1</span>, <span class="dt">mode =</span> <span class="st">&quot;undirected&quot;</span>)</span>
+<span id="cb31-6"><a href="ecological-assembly.html#cb31-6"></a>  <span class="kw">plot</span>(gr, <span class="dt">vertex.size=</span><span class="dv">10</span>, <span class="dt">vertex.label=</span><span class="ot">NA</span>, <span class="dt">layout=</span>layout_with_fr)</span>
+<span id="cb31-7"><a href="ecological-assembly.html#cb31-7"></a>}</span>
+<span id="cb31-8"><a href="ecological-assembly.html#cb31-8"></a></span>
+<span id="cb31-9"><a href="ecological-assembly.html#cb31-9"></a><span class="kw">plot_graph_strong</span>(A)</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/plotnetworksrz-1.png" width="480" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="ecological-assembly.html#cb32-1"></a><span class="kw">plot_graph_strong</span>(A_pruned)</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/plotnetworksrz-2.png" width="480" style="display: block; margin: auto;" /></p>
+<p>There seems to be no special structure. A more powerful way to show the same is to plot the eigenvalues of <span class="math inline">\(A\)</span> and <span class="math inline">\(\tilde{A}\)</span>. For a symmetric matrix with off-diagonal elements centered at zero, the eigenvalues should follow Wigner’s semicircle law:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="ecological-assembly.html#cb33-1"></a>plot_eigen &lt;-<span class="st"> </span><span class="cf">function</span>(B){</span>
+<span id="cb33-2"><a href="ecological-assembly.html#cb33-2"></a>  evals &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">lambda =</span> <span class="kw">eigen</span>(B, <span class="dt">only.values =</span> <span class="ot">TRUE</span>, <span class="dt">symmetric =</span> <span class="ot">TRUE</span>)<span class="op">$</span>values)</span>
+<span id="cb33-3"><a href="ecological-assembly.html#cb33-3"></a>  <span class="kw">ggplot</span>(<span class="dt">data =</span> evals) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb33-4"><a href="ecological-assembly.html#cb33-4"></a><span class="st">    </span><span class="kw">aes</span>(<span class="dt">x =</span> lambda) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb33-5"><a href="ecological-assembly.html#cb33-5"></a><span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="kw">as.integer</span>(<span class="kw">nrow</span>(evals) <span class="op">/</span><span class="st"> </span><span class="dv">10</span>), <span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>)</span>
+<span id="cb33-6"><a href="ecological-assembly.html#cb33-6"></a>}</span>
+<span id="cb33-7"><a href="ecological-assembly.html#cb33-7"></a><span class="kw">plot_eigen</span>(A)</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/ploteigenrz-1.png" width="480" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="ecological-assembly.html#cb34-1"></a><span class="kw">plot_eigen</span>(A_pruned)</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/ploteigenrz-2.png" width="480" style="display: block; margin: auto;" /></p>
+<p>As such, the matrix of interactions before/after dynamics seem to have the same properties. However, as shown in <span class="citation">Serván et al. (<a href="#ref-servan2018coexistence" role="doc-biblioref">2018</a>)</span>, the distribution of the growth rates changes in a non-trivial way:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="ecological-assembly.html#cb35-1"></a>toplot &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">r =</span> r, <span class="dt">type =</span> <span class="st">&quot;before&quot;</span>)</span>
+<span id="cb35-2"><a href="ecological-assembly.html#cb35-2"></a>toplot &lt;-<span class="st"> </span><span class="kw">rbind</span>(toplot, <span class="kw">data.frame</span>(<span class="dt">r =</span> r_pruned, <span class="dt">type =</span> <span class="st">&quot;after&quot;</span>))</span>
+<span id="cb35-3"><a href="ecological-assembly.html#cb35-3"></a><span class="kw">ggplot</span>(toplot) <span class="op">+</span><span class="st"> </span><span class="kw">aes</span>(<span class="dt">x =</span> r, <span class="dt">fill =</span> type) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>(<span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>)</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/plotrbeforeafter-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>But what if species were to be related to each other? For example, suppose <span class="math inline">\(r_i = 1\)</span> for all species, and build a matrix in which the interactions of species <span class="math inline">\(i + 1\)</span> are obtained by mutating slightly those of species <span class="math inline">\(i\)</span>:</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="ecological-assembly.html#cb37-1"></a>n &lt;-<span class="st"> </span><span class="dv">200</span></span>
+<span id="cb37-2"><a href="ecological-assembly.html#cb37-2"></a>r &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span>, <span class="dv">200</span>)</span>
+<span id="cb37-3"><a href="ecological-assembly.html#cb37-3"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, n, n)</span>
+<span id="cb37-4"><a href="ecological-assembly.html#cb37-4"></a><span class="co"># set first species</span></span>
+<span id="cb37-5"><a href="ecological-assembly.html#cb37-5"></a>A[<span class="dv">1</span>, <span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">-1</span></span>
+<span id="cb37-6"><a href="ecological-assembly.html#cb37-6"></a><span class="co"># now each species is obtained by mutating the previous one</span></span>
+<span id="cb37-7"><a href="ecological-assembly.html#cb37-7"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span>n){</span>
+<span id="cb37-8"><a href="ecological-assembly.html#cb37-8"></a>  ai &lt;-<span class="st"> </span>A[i <span class="dv">-1</span>,] <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="fl">0.05</span> <span class="op">*</span><span class="st"> </span><span class="kw">runif</span>(n))</span>
+<span id="cb37-9"><a href="ecological-assembly.html#cb37-9"></a>  A[i, ] &lt;-<span class="st"> </span>A[i, ] <span class="op">+</span><span class="st"> </span>ai</span>
+<span id="cb37-10"><a href="ecological-assembly.html#cb37-10"></a>  A[, i] &lt;-<span class="st"> </span>A[, i] <span class="op">+</span><span class="st"> </span>ai</span>
+<span id="cb37-11"><a href="ecological-assembly.html#cb37-11"></a>  A[i, i] &lt;-<span class="st"> </span><span class="dv">-1</span></span>
+<span id="cb37-12"><a href="ecological-assembly.html#cb37-12"></a>}</span>
+<span id="cb37-13"><a href="ecological-assembly.html#cb37-13"></a><span class="co"># make LD-stable</span></span>
+<span id="cb37-14"><a href="ecological-assembly.html#cb37-14"></a>l1 &lt;-<span class="st"> </span><span class="kw">max</span>(<span class="kw">eigen</span>(A, <span class="dt">only.values =</span> <span class="ot">TRUE</span>, <span class="dt">symmetric =</span> <span class="ot">TRUE</span>)<span class="op">$</span>values)</span>
+<span id="cb37-15"><a href="ecological-assembly.html#cb37-15"></a><span class="cf">if</span> (l1 <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="kw">diag</span>(A) &lt;-<span class="st"> </span><span class="kw">diag</span>(A) <span class="op">-</span><span class="st"> </span>l1 <span class="op">*</span><span class="st"> </span><span class="fl">1.01</span></span></code></pre></div>
+<p>Now each species is similar to the previous one:</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="ecological-assembly.html#cb38-1"></a><span class="kw">image</span>(A[<span class="dv">1</span><span class="op">:</span>n, n<span class="op">:</span><span class="dv">1</span>])</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/similarimage-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>Perform the pruning, and plot networks and eigenvalues:</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="ecological-assembly.html#cb39-1"></a>xstar &lt;-<span class="st"> </span><span class="kw">get_final_composition</span>(A, r)</span>
+<span id="cb39-2"><a href="ecological-assembly.html#cb39-2"></a>A_pruned &lt;-<span class="st"> </span>A[xstar <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>, xstar <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>]</span>
+<span id="cb39-3"><a href="ecological-assembly.html#cb39-3"></a>r_pruned &lt;-<span class="st"> </span>r[xstar <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>]</span>
+<span id="cb39-4"><a href="ecological-assembly.html#cb39-4"></a></span>
+<span id="cb39-5"><a href="ecological-assembly.html#cb39-5"></a><span class="kw">plot_graph_strong</span>(A)</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/structruredspandrels-1.png" width="480" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="ecological-assembly.html#cb40-1"></a><span class="kw">plot_graph_strong</span>(A_pruned)</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/structruredspandrels-2.png" width="480" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="ecological-assembly.html#cb41-1"></a><span class="kw">plot_eigen</span>(A)</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/structruredspandrels-3.png" width="480" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="ecological-assembly.html#cb42-1"></a><span class="kw">plot_eigen</span>(A_pruned)</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/structruredspandrels-4.png" width="480" style="display: block; margin: auto;" /></p>
+<p>Meaning that if our matrix <span class="math inline">\(A\)</span> is structured, we will recover a structured matrix after pruning, while if <span class="math inline">\(A\)</span> is unstructured, we will recover an unstructured matrix. <span class="citation">Maynard, Serván, and Allesina (<a href="#ref-maynard2018network" role="doc-biblioref">2018</a>)</span> showed that a well-defined network structure could be a “network spandrel” (cfr. <span class="citation">Gould and Lewontin (<a href="#ref-gould1979spandrels" role="doc-biblioref">1979</a>)</span> and <span class="citation">Solé and Valverde (<a href="#ref-sole2006network" role="doc-biblioref">2006</a>)</span>) arising from the way new species are introduced, rather than a “signature of stability”.</p>
 
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-gould1979spandrels">
+<p>Gould, Stephen Jay, and Richard C Lewontin. 1979. “The Spandrels of San Marco and the Panglossian Paradigm: A Critique of the Adaptationist Programme.” <em>Proceedings of the Royal Society of London. Series B. Biological Sciences</em> 205 (1161): 581–98.</p>
+</div>
+<div id="ref-hofbauer1998evolutionary">
+<p>Hofbauer, Josef, and Karl Sigmund. 1998. <em>Evolutionary Games and Population Dynamics</em>. Cambridge University Press.</p>
+</div>
+<div id="ref-maynard2018network">
+<p>Maynard, Daniel S, Carlos A Serván, and Stefano Allesina. 2018. “Network Spandrels Reflect Ecological Assembly.” <em>Ecology Letters</em> 21 (3): 324–34.</p>
+</div>
+<div id="ref-servan2018coexistence">
+<p>Serván, Carlos A, José A Capitán, Jacopo Grilli, Kent E Morrison, and Stefano Allesina. 2018. “Coexistence of Many Species in Random Ecosystems.” <em>Nature Ecology &amp; Evolution</em> 2 (8): 1237.</p>
+</div>
+<div id="ref-sole2006network">
+<p>Solé, Ricard V, and Sergi Valverde. 2006. “Are Network Motifs the Spandrels of Cellular Complexity?” <em>Trends in Ecology &amp; Evolution</em> 21 (8): 419–22.</p>
+</div>
 </div>
             </section>
 
@@ -175,7 +857,7 @@
         </div>
       </div>
 <a href="stability-of-large-ecological-communities.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="game-theory-and-replicator-dynamics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="predicting-coexistence-in-ecological-communities.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

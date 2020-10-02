@@ -13,7 +13,7 @@ description: "A graduate course in theoretical community ecology focusing on sys
 
 ## Approach and target audience {-}
 
-The material was prepared for the graduate class *Theoretical Community Ecology* taught at the University of Chicago --- AY 2020/2021. Following the material requires some familiarity with calculus (multivariable integration, derivatives, chain rule) and linear algebra (vector spaces, eigenvalues, eigenvectors). Also, a good working knowledge of `R` (writing functions, working with the packages `deSolve` and `tidyverse`) is needed to follow the code.
+The material was prepared for the graduate class *Theoretical Community Ecology* taught at the University of Chicago --- AY 2020/2021. Following the material requires some familiarity with calculus (multivariable integration, derivatives, chain rule) and linear algebra (vector spaces, eigenvalues, eigenvectors). Also, a good working knowledge of `R` (writing functions, working with the packages `deSolve` and `tidyverse`) is needed to follow the code (all figures are generated at runtime, and therefore the source code for these lectures contains all the code/data needed to replicate the figures).
 
 The approach taken throughout the course is to alternate between code/simulations and mathematical derivations. While several theorems are (informally) stated, proofs are included only when elementary and/or informative of the underlying biological processes.
 
@@ -21,19 +21,11 @@ The class builds upon material typically presented in classes on population, com
 
 ## Topics {-}
 
-Focus on continuous time, time-invariant models
-
-Multispecies dynamics
-
-Metapopulations
-
-Evolutionary Game Theory
-
-Models for Infectious Diseases
+The choice of themes is very opinionated, and heavily biased toward my own research interests. Because of this, the focus is squarely on continuous time, time-invariant models---in most cases without any consideration of space and stochasticity. Similarly, the material mostly deals with the case of multispecies dynamics, though low-dimensional models are considered when their analysis helps with the understanding of the multispecies case. Finally, a lot of the material is centered around the Generalized Lotka-Volterra model and its cousins (e.g., the replicator equation). This because a) the Generalized Lotka-Volterra model for multiple interacting species is in a way the simplest nonlinear model for population dynamics; and b) it is a "canonical" model---in the sense that many other models can be re-cast in GLV form.
 
 ## Notation {-}
 
-Unless specified or for obvious exceptions, Greek letters stand for scalars (i.e., real or complex numbers), lower case roman letters for vectors, and capital roman letters for matrices (as such $a_i$ or $A_{ij}$ are scalars). We typically work in $\mathbb{R}^n$ (the $n$-dimensional Euclidean space), $\mathbb{R}^n_+$ (i.e., the positive orthant of $\mathbb{R}^n$), or $\mathbb{R}^n_{0+}$ (non-negative orthant).  $D(x)$ is a diagonal matrix with $x$ on the diagonal, sometimes written $D(x) = X$. The matrix $A^T$ is the transpose of $A$. Whenever it is clear what I mean, I will drop the dependency on time of certain variables. 
+Unless specified or for obvious exceptions, Greek letters stand for scalars (i.e., real or complex numbers), lower case roman letters for vectors, and capital roman letters for matrices (as such $a_i$ or $A_{ij}$ are scalars). We typically work in $\mathbb{R}^n$ (the $n$-dimensional Euclidean space), $\mathbb{R}^n_+$ (i.e., the positive orthant of $\mathbb{R}^n$), or $\mathbb{R}^n_{0+}$ (non-negative orthant).  $D(x)$ is a diagonal matrix with $x$ on the diagonal. The matrix $A^T$ is the transpose of $A$. Whenever it is clear what I mean, I will drop the dependency on time of certain variables. 
 
 The Generalized Lotka-Volterra model:
 
@@ -44,7 +36,7 @@ $$
 can be written in compact form as:
 
 $$
-\dfrac{d x}{d t} = X (a + B x)
+\dfrac{d x}{d t} = D(x) (a + B x)
 $$
 
 ## Grading and code of conduct {-}
@@ -58,6 +50,10 @@ Each of the lectures contains exercises that should be completed as graded homew
 ### Review (20%) {-}
 
 The remaining 20% of the grade is based on a graded review. Each student should choose an interesting (important, provocative, etc.) published paper or preprint in theoretical community ecology, and produce a review (of the kind one would submit to a journal if solicited for comments). The review must contain two sections: a) Comments to the Authors, and b) Recommendation for the Editor. Good advice on writing reviews can be found [here](https://dynamicecology.wordpress.com/2013/01/03/advice-how-to-review-a-manuscript-for-a-journal/).
+
+## A note about biographies {-}
+
+The lecture notes are interdispersed with short biographies of scientists who greatly contributed to the problems being studied. The attentive reader will notice that the photographs are depicting a long sequence of old white men. Their age is easy to explain: I have only included biographies of deceased scientists (so that they cannot contradict me!), and most of them enjoyed a long life (with the exception of Robert MacArthur, who tragically died at age 45). The impossibly skewed gender ratio, and the lack of ethnic diversity has to be explained with the tremendous homogeneity of the field---which was broken only recently. It is my hope that these lectures will engage young ecologists from different backgrounds and histories with the theory of community ecology, such that whoever will teach this type of material in a couple of decades will be able to include a more interesting gallery of portraits. 
 
 ## Sources {-}
 

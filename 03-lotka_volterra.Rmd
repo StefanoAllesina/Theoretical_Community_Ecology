@@ -522,6 +522,15 @@ $$
 
 which is zero only at equilibrium. This proves that any feasible equilibrium is stable.
 
+:::boxhomework
+
+**Homework 3a**
+
+Prove the local stability of the feasible coexistence equilibrium.
+
+:::
+
+
 ### Separation of time-scales
 
 
