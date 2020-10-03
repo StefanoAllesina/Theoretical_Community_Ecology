@@ -533,6 +533,31 @@ Prove the local stability of the feasible coexistence equilibrium.
 
 ### Separation of time-scales
 
+In the original article, @macarthur1970species takes an interesting shortcut, which can shed light on the behavior of the GLV when the matrix of interactions is symmetric (i.e., $A = A^T$). Consider the Consumer-Resource model above, and assume that resources equilibrate quickly compared to the dynamics of the consumers. In practice, this means that the system operates on two different time scales, such that the consumers perceive resources to be constantly at equilibrium.
+
+We solve the equations for the resources:
+
+$$
+\begin{align}
+r - D(b)\, y - P\, x &=0\\
+y = D(b)^{-1} (r - P\,x)
+\end{align}
+$$
+
+Substituting in the equations for the consumers, we obtain:
+
+$$
+\begin{aligned}
+\dfrac{d x}{dt} &= D(x) \left(- m + D(v) P^T\, y \right)\\
+ &= D(x) \left(- m + D(v) P^T\, D(b)^{-1} (r - P\,x) \right)\\
+ &= D(x) \left([D(v) P^T\, D(b)^{-1} r - m] - [D(v) P^T\, D(b)^{-1} P]\,x\right)\\
+ &= D(x) D(v)\left([P^T\, D(b)^{-1} r - D(v)^{-1}m] - [P^T\, D(b)^{-1} P]\,x\right)\\
+ &= D(x) D(v)\left(s - B\,x\right)
+\end{aligned}
+$$
+
+Which is again GLV, with "growth rates" $s = P^T\, D(b)^{-1} r - D(v)^{-1}m$ and "interactions" $B = P^T D(b)^{-1} P$, which importantly is symmetric.
+
 
 ## Further readings
 

@@ -227,14 +227,14 @@ reex <- integrate_RE(B, y0)
 
 Now let's look at the equilibrium of the GLV model:
 ```{r, equilglv}
-glvex %>% filter(time == 100)
+knitr::kable(glvex %>% filter(time == 100))
 ```
 
 And recover it from the RE equation (just divide by the density of the extra "species"):
 
 ```{r, equilglvre}
-reex %>% filter(time == 40)
-reex %>% filter(time == 40) %>% mutate(density = density / tail(density, 1))
+knitr::kable(reex %>% filter(time == 40))
+knitr::kable(reex %>% filter(time == 40) %>% mutate(density = density / tail(density, 1)) )
 ```
 
 Not only the equilibria are the same, but also the dynamics are the same once time has been properly rescaled. Similarly, for each RE system we can always recover a matrix with zero in the last row by applying the transformations detailed above, and therefore recover the corresponding GLV. For example, take the matrix for the RPS above, and make each coefficient in the last row zero by adding the appropriate constant to each column. Then one recovers some sort of a predator-prey system:
