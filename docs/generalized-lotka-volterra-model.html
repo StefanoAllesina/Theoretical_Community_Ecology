@@ -24,7 +24,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2020-10-02" />
+<meta name="date" content="2020-10-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -572,6 +572,10 @@ A \begin{pmatrix} w_1\\ w_2 \end{pmatrix} = \begin{pmatrix} A_{11}w_1 + A_{12} w
 <li>We are left with the case in which both <span class="math inline">\(w_1 \neq 0\)</span> and <span class="math inline">\(w_2 \neq 0\)</span>. We have <span class="math inline">\(A_{21} w_1 = 0\)</span>, but <span class="math inline">\(A_{21} w_1= D(v)P^T w_1 = 0\)</span>, which implies <span class="math inline">\(P^T w_1 = 0\)</span> because all <span class="math inline">\(v_i &gt; 0\)</span>. Then, multiply the first set of equations by <span class="math inline">\(w_1^T\)</span> and the second by <span class="math inline">\(w_2^T\)</span>. We obtain <span class="math inline">\(w_1^T A_{11} w_1 - w_1^T P w_2 = 0\)</span> and <span class="math inline">\(w_2^T D(v)P^T w_1 = 0 = w_2^T P^T w_1\)</span>. But then <span class="math inline">\(w_1^T P w_2 = 0\)</span>, leaving us with <span class="math inline">\(w_1^T A_{11} w_1 = 0\)</span> with <span class="math inline">\(w_1 \neq 0\)</span>, which is again a contradiction because <span class="math inline">\(A_{11}\)</span> is clearly negative definite (and as such <span class="math inline">\(w_1^T A_{11} w_1 \leq 0\)</span>, with equality implying <span class="math inline">\(w_1 = 0\)</span>).</li>
 </ul>
 <p>We have proven that <span class="math inline">\(A\)</span> is nonsingular, and therefore a unique equilibrium point for the system exists (the equilibrium for the moment needs not to be feasible) whenever <span class="math inline">\(A_{11} = -D(b)\)</span> is negative definite (which is always the case whenever resources are self-regulating) and, importantly, <span class="math inline">\(A_{12}\)</span> has rank <span class="math inline">\(k\)</span> (the number of consumers). This in turn implies that <strong>the number of resources must be larger (or equal) than the number of consumers</strong>. A similar argument is developed in the classic <span class="citation">Levin (<a href="#ref-levin1970community" role="doc-biblioref">1970</a>)</span>.</p>
+<div class="boxpaper">
+<p><strong>Key paper: <span class="citation">Levin (<a href="#ref-levin1970community" role="doc-biblioref">1970</a>)</span></strong></p>
+<p>Starting from fairly generic assumptions, the principle of competitive exclusion is generalized: <em>No stable equilibrium can be attained in an ecological community in which some <span class="math inline">\(r\)</span> components are limited by less than <span class="math inline">\(r\)</span> limiting factors. In particular, no stable equilibrium is possible if some <span class="math inline">\(r\)</span> species are limited by less than <span class="math inline">\(r\)</span> factors.</em></p>
+</div>
 </div>
 <div id="global-stability-1" class="section level3">
 <h3><span class="header-section-number">3.4.2</span> Global stability</h3>

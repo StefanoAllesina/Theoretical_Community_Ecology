@@ -480,6 +480,13 @@ We therefore have $A_{21} w_1 = 0$ and $A_{11}w_1 + A_{12} w_2 = 0$.
 
 We have proven that $A$ is nonsingular, and therefore a unique equilibrium point for the system exists (the equilibrium for the moment needs not to be feasible) whenever $A_{11} = -D(b)$ is negative definite (which is always the case whenever resources are self-regulating) and, importantly, $A_{12}$ has rank $k$ (the number of consumers). This in turn implies that **the number of resources must be larger (or equal) than the number of consumers**. A similar argument is developed in the classic @levin1970community.
 
+:::boxpaper
+**Key paper: @levin1970community**
+
+Starting from fairly generic assumptions, the principle of competitive exclusion is generalized: *No stable equilibrium can be attained in an ecological community in which some $r$ components are limited by less than $r$ limiting factors. In particular, no stable equilibrium is possible if some $r$ species are limited by less than $r$ factors.*
+
+:::
+
 ### Global stability
 
 Next, we prove that if a feasible equilibrium for the system exists, it is globally stable. First, we choose a diagonal matrix $G$ 
