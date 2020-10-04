@@ -315,8 +315,8 @@ To prove this point, we start from $r = -Ax^\star$. Substituting, we can write t
 
 $$
 \begin{aligned}
- \frac{d V(x(t))}{dt} &= 1^T C \left(\frac{d x(t)}{dt}  + D(x^*) \frac{d \log x(t)}{dt} \right)\\
- &= 1^T C \left(D(x)(A (x - x^\star)  - D(x^*) A (x - x^\star) \right)\\
+ \frac{d V(x(t))}{dt} &= 1^T C \left(\frac{d x(t)}{dt} - D(x^\star) \frac{d \log x(t)}{dt} \right)\\
+ &= 1^T C \left(D(x)(A (x - x^\star)  - D(x^\star) A (x - x^\star) \right)\\
  &= 1^T C \left(D(x - x^\star)  A (x - x^\star) \right)\\
  &= 1^T \left(D(x - x^\star)  C A (x - x^\star) \right)\\
  &= (x - x^\star)^T  CA (x - x^\star)\\
@@ -494,7 +494,7 @@ Next, we prove that if a feasible equilibrium for the system exists, it is globa
 $$
 G = \begin{pmatrix}
 I_n & 0_{n,k}\\
-0_{k,n} & D(v)^-1
+0_{k,n} & D(v)^{-1}
 \end{pmatrix}
 $$
 
@@ -520,7 +520,7 @@ with eigenvalues $-b$ and $0$ (with multiplicity $k$). Therefore,
 
 $$
 \begin{align}
-\frac{d V(z(t))}{dt} &= 1^T G \left(\frac{d z(t)}{dt}  + D(z^*) \frac{d \log z(t)}{dt} \right)\\
+\frac{d V(z(t))}{dt} &= 1^T G \left(\frac{d z(t)}{dt} - D(z^\star) \frac{d \log z(t)}{dt} \right)\\
  &= \frac{1}{2}(z - z^\star)^T  (GA + A^T G) (z - z^\star)\\
  &= \frac{1}{2}(z - z^\star)^T  (B + B^T) (z - z^\star)\\
  &= (y - y^\star)^T  (-D(b)) (y - y^\star)
@@ -563,8 +563,39 @@ $$
 \end{aligned}
 $$
 
-Which is again GLV, with "growth rates" $s = P^T\, D(b)^{-1} r - D(v)^{-1}m$ and "interactions" $B = P^T D(b)^{-1} P$, which importantly is symmetric.
+Which is again GLV, with "growth rates" $s = P^T\, D(b)^{-1} r - D(v)^{-1}m$ and "interactions" $B = P^T D(b)^{-1} P$, which, importantly, is symmetric (note also that if $P$ is of rank $k$ and $b > 0$, then $B$ is of full rank).
 
+### Lyapunov function for symmetric Lotka-Volterra
+
+At equilibrium, we have $x^\star = B^{-1} s$. Consider the function:
+
+$$
+V(x(t)) = 2 \sum_i s_i x_i - \sum_{ij} B_{ij} x_i x_j
+$$
+
+Note that $\sum_i s_i x_i > 0$ and that whenever $B$ is stable (and because it's symmetric, negative definite), $- \sum_{ij} B_{ij} x_i x_j > 0$. At equilibrium, we have:
+
+$$
+V(x^\star) = 2 \sum_i s_i x_i^\star - \sum_{ij} x_j^\star B_{ij}  B_{ij}^{-1} s_j = 2 \sum_i s_i x_i^\star - \sum_j s_j x_j^\star = \sum_i s_i x_i^\star
+$$
+
+It is of particular interest the case in which $s_i = 1$ for all $i$ and $V(x^\star)$ is simply the total biomass of the system at equilibrium. Deriving with respect to time:
+
+$$
+\dfrac{d V(x(t))} {d t} = 2 \sum_{i} s_i \dfrac{d x_i}{dt} - \sum_{ij} \left(B_{ij} \dfrac{d x_i}{dt} x_j + B_{ij} \dfrac{d x_j}{dt} x_i \right)
+$$
+
+:::boxhomework
+
+**Homework 3b**
+
+Consider a five-species system with symmetric, stable $B$ (with all positive coefficients) and positive $s$, yielding the feasible equilibrium $x^\star$. 
+
+* Find random parameters satisfying 1) $B_{ij} = B_{ji} > 0\; \forall i,j$; 2) $B$ is stable; 3) $s_i > 0 \; \forall i$; 4) $B^{-1}s = x^\star > 0$. These parameters define your pool of species.
+* For each possible subset of species in the pool, (i.e., for all combinations ranging from a single species [5 cases], to two species [10 cases], \ldots, to all species together [1 case]), compute the corresponding equilibrium. Is it feasible? Is it stable?
+* Take two subset of species such that a) both are feasible and stable; b) subset 1 contains subset 2 (i.e., all species in 2 are in 1, but not the converse); c) the value of $V(x^\star)$ for subset 1 is larger than that for subset 2. Try invading subset 2 with the species by introducing at the equilibrium of subset 2 the species that are in subset 1 but not in 2---starting all of them at low density. What happens?
+
+:::
 
 ## Further readings
 
