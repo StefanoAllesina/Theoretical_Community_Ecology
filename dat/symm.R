@@ -10,7 +10,7 @@ cr_sep <- function(t, x, pars){
   return(list(dxdt))
 }
 
-n <- 5
+n <- 6
 # find feasible, stable parameterization
 success <- FALSE
 while(success == FALSE){
