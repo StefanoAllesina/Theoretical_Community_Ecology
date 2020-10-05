@@ -66,7 +66,6 @@ Many excellent books are available on these topics. Here are the main references
 - @hadeler2017topics --- a more mathematically-focused reading.
 - @hirsch2012differential --- an extensive, clearly written and rigorous introduction to dynamical systems.
 
-
 ## Acknowledgements {-}
 
 These lectures grew out of a set of four lectures I have presented at the ICTP-SAIFR/IFT-UNESP ["School on Community Ecology: from patterns to principles"](https://www.ictp-saifr.org/community-ecology-from-patterns-to-principles/), held on January 20-25, 2020 in São Paulo, Brazil. Thanks to the organizers (Marcus Aguiar, Jacopo Grilli, Roberto Kraenkel, Ricardo Martinez-Garcia and Paulo Inácio Prado) for the invitation and for prompting me to start working on the material. I am grateful to the students for useful feedback. 

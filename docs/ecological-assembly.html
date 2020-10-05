@@ -236,7 +236,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html"><i class="fa fa-check"></i><b>8</b> Metapopulation dynamics on networks</a><ul>
-<li class="chapter" data-level="8.1" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#levins-bio"><i class="fa fa-check"></i><b>8.1</b> Levins Bio</a></li>
+<li class="chapter" data-level="8.1" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#metapopulations"><i class="fa fa-check"></i><b>8.1</b> Metapopulations</a></li>
 <li class="chapter" data-level="8.2" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#levins-model"><i class="fa fa-check"></i><b>8.2</b> Levins model</a></li>
 <li class="chapter" data-level="8.3" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#hanski-ovaskainen-2000"><i class="fa fa-check"></i><b>8.3</b> Hanski Ovaskainen 2000</a></li>
 <li class="chapter" data-level="8.4" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#sis-on-a-network-van-mieghem"><i class="fa fa-check"></i><b>8.4</b> SIS on a network Van Mieghem</a></li>
@@ -276,14 +276,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>Lesson plan</strong>:</p>
 <ol style="list-style-type: decimal">
 <li>We have seen in the previous lecture that a large ecological community will almost invariably be unstable, possibly leading to extinctions. It is therefore natural to ask what happens when either a feasible equilibrium does not exist, or it is unstable. In particular, we want to know how many species can persist.</li>
-<li>We show that the GLV model can give rise to all sort of dynamics, including limit cycles and chaos.</li>
-<li>Despite this fact, the persistence of all species requires the existence of a feasible equilibrium, which is the time-average of the species’ densities for complex attractors.</li>
-<li>We introduce D-stability, allowing us to write a Lyapunov function to determine global stability in GLV models.</li>
-<li>We conclude by analyzing the MacArthur’s consumer-resource model, highlighting its deep connection to GLV.</li>
+<li>We discuss the problem of assembly, and why is it so challenging to study analytically.</li>
+<li>We introduce a few assumptions that make the problem tractable and at the same time non trivial.</li>
+<li>We compute how many species will coexist in a GLV with random parameters, and see how we can study assembly by drawing an “assembly graph”</li>
 </ol>
 <div id="assembly" class="section level2">
 <h2><span class="header-section-number">5.1</span> Assembly</h2>
-<p>We call <strong>assembly the process by which a community is constituted by adding species sequentially</strong>. Imagine starting with a bare environment, and introducing the first species. If the species can grow in the new environment, it will establish, and if not, it will go extinct. Mathematically, we assume that <strong>new species are introduced at very low abundance</strong>, so that they do not experience self-limitation due to crowding, and that <strong>invasion are spaced in time</strong> so that the dynamics can play out before the next invasion happens. For example, consider the first species entering the system, and write the equation for the per-capita growth rate:</p>
+<p>We call <strong>assembly the process by which a community is constituted by adding species sequentially</strong>.</p>
+<div id="bio-of-cowles" class="section level4">
+<h4><span class="header-section-number">5.1.0.1</span> BIO OF COWLES</h4>
+<p>Imagine starting with a bare environment, and introducing the first species. If the species can grow in the new environment, it will establish, and if not, it will go extinct. Mathematically, we assume that <strong>new species are introduced at very low abundance</strong>, so that they do not experience self-limitation due to crowding, and that <strong>invasion are spaced in time</strong> so that the dynamics can play out before the next invasion happens. For example, consider the first species entering the system, and write the equation for the per-capita growth rate:</p>
 <p><span class="math display">\[
 \dfrac{1}{x_i(t)}\dfrac{dx_i(t)}{dt} = r_i + A_{ii} x_i(t)
 \]</span>
@@ -297,6 +299,7 @@ If <span class="math inline">\(x_i(0) \ll 1\)</span>, we can set <span class="ma
 \]</span></p>
 <p>Species <span class="math inline">\(j\)</span> can therefore grow when rare if <span class="math inline">\(r_j + A_{ji}x_i^\star &gt; 0\)</span>, i.e., <span class="math inline">\(r_j &gt; -A_{ji}x_i^\star\)</span>. We call this type of inequality an <strong>“invasion criterion”</strong>.</p>
 <p>If the species <span class="math inline">\(j\)</span> can grow when rare, in general, it could a) grow initially, but then go extinct; b) displace species <span class="math inline">\(i\)</span>, sending it to extinction; c) coexist with species <span class="math inline">\(i\)</span>. By reiterating invasions with different species, we can assemble a large ecological community.</p>
+</div>
 </div>
 <div id="invasion-in-multispecies-communities" class="section level2">
 <h2><span class="header-section-number">5.2</span> Invasion in multispecies communities</h2>
