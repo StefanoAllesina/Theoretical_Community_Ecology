@@ -3,15 +3,19 @@
 **Lesson plan**:
 
 1. We have seen in the previous lecture that a large ecological community will almost invariably be unstable, possibly leading to extinctions. It is therefore natural to ask what happens when either a feasible equilibrium does not exist, or it is unstable. In particular, we want to know how many species can persist.
-1. We show that the GLV model can give rise to all sort of dynamics, including limit cycles and chaos.
-1. Despite this fact, the persistence of all species requires the existence of a feasible equilibrium, which is the time-average of the species' densities for complex attractors. 
-1. We introduce D-stability, allowing us to write a Lyapunov function to determine global stability in GLV models.
-1. We conclude by analyzing the MacArthur's consumer-resource model, highlighting its deep connection to GLV.
-
+1. We discuss the problem of assembly, and why is it so challenging to study analytically. 
+1. We introduce a few assumptions that make the problem tractable and at the same time non trivial.
+1. We compute how many species will coexist in a GLV with random parameters, and see how we can study assembly by drawing an "assembly graph"
 
 ## Assembly
 
-We call **assembly the process by which a community is constituted by adding species sequentially**. Imagine starting with a bare environment, and introducing the first species. If the species can grow in the new environment, it will establish, and if not, it will go extinct. Mathematically, we assume that **new species are introduced at very low abundance**, so that they do not experience self-limitation due to crowding, and that **invasion are spaced in time** so that the dynamics can play out before the next invasion happens. For example, consider the first species entering the system, and write the equation for the per-capita growth rate:
+We call **assembly the process by which a community is constituted by adding species sequentially**. 
+
+
+#### BIO OF COWLES
+
+
+Imagine starting with a bare environment, and introducing the first species. If the species can grow in the new environment, it will establish, and if not, it will go extinct. Mathematically, we assume that **new species are introduced at very low abundance**, so that they do not experience self-limitation due to crowding, and that **invasion are spaced in time** so that the dynamics can play out before the next invasion happens. For example, consider the first species entering the system, and write the equation for the per-capita growth rate:
 
 $$
 \dfrac{1}{x_i(t)}\dfrac{dx_i(t)}{dt} = r_i + A_{ii} x_i(t)

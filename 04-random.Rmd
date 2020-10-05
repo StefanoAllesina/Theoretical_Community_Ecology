@@ -97,7 +97,7 @@ plot_eigenvalues(M)
 
 The eigenvalues fall into an almost perfect circle! Turns out, that this is the behavior we should expect, as stated by the so-called "Circular Law", one of the most beautiful results in random matrix theory. 
 
-**Circular law:** Take a non-symmetric, $n \times n$ random matrix in which all coefficients $X_{ij}$ are i.i.d. random variables with $\mathbb E[X_{ij}] = 0$ and $\mathbb E[X_{ij}] = 1$. Then, as $n \to \infty$, the e.s.d. of ${X} / \sqrt{n}$ converges to the circular law:
+**Circular law:** Take a non-symmetric, $n \times n$ random matrix in which all coefficients $X_{ij}$ are i.i.d. random variables with $\mathbb E[X_{ij}] = 0$ and $\mathbb E[X_{ij}^2] = 1$. Then, as $n \to \infty$, the e.s.d. of ${X} / \sqrt{n}$ converges to the circular law:
 
 $$
   \mu(\lambda) = \begin{cases}
@@ -179,7 +179,7 @@ pl_p
 
 In ecological communities, the effect of species $i$ on $j$ and that of $j$ on $i$ are typically not independent (as assumed above): in the case of competition between species, we expect them both to be negative; for consumption, if one is positive, the other is negative, and so forth. A more refined model of a random matrix would therefore sample interactions in pairs from a bivariate distribution. The elliptic law can deal with this case:
 
-**Elliptic law:** Take a non-symmetric, $n \times n$ random matrix in which the pairs of coefficients $(X_{ij}, X_{ji})$ are sampled independently from a bivariate distribution defined by a vector of means $m = (0,0)^t$ and a covariance matrix $\Sigma = \begin{pmatrix} 1 & \rho\\ \rho & 1 \end{pmatrix}$. Then, as $n \to \infty$, the e.s.d. of ${n} / \sqrt{S}$ converges to the elliptic law:
+**Elliptic law:** Take a non-symmetric, $n \times n$ random matrix in which the pairs of coefficients $(X_{ij}, X_{ji})$ are sampled independently from a bivariate distribution defined by a vector of means $m = (0,0)^t$ and a covariance matrix $\Sigma = \begin{pmatrix} 1 & \rho\\ \rho & 1 \end{pmatrix}$. Then, as $n \to \infty$, the e.s.d. of ${X} / \sqrt{n}$ converges to the elliptic law:
 
 $$
   \mu(\lambda) = \begin{cases} \frac{1}{\pi (1 - \rho^2) } \quad
@@ -251,7 +251,7 @@ Allesina and Tang therefore concluded that, all other things being equal, ecolog
 
 ## Symmetric matrices
 
-Build a random symmetric matrix $X$ by sampling the coefficients $X_{ij}$ in the upper-triangular part (i.e., $i < j$) independently from a distribution such that $\mathbb E[X_{ij}] = 0$ and $\mathbb E[X_{ij}] = 1$. Set $X_{ji} = X_{ij}$, thereby building a symmetric matrix. The diagonal elements are sampled from a distribution with mean zero and finite variance. Then, as $n \to \infty$, the empirical spectral distribution of $X / \sqrt{n}$ (i.e., of the matrix in which all the coefficients have been divided by the $\sqrt{n}$) converges almost surely to the Wigner's semicirle distribution:
+Build a random symmetric matrix $X$ by sampling the coefficients $X_{ij}$ in the upper-triangular part (i.e., $i < j$) independently from a distribution such that $\mathbb E[X_{ij}] = 0$ and $\mathbb E[X_{ij}^2] = 1$. Set $X_{ji} = X_{ij}$, thereby building a symmetric matrix. The diagonal elements are sampled from a distribution with mean zero and finite variance. Then, as $n \to \infty$, the empirical spectral distribution of $X / \sqrt{n}$ (i.e., of the matrix in which all the coefficients have been divided by the $\sqrt{n}$) converges almost surely to the Wigner's semicirle distribution:
 
 \begin{equation}
   \mu(\lambda) = \begin{cases} \frac{1}{2 \pi} \sqrt{4 - \lambda^2}\;
@@ -294,7 +294,7 @@ pl
 
 ## Covariance matrices
 
-Take a $p \times n$ rectangular matrix $X$, with $p < n$ and i.i.d. coefficients with $\mathbb E[X_{ij}] = 0$ and $\mathbb E[X_{ij}] = 1$. When $n \to \infty$, the ratio $p/n \to y$ (i.e., the number of rows and columns grow proportionally). Then the eigenvalue distribution of the scaled covariance matrix $S = \frac{1}{n} X X^T$ converges to the Marchenko-Pastur distribution:
+Take a $p \times n$ rectangular matrix $X$, with $p < n$ and i.i.d. coefficients with $\mathbb E[X_{ij}] = 0$ and $\mathbb E[X_{ij}^2] = 1$. When $n \to \infty$, the ratio $p/n \to y$ (i.e., the number of rows and columns grow proportionally). Then the eigenvalue distribution of the scaled covariance matrix $S = \frac{1}{n} X X^T$ converges to the Marchenko-Pastur distribution:
 
 $$
 \begin{equation}
@@ -306,17 +306,134 @@ $$
 \end{equation}
 $$
 
+
+```{r, echo=FALSE}
+n <- 1000
+m <- 500
+
+X <- matrix(rnorm(n * m), n, m)
+M <- t(X) %*% (X)
+eM <- eigen(M, only.values = TRUE, symmetric = TRUE)$values
+deM <- data.frame(eigenvalue = eM)
+
+pl <- ggplot(deM) + aes(x = eigenvalue) + 
+  geom_histogram(aes(y = stat(density)), binwidth = 75) + 
+  geom_hline(yintercept = 0) 
+
+r <- m / n
+
+dmp <- function(x, r, n){
+  x <- x / n
+  return((1 / 2 * pi) * 
+           sqrt(((1 + sqrt(r))^2 - x) * 
+                  (-(1 - sqrt(r))^2 + x)) / (r * x))
+}
+
+to_plot <- seq(0, max(eM) + 5, by = 5)
+df_dens <- data.frame(eigenvalue = to_plot, density = dmp(to_plot, n = n, r = r) / 10000)
+df_dens[is.na(df_dens)] <- 0
+
+pl <- (pl + geom_path(data = df_dens, 
+                      aes(x = eigenvalue, y = density)) + my_theme + 
+  xlab(label = latex2exp::TeX('$\\sigma_i$')))
+show(pl)
+```
+
+
 ## Small-rank perturbations
 
+The basic results listed above consider matrices whose coefficients have mean
+zero. Clearly, this is rarely the case in ecological systems, and therefore for applications we need to incorporate the possibility of nonzero means. While in general one cannot compute the distribution of the eigenvalues of a sum of two matrices ${M} = {A} + {B}$ from the eigenvalues of the two matrices, this calculation is possible whenever ${A}$ has small-rank (i.e., few nonzero eigenvalues, or a finite amount in the limit of infinitely large sizes) and ${B}$ is a large random matrix. In this case, the distribution of the eigenvalues of ${M}$ will be composed by a bulk, defined by the spectrum of ${B}$, and (possibly) a few outlier eigenvalues, matching closely the nonzero eigenvalues of ${A}$ (a correction is needed when the coefficients of ${B}$ are correlated, @o2014low).
 
+For example, let's add a matrix with three nonzero eigenvalues to a large random matrix of the type studied by May:
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+ellipseFun <- function(center = c(0,0), r1 = 1, r2 = 2, npoints = 250){
+  tt <- seq(0, 2 * pi, length.out = npoints)
+  xx <- center[1] + r1 * sin(tt)
+  yy <- center[2] + r2 * cos(tt)
+  return(data.frame(Re = xx, Im = yy))
+}
+library(MASS)
+set.seed(4)
+n <- 500
+d <- -12
+rho <- 0
+C <- 0.2
+
+A <- (matrix(runif(n * n), n, n) < C) * 1 
+M <- matrix(0, n, n)
+pairs <- MASS::mvrnorm(choose(n, 2), 
+                       mu = c(0, 0), 
+                       Sigma = matrix(c(1, rho, rho, 1), 2, 2, byrow = TRUE))
+M[upper.tri(M)] <- pairs[,1]
+M <- t(M)
+M[upper.tri(M)] <- pairs[,2]
+M <- M * A
+diag(M) <- d
+
+# add small rank matrix
+S <- matrix(0+0i, n, n)
+S[1,1] <- 16+0i
+S[2,2] <- -12 + 16i
+S[3,3] <- -12 - 16i
+M <- M + S
+
+eM <- eigen(M, only.values = TRUE, symmetric = FALSE)$values
+deM <- data.frame(Re = Re(eM), Im = Im(eM))
+
+r1 <- sqrt(n * C) * (1 + rho * C)
+r2 <- sqrt(n * C) * (1 - rho * C)
+
+pl1 <- ggplot(deM) + aes(x = Re, y = Im) + 
+  geom_hline(yintercept = 0) +
+  geom_vline(xintercept = 0) +
+  geom_path(data = ellipseFun(c(d, 0), r1, r2)) + 
+  geom_point(alpha = 0.7) + coord_equal() + my_theme + 
+  geom_point(data = data.frame(Re = d + Re(diag(S)[1:3]), Im = Im(diag(S)[1:3])), 
+             shape = 1, size = 3) + 
+  xlab(label = latex2exp::TeX('$Re(\\lambda_i)$')) + ylab(label = latex2exp::TeX('$Im(\\lambda_i)$'))
+
+show(pl1)
+
+```
+
+## Structured matrices
+
+Some special matrices with few nonzero eigenvalues are of the form:
+
+$$
+M = \begin{pmatrix}
+\alpha_{k,k} & \beta_{k,n-k}\\
+\gamma_{n-k,k} & \delta_{n-k, n-k}
+\end{pmatrix}
+$$
+where for example $\alpha_{k,k}$ is a $k \times k$ matrix with $\alpha$ in all entries.
+
+The eigenvalues of this matrix (or more complicated block-structured matrices with constants in every block) are easy to compute. Take:
+
+$$
+M' = \begin{pmatrix}
+\frac{k}{n}\alpha & \frac{k}{n}\beta\\
+\frac{n-k}{n}\gamma & \frac{n-k}{n}\delta
+\end{pmatrix}
+$$
+and call $\lambda'$ the eigenvalues of $M'$. Then the eigenvalues of $M$ are $\lambda = n \lambda' \cup 0_{n-2}$.
+
+:::boxhomework
+
+**Homework 4b**
+
+Study the spectrum of the community matrix of a competitive community in which species are divided into two groups (e.g., benthic, pelagic), and interactions are as follow:
+
+* $M_{ii} = -5 \; \forall i$
+* $M_{ij} \sim \mathcal N(\mu_{1}, \sigma^2)$ when $i$ and $j$ belong to the same group, and $M_{ij} \sim \mathcal N(\mu_{2}, \sigma^2)$ when they belong to different groups. Use $\mu_1 = -1, \mu_2 = -1/2, \sigma^2 = 1/4$ and assume the two groups have equal sizes.
+:::
 
 ## Further readings
 
 On random matrices and stability:
 
 - @allesina2015stability is an opinionated review on applications of random matrices in ecology.
-
-
-
-
+- The lectures follow @theorecolrandom quite closely. The online version of the book is available through the library.
 

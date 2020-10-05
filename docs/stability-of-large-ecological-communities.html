@@ -24,7 +24,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2020-10-04" />
+<meta name="date" content="2020-10-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -196,7 +196,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.4" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#symmetric-matrices"><i class="fa fa-check"></i><b>4.4</b> Symmetric matrices</a></li>
 <li class="chapter" data-level="4.5" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#covariance-matrices"><i class="fa fa-check"></i><b>4.5</b> Covariance matrices</a></li>
 <li class="chapter" data-level="4.6" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#small-rank-perturbations"><i class="fa fa-check"></i><b>4.6</b> Small-rank perturbations</a></li>
-<li class="chapter" data-level="4.7" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#further-readings-1"><i class="fa fa-check"></i><b>4.7</b> Further readings</a></li>
+<li class="chapter" data-level="4.7" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#structured-matrices"><i class="fa fa-check"></i><b>4.7</b> Structured matrices</a></li>
+<li class="chapter" data-level="4.8" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#further-readings-1"><i class="fa fa-check"></i><b>4.8</b> Further readings</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="ecological-assembly.html"><a href="ecological-assembly.html"><i class="fa fa-check"></i><b>5</b> Ecological assembly</a><ul>
 <li class="chapter" data-level="5.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#assembly"><i class="fa fa-check"></i><b>5.1</b> Assembly</a></li>
@@ -310,7 +311,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We want to determine whether the equilibrium will be stable, given <span class="math inline">\(n\)</span>, <span class="math inline">\(C\)</span>, <span class="math inline">\(d\)</span> and <span class="math inline">\(\sigma^2\)</span>. To do so, we need to find the location of the “rightmost” eigenvalue of <span class="math inline">\(M\)</span>. For example, let’s plot the eigenvalues of a large matrix (<span class="math inline">\(500 \times 500\)</span>, the red-dashed line marks the location of zero on the x axis):</p>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/exmay-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>The eigenvalues fall into an almost perfect circle! Turns out, that this is the behavior we should expect, as stated by the so-called “Circular Law”, one of the most beautiful results in random matrix theory.</p>
-<p><strong>Circular law:</strong> Take a non-symmetric, <span class="math inline">\(n \times n\)</span> random matrix in which all coefficients <span class="math inline">\(X_{ij}\)</span> are i.i.d. random variables with <span class="math inline">\(\mathbb E[X_{ij}] = 0\)</span> and <span class="math inline">\(\mathbb E[X_{ij}] = 1\)</span>. Then, as <span class="math inline">\(n \to \infty\)</span>, the e.s.d. of <span class="math inline">\({X} / \sqrt{n}\)</span> converges to the circular law:</p>
+<p><strong>Circular law:</strong> Take a non-symmetric, <span class="math inline">\(n \times n\)</span> random matrix in which all coefficients <span class="math inline">\(X_{ij}\)</span> are i.i.d. random variables with <span class="math inline">\(\mathbb E[X_{ij}] = 0\)</span> and <span class="math inline">\(\mathbb E[X_{ij}^2] = 1\)</span>. Then, as <span class="math inline">\(n \to \infty\)</span>, the e.s.d. of <span class="math inline">\({X} / \sqrt{n}\)</span> converges to the circular law:</p>
 <p><span class="math display">\[
   \mu(\lambda) = \begin{cases}
     \frac{1}{\pi} \; \; \; \text{if} \; (\text{Re}(\lambda))^2 +
@@ -343,7 +344,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="accounting-for-interaction-types" class="section level2">
 <h2><span class="header-section-number">4.3</span> Accounting for interaction types</h2>
 <p>In ecological communities, the effect of species <span class="math inline">\(i\)</span> on <span class="math inline">\(j\)</span> and that of <span class="math inline">\(j\)</span> on <span class="math inline">\(i\)</span> are typically not independent (as assumed above): in the case of competition between species, we expect them both to be negative; for consumption, if one is positive, the other is negative, and so forth. A more refined model of a random matrix would therefore sample interactions in pairs from a bivariate distribution. The elliptic law can deal with this case:</p>
-<p><strong>Elliptic law:</strong> Take a non-symmetric, <span class="math inline">\(n \times n\)</span> random matrix in which the pairs of coefficients <span class="math inline">\((X_{ij}, X_{ji})\)</span> are sampled independently from a bivariate distribution defined by a vector of means <span class="math inline">\(m = (0,0)^t\)</span> and a covariance matrix <span class="math inline">\(\Sigma = \begin{pmatrix} 1 &amp; \rho\\ \rho &amp; 1 \end{pmatrix}\)</span>. Then, as <span class="math inline">\(n \to \infty\)</span>, the e.s.d. of <span class="math inline">\({n} / \sqrt{S}\)</span> converges to the elliptic law:</p>
+<p><strong>Elliptic law:</strong> Take a non-symmetric, <span class="math inline">\(n \times n\)</span> random matrix in which the pairs of coefficients <span class="math inline">\((X_{ij}, X_{ji})\)</span> are sampled independently from a bivariate distribution defined by a vector of means <span class="math inline">\(m = (0,0)^t\)</span> and a covariance matrix <span class="math inline">\(\Sigma = \begin{pmatrix} 1 &amp; \rho\\ \rho &amp; 1 \end{pmatrix}\)</span>. Then, as <span class="math inline">\(n \to \infty\)</span>, the e.s.d. of <span class="math inline">\({X} / \sqrt{n}\)</span> converges to the elliptic law:</p>
 <p><span class="math display">\[
   \mu(\lambda) = \begin{cases} \frac{1}{\pi (1 - \rho^2) } \quad
     \text{if} \; \frac{(\text{Re}(\lambda))^2}{(1 + \rho)^2} +
@@ -364,7 +365,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="symmetric-matrices" class="section level2">
 <h2><span class="header-section-number">4.4</span> Symmetric matrices</h2>
-<p>Build a random symmetric matrix <span class="math inline">\(X\)</span> by sampling the coefficients <span class="math inline">\(X_{ij}\)</span> in the upper-triangular part (i.e., <span class="math inline">\(i &lt; j\)</span>) independently from a distribution such that <span class="math inline">\(\mathbb E[X_{ij}] = 0\)</span> and <span class="math inline">\(\mathbb E[X_{ij}] = 1\)</span>. Set <span class="math inline">\(X_{ji} = X_{ij}\)</span>, thereby building a symmetric matrix. The diagonal elements are sampled from a distribution with mean zero and finite variance. Then, as <span class="math inline">\(n \to \infty\)</span>, the empirical spectral distribution of <span class="math inline">\(X / \sqrt{n}\)</span> (i.e., of the matrix in which all the coefficients have been divided by the <span class="math inline">\(\sqrt{n}\)</span>) converges almost surely to the Wigner’s semicirle distribution:</p>
+<p>Build a random symmetric matrix <span class="math inline">\(X\)</span> by sampling the coefficients <span class="math inline">\(X_{ij}\)</span> in the upper-triangular part (i.e., <span class="math inline">\(i &lt; j\)</span>) independently from a distribution such that <span class="math inline">\(\mathbb E[X_{ij}] = 0\)</span> and <span class="math inline">\(\mathbb E[X_{ij}^2] = 1\)</span>. Set <span class="math inline">\(X_{ji} = X_{ij}\)</span>, thereby building a symmetric matrix. The diagonal elements are sampled from a distribution with mean zero and finite variance. Then, as <span class="math inline">\(n \to \infty\)</span>, the empirical spectral distribution of <span class="math inline">\(X / \sqrt{n}\)</span> (i.e., of the matrix in which all the coefficients have been divided by the <span class="math inline">\(\sqrt{n}\)</span>) converges almost surely to the Wigner’s semicirle distribution:</p>
 <p><span class="math display">\[\begin{equation}
   \mu(\lambda) = \begin{cases} \frac{1}{2 \pi} \sqrt{4 - \lambda^2}\;
     \; \; \text{if}\; \lambda \in [-2, 2]\\
@@ -376,7 +377,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="covariance-matrices" class="section level2">
 <h2><span class="header-section-number">4.5</span> Covariance matrices</h2>
-<p>Take a <span class="math inline">\(p \times n\)</span> rectangular matrix <span class="math inline">\(X\)</span>, with <span class="math inline">\(p &lt; n\)</span> and i.i.d. coefficients with <span class="math inline">\(\mathbb E[X_{ij}] = 0\)</span> and <span class="math inline">\(\mathbb E[X_{ij}] = 1\)</span>. When <span class="math inline">\(n \to \infty\)</span>, the ratio <span class="math inline">\(p/n \to y\)</span> (i.e., the number of rows and columns grow proportionally). Then the eigenvalue distribution of the scaled covariance matrix <span class="math inline">\(S = \frac{1}{n} X X^T\)</span> converges to the Marchenko-Pastur distribution:</p>
+<p>Take a <span class="math inline">\(p \times n\)</span> rectangular matrix <span class="math inline">\(X\)</span>, with <span class="math inline">\(p &lt; n\)</span> and i.i.d. coefficients with <span class="math inline">\(\mathbb E[X_{ij}] = 0\)</span> and <span class="math inline">\(\mathbb E[X_{ij}^2] = 1\)</span>. When <span class="math inline">\(n \to \infty\)</span>, the ratio <span class="math inline">\(p/n \to y\)</span> (i.e., the number of rows and columns grow proportionally). Then the eigenvalue distribution of the scaled covariance matrix <span class="math inline">\(S = \frac{1}{n} X X^T\)</span> converges to the Marchenko-Pastur distribution:</p>
 <p><span class="math display">\[
 \begin{equation}
   \mu(\lambda) = \begin{cases} \frac{1}{2 \pi \lambda y}
@@ -386,21 +387,57 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   \end{cases}
 \end{equation}
 \]</span></p>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-26-1.png" width="480" style="display: block; margin: auto;" /></p>
 </div>
 <div id="small-rank-perturbations" class="section level2">
 <h2><span class="header-section-number">4.6</span> Small-rank perturbations</h2>
+<p>The basic results listed above consider matrices whose coefficients have mean
+zero. Clearly, this is rarely the case in ecological systems, and therefore for applications we need to incorporate the possibility of nonzero means. While in general one cannot compute the distribution of the eigenvalues of a sum of two matrices <span class="math inline">\({M} = {A} + {B}\)</span> from the eigenvalues of the two matrices, this calculation is possible whenever <span class="math inline">\({A}\)</span> has small-rank (i.e., few nonzero eigenvalues, or a finite amount in the limit of infinitely large sizes) and <span class="math inline">\({B}\)</span> is a large random matrix. In this case, the distribution of the eigenvalues of <span class="math inline">\({M}\)</span> will be composed by a bulk, defined by the spectrum of <span class="math inline">\({B}\)</span>, and (possibly) a few outlier eigenvalues, matching closely the nonzero eigenvalues of <span class="math inline">\({A}\)</span> (a correction is needed when the coefficients of <span class="math inline">\({B}\)</span> are correlated, <span class="citation">O’Rourke and Renfrew (<a href="#ref-o2014low" role="doc-biblioref">2014</a>)</span>).</p>
+<p>For example, let’s add a matrix with three nonzero eigenvalues to a large random matrix of the type studied by May:</p>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-27-1.png" width="480" style="display: block; margin: auto;" /></p>
+</div>
+<div id="structured-matrices" class="section level2">
+<h2><span class="header-section-number">4.7</span> Structured matrices</h2>
+<p>Some special matrices with few nonzero eigenvalues are of the form:</p>
+<p><span class="math display">\[
+M = \begin{pmatrix}
+\alpha_{k,k} &amp; \beta_{k,n-k}\\
+\gamma_{n-k,k} &amp; \delta_{n-k, n-k}
+\end{pmatrix}
+\]</span>
+where for example <span class="math inline">\(\alpha_{k,k}\)</span> is a <span class="math inline">\(k \times k\)</span> matrix with <span class="math inline">\(\alpha\)</span> in all entries.</p>
+<p>The eigenvalues of this matrix (or more complicated block-structured matrices with constants in every block) are easy to compute. Take:</p>
+<p><span class="math display">\[
+M&#39; = \begin{pmatrix}
+\frac{k}{n}\alpha &amp; \frac{k}{n}\beta\\
+\frac{n-k}{n}\gamma &amp; \frac{n-k}{n}\delta
+\end{pmatrix}
+\]</span>
+and call <span class="math inline">\(\lambda&#39;\)</span> the eigenvalues of <span class="math inline">\(M&#39;\)</span>. Then the eigenvalues of <span class="math inline">\(M\)</span> are <span class="math inline">\(\lambda = n \lambda&#39; \cup 0_{n-2}\)</span>.</p>
+<div class="boxhomework">
+<p><strong>Homework 4b</strong></p>
+<p>Study the spectrum of the community matrix of a competitive community in which species are divided into two groups (e.g., benthic, pelagic), and interactions are as follow:</p>
+<ul>
+<li><span class="math inline">\(M_{ii} = -5 \; \forall i\)</span></li>
+<li><span class="math inline">\(M_{ij} \sim \mathcal N(\mu_{1}, \sigma^2)\)</span> when <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> belong to the same group, and <span class="math inline">\(M_{ij} \sim \mathcal N(\mu_{2}, \sigma^2)\)</span> when they belong to different groups. Use <span class="math inline">\(\mu_1 = -1, \mu_2 = -1/2, \sigma^2 = 1/4\)</span> and assume the two groups have equal sizes.</li>
+</ul>
+</div>
 </div>
 <div id="further-readings-1" class="section level2">
-<h2><span class="header-section-number">4.7</span> Further readings</h2>
+<h2><span class="header-section-number">4.8</span> Further readings</h2>
 <p>On random matrices and stability:</p>
 <ul>
 <li><span class="citation">Allesina and Tang (<a href="#ref-allesina2015stability" role="doc-biblioref">2015</a>)</span> is an opinionated review on applications of random matrices in ecology.</li>
+<li>The lectures follow <span class="citation">Allesina and Grilli (<a href="#ref-theorecolrandom" role="doc-biblioref">2020</a>)</span> quite closely. The online version of the book is available through the library.</li>
 </ul>
 
 </div>
 </div>
 <h3>References</h3>
 <div id="refs" class="references">
+<div id="ref-theorecolrandom">
+<p>Allesina, Stefano, and Jacopo Grilli. 2020. “Models for Large Ecological Communities—a Random Matrix Approach.” In <em>Theoretical Ecology: Concepts and Applications</em>, edited by Kevin S McCann and Gabriel Gellner, 74–92. Oxford University Press.</p>
+</div>
 <div id="ref-allesina2012stability">
 <p>Allesina, Stefano, and Si Tang. 2012. “Stability Criteria for Complex Ecosystems.” <em>Nature</em> 483 (7388): 205.</p>
 </div>
@@ -430,6 +467,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="ref-nowak1992evolutionary">
 <p>Nowak, Martin A, and Robert M May. 1992. “Evolutionary Games and Spatial Chaos.” <em>Nature</em> 359 (6398): 826–29.</p>
+</div>
+<div id="ref-o2014low">
+<p>O’Rourke, Sean, and David Renfrew. 2014. “Low Rank Perturbations of Large Elliptic Random Matrices.” <em>Electronic Journal of Probability</em> 19.</p>
 </div>
 </div>
             </section>
