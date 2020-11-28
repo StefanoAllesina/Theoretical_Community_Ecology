@@ -66,7 +66,7 @@ $$
 where each block $A^{(a,b)}$ contains the effects of the species in set $b$ on the growth of the species in $a$. For feasibility we need:
 
 $$
-x^{(k)} = -r^{(k)}\left(A^{(k,k)} \right)^{-1} > 0
+x^{(k)} = -\left(A^{(k,k)} \right)^{-1}r^{(k)} > 0
 $$
 Now we want to write the condition for the non-invasibility of the resident community by the other species in the metacommunity. For each species in $(n-k)$, we need to have a negative growth rate when invading:
 
@@ -89,7 +89,7 @@ yielding:
 
 $$
 \begin{aligned}
-\dfrac{V(x)}{dt} &= -\sum_i c_i \left(\bar{x}_i \frac{d \log x_i}{dt} - \frac{d x_i}{dt} \right) \\
+\dfrac{dV(x)}{dt} &= -\sum_i c_i \left(\bar{x}_i \frac{d \log x_i}{dt} - \frac{d x_i}{dt} \right) \\
 &= -\sum_i c_i \left( \bar{x}_i - x_i \right)  \left( r_i + \sum_j A_{ij} x_j \right) \\
 &= -\sum_i c_i \left( \bar{x}_i - x_i \right)  \left( r_i + \sum_j A_{ij} (x_j - \bar{x}_j) +  \sum_j A_{ij} \bar{x}_j \right) \\
 &= \sum_{i,j} \left( \bar{x}_i - x_i \right) c_i A_{ij} \left( \bar{x}_j - x_j \right) - \sum_i c_i \left( \bar{x}_i - x_i \right) \left(r_i + \sum_j A_{ij} \bar{x}_j \right)

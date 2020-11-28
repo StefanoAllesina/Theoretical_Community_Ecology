@@ -71,7 +71,7 @@ which is again the equation for the logistic growth with $\rho = \beta - \gamma$
 
 ### Existence of an equilibrium
 
-Returning to the multi-species system, and in analogy with the single species, we can look for stationary points (equilibria). If the matrix $A$ is not singular, then we can look for a solution of $r + Ax$ that has positive components (called a **feasible equilibrium**). **If such point exists, it is unique** and is the solution of $Ax^\star = -r$, $x^\star = -A^{-1}r$. 
+Returning to the multi-species system, and in analogy with the single species, we can look for stationary points (equilibria). If the matrix $A$ is not singular, then we can look for a solution of $r + Ax = 0$ that has positive components (called a **feasible equilibrium**). **If such point exists, it is unique** and is the solution of $Ax^\star = -r$, $x^\star = -A^{-1}r$. 
 
 Suppose that the GLV has no feasible equilibrium. Then all trajectories (if bounded; some could grow to infinity) reach the boundary of $\mathbb R^n_{0+}$. Practically, this means that **to ensure coexistence of all species, it is necessary to have an equilibrium in the interior $\mathbb R^n_{+}$**. 
 
@@ -306,7 +306,7 @@ Suppose that there is a positive diagonal matrix $C$ such that $C A + A^T C$ is 
 Further, suppose that the GLV system with parameters $A$ and $r$ has a feasible equilibrium point $x^\star$. Then the function:
 
 $$
-V(x(t)) = 1^T C \left( x(t) -D(x^\star) -D(x^\star) \log D(x(t) / x^\star)\right)
+V(x(t)) = 1^T C \left( x(t) -x^\star -x^\star \cdot \log (x(t) / x^\star)\right)
 $$
 
 is a Lyapunov function for the GLV system. It is clear that $V(x(t))$ is positive everywhere in the positive orthant besides at equilibrium. Then, we need to show that the function decreases along the trajectories of the system.
@@ -326,7 +326,7 @@ $$
 
 A matrix $B$ is negative definite if $y^T B y < 0$ for all $y \neq 0$. As such, if $C A + A^T C$, then $\frac{d V(x(t))}{dt} \leq 0$, i.e., will decrease in time (starting from any $x(0)$) until the equilibrium $x^\star$ is reached. 
 
-The results above show that **if $A$ is Lyapunov diagonally-stable and a feasible equilibrium $x^\star$ exists, than all trajectories starting at a positive density will converge to the equilibrium**. This property is often used to prove **global stability**.
+The results above show that **if $A$ is Lyapunov diagonally-stable and a feasible equilibrium $x^\star$ exists, then all trajectories starting at a positive density will converge to the equilibrium**. This property is often used to prove **global stability**.
 
 ## MacArthur's consumer-resource model
 
