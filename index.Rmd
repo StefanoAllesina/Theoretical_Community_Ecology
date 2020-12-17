@@ -21,7 +21,7 @@ The class builds upon material typically presented in classes on population, com
 
 ## Topics {-}
 
-The choice of themes is very opinionated, and heavily biased toward my own research interests. Because of this, the focus is squarely on continuous time, time-invariant models---in most cases without any consideration of space and stochasticity. Similarly, the material mostly deals with the case of multispecies dynamics, though low-dimensional models are considered when their analysis helps with the understanding of the multispecies case. Finally, a lot of the material is centered around the Generalized Lotka-Volterra model and its cousins (e.g., the replicator equation). This because a) the Generalized Lotka-Volterra model for multiple interacting species is in a way the simplest nonlinear model for population dynamics; and b) it is a "canonical" model---in the sense that many other models can be re-cast in GLV form.
+The choice of themes is very opinionated, and heavily biased toward my own research interests. Because of this, the focus is squarely on continuous time, time-invariant models---in most cases without any consideration of space and stochasticity. Similarly, the material mostly deals with the case of multispecies dynamics, though low-dimensional models are considered when their analysis helps with the understanding of the multispecies case. Finally, much of the material is centered around the Generalized Lotka-Volterra model and its cousins (e.g., the replicator equation). This because a) the Generalized Lotka-Volterra model for multiple interacting species is in a way the simplest nonlinear model for population dynamics; and b) it is a "canonical" model---in the sense that many other models can be re-cast in GLV form.
 
 ## Notation {-}
 
@@ -57,11 +57,11 @@ University of Chicago is committed to ensuring equitable access to our academic 
 
 ## A note about biographies {-}
 
-The lecture notes are interdispersed with short biographies of scientists who greatly contributed to the problems being studied. The attentive reader will notice that the photographs are depicting a long sequence of old white men. Their age is easy to explain: I have only included biographies of deceased scientists (so that they cannot contradict me!), and most of them enjoyed a long life (with the exception of Robert MacArthur, who tragically died at age 45). The impossibly skewed gender ratio, and the lack of ethnic diversity has to be explained with the tremendous homogeneity of the field---which was broken only recently. It is my hope that these lectures will engage young ecologists from different backgrounds and histories with the theory of community ecology, such that whoever will teach this type of material in a couple of decades will be able to include a more interesting gallery of portraits. 
+The lecture notes are interdispersed with short biographies of scientists who greatly contributed to the problems being studied. The attentive reader will notice that the photographs are depicting a long sequence of old white men. Their age is easy to explain: I have only included biographies of deceased scientists (so that they cannot contradict me!), and most of them enjoyed a long life (with some exceptions; for example Robert MacArthur tragically died at age 45). The impossibly skewed gender ratio, and the lack of ethnic diversity has to be explained with the tremendous homogeneity of the field---which was broken only recently. It is my hope that these lectures will engage young ecologists from different backgrounds and histories with the theory of community ecology, such that whoever will teach this type of material in a couple of decades will be able to include a more interesting and diverse gallery of portraits. 
 
 ## Sources {-}
 
-Many excellent books are available on these topics. Here are the main references I've used in preparing these lectures:
+Many excellent books are available on these topics. Here are the main references I've used while preparing these lectures:
 
 - @strogatz2018nonlinear --- a clear, concise introduction to dynamical systems.
 - @ellner2011dynamic --- an introduction to dynamical models focusing on biology.
@@ -72,7 +72,8 @@ Many excellent books are available on these topics. Here are the main references
 
 ## Acknowledgements {-}
 
-These lectures grew out of a set of four lectures I have presented at the ICTP-SAIFR/IFT-UNESP ["School on Community Ecology: from patterns to principles"](https://www.ictp-saifr.org/community-ecology-from-patterns-to-principles/), held on January 20-25, 2020 in São Paulo, Brazil. Thanks to the organizers (Marcus Aguiar, Jacopo Grilli, Roberto Kraenkel, Ricardo Martinez-Garcia and Paulo Inácio Prado) for the invitation and for prompting me to start working on the material. I am grateful to the students for useful feedback. 
+These lectures grew out of a set of four lectures I have presented at the ICTP-SAIFR/IFT-UNESP ["School on Community Ecology: from patterns to principles"](https://www.ictp-saifr.org/community-ecology-from-patterns-to-principles/), held on January 20-25, 2020 in São Paulo, Brazil. Thanks to the organizers (Marcus Aguiar, Jacopo Grilli, Roberto Kraenkel, Ricardo Martinez-Garcia and Paulo Inácio Prado) for the invitation and for prompting me to start working on the material. 
+The lecture on assembly was test-driven at the ICTP ["Winter School on Quantitative Systems Biology: Quantitative Approaches in Ecosystem Ecology"](https://indico.ictp.it/event/9131/), organized by Simon Levin, Matteo Marsili, Jacopo Grilli, and Antonio Celani. I am grateful to the students in both schools for useful feedback. 
 
 The development of this material was supported by the National Science Foundation ([DEB #2022742](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2022742)). Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author and do not necessarily reflect the views of the National Science Foundation.
 
