@@ -24,7 +24,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2020-12-10" />
+<meta name="date" content="2021-02-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -242,7 +242,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.3" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#hanski-ovaskainen-2000"><i class="fa fa-check"></i><b>8.3</b> Hanski Ovaskainen 2000</a></li>
 <li class="chapter" data-level="8.4" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#sis-on-a-network-van-mieghem"><i class="fa fa-check"></i><b>8.4</b> SIS on a network Van Mieghem</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html"><i class="fa fa-check"></i><b>9</b> Quasi-polynomial systems</a></li>
+<li class="chapter" data-level="9" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html"><i class="fa fa-check"></i><b>9</b> Quasi-polynomial systems</a><ul>
+<li class="chapter" data-level="9.1" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#from-qp-to-glv"><i class="fa fa-check"></i><b>9.1</b> From QP to GLV</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="chapter" data-level="10" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html"><i class="fa fa-check"></i><b>10</b> Random bits and pieces</a><ul>
 <li class="chapter" data-level="10.1" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#stability-of-larger-matrices"><i class="fa fa-check"></i><b>10.1</b> Stability of larger matrices</a><ul>
@@ -275,7 +277,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Theoretical Community Ecology</h1>
 <p class="author"><em>Stefano Allesina</em></p>
-<p class="date"><em>2020-12-10</em></p>
+<p class="date"><em>2021-02-04</em></p>
 </div>
 <div id="preliminaries" class="section level1 unnumbered">
 <h1>Preliminaries</h1>
@@ -287,7 +289,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="topics" class="section level2 unnumbered">
 <h2>Topics</h2>
-<p>The choice of themes is very opinionated, and heavily biased toward my own research interests. Because of this, the focus is squarely on continuous time, time-invariant models—in most cases without any consideration of space and stochasticity. Similarly, the material mostly deals with the case of multispecies dynamics, though low-dimensional models are considered when their analysis helps with the understanding of the multispecies case. Finally, a lot of the material is centered around the Generalized Lotka-Volterra model and its cousins (e.g., the replicator equation). This because a) the Generalized Lotka-Volterra model for multiple interacting species is in a way the simplest nonlinear model for population dynamics; and b) it is a “canonical” model—in the sense that many other models can be re-cast in GLV form.</p>
+<p>The choice of themes is very opinionated, and heavily biased toward my own research interests. Because of this, the focus is squarely on continuous time, time-invariant models—in most cases without any consideration of space and stochasticity. Similarly, the material mostly deals with the case of multispecies dynamics, though low-dimensional models are considered when their analysis helps with the understanding of the multispecies case. Finally, much of the material is centered around the Generalized Lotka-Volterra model and its cousins (e.g., the replicator equation). This because a) the Generalized Lotka-Volterra model for multiple interacting species is in a way the simplest nonlinear model for population dynamics; and b) it is a “canonical” model—in the sense that many other models can be re-cast in GLV form.</p>
 </div>
 <div id="notation" class="section level2 unnumbered">
 <h2>Notation</h2>
@@ -319,11 +321,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="a-note-about-biographies" class="section level2 unnumbered">
 <h2>A note about biographies</h2>
-<p>The lecture notes are interdispersed with short biographies of scientists who greatly contributed to the problems being studied. The attentive reader will notice that the photographs are depicting a long sequence of old white men. Their age is easy to explain: I have only included biographies of deceased scientists (so that they cannot contradict me!), and most of them enjoyed a long life (with the exception of Robert MacArthur, who tragically died at age 45). The impossibly skewed gender ratio, and the lack of ethnic diversity has to be explained with the tremendous homogeneity of the field—which was broken only recently. It is my hope that these lectures will engage young ecologists from different backgrounds and histories with the theory of community ecology, such that whoever will teach this type of material in a couple of decades will be able to include a more interesting gallery of portraits.</p>
+<p>The lecture notes are interdispersed with short biographies of scientists who greatly contributed to the problems being studied. The attentive reader will notice that most of the photographs are depicting old, white men. Their age is easy to explain: I have only included biographies of deceased scientists (so that they cannot contradict me!), and most of them enjoyed a long life (with some exceptions; for example Robert MacArthur tragically died at age 45). The impossibly skewed gender ratio, and the lack of ethnic diversity has to be explained with the tremendous homogeneity of the field—which was broken only recently. It is my hope that these lectures will engage young ecologists from different backgrounds and histories with the theory of community ecology, such that whoever will teach this type of material in a couple of decades will be able to include a more interesting and diverse gallery of portraits.</p>
 </div>
 <div id="sources" class="section level2 unnumbered">
 <h2>Sources</h2>
-<p>Many excellent books are available on these topics. Here are the main references I’ve used in preparing these lectures:</p>
+<p>Many excellent books are available on these topics. Here are the main references I’ve used while preparing these lectures:</p>
 <ul>
 <li><span class="citation">Strogatz (<a href="#ref-strogatz2018nonlinear" role="doc-biblioref">2018</a>)</span> — a clear, concise introduction to dynamical systems.</li>
 <li><span class="citation">Ellner and Guckenheimer (<a href="#ref-ellner2011dynamic" role="doc-biblioref">2011</a>)</span> — an introduction to dynamical models focusing on biology.</li>
@@ -335,7 +337,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="acknowledgements" class="section level2 unnumbered">
 <h2>Acknowledgements</h2>
-<p>These lectures grew out of a set of four lectures I have presented at the ICTP-SAIFR/IFT-UNESP <a href="https://www.ictp-saifr.org/community-ecology-from-patterns-to-principles/">“School on Community Ecology: from patterns to principles”</a>, held on January 20-25, 2020 in São Paulo, Brazil. Thanks to the organizers (Marcus Aguiar, Jacopo Grilli, Roberto Kraenkel, Ricardo Martinez-Garcia and Paulo Inácio Prado) for the invitation and for prompting me to start working on the material. I am grateful to the students for useful feedback.</p>
+<p>These lectures grew out of a set of four lectures I have presented at the ICTP-SAIFR/IFT-UNESP <a href="https://www.ictp-saifr.org/community-ecology-from-patterns-to-principles/">“School on Community Ecology: from patterns to principles”</a>, held on January 20-25, 2020 in São Paulo, Brazil. Thanks to the organizers (Marcus Aguiar, Jacopo Grilli, Roberto Kraenkel, Ricardo Martinez-Garcia and Paulo Inácio Prado) for the invitation and for prompting me to start working on the material.</p>
+<p>The lecture on assembly was test-driven at the ICTP <a href="https://indico.ictp.it/event/9131/">“Winter School on Quantitative Systems Biology: Quantitative Approaches in Ecosystem Ecology”</a>, organized by Simon Levin, Matteo Marsili, Jacopo Grilli, and Antonio Celani. I am grateful to the students in both schools for useful feedback.</p>
 <p>The development of this material was supported by the National Science Foundation (<a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2022742">DEB #2022742</a>). Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author and do not necessarily reflect the views of the National Science Foundation.</p>
 
 </div>

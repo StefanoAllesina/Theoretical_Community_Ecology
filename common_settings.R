@@ -17,3 +17,16 @@ my_colors_7 <- c('#005a74', '#2b7689', '#4a949d', '#a7a88b', '#e4abd8', '#b45fbb
 
 mylarrow <- arrow(length = unit(0.1, "inches"), ends = "first", type = "closed")
 myrarrow <- arrow(length = unit(0.1, "inches"), ends = "last", type = "closed")
+
+
+plot_ODE_output <- function(out){
+  out <- as.data.frame(out)
+  colnames(out) <- c("time", paste("sp", 1:(ncol(out) -1), sep = "_"))
+  out <- as_tibble(out) %>% gather(species, density, -time)
+  pl <- ggplot(data = out) + 
+    aes(x = time, y = density, colour = species) + 
+    geom_line() + my_theme + scale_x_continuous(expression(t)) + 
+    scale_y_continuous(expression(x(t)))
+  show(pl)
+  return(out)
+}

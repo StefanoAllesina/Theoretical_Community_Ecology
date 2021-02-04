@@ -24,7 +24,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2020-12-10" />
+<meta name="date" content="2021-02-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -242,7 +242,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.3" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#hanski-ovaskainen-2000"><i class="fa fa-check"></i><b>8.3</b> Hanski Ovaskainen 2000</a></li>
 <li class="chapter" data-level="8.4" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#sis-on-a-network-van-mieghem"><i class="fa fa-check"></i><b>8.4</b> SIS on a network Van Mieghem</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html"><i class="fa fa-check"></i><b>9</b> Quasi-polynomial systems</a></li>
+<li class="chapter" data-level="9" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html"><i class="fa fa-check"></i><b>9</b> Quasi-polynomial systems</a><ul>
+<li class="chapter" data-level="9.1" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#from-qp-to-glv"><i class="fa fa-check"></i><b>9.1</b> From QP to GLV</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="chapter" data-level="10" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html"><i class="fa fa-check"></i><b>10</b> Random bits and pieces</a><ul>
 <li class="chapter" data-level="10.1" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#stability-of-larger-matrices"><i class="fa fa-check"></i><b>10.1</b> Stability of larger matrices</a><ul>
@@ -285,13 +287,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">4.1</span> Complexity and stability</h2>
 <div class="boxpaper">
 <p><strong>Key paper: <span class="citation">MacArthur (<a href="#ref-macarthur1955fluctuations" role="doc-biblioref">1955</a>)</span></strong></p>
-<p>In 1955, MacArthur used an information-theoretic argument to suggest more speciose communities would be more “stable”: having a food web with many species would open several “channels” for energy to flow from resources to consumers, such that if a channel was to go dry, another channel could take its place.</p>
+<p>In 1955, MacArthur used an information-theoretic argument to suggest more speciose communities would be more “stable”: having a food web with many species would open several “channels” for energy to flow from resources to consumers, such that if a channel were to go dry, another channel could take its place.</p>
 <p><strong>Key paper: <span class="citation">May (<a href="#ref-may1972will" role="doc-biblioref">1972</a>)</span></strong></p>
-<p>This idea was challenged by May, who showed that, all other things being equal, larger communities would be less likely to be <em>dynamically stable</em>. This paper set the so-called “diversity-stability” debate that still populates the literature.</p>
+<p>This idea was challenged by May, who showed that, all other things being equal, larger communities would be less likely to be <em>dynamically stable</em>. This paper started the so-called “diversity-stability” debate that populates the literature to this day.</p>
 <p><strong>Key paper: <span class="citation">McCann (<a href="#ref-mccann2000diversity" role="doc-biblioref">2000</a>)</span></strong></p>
 <p>In this review, McCann summarizes the development of the diversity-stability debate over the span of three decades.</p>
 </div>
-<p>As we have seen before, an equilibrium <span class="math inline">\(x^\star\)</span> is stable if the community matrix for the equilibrium has all eigenvalues with negative real part. In general, to determine the equilibrium and its stability, we would need to specify all the growth rates (<span class="math inline">\(r\)</span>, <span class="math inline">\(n\)</span> values), as well as the matrix of interactions (<span class="math inline">\(A\)</span>, <span class="math inline">\(n^2\)</span> values). This is impractical to do for large systems (though we will try this out later). But can something quite general be said about the limit in which many species are in the community?</p>
+<p>As we have seen before, an equilibrium <span class="math inline">\(x^\star\)</span> is stable if the community matrix for the equilibrium has all eigenvalues with negative real part. For a Generalized Lotka-Volterra model, to determine the equilibrium and its stability, we would need to specify all the growth rates (<span class="math inline">\(r\)</span>, <span class="math inline">\(n\)</span> values), as well as the matrix of interactions (<span class="math inline">\(A\)</span>, <span class="math inline">\(n^2\)</span> values). This is impractical to do for large systems (though we will try this out later). But can something quite general be said about the limit in which many species are in the community?</p>
 </div>
 <div id="the-stability-of-random-ecosystems" class="section level2">
 <h2><span class="header-section-number">4.2</span> The stability of random ecosystems</h2>
@@ -332,7 +334,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>This property is called <strong>universality</strong> in random matrix theory.</p>
 <div class="boxhomework">
 <p><strong>Homework 4a</strong></p>
-<p>The probability that a matrix is stable, given <span class="math inline">\(C\)</span>, <span class="math inline">\(\sigma\)</span> and <span class="math inline">\(n\)</span> is close to 1 when the stability criterion is satisfied, and close to 0 when it is not. Matrices satisfying <span class="math inline">\(\sqrt{n C \sigma^2} = d\)</span> are the critical point. In theory, the results only hold in the limit <span class="math inline">\(n \to \infty\)</span> (to be accurate, <span class="math inline">\(nC \to \infty\)</span>), as eigenvalues can fall outside the circle with small probability.</p>
+<p>The probability that a matrix is stable, given <span class="math inline">\(C\)</span>, <span class="math inline">\(\sigma\)</span> and <span class="math inline">\(n\)</span> is close to 1 when the stability criterion is satisfied, and close to 0 when it is not. Matrices satisfying <span class="math inline">\(\sqrt{n C \sigma^2} = d\)</span> are at the critical point. In theory, the results only hold in the limit <span class="math inline">\(n \to \infty\)</span> (to be accurate, <span class="math inline">\(nC \to \infty\)</span>), as eigenvalues can fall outside the circle with small probability.</p>
 <ul>
 <li>Write code to compute the real part for the “rightmost” eigenvalue of a random matrix (Note: computing eigenvalues is fairly expensive in terms of computing time. Use <code>eigen(M, only.values = TRUE)$values</code> to speed up calculations).</li>
 <li>Write code to build matrices like those studied by May (nonzero elements sampled from a normal distribution).</li>

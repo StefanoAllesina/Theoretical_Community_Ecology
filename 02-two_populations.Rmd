@@ -268,7 +268,7 @@ $$
 \frac{d \Delta x(t)}{dt} \approx M \Delta x(t)
 $$
 
-which is a system of linear differential equations---i.e., the simplest type of system of ODEs, which can be solved in full generality. 
+which is a system of linear differential equations---i.e., the simplest system of ODEs, which can be solved in full generality. 
 
 To solve the system, we need to recap a few important concepts from linear algebra.
 
@@ -377,13 +377,13 @@ $$
 
 where $V$ is the matrix of eigenvectors, and $\Lambda$ a diagonal matrix with the eigenvalues of $A$ on the diagonal. As such, $V^{-1} A V = \Lambda$. This is a "similarity transformation", meaning that the eigenvalues of $A$ and $\Lambda$ are (obviously) the same.
 
-If the matrix $A$ contains only real numbers (as always the case in population models), then the eigenvalues of $A$ are either real, or form pairs of complex conjugate eigenvalues of form $\alpha \pm i\, \beta$. This means for example that all odd-sized real matrices have at least one real eigenvalue. If $A$ is real and symmetric, all eigenvalues are real, and all eigenvectors are orthogonal. A diagonal matrix $A$ has eigenvalues $\lambda_i = A_{ii}$
+If the matrix $A$ contains only real numbers (as always the case in population models), then the eigenvalues of $A$ are either real, or form pairs of complex conjugate eigenvalues of form $\alpha \pm i\, \beta$. This means for example that all odd-sized real matrices have at least one real eigenvalue. If $A$ is real and symmetric, all eigenvalues are real, and all eigenvectors are orthogonal, and if it is diagonalizable we can write $A = V \Lambda V^{T}$. A diagonal matrix $A$ has eigenvalues $\lambda_i = A_{ii}$
 
 If $A$ has eigenvalues $\lambda$, $B = \beta\, A$ has eigenvalues $\beta\, \lambda$, and $C = A + \gamma\, I$ has eigenvalues $\lambda + \gamma$. The eigenvalues of $A^2 = A \times A$ are $\lambda^2$, and the eigenvalues of $A^{-1}$ are $\lambda^{-1}$. The eigenvalues of $A^T$ are the same as those of $A$ (but the eigenvectors are not the same in general). $A + A^T$ (this matrix is symmetric) has only real eigenvalues, and $A - A^T$ (this matrix is skew-symmetric) has purely imaginary eigenvalues.
 
-A matrix is positive definite if all its eigenvalues are real and positive. It is positive semi-definite if eigenvalues can be zero. The matrices $AA^T$ and $A^T A$ are positive semi-definite, and have the same eigenvalues up to some zeros (used in PCA). Correlation and covariance matrices have these forms.
+A matrix is positive definite if all its eigenvalues are real and positive. It is positive semi-definite if eigenvalues can be zero. The matrices $AA^T$ and $A^T A$ are positive semi-definite, and have the same eigenvalues up to some zeros (used in SVD and  PCA). Correlation and covariance matrices have these form.
 
-Provided that some mild conditions are satisfied, a matrix with non-negative entries has a unique largest real eigenvalue with a corresponding eigenvector that can be chosen to have strictly positive components (Perron-Frobenius). A matrix with constant row sums $\theta$ has $\theta$ as the largest eigenvalue, and $v = 1$ as the corresponding eigenvector (e.g., Markov Chains).
+Provided that some mild conditions are satisfied, a matrix with non-negative entries has a unique largest real eigenvalue with a corresponding eigenvector that can be chosen to have strictly positive components ((Perron-Frobenius theorem)[https://en.wikipedia.org/wiki/Perron%E2%80%93Frobenius_theorem]). A matrix with constant row sums $\theta$ has $\theta$ as the largest eigenvalue, and $v = 1$ as the corresponding eigenvector (e.g., Markov Chains).
 
 :::
 

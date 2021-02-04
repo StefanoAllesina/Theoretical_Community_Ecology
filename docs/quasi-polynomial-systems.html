@@ -24,7 +24,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2020-12-10" />
+<meta name="date" content="2021-02-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -242,7 +242,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.3" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#hanski-ovaskainen-2000"><i class="fa fa-check"></i><b>8.3</b> Hanski Ovaskainen 2000</a></li>
 <li class="chapter" data-level="8.4" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#sis-on-a-network-van-mieghem"><i class="fa fa-check"></i><b>8.4</b> SIS on a network Van Mieghem</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html"><i class="fa fa-check"></i><b>9</b> Quasi-polynomial systems</a></li>
+<li class="chapter" data-level="9" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html"><i class="fa fa-check"></i><b>9</b> Quasi-polynomial systems</a><ul>
+<li class="chapter" data-level="9.1" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#from-qp-to-glv"><i class="fa fa-check"></i><b>9.1</b> From QP to GLV</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="chapter" data-level="10" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html"><i class="fa fa-check"></i><b>10</b> Random bits and pieces</a><ul>
 <li class="chapter" data-level="10.1" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#stability-of-larger-matrices"><i class="fa fa-check"></i><b>10.1</b> Stability of larger matrices</a><ul>
@@ -274,7 +276,76 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="quasi-polynomial-systems" class="section level1">
 <h1><span class="header-section-number">Lecture 9</span> Quasi-polynomial systems</h1>
+<p><strong>Lesson plan</strong>:</p>
+<ol style="list-style-type: decimal">
+<li>We discuss a fairly general class of dynamical systems, called “Quasi-Polynomial” (QP-)systems.</li>
+<li>We show how any QP-system can be written as a larger-dimensional Generalized Lotka-Volterra model.</li>
+<li>This means that the machinery we built for analyzing GLV models can be used to tackle a variety of models that at face value do not seem to fall in this class.</li>
+<li>This also shows that the GLV model is in a way a “universal” model.</li>
+<li>For a simple application, we examine models of metapopulation dynamics with ecosystem engineering.</li>
+</ol>
+<div id="from-qp-to-glv" class="section level2">
+<h2><span class="header-section-number">9.1</span> From QP to GLV</h2>
+<p>We call a Quasi-Polynomial system a system of <span class="math inline">\(n\)</span> ODEs that can be written as:</p>
+<p><span class="math display">\[
+\frac{d x_i(t)}{d t} = x_i(t) \left(s_i + \sum_{j = i}^m A_{ij} \prod_{k=1}^n x_k(t)^{B_{jk}}\right)
+\]</span>
+where <span class="math inline">\(s\)</span> is a vector of “growth rates” (not necessarily positive), <span class="math inline">\(A\)</span> is a matrix of interactions, and <span class="math inline">\(B\)</span> a matrix of exponents. Note that if we take <span class="math inline">\(B = I_n\)</span> (the identity matrix), we recover the GLV model. If <span class="math inline">\(B\)</span> contains only integers, then we recover a polynomial system. Extending this model to real (but not necessarily integer) numbers <span class="math inline">\(B_{jk}\)</span>, we have a “quasi-polynomial” system (<span class="citation">Hernández-Bermejo, Fairén, and Brenig (<a href="#ref-hernandez1998algebraic" role="doc-biblioref">1998</a>)</span>).</p>
+<p>In general, we assume that <span class="math inline">\(A\)</span> is of size <span class="math inline">\(n \times m\)</span>, <span class="math inline">\(B\)</span> is <span class="math inline">\(m \times n\)</span>, and that the <span class="math inline">\(x_i(t)\)</span> are real and positive (if that’s not the case, one needs to perform a change of variables that ensures positivity). The system has <span class="math inline">\(n\)</span> variables (the <span class="math inline">\(x_i(t)\)</span>), and we can identify <span class="math inline">\(m\)</span> “quasi-monomials”:</p>
+<p><span class="math display">\[
+\prod_{k=1}^n x_k^{B_{jk}}
+\]</span></p>
+<p>For example, take the system:</p>
+<p><span class="math display">\[
+\begin{cases}
+\frac{d x_1}{dt} = x_1 -x_1^{3/2} + \frac{1}{4}x_1 x_2^2\\
+\frac{d x_2}{dt} = x_2 - \frac{1}{2}x_2^2\\
+\end{cases}
+\]</span></p>
+<p>with dynamics:</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="quasi-polynomial-systems.html#cb87-1"></a>qp1 &lt;-<span class="st"> </span><span class="cf">function</span>(t, x, pars){</span>
+<span id="cb87-2"><a href="quasi-polynomial-systems.html#cb87-2"></a>  x1 &lt;-<span class="st"> </span>x[<span class="dv">1</span>]</span>
+<span id="cb87-3"><a href="quasi-polynomial-systems.html#cb87-3"></a>  x2 &lt;-<span class="st"> </span>x[<span class="dv">2</span>]</span>
+<span id="cb87-4"><a href="quasi-polynomial-systems.html#cb87-4"></a>  dx1dt &lt;-<span class="st"> </span>x1 <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">sqrt</span>(x1) <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">/</span><span class="st"> </span><span class="dv">4</span>) <span class="op">*</span><span class="st"> </span>x2<span class="op">^</span><span class="dv">2</span>)</span>
+<span id="cb87-5"><a href="quasi-polynomial-systems.html#cb87-5"></a>  dx2dt &lt;-<span class="st"> </span>x2 <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">/</span><span class="st"> </span><span class="dv">2</span>) <span class="op">*</span><span class="st"> </span>x2)</span>
+<span id="cb87-6"><a href="quasi-polynomial-systems.html#cb87-6"></a>  <span class="kw">return</span>(<span class="kw">list</span>(<span class="kw">c</span>(dx1dt, dx2dt)))</span>
+<span id="cb87-7"><a href="quasi-polynomial-systems.html#cb87-7"></a>}</span>
+<span id="cb87-8"><a href="quasi-polynomial-systems.html#cb87-8"></a></span>
+<span id="cb87-9"><a href="quasi-polynomial-systems.html#cb87-9"></a><span class="kw">set.seed</span>(<span class="dv">0</span>)</span>
+<span id="cb87-10"><a href="quasi-polynomial-systems.html#cb87-10"></a>x0 &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">2</span>)</span>
+<span id="cb87-11"><a href="quasi-polynomial-systems.html#cb87-11"></a>outqp1 &lt;-<span class="st"> </span><span class="kw">ode</span>(<span class="dt">y =</span> x0, <span class="dt">times =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">45</span>, <span class="dt">by =</span> <span class="fl">0.25</span>), <span class="dt">func =</span> qp1, <span class="dt">parms =</span> <span class="ot">NULL</span>, <span class="dt">method =</span> <span class="st">&quot;ode45&quot;</span>)</span>
+<span id="cb87-12"><a href="quasi-polynomial-systems.html#cb87-12"></a>ts &lt;-<span class="st"> </span><span class="kw">plot_ODE_output</span>(outqp1)</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-31-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>Showing that in this case dynamics reach the equilibrium <span class="math inline">\((x_1^\star, x_2^\star) = (4,2)\)</span>. This can be rewritten as:</p>
+<p><span class="math display">\[
+\begin{cases}
+\frac{d x_1}{dt} = x_1\left(1 -x_1^{1/2} + \frac{1}{4} x_2^2\right)\\
+\frac{d x_2}{dt} = x_2 \left(1 - \frac{1}{2}x_2 \right)
+\end{cases}
+\]</span></p>
+<p>which is in QP-form, with:</p>
+<p><span class="math display">\[s = (1, 1)^T\]</span></p>
+<p><span class="math display">\[A = \begin{pmatrix} 
+-1 &amp; 1/4 &amp; 0\\ 
+0 &amp; 0 &amp; -1/2
+\end{pmatrix}\]</span></p>
+<p><span class="math display">\[B = \begin{pmatrix} 
+1/2 &amp; 0 \\ 
+0 &amp; 2 \\
+0 &amp; 1
+\end{pmatrix}\]</span></p>
+<p>Now we perform a change of variables, writing an equation for each quasi-monomial:</p>
+<p><span class="math display">\[
+z = ()
+\]</span></p>
 
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-hernandez1998algebraic">
+<p>Hernández-Bermejo, Benito, Vı́ctor Fairén, and Léon Brenig. 1998. “Algebraic Recasting of Nonlinear Systems of Odes into Universal Formats.” <em>Journal of Physics A: Mathematical and General</em> 31 (10): 2415.</p>
+</div>
 </div>
             </section>
 

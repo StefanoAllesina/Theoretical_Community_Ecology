@@ -16,11 +16,11 @@ source("common_settings.R")
 
 **Key paper: @macarthur1955fluctuations** 
 
-In 1955, MacArthur used an information-theoretic argument to suggest more speciose communities would be more "stable": having a food web with many species would open several "channels" for energy to flow from resources to consumers, such that if a channel was to go dry, another channel could take its place.
+In 1955, MacArthur used an information-theoretic argument to suggest more speciose communities would be more "stable": having a food web with many species would open several "channels" for energy to flow from resources to consumers, such that if a channel were to go dry, another channel could take its place.
 
 **Key paper: @may1972will**
 
-This idea was challenged by May, who showed that, all other things being equal, larger communities would be less likely to be *dynamically stable*. This paper set the so-called "diversity-stability" debate that still populates the literature.
+This idea was challenged by May, who showed that, all other things being equal, larger communities would be less likely to be *dynamically stable*. This paper started the so-called "diversity-stability" debate that populates the literature to this day.
 
 **Key paper: @mccann2000diversity** 
 
@@ -28,8 +28,7 @@ In this review, McCann summarizes the development of the diversity-stability deb
 
 :::
 
-As we have seen before, an equilibrium $x^\star$ is stable if the community matrix for the equilibrium has all eigenvalues with negative real part. In general, to determine the equilibrium and its stability, we would need to specify all the growth rates ($r$, $n$ values), as well as the matrix of interactions ($A$, $n^2$ values). This is impractical to do for large systems (though we will try this out later). But can something quite general be said about the limit in which many species are in the community?
-
+As we have seen before, an equilibrium $x^\star$ is stable if the community matrix for the equilibrium has all eigenvalues with negative real part. For a Generalized Lotka-Volterra model, to determine the equilibrium and its stability, we would need to specify all the growth rates ($r$, $n$ values), as well as the matrix of interactions ($A$, $n^2$ values). This is impractical to do for large systems (though we will try this out later). But can something quite general be said about the limit in which many species are in the community?
 
 ## The stability of random ecosystems
 
@@ -150,7 +149,7 @@ This property is called **universality** in random matrix theory.
 
 **Homework 4a**
 
-The probability that a matrix is stable, given $C$, $\sigma$ and $n$ is close to 1 when the stability criterion is satisfied, and close to 0 when it is not. Matrices satisfying $\sqrt{n C \sigma^2} = d$ are the critical point. In theory, the results only hold in the limit $n \to \infty$ (to be accurate, $nC \to \infty$), as eigenvalues can fall outside the circle with small probability. 
+The probability that a matrix is stable, given $C$, $\sigma$ and $n$ is close to 1 when the stability criterion is satisfied, and close to 0 when it is not. Matrices satisfying $\sqrt{n C \sigma^2} = d$ are at the critical point. In theory, the results only hold in the limit $n \to \infty$ (to be accurate, $nC \to \infty$), as eigenvalues can fall outside the circle with small probability. 
 
 * Write code to compute the real part for the "rightmost" eigenvalue of a random matrix (Note: computing eigenvalues is fairly expensive in terms of computing time. Use `eigen(M, only.values = TRUE)$values` to speed up calculations).
 * Write code to build matrices like those studied by May (nonzero elements sampled from a normal distribution).

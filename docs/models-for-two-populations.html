@@ -24,7 +24,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2020-12-10" />
+<meta name="date" content="2021-02-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -242,7 +242,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.3" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#hanski-ovaskainen-2000"><i class="fa fa-check"></i><b>8.3</b> Hanski Ovaskainen 2000</a></li>
 <li class="chapter" data-level="8.4" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#sis-on-a-network-van-mieghem"><i class="fa fa-check"></i><b>8.4</b> SIS on a network Van Mieghem</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html"><i class="fa fa-check"></i><b>9</b> Quasi-polynomial systems</a></li>
+<li class="chapter" data-level="9" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html"><i class="fa fa-check"></i><b>9</b> Quasi-polynomial systems</a><ul>
+<li class="chapter" data-level="9.1" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#from-qp-to-glv"><i class="fa fa-check"></i><b>9.1</b> From QP to GLV</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="chapter" data-level="10" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html"><i class="fa fa-check"></i><b>10</b> Random bits and pieces</a><ul>
 <li class="chapter" data-level="10.1" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#stability-of-larger-matrices"><i class="fa fa-check"></i><b>10.1</b> Stability of larger matrices</a><ul>
@@ -421,7 +423,7 @@ J_{ij} = \frac{\partial f_i({x})}{\partial x_j}
 <p><span class="math display">\[
 \frac{d \Delta x(t)}{dt} \approx M \Delta x(t)
 \]</span></p>
-<p>which is a system of linear differential equations—i.e., the simplest type of system of ODEs, which can be solved in full generality.</p>
+<p>which is a system of linear differential equations—i.e., the simplest system of ODEs, which can be solved in full generality.</p>
 <p>To solve the system, we need to recap a few important concepts from linear algebra.</p>
 <div class="boxmath">
 <p><strong>Eigenvalues and eigenvectors</strong></p>
@@ -498,10 +500,10 @@ Find the eigenvalues for the matrix <span class="math inline">\(A\)</span> above
 A = V \Lambda V^{-1}
 \]</span></p>
 <p>where <span class="math inline">\(V\)</span> is the matrix of eigenvectors, and <span class="math inline">\(\Lambda\)</span> a diagonal matrix with the eigenvalues of <span class="math inline">\(A\)</span> on the diagonal. As such, <span class="math inline">\(V^{-1} A V = \Lambda\)</span>. This is a “similarity transformation”, meaning that the eigenvalues of <span class="math inline">\(A\)</span> and <span class="math inline">\(\Lambda\)</span> are (obviously) the same.</p>
-<p>If the matrix <span class="math inline">\(A\)</span> contains only real numbers (as always the case in population models), then the eigenvalues of <span class="math inline">\(A\)</span> are either real, or form pairs of complex conjugate eigenvalues of form <span class="math inline">\(\alpha \pm i\, \beta\)</span>. This means for example that all odd-sized real matrices have at least one real eigenvalue. If <span class="math inline">\(A\)</span> is real and symmetric, all eigenvalues are real, and all eigenvectors are orthogonal. A diagonal matrix <span class="math inline">\(A\)</span> has eigenvalues <span class="math inline">\(\lambda_i = A_{ii}\)</span></p>
+<p>If the matrix <span class="math inline">\(A\)</span> contains only real numbers (as always the case in population models), then the eigenvalues of <span class="math inline">\(A\)</span> are either real, or form pairs of complex conjugate eigenvalues of form <span class="math inline">\(\alpha \pm i\, \beta\)</span>. This means for example that all odd-sized real matrices have at least one real eigenvalue. If <span class="math inline">\(A\)</span> is real and symmetric, all eigenvalues are real, and all eigenvectors are orthogonal, and if it is diagonalizable we can write <span class="math inline">\(A = V \Lambda V^{T}\)</span>. A diagonal matrix <span class="math inline">\(A\)</span> has eigenvalues <span class="math inline">\(\lambda_i = A_{ii}\)</span></p>
 <p>If <span class="math inline">\(A\)</span> has eigenvalues <span class="math inline">\(\lambda\)</span>, <span class="math inline">\(B = \beta\, A\)</span> has eigenvalues <span class="math inline">\(\beta\, \lambda\)</span>, and <span class="math inline">\(C = A + \gamma\, I\)</span> has eigenvalues <span class="math inline">\(\lambda + \gamma\)</span>. The eigenvalues of <span class="math inline">\(A^2 = A \times A\)</span> are <span class="math inline">\(\lambda^2\)</span>, and the eigenvalues of <span class="math inline">\(A^{-1}\)</span> are <span class="math inline">\(\lambda^{-1}\)</span>. The eigenvalues of <span class="math inline">\(A^T\)</span> are the same as those of <span class="math inline">\(A\)</span> (but the eigenvectors are not the same in general). <span class="math inline">\(A + A^T\)</span> (this matrix is symmetric) has only real eigenvalues, and <span class="math inline">\(A - A^T\)</span> (this matrix is skew-symmetric) has purely imaginary eigenvalues.</p>
-<p>A matrix is positive definite if all its eigenvalues are real and positive. It is positive semi-definite if eigenvalues can be zero. The matrices <span class="math inline">\(AA^T\)</span> and <span class="math inline">\(A^T A\)</span> are positive semi-definite, and have the same eigenvalues up to some zeros (used in PCA). Correlation and covariance matrices have these forms.</p>
-<p>Provided that some mild conditions are satisfied, a matrix with non-negative entries has a unique largest real eigenvalue with a corresponding eigenvector that can be chosen to have strictly positive components (Perron-Frobenius). A matrix with constant row sums <span class="math inline">\(\theta\)</span> has <span class="math inline">\(\theta\)</span> as the largest eigenvalue, and <span class="math inline">\(v = 1\)</span> as the corresponding eigenvector (e.g., Markov Chains).</p>
+<p>A matrix is positive definite if all its eigenvalues are real and positive. It is positive semi-definite if eigenvalues can be zero. The matrices <span class="math inline">\(AA^T\)</span> and <span class="math inline">\(A^T A\)</span> are positive semi-definite, and have the same eigenvalues up to some zeros (used in SVD and PCA). Correlation and covariance matrices have these form.</p>
+<p>Provided that some mild conditions are satisfied, a matrix with non-negative entries has a unique largest real eigenvalue with a corresponding eigenvector that can be chosen to have strictly positive components ((Perron-Frobenius theorem)[<a href="https://en.wikipedia.org/wiki/Perron%E2%80%93Frobenius_theorem" class="uri">https://en.wikipedia.org/wiki/Perron%E2%80%93Frobenius_theorem</a>]). A matrix with constant row sums <span class="math inline">\(\theta\)</span> has <span class="math inline">\(\theta\)</span> as the largest eigenvalue, and <span class="math inline">\(v = 1\)</span> as the corresponding eigenvector (e.g., Markov Chains).</p>
 </div>
 <div class="boxhomework">
 <p><strong>Homework 2a</strong></p>

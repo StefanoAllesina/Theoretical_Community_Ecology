@@ -24,7 +24,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2020-12-10" />
+<meta name="date" content="2021-02-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -242,7 +242,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.3" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#hanski-ovaskainen-2000"><i class="fa fa-check"></i><b>8.3</b> Hanski Ovaskainen 2000</a></li>
 <li class="chapter" data-level="8.4" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#sis-on-a-network-van-mieghem"><i class="fa fa-check"></i><b>8.4</b> SIS on a network Van Mieghem</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html"><i class="fa fa-check"></i><b>9</b> Quasi-polynomial systems</a></li>
+<li class="chapter" data-level="9" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html"><i class="fa fa-check"></i><b>9</b> Quasi-polynomial systems</a><ul>
+<li class="chapter" data-level="9.1" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#from-qp-to-glv"><i class="fa fa-check"></i><b>9.1</b> From QP to GLV</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="chapter" data-level="10" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html"><i class="fa fa-check"></i><b>10</b> Random bits and pieces</a><ul>
 <li class="chapter" data-level="10.1" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#stability-of-larger-matrices"><i class="fa fa-check"></i><b>10.1</b> Stability of larger matrices</a><ul>
@@ -277,7 +279,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>Lesson plan</strong>:</p>
 <ol style="list-style-type: decimal">
 <li>We start by discussing what it means to solve an initial-value problem: the solution is an expression that allows us to calculate <span class="math inline">\(x(t)\)</span> for any <span class="math inline">\(t\)</span>. A few ecologically-relevant models can be solved explicitly, for example the exponential and logistic growth models.</li>
-<li>Because, on the other hand, solving differential equations is a laborious process, and in many cases writing the solution is impossible or does not give us any insight on the dynamics, we introduce a graphical model that allows to effortlessly sketch the dynamics of any first-order ODE (i.e., models with a single equation).</li>
+<li>Because solving differential equations is a laborious process, and in many cases writing the solution is impossible or does not give us any insight on the dynamics, we introduce a graphical model that allows us to effortlessly sketch the dynamics of any ODE (i.e., models with a single equation).</li>
 <li>This allows us to introduce essential concepts such as the notion of an equilibrium and its stability.</li>
 <li>We show that determining stability using this graphical method is equivalent to performing stability analysis via linearization around an equilibrium, a method that will be extended to systems of multiple ODEs in the next chapter.</li>
 <li>We briefly discuss the idea of bifurcation points — i.e., particular choices of parameters for which the dynamics of the system change qualitatively.</li>
@@ -287,7 +289,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">1.1</span> Types of dynamical systems</h2>
 <p>Dynamical systems describe the change of certain variables, typically in time, space or a combination of the two. They have found applications in all scientific disciplines, and were introduced in ecology and evolutionary biology at the beginning of the twentieth century.</p>
 <p>Broadly, dynamical systems can be divided into <strong>continuous</strong> (described by differential equations), or <strong>discrete</strong> (described by maps, or difference equations) models. Many models for population dynamics can be written as (systems of) first-order ordinary differential equations, i.e. equations containing functions of one (or more) independent variables and their derivatives (typically, with respect to time).</p>
-<p><strong>Ordinary</strong> means we’re not dealing with partial differential equations (used in ecology for example for reaction-diffusion equations, or spatial models). <strong>First-order</strong>, mean that they contain only the first derivative with respect to time. Here we will concentrate on <strong>autonomous</strong> systems, meaning that it they are time-invariant (e.g., coefficients do not change in time). We can write these systems as:</p>
+<p><strong>Ordinary</strong> means we’re not dealing with partial differential equations (used in ecology for example for reaction-diffusion equations, or spatial models). <strong>First-order</strong>, mean that they contain only the first derivative with respect to time. Here we will concentrate on <strong>autonomous</strong> systems, meaning that they are time-invariant (e.g., coefficients do not change in time). We can write these systems as:</p>
 <p><span class="math display">\[
 \dfrac{d x(t)}{d t} = f(x(t))
 \]</span></p>
@@ -299,21 +301,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math display">\[
 \dfrac{d x(t)}{d t} = f(x(t)), \;\; x(0) = x_0
 \]</span></p>
-<p>where the independent variable <span class="math inline">\(t\)</span> denotes time and is considered non-negative. <span class="math inline">\(x(t)\)</span> is the state of the system (e.g., the density of the species) at time <span class="math inline">\(t\)</span>, <span class="math inline">\(x(t) \in \mathbb{R}^n\)</span>, and the function <span class="math inline">\(f\)</span> models the evolution of the system, mapping <span class="math inline">\(\mathbb{R}^n \to \mathbb{R}^n\)</span>. The vector <span class="math inline">\(x_0 = x(0) \in \mathbb{R}^n\)</span> marks the <em>initial conditions</em> of the system.</p>
+<p>where the independent variable <span class="math inline">\(t\)</span> denotes time and is considered non-negative. <span class="math inline">\(x(t)\)</span> is the state of the system (e.g., the density of the species) at time <span class="math inline">\(t\)</span>, <span class="math inline">\(x(t) \in \mathbb{R}^n\)</span>, and the function <span class="math inline">\(f\)</span> models the evolution of the system, mapping <span class="math inline">\(\mathbb{R}^n \to \mathbb{R}^n\)</span>. The vector <span class="math inline">\(x_0 = x(0) \in \mathbb{R}^n\)</span> marks the <em>initial condition</em> of the system.</p>
 <p>The simplest and most common case in ecology is that in which <span class="math inline">\(f\)</span> is (infinitely) many times continuously differentiable, a.k.a. <em>smooth</em>. If this is the case, then the solution <span class="math inline">\(x(t)\)</span> exists and is unique.</p>
 <p>In ecological models, dynamics are invariant with respect to the non-negative orthant <span class="math inline">\(\mathbb{R}^n_{0+}\)</span>, i.e., the vector <span class="math inline">\(x(t)\)</span> remains non-negative whenever initialized at non-negative initial conditions <span class="math inline">\(x_0 \in \mathbb{R}^n_{0+}\)</span>. The function <span class="math inline">\(f\)</span> is <em>essentially non-negative</em> if whenever <span class="math inline">\(x_i = 0\)</span>, then <span class="math inline">\(f_i(x) \geq 0\)</span> for all <span class="math inline">\(x \in \mathbb{R}^n_{0+}\)</span>. A dynamical system is non-negative only if <span class="math inline">\(f\)</span> is essentially non-negative.</p>
-<p>We can solve the (system of) ODE(s) if we can write an explicit equation for <span class="math inline">\(x(t)\)</span> given the parameters and the initial conditions. In practice, we rarely can solve the equations we’re interested in.</p>
-<p>We can however prove that, if <span class="math inline">\(f(x(t))\)</span> is sufficiently well-behaved (technically, if <span class="math inline">\(f(x)\)</span> is Lipschitz continuous, for example, if it has bounded derivatives), then the initial-value problem above has a solution, the solution is unique, and depends continuously on the intial conditions and the parameters. This means that if we start the system at any point <span class="math inline">\(x(t)= x_t\)</span>, we cannot have multiple trajectories intersecting.</p>
+<p>We can solve the (system of) ODE(s) if we can write an explicit equation for <span class="math inline">\(x(t)\)</span> given the parameters and the initial conditions.</p>
+<p>In practice, we rarely can solve the equations we’re interested in. We can however prove that, if <span class="math inline">\(f(x(t))\)</span> is sufficiently well-behaved (technically, if <span class="math inline">\(f(x)\)</span> is Lipschitz continuous, for example, if it has bounded derivatives), then the initial-value problem above has a solution, the solution is unique, and depends continuously on the intial conditions and the parameters. This means that if we start the system at any point <span class="math inline">\(x(t)= x_t\)</span>, we cannot have multiple trajectories intersecting.</p>
 </div>
 <div id="solvable-model-exponential-growth" class="section level2">
 <h2><span class="header-section-number">1.3</span> Solvable model: Exponential growth</h2>
 <div class="boxhistory">
 <p><strong>History: Pierre-François Verhulst (1804-1849)</strong></p>
 <p><img src="img/Verhulst.jpg" width="25%" style="display: block; margin: auto;" /></p>
-<p>Pierre-François Verhulst was born in 1804 in Brussels, Belgium. In 1835 became professor of mathematics at the newly-instituded Free University of Brussels.</p>
-<p>In 1838, inspired by the work of Malthus and Quetelet, he wrote a <em>Note on the law of population growth</em>, where he argued that the geometric progression imagined by Malthus would be unfeasible to sustain. He therefore introduced an <em>unknown function</em> that would slow down growth for large populations" <em>“The simplest hypothesis one can make on the form of this function is to suppose that”</em> the unknown function would be quadratic in the size of the population. He went on to solve what is now known as the “logistic growth” model and contrasted it with data for the growth of populations in various countries.</p>
+<p>Pierre-François Verhulst was born in 1804 in Brussels, Belgium. In 1835, he became professor of mathematics at the newly-instituded Free University of Brussels.</p>
+<p>In 1838, inspired by the work of Malthus and Quetelet, he wrote a <em>Note on the law of population growth</em>, where he argued that the geometric progression imagined by Malthus would be unfeasible to sustain. He therefore introduced an <em>unknown function</em> that would slow down growth for large populations: <em>“The simplest hypothesis one can make on the form of this function is to suppose that”</em> the unknown function would be quadratic in the size of the population. He went on to solve what is now known as the “logistic growth” model and contrasted it with data for the growth of populations in various countries.</p>
 </div>
-<p>An model of ecological interest that has an explicit solution is that for the exponential growth:</p>
+<p>A model of ecological interest that has an explicit solution is that for the exponential growth:</p>
 <p><span class="math display">\[
 \dfrac{d x(t)}{dt} = \rho \, x(t), \;\; x(0) = x_0
 \]</span></p>
@@ -321,7 +323,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math display">\[
 \dfrac{1}{x(t)} dx(t) = \rho\, dt
 \]</span>
-Integrate both sides (the left in <span class="math inline">\(d x(t)\)</span>, the right in <span class="math inline">\(dt\)</span>):</p>
+Integrate both sides (the left hand side in <span class="math inline">\(d x(t)\)</span>, the r.h.s. in <span class="math inline">\(dt\)</span>):</p>
 <p><span class="math display">\[
 \begin{aligned}
 \int \dfrac{1}{x(t)} d x(t) = \rho \int dt
@@ -397,14 +399,14 @@ where <span class="math inline">\(1 &gt; \eta &gt; 0\)</span> is the proportion 
 </div>
 <div id="qualitative-analysis-of-models-for-a-single-population" class="section level2">
 <h2><span class="header-section-number">1.5</span> Qualitative analysis of models for a single population</h2>
-<p>Because in general we cannot write an explicit solution for our models of interest, we attempt a qualitative analysis by: a) finding fixed points (equilibria); b) provide a qualitative description of the dynamics; c) probe the stability of fixed points; d) gain an understanding of the system (nature of attractors, changes of behavior for different parameters) without deriving an explicit solution.</p>
+<p>Because in general we cannot write an explicit solution for our models of interest, we attempt a qualitative analysis by: a) finding fixed points (equilibria); b) providing a qualitative description of the dynamics; c) probing the stability of fixed points; d) gaining an understanding of the system (nature of attractors, changes of behavior for different parameters) without deriving an explicit solution.</p>
 <p>When we are dealing with a single population, we can use a graphical method. Simply, plot <span class="math inline">\(dx(t) /dt\)</span> against <span class="math inline">\(x(t)\)</span>. We think of <span class="math inline">\(x(t)\)</span> as moving along the <span class="math inline">\(x\)</span> axis, at a velocity determined by the <span class="math inline">\(y\)</span> coordinate. For the exponential growth function:</p>
 <p><span class="math display">\[
 \dfrac{d x(t)}{dt} = \rho \, x(t)
 \]</span></p>
 <p>the graph becomes:</p>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-4-1.png" width="480" style="display: block; margin: auto;" /></p>
-<p>The only point where the curve intercepts the <span class="math inline">\(x\)</span> axis is the point <span class="math inline">\(x^\star = 0\)</span>. A point <span class="math inline">\(x^\star\)</span> for which <span class="math inline">\(\left . \dfrac{d x(t)}{dt} \right|_{x^\star} = 0\)</span> is an <strong>equilibrium</strong> (or fixed-point) for the system, meaning that if we initialize the system at <span class="math inline">\(x^\star\)</span>, it will remain there unless perturbed. Whenever we apply a (small) perturbation to a <strong>stable equilibrium</strong>, the system returns to it; when we perturb an <strong>unstable equilibrium</strong>, on the other hand, the system moves away from it.</p>
+<p>The only point where the curve intercepts the <span class="math inline">\(x\)</span> axis is <span class="math inline">\(x^\star = 0\)</span>. A point <span class="math inline">\(x^\star\)</span> for which <span class="math inline">\(\left . \dfrac{d x(t)}{dt} \right|_{x^\star} = 0\)</span> is an <strong>equilibrium</strong> (or fixed-point) for the system, meaning that if we initialize the system at <span class="math inline">\(x^\star\)</span>, it will remain there unless perturbed. Whenever we apply a (small) perturbation to a <strong>stable equilibrium</strong>, the system returns to it; when we perturb an <strong>unstable equilibrium</strong>, on the other hand, the system moves away from it.</p>
 <p>Now think of a perturbation: if we were to perturb <span class="math inline">\(x^\star = 0\)</span> by introducing a few individuals, we would find that the population starts growing (i.e., <span class="math inline">\(dx(t) / dt &gt; 0\)</span>), meaning that the point is unstable. Thus, using the graphical method introduced above, we can easily identify equilibria (i.e., where the curve intercepts the x-axis), and their stability (i.e., by determining whether the curve around the equilibrium is above or below <span class="math inline">\(d x(t)/dt = 0\)</span>).</p>
 <p>Next, let’s consider the logistic growth equation:</p>
 <p><span class="math display">\[
@@ -416,7 +418,7 @@ where <span class="math inline">\(1 &gt; \eta &gt; 0\)</span> is the proportion 
 <div class="boxhistory">
 <p><strong>History: Warder Clyde Allee (1885-1955)</strong></p>
 <p><img src="img/Allee.jpg" width="25%" style="display: block; margin: auto;" /></p>
-<p>Born in Indiana, Allee received his PhD in 1912 from the University of Chicago, where he returned in 1921. He was the Dean in the College of Arts, Literature, and Science (1924-1926) and Secretary of the Department of Zoology (1927-1934). He stayed at U. Chicago until his retirement (1950).</p>
+<p>Born in Indiana, Allee received his PhD in 1912 from the University of Chicago, where he returned in 1921. He was the Dean in the College of Arts, Literature, and Science (1924-1926) and Secretary of the Department of Zoology (1927-1934). In 1935, a spinal tumor left him paralyzed from the waist down. This did not slow down his hectic schedule of teaching, researching and writing. He stayed at U. Chicago until his retirement (1950). Allee is also remembered as a pacifist (he was raised a Quaker) and an activist.</p>
 <p>He performed a series of studies on animal aggregation, finding that goldfish growing in a tank laced with colloidal silver would grow faster when more individuals were present. Today, the <strong>Allee effect</strong> applies to any population that grows faster when a certain threshold population is surpassed.</p>
 </div>
 <p>Now a more complex model, in which the population experiences an Allee effect:</p>
@@ -448,7 +450,7 @@ At <span class="math inline">\(x^\star = 0\)</span>, we find <span class="math i
 </div>
 <div id="what-are-we-doing-when-probing-stability-using-derivatives" class="section level3">
 <h3><span class="header-section-number">1.5.2</span> What are we doing when probing stability using derivatives?</h3>
-<p>More formally, we can think of describing the dynamics of a perturbation around the equilibrium. Call <span class="math inline">\(\Delta x(0) = x(0) - x^\star\)</span>, and approximate the dynamics around the equilibrium. We want to write the dynamics of <span class="math inline">\(\Delta x(t)\)</span>. By chain rule, <span class="math inline">\(\frac{d \Delta x(t)}{dt} = \frac{d \Delta x(t)}{d x(t)} \frac{d x(t)}{dt}\)</span>, and as such</p>
+<p>More formally, we can think of describing the dynamics of a perturbation around the equilibrium. Call <span class="math inline">\(\Delta x(t) = x(t) - x^\star\)</span>, and approximate the dynamics around the equilibrium. We want to write the dynamics of <span class="math inline">\(\Delta x(t)\)</span>. By chain rule, <span class="math inline">\(\frac{d \Delta x(t)}{dt} = \frac{d \Delta x(t)}{d x(t)} \frac{d x(t)}{dt}\)</span>, and as such</p>
 <p><span class="math display">\[
 \frac{d \Delta x(t)}{dt} = f(\Delta x(t) + x^\star)
 \]</span></p>
@@ -460,7 +462,7 @@ f(\Delta x(t) + x^\star) = f(x^\star) + \left . \frac{df(x)}{dx} \right |_{x^\st
 <p><span class="math display">\[
 \frac{d \Delta x(t)}{dt} \approx \left . \frac{d f(x)}{dx} \right |_{x^\star} \Delta x(t) = \rho\, \Delta x(t)
 \]</span></p>
-<p>which is the equation for the exponential growth we have seen above. If <span class="math inline">\(\left . \frac{d f(x)}{d x}\right |_{x^\star} &lt; 0\)</span> the perturbation <span class="math inline">\(\Delta x(t)\)</span> will die out, while if it is positive it will increase fast.</p>
+<p>which is the equation for the exponential growth we have seen above. If <span class="math inline">\(\left . \frac{d f(x)}{d x}\right |_{x^\star} &lt; 0\)</span> the perturbation <span class="math inline">\(\Delta x(t)\)</span> will die out, while if it is positive it will increase quickly. Note that the analysis is valid only in the immediate surroundings of <span class="math inline">\(x^\star\)</span>—i.e., only where the terms we have neglected are indeed negligible.</p>
 </div>
 </div>
 <div id="bifurcations" class="section level2">
@@ -478,7 +480,7 @@ f(\Delta x(t) + x^\star) = f(x^\star) + \left . \frac{df(x)}{dx} \right |_{x^\st
 <p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-9-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>The equilibrium <span class="math inline">\(x^\star = 0\)</span> is stable if we approach it from the left, while unstable if we are reaching it from the right. When we cross the bifurcation <span class="math inline">\(\rho_c = 0\)</span>, the equilibrium disappears altogether, leading to unbounded growth:</p>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-10-1.png" width="480" style="display: block; margin: auto;" /></p>
-<p>We can summarize the behavior of the system for different values of <span class="math inline">\(\rho\)</span> in a <strong>bifurcation diagram</strong>: on the x-axis we have the parameter we are varying (in this case <span class="math inline">\(\rho\)</span>), and on the y-axis we report <span class="math inline">\(x(t)\)</span>, marking the position of all the equilibria, with a solid line indicating stable equilibria and a dashed line the unstable ones:</p>
+<p>We can summarize the behavior of the system for different values of <span class="math inline">\(\rho\)</span> in a <strong>bifurcation diagram</strong>: on the x-axis we have the parameter we are varying (in this case, <span class="math inline">\(\rho\)</span>), and on the y-axis we report <span class="math inline">\(x(t)\)</span>, marking the position of all the equilibria, with a solid line indicating stable equilibria and a dashed line the unstable ones:</p>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-11-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>Note that the rate at which the system approaches (moves away from) the stable (unstable) equilibrium depends on <span class="math inline">\(\rho\)</span>. When <span class="math inline">\(\rho \ll 0\)</span> the system moves fast, while when <span class="math inline">\(\rho \to \rho_c = 0\)</span> the system moves more slowly. This phenomenon is called “critical slowing down” and has been proposed as a generic indicator that a system is approaching a bifurcation point.</p>
 <div class="boxhomework">
