@@ -24,7 +24,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2021-02-04" />
+<meta name="date" content="2021-02-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -305,8 +305,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We call <strong>ecological assembly</strong> the process by which <strong>ecological communities are built</strong> by the interplay of invasions (increasing community “richness”) and extinctions (decreasing it). The typical setting for an assembly model is one in which a large (possibly infinite) pool of species are available (e.g., in a “mainland”), and every so often individuals from the species’ pool enter a local habitat (island, patch, etc.), at which point they might either grow (invasion, establishment, etc.), or go extinct. In either case, the local community might respond to the invader—for example, the invader could send some of the local populations extinct, or shift the community from one state to another.</p>
 <p>Historically, this type of island-mainland models (based on species) have been contrasted with “trait-environment” models, in which species’ traits, rather than identity are the focus of the dynamics. In such models, ideas such as “environmental filtering” (i.e., the pruning of species that cannot grow in the local environment) and “trait underdispersion” (i.e., the fact that the filtering imposed by the environment results in a convergence in traits) arise naturally. When thinking of communities of competitors (e.g., different species of plants), then we might think that species’ interactions will also play a role—because species need to be different enough to coexist, this would generate “trait overdispersion” (due to limiting similarity). For a very opinionated summary of 25 years of discussions on these themes (1975-2000), see <span class="citation">Weiher and Keddy (<a href="#ref-weiher2001ecological" role="doc-biblioref">2001</a>)</span> (but first read the review <span class="citation">Gotelli (<a href="#ref-gotelli1999communities" role="doc-biblioref">1999</a>)</span>, stating that the language and tone of the introduction is “an embarrassment to the discipline”).</p>
 <p>The idea of assembly was first introduced in ecology by the pioneers of “succession”. For example, in 1899 Henry Chandler Cowles studied the vegetation development in the Indiana Dunes—sand dunes are first colonized by “pioneer” species of plants, which are then overgrown by different vegetation in older dunes. Because dunes are regularly disrupted by wind, one could make a “space-for-time” substitution and reconstruct the development of the vegetation as a “chronosequence”. Importantly, Cowles (and then Clements) held the view that succession would be a strongly ordered, “determinisitc” process by which communities tended to a certain “climax” state. In the 1920s, Henry Gleason challenged this view, advocating for a much greater role for chance.</p>
-<div id="bio-of-cowles" class="section level4">
-<h4><span class="header-section-number">5.1.0.1</span> BIO OF COWLES</h4>
+<div class="boxhistory">
+<p><strong>Henry Chandler Cowles (1869-1939)</strong></p>
+<p><img src="img/Cowles.jpg" width="35%" style="display: block; margin: auto;" /></p>
+<p>Born in Kensington, Connecticut, Cowles attended Oberlin College, and received a PhD from the University of Chicago in 1898. His thesis is centered on the vegetation succession of the Indiana Dunes. His main inspiration came from the work of Eugen Warming (Cowles studied Danish in order to read the original <em>Plantesamfund</em>).</p>
+<p>He was one of the pioneers of “ecology” in the US, a term that he helped popularizing, for example writing (along with Coulter and Barnes, all at U. Chicago) <em>A textbook of botany for colleges and universities</em>, with the second volume dedicated to the “Ecology” of plants. He was one of the founding members of the Ecological Society of America (in 1915).</p>
+</div>
 <p>Another important piece of the puzzle was provided by the work of Jared Diamond who, while studying avian assemblages in New Guinea, proposed that certain species assemblages would be “forbidden” (due to competition)—by observing several instances of assembly (in the different islands), one could guess the rules of the assembly game (<span class="citation">Diamond (<a href="#ref-diamond1975assembly" role="doc-biblioref">1975</a>)</span>). Diamond’s work sparked decades of intense debate, bringing a focus on the role of null models in ecology (are the observed patterns due to chance or necessity?), with especially cogent critiques brought forward by Simberloff, Connor and Gotelli (see for example <span class="citation">Gotelli and Graves (<a href="#ref-gotelli1996null" role="doc-biblioref">1996</a>)</span>).</p>
 <div class="boxhistory">
 <p><strong>Evelyn Chrystalla “E.C.” Pielou (1924-2016)</strong></p>
@@ -318,7 +322,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>In the early 2000s, the focus changed decisively and became centered on the difference between “neutrality” (i.e., where species distribution are driven by stochastic fluctuations, <span class="citation">Hubbell (<a href="#ref-hubbell2001unified" role="doc-biblioref">2001</a>)</span>) and “niche” (i.e., driven by species interactions—or rather their avoidance).</p>
 <p>Finally, the budding field of “community phylogenetics” (<span class="citation">Cadotte and Davies (<a href="#ref-cadotte2016phylogenies" role="doc-biblioref">2016</a>)</span>) is centered on relating these concepts to data stemming from phylogenetic trees.</p>
 <p>Here, we step back and reconsider basic models of ecological assembly in the style for example of <span class="citation">Drake (<a href="#ref-drake1991community" role="doc-biblioref">1991</a>)</span>, <span class="citation">Law and Morton (<a href="#ref-law1996permanence" role="doc-biblioref">1996</a>)</span>, and <span class="citation">Morton et al. (<a href="#ref-morton1996models" role="doc-biblioref">1996</a>)</span>.</p>
-</div>
 <div id="what-makes-the-study-of-assembly-difficult" class="section level3">
 <h3><span class="header-section-number">5.1.1</span> What makes the study of assembly difficult?</h3>
 <p>There are three main complications that stand in the way of the development of simple theories for ecological assembly (taken from <span class="citation">Serván and Allesina (<a href="#ref-servan2020tractable" role="doc-biblioref">2020</a>)</span>):</p>
@@ -1001,6 +1004,16 @@ V(x) = 2 \sum_i r_i x_i + \sum_{i,j} A_{ij} x_i x_j
 </ul></li>
 </ul>
 <p>Can a better (faster, more efficient) algorithm be devised?</p>
+<div class="boxhomework">
+<p><strong>Homework 5</strong></p>
+<p>Build the assembly graph for a GLV model in which the growth rates of all species are the same, and interactions are given by phylogenetic relatedness.</p>
+<p>In particular, consider an ultrametric phylogenetic tree <span class="math inline">\(T\)</span>, and the “variance-covariance” matrix induced by the tree, <span class="math inline">\(\Sigma_T\)</span>. Because the tree is ultrametric, then <span class="math inline">\(\Sigma_T_{ii} = 1\)</span> for all <span class="math inline">\(i\)</span>. The off-diagonal elements <span class="math inline">\(\Sigma_T_{ij}\)</span> express the proportion of shared ancestry (and as such <span class="math inline">\(1\geq \Sigma_T_{ij} \geq 0\)</span>).</p>
+<p>Take the GLV model:</p>
+<p><span class="math display">\[
+\dfrac{dx}{dt}=D(x)(1 - \Sigma_T)
+\]</span></p>
+<p>Notice that <span class="math inline">\(\Sigma_T\)</span> is positive (semi-)definite by construction. Now build the assembly graph: does it have any interesting property?</p>
+</div>
 </div>
 <div id="conclusions" class="section level3">
 <h3><span class="header-section-number">5.5.8</span> Conclusions</h3>

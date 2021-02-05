@@ -80,9 +80,9 @@ plot_eigenvalues <- function(M, prediction = NULL){
     coord_equal() + 
     geom_vline(xintercept = 0, colour = "red", linetype = 2)
   if (is.null(prediction) == FALSE) {
-    pl <- pl + geom_vline(xintercept = prediction, colour = "black", linetype = 2) + my_theme
+    pl <- pl + geom_vline(xintercept = prediction, colour = "black", linetype = 2) 
   }
-  show(pl)
+  show(pl+ my_theme)
 }
 set.seed(100) # for reproducibility
 # parameters

@@ -17,7 +17,7 @@ The material was prepared for the graduate class *Theoretical Community Ecology*
 
 The approach taken throughout the course is to alternate between code/simulations and mathematical derivations. While several theorems are (informally) stated, proofs are included only when elementary and/or informative of the underlying biological processes.
 
-The class builds upon material typically presented in classes on population, community and theoretical ecology.
+The class builds upon material typically presented in classes on population, community and theoretical ecology. The main goal of the class is to build a toolbox for solving problems in theoretical community ecology, bridging the gap between what typically presented in introductory classes and the primary literature.
 
 ## Topics {-}
 
@@ -45,7 +45,7 @@ Students should follow the rules and regulations set out by [University policy](
 
 ### Homework (80%) {-}
 
-Each of the lectures contains exercises that should be completed as graded homework. The homework should be submitted through Canvas as one or more `pdf` files obtained by compiling `Rmd` files. The homework should contain the derivations (you can use `LaTex` to typeset mathematics within `Rmd`, see [here](https://rpruim.github.io/s341/S19/from-class/MathinRmd.html) for commonly used commands), and code. The code must run and be correct to get a passing grade.
+Each lecture contains exercises that should be completed as graded homework. The homework should be submitted through Canvas as one or more `pdf` files obtained by compiling `Rmd` files. The homework should contain the derivations (you can use `LaTex` to typeset mathematics within `Rmd`, see [here](https://rpruim.github.io/s341/S19/from-class/MathinRmd.html) for commonly used commands), and code. The code must run and be correct to get a passing grade.
 
 ### Review (20%) {-}
 
@@ -57,7 +57,7 @@ University of Chicago is committed to ensuring equitable access to our academic 
 
 ## A note about biographies {-}
 
-The lecture notes are interdispersed with short biographies of scientists who greatly contributed to the problems being studied. The attentive reader will notice that most of the photographs are depicting old, white men. Their age is easy to explain: I have only included biographies of deceased scientists (so that they cannot contradict me!), and most of them enjoyed a long life (with some exceptions; for example Robert MacArthur tragically died at age 45). The impossibly skewed gender ratio, and the lack of ethnic diversity has to be explained with the tremendous homogeneity of the field---which was broken only recently. It is my hope that these lectures will engage young ecologists from different backgrounds and histories with the theory of community ecology, such that whoever will teach this type of material in a couple of decades will be able to include a more interesting and diverse gallery of portraits. 
+The lecture notes are interdispersed with short biographies of scientists who greatly contributed to the problems being studied. The attentive reader will notice that most of the photographs are depicting old white men. Their age is easy to explain: I have only included biographies of deceased scientists (so that they cannot contradict me!), and most of them enjoyed a long life (with some exceptions; for example Robert MacArthur tragically died at age 45). The impossibly skewed gender ratio, and the lack of ethnic diversity has to be explained with the tremendous homogeneity of the field---which was broken only recently. It is my hope that these lectures will engage young ecologists from different backgrounds and histories with the theory of community ecology, such that whoever will teach this type of material in a couple of decades will be able to include a more interesting and diverse gallery of portraits. 
 
 ## Sources {-}
 

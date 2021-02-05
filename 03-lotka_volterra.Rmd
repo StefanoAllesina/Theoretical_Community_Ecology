@@ -607,7 +607,7 @@ which is always nonnegative, and is zero at equilibrium. Therefore, $V(x(t))$ is
 Consider a five-species system with symmetric, stable $B$ (with all positive coefficients) and positive $s$, yielding the feasible equilibrium $x^\star$. 
 
 * Find random parameters satisfying 1) $B_{ij} = B_{ji} > 0\; \forall i,j$; 2) $B$ is stable; 3) $s_i > 0 \; \forall i$; 4) $B^{-1}s = x^\star > 0$. These parameters define your pool of species.
-* For each possible subset of species in the pool, (i.e., for all combinations ranging from a single species [5 cases], to two species [10 cases], \ldots, to all species together [1 case]), compute the corresponding equilibrium. Is it feasible? Is it stable?
+* For each possible subset of species in the pool, (i.e., for all combinations ranging from a single species [5 cases], to two species [10 cases], $\ldots$, to all species together [1 case]), compute the corresponding equilibrium. Is it feasible? Is it stable?
 * Take two subset of species such that a) both are feasible and stable; b) subset 1 contains subset 2 (i.e., all species in 2 are in 1, but not the converse); c) the value of $V(x^\star)$ for subset 1 is larger than that for subset 2. Try invading subset 2 with the species by introducing at the equilibrium of subset 2 the species that are in subset 1 but not in 2---starting all of them at low density. What happens?
 
 :::

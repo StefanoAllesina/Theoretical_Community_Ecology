@@ -15,7 +15,20 @@ Historically, this type of island-mainland models (based on species) have been c
 
 The idea of assembly was first introduced in ecology by the pioneers of "succession". For example, in 1899 Henry Chandler Cowles studied the vegetation development in the Indiana Dunes---sand dunes are first colonized by "pioneer" species of plants, which are then overgrown by different vegetation in older dunes. Because dunes are regularly disrupted by wind, one could make a "space-for-time" substitution and reconstruct the development of the vegetation as a "chronosequence". Importantly, Cowles (and then Clements) held the view that succession would be a strongly ordered, "determinisitc" process by which communities tended to a certain "climax" state. In the 1920s, Henry Gleason challenged this view, advocating for a much greater role for chance.
 
-#### BIO OF COWLES
+:::boxhistory
+
+**Henry Chandler Cowles (1869-1939)**
+
+```{r, cowles, echo=FALSE,out.width = "35%"}
+# All defaults
+knitr::include_graphics("img/Cowles.jpg")
+```
+
+Born in Kensington, Connecticut, Cowles attended Oberlin College, and received a PhD from the University of Chicago in 1898. His thesis is centered on the vegetation succession of the Indiana Dunes. His main inspiration came from the work of Eugen Warming (Cowles studied Danish in order to read the original *Plantesamfund*).  
+
+He was one of the pioneers of "ecology" in the US, a term that he helped popularizing, for example writing (along with Coulter and Barnes, all at U. Chicago) *A textbook of botany for colleges and universities*, with the second volume dedicated to the "Ecology" of plants. He was one of the founding members of the Ecological Society of America (in 1915).
+
+:::
 
 Another important piece of the puzzle was provided by the work of Jared Diamond who, while studying avian assemblages in New Guinea, proposed that certain species assemblages would be "forbidden" (due to competition)---by observing several instances of assembly (in the different islands), one could guess the rules of the assembly game (@diamond1975assembly). Diamond's work sparked decades of intense debate, bringing a focus on the role of null models in ecology (are the observed patterns due to chance or necessity?), with especially cogent critiques brought forward by Simberloff, Connor and Gotelli (see for example @gotelli1996null). 
 
@@ -679,6 +692,24 @@ Currently, the algorithm can be sketched as:
   - if the community $\{S, j\} = S'$ is not feasible and stable, the system will collapse to a smaller sub-community; to determine which sub-community it will collapse to, **check all the possible sub-communities** of $S'$, and take the one with the greatest $V(x^\star)$, $S''$. Draw an an edge $S \to S''$
 
 Can a better (faster, more efficient) algorithm be devised?
+
+:::boxhomework
+
+**Homework 5**
+
+Build the assembly graph for a GLV model in which the growth rates of all species are the same, and interactions are given by phylogenetic relatedness.
+
+In particular, consider an ultrametric phylogenetic tree $T$, and the "variance-covariance" matrix induced by the tree, $\Sigma_T$. Because the tree is ultrametric, then $\Sigma_T_{ii} = 1$ for all $i$. The off-diagonal elements $\Sigma_T_{ij}$ express the proportion of shared ancestry (and as such $1\geq \Sigma_T_{ij} \geq 0$). 
+
+Take the GLV model:
+
+$$
+\dfrac{dx}{dt}=D(x)(1 - \Sigma_T)
+$$
+
+Notice that $\Sigma_T$ is positive (semi-)definite by construction. Now build the assembly graph: does it have any interesting property?
+
+:::
 
 ### Conclusions
 
