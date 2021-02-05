@@ -1,8 +1,20 @@
 # Predicting coexistence in ecological communities
 
+```{r, include=FALSE}
+source("common_settings.R")
+```
 
+**Lesson plan**:
+1. We consider the problem of co-culturing several species taken from a pool in all possible combinations.
+1. This type of experiments has been conducted to test hypotheses on the relationship between diversity and ecosystem functioning.
+1. The number of combinations grows quickly with the size of the pool, making experiments difficult.
+1. The difficulty is compounded by the fact that not all combinations are expected to lead to coexistence.
+1. We parameterize a simple statistical model, and draw a connection with GLV dynamics. 
+1. We test whether our model is able to predict the outcomes of experiments out-of-fit.
 
-Ecologists have performed large experiments in which different assemblages of species are co-cultured. These experiments have been conducted with plants (for example, Biodiversity Ecosystem Functioning experiments e.g., [@hector1999plant] [@tilman2001diversity] [@cadotte2013experimental]) and in the laboratory using protozoan, algae or bacteria. Two commonly-encountered problems in this type of experiments have to to with the scaling of the number of experiments with the number of species, and with the probability of coexistence.
+## Background: Diversity and Ecosystem Functioning
+
+Ecologists have performed large experiments in which different assemblages of species are co-cultured. These experiments have been conducted with plants (for example, Biodiversity Ecosystem Functioning experiments e.g., @hector1999plant @tilman2001diversity, @cadotte2013experimental) and in the laboratory using protozoan, algae or bacteria. Two commonly-encountered problems in this type of experiments have to to with the scaling of the number of experiments with the number of species, and with the probability of coexistence.
 
 **Scale:** How many communities can we form from a pool of $n$ species? We can culture a single species in isolation ($n$ possibilities), two species in pair ($n(n-1) / 2$ possibilities), and so on. The total is therefore:
 
@@ -14,11 +26,11 @@ And this is only considering the presence/absence of each species! Moreover, we 
 
 **Coexistence:** even if we could try all possible experiments, many assemblages would collapse to smaller communities because of extinctions. For example, pairs could become monocultures, triplets become pairs or monocultures, etc. As such, even if we were to try all possible combinations, we would end up observing a smaller set of "final communities". 
 
-To solve these two issues, we would need to find a good way to navigate the enormous space of possibilities, thereby suggesting "good" experiments that yield a large probability of coexistence. 
+To guide experimentation, we need a way to be able to predict the (probable) outcome of experiments without having to run them all. Here we attempt to do so by examining a handful of experimental results, and using these data to parametrize a statistical model. The model provides a way to navigate the enormous space of possibilities, thereby suggesting "good" experiments that yield a large probability of coexistence. 
 
 ## Synthetic communities using the GLV model
 
-To set the stage for deriving a statistical model that can deal with the problems above, we start by simulating the communities that can be formed from a pool of $n$ species using the GLV model. First, we need a way to index our communities. We take a vector $p$ reporting the presence/absence of a given species in a community. To this end, we associate a label $k \in \{1, \ldots, 2^n -1\}$ with each possible community. If only taxon 1 is present ($p = [1,0,0,\ldots,0]$), then $k = 1$, if only taxon 2 is present ($p =[0,1,0,\ldots,0]$) then $k = 2$, if both taxa 1 and 2 are part of the community, $k = 3$ ($p = [1,1,0,\ldots,0]$); in general, $k = \sum_{i = 1}^n p_i 2^{(i-1)}$ where $p_i = 1$ if taxon $i$ is in the community, and $p_i = 0$ otherwise.
+To set the stage for deriving a statistical model that can deal with the problems above, we start by simulating the communities that can be formed from a pool of $n$ species using the GLV model. First, we need a way to index our communities. As done before, we take a vector $p$ reporting the presence/absence of a given species in a community. To this end, we associate a label $k \in \{1, \ldots, 2^n -1\}$ with each possible community. If only taxon 1 is present ($p = [1,0,0,\ldots,0]$), then $k = 1$, if only taxon 2 is present ($p =[0,1,0,\ldots,0]$) then $k = 2$, if both taxa 1 and 2 are part of the community, $k = 3$ ($p = [1,1,0,\ldots,0]$); in general, $k = \sum_{i = 1}^n p_i 2^{(i-1)}$ where $p_i = 1$ if taxon $i$ is in the community, and $p_i = 0$ otherwise.
 
 We can then cycle through each of the $2^n - 1$ assemblages that can be formed, and determine whether the species will coexist or not in our experiment. For simplicity, we report as coexisting any set of species for which a) the GLV equilibrium is feasible, and b) it is locally stable. We collect all the communities that are coexisting along with the abundance of all species in the matrix $E$. 
 
@@ -32,10 +44,8 @@ set.seed(3)
 n <- 5
 A <- -matrix(runif(n * n), n, n)
 diag(A) <- diag(A) - sqrt(2)
-print(A)
 # choose positive growth rates
 r <- runif(n) + 0.5
-print(r)
 ```
 
 Now go through all possible combinations:
@@ -44,7 +54,7 @@ Now go through all possible combinations:
 E <- matrix(0, 0, n) # matrix containing all communities
 x_template <- rep(0, n) # template for row of E
 for (k in 1:(2^n - 1)){
-  p <- as.integer(intToBits(k)[1:n])
+  p <- as.integer(intToBits(k)[1:n]) # from index to presence/absence
   presence <- p > 0
   A_k <- A[presence, presence, drop = FALSE]
   r_k <- r[presence]
@@ -67,22 +77,23 @@ for (k in 1:(2^n - 1)){
   }
 }
 rownames(E) <- NULL
-head(E) # show the first few communities
-tail(E) # show the last few communities
+knitr::kable(
+  as.data.frame(E)
+)
 ```
 
 ## Total biomass
 
-Our simulated communties have much in common with BEF experiments. For example, plotting the species richness on the x-axis and the total biomass on the y-axis, we recover the typical pattern found in real experiments ([@hector1999plant] [@tilman2001diversity] [@cadotte2013experimental]):
+Our simulated communties have much in common with BEF experiments. For example, plotting the species richness on the x-axis and the total biomass on the y-axis, we recover the typical pattern found in real experiments (@hector1999plant, @tilman2001diversity, @cadotte2013experimental):
 
-```{r, glvbefplot}
+```{r, glvbefplot, warning=FALSE}
 library(tidyverse) # plotting and wrangling
 total_biomass <- rowSums(E)
 species_richness <- rowSums(E > 0)
 BEF <- tibble(species_richness = species_richness, total_biomass = total_biomass)
 ggplot(data = BEF) + 
   aes(x = species_richness, y = total_biomass) + 
-  geom_point() + geom_smooth()
+  geom_point() + geom_smooth() + my_theme
 ```
 
 showing a modest increase in total biomass with increasing species richness.
@@ -94,12 +105,27 @@ We can rewrite the GLV model as:
 $$
 \begin{aligned}
 \dfrac{dx(t)}{dt} &= D(x(t))(r + A x(t))\\
-&= D(r \circ x(t))(1 + B x(t))
+&= D(r) D(x(t))(1 + B x(t))
 \end{aligned}
 $$
-where we have $b_{ij} = a_{ij} / r_i$. The equilibrium for each subset of species $k$ (if it exists) can be found as $(B^{(k)})^{-1} 1^{(k)}$, where $(B^{(k)})^{-1}$ is the inverse of the $B^{(k)}$ sub-matrix of $B$ in which only the rows/columns belonging to $k$ are retained, and $1^{(k)}$ is a vector of ones with length equal to the number of species in $k$. 
+where we have $b_{ij} = a_{ij} / r_i$. The equilibrium for each subset of species $k$ (if it exists) can be found as 
 
-We now want to link the matrix $B$ with the results of the experiments, stored in matrix $E$. Call $x^{(k)}_i$ the recorded density of taxon $i$ in community $k$ (i.e., stored in one of the rows of $E$). Then, we can build a matrix $P$ where each row represents an equation $\sum_{j \in k} b_{ij} x_j^{(k)} = 1$ and we have a column for each coefficient in $B$. For example, take three taxa, and suppose that we can culture each in isolation, and that the all assemblages coexist when co-cultured. We can write 12 equations: monocultures ($k \in \{1, 2, 4\}$) give rise to a single equation; co-cultures of two taxa to two equations each ($k \in \{3, 5, 6 \}$); and communities with three taxa to three independent equations ($k = 7$). Here are the 12 equations we can write:
+$$x^{(k)\star}= -(B^{(k)})^{-1} 1^{(k)}$$
+
+where $(B^{(k)})^{-1}$ is the inverse of the $B^{(k)}$ sub-matrix of $B$ in which only the rows/columns belonging to $k$ are retained, and $1^{(k)}$ is a vector of ones with length equal to the number of species in $k$. 
+
+We now want to link the matrix $B$ with the results of the experiments, stored in matrix $E$. Call $x^{(k)}_i$ the recorded density of taxon $i$ in community $k$ (i.e., stored in one of the rows of $E$). We know that, whenever a feasible equilibrium exist,
+
+$$
+(B^{(k)}) x^{(k)}= 1^{(k)}
+$$
+which can be seen as a system of as many equations as there are species in $k$. Then, we can build a matrix $P$ where each row represents an equation of form:
+
+$$
+\sum_{j \in k} b_{ij} x_j^{(k)} = 1
+$$
+
+and we have a column for each coefficient in $B$. For example, take three taxa, and suppose that we can culture each in isolation, and that the all assemblages coexist when co-cultured. We can write 12 equations: monocultures ($k \in \{1, 2, 4\}$) give rise to a single equation; co-cultures of two taxa to two equations each ($k \in \{3, 5, 6 \}$); and communities with three taxa to three independent equations ($k = 7$). Here are the 12 equations we can write:
 
 $$
 \begin{aligned}
@@ -162,7 +188,59 @@ b_{33}
 1
 \end{pmatrix}
 $$
-where $v(B)$ is a vectorized version of $B$. Because we have $n 2^{n-1} = 12$ equations, and $n^2 = 9$ variables, in principle the system can be solved. One can recognize the equation above as a linear regression, and choose $\hat{v}(B) = P^{+}1$ (where $P^{+}$ is the Moore-Penrose pseudo-inverse of $P$). Before doing that, however, we can try to simplify the calculation by rearranging the rows of $P$:
+
+where $v(B)$ is a vectorized version of $B$. Because we have $n 2^{n-1} = 12$ equations, and $n^2 = 9$ variables, in principle the system can be solved.
+
+:::boxmath
+
+**Moore-Penrose pseudoinverses**
+
+For a $n \times n$ matrix $A$, the inverse is determined (when it exists), as a matrix $A^{-1}$ such that $AA^{-1} = A^{-1}A = I$. A square matrix is invertible if its determinant (remember, the product of its eigenvalues) is nonzero. A matrix with determinant zero is called *singular* or *degenerate* and has no inverse. Singular matrices are rare, in the sense that a random matrix is "almost never" singular (this can be stated in a precise mathematical way). An invertible matrix has *full rank* (i.e., the rows [columns] are all linearly independent).
+
+Can we find a matrix that "works like" an inverse when $A$ is singular (or not square)? Turns out, we can find a matrix $A^+$ that satisfies these four criteria:
+
+$$
+AA^+A = A
+$$
+$$
+A^+AA^+ = A^+
+$$
+
+$$AA^+ = (AA^+)^T$$
+$$A^+A = (A^+A)^T$$
+
+Suppose that $A$ has linearly independent columns (i.e., it is of full column rank), then $A^T A$ has full rank and is therefore invertible. In this case, we can compute the *left* pseudoinverse as 
+
+$$A^+ = (A^T A)^{-1}A^T$$ 
+
+This is called the left inverse because $A^+A= (A^T A)^{-1}A^TA=I$. When $A$ has independent rows, one can compute the *right inverse*. Note that a generalized inverse $A^+$ exists even if $A$ is not of full column nor row rank, but in this case it is not unique.
+
+**Application: least squares**
+
+The pseudo-inverse can be used to find the *least-squares solution* of a system of linear equations. For example, in linear regression, we want to model a set of $n$ observations, $y$, as a linear function of measured predictors $X$ (for example, a matrix with $n$ rows [one for each observation], and $k$ columns [the number of measured predictors for each observation, typically with $k \ll n$]) and some parameters $b$. The linear system
+
+$$
+Xb = y 
+$$
+
+has no solution (for example, because $X$ is rectangular). If $X$ were to be invertible, finding the parameters would be easy:
+
+$$
+\hat{b} = X^{-1}y
+$$
+
+we can attempt the same approach using the pseudo-inverse:
+
+$$
+\hat{b} = X^{+}y
+$$
+
+in particular, it can be proven that the solution $\hat{b}$ minimizes the SSQ: call $\hat{y} = X \hat{b}$, then the solution $\hat{b}$ is the parameter choice minimizing $SSQ = \sum_i (y_i -\hat{y}_i)^2$.
+
+:::
+
+
+One can recognize the equation above as a linear regression, and choose $\hat{v}(B) = P^{+}1$ (where $P^{+}$ is the Moore-Penrose pseudo-inverse of $P$). Before doing that, however, we can try to simplify the calculation by rearranging the rows of $P$:
 
 $$
 \begin{pmatrix}
@@ -271,6 +349,18 @@ E[(2^n -1), ]
 ```
 
 The equation $E_i B_i = -1$ shows that all the equilibria of species $i$ in a GLV system are arranged on a hyperplane.
+
+:::boxhomework
+
+**Homework 6a**
+
+As seen above, for GLV, the matrix $B = D(r)^{-1}A$ encodes all the equilibria (feasible or unfeasible) for the model. Knowing $B$ is therefore all we need to determine the existence of a feasible equilibrium for any community we can form from the pool.
+
+1. Does the matrix $B$ informs us on invasibility? Take a sub-community $k$ resting at its feasible equilibrium point. Can one determine whether a species $i \notin k$ can invade when rare by inspecting the matrix $B$?
+
+2. When does the matrix $B$ can be used to determine the stability of the feasible equilibrium for a subset $k$?
+
+:::
 
 ## Fitting real data
 

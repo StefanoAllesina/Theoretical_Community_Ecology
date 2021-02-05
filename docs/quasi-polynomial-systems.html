@@ -230,11 +230,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html"><i class="fa fa-check"></i><b>6</b> Predicting coexistence in ecological communities</a><ul>
-<li class="chapter" data-level="6.1" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#synthetic-communities-using-the-glv-model"><i class="fa fa-check"></i><b>6.1</b> Synthetic communities using the GLV model</a></li>
-<li class="chapter" data-level="6.2" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#total-biomass"><i class="fa fa-check"></i><b>6.2</b> Total biomass</a></li>
-<li class="chapter" data-level="6.3" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#hyperplanes"><i class="fa fa-check"></i><b>6.3</b> Hyperplanes</a></li>
-<li class="chapter" data-level="6.4" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#fitting-real-data"><i class="fa fa-check"></i><b>6.4</b> Fitting real data</a></li>
-<li class="chapter" data-level="6.5" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#predicting-real-data-out-of-fit"><i class="fa fa-check"></i><b>6.5</b> Predicting real data out of fit</a></li>
+<li class="chapter" data-level="6.1" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#background-diversity-and-ecosystem-functioning"><i class="fa fa-check"></i><b>6.1</b> Background: Diversity and Ecosystem Functioning</a></li>
+<li class="chapter" data-level="6.2" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#synthetic-communities-using-the-glv-model"><i class="fa fa-check"></i><b>6.2</b> Synthetic communities using the GLV model</a></li>
+<li class="chapter" data-level="6.3" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#total-biomass"><i class="fa fa-check"></i><b>6.3</b> Total biomass</a></li>
+<li class="chapter" data-level="6.4" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#hyperplanes"><i class="fa fa-check"></i><b>6.4</b> Hyperplanes</a></li>
+<li class="chapter" data-level="6.5" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#fitting-real-data"><i class="fa fa-check"></i><b>6.5</b> Fitting real data</a></li>
+<li class="chapter" data-level="6.6" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#predicting-real-data-out-of-fit"><i class="fa fa-check"></i><b>6.6</b> Predicting real data out of fit</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html"><i class="fa fa-check"></i><b>7</b> Game theory and replicator dynamics</a><ul>
 <li class="chapter" data-level="7.1" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#game-theory"><i class="fa fa-check"></i><b>7.1</b> Game theory</a></li>
@@ -320,19 +321,19 @@ where <span class="math inline">\(s\)</span> is a vector of “growth rates” (
 \end{cases}
 \]</span></p>
 <p>with dynamics:</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="quasi-polynomial-systems.html#cb91-1"></a>qp1 &lt;-<span class="st"> </span><span class="cf">function</span>(t, x, pars){</span>
-<span id="cb91-2"><a href="quasi-polynomial-systems.html#cb91-2"></a>  x1 &lt;-<span class="st"> </span>x[<span class="dv">1</span>]</span>
-<span id="cb91-3"><a href="quasi-polynomial-systems.html#cb91-3"></a>  x2 &lt;-<span class="st"> </span>x[<span class="dv">2</span>]</span>
-<span id="cb91-4"><a href="quasi-polynomial-systems.html#cb91-4"></a>  dx1dt &lt;-<span class="st"> </span>x1 <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">sqrt</span>(x1) <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">/</span><span class="st"> </span><span class="dv">4</span>) <span class="op">*</span><span class="st"> </span>x2<span class="op">^</span><span class="dv">2</span>)</span>
-<span id="cb91-5"><a href="quasi-polynomial-systems.html#cb91-5"></a>  dx2dt &lt;-<span class="st"> </span>x2 <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">/</span><span class="st"> </span><span class="dv">2</span>) <span class="op">*</span><span class="st"> </span>x2)</span>
-<span id="cb91-6"><a href="quasi-polynomial-systems.html#cb91-6"></a>  <span class="kw">return</span>(<span class="kw">list</span>(<span class="kw">c</span>(dx1dt, dx2dt)))</span>
-<span id="cb91-7"><a href="quasi-polynomial-systems.html#cb91-7"></a>}</span>
-<span id="cb91-8"><a href="quasi-polynomial-systems.html#cb91-8"></a></span>
-<span id="cb91-9"><a href="quasi-polynomial-systems.html#cb91-9"></a><span class="kw">set.seed</span>(<span class="dv">0</span>)</span>
-<span id="cb91-10"><a href="quasi-polynomial-systems.html#cb91-10"></a>x0 &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">2</span>)</span>
-<span id="cb91-11"><a href="quasi-polynomial-systems.html#cb91-11"></a>outqp1 &lt;-<span class="st"> </span><span class="kw">ode</span>(<span class="dt">y =</span> x0, <span class="dt">times =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">45</span>, <span class="dt">by =</span> <span class="fl">0.25</span>), <span class="dt">func =</span> qp1, <span class="dt">parms =</span> <span class="ot">NULL</span>, <span class="dt">method =</span> <span class="st">&quot;ode45&quot;</span>)</span>
-<span id="cb91-12"><a href="quasi-polynomial-systems.html#cb91-12"></a>ts &lt;-<span class="st"> </span><span class="kw">plot_ODE_output</span>(outqp1)</span></code></pre></div>
-<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-45-1.png" width="480" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="quasi-polynomial-systems.html#cb86-1"></a>qp1 &lt;-<span class="st"> </span><span class="cf">function</span>(t, x, pars){</span>
+<span id="cb86-2"><a href="quasi-polynomial-systems.html#cb86-2"></a>  x1 &lt;-<span class="st"> </span>x[<span class="dv">1</span>]</span>
+<span id="cb86-3"><a href="quasi-polynomial-systems.html#cb86-3"></a>  x2 &lt;-<span class="st"> </span>x[<span class="dv">2</span>]</span>
+<span id="cb86-4"><a href="quasi-polynomial-systems.html#cb86-4"></a>  dx1dt &lt;-<span class="st"> </span>x1 <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">sqrt</span>(x1) <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">/</span><span class="st"> </span><span class="dv">4</span>) <span class="op">*</span><span class="st"> </span>x2<span class="op">^</span><span class="dv">2</span>)</span>
+<span id="cb86-5"><a href="quasi-polynomial-systems.html#cb86-5"></a>  dx2dt &lt;-<span class="st"> </span>x2 <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">/</span><span class="st"> </span><span class="dv">2</span>) <span class="op">*</span><span class="st"> </span>x2)</span>
+<span id="cb86-6"><a href="quasi-polynomial-systems.html#cb86-6"></a>  <span class="kw">return</span>(<span class="kw">list</span>(<span class="kw">c</span>(dx1dt, dx2dt)))</span>
+<span id="cb86-7"><a href="quasi-polynomial-systems.html#cb86-7"></a>}</span>
+<span id="cb86-8"><a href="quasi-polynomial-systems.html#cb86-8"></a></span>
+<span id="cb86-9"><a href="quasi-polynomial-systems.html#cb86-9"></a><span class="kw">set.seed</span>(<span class="dv">0</span>)</span>
+<span id="cb86-10"><a href="quasi-polynomial-systems.html#cb86-10"></a>x0 &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">2</span>)</span>
+<span id="cb86-11"><a href="quasi-polynomial-systems.html#cb86-11"></a>outqp1 &lt;-<span class="st"> </span><span class="kw">ode</span>(<span class="dt">y =</span> x0, <span class="dt">times =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">45</span>, <span class="dt">by =</span> <span class="fl">0.25</span>), <span class="dt">func =</span> qp1, <span class="dt">parms =</span> <span class="ot">NULL</span>, <span class="dt">method =</span> <span class="st">&quot;ode45&quot;</span>)</span>
+<span id="cb86-12"><a href="quasi-polynomial-systems.html#cb86-12"></a>ts &lt;-<span class="st"> </span><span class="kw">plot_ODE_output</span>(outqp1)</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-46-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>Showing that in this case dynamics reach the equilibrium <span class="math inline">\((x_1^\star, x_2^\star) = (4,2)\)</span>. This can be rewritten as:</p>
 <p><span class="math display">\[
 \begin{cases}
