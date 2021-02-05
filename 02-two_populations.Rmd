@@ -383,7 +383,7 @@ If $A$ has eigenvalues $\lambda$, $B = \beta\, A$ has eigenvalues $\beta\, \lamb
 
 A matrix is positive definite if all its eigenvalues are real and positive. It is positive semi-definite if eigenvalues can be zero. The matrices $AA^T$ and $A^T A$ are positive semi-definite, and have the same eigenvalues up to some zeros (used in SVD and  PCA). Correlation and covariance matrices have these form.
 
-Provided that some mild conditions are satisfied, a matrix with non-negative entries has a unique largest real eigenvalue with a corresponding eigenvector that can be chosen to have strictly positive components ((Perron-Frobenius theorem)[https://en.wikipedia.org/wiki/Perron%E2%80%93Frobenius_theorem]). A matrix with constant row sums $\theta$ has $\theta$ as the largest eigenvalue, and $v = 1$ as the corresponding eigenvector (e.g., Markov Chains).
+Provided that some mild conditions are satisfied, a matrix with non-negative entries has a unique largest real eigenvalue with a corresponding eigenvector that can be chosen to have strictly positive components ([Perron-Frobenius theorem](https://en.wikipedia.org/wiki/Perron%E2%80%93Frobenius_theorem)). A matrix with constant row sums $\theta$ has $\theta$ as the largest eigenvalue, and $v = 1$ as the corresponding eigenvector (e.g., Markov Chains).
 
 :::
 

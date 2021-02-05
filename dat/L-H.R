@@ -3,6 +3,17 @@
 ## following  https://github.com/s3rvac/lemke-howson
 ## ==========================================================================================
 
+makePivotingStep <- function(t, n, e){
+  ne = ifelse(e > 0, e + 2, abs(e) + n + 2)
+  L = get_leaving_variable(t, ne)
+  l = L[["l"]]
+  lindex = L[["index"]]
+  nl = ifelse(l > 0, l + 2, abs(l) + n + 2)
+  t = update_tableux(t, e, ne, nl, lindex)
+  return (list("left" = l, "t" = t))
+}
+
+
 lemkeHowson_symmetric <- function(M){
   ## Before we start, we need to normalize both matrices
   ## to ensure some assumptions about values in both matrices
@@ -76,17 +87,6 @@ createTableaux <- function(M){
   t[, 2] <- 1
   t[, 3:(S + 2)] <- -M
   return (t)
-}
-
-
-makePivotingStep <- function(t, n, e){
-  ne = ifelse(e > 0, e + 2, abs(e) + n + 2)
-  L = get_leaving_variable(t, ne)
-  l = L[["l"]]
-  lindex = L[["index"]]
-  nl = ifelse(l > 0, l + 2, abs(l) + n + 2)
-  t = update_tableux(t, e, ne, nl, lindex)
-  return (list("left" = l, "t" = t))
 }
 
 ### Get the leaving variable following a min rule
