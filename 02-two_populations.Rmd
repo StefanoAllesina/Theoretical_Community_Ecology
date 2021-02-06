@@ -65,7 +65,8 @@ x <- c(1, 2)
 out <- ode(y = x, times = seq(0, 10, by = 0.1), 
            func = predator_prey, 
            parms = list(g, a, d, b)) %>% 
-  as_tibble() %>% rename(x1 = `1`, x2 = `2`)
+  as_tibble() %>% rename(x1 = `1`, x2 = `2`) %>% 
+  as.matrix() %>% as_tibble()
 pl <- ggplot(out %>% arrange(time), 
              aes(x = x1, y = x2, colour = time)) + 
   geom_point() + geom_path() + my_theme + scale_x_continuous(expression(x(t))) + 
@@ -717,7 +718,8 @@ x0 <- c(0.8, 1.2)
 out <- ode(y = x0, times = seq(0, 20, by = 0.1), 
            func = glv, 
            parms = list(r = r, A = A)) %>% 
-  as_tibble() %>% rename(x1 = `1`, x2 = `2`)
+  as_tibble() %>% rename(x1 = `1`, x2 = `2`) %>% 
+  as.matrix() %>% as_tibble()
 pl <- ggplot(out %>% arrange(time), 
              aes(x = x1, y = x2, colour = time)) + 
   geom_point() + geom_path() + 

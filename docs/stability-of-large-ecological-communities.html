@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Lecture 4 Stability of large ecological communities | Theoretical Community Ecology</title>
   <meta name="description" content="A graduate course in theoretical community ecology focusing on systems with multiple species." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Lecture 4 Stability of large ecological communities | Theoretical Community Ecology" />
   <meta property="og:type" content="book" />
@@ -50,14 +50,12 @@
 
 
 
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -66,14 +64,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -82,9 +82,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -305,11 +305,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="complexity-and-stability" class="section level2">
 <h2><span class="header-section-number">4.1</span> Complexity and stability</h2>
 <div class="boxpaper">
-<p><strong>Key paper: <span class="citation">MacArthur (<a href="#ref-macarthur1955fluctuations">1955</a>)</span></strong></p>
+<p><strong>Key paper: <span class="citation">MacArthur (<a href="#ref-macarthur1955fluctuations" role="doc-biblioref">1955</a>)</span></strong></p>
 <p>In 1955, MacArthur used an information-theoretic argument to suggest more speciose communities would be more “stable”: having a food web with many species would open several “channels” for energy to flow from resources to consumers, such that if a channel were to go dry, another channel could take its place.</p>
-<p><strong>Key paper: <span class="citation">May (<a href="#ref-may1972will">1972</a>)</span></strong></p>
+<p><strong>Key paper: <span class="citation">May (<a href="#ref-may1972will" role="doc-biblioref">1972</a>)</span></strong></p>
 <p>This idea was challenged by May, who showed that, all other things being equal, larger communities would be less likely to be <em>dynamically stable</em>. This paper started the so-called “diversity-stability” debate that populates the literature to this day.</p>
-<p><strong>Key paper: <span class="citation">McCann (<a href="#ref-mccann2000diversity">2000</a>)</span></strong></p>
+<p><strong>Key paper: <span class="citation">McCann (<a href="#ref-mccann2000diversity" role="doc-biblioref">2000</a>)</span></strong></p>
 <p>In this review, McCann summarizes the development of the diversity-stability debate over the span of three decades.</p>
 </div>
 <p>As we have seen before, an equilibrium <span class="math inline">\(x^\star\)</span> is stable if the community matrix for the equilibrium has all eigenvalues with negative real part. For a Generalized Lotka-Volterra model, to determine the equilibrium and its stability, we would need to specify all the growth rates (<span class="math inline">\(r\)</span>, <span class="math inline">\(n\)</span> values), as well as the matrix of interactions (<span class="math inline">\(A\)</span>, <span class="math inline">\(n^2\)</span> values). This is impractical to do for large systems (though we will try this out later). But can something quite general be said about the limit in which many species are in the community?</p>
@@ -320,10 +320,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>History: Robert M. May (1936-2020)</strong></p>
 <p><img src="img/May.jpg" width="25%" style="display: block; margin: auto;" /></p>
 <p>Born and educated in Sidney, May received a PhD in theoretical physics from the University of Sidney in 1959. Having started his career in the physics of super-conductivity, May became interested in ecology. When visiting Princeton during his stay at the Institute for Advanced Studies, he met MacArthur, and decided to change fields.</p>
-<p>He ended up changing the field of ecology, with an incredible number of contributions on population dynamics and chaos (see key papers in preceding lectures), the dynamics of infectious diseases (with Roy Anderson, <span class="citation">Anderson and May (<a href="#ref-anderson1992infectious">1992</a>)</span>), evolutionary game theory (<span class="citation">Nowak and May (<a href="#ref-nowak1992evolutionary">1992</a>)</span>), the estimation of the number of species on Earth (<span class="citation">May (<a href="#ref-may1988many">1988</a>)</span>), bibliometrics (<span class="citation">May (<a href="#ref-may1997scientific">1997</a>)</span>), and even banking (by modeling systemic risks, <span class="citation">Haldane and May (<a href="#ref-haldane2011systemic">2011</a>)</span>). He succeeded MacArthur at Princeton, and concluded his career in England (University of Oxford).</p>
+<p>He ended up changing the field of ecology, with an incredible number of contributions on population dynamics and chaos (see key papers in preceding lectures), the dynamics of infectious diseases (with Roy Anderson, <span class="citation">Anderson and May (<a href="#ref-anderson1992infectious" role="doc-biblioref">1992</a>)</span>), evolutionary game theory (<span class="citation">Nowak and May (<a href="#ref-nowak1992evolutionary" role="doc-biblioref">1992</a>)</span>), the estimation of the number of species on Earth (<span class="citation">May (<a href="#ref-may1988many" role="doc-biblioref">1988</a>)</span>), bibliometrics (<span class="citation">May (<a href="#ref-may1997scientific" role="doc-biblioref">1997</a>)</span>), and even banking (by modeling systemic risks, <span class="citation">Haldane and May (<a href="#ref-haldane2011systemic" role="doc-biblioref">2011</a>)</span>). He succeeded MacArthur at Princeton, and concluded his career in England (University of Oxford).</p>
 <p>He won a large number of prizes, and was created a life peer (Lord May, Baron of Oxford). He served as president of the Royal Society and as Chief Scientific Adviser to the government.</p>
 </div>
-<p><span class="citation">May (<a href="#ref-may1972will">1972</a>)</span> attempted to answer this question by considering a <strong>random community matrix</strong>. In a GLV system, the diagonal elements <span class="math inline">\(M_{ii} = A_{ii} x_i^\star\)</span> are influenced by self-regulation (i.e., as in a carrying capacity), while the off-diagonal elements <span class="math inline">\(M_{ij} = A_{ij} x_i^\star\)</span> model the effect of species <span class="math inline">\(j\)</span> on the equilibrium of species <span class="math inline">\(i\)</span>. May considered the following algorithm to build a random community matrix. Take a large community, resting at an unspecified, feasible equilibrium; we build the community matrix by setting:</p>
+<p><span class="citation">May (<a href="#ref-may1972will" role="doc-biblioref">1972</a>)</span> attempted to answer this question by considering a <strong>random community matrix</strong>. In a GLV system, the diagonal elements <span class="math inline">\(M_{ii} = A_{ii} x_i^\star\)</span> are influenced by self-regulation (i.e., as in a carrying capacity), while the off-diagonal elements <span class="math inline">\(M_{ij} = A_{ij} x_i^\star\)</span> model the effect of species <span class="math inline">\(j\)</span> on the equilibrium of species <span class="math inline">\(i\)</span>. May considered the following algorithm to build a random community matrix. Take a large community, resting at an unspecified, feasible equilibrium; we build the community matrix by setting:</p>
 <ul>
 <li><span class="math inline">\(M_{ij} = 0\)</span> with probability <span class="math inline">\((1-C)\)</span>; with probability <span class="math inline">\(C\)</span> we draw <span class="math inline">\(M_{ij}\)</span> from a distribution with mean zero and variance <span class="math inline">\(\sigma^2\)</span>. <span class="math inline">\(C\)</span> is the proportion of realized connections, termed the “connectance” of the system.</li>
 <li>the diagonal elements are set to <span class="math inline">\(-d\)</span>, modeling self-regulation.</li>
@@ -374,7 +374,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     1\\ 0 \quad \quad \quad \text{ otherwise}
   \end{cases}
 \]</span></p>
-<p>Note that when <span class="math inline">\(\rho = 0\)</span>, the elliptic law reduces to the circular law. Using the elliptic law, <span class="citation">Allesina and Tang (<a href="#ref-allesina2012stability">2012</a>)</span> were able to extend May’s criterion to ecological networks with different mixtures of interaction types.</p>
+<p>Note that when <span class="math inline">\(\rho = 0\)</span>, the elliptic law reduces to the circular law. Using the elliptic law, <span class="citation">Allesina and Tang (<a href="#ref-allesina2012stability" role="doc-biblioref">2012</a>)</span> were able to extend May’s criterion to ecological networks with different mixtures of interaction types.</p>
 <p>Build a matrix <span class="math inline">\(M\)</span> by sampling the entries in pairs: <span class="math inline">\((M_{ij}, M_{ji})\)</span> are zero with probability <span class="math inline">\((1-C)\)</span>, and with probability <span class="math inline">\(C\)</span> sampled independently from a bivariate distribution with mean <span class="math inline">\(\nu = (0, 0)^T\)</span>, and covariance matrix <span class="math inline">\(\Sigma = \sigma^2 \begin{pmatrix} 1 &amp; \rho\\ \rho &amp; 1\end{pmatrix}\)</span>. Then <span class="math inline">\(\mathbb E[M_{ij}] = 0\)</span>, <span class="math inline">\(\mathbb E[M_{ij}^2] = C \sigma^2\)</span>, and <span class="math inline">\(E[M_{ij} M_{ji}] = C \sigma^2 \rho\)</span>. By dividing the entries <span class="math inline">\({M}\)</span> by <span class="math inline">\(\sqrt{C \sigma^2}\)</span>, we obtain a matrix following the elliptic law. As such, the stability criterion becomes:</p>
 <p><span class="math display">\[
 \sqrt{n C \sigma^2}(1 + \rho) &lt; d
@@ -414,7 +414,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="small-rank-perturbations" class="section level2">
 <h2><span class="header-section-number">4.6</span> Small-rank perturbations</h2>
 <p>The basic results listed above consider matrices whose coefficients have mean
-zero. Clearly, this is rarely the case in ecological systems, and therefore for applications we need to incorporate the possibility of nonzero means. While in general one cannot compute the distribution of the eigenvalues of a sum of two matrices <span class="math inline">\({M} = {A} + {B}\)</span> from the eigenvalues of the two matrices, this calculation is possible whenever <span class="math inline">\({A}\)</span> has small-rank (i.e., few nonzero eigenvalues, or a finite amount in the limit of infinitely large sizes) and <span class="math inline">\({B}\)</span> is a large random matrix. In this case, the distribution of the eigenvalues of <span class="math inline">\({M}\)</span> will be composed by a bulk, defined by the spectrum of <span class="math inline">\({B}\)</span>, and (possibly) a few outlier eigenvalues, matching closely the nonzero eigenvalues of <span class="math inline">\({A}\)</span> (a correction is needed when the coefficients of <span class="math inline">\({B}\)</span> are correlated, <span class="citation">O’Rourke and Renfrew (<a href="#ref-o2014low">2014</a>)</span>).</p>
+zero. Clearly, this is rarely the case in ecological systems, and therefore for applications we need to incorporate the possibility of nonzero means. While in general one cannot compute the distribution of the eigenvalues of a sum of two matrices <span class="math inline">\({M} = {A} + {B}\)</span> from the eigenvalues of the two matrices, this calculation is possible whenever <span class="math inline">\({A}\)</span> has small-rank (i.e., few nonzero eigenvalues, or a finite amount in the limit of infinitely large sizes) and <span class="math inline">\({B}\)</span> is a large random matrix. In this case, the distribution of the eigenvalues of <span class="math inline">\({M}\)</span> will be composed by a bulk, defined by the spectrum of <span class="math inline">\({B}\)</span>, and (possibly) a few outlier eigenvalues, matching closely the nonzero eigenvalues of <span class="math inline">\({A}\)</span> (a correction is needed when the coefficients of <span class="math inline">\({B}\)</span> are correlated, <span class="citation">O’Rourke and Renfrew (<a href="#ref-o2014low" role="doc-biblioref">2014</a>)</span>).</p>
 <p>For example, let’s add a matrix with three nonzero eigenvalues to a large random matrix of the type studied by May:</p>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-27-1.png" width="480" style="display: block; margin: auto;" /></p>
 </div>
@@ -449,8 +449,8 @@ and call <span class="math inline">\(\lambda&#39;\)</span> the eigenvalues of <s
 <h2><span class="header-section-number">4.8</span> Further readings</h2>
 <p>On random matrices and stability:</p>
 <ul>
-<li><span class="citation">Allesina and Tang (<a href="#ref-allesina2015stability">2015</a>)</span> is an opinionated review on applications of random matrices in ecology.</li>
-<li>The lectures follow <span class="citation">Allesina and Grilli (<a href="#ref-theorecolrandom">2020</a>)</span> quite closely. The online version of the book is available through the library.</li>
+<li><span class="citation">Allesina and Tang (<a href="#ref-allesina2015stability" role="doc-biblioref">2015</a>)</span> is an opinionated review on applications of random matrices in ecology.</li>
+<li>The lectures follow <span class="citation">Allesina and Grilli (<a href="#ref-theorecolrandom" role="doc-biblioref">2020</a>)</span> quite closely. The online version of the book is available through the library.</li>
 </ul>
 
 </div>
@@ -461,37 +461,37 @@ and call <span class="math inline">\(\lambda&#39;\)</span> the eigenvalues of <s
 <p>Allesina, Stefano, and Jacopo Grilli. 2020. “Models for Large Ecological Communities—a Random Matrix Approach.” In <em>Theoretical Ecology: Concepts and Applications</em>, edited by Kevin S McCann and Gabriel Gellner, 74–92. Oxford University Press.</p>
 </div>
 <div id="ref-allesina2012stability">
-<p>Allesina, Stefano, and Si Tang. 2012. “Stability Criteria for Complex Ecosystems.” <em>Nature</em> 483 (7388). Nature Publishing Group: 205.</p>
+<p>Allesina, Stefano, and Si Tang. 2012. “Stability Criteria for Complex Ecosystems.” <em>Nature</em> 483 (7388): 205.</p>
 </div>
 <div id="ref-allesina2015stability">
-<p>Allesina, Stefano, and Si Tang. 2015. “The Stability–Complexity Relationship at Age 40: A Random Matrix Perspective.” <em>Population Ecology</em> 57 (1). Wiley Online Library: 63–75.</p>
+<p>Allesina, Stefano, and Si Tang. 2015. “The Stability–Complexity Relationship at Age 40: A Random Matrix Perspective.” <em>Population Ecology</em> 57 (1): 63–75.</p>
 </div>
 <div id="ref-anderson1992infectious">
 <p>Anderson, Roy M, and Robert M May. 1992. <em>Infectious Diseases of Humans: Dynamics and Control</em>. Oxford university press.</p>
 </div>
 <div id="ref-haldane2011systemic">
-<p>Haldane, Andrew G, and Robert M May. 2011. “Systemic Risk in Banking Ecosystems.” <em>Nature</em> 469 (7330). Nature Publishing Group: 351–55.</p>
+<p>Haldane, Andrew G, and Robert M May. 2011. “Systemic Risk in Banking Ecosystems.” <em>Nature</em> 469 (7330): 351–55.</p>
 </div>
 <div id="ref-macarthur1955fluctuations">
-<p>MacArthur, Robert. 1955. “Fluctuations of Animal Populations and a Measure of Community Stability.” <em>Ecology</em> 36 (3). JSTOR: 533–36.</p>
+<p>MacArthur, Robert. 1955. “Fluctuations of Animal Populations and a Measure of Community Stability.” <em>Ecology</em> 36 (3): 533–36.</p>
 </div>
 <div id="ref-may1972will">
-<p>May, Robert M. 1972. “Will a Large Complex System Be Stable?” <em>Nature</em> 238 (5364). Springer: 413–14.</p>
+<p>May, Robert M. 1972. “Will a Large Complex System Be Stable?” <em>Nature</em> 238 (5364): 413–14.</p>
 </div>
 <div id="ref-may1988many">
-<p>May, Robert M. 1988. “How Many Species Are There on Earth?” <em>Science</em> 241 (4872). American Association for the Advancement of Science: 1441–9.</p>
+<p>May, Robert M. 1988. “How Many Species Are There on Earth?” <em>Science</em> 241 (4872): 1441–9.</p>
 </div>
 <div id="ref-may1997scientific">
-<p>May, Robert M. 1997. “The Scientific Wealth of Nations.” <em>Science</em> 275 (5301). JSTOR: 793–96.</p>
+<p>May, Robert M. 1997. “The Scientific Wealth of Nations.” <em>Science</em> 275 (5301): 793–96.</p>
 </div>
 <div id="ref-mccann2000diversity">
-<p>McCann, Kevin Shear. 2000. “The Diversity–Stability Debate.” <em>Nature</em> 405 (6783). Nature Publishing Group: 228–33.</p>
+<p>McCann, Kevin Shear. 2000. “The Diversity–Stability Debate.” <em>Nature</em> 405 (6783): 228–33.</p>
 </div>
 <div id="ref-nowak1992evolutionary">
-<p>Nowak, Martin A, and Robert M May. 1992. “Evolutionary Games and Spatial Chaos.” <em>Nature</em> 359 (6398). Springer: 826–29.</p>
+<p>Nowak, Martin A, and Robert M May. 1992. “Evolutionary Games and Spatial Chaos.” <em>Nature</em> 359 (6398): 826–29.</p>
 </div>
 <div id="ref-o2014low">
-<p>O’Rourke, Sean, and David Renfrew. 2014. “Low Rank Perturbations of Large Elliptic Random Matrices.” <em>Electronic Journal of Probability</em> 19. The Institute of Mathematical Statistics; the Bernoulli Society.</p>
+<p>O’Rourke, Sean, and David Renfrew. 2014. “Low Rank Perturbations of Large Elliptic Random Matrices.” <em>Electronic Journal of Probability</em> 19.</p>
 </div>
 </div>
             </section>

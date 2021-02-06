@@ -15,6 +15,8 @@ We briefly introduce the study of mathematical models of games, and their relati
 knitr::include_graphics('img/Maynard_Smith.jpg')
 ```
 
+Born in London, when he was a student at Eaton he decided to study the work of JBS Haldane. He set out to Cambridge to study engineering, and subsequently worked as an engineer designing military aircrafts. In 1947, he had a change of hearth and decided to study *Drosophila* genetics at U.C.L. under Haldane. In 1973, based on his interaction with George Price, he formalized the concept of "Evolutionarily Stable Strategy", which became central to evolutionary game theory. His book *Evolution and the Theory of Games* (1982) was an immediate success and contributed to the birth of the field.
+
 :::
 
 :::boxhistory
@@ -24,6 +26,16 @@ knitr::include_graphics('img/Maynard_Smith.jpg')
 ```{r, echo=FALSE,out.width = "35%"}
 knitr::include_graphics('img/Price.jpg')
 ```
+
+One of the most remarkable characters in the history of biology, he was born in New York. He studied chemistry at U. Chicago, receiving a Ph.D. in 1946 (for work connected to the Manhattan Project). He went on to take a variery of jobs: teaching chemistry at Harvard, consulting at Argonne, researching at Bell Lab, writing popular science, working on medical research at U. Minnesota, and consulting for IBM on computer graphics. 
+
+In 1966, he was operated for a tumor, and the operation resulted in a partial paralysis. With the money from his medical insurance, he moved to the UK to start a new life. 
+
+Without any training in population genetics or statistics, he devised the Price equation, based on his readings of Hamilton's papers on kin selection. This feat landed him a job at Galton Lab at UCL, despite his lack of credentials. His collaborations with Hamilton and Maynard-Smith led to the development of evolutionary game theory.
+
+A strong atheist from an early age, in 1970 Price had a religious experience, converted to Christianity and started (inspired by his own equation) to perform acts of random kindness to complete strangers. Having given up all his possessions, and possibly due to his stopping of thyroid treatment, Price grew depressed and committed suicide in 1975.
+
+The book *The Price of Altruism: George Price and the Search for the Origins of Kindness* (Oren Harman, 2010) narrates the incredible story of his life.
 
 :::
 
@@ -51,6 +63,28 @@ $$
 What is the best strategy player 1 can play---without knowing whether player 2 will confess or not? If player 2 were to keep quiet, player 1 should confess and be let free; if player 2 confesses, on the other hand, player 1 should also confess and get a reduced sentence. As such, each player would rationally choose to confess, thereby getting sentenced to four years in prison; note that if they could trust the other player, they could cooperate to get a much reduced sentence.
 
 The defect/defect is called a **Nash Equilibrium**: no player can improve their payoff by changing only their own strategy. 
+
+:::boxpaper
+
+One of the most interesting problems in this area is the study of the evolution of cooperation. Here is a very minimal bibliography:
+
+**Key paper: @axelrod1981evolution** 
+
+The seminal paper in this area. Interestingly, it details the outcome of a computer-based tournament in which several programs iteratively play the prisoner's dilemma against each other. 
+
+**Key paper: @clutton2009cooperation**
+
+An opinionated review of cooperation between non-kin in animal societies. The opening *"As Darwin appreciated, cooperative behaviour---actions adapted to assist others that involve costs to the fitness of participants---poses a fundamental problem to the traditional theory of natural selection"* succinlty summarizes why the evolution of cooperation is such a central problem.
+
+**Key paper: @nowak1992evolutionary**
+
+Nowak and May examine the case in which populations of "cooperators" and "defectors" play the prisoner's dilemma in a spatial setting. Despite the simple setting and the deterministic nature of the simulation, they find long-term coexistence of the different populations, giving rise to amazing spatial patterns.
+
+**Key paper: @nowak2005evolution** 
+
+Cooperation can evolve via indirect reciprocity (I help you in the hope that someone will help me) when players have a "reputation" to defend.
+
+:::
 
 ## Mixed strategies
 
@@ -270,6 +304,14 @@ glvex <- integrate_GLV(r, A, x0, maxtime = 15, steptime = 0.01)
 
 in which the species oscillate around one.
 
+:::boxpaper
+
+**Key paper: @page2002unifying**
+
+In this brief paper, Page and Nowak show that the replicator-mutator equation and the Price equation are two ways of tracking general evolutionary dynamics. They discuss the connections with GLV and adaptive dynamics. 
+
+:::
+
 ### Hypertournament games
 
 The rock-paper-scissor game above is a simple case of a "hypertournament" game. Take the zero-sum payoff matrix $A = -A^T$. Then, we have 
@@ -405,7 +447,28 @@ fivespp <- integrate_RE(A, x0, maxtime = 400, steptime = 0.1)
 
 **Homework 7a**
 
-Rock paper scissors with positive game value
+Analyze the replicator equation when the matrix $A$ is:
+
+$$
+A = \begin{pmatrix}
+0 & -\alpha & 1\\
+1 & 0 & -\alpha\\
+-\alpha & 1 & 0
+\end{pmatrix}
+$$
+
+for the cases in which a) $\alpha > 1$, b) $\alpha < 1$. Write code to simulate the system, and prove stability/instability depending on the value of $\alpha$.
+
+:::
+
+:::boxhomework
+
+**Homework 7b**
+
+As seen above, generally zero-sum matrix games will lead to an odd number of species coexisting. 
+
+- Can you build a matrix leading to four species/strategies coexisting?
+- Now simulate the dynamics several times starting from different initial conditions---do species cycle around the same equilibrium? Why?
 
 :::
 

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Lecture 9 Quasi-polynomial systems | Theoretical Community Ecology</title>
   <meta name="description" content="A graduate course in theoretical community ecology focusing on systems with multiple species." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Lecture 9 Quasi-polynomial systems | Theoretical Community Ecology" />
   <meta property="og:type" content="book" />
@@ -50,14 +50,12 @@
 
 
 
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -66,14 +64,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -82,9 +82,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -309,7 +309,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math display">\[
 \frac{d x_i(t)}{d t} = x_i(t) \left(s_i + \sum_{j = i}^m A_{ij} \prod_{k=1}^n x_k(t)^{B_{jk}}\right)
 \]</span>
-where <span class="math inline">\(s\)</span> is a vector of “growth rates” (not necessarily positive), <span class="math inline">\(A\)</span> is a matrix of interactions, and <span class="math inline">\(B\)</span> a matrix of exponents. Note that if we take <span class="math inline">\(B = I_n\)</span> (the identity matrix), we recover the GLV model. If <span class="math inline">\(B\)</span> contains only integers, then we recover a polynomial system. Extending this model to real (but not necessarily integer) numbers <span class="math inline">\(B_{jk}\)</span>, we have a “quasi-polynomial” system (<span class="citation">Hernández-Bermejo, Fairén, and Brenig (<a href="#ref-hernandez1998algebraic">1998</a>)</span>).</p>
+where <span class="math inline">\(s\)</span> is a vector of “growth rates” (not necessarily positive), <span class="math inline">\(A\)</span> is a matrix of interactions, and <span class="math inline">\(B\)</span> a matrix of exponents. Note that if we take <span class="math inline">\(B = I_n\)</span> (the identity matrix), we recover the GLV model. If <span class="math inline">\(B\)</span> contains only integers, then we recover a polynomial system. Extending this model to real (but not necessarily integer) numbers <span class="math inline">\(B_{jk}\)</span>, we have a “quasi-polynomial” system (<span class="citation">Hernández-Bermejo, Fairén, and Brenig (<a href="#ref-hernandez1998algebraic" role="doc-biblioref">1998</a>)</span>).</p>
 <p>In general, we assume that <span class="math inline">\(A\)</span> is of size <span class="math inline">\(n \times m\)</span>, <span class="math inline">\(B\)</span> is <span class="math inline">\(m \times n\)</span>, and that the <span class="math inline">\(x_i(t)\)</span> are real and positive (if that’s not the case, one needs to perform a change of variables that ensures positivity). The system has <span class="math inline">\(n\)</span> variables (the <span class="math inline">\(x_i(t)\)</span>), and we can identify <span class="math inline">\(m\)</span> “quasi-monomials”:</p>
 <p><span class="math display">\[
 \prod_{k=1}^n x_k^{B_{jk}}
@@ -322,18 +322,18 @@ where <span class="math inline">\(s\)</span> is a vector of “growth rates” (
 \end{cases}
 \]</span></p>
 <p>with dynamics:</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" data-line-number="1">qp1 &lt;-<span class="st"> </span><span class="cf">function</span>(t, x, pars){</a>
-<a class="sourceLine" id="cb85-2" data-line-number="2">  x1 &lt;-<span class="st"> </span>x[<span class="dv">1</span>]</a>
-<a class="sourceLine" id="cb85-3" data-line-number="3">  x2 &lt;-<span class="st"> </span>x[<span class="dv">2</span>]</a>
-<a class="sourceLine" id="cb85-4" data-line-number="4">  dx1dt &lt;-<span class="st"> </span>x1 <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">sqrt</span>(x1) <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">/</span><span class="st"> </span><span class="dv">4</span>) <span class="op">*</span><span class="st"> </span>x2<span class="op">^</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb85-5" data-line-number="5">  dx2dt &lt;-<span class="st"> </span>x2 <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">/</span><span class="st"> </span><span class="dv">2</span>) <span class="op">*</span><span class="st"> </span>x2)</a>
-<a class="sourceLine" id="cb85-6" data-line-number="6">  <span class="kw">return</span>(<span class="kw">list</span>(<span class="kw">c</span>(dx1dt, dx2dt)))</a>
-<a class="sourceLine" id="cb85-7" data-line-number="7">}</a>
-<a class="sourceLine" id="cb85-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb85-9" data-line-number="9"><span class="kw">set.seed</span>(<span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb85-10" data-line-number="10">x0 &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb85-11" data-line-number="11">outqp1 &lt;-<span class="st"> </span><span class="kw">ode</span>(<span class="dt">y =</span> x0, <span class="dt">times =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">45</span>, <span class="dt">by =</span> <span class="fl">0.25</span>), <span class="dt">func =</span> qp1, <span class="dt">parms =</span> <span class="ot">NULL</span>, <span class="dt">method =</span> <span class="st">&quot;ode45&quot;</span>)</a>
-<a class="sourceLine" id="cb85-12" data-line-number="12">ts &lt;-<span class="st"> </span><span class="kw">plot_ODE_output</span>(outqp1)</a></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="quasi-polynomial-systems.html#cb85-1"></a>qp1 &lt;-<span class="st"> </span><span class="cf">function</span>(t, x, pars){</span>
+<span id="cb85-2"><a href="quasi-polynomial-systems.html#cb85-2"></a>  x1 &lt;-<span class="st"> </span>x[<span class="dv">1</span>]</span>
+<span id="cb85-3"><a href="quasi-polynomial-systems.html#cb85-3"></a>  x2 &lt;-<span class="st"> </span>x[<span class="dv">2</span>]</span>
+<span id="cb85-4"><a href="quasi-polynomial-systems.html#cb85-4"></a>  dx1dt &lt;-<span class="st"> </span>x1 <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">sqrt</span>(x1) <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">/</span><span class="st"> </span><span class="dv">4</span>) <span class="op">*</span><span class="st"> </span>x2<span class="op">^</span><span class="dv">2</span>)</span>
+<span id="cb85-5"><a href="quasi-polynomial-systems.html#cb85-5"></a>  dx2dt &lt;-<span class="st"> </span>x2 <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">/</span><span class="st"> </span><span class="dv">2</span>) <span class="op">*</span><span class="st"> </span>x2)</span>
+<span id="cb85-6"><a href="quasi-polynomial-systems.html#cb85-6"></a>  <span class="kw">return</span>(<span class="kw">list</span>(<span class="kw">c</span>(dx1dt, dx2dt)))</span>
+<span id="cb85-7"><a href="quasi-polynomial-systems.html#cb85-7"></a>}</span>
+<span id="cb85-8"><a href="quasi-polynomial-systems.html#cb85-8"></a></span>
+<span id="cb85-9"><a href="quasi-polynomial-systems.html#cb85-9"></a><span class="kw">set.seed</span>(<span class="dv">0</span>)</span>
+<span id="cb85-10"><a href="quasi-polynomial-systems.html#cb85-10"></a>x0 &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">2</span>)</span>
+<span id="cb85-11"><a href="quasi-polynomial-systems.html#cb85-11"></a>outqp1 &lt;-<span class="st"> </span><span class="kw">ode</span>(<span class="dt">y =</span> x0, <span class="dt">times =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">45</span>, <span class="dt">by =</span> <span class="fl">0.25</span>), <span class="dt">func =</span> qp1, <span class="dt">parms =</span> <span class="ot">NULL</span>, <span class="dt">method =</span> <span class="st">&quot;ode45&quot;</span>)</span>
+<span id="cb85-12"><a href="quasi-polynomial-systems.html#cb85-12"></a>ts &lt;-<span class="st"> </span><span class="kw">plot_ODE_output</span>(outqp1)</span></code></pre></div>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-49-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>Showing that in this case dynamics reach the equilibrium <span class="math inline">\((x_1^\star, x_2^\star) = (4,2)\)</span>. This can be rewritten as:</p>
 <p><span class="math display">\[
@@ -363,7 +363,7 @@ z = ()
 <h3>References</h3>
 <div id="refs" class="references">
 <div id="ref-hernandez1998algebraic">
-<p>Hernández-Bermejo, Benito, Vı'ctor Fairén, and Léon Brenig. 1998. “Algebraic Recasting of Nonlinear Systems of Odes into Universal Formats.” <em>Journal of Physics A: Mathematical and General</em> 31 (10). IOP Publishing: 2415.</p>
+<p>Hernández-Bermejo, Benito, Vı́ctor Fairén, and Léon Brenig. 1998. “Algebraic Recasting of Nonlinear Systems of Odes into Universal Formats.” <em>Journal of Physics A: Mathematical and General</em> 31 (10): 2415.</p>
 </div>
 </div>
             </section>

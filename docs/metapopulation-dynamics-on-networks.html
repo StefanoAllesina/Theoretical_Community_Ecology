@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Lecture 8 Metapopulation dynamics on networks | Theoretical Community Ecology</title>
   <meta name="description" content="A graduate course in theoretical community ecology focusing on systems with multiple species." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Lecture 8 Metapopulation dynamics on networks | Theoretical Community Ecology" />
   <meta property="og:type" content="book" />
@@ -50,14 +50,12 @@
 
 
 
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -66,14 +64,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -82,9 +82,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -309,10 +309,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>History: Richard Levins (1930-2016)</strong></p>
 <p><img src="img/Levins.jpg" width="35%" style="display: block; margin: auto;" /></p>
 <p>Born in Brooklyn, New York, he studied agriculture and mathematics at Cornell. Early on, influenced by geneticist and polymath Haldane, he became a Marxist activist. Upon graduation, having been blacklisted as a communist (and with the Korean War raging), he moved to Puerto Rico with his wife, and set up a farm. In his spare time, he conducted experiments on fruit flies, organized anti-colonialist rallies and anti-war protests, and taught at the University of Puerto Rico. In 1964, he was invited to Cuba to help organize the biology department of the University of Havana. He received his doctorate from Columbia University in 1965. In 1967 he moved to the University of Chicago, where he joined Richard Lewontin—whith whom he established a lifelong collaboration. They both moved to Harvard in 19XX.</p>
-<p>It is impossible to summarize his numerous contributions to ecology, mathematics, political science, and the philosophy of science. He has inspired countless ecologists, and his approach and style are still visible in many of the research programs being carried out today. Of particular interest for this class, his theory of evolution in a changing environment (<span class="citation">Levins (<a href="#ref-levins1968evolution">1968</a>)</span>), the development of the idea of limiting similarity (<span class="citation">MacArthur and Levins (<a href="#ref-macarthur1967limiting">1967</a>)</span>), his work on metapopulation dynamics (<span class="citation">Levins (<a href="#ref-levins1969some">1969</a>)</span>), and the development of Loop Analysis (i.e., a qualitative theory for dynamical systems, <span class="citation">Puccia and Levins (<a href="#ref-puccia2013qualitative">2013</a>)</span>).</p>
+<p>It is impossible to summarize his numerous contributions to ecology, mathematics, political science, and the philosophy of science. He has inspired countless ecologists, and his approach and style are still visible in many of the research programs being carried out today. Of particular interest for this class, his theory of evolution in a changing environment (<span class="citation">Levins (<a href="#ref-levins1968evolution" role="doc-biblioref">1968</a>)</span>), the development of the idea of limiting similarity (<span class="citation">MacArthur and Levins (<a href="#ref-macarthur1967limiting" role="doc-biblioref">1967</a>)</span>), his work on metapopulation dynamics (<span class="citation">Levins (<a href="#ref-levins1969some" role="doc-biblioref">1969</a>)</span>), and the development of Loop Analysis (i.e., a qualitative theory for dynamical systems, <span class="citation">Puccia and Levins (<a href="#ref-puccia2013qualitative" role="doc-biblioref">2013</a>)</span>).</p>
 </div>
 <div class="boxpaper">
-<p><strong>Key paper: <span class="citation">Levins (<a href="#ref-levins1966strategy">1966</a>)</span></strong></p>
+<p><strong>Key paper: <span class="citation">Levins (<a href="#ref-levins1966strategy" role="doc-biblioref">1966</a>)</span></strong></p>
 <p>A must read for anyone interested in modeling (in biology and elsewhere). Just two quotes that resonate with the approach taken in these lectures:</p>
 <ul>
 <li><em>there are too many parameters to measure; some are still only vaguely defined; many would require a lifetime each for their measurement.</em></li>
@@ -356,16 +356,16 @@ Contrast approximation (NIMFA/Hanski-Ovaskainen)</p>
 <h3>References</h3>
 <div id="refs" class="references">
 <div id="ref-levins1966strategy">
-<p>Levins, Richard. 1966. “The Strategy of Model Building in Population Biology.” <em>American Scientist</em> 54 (4). JSTOR: 421–31.</p>
+<p>Levins, Richard. 1966. “The Strategy of Model Building in Population Biology.” <em>American Scientist</em> 54 (4): 421–31.</p>
 </div>
 <div id="ref-levins1968evolution">
 <p>Levins, Richard. 1968. <em>Evolution in Changing Environments: Some Theoretical Explorations</em>. Princeton University Press.</p>
 </div>
 <div id="ref-levins1969some">
-<p>Levins, Richard. 1969. “Some Demographic and Genetic Consequences of Environmental Heterogeneity for Biological Control.” <em>American Entomologist</em> 15 (3). Oxford University Press: 237–40.</p>
+<p>Levins, Richard. 1969. “Some Demographic and Genetic Consequences of Environmental Heterogeneity for Biological Control.” <em>American Entomologist</em> 15 (3): 237–40.</p>
 </div>
 <div id="ref-macarthur1967limiting">
-<p>MacArthur, Robert, and Richard Levins. 1967. “The Limiting Similarity, Convergence, and Divergence of Coexisting Species.” <em>The American Naturalist</em> 101 (921). Science Press: 377–85.</p>
+<p>MacArthur, Robert, and Richard Levins. 1967. “The Limiting Similarity, Convergence, and Divergence of Coexisting Species.” <em>The American Naturalist</em> 101 (921): 377–85.</p>
 </div>
 <div id="ref-puccia2013qualitative">
 <p>Puccia, Charles J, and Richard Levins. 2013. <em>Qualitative Modeling of Complex Systems: An Introduction to Loop Analysis and Time Averaging</em>. Harvard University Press.</p>
