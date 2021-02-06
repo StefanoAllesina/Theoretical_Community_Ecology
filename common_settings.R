@@ -1,6 +1,8 @@
 library(tidyverse)
 library(knitr)
 library(deSolve)
+library(latex2exp)
+
 knitr::opts_chunk$set(
   cache       = TRUE,     # if TRUE knitr will cache the results to reuse in future knits
   fig.width   = 5,       # the width for plots created by code chunk
@@ -27,6 +29,19 @@ plot_ODE_output <- function(out){
     aes(x = time, y = density, colour = species) + 
     geom_line() + my_theme + scale_x_continuous(expression(t)) + 
     scale_y_continuous(expression(x(t)))
-  show(pl)
+  show(pl + my_theme)
   return(out)
+}
+
+write_matex2 <- function(x) {
+  begin <- "\\begin{bmatrix}"
+  end <- "\\end{bmatrix}"
+  X <-
+    apply(x, 1, function(x) {
+      paste(
+        paste(x, collapse = "&"),
+        "\\\\"
+      )
+    })
+  paste(c(begin, X, end), collapse = "")
 }

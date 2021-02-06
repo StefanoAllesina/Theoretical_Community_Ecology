@@ -1,7 +1,31 @@
 # Game theory and replicator dynamics
 
+```{r, include=FALSE}
+source("common_settings.R")
+```
+
 ## Game theory
 We briefly introduce the study of mathematical models of games, and their relations to the GLV model. While the origin of game theory can be traced back to the 1700s, modern game theory started with von Neumann's paper *On the Theory of Games of Strategy*, published in 1928, and with the subsequent 1944 book with Morgensten *Theory of Games and Economic Behavior*. John Nash's paper [@nash1950equilibrium] introduced the notion of a **Nash Equilibrium** (NE). Originally, game theory was studied by economists and mathematicians, but with the 1973 book *Evolution and the Theory of Games* [@smith1982evolution], John Maynard Smith showed how the same tools could be used to study evolutionary dynamics, introducing the influential concept of an **Evolutionary Stable Strategy** (ESS). Evolutionary game theory was greatly advanced through the introduction of the **Replicator Equation** (RE), which, as we will see later, has strong connection with the GLV model. For a detailaed introduction to evolutionary game theory see @hofbauer1998evolutionary.
+
+:::boxhistory
+
+**History: John Maynard Smith (1920-2004)**
+
+```{r, echo=FALSE,out.width = "35%"}
+knitr::include_graphics('img/Maynard_Smith.jpg')
+```
+
+:::
+
+:::boxhistory
+
+**History: George R. Price (1922-1975)**
+
+```{r, echo=FALSE,out.width = "35%"}
+knitr::include_graphics('img/Price.jpg')
+```
+
+:::
 
 ## Two-player matrix games
 
@@ -33,11 +57,11 @@ The defect/defect is called a **Nash Equilibrium**: no player can improve their 
 Above, the player could choose one out of two strategies. A generalization of this situation is one in which players play **mixed** strategies, i.e., play a given strategy at random according to a set of probabilities. Call $x_i$ the probability that player 1 plays strategy $i$; then $\sum_i x_i = 1$. Similarly, $y_i$ is the probability that player 2 plays strategy $i$. A natural choice for the payoff of player 1 is therefore:
 
 $$
-\sum_{i=1}^m \sum_{j = 1}^n x_i y_j \pi_1 (s_1, s_2) = x^t A y
+\sum_{i=1}^m \sum_{j = 1}^n x_i y_j \pi_1 (s_1, s_2) = x^T A y
 $$
-Similarly, we have $y^t B x$ for player 2.
+Similarly, we have $y^T B x$ for player 2.
 
-A mixed strategy $x$ is dominated by mixed strategy $\tilde{x}$ if $\tilde{x}^t A y \geq x A y$ for every $y$. The condition can be written as $(\tilde{x}^t - x) A y \geq 0$.
+A mixed strategy $x$ is dominated by mixed strategy $\tilde{x}$ if $\tilde{x}^T A y \geq x^T A y$ for every $y$. The condition can be written as $(\tilde{x} - x)^T A y \geq 0$.
 
 ## Nash Equilibria
 
@@ -45,8 +69,8 @@ A pair of mixed strategies $\tilde{x}$ and $\tilde{y}$ is called a Nash Equilibr
 
 $$
 \begin{aligned}
-\tilde{x}^t A \tilde{y} \geq x^t A \tilde{y} &\quad \text{for all } x\\
-\tilde{y}^t B \tilde{x} \geq y^t B \tilde{x} &\quad \text{for all } y
+\tilde{x}^T A \tilde{y} \geq x^T A \tilde{y} &\quad \text{for all } x\\
+\tilde{y}^T B \tilde{x} \geq y^T B \tilde{x} &\quad \text{for all } y
 \end{aligned}
 $$
 
@@ -59,12 +83,12 @@ In the context of evolution, one can consider $x$ to be the proportion of indivi
 
 In this context, a strategy $x$ is called an evolutionary stable strategy if two conditions are met:
 $$
-x^t A x \geq y^t A x \quad \text{for all } y
+x^T A x \geq y^T A x \quad \text{for all } y
 $$
 meaning that $x$ plays against itself not worse than any other strategy, and
 
 $$
-\text{If } y \neq x \text{ then } y^t A x = x^t A x \text{ implies } x^t A y > y^t A y
+\text{If } y \neq x \text{ then } y^T A x = x^T A x \text{ implies } x^T A y > y^T A y
 $$
 
 meaning that if $y$ plays as well as $x$ against $x$, then $x$ plays against $y$ better than $y$ against itself.
@@ -79,7 +103,7 @@ $$
 \dfrac{d x_i}{dt} = x_i \left( \sum_j A_{ij} x_j - \sum_{jk} x_j A_{jk} x_k \right)
 $$
 
-If we define $f = A x$ as a vector reporting the "fitness"" of each population at time $t$, and $\bar{f} =  \sum_{jk} x_j A_{jk} x_k = x^t A t$ as the average fitness at time $t$ we can write the replicator equation more compactly as:
+If we define $f = A x$ as a vector reporting the "fitness"" of each population at time $t$, and $\bar{f} =  \sum_{jk} x_j A_{jk} x_k = x^T A x$ as the average fitness at time $t$ we can write the replicator equation more compactly as:
 
 $$
 \dfrac{d x_i}{dt} = x_i (f_i - \bar{f})
@@ -91,7 +115,7 @@ Importantly, we can see $x$ as a "mixed strategy" for the symmetric game encoded
 
 ### Invariants
 
-Adding a constant to each column of $A$ does not alter the dynamics. We have $B = A + e b^t$, where $e$ is a vector of ones. Then:
+Adding a constant to each column of $A$ does not alter the dynamics. We have $B = A + e b^T$, where $e$ is a vector of ones. Then:
 
 $$
 \begin{aligned}
@@ -102,11 +126,11 @@ x_i \left( \sum_j B_{ij} x_j - \sum_{kj} x_k B_{kj} x_j \right) & = x_i \left( \
 \end{aligned}
 $$
 
-Similarly, multiplying each column of $A$ by a (possibly different) positive constant does not alter dynamics (it just rescales time). As such, if $A_2 = A_1 D + eb^t$ the replicator equations formed using $A_1$ and $A_2$ are equivalent.
+Similarly, multiplying each column of $A$ by a (possibly different) positive constant does not alter dynamics (it just rescales time). As such, if $A_2 = A_1 D + eb^T$ the replicator equations formed using $A_1$ and $A_2$ are equivalent.
 
 ### Rock-paper-scissor
 
-Let's try our hand with a simple zero-sum (i.e., $A = -A^t$) replicator equation. We have three populations ("rock", "paper", and "scissors") with payoff matrix:
+Let's try our hand with a simple zero-sum (i.e., $A = -A^T$) replicator equation. We have three populations ("rock", "paper", and "scissors") with payoff matrix:
 
 $$
 A = \begin{pmatrix}
@@ -119,8 +143,6 @@ $$
 We start the population at a random initial condition, and track dynamics:
 
 ```{r, refuctions}
-library(deSolve) # integrate ODEs
-library(tidyverse) # plotting and wrangling
 # define the differential equation
 RE <-function(t, x, parameters){
   with(as.list(c(x, parameters)), {
@@ -130,17 +152,7 @@ RE <-function(t, x, parameters){
     list(dxdt)
   })
 }
-# function to plot output
-plot_ODE_output <- function(out){
-  out <- as.data.frame(out)
-  colnames(out) <- c("time", paste("sp", 1:(ncol(out) -1), sep = "_"))
-  out <- as_tibble(out) %>% gather(species, density, -time)
-  pl <- ggplot(data = out) + 
-    aes(x = time, y = density, colour = species) + 
-    geom_line()
-  show(pl)
-  return(out)
-}
+
 # general function to integrate RE
 integrate_RE <- function(A, x0, maxtime = 40, steptime = 0.05){
   times <- seq(0, maxtime, by = steptime)
@@ -153,6 +165,7 @@ integrate_RE <- function(A, x0, maxtime = 40, steptime = 0.05){
   out <- plot_ODE_output(out)
   return(out)
 }
+
 # payoff matrix
 A <- matrix(c(0, -1, 1,
               1, 0, -1,
@@ -219,13 +232,20 @@ glvex <- integrate_GLV(r, A, x0)
 B <- matrix(0, 4, 4)
 B[1:3, 1:3] <- A
 B[1:3, 4] <- r
-B
+```
+
+$$
+`r write_matex2(B)` 
+$$
+
+```{r, redynamicsfromglv2}
 y0 <- c(x0, 1)
 y0 <- y0 / sum(y0)
 reex <- integrate_RE(B, y0)
 ```
 
 Now let's look at the equilibrium of the GLV model:
+
 ```{r, equilglv}
 knitr::kable(glvex %>% filter(time == 100))
 ```
@@ -234,7 +254,8 @@ And recover it from the RE equation (just divide by the density of the extra "sp
 
 ```{r, equilglvre}
 knitr::kable(reex %>% filter(time == 40))
-knitr::kable(reex %>% filter(time == 40) %>% mutate(density = density / tail(density, 1)) )
+knitr::kable(reex %>% filter(time == 40) %>%
+               mutate(density = density / tail(density, 1)) )
 ```
 
 Not only the equilibria are the same, but also the dynamics are the same once time has been properly rescaled. Similarly, for each RE system we can always recover a matrix with zero in the last row by applying the transformations detailed above, and therefore recover the corresponding GLV. For example, take the matrix for the RPS above, and make each coefficient in the last row zero by adding the appropriate constant to each column. Then one recovers some sort of a predator-prey system:
@@ -251,7 +272,7 @@ in which the species oscillate around one.
 
 ### Hypertournament games
 
-The rock-paper-scissor game above is a simple case of a "hypertournament" game. Take the zero-sum payoff matrix $A = -A^t$. Then, we have 
+The rock-paper-scissor game above is a simple case of a "hypertournament" game. Take the zero-sum payoff matrix $A = -A^T$. Then, we have 
 
 $$
 \sum_i \sum_j A_{ij} x_i x_j = 0
@@ -267,6 +288,7 @@ At equilibrium, either some elements of $x$ are zero, or
 $$
 A x^\star = 0
 $$
+
 meaning that if a feasible equilibrium $x^\star$ exists, it is an eigenvector of $A$ corresponding to a zero eigenvalue.
 
 #### Number of coexisting species
@@ -379,6 +401,15 @@ x0 <- x0 / sum(x0)
 fivespp <- integrate_RE(A, x0, maxtime = 400, steptime = 0.1)
 ```
 
+:::boxhomework
+
+**Homework 7a**
+
+Rock paper scissors with positive game value
+
+:::
+
+
 ### Higher-order interactions
 
 We can extend the game above to the case in which three (or more) seeds compete to fill each patch. @grilli2017higher showed that in this case, one can write the replicator equation:
@@ -386,6 +417,7 @@ We can extend the game above to the case in which three (or more) seeds compete 
 $$
 \dfrac{d x_i}{dt} = x_i \sum_{j,k} A_{ijk} x_j x_k
 $$
+
 where the tensor $A$ (a three-dimensional matrix) encodes the effect of a pair of species ($j$ and $k$) on the density of $i$. Importantly, one can choose the tensor such that the equilibrium is the same as for the two-player replicator equation: take $A_{ijk} = 2 H_{ij} H_{ik} - H_{ji} H_{jk} - H_{ki} H_{kj}$, which can be derived from first principles by writing the stochastic dynamics. What is surprising is that, while the equilibrium is unchanged, the dynamics are now globally stable:
 
 ```{r, rehoi}

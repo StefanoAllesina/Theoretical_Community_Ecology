@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Lecture 1 Models for a single population | Theoretical Community Ecology</title>
   <meta name="description" content="A graduate course in theoretical community ecology focusing on systems with multiple species." />
-  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Lecture 1 Models for a single population | Theoretical Community Ecology" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2021-02-05" />
+<meta name="date" content="2021-02-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,12 +50,14 @@
 
 
 
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -64,16 +66,14 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -82,9 +82,9 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  {  }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+a.sourceLine::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -256,9 +256,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="8" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html"><i class="fa fa-check"></i><b>8</b> Metapopulation dynamics on networks</a><ul>
 <li class="chapter" data-level="8.1" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#metapopulations"><i class="fa fa-check"></i><b>8.1</b> Metapopulations</a></li>
-<li class="chapter" data-level="8.2" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#levins-model"><i class="fa fa-check"></i><b>8.2</b> Levins model</a></li>
-<li class="chapter" data-level="8.3" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#hanski-ovaskainen-2000"><i class="fa fa-check"></i><b>8.3</b> Hanski Ovaskainen 2000</a></li>
-<li class="chapter" data-level="8.4" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#sis-on-a-network-van-mieghem"><i class="fa fa-check"></i><b>8.4</b> SIS on a network Van Mieghem</a></li>
+<li class="chapter" data-level="8.2" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#hanski-ovaskainen-2000"><i class="fa fa-check"></i><b>8.2</b> Hanski Ovaskainen 2000</a></li>
+<li class="chapter" data-level="8.3" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#sis-on-a-contact-network"><i class="fa fa-check"></i><b>8.3</b> SIS on a contact network</a></li>
+<li class="chapter" data-level="8.4" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#metapopulations-on-randomly-distributed-patches"><i class="fa fa-check"></i><b>8.4</b> Metapopulations on randomly distributed patches</a></li>
+<li class="chapter" data-level="8.5" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#optional-ecosystem-engineering-and-metapopulations"><i class="fa fa-check"></i><b>8.5</b> [Optional] Ecosystem engineering and metapopulations</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html"><i class="fa fa-check"></i><b>9</b> Quasi-polynomial systems</a><ul>
 <li class="chapter" data-level="9.1" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#from-qp-to-glv"><i class="fa fa-check"></i><b>9.1</b> From QP to GLV</a></li>
@@ -487,7 +488,7 @@ f(\Delta x(t) + x^\star) = f(x^\star) + \left . \frac{df(x)}{dx} \right |_{x^\st
 <h2><span class="header-section-number">1.6</span> Bifurcations</h2>
 <p>The shape of the graphs above might depend on the value of parameters. When a small change in one or several parameters causes a qualitative change in the behavior of the system, we say the system has crossed a <strong>bifurcation</strong> point (the term “bifurcation” was introduced by Henri Poincaré in 1885). At a bifurcation point, equilibria could disappear or be created, change their stability, the system could start cycling, etc.</p>
 <p>In low-dimensional system, there are a variety of different behaviors, each of which has its own name (e.g., saddle-node, pitchfork, transcritical, Hopf, period-doubling, …, bifurcation). The <strong>codimension</strong> of a bifurcation is the number of parameters we need to change the behavior of the system. Clearly, codimension-1 and -2 bifurcations are the simplest and most studied.</p>
-<p>Here we just show the main idea using a simple example. For a detailed and accessible introduction, see <span class="citation">Strogatz (<a href="#ref-strogatz2018nonlinear" role="doc-biblioref">2018</a>)</span> and <span class="citation">Seydel (<a href="#ref-seydel2009practical" role="doc-biblioref">2009</a>)</span>.</p>
+<p>Here we just show the main idea using a simple example. For a detailed and accessible introduction, see <span class="citation">Strogatz (<a href="#ref-strogatz2018nonlinear">2018</a>)</span> and <span class="citation">Seydel (<a href="#ref-seydel2009practical">2009</a>)</span>.</p>
 <p>Consider the model:</p>
 <p><span class="math display">\[
 \dfrac{d x}{dt} = \rho + x^2
@@ -518,9 +519,9 @@ where <span class="math inline">\(1 &gt; \eta &gt; 0\)</span> is the proportion 
 </div>
 <p>A few interesting references on detecting the approaching of a bifurcation in experimental systems:</p>
 <div class="boxpaper">
-<p><strong>Key paper: <span class="citation">Scheffer et al. (<a href="#ref-scheffer2009early" role="doc-biblioref">2009</a>)</span></strong></p>
+<p><strong>Key paper: <span class="citation">Scheffer et al. (<a href="#ref-scheffer2009early">2009</a>)</span></strong></p>
 <p>Starting in the early 2000s, much work went into trying to anticipate dramatic changes in natural and man-made systems (e.g., lakes turning eutrophic, fisheries collapsing). In this review, Scheffer <em>et al.</em> summarize previous work and present an accessible introduction to the problem.</p>
-<p><strong>Key paper: <span class="citation">Dai et al. (<a href="#ref-dai2012generic" role="doc-biblioref">2012</a>)</span></strong></p>
+<p><strong>Key paper: <span class="citation">Dai et al. (<a href="#ref-dai2012generic">2012</a>)</span></strong></p>
 <p>Dai <em>et al.</em> grew populations of <em>Saccharomyces cerevisiae</em> on sucrose. Because sucrose is split outside the cell, it creates an Allee effect: when the population density is high, it is energetically convenient to produce the enzyme to spit the sucrose, as the different cells pool their efforts; when population density is low, the gain is not sufficient to balance the cost. By tuning the mortality (dilution), they were able to experimentally recreate the bifurcation diagram of the exercise above. The data from the experiments are <a href="https://doi.org/10.5061/dryad.p2481134">here</a>.</p>
 </div>
 </div>
@@ -530,7 +531,7 @@ where <span class="math inline">\(1 &gt; \eta &gt; 0\)</span> is the proportion 
 <p>This is a direct consequence of the uniqueness of trajectories: because we are moving in a 1-dimensional space, the fact that trajectories cannot cross means that if we are at a certain point <span class="math inline">\(x(t) = x_t\)</span>, then either <span class="math inline">\(dx(t)/dt &gt;0\)</span>, <span class="math inline">\(dx(t)/dt &lt;0\)</span>, or <span class="math inline">\(dx(t)/dt =0\)</span>, but can take only one value, preventing more complex behaviors such as cycles or chaos.</p>
 <p>For smooth functions and autonomous systems, one needs at least two equations to produce cycles and three equations to produce chaos. This is in stark contrast with difference equations—a single, innocent-looking difference equation can give rise to all sorts of dynamics.</p>
 <div class="boxpaper">
-<p><strong>Key paper: <span class="citation">May (<a href="#ref-may1976simple" role="doc-biblioref">1976</a>)</span></strong></p>
+<p><strong>Key paper: <span class="citation">May (<a href="#ref-may1976simple">1976</a>)</span></strong></p>
 <p>May takes a possible model for the logistic growth in discrete time, and shows how this very simple model can give rise to equilibria, cycles and chaos. This is one of the papers that launched an all-out effort to explore chaotic dynamics that lasted for the best part of the 1980s.</p>
 </div>
 </div>
@@ -566,13 +567,13 @@ which again is negative whenever <span class="math inline">\(x^\star &gt; 0\)</s
 <h3>References</h3>
 <div id="refs" class="references">
 <div id="ref-dai2012generic">
-<p>Dai, Lei, Daan Vorselen, Kirill S Korolev, and Jeff Gore. 2012. “Generic Indicators for Loss of Resilience Before a Tipping Point Leading to Population Collapse.” <em>Science</em> 336 (6085): 1175–7.</p>
+<p>Dai, Lei, Daan Vorselen, Kirill S Korolev, and Jeff Gore. 2012. “Generic Indicators for Loss of Resilience Before a Tipping Point Leading to Population Collapse.” <em>Science</em> 336 (6085). American Association for the Advancement of Science: 1175–7.</p>
 </div>
 <div id="ref-may1976simple">
-<p>May, Robert M. 1976. “Simple Mathematical Models with Very Complicated Dynamics.” <em>Nature</em> 261 (5560): 459–67.</p>
+<p>May, Robert M. 1976. “Simple Mathematical Models with Very Complicated Dynamics.” <em>Nature</em> 261 (5560). Springer: 459–67.</p>
 </div>
 <div id="ref-scheffer2009early">
-<p>Scheffer, Marten, Jordi Bascompte, William A Brock, Victor Brovkin, Stephen R Carpenter, Vasilis Dakos, Hermann Held, Egbert H Van Nes, Max Rietkerk, and George Sugihara. 2009. “Early-Warning Signals for Critical Transitions.” <em>Nature</em> 461 (7260): 53–59.</p>
+<p>Scheffer, Marten, Jordi Bascompte, William A Brock, Victor Brovkin, Stephen R Carpenter, Vasilis Dakos, Hermann Held, Egbert H Van Nes, Max Rietkerk, and George Sugihara. 2009. “Early-Warning Signals for Critical Transitions.” <em>Nature</em> 461 (7260). Nature Publishing Group: 53–59.</p>
 </div>
 <div id="ref-seydel2009practical">
 <p>Seydel, Rüdiger. 2009. <em>Practical Bifurcation and Stability Analysis</em>. Vol. 5. Springer Science &amp; Business Media.</p>

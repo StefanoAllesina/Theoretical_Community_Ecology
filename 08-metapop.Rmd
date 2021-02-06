@@ -2,12 +2,14 @@
 
 **Lesson plan**:
 
-1. We analyze Levins' metapopulation model, which we've encoutenred before.
+1. We analyze Levins' metapopulation model, which we've encountered before.
 1. We introduce the idea of a network of dispersal, and see how metapopulation persistence depends on network structure.
 1. We draw a parallel with Susceptible-Infected-Susceptible models, in which individuals play the role of habitable patches and parasites disperse on a network of contacts. 
 1. Finally, we discuss recent extensions of metapopulation models including several complications.
 
 ## Metapopulations
+
+Definition of metapopulations, Levins' model, extensions to multispecies, network structure. Equivalence with SIS model.
 
 :::boxhistory
 
@@ -39,9 +41,13 @@ $\ldots$
 
 :::
 
-
-## Levins model
 ## Hanski Ovaskainen 2000
+
+Hanski and Ovaskainen: extension to geographic location of patches, kernel of dispersal.
+
+Assumptions of the model
+
+Leading eigenvalue and Perron eigenvector
 
 :::boxhistory
 
@@ -52,7 +58,6 @@ knitr::include_graphics('img/Hanski.gif')
 ```
 *Photo by Otso Ovaskainen.*
 
-
 Born in Lempäälä, Finland, he studied at the University of Helsinki, and received his doctorate from the University of Oxford in 1979. From 1981 to his premature death in 2016, he worked at various Finnish institutions, lastly at the Academy of Finland.
 
 His work on metapopulation theory is extremely well-known, thanks also to the amazing work on the Glanville fritillary butterfly *Melitaea cinxia*. This butterfly inhabits the dry meadows in Åland Islands archipelago---with about 4000 meadows, sampled yearly by an army of students since 1991, the fragmented landscape is an ideal testing ground for metapopulation theory.
@@ -60,4 +65,19 @@ His work on metapopulation theory is extremely well-known, thanks also to the am
 Hanski won numerous awards, and served as a strong advocate for ecological conservation.
 :::
 
-## SIS on a network Van Mieghem
+## SIS on a contact network
+
+NIMFA model, equivalence with Hanski-Ovaskainen
+
+## Metapopulations on randomly distributed patches
+
+Grilli et al.
+
+## [Optional] Ecosystem engineering and metapopulations
+
+New work with Zach
+
+Homework: Gillespie-based simulation using event-driven simulations.
+Contrast approximation (NIMFA/Hanski-Ovaskainen)
+
+
