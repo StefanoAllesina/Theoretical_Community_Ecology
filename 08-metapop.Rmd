@@ -9,7 +9,7 @@
 
 ## Metapopulations
 
-Definition of metapopulations, Levins' model, extensions to multispecies, network structure. Equivalence with SIS model.
+In 1969, Richard Levins---then a professor at U. Chicago---proposed a simple model for a "metapopulation", i.e., a "population of populations in which local extinctions are balanced by remigration from other populations" (@levins1969some). 
 
 :::boxhistory
 
@@ -41,6 +41,30 @@ $\ldots$
 
 :::
 
+The model is very simple. Suppose that there are very many patches of suitable habitat, and that we track the proportion of patches occupied by a certain species, $x(t)$. Two processes affect the proportion of occupied patches: **extinction**, turning an occupied patch into a vacant patch, and **colonization**, turning a vacant patch into an occupied patch. For the simplest case, suppose that occupied patches can send "propagules" to empty patches at a fixed rate $\gamma$, and that the rate at which local populations go extinct is the same for all patches, $\delta$. 
+
+Call $y(t) = 1 - x(t)$ the proportion of vacant patches. Then, the dynamics for the occupied patches are described by the equation:
+
+$$
+\dfrac{d x(t)}{dt} = - \delta x(t) + \gamma x(t) y(t)
+$$
+
+in which we assume mass-action (like in GLV). Similarly, the equation for the proportion of vacant patches is:
+
+$$
+\dfrac{d y(t)}{dt} = \delta x(t) - \gamma y(t) x(t) 
+$$
+
+Note that the two equations sum to zero (i.e., we're in a zero-sum setting), as $x(t) + y(t) = 1$. Then, we can turn the model into a single equation, by substituting $y(t) = 1 - x(t)$ in the first equation:
+
+$$
+\dfrac{d x(t)}{dt} = - \delta x(t) + \gamma x(t) (1-x(t)) = x(t)(\gamma - \delta - \gamma x(t))
+$$
+
+which is the usual equation for the logistic growth. As such, the equilibrium $x^\star = (\gamma - \delta) / \gamma = 1 - \delta/\gamma$ is globally stable.
+
+Calling $S(t) = y(t)$ and $I(t) = x(t)$ we obtain an SIS model in which a pathogen infect ("occupies") individuals ("patches"). The equilibrium $I^\star = (\gamma - \delta)/\gamma$ is reached whenever $\gamma > \delta$ (i.e., $\gamma/\delta = \mathcal R_0 > 1$). We carry this parallel through the lecture.
+
 ## Hanski Ovaskainen 2000
 
 Hanski and Ovaskainen: extension to geographic location of patches, kernel of dispersal.
@@ -67,7 +91,35 @@ Hanski won numerous awards, and served as a strong advocate for ecological conse
 
 ## SIS on a contact network
 
-NIMFA model, equivalence with Hanski-Ovaskainen
+Interestingly, the same results above have been derived in the context of virus spread on networks by @van2008virus. We follow their derivation as it shows what type of approximations we're making when writing the equations above.
+
+### The full model
+
+We can imagine the process of spread of a pathogen on a network of $n$ individuals as a graph in which each node is a label detaling who is infected. There are $2^n$ nodes, ranging from $V_0 = 0,0, \ldots, 0$ (the state in which the pathogen is extinct) to $V_{2^n} = 1,1,\ldots, 1$ (the state in which all individuals are infected). Recovery flips a one into a zero, and infection a zero into a one (without loss of generality, we can assume only one event happens at each "time step"). We connect any two nodes in the network $V_i \to V_j$ if an event (i.e., infection, recovery) can send the system from state $i$ to state $j$. The system therefore describes a [Markov Chain](https://en.wikipedia.org/wiki/Markov_chain) with $2^n$ states. Note also that the state $0$ is the "coffin state" for the system (once the pathogen is extinct, there is no way to go back). 
+
+### The mean-field approximation
+
+For simplicity, make the following assumptions: a) all individuals have the same recovery rate, $\delta$; b) the (symmetric/undirected) contact network $A$ defines who can infect whom; c) when a node/individual is infected, it attempts infecting the neighbors at a rate $\beta$. 
+
+We track the probability that individual $i$ is infected at time $t$ (mathematically, this is an expectation). In particular, take $x_i$ to be an indicator variable taking value $1$ when $i$ is infected, and $0$ when $i$ is susceptible. Then
+
+$$
+\dfrac{d E[x_i(t)]}{dt} = E \left[-\delta x_i(t) + \beta (1-x_i(t)) \sum_j A_{ij} E[x_j(t)]\right]
+$$
+
+The $-\delta x_i(t)$ models the recovery, and when an individual is susceptible (i.e., when $(1-x_i(t)) = 1$) the neighbors (i.e., $j$ such that $A_{ij} = 1$) attempt to infect node $i$. Expanding (and dropping the dependency on time to keep the equation compact), we obtain:
+
+$$
+\dfrac{d E[x_i]}{dt} = -\delta E[x_i] + \beta \sum_j A_{ij} E[x_j]- \beta \sum_j A_{ij} E[x_i x_j]
+$$
+
+which looks very much like Levins' model, with the difference that we need to choose how to deal with $E[x_i x_j]$ (a covariance/correlation). If we assume $E[x_i x_j] \approx E[x_i] E[x_j]$ (e.g., independence), we can simplify the model to:
+
+$$
+\dfrac{d E[x_i]}{dt} = -\delta E[x_i] + \beta (1 - E[x_i])\sum_j A_{ij} E[x_j]
+$$
+
+which is the same as the model of Hanski and Ovaskainen above. Interestingly, this is but an approximation of the full model described by the Markov Chain above---for example @cator2012second derive the model when tracking all the $E[x_i x_j]$, resulting in a better approximation of the full model (at the cost of having an additional $\binom{n}{2}$) equations.
 
 ## Metapopulations on randomly distributed patches
 

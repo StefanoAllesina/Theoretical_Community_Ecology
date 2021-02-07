@@ -41,11 +41,11 @@ The book *The Price of Altruism: George Price and the Search for the Origins of 
 
 ## Two-player matrix games
 
-We start by anayzing games in which two players face each other, each choosing one strategy out of a set. Importantly, we consider static games in which each player makes their decision without having knowledge of the decision of the other player. Player 1 chooses a "pure" strategy $s_1$ from the set of pure strategies $S_1$, while player 2 chooses $s_2 \in S_2$. We call $\pi_k (s_1, s_2)$ the **payoff** for player $k$ when player 1 chooses $s_1$ and player 2 $s_2$. In a matrix game, we can arrange the payoffs for each player in a matrix. We call $A$ the matrix of payoffs for player one and $B$ that for player two. 
+We start by anayzing games in which two players face each other, each choosing one strategy out of a set. Importantly, we consider static games in which each player makes their decision without having knowledge of the decision of the other player. Player 1 chooses a **pure strategy** $s_1$ from the set of pure strategies $S_1$, while player 2 chooses $s_2 \in S_2$. We call $\pi_k (s_1, s_2)$ the **payoff** for player $k$ when player 1 chooses $s_1$ and player 2 $s_2$. In a matrix game, we can arrange the payoffs for each player in a matrix. We call $A$ the matrix of payoffs for player one and $B$ that for player two. 
 
 ### Example: the prisoner's dilemma
 
-Two prisoners alleggedly committed a crime, but the police do not have enough evidence to convict them. They therefore approach each prisoner separately, proposing a deal: if the prisoner confesses ("defect" the other prisoner), then their sentence will be reduced. In particular: i) if both confess (both "defect"), they are sentenced to 4 years in prison; ii) if one confesses ("defect") and the other keeps quiet ("cooperate" with the other prisoner), then the one who has confessed is let free, and the other sentenced to 5 years; iii) if both keep quiet ("cooperate"), then they are both sentenced to two years of detention for some accessory crime.
+Two prisoners allegedly committed a crime, but the police do not have enough evidence to convict them. They therefore approach each prisoner separately, proposing a deal: if the prisoner confesses ("defect" the other prisoner), then their sentence will be reduced. In particular: i) if both confess (both "defect"), they are sentenced to 4 years in prison; ii) if one confesses ("defect") and the other keeps quiet ("cooperate" with the other prisoner), then the one who has confessed is let free, and the other sentenced to 5 years; iii) if both keep quiet ("cooperate"), then they are both sentenced to two years of detention for some accessory crime.
 
 In matrix form, we have (rows for pl 1 strategy C/D; cols for pl 2 strategy):
 
@@ -74,7 +74,7 @@ The seminal paper in this area. Interestingly, it details the outcome of a compu
 
 **Key paper: @clutton2009cooperation**
 
-An opinionated review of cooperation between non-kin in animal societies. The opening *"As Darwin appreciated, cooperative behaviour---actions adapted to assist others that involve costs to the fitness of participants---poses a fundamental problem to the traditional theory of natural selection"* succinlty summarizes why the evolution of cooperation is such a central problem.
+An opinionated review on cooperation between non-kin in animal societies. The opening *"As Darwin appreciated, cooperative behaviour---actions adapted to assist others that involve costs to the fitness of participants---poses a fundamental problem to the traditional theory of natural selection"* succinlty summarizes why the evolution of cooperation is such a central problem in biology.
 
 **Key paper: @nowak1992evolutionary**
 
@@ -88,11 +88,12 @@ Cooperation can evolve via indirect reciprocity (I help you in the hope that som
 
 ## Mixed strategies
 
-Above, the player could choose one out of two strategies. A generalization of this situation is one in which players play **mixed** strategies, i.e., play a given strategy at random according to a set of probabilities. Call $x_i$ the probability that player 1 plays strategy $i$; then $\sum_i x_i = 1$. Similarly, $y_i$ is the probability that player 2 plays strategy $i$. A natural choice for the payoff of player 1 is therefore:
+Above, the player could choose one out of two strategies. A generalization of this situation is one in which players play **mixed strategies**, i.e., play a given strategy at random according to a set of probabilities. Call $x_i$ the probability that player 1 plays strategy $i$; then $\sum_i x_i = 1$. Similarly, $y_i$ is the probability that player 2 plays strategy $i$. A natural choice for the payoff of player 1 is therefore:
 
 $$
 \sum_{i=1}^m \sum_{j = 1}^n x_i y_j \pi_1 (s_1, s_2) = x^T A y
 $$
+
 Similarly, we have $y^T B x$ for player 2.
 
 A mixed strategy $x$ is dominated by mixed strategy $\tilde{x}$ if $\tilde{x}^T A y \geq x^T A y$ for every $y$. The condition can be written as $(\tilde{x} - x)^T A y \geq 0$.
@@ -108,7 +109,6 @@ $$
 \end{aligned}
 $$
 
-
 Nash proved that every two-person game has at least one Nash Equilibrium.
 
 ## Evolutionary stable strategies
@@ -116,9 +116,11 @@ Nash proved that every two-person game has at least one Nash Equilibrium.
 In the context of evolution, one can consider $x$ to be the proportion of individuals (e.g., of different species, or phenotypes) displaying different characteristics. When playing against each other, they win or lose, and their payoffs are invested in reproduction. Because the different "strategies" (populations, phenotypes) play against each other, the payoff matrix is the same for all players, and encoded in matrix $A$. 
 
 In this context, a strategy $x$ is called an evolutionary stable strategy if two conditions are met:
+
 $$
 x^T A x \geq y^T A x \quad \text{for all } y
 $$
+
 meaning that $x$ plays against itself not worse than any other strategy, and
 
 $$
@@ -127,7 +129,7 @@ $$
 
 meaning that if $y$ plays as well as $x$ against $x$, then $x$ plays against $y$ better than $y$ against itself.
 
-We next connect NE and ESS with dynamical systems.
+Next, we connect NE and ESS with dynamical systems.
 
 ## Replicator dynamics
 
@@ -164,7 +166,7 @@ Similarly, multiplying each column of $A$ by a (possibly different) positive con
 
 ### Rock-paper-scissor
 
-Let's try our hand with a simple zero-sum (i.e., $A = -A^T$) replicator equation. We have three populations ("rock", "paper", and "scissors") with payoff matrix:
+Let's try our hand at a simple zero-sum (i.e., $A = -A^T$) replicator equation. We have three populations ("rock", "paper", and "scissors") with payoff matrix:
 
 $$
 A = \begin{pmatrix}
@@ -218,6 +220,7 @@ rps <- integrate_RE(A, x0)
 ```
 
 And if they are close to the 1/3?
+
 ```{r, rps3}
 x0 <- rep(1/3, 3) + 0.05 * runif(3)
 x0 <- x0 / sum(x0)
@@ -262,6 +265,8 @@ x0 <- c(0.1, 3, 1)
 glvex <- integrate_GLV(r, A, x0)
 ```
 
+And now build the corresponding replicator equation. The matrix of payoffs $B$ becomes:
+
 ```{r, redynamicsfromglv}
 B <- matrix(0, 4, 4)
 B[1:3, 1:3] <- A
@@ -272,9 +277,11 @@ $$
 `r write_matex2(B)` 
 $$
 
+Integrate the dynamics:
+
 ```{r, redynamicsfromglv2}
-y0 <- c(x0, 1)
-y0 <- y0 / sum(y0)
+y0 <- c(x0, 1) # add an extra "species"
+y0 <- y0 / sum(y0) # project on the simplex
 reex <- integrate_RE(B, y0)
 ```
 
@@ -319,6 +326,7 @@ The rock-paper-scissor game above is a simple case of a "hypertournament" game. 
 $$
 \sum_i \sum_j A_{ij} x_i x_j = 0
 $$
+
 and the RE simplifies to
 
 $$
@@ -347,8 +355,7 @@ $$
 \end{aligned}
 $$
 
-I.e., we recover the RE for a zero-sum game. What happens if we draw $H$ (and therefore $A$) at random? @allesina2011competitive and @grilli2017higher applied the results of @fisher1995optimal and @brandl2017distribution to show that, when $n$ species compete, the probability of observing $k$ coexisting is $p(k|n) = \binom{n}{k}
-2^{1-n}$ when $k$ is odd, and $p(k|n) = 0$ when $k$ is even.
+I.e., we recover the RE for a zero-sum game. What happens if we draw $H$ (and therefore $A$) at random? @allesina2011competitive and @grilli2017higher applied the results of @fisher1995optimal and @brandl2017distribution to show that, when $n$ species compete, the probability of observing $k$ coexisting is $p(k|n) = \binom{n}{k} 2^{1-n}$ when $k$ is odd, and $p(k|n) = 0$ when $k$ is even.
 
 Importantly, to find the set of coexisting species we do not need to integrate dynamics. One can use linear programming to solve for the set of species that will coexist.
 
@@ -402,7 +409,7 @@ $$
 V(x) = -\sum_i x_i^\star \log \frac{x_i}{x_i^\star} .
 $$
 
-Because of Gibbs' inequality, $V(x) \geq 0$ for any $x$, and is equal to zero only if $x = x^\star$.  Note also that at equilibrium $2 \sum_j H_{ij} x_j^\star = 1$. We write:
+Because of [Gibbs' inequality](https://en.wikipedia.org/wiki/Gibbs%27_inequality), $V(x) \geq 0$ for any $x$, and is equal to zero only if $x = x^\star$.  Note also that at equilibrium $2 \sum_j H_{ij} x_j^\star = 1$. We write:
 
 $$
 \begin{aligned}
@@ -424,6 +431,7 @@ $$
 We have found a constant of motion, meaning that the system will follow closed orbits. Hence, unless we start the system precisely at $x^\star$, the abundances will cycle neutrally around the equilibrium.
 
 Let's try with a larger system:
+
 ```{r, reneutral}
 n <- 5
 # search for random H yielding all species coexisting
@@ -468,10 +476,9 @@ for the cases in which a) $\alpha > 1$, b) $\alpha < 1$. Write code to simulate 
 As seen above, generally zero-sum matrix games will lead to an odd number of species coexisting. 
 
 - Can you build a matrix leading to four species/strategies coexisting?
-- Now simulate the dynamics several times starting from different initial conditions---do species cycle around the same equilibrium? Why?
+- Now simulate the dynamics several times, starting from different initial conditions---do species cycle around the same equilibrium? Why?
 
 :::
-
 
 ### Higher-order interactions
 
@@ -532,4 +539,3 @@ x0 <- runif(3)
 x0 <- x0 / sum(x0)
 rps <- integrate_RE_3(H, x0, maxtime = 50, steptime = 0.1)
 ```
-

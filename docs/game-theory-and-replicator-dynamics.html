@@ -24,7 +24,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2021-02-06" />
+<meta name="date" content="2021-02-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -257,7 +257,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html"><i class="fa fa-check"></i><b>8</b> Metapopulation dynamics on networks</a><ul>
 <li class="chapter" data-level="8.1" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#metapopulations"><i class="fa fa-check"></i><b>8.1</b> Metapopulations</a></li>
 <li class="chapter" data-level="8.2" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#hanski-ovaskainen-2000"><i class="fa fa-check"></i><b>8.2</b> Hanski Ovaskainen 2000</a></li>
-<li class="chapter" data-level="8.3" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#sis-on-a-contact-network"><i class="fa fa-check"></i><b>8.3</b> SIS on a contact network</a></li>
+<li class="chapter" data-level="8.3" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#sis-on-a-contact-network"><i class="fa fa-check"></i><b>8.3</b> SIS on a contact network</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#the-full-model"><i class="fa fa-check"></i><b>8.3.1</b> The full model</a></li>
+<li class="chapter" data-level="8.3.2" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#the-mean-field-approximation"><i class="fa fa-check"></i><b>8.3.2</b> The mean-field approximation</a></li>
+</ul></li>
 <li class="chapter" data-level="8.4" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#metapopulations-on-randomly-distributed-patches"><i class="fa fa-check"></i><b>8.4</b> Metapopulations on randomly distributed patches</a></li>
 <li class="chapter" data-level="8.5" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#optional-ecosystem-engineering-and-metapopulations"><i class="fa fa-check"></i><b>8.5</b> [Optional] Ecosystem engineering and metapopulations</a></li>
 </ul></li>
@@ -297,11 +300,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Lecture 7</span> Game theory and replicator dynamics</h1>
 <div id="game-theory" class="section level2">
 <h2><span class="header-section-number">7.1</span> Game theory</h2>
-<p>We briefly introduce the study of mathematical models of games, and their relations to the GLV model. While the origin of game theory can be traced back to the 1700s, modern game theory started with von Neumann’s paper <em>On the Theory of Games of Strategy</em>, published in 1928, and with the subsequent 1944 book with Morgensten <em>Theory of Games and Economic Behavior</em>. John Nash’s paper <span class="citation">(Nash <a href="#ref-nash1950equilibrium" role="doc-biblioref">1950</a>)</span> introduced the notion of a <strong>Nash Equilibrium</strong> (NE). Originally, game theory was studied by economists and mathematicians, but with the 1973 book <em>Evolution and the Theory of Games</em> <span class="citation">(Maynard Smith <a href="#ref-smith1982evolution" role="doc-biblioref">1982</a>)</span>, John Maynard Smith showed how the same tools could be used to study evolutionary dynamics, introducing the influential concept of an <strong>Evolutionary Stable Strategy</strong> (ESS). Evolutionary game theory was greatly advanced through the introduction of the <strong>Replicator Equation</strong> (RE), which, as we will see later, has strong connection with the GLV model. For a detailaed introduction to evolutionary game theory see <span class="citation">Hofbauer and Sigmund (<a href="#ref-hofbauer1998evolutionary" role="doc-biblioref">1998</a>)</span>.</p>
+<p>We briefly introduce the study of mathematical models of games, and their relations to the GLV model. While the origin of game theory can be traced back to the 1700s, modern game theory started with von Neumann’s paper <em>On the Theory of Games of Strategy</em>, published in 1928, and with the subsequent 1944 book with Morgensten <em>Theory of Games and Economic Behavior</em>. John Nash’s paper <span class="citation">(Nash <a href="#ref-nash1950equilibrium" role="doc-biblioref">1950</a>)</span> introduced the notion of a <strong>Nash Equilibrium</strong> (NE). Originally, game theory was studied by economists and mathematicians, but with a series of papers in the early 1970s, and the subsequent book <em>Evolution and the Theory of Games</em> <span class="citation">(Maynard Smith <a href="#ref-smith1982evolution" role="doc-biblioref">1982</a>)</span>, John Maynard Smith showed how the same tools could be used to study evolutionary dynamics, introducing the influential concept of an <strong>Evolutionary Stable Strategy</strong> (ESS). Evolutionary game theory was greatly advanced through the introduction of the <strong>Replicator Equation</strong> (RE), which, as we will see later, has strong connection with the GLV model. For a detailaed introduction to evolutionary game theory see <span class="citation">Hofbauer and Sigmund (<a href="#ref-hofbauer1998evolutionary" role="doc-biblioref">1998</a>)</span>.</p>
 <div class="boxhistory">
 <p><strong>History: John Maynard Smith (1920-2004)</strong></p>
 <p><img src="img/Maynard_Smith.jpg" width="35%" style="display: block; margin: auto;" /></p>
-<p>Born in London, when he was a student at Eaton he decided to study the work of JBS Haldane. He set out to Cambridge to study engineering, and subsequently worked as an engineer designing military aircrafts. In 1947, he had a change of hearth and decided to study <em>Drosophila</em> genetics at U.C.L. under Haldane. In 1973, based on his interaction with George Price, he formalized the concept of “Evolutionarily Stable Strategy”, which became central to evolutionary game theory. His book <em>Evolution and the Theory of Games</em> (1982) was an immediate success and contributed to the birth of the field.</p>
+<p>Born in London, when he was at Eaton he decided to study (independently) the work of JBS Haldane. He set out to Cambridge to study engineering, and subsequently worked as an engineer designing military aircrafts. In 1947, he had a change of hearth and decided to study <em>Drosophila</em> genetics at U.C.L. under Haldane. In 1973, based on his interaction with George Price, he formalized the concept of “Evolutionarily Stable Strategy”, which became central to evolutionary game theory. His book <em>Evolution and the Theory of Games</em> (1982) was an immediate success and contributed to the birth of the field.</p>
 </div>
 <div class="boxhistory">
 <p><strong>History: George R. Price (1922-1975)</strong></p>
@@ -315,10 +318,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="two-player-matrix-games" class="section level2">
 <h2><span class="header-section-number">7.2</span> Two-player matrix games</h2>
-<p>We start by anayzing games in which two players face each other, each choosing one strategy out of a set. Importantly, we consider static games in which each player makes their decision without having knowledge of the decision of the other player. Player 1 chooses a “pure” strategy <span class="math inline">\(s_1\)</span> from the set of pure strategies <span class="math inline">\(S_1\)</span>, while player 2 chooses <span class="math inline">\(s_2 \in S_2\)</span>. We call <span class="math inline">\(\pi_k (s_1, s_2)\)</span> the <strong>payoff</strong> for player <span class="math inline">\(k\)</span> when player 1 chooses <span class="math inline">\(s_1\)</span> and player 2 <span class="math inline">\(s_2\)</span>. In a matrix game, we can arrange the payoffs for each player in a matrix. We call <span class="math inline">\(A\)</span> the matrix of payoffs for player one and <span class="math inline">\(B\)</span> that for player two.</p>
+<p>We start by anayzing games in which two players face each other, each choosing one strategy out of a set. Importantly, we consider static games in which each player makes their decision without having knowledge of the decision of the other player. Player 1 chooses a <strong>pure strategy</strong> <span class="math inline">\(s_1\)</span> from the set of pure strategies <span class="math inline">\(S_1\)</span>, while player 2 chooses <span class="math inline">\(s_2 \in S_2\)</span>. We call <span class="math inline">\(\pi_k (s_1, s_2)\)</span> the <strong>payoff</strong> for player <span class="math inline">\(k\)</span> when player 1 chooses <span class="math inline">\(s_1\)</span> and player 2 <span class="math inline">\(s_2\)</span>. In a matrix game, we can arrange the payoffs for each player in a matrix. We call <span class="math inline">\(A\)</span> the matrix of payoffs for player one and <span class="math inline">\(B\)</span> that for player two.</p>
 <div id="example-the-prisoners-dilemma" class="section level3">
 <h3><span class="header-section-number">7.2.1</span> Example: the prisoner’s dilemma</h3>
-<p>Two prisoners alleggedly committed a crime, but the police do not have enough evidence to convict them. They therefore approach each prisoner separately, proposing a deal: if the prisoner confesses (“defect” the other prisoner), then their sentence will be reduced. In particular: i) if both confess (both “defect”), they are sentenced to 4 years in prison; ii) if one confesses (“defect”) and the other keeps quiet (“cooperate” with the other prisoner), then the one who has confessed is let free, and the other sentenced to 5 years; iii) if both keep quiet (“cooperate”), then they are both sentenced to two years of detention for some accessory crime.</p>
+<p>Two prisoners allegedly committed a crime, but the police do not have enough evidence to convict them. They therefore approach each prisoner separately, proposing a deal: if the prisoner confesses (“defect” the other prisoner), then their sentence will be reduced. In particular: i) if both confess (both “defect”), they are sentenced to 4 years in prison; ii) if one confesses (“defect”) and the other keeps quiet (“cooperate” with the other prisoner), then the one who has confessed is let free, and the other sentenced to 5 years; iii) if both keep quiet (“cooperate”), then they are both sentenced to two years of detention for some accessory crime.</p>
 <p>In matrix form, we have (rows for pl 1 strategy C/D; cols for pl 2 strategy):</p>
 <p><span class="math display">\[
 A = \begin{pmatrix}
@@ -337,7 +340,7 @@ B = \begin{pmatrix}
 <p><strong>Key paper: <span class="citation">Axelrod and Hamilton (<a href="#ref-axelrod1981evolution" role="doc-biblioref">1981</a>)</span></strong></p>
 <p>The seminal paper in this area. Interestingly, it details the outcome of a computer-based tournament in which several programs iteratively play the prisoner’s dilemma against each other.</p>
 <p><strong>Key paper: <span class="citation">Clutton-Brock (<a href="#ref-clutton2009cooperation" role="doc-biblioref">2009</a>)</span></strong></p>
-<p>An opinionated review of cooperation between non-kin in animal societies. The opening <em>“As Darwin appreciated, cooperative behaviour—actions adapted to assist others that involve costs to the fitness of participants—poses a fundamental problem to the traditional theory of natural selection”</em> succinlty summarizes why the evolution of cooperation is such a central problem.</p>
+<p>An opinionated review on cooperation between non-kin in animal societies. The opening <em>“As Darwin appreciated, cooperative behaviour—actions adapted to assist others that involve costs to the fitness of participants—poses a fundamental problem to the traditional theory of natural selection”</em> succinlty summarizes why the evolution of cooperation is such a central problem in biology.</p>
 <p><strong>Key paper: <span class="citation">Nowak and May (<a href="#ref-nowak1992evolutionary" role="doc-biblioref">1992</a>)</span></strong></p>
 <p>Nowak and May examine the case in which populations of “cooperators” and “defectors” play the prisoner’s dilemma in a spatial setting. Despite the simple setting and the deterministic nature of the simulation, they find long-term coexistence of the different populations, giving rise to amazing spatial patterns.</p>
 <p><strong>Key paper: <span class="citation">Nowak and Sigmund (<a href="#ref-nowak2005evolution" role="doc-biblioref">2005</a>)</span></strong></p>
@@ -347,11 +350,11 @@ B = \begin{pmatrix}
 </div>
 <div id="mixed-strategies" class="section level2">
 <h2><span class="header-section-number">7.3</span> Mixed strategies</h2>
-<p>Above, the player could choose one out of two strategies. A generalization of this situation is one in which players play <strong>mixed</strong> strategies, i.e., play a given strategy at random according to a set of probabilities. Call <span class="math inline">\(x_i\)</span> the probability that player 1 plays strategy <span class="math inline">\(i\)</span>; then <span class="math inline">\(\sum_i x_i = 1\)</span>. Similarly, <span class="math inline">\(y_i\)</span> is the probability that player 2 plays strategy <span class="math inline">\(i\)</span>. A natural choice for the payoff of player 1 is therefore:</p>
+<p>Above, the player could choose one out of two strategies. A generalization of this situation is one in which players play <strong>mixed strategies</strong>, i.e., play a given strategy at random according to a set of probabilities. Call <span class="math inline">\(x_i\)</span> the probability that player 1 plays strategy <span class="math inline">\(i\)</span>; then <span class="math inline">\(\sum_i x_i = 1\)</span>. Similarly, <span class="math inline">\(y_i\)</span> is the probability that player 2 plays strategy <span class="math inline">\(i\)</span>. A natural choice for the payoff of player 1 is therefore:</p>
 <p><span class="math display">\[
 \sum_{i=1}^m \sum_{j = 1}^n x_i y_j \pi_1 (s_1, s_2) = x^T A y
-\]</span>
-Similarly, we have <span class="math inline">\(y^T B x\)</span> for player 2.</p>
+\]</span></p>
+<p>Similarly, we have <span class="math inline">\(y^T B x\)</span> for player 2.</p>
 <p>A mixed strategy <span class="math inline">\(x\)</span> is dominated by mixed strategy <span class="math inline">\(\tilde{x}\)</span> if <span class="math inline">\(\tilde{x}^T A y \geq x^T A y\)</span> for every <span class="math inline">\(y\)</span>. The condition can be written as <span class="math inline">\((\tilde{x} - x)^T A y \geq 0\)</span>.</p>
 </div>
 <div id="nash-equilibria" class="section level2">
@@ -368,16 +371,16 @@ Similarly, we have <span class="math inline">\(y^T B x\)</span> for player 2.</p
 <div id="evolutionary-stable-strategies" class="section level2">
 <h2><span class="header-section-number">7.5</span> Evolutionary stable strategies</h2>
 <p>In the context of evolution, one can consider <span class="math inline">\(x\)</span> to be the proportion of individuals (e.g., of different species, or phenotypes) displaying different characteristics. When playing against each other, they win or lose, and their payoffs are invested in reproduction. Because the different “strategies” (populations, phenotypes) play against each other, the payoff matrix is the same for all players, and encoded in matrix <span class="math inline">\(A\)</span>.</p>
-<p>In this context, a strategy <span class="math inline">\(x\)</span> is called an evolutionary stable strategy if two conditions are met:
-<span class="math display">\[
+<p>In this context, a strategy <span class="math inline">\(x\)</span> is called an evolutionary stable strategy if two conditions are met:</p>
+<p><span class="math display">\[
 x^T A x \geq y^T A x \quad \text{for all } y
-\]</span>
-meaning that <span class="math inline">\(x\)</span> plays against itself not worse than any other strategy, and</p>
+\]</span></p>
+<p>meaning that <span class="math inline">\(x\)</span> plays against itself not worse than any other strategy, and</p>
 <p><span class="math display">\[
 \text{If } y \neq x \text{ then } y^T A x = x^T A x \text{ implies } x^T A y &gt; y^T A y
 \]</span></p>
 <p>meaning that if <span class="math inline">\(y\)</span> plays as well as <span class="math inline">\(x\)</span> against <span class="math inline">\(x\)</span>, then <span class="math inline">\(x\)</span> plays against <span class="math inline">\(y\)</span> better than <span class="math inline">\(y\)</span> against itself.</p>
-<p>We next connect NE and ESS with dynamical systems.</p>
+<p>Next, we connect NE and ESS with dynamical systems.</p>
 </div>
 <div id="replicator-dynamics" class="section level2">
 <h2><span class="header-section-number">7.6</span> Replicator dynamics</h2>
@@ -406,7 +409,7 @@ x_i \left( \sum_j B_{ij} x_j - \sum_{kj} x_k B_{kj} x_j \right) &amp; = x_i \lef
 </div>
 <div id="rock-paper-scissor" class="section level3">
 <h3><span class="header-section-number">7.6.2</span> Rock-paper-scissor</h3>
-<p>Let’s try our hand with a simple zero-sum (i.e., <span class="math inline">\(A = -A^T\)</span>) replicator equation. We have three populations (“rock”, “paper”, and “scissors”) with payoff matrix:</p>
+<p>Let’s try our hand at a simple zero-sum (i.e., <span class="math inline">\(A = -A^T\)</span>) replicator equation. We have three populations (“rock”, “paper”, and “scissors”) with payoff matrix:</p>
 <p><span class="math display">\[
 A = \begin{pmatrix}
 0 &amp; -1 &amp; 1\\
@@ -488,14 +491,16 @@ A = \begin{pmatrix}
 <span id="cb73-5"><a href="game-theory-and-replicator-dynamics.html#cb73-5"></a>x0 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.1</span>, <span class="dv">3</span>, <span class="dv">1</span>)</span>
 <span id="cb73-6"><a href="game-theory-and-replicator-dynamics.html#cb73-6"></a>glvex &lt;-<span class="st"> </span><span class="kw">integrate_GLV</span>(r, A, x0)</span></code></pre></div>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/exampleglvtore1-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>And now build the corresponding replicator equation. The matrix of payoffs <span class="math inline">\(B\)</span> becomes:</p>
 <div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="game-theory-and-replicator-dynamics.html#cb74-1"></a>B &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">4</span>)</span>
 <span id="cb74-2"><a href="game-theory-and-replicator-dynamics.html#cb74-2"></a>B[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>] &lt;-<span class="st"> </span>A</span>
 <span id="cb74-3"><a href="game-theory-and-replicator-dynamics.html#cb74-3"></a>B[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dv">4</span>] &lt;-<span class="st"> </span>r</span></code></pre></div>
 <p><span class="math display">\[
 \begin{bmatrix}-1&amp;0.5&amp;0.1&amp;1 \\-0.7&amp;-2&amp;0&amp;2 \\-0.3&amp;0&amp;-5&amp;3 \\0&amp;0&amp;0&amp;0 \\\end{bmatrix} 
 \]</span></p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="game-theory-and-replicator-dynamics.html#cb75-1"></a>y0 &lt;-<span class="st"> </span><span class="kw">c</span>(x0, <span class="dv">1</span>)</span>
-<span id="cb75-2"><a href="game-theory-and-replicator-dynamics.html#cb75-2"></a>y0 &lt;-<span class="st"> </span>y0 <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(y0)</span>
+<p>Integrate the dynamics:</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="game-theory-and-replicator-dynamics.html#cb75-1"></a>y0 &lt;-<span class="st"> </span><span class="kw">c</span>(x0, <span class="dv">1</span>) <span class="co"># add an extra &quot;species&quot;</span></span>
+<span id="cb75-2"><a href="game-theory-and-replicator-dynamics.html#cb75-2"></a>y0 &lt;-<span class="st"> </span>y0 <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(y0) <span class="co"># project on the simplex</span></span>
 <span id="cb75-3"><a href="game-theory-and-replicator-dynamics.html#cb75-3"></a>reex &lt;-<span class="st"> </span><span class="kw">integrate_RE</span>(B, y0)</span></code></pre></div>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/redynamicsfromglv2-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>Now let’s look at the equilibrium of the GLV model:</p>
@@ -610,8 +615,8 @@ A = \begin{pmatrix}
 <p>The rock-paper-scissor game above is a simple case of a “hypertournament” game. Take the zero-sum payoff matrix <span class="math inline">\(A = -A^T\)</span>. Then, we have</p>
 <p><span class="math display">\[
 \sum_i \sum_j A_{ij} x_i x_j = 0
-\]</span>
-and the RE simplifies to</p>
+\]</span></p>
+<p>and the RE simplifies to</p>
 <p><span class="math display">\[
 \dfrac{d x}{dt} = D(x) A x
 \]</span></p>
@@ -677,7 +682,7 @@ A x^\star = 0
 <p><span class="math display">\[
 V(x) = -\sum_i x_i^\star \log \frac{x_i}{x_i^\star} .
 \]</span></p>
-<p>Because of Gibbs’ inequality, <span class="math inline">\(V(x) \geq 0\)</span> for any <span class="math inline">\(x\)</span>, and is equal to zero only if <span class="math inline">\(x = x^\star\)</span>. Note also that at equilibrium <span class="math inline">\(2 \sum_j H_{ij} x_j^\star = 1\)</span>. We write:</p>
+<p>Because of <a href="https://en.wikipedia.org/wiki/Gibbs%27_inequality">Gibbs’ inequality</a>, <span class="math inline">\(V(x) \geq 0\)</span> for any <span class="math inline">\(x\)</span>, and is equal to zero only if <span class="math inline">\(x = x^\star\)</span>. Note also that at equilibrium <span class="math inline">\(2 \sum_j H_{ij} x_j^\star = 1\)</span>. We write:</p>
 <p><span class="math display">\[
 \begin{aligned}
   \dfrac{d V}{d t} &amp;= \sum_i \dfrac{\partial V}{\partial x_i}
@@ -730,7 +735,7 @@ A = \begin{pmatrix}
 <p>As seen above, generally zero-sum matrix games will lead to an odd number of species coexisting.</p>
 <ul>
 <li>Can you build a matrix leading to four species/strategies coexisting?</li>
-<li>Now simulate the dynamics several times starting from different initial conditions—do species cycle around the same equilibrium? Why?</li>
+<li>Now simulate the dynamics several times, starting from different initial conditions—do species cycle around the same equilibrium? Why?</li>
 </ul>
 </div>
 </div>

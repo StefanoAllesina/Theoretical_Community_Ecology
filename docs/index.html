@@ -24,7 +24,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2021-02-06" />
+<meta name="date" content="2021-02-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -257,7 +257,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html"><i class="fa fa-check"></i><b>8</b> Metapopulation dynamics on networks</a><ul>
 <li class="chapter" data-level="8.1" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#metapopulations"><i class="fa fa-check"></i><b>8.1</b> Metapopulations</a></li>
 <li class="chapter" data-level="8.2" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#hanski-ovaskainen-2000"><i class="fa fa-check"></i><b>8.2</b> Hanski Ovaskainen 2000</a></li>
-<li class="chapter" data-level="8.3" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#sis-on-a-contact-network"><i class="fa fa-check"></i><b>8.3</b> SIS on a contact network</a></li>
+<li class="chapter" data-level="8.3" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#sis-on-a-contact-network"><i class="fa fa-check"></i><b>8.3</b> SIS on a contact network</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#the-full-model"><i class="fa fa-check"></i><b>8.3.1</b> The full model</a></li>
+<li class="chapter" data-level="8.3.2" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#the-mean-field-approximation"><i class="fa fa-check"></i><b>8.3.2</b> The mean-field approximation</a></li>
+</ul></li>
 <li class="chapter" data-level="8.4" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#metapopulations-on-randomly-distributed-patches"><i class="fa fa-check"></i><b>8.4</b> Metapopulations on randomly distributed patches</a></li>
 <li class="chapter" data-level="8.5" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#optional-ecosystem-engineering-and-metapopulations"><i class="fa fa-check"></i><b>8.5</b> [Optional] Ecosystem engineering and metapopulations</a></li>
 </ul></li>
@@ -296,23 +299,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Theoretical Community Ecology</h1>
 <p class="author"><em>Stefano Allesina</em></p>
-<p class="date"><em>2021-02-06</em></p>
+<p class="date"><em>2021-02-07</em></p>
 </div>
 <div id="preliminaries" class="section level1 unnumbered">
 <h1>Preliminaries</h1>
 <div id="approach-and-target-audience" class="section level2 unnumbered">
 <h2>Approach and target audience</h2>
-<p>The material was prepared for the graduate class <em>Theoretical Community Ecology</em> taught at the University of Chicago — AY 2020/2021. Following the material requires some familiarity with calculus (multivariable integration, derivatives, chain rule) and linear algebra (vector spaces, eigenvalues, eigenvectors). Also, a good working knowledge of <code>R</code> (writing functions, working with the packages <code>deSolve</code> and <code>tidyverse</code>) is needed to follow the code (all figures are generated at runtime, and therefore the source code for these lectures contains all the code/data needed to replicate the figures).</p>
+<p>The material was prepared for the graduate class <em>Theoretical Community Ecology</em> (ECEV 43900) taught at the University of Chicago — AY 2020/2021. Following the material requires some familiarity with calculus (multivariable integration, derivatives, chain rule) and linear algebra (vector spaces, eigenvalues, eigenvectors). Also, a good working knowledge of <code>R</code> (writing functions, working with the packages <code>deSolve</code> and <code>tidyverse</code>) is needed to follow the code (all figures are generated at runtime, and therefore the source code for these lectures contains all the code/data needed to replicate the figures).</p>
 <p>The approach taken throughout the course is to alternate between code/simulations and mathematical derivations. While several theorems are (informally) stated, proofs are included only when elementary and/or informative of the underlying biological processes.</p>
-<p>The class builds upon material typically presented in classes on population, community and theoretical ecology. The main goal of the class is to build a toolbox for solving problems in theoretical community ecology, bridging the gap between what typically presented in introductory classes and the primary literature.</p>
+<p>The class builds upon material typically presented in classes on population, community and theoretical ecology. The main goal of the class is to build a toolbox for solving problems in theoretical community ecology, bridging the gap between what is typically presented in introductory classes and the primary literature.</p>
 </div>
 <div id="topics" class="section level2 unnumbered">
 <h2>Topics</h2>
-<p>The choice of themes is very opinionated, and heavily biased toward my own research interests. Because of this, the focus is squarely on continuous time, time-invariant models—in most cases without any consideration of space and stochasticity. Similarly, the material mostly deals with the case of multispecies dynamics, though low-dimensional models are considered when their analysis helps with the understanding of the multispecies case. Finally, much of the material is centered around the Generalized Lotka-Volterra model and its cousins (e.g., the replicator equation). This because a) the Generalized Lotka-Volterra model for multiple interacting species is in a way the simplest nonlinear model for population dynamics; and b) it is a “canonical” model—in the sense that many other models can be re-cast in GLV form.</p>
+<p>The choice of themes is very opinionated, and heavily biased toward my own research interests. Because of this, the focus is squarely on continuous time, time-invariant models—in most cases without any consideration of space and stochasticity. Similarly, the material mostly deals with the case of multispecies dynamics, though low-dimensional models are considered when their analysis helps with the understanding of the multispecies case. Finally, much of the material is centered around the Generalized Lotka-Volterra model and its cousins (e.g., the replicator equation). This is because a) the Generalized Lotka-Volterra model for multiple interacting species is in a way the simplest nonlinear model for population dynamics; and b) it is a “canonical” model—in the sense that many other models can be re-cast in GLV form.</p>
 </div>
 <div id="notation" class="section level2 unnumbered">
 <h2>Notation</h2>
-<p>Unless specified or for obvious exceptions, Greek letters stand for scalars (i.e., real or complex numbers), lower case roman letters for vectors, and capital roman letters for matrices (as such <span class="math inline">\(a_i\)</span> or <span class="math inline">\(A_{ij}\)</span> are scalars). We typically work in <span class="math inline">\(\mathbb{R}^n\)</span> (the <span class="math inline">\(n\)</span>-dimensional Euclidean space), <span class="math inline">\(\mathbb{R}^n_+\)</span> (i.e., the positive orthant of <span class="math inline">\(\mathbb{R}^n\)</span>), or <span class="math inline">\(\mathbb{R}^n_{0+}\)</span> (non-negative orthant). <span class="math inline">\(D(x)\)</span> is a diagonal matrix with <span class="math inline">\(x\)</span> on the diagonal. The matrix <span class="math inline">\(A^T\)</span> is the transpose of <span class="math inline">\(A\)</span>. Whenever it is clear what I mean, I will drop the dependency on time of certain variables.</p>
+<p>Unless specified or for obvious exceptions, Greek letters stand for scalars (i.e., real or complex numbers), lower case Roman letters for vectors, and capital Roman letters for matrices (as such <span class="math inline">\(a_i\)</span> or <span class="math inline">\(A_{ij}\)</span> are scalars). We typically work in <span class="math inline">\(\mathbb{R}^n\)</span> (the <span class="math inline">\(n\)</span>-dimensional Euclidean space), <span class="math inline">\(\mathbb{R}^n_+\)</span> (i.e., the positive orthant of <span class="math inline">\(\mathbb{R}^n\)</span>), or <span class="math inline">\(\mathbb{R}^n_{0+}\)</span> (non-negative orthant). <span class="math inline">\(D(x)\)</span> is a diagonal matrix with <span class="math inline">\(x\)</span> on the diagonal. The matrix <span class="math inline">\(A^T\)</span> is the transpose of <span class="math inline">\(A\)</span>. Whenever it is clear what I mean, I will drop the dependency on time of certain variables.</p>
 <p>The Generalized Lotka-Volterra model:</p>
 <p><span class="math display">\[
 \dfrac{d x_i(t)}{d t} = x_i(t) \left(a_i + \sum_{j} B_{ij} x_j(t) \right)
@@ -349,15 +352,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><span class="citation">Strogatz (<a href="#ref-strogatz2018nonlinear" role="doc-biblioref">2018</a>)</span> — a clear, concise introduction to dynamical systems.</li>
 <li><span class="citation">Ellner and Guckenheimer (<a href="#ref-ellner2011dynamic" role="doc-biblioref">2011</a>)</span> — an introduction to dynamical models focusing on biology.</li>
 <li><span class="citation">Hofbauer and Sigmund (<a href="#ref-hofbauer1998evolutionary" role="doc-biblioref">1998</a>)</span> — a great resource for models of population dynamics and evolutionary game theory.</li>
-<li><span class="citation">Szederkenyi, Magyar, and Hangos (<a href="#ref-szederkenyi2018analysis" role="doc-biblioref">2018</a>)</span> — an introduction to quasi-polynomial systems and reaction networks.</li>
 <li><span class="citation">Hadeler, Mackey, and Stevens (<a href="#ref-hadeler2017topics" role="doc-biblioref">2017</a>)</span> — a more mathematically-focused reading.</li>
 <li><span class="citation">Hirsch, Smale, and Devaney (<a href="#ref-hirsch2012differential" role="doc-biblioref">2012</a>)</span> — an extensive, clearly written and rigorous introduction to dynamical systems.</li>
+<li><span class="citation">Szederkenyi, Magyar, and Hangos (<a href="#ref-szederkenyi2018analysis" role="doc-biblioref">2018</a>)</span> — an introduction to quasi-polynomial systems and reaction networks.</li>
 </ul>
 </div>
 <div id="acknowledgements" class="section level2 unnumbered">
 <h2>Acknowledgements</h2>
 <p>These lectures grew out of a set of four lectures I have presented at the ICTP-SAIFR/IFT-UNESP <a href="https://www.ictp-saifr.org/community-ecology-from-patterns-to-principles/">“School on Community Ecology: from patterns to principles”</a>, held on January 20-25, 2020 in São Paulo, Brazil. Thanks to the organizers (Marcus Aguiar, Jacopo Grilli, Roberto Kraenkel, Ricardo Martinez-Garcia and Paulo Inácio Prado) for the invitation and for prompting me to start working on the material.</p>
-<p>The lecture on assembly was test-driven at the ICTP <a href="https://indico.ictp.it/event/9131/">“Winter School on Quantitative Systems Biology: Quantitative Approaches in Ecosystem Ecology”</a>, organized by Simon Levin, Matteo Marsili, Jacopo Grilli, and Antonio Celani. I am grateful to the students in both schools for useful feedback.</p>
+<p>The lecture on assembly was test-driven at the ICTP <a href="https://indico.ictp.it/event/9131/">“Winter School on Quantitative Systems Biology: Quantitative Approaches in Ecosystem Ecology”</a>, organized by Simon Levin, Matteo Marsili, Jacopo Grilli, and Antonio Celani.</p>
+<p>I am grateful to the students in both schools for useful feedback.</p>
 <p>The development of this material was supported by the National Science Foundation (<a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2022742">DEB #2022742</a>). Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author and do not necessarily reflect the views of the National Science Foundation.</p>
 
 </div>
