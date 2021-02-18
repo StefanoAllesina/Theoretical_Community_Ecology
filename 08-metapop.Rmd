@@ -67,11 +67,7 @@ Calling $S(t) = y(t)$ and $I(t) = x(t)$ we obtain an SIS model in which a pathog
 
 ## Hanski Ovaskainen 2000
 
-Hanski and Ovaskainen: extension to geographic location of patches, kernel of dispersal.
-
-Assumptions of the model
-
-Leading eigenvalue and Perron eigenvector
+In Levins' model, all patches are connected with all other patches, such that the rate of colonization does not depend on the identity of the patch serving as the source of propagules.
 
 :::boxhistory
 
@@ -89,6 +85,45 @@ His work on metapopulation theory is extremely well-known, thanks also to the am
 Hanski won numerous awards, and served as a strong advocate for ecological conservation.
 :::
 
+@hanski2000metapopulation (mathematical details in @ovaskainen2001spatially) consider a model in which patches are spread geographically, and colonization from patch $i$ to patch $j$ depends on the distance (actually, an "effective distance") between patches. In particular, they start from Levins' model, written for a focal patch. We take $x_i$ to be the probability that patch $i$ is occupied at time $t$ (and therefore $1 \geq x_i \geq 0$) as:
+
+$$
+\dfrac{d x_i}{dt} = \text{[Colonization rate i]}(1 - x_i) - \text{[Extinction rate i]} x_i
+$$
+
+They also consider the patches $a_1, \ldots, a_n$ to have different "values" (i.e., support populations of different sizes). In this context, it makes sense to assume that the extinction rate in patch $i$ is $\delta_i = \delta/a_i$. Similarly, the probability of colonization should decrease with distance, and be directly proportional to patch values; for example, one could choose $\gamma_{ij} = \gamma e^{-\alpha D_{ij}} a_j$, where $D$ is a matrix of Euclidean distances between patches, $\alpha$ models the typical mobility of the species (i.e., the typical "dispersal bout" is of length $1/\alpha$), and $\gamma$ is a constant. With these assumptions, the dynamics are described by:
+
+
+$$
+\dfrac{d x_i}{dt} = \gamma (1 - x_i) \sum_{j\neq i} e^{-\alpha D_{ij}} a_j x_j - \dfrac{\delta}{a_i} x_i
+$$
+
+At equilibrium, we have:
+
+$$
+\gamma (1 - x_i^\star) \sum_{j\neq i} e^{-\alpha D_{ij}} a_j x_j^\star= \dfrac{\delta}{a_i} x_i^\star
+$$
+
+It is convenient to multiply both sides by $a_i$, and to define the **dispersal matrix** $M$, with zero on the diagonal, and $M_{ij} = M_{ji} = a_i a_j \gamma e^{-\alpha D_{ij}}$. Then, the equilibrium condition reads
+
+$$
+(1-x_i^\star) \sum_{j}M_{ij} x^\star_j - \delta x_i^\star  = 0
+$$
+
+Because $M_{i,i} = 0$, we can solve for $x_i^\star$ and write:
+
+$$
+x_{i}^\star = \dfrac{\sum M_{ij}x_j^\star}{\delta + \sum M_{ij}x_j^\star} = 1 - \dfrac{\delta}{\delta + \sum M_{ij}x_j^\star} = 1 - \dfrac{1}{1 + \tau \sum M_{ij}x_j^\star}
+$$
+
+where $\tau = 1 / \delta$. We observe that a trivial solution is $x_i^\star = 0$ for all $i$ (global extinction of the population). If any $x_i^\star > 0$, then all of them must also be different from zero (and in fact, they all must be positive). Given that all $x_j^\star \leq 1$, we can write:
+
+$$
+x_{i}^\star = 1 - \dfrac{1}{1 + \tau \sum M_{ij} + \tau \sum M_{ij}(1-x_j^\star)}
+$$
+
+and therefore $0 \leq x_i^\star \leq 1 - \dfrac{1}{1 + \tau \sum M_{ij}}$.
+
 ## SIS on a contact network
 
 Interestingly, the same results above have been derived in the context of virus spread on networks by @van2008virus. We follow their derivation as it shows what type of approximations we're making when writing the equations above.
@@ -104,7 +139,7 @@ For simplicity, make the following assumptions: a) all individuals have the same
 We track the probability that individual $i$ is infected at time $t$ (mathematically, this is an expectation). In particular, take $x_i$ to be an indicator variable taking value $1$ when $i$ is infected, and $0$ when $i$ is susceptible. Then
 
 $$
-\dfrac{d E[x_i(t)]}{dt} = E \left[-\delta x_i(t) + \beta (1-x_i(t)) \sum_j A_{ij} E[x_j(t)]\right]
+\dfrac{d E[x_i(t)]}{dt} = E \left[-\delta x_i(t) + \beta (1-x_i(t)) \sum_j A_{ij} x_j(t)\right]
 $$
 
 The $-\delta x_i(t)$ models the recovery, and when an individual is susceptible (i.e., when $(1-x_i(t)) = 1$) the neighbors (i.e., $j$ such that $A_{ij} = 1$) attempt to infect node $i$. Expanding (and dropping the dependency on time to keep the equation compact), we obtain:

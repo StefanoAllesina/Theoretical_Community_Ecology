@@ -24,7 +24,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2021-02-07" />
+<meta name="date" content="2021-02-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -265,7 +265,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.5" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#optional-ecosystem-engineering-and-metapopulations"><i class="fa fa-check"></i><b>8.5</b> [Optional] Ecosystem engineering and metapopulations</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html"><i class="fa fa-check"></i><b>9</b> Quasi-polynomial systems</a><ul>
-<li class="chapter" data-level="9.1" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#from-qp-to-glv"><i class="fa fa-check"></i><b>9.1</b> From QP to GLV</a></li>
+<li class="chapter" data-level="9.1" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#global-stability-2"><i class="fa fa-check"></i><b>9.1</b> Global stability</a></li>
+<li class="chapter" data-level="9.2" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#from-qp-to-glv"><i class="fa fa-check"></i><b>9.2</b> From QP to GLV</a></li>
+<li class="chapter" data-level="9.3" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#stability-of-glv"><i class="fa fa-check"></i><b>9.3</b> Stability of GLV</a></li>
+<li class="chapter" data-level="9.4" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#stability-for-glv-embeddings"><i class="fa fa-check"></i><b>9.4</b> Stability for GLV embeddings</a></li>
+<li class="chapter" data-level="9.5" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#numerical-analysis"><i class="fa fa-check"></i><b>9.5</b> Numerical analysis</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="chapter" data-level="10" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html"><i class="fa fa-check"></i><b>10</b> Random bits and pieces</a><ul>
@@ -343,9 +347,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="hanski-ovaskainen-2000" class="section level2">
 <h2><span class="header-section-number">8.2</span> Hanski Ovaskainen 2000</h2>
-<p>Hanski and Ovaskainen: extension to geographic location of patches, kernel of dispersal.</p>
-<p>Assumptions of the model</p>
-<p>Leading eigenvalue and Perron eigenvector</p>
+<p>In Levins’ model, all patches are connected with all other patches, such that the rate of colonization does not depend on the identity of the patch serving as the source of propagules.</p>
 <div class="boxhistory">
 <p><strong>History: Ilkka A. Hanski (1953-2016)</strong></p>
 <p><img src="img/Hanski.gif" width="35%" style="display: block; margin: auto;" />
@@ -354,6 +356,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>His work on metapopulation theory is extremely well-known, thanks also to the amazing work on the Glanville fritillary butterfly <em>Melitaea cinxia</em>. This butterfly inhabits the dry meadows in Åland Islands archipelago—with about 4000 meadows, sampled yearly by an army of students since 1991, the fragmented landscape is an ideal testing ground for metapopulation theory.</p>
 <p>Hanski won numerous awards, and served as a strong advocate for ecological conservation.</p>
 </div>
+<p><span class="citation">Hanski and Ovaskainen (<a href="#ref-hanski2000metapopulation" role="doc-biblioref">2000</a>)</span> (mathematical details in <span class="citation">Ovaskainen and Hanski (<a href="#ref-ovaskainen2001spatially" role="doc-biblioref">2001</a>)</span>) consider a model in which patches are spread geographically, and colonization from patch <span class="math inline">\(i\)</span> to patch <span class="math inline">\(j\)</span> depends on the distance (actually, an “effective distance”) between patches. In particular, they start from Levins’ model, written for a focal patch. We take <span class="math inline">\(x_i\)</span> to be the probability that patch <span class="math inline">\(i\)</span> is occupied at time <span class="math inline">\(t\)</span> (and therefore <span class="math inline">\(1 \geq x_i \geq 0\)</span>) as:</p>
+<p><span class="math display">\[
+\dfrac{d x_i}{dt} = \text{[Colonization rate i]}(1 - x_i) - \text{[Extinction rate i]} x_i
+\]</span></p>
+<p>They also consider the patches <span class="math inline">\(a_1, \ldots, a_n\)</span> to have different “values” (i.e., support populations of different sizes). In this context, it makes sense to assume that the extinction rate in patch <span class="math inline">\(i\)</span> is <span class="math inline">\(\delta_i = \delta/a_i\)</span>. Similarly, the probability of colonization should decrease with distance, and be directly proportional to patch values; for example, one could choose <span class="math inline">\(\gamma_{ij} = \gamma e^{-\alpha D_{ij}} a_j\)</span>, where <span class="math inline">\(D\)</span> is a matrix of Euclidean distances between patches, <span class="math inline">\(\alpha\)</span> models the typical mobility of the species (i.e., the typical “dispersal bout” is of length <span class="math inline">\(1/\alpha\)</span>), and <span class="math inline">\(\gamma\)</span> is a constant. With these assumptions, the dynamics are described by:</p>
+<p><span class="math display">\[
+\dfrac{d x_i}{dt} = \gamma (1 - x_i) \sum_{j\neq i} e^{-\alpha D_{ij}} a_j x_j - \dfrac{\delta}{a_i} x_i
+\]</span></p>
+<p>At equilibrium, we have:</p>
+<p><span class="math display">\[
+\gamma (1 - x_i^\star) \sum_{j\neq i} e^{-\alpha D_{ij}} a_j x_j^\star= \dfrac{\delta}{a_i} x_i^\star
+\]</span></p>
+<p>It is convenient to multiply both sides by <span class="math inline">\(a_i\)</span>, and to define the <strong>dispersal matrix</strong> <span class="math inline">\(M\)</span>, with zero on the diagonal, and <span class="math inline">\(M_{ij} = M_{ji} = a_i a_j \gamma e^{-\alpha D_{ij}}\)</span>. Then, the equilibrium condition reads</p>
+<p><span class="math display">\[
+(1-x_i^\star) \sum_{j}M_{ij} x^\star_j - \delta x_i^\star  = 0
+\]</span></p>
+<p>Because <span class="math inline">\(M_{i,i} = 0\)</span>, we can solve for <span class="math inline">\(x_i^\star\)</span> and write:</p>
+<p><span class="math display">\[
+x_{i}^\star = \dfrac{\sum M_{ij}x_j^\star}{\delta + \sum M_{ij}x_j^\star} = 1 - \dfrac{\delta}{\delta + \sum M_{ij}x_j^\star} = 1 - \dfrac{1}{1 + \tau \sum M_{ij}x_j^\star}
+\]</span></p>
+<p>where <span class="math inline">\(\tau = 1 / \delta\)</span>. We observe that a trivial solution is <span class="math inline">\(x_i^\star = 0\)</span> for all <span class="math inline">\(i\)</span> (global extinction of the population). If any <span class="math inline">\(x_i^\star &gt; 0\)</span>, then all of them must also be different from zero (and in fact, they all must be positive). Given that all <span class="math inline">\(x_j^\star \leq 1\)</span>, we can write:</p>
+<p><span class="math display">\[
+x_{i}^\star = 1 - \dfrac{1}{1 + \tau \sum M_{ij} + \tau \sum M_{ij}(1-x_j^\star)}
+\]</span></p>
+<p>and therefore <span class="math inline">\(0 \leq x_i^\star \leq 1 - \dfrac{1}{1 + \tau \sum M_{ij}}\)</span>.</p>
 </div>
 <div id="sis-on-a-contact-network" class="section level2">
 <h2><span class="header-section-number">8.3</span> SIS on a contact network</h2>
@@ -367,7 +394,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>For simplicity, make the following assumptions: a) all individuals have the same recovery rate, <span class="math inline">\(\delta\)</span>; b) the (symmetric/undirected) contact network <span class="math inline">\(A\)</span> defines who can infect whom; c) when a node/individual is infected, it attempts infecting the neighbors at a rate <span class="math inline">\(\beta\)</span>.</p>
 <p>We track the probability that individual <span class="math inline">\(i\)</span> is infected at time <span class="math inline">\(t\)</span> (mathematically, this is an expectation). In particular, take <span class="math inline">\(x_i\)</span> to be an indicator variable taking value <span class="math inline">\(1\)</span> when <span class="math inline">\(i\)</span> is infected, and <span class="math inline">\(0\)</span> when <span class="math inline">\(i\)</span> is susceptible. Then</p>
 <p><span class="math display">\[
-\dfrac{d E[x_i(t)]}{dt} = E \left[-\delta x_i(t) + \beta (1-x_i(t)) \sum_j A_{ij} E[x_j(t)]\right]
+\dfrac{d E[x_i(t)]}{dt} = E \left[-\delta x_i(t) + \beta (1-x_i(t)) \sum_j A_{ij} x_j(t)\right]
 \]</span></p>
 <p>The <span class="math inline">\(-\delta x_i(t)\)</span> models the recovery, and when an individual is susceptible (i.e., when <span class="math inline">\((1-x_i(t)) = 1\)</span>) the neighbors (i.e., <span class="math inline">\(j\)</span> such that <span class="math inline">\(A_{ij} = 1\)</span>) attempt to infect node <span class="math inline">\(i\)</span>. Expanding (and dropping the dependency on time to keep the equation compact), we obtain:</p>
 <p><span class="math display">\[
@@ -397,6 +424,9 @@ Contrast approximation (NIMFA/Hanski-Ovaskainen)</p>
 <div id="ref-cator2012second">
 <p>Cator, Eric, and Piet Van Mieghem. 2012. “Second-Order Mean-Field Susceptible-Infected-Susceptible Epidemic Threshold.” <em>Physical Review E</em> 85 (5): 056111.</p>
 </div>
+<div id="ref-hanski2000metapopulation">
+<p>Hanski, Ilkka, and Otso Ovaskainen. 2000. “The Metapopulation Capacity of a Fragmented Landscape.” <em>Nature</em> 404 (6779): 755–58.</p>
+</div>
 <div id="ref-levins1966strategy">
 <p>Levins, Richard. 1966. “The Strategy of Model Building in Population Biology.” <em>American Scientist</em> 54 (4): 421–31.</p>
 </div>
@@ -408,6 +438,9 @@ Contrast approximation (NIMFA/Hanski-Ovaskainen)</p>
 </div>
 <div id="ref-macarthur1967limiting">
 <p>MacArthur, Robert, and Richard Levins. 1967. “The Limiting Similarity, Convergence, and Divergence of Coexisting Species.” <em>The American Naturalist</em> 101 (921): 377–85.</p>
+</div>
+<div id="ref-ovaskainen2001spatially">
+<p>Ovaskainen, Otso, and Ilkka Hanski. 2001. “Spatially Structured Metapopulation Models: Global and Local Assessment of Metapopulation Capacity.” <em>Theoretical Population Biology</em> 60 (4): 281–302.</p>
 </div>
 <div id="ref-puccia2013qualitative">
 <p>Puccia, Charles J, and Richard Levins. 2013. <em>Qualitative Modeling of Complex Systems: An Introduction to Loop Analysis and Time Averaging</em>. Harvard University Press.</p>

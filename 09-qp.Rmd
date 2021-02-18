@@ -8,9 +8,17 @@ source("common_settings.R")
 
 1. We discuss a fairly general class of dynamical systems, called "Quasi-Polynomial" (QP-)systems. 
 1. We show how any QP-system can be written as a larger-dimensional Generalized Lotka-Volterra model. 
-1. This means that the machinery we built for analyzing GLV models can be used to tackle a variety of models that at face value do not seem to fall in this class.
+1. This means that the machinery we built for analyzing GLV models can be used to tackle a variety of models that at face value do not seem to fall in this class. We show how to determine global stability in several ecological and epidemiological models using this method.
 1. This also shows that the GLV model is in a way a "universal" model.
 1. For a simple application, we examine models of metapopulation dynamics with ecosystem engineering.
+
+## Global stability
+
+Many dynamical models of ecological, epidemiological and evolutionary systems have equilibria that are globally stable (e.g., SIR, SIS, logistic growth, Levins' metapopulation model, MacArthur's consumer-resource model). 
+
+By far, the most powerful method to prove the global stability of an equilibrium is the so-called "Lyapunov direct method", which we've encountered several times already. The main drawback of this method is that devising an appropriate Lyapunov function requires ingenuity---and as Strogatz put it---"divine inspiration". Here we take a different approach: we turn our model of interested into a (possibly larger) GLV model, and then attempt applying the typical Lyapunov function for GLV to our transformed system. In practice, this will require us to think carefully about how perturbations in the original system translate into the (larger) GLV.
+
+We first show how systems that are in "Quasi-Polynomial" (QP) form can be embedded into a larger GLV by means of simple matrix operations. Then, we show that other models can be turned into QP, and from there into GLV.
 
 ## From QP to GLV
 
@@ -27,59 +35,165 @@ $$
 \prod_{k=1}^n x_k^{B_{jk}}
 $$
 
-For example, take the system:
+Several models in ecology and evolution belong to this class. For example, a model that departs from the GLV family is the so-called Leslie-Gower model:
 
 $$
 \begin{cases}
-\frac{d x_1}{dt} = x_1 -x_1^{3/2} + \frac{1}{4}x_1 x_2^2\\
-\frac{d x_2}{dt} = x_2 - \frac{1}{2}x_2^2\\
+\dfrac{d H}{dt} = H(\rho_h - \alpha_h P - \beta_h H)\\
+\dfrac{d P}{dt} = P \left(\rho_p - \alpha_p \dfrac{P}{H} \right)
 \end{cases}
 $$
 
-with dynamics:
+The equation for the prey ($H$) is in GLV form. However, the rate of increase (decrease) of the predator depends on the ratio between predators and prey: when prey are abundant, the predator grows with rate close to $\rho_p$; if prey are scarce, on the other hand, the predator declines. 
 
-```{r}
-qp1 <- function(t, x, pars){
-  x1 <- x[1]
-  x2 <- x[2]
-  dx1dt <- x1 * (1 - sqrt(x1) + (1 / 4) * x2^2)
-  dx2dt <- x2 * (1 - (1 / 2) * x2)
-  return(list(c(dx1dt, dx2dt)))
-}
-
-set.seed(0)
-x0 <- runif(2)
-outqp1 <- ode(y = x0, times = seq(0, 45, by = 0.25), func = qp1, parms = NULL, method = "ode45")
-ts <- plot_ODE_output(outqp1)
-```
-
-Showing that in this case dynamics reach the equilibrium $(x_1^\star, x_2^\star) = (4,2)$. This can be rewritten as:
+Solving for the coexistence equilibrium, we find:
 
 $$
 \begin{cases}
-\frac{d x_1}{dt} = x_1\left(1 -x_1^{1/2} + \frac{1}{4} x_2^2\right)\\
-\frac{d x_2}{dt} = x_2 \left(1 - \frac{1}{2}x_2 \right)
+H^\star = \dfrac{\alpha_p \rho_h}{\alpha_p \beta_h + \alpha_h \rho_p}\\
+P^\star = \dfrac{\rho_p \rho_h}{\alpha_p \beta_h + \alpha_h \rho_p}
 \end{cases}
 $$
 
-which is in QP-form, with: 
-
-$$s = (1, 1)^T$$
-
-$$A = \begin{pmatrix} 
--1 & 1/4 & 0\\ 
-0 & 0 & -1/2
-\end{pmatrix}$$ 
-
-$$B = \begin{pmatrix} 
-1/2 & 0 \\ 
-0 & 2 \\
-0 & 1
-\end{pmatrix}$$
-
-Now we perform a change of variables, writing an equation for each quasi-monomial:
+Note that the model is in QP-form. We recognize three monomials:
 
 $$
-z = ()
+\begin{pmatrix}
+H\\
+P\\
+\dfrac{P}{H}
+\end{pmatrix}
+=
+\begin{pmatrix}
+H^1 P^0\\
+H^0 P^1\\
+H^{-1}P^1
+\end{pmatrix}
 $$
+
+And the associated parameters:
+
+$$
+s = (\rho_h, \rho_p) \quad A = \begin{pmatrix} -\beta_h & -\alpha_h & 0\\ 0 & 0 & -\alpha_p \end{pmatrix} \quad B = \begin{pmatrix} 1 & 0 \\ 0 & 1 \\ -1 & 1 \end{pmatrix}
+$$
+
+Now we want to turn this models into a Generalized Lotka-Volterra model. We take the new variables to be our monomials:
+
+$$
+z = 
+\begin{pmatrix}
+z_1\\
+z_2\\
+z_3
+\end{pmatrix}
+=
+\begin{pmatrix}
+H^1 P^0\\
+H^0 P^1\\
+H^{-1}P^1
+\end{pmatrix}
+$$
+and transform the growth rates:
+
+$$
+r = \begin{pmatrix}
+r_1\\
+r_2\\
+r_3
+\end{pmatrix} = B s = \begin{pmatrix}
+\rho_h\\
+\rho_p\\
+\rho_p - \rho_h
+\end{pmatrix}
+$$
+
+and the matrix of interactions:
+
+$$
+M = B A = \begin{pmatrix}
+-\beta_h & -\alpha_h & 0\\
+0 & 0 & -\alpha_p\\
+\beta_h & \alpha_h & -\alpha_p\
+\end{pmatrix}
+$$
+
+The GLV system is clearly equivalent (topologically) to the original system, but has now three equations instead of two. Using the transformation $r = Bs$, $M = BA$ you can embed any QP system into a (typically, larger) GLV.
+
+## Stability of GLV
+
+Before proceeding to prove the stability of the coexistence equilibrium for the Leslie-Gower model, we need to revisit the Lyapunov function for the GLV introduced by @goh1977global, which we have encountered before. Take a GLV:
+
+$$
+\dfrac{d z}{d t} = D(z)(r + M z) = D(z)(M(z - z^\star)) = D(z)M\Delta z
+$$
+
+where $\Delta z$ is a vector of deviations from the equilibrium. Suppose that all species densities remain positive through the dynamics; then, we can write the dynamics of the logarithm of the species densities (where $\log z$ is a vector containing the logarithms of the densities):
+
+$$
+\dfrac{d \log z}{d t} = r + M z = M \Delta z
+$$
+
+We can take the function:
+
+$$
+V = 1^T D(c)(z - z^\star - D(z^\star) \log (z/z^\star))
+$$
+where $D(c)$ is a diagonal matrix with positive diagonal coefficients. Deriving wrt time, we find:
+
+$$
+\dfrac{dV}{dt} = 1^T D(c) \left( \dfrac{dz}{dt} - D(z^\star) \dfrac{d\log z}{d t} \right)
+$$
+
+substituting:
+
+$$
+\dfrac{dV}{dt} = 1^T D(c) \left( D(x) M \Delta z  - D(z^\star) M \Delta z \right) = 
+1^T D(c) D(\Delta z) M \Delta z
+$$
+
+Because diagonal matrices commute (i.e., $D_1 D_2 = D_2 D_1$), we can write:
+
+$$
+\dfrac{dV}{dt} = 1^T D(\Delta z) D(c) M \Delta z
+$$
+
+and finally, we absorb the $D(\Delta z)$:
+
+$$
+\dfrac{dV}{dt} = \Delta z^T D(c) M \Delta z
+$$
+
+If a matrix $K$ is negative definite (semi-definite), then $x^T K x <0$ ($\leq 0$) for any $x \neq 0$. As such, if we were to find a positive definite, diagonal matrix $D(c)$ such that $D(c) M$ is negative semi-definite, we would have proved the global stability of the equilibrium. Because it is typically easier to work with symmetric matrices, wlog we can take $K = \frac{1}{2} (D(c)M + M^T D(c))$, which is exactly the same: $\Delta z^T D(c) M \Delta z = \Delta z^T K \Delta z$. 
+
+The expression above has been used countless times to prove the stability of GLV models. Note that when our model is indeed a GLV, the $\Delta z_i$ are radially unbounded: $\Delta z_i \in [-z_i^\star, \infty)$. In this case, it therefore makes much sense to try to make $K$ negative definite.
+
+## Stability for GLV embeddings
+
+This is however not the case when our equations have obtained by embedding a lower-dimensional system into a larger GLV. Because we have created new "species" by combining the original species, the perturbations of the "new species" are set by the perturbations of the original species. For example, in the Leslie-Gower embedding we have that $z_3 = P / H = z_2 / z_1$, and therefore:
+
+$$
+\Delta z = 
+\begin{pmatrix}
+\Delta z_1\\
+\Delta z_2\\
+\Delta z_3
+\end{pmatrix} = 
+\begin{pmatrix}
+\Delta z_1\\
+\Delta z_2\\
+\dfrac{\Delta z_2 + z_2^\star}{\Delta z_1 + z_1^\star} - \dfrac{z_2^\star}{z_1^\star}
+\end{pmatrix} = 
+\begin{pmatrix}
+\Delta z_1\\
+\Delta z_2\\
+\dfrac{\Delta z_2 - \dfrac{z_2^\star}{z_1^\star} \Delta z_1}{z_1}
+\end{pmatrix} 
+$$
+
+showing that the third perturbation is a function of the first two.
+
+Computing the matrix $K$ for the system, we obtain:
+
+## Numerical analysis
+
 
