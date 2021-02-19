@@ -24,7 +24,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2021-02-18" />
+<meta name="date" content="2021-02-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -270,6 +270,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.3" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#stability-of-glv"><i class="fa fa-check"></i><b>9.3</b> Stability of GLV</a></li>
 <li class="chapter" data-level="9.4" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#stability-for-glv-embeddings"><i class="fa fa-check"></i><b>9.4</b> Stability for GLV embeddings</a></li>
 <li class="chapter" data-level="9.5" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#numerical-analysis"><i class="fa fa-check"></i><b>9.5</b> Numerical analysis</a></li>
+<li class="chapter" data-level="9.6" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#systems-with-many-equations"><i class="fa fa-check"></i><b>9.6</b> Systems with many equations</a></li>
+<li class="chapter" data-level="9.7" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#glv-embedding-for-non-qp-systems"><i class="fa fa-check"></i><b>9.7</b> GLV embedding for non-QP systems</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="chapter" data-level="10" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html"><i class="fa fa-check"></i><b>10</b> Random bits and pieces</a><ul>
@@ -312,29 +314,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <div id="global-stability-2" class="section level2">
 <h2><span class="header-section-number">9.1</span> Global stability</h2>
-<p>Many dynamical models of ecological, epidemiological and evolutionary systems have equilibria that are globally stable (e.g., SIR, SIS, logistic growth, Levins’ metapopulation model, MacArthur’s consumer-resource model).</p>
-<p>By far, the most powerful method to prove the global stability of an equilibrium is the so-called “Lyapunov direct method”, which we’ve encountered several times already. The main drawback of this method is that devising an appropriate Lyapunov function requires ingenuity—and as Strogatz put it—“divine inspiration”. Here we take a different approach: we turn our model of interested into a (possibly larger) GLV model, and then attempt applying the typical Lyapunov function for GLV to our transformed system. In practice, this will require us to think carefully about how perturbations in the original system translate into the (larger) GLV.</p>
-<p>We first show how systems that are in “Quasi-Polynomial” (QP) form can be embedded into a larger GLV by means of simple matrix operations. Then, we show that other models can be turned into QP, and from there into GLV.</p>
+<p>Many dynamical models describing ecological, epidemiological and evolutionary systems have equilibria that are globally stable (e.g., SIR, SIS, logistic growth, Levins’ metapopulation model, MacArthur’s consumer-resource model).</p>
+<p>By far, the most powerful method to prove the global stability of an equilibrium is the so-called “Lyapunov direct method”, which we’ve encountered several times already. The main drawback of this method is that devising an appropriate Lyapunov function requires ingenuityand—as <span class="citation">Strogatz (<a href="#ref-strogatz2018nonlinear" role="doc-biblioref">2018</a>)</span> put it—a good deal of “divine inspiration”. Here we take a different approach: we embed our model of interest into a (possibly larger) GLV model, and then attempt applying the typical Lyapunov function for GLV to our transformed system (an embedding originally proposed by <span class="citation">Brenig (<a href="#ref-brenig1988complete" role="doc-biblioref">1988</a>)</span>). In practice, this will require us to think carefully about how perturbations in the original system translate into the perturbations of the (larger) GLV model.</p>
+<p>We first show how systems that are in “Quasi-Polynomial” (QP) form can be embedded into a larger GLV by means of simple matrix operations. Then, we discuss strategies to determine global stability for the embedding. Finally, we show that other models can be turned into QP, and from there into GLV.</p>
 </div>
 <div id="from-qp-to-glv" class="section level2">
 <h2><span class="header-section-number">9.2</span> From QP to GLV</h2>
 <p>We call a Quasi-Polynomial system a system of <span class="math inline">\(n\)</span> ODEs that can be written as:</p>
 <p><span class="math display">\[
 \frac{d x_i(t)}{d t} = x_i(t) \left(s_i + \sum_{j = i}^m A_{ij} \prod_{k=1}^n x_k(t)^{B_{jk}}\right)
-\]</span>
-where <span class="math inline">\(s\)</span> is a vector of “growth rates” (not necessarily positive), <span class="math inline">\(A\)</span> is a matrix of interactions, and <span class="math inline">\(B\)</span> a matrix of exponents. Note that if we take <span class="math inline">\(B = I_n\)</span> (the identity matrix), we recover the GLV model. If <span class="math inline">\(B\)</span> contains only integers, then we recover a polynomial system. Extending this model to real (but not necessarily integer) numbers <span class="math inline">\(B_{jk}\)</span>, we have a “quasi-polynomial” system (<span class="citation">Hernández-Bermejo, Fairén, and Brenig (<a href="#ref-hernandez1998algebraic" role="doc-biblioref">1998</a>)</span>).</p>
+\]</span></p>
+<p>where <span class="math inline">\(s\)</span> is a vector of “growth rates” (not necessarily positive), <span class="math inline">\(A\)</span> is a matrix of interactions, and <span class="math inline">\(B\)</span> a <span class="math inline">\(m \times n\)</span> matrix of exponents. Note that if we take <span class="math inline">\(m = n\)</span> and <span class="math inline">\(B = I_n\)</span> (the identity matrix), we recover the GLV model. If <span class="math inline">\(B\)</span> contains only integers, then we have a polynomial system. Extending this model to real (but not necessarily integer) numbers <span class="math inline">\(B_{jk}\)</span>, we have a “Quasi-Polynomial” (QP) system (<span class="citation">Hernández-Bermejo, Fairén, and Brenig (<a href="#ref-hernandez1998algebraic" role="doc-biblioref">1998</a>)</span>).</p>
 <p>In general, we assume that <span class="math inline">\(A\)</span> is of size <span class="math inline">\(n \times m\)</span>, <span class="math inline">\(B\)</span> is <span class="math inline">\(m \times n\)</span>, and that the <span class="math inline">\(x_i(t)\)</span> are real and positive (if that’s not the case, one needs to perform a change of variables that ensures positivity). The system has <span class="math inline">\(n\)</span> variables (the <span class="math inline">\(x_i(t)\)</span>), and we can identify <span class="math inline">\(m\)</span> “quasi-monomials”:</p>
 <p><span class="math display">\[
 \prod_{k=1}^n x_k^{B_{jk}}
 \]</span></p>
-<p>Several models in ecology and evolution belong to this class. For example, a model that departs from the GLV family is the so-called Leslie-Gower model:</p>
+<p>Several models in ecology and evolution belong to this class. For example, a model that departs from the GLV family is the so-called Leslie-Gower predator-prey model (<span class="citation">Leslie (<a href="#ref-leslie1948some" role="doc-biblioref">1948</a>)</span>):</p>
 <p><span class="math display">\[
 \begin{cases}
 \dfrac{d H}{dt} = H(\rho_h - \alpha_h P - \beta_h H)\\
 \dfrac{d P}{dt} = P \left(\rho_p - \alpha_p \dfrac{P}{H} \right)
 \end{cases}
 \]</span></p>
-<p>The equation for the prey (<span class="math inline">\(H\)</span>) is in GLV form. However, the rate of increase (decrease) of the predator depends on the ratio between predators and prey: when prey are abundant, the predator grows with rate close to <span class="math inline">\(\rho_p\)</span>; if prey are scarce, on the other hand, the predator declines.</p>
+<p>The equation for the prey (<span class="math inline">\(H\)</span>) is in GLV form. However, the rate of increase (decrease) of the predator depends on the ratio between predators and prey: when prey are abundant, predators grow with rate close to <span class="math inline">\(\rho_p\)</span>; if prey are scarce, on the other hand, predators decline.</p>
+<div class="boxhistory">
+<p><strong>History: Patrick H. Leslie (1900-1972)</strong></p>
+<p><img src="img/Leslie.jpg" width="35%" style="display: block; margin: auto;" /></p>
+<p>Born in Scotland, he studied physiology at Oxford University (Christ Church College). He worked for a few years in the department of pathology, and in 1935 he joined the Bureau of Animal Population, a new center led by Charles Elton. There, he worked on population dynamics mergin theoretical work and applications.</p>
+<p>In 1945 he published in Biometrika his masterpiece, <em>On the use of matrices in certain population mathematics</em> (<span class="citation">Leslie (<a href="#ref-leslie1945use" role="doc-biblioref">1945</a>)</span>). In this paper, he developed models for structured populations, which were then extended in several ways, and are still in use today. The so-called Leslie-Gower predator-prey model is developed in a follow-up paper in the same journal (<span class="citation">Leslie (<a href="#ref-leslie1948some" role="doc-biblioref">1948</a>)</span>).</p>
+</div>
 <p>Solving for the coexistence equilibrium, we find:</p>
 <p><span class="math display">\[
 \begin{cases}
@@ -374,8 +382,8 @@ H^1 P^0\\
 H^0 P^1\\
 H^{-1}P^1
 \end{pmatrix}
-\]</span>
-and transform the growth rates:</p>
+\]</span></p>
+<p>and transform the growth rates:</p>
 <p><span class="math display">\[
 r = \begin{pmatrix}
 r_1\\
@@ -395,7 +403,7 @@ M = B A = \begin{pmatrix}
 \beta_h &amp; \alpha_h &amp; -\alpha_p\
 \end{pmatrix}
 \]</span></p>
-<p>The GLV system is clearly equivalent (topologically) to the original system, but has now three equations instead of two. Using the transformation <span class="math inline">\(r = Bs\)</span>, <span class="math inline">\(M = BA\)</span> you can embed any QP system into a (typically, larger) GLV.</p>
+<p>The GLV system is clearly equivalent (topologically) to the original system, but has now three equations instead of two. Using the transformation <span class="math inline">\(r = Bs\)</span>, <span class="math inline">\(M = BA\)</span>, we can embed any QP system into a (typically, larger) GLV.</p>
 </div>
 <div id="stability-of-glv" class="section level2">
 <h2><span class="header-section-number">9.3</span> Stability of GLV</h2>
@@ -407,29 +415,29 @@ M = B A = \begin{pmatrix}
 <p><span class="math display">\[
 \dfrac{d \log z}{d t} = r + M z = M \Delta z
 \]</span></p>
-<p>We can take the function:</p>
+<p>We can take the “candidate Lyapunov function”:</p>
 <p><span class="math display">\[
 V = 1^T D(c)(z - z^\star - D(z^\star) \log (z/z^\star))
-\]</span>
-where <span class="math inline">\(D(c)\)</span> is a diagonal matrix with positive diagonal coefficients. Deriving wrt time, we find:</p>
+\]</span></p>
+<p>where <span class="math inline">\(D(c)\)</span> is a diagonal matrix with positive diagonal coefficients. Deriving w.r.t. time, we find:</p>
 <p><span class="math display">\[
 \dfrac{dV}{dt} = 1^T D(c) \left( \dfrac{dz}{dt} - D(z^\star) \dfrac{d\log z}{d t} \right)
 \]</span></p>
 <p>substituting:</p>
 <p><span class="math display">\[
-\dfrac{dV}{dt} = 1^T D(c) \left( D(x) M \Delta z  - D(z^\star) M \Delta z \right) = 
+\dfrac{dV}{dt} = 1^T D(c) \left( D(z) M \Delta z  - D(z^\star) M \Delta z \right) = 
 1^T D(c) D(\Delta z) M \Delta z
 \]</span></p>
 <p>Because diagonal matrices commute (i.e., <span class="math inline">\(D_1 D_2 = D_2 D_1\)</span>), we can write:</p>
 <p><span class="math display">\[
 \dfrac{dV}{dt} = 1^T D(\Delta z) D(c) M \Delta z
 \]</span></p>
-<p>and finally, we absorb the <span class="math inline">\(D(\Delta z)\)</span>:</p>
+<p>Finally, we absorb the <span class="math inline">\(D(\Delta z)\)</span>:</p>
 <p><span class="math display">\[
 \dfrac{dV}{dt} = \Delta z^T D(c) M \Delta z
 \]</span></p>
-<p>If a matrix <span class="math inline">\(K\)</span> is negative definite (semi-definite), then <span class="math inline">\(x^T K x &lt;0\)</span> (<span class="math inline">\(\leq 0\)</span>) for any <span class="math inline">\(x \neq 0\)</span>. As such, if we were to find a positive definite, diagonal matrix <span class="math inline">\(D(c)\)</span> such that <span class="math inline">\(D(c) M\)</span> is negative semi-definite, we would have proved the global stability of the equilibrium. Because it is typically easier to work with symmetric matrices, wlog we can take <span class="math inline">\(K = \frac{1}{2} (D(c)M + M^T D(c))\)</span>, which is exactly the same: <span class="math inline">\(\Delta z^T D(c) M \Delta z = \Delta z^T K \Delta z\)</span>.</p>
-<p>The expression above has been used countless times to prove the stability of GLV models. Note that when our model is indeed a GLV, the <span class="math inline">\(\Delta z_i\)</span> are radially unbounded: <span class="math inline">\(\Delta z_i \in [-z_i^\star, \infty)\)</span>. In this case, it therefore makes much sense to try to make <span class="math inline">\(K\)</span> negative definite.</p>
+<p>If a matrix <span class="math inline">\(K\)</span> is negative definite (semi-definite), then <span class="math inline">\(x^T K x &lt; 0\)</span> (<span class="math inline">\(\leq 0\)</span>) for any <span class="math inline">\(x \neq 0\)</span>. As such, if we were to find a positive definite, diagonal matrix <span class="math inline">\(D(c)\)</span> such that <span class="math inline">\(D(c) M\)</span> is negative semi-definite, we would have proved the global stability of the equilibrium (<span class="math inline">\(V\)</span> is positive whenever <span class="math inline">\(z &gt; 0\)</span> and <span class="math inline">\(z \neq z^\star\)</span>, and if <span class="math inline">\(D(c) M\)</span> is negative definite <span class="math inline">\(V\)</span> decreases in time). Because it is typically easier to work with symmetric matrices, w.l.o.g. we can take <span class="math inline">\(K = \frac{1}{2} (D(c)M + M^T D(c))\)</span>, which yields exactly the same result: <span class="math inline">\(\Delta z^T D(c) M \Delta z = \Delta z^T K \Delta z\)</span>.</p>
+<p>The expression above has been used countless times to prove the stability of GLV models. Note that when our model is indeed a GLV, the <span class="math inline">\(\Delta z_i\)</span> are radially unbounded: <span class="math inline">\(\Delta z_i \in [-z_i^\star, \infty)\)</span> (where the left bound is given by the fact that <span class="math inline">\(z_i\)</span> must be positive). In this case, it therefore makes much sense to try to make <span class="math inline">\(K\)</span> negative definite.</p>
 </div>
 <div id="stability-for-glv-embeddings" class="section level2">
 <h2><span class="header-section-number">9.4</span> Stability for GLV embeddings</h2>
@@ -453,20 +461,246 @@ where <span class="math inline">\(D(c)\)</span> is a diagonal matrix with positi
 \end{pmatrix} 
 \]</span></p>
 <p>showing that the third perturbation is a function of the first two.</p>
-<p>Computing the matrix <span class="math inline">\(K\)</span> for the system, we obtain:</p>
+<p>Computing the matrix <span class="math inline">\(K\)</span> for this system, we obtain:</p>
+<p><span class="math display">\[
+K = \frac{1}{2}(D(c) M + M^T D(c)) = \frac{1}{2}
+\begin{pmatrix}
+-2 c_1 \beta_h &amp; - c_1 \alpha_h &amp; c_3 \beta_h\\
+- c_1 \alpha_h &amp; 0 &amp; - c_2\alpha_p + c_3 \alpha_h\\
+c_3 \beta_h &amp; - c_2\alpha_p + c_3 \alpha_h &amp; -2 c_3 \alpha_p\
+\end{pmatrix}
+\]</span></p>
+<p>and taking <span class="math inline">\(\Delta z^T K \Delta z\)</span>, we obtain:</p>
+<p><span class="math display">\[
+\dfrac{dV}{dt} = \Delta z^T K \Delta z = -c_1 \Delta z_1 (\beta_h \Delta z_1 + \alpha_h \Delta z_2) + (c_3 \beta_h \Delta z_1 + (c_3 \alpha_h - c_2\alpha_p)\Delta z_2 )\Delta z_3 - c_3 \alpha_p \Delta z_3^2
+\]</span></p>
+<p>Note that the last term is negative for any choice of <span class="math inline">\(c_3 &gt; 0\)</span>, which is a good start. We can also make <span class="math inline">\(c_1 = 0\)</span>, thereby killing the first term. What remains to be determined is how to handle <span class="math inline">\((c_3 \beta_h \Delta z_1 + (c_3 \alpha_h - c_2\alpha_p)\Delta z_2 )\Delta z_3\)</span>. Because we know that <span class="math inline">\(\Delta z_3\)</span> is a function of <span class="math inline">\(\Delta z_1\)</span> and <span class="math inline">\(\Delta z_2\)</span>, we can try to choose appropriate constants to make <span class="math inline">\((c_3 \beta_h \Delta z_1 + (c_3 \alpha_h - c_2\alpha_p)\Delta z_2 )\)</span> proportional to <span class="math inline">\(-\Delta z_3\)</span>, thereby obtaining a function that decreases in time, with form <span class="math inline">\(-\theta \Delta z_3^2\)</span> and <span class="math inline">\(\theta\)</span> positive.</p>
+<p>We have shown above that <span class="math inline">\(-\Delta z_3 \propto \dfrac{z_2^\star}{z_1^\star} \Delta z_1 - \Delta z_2 = \dfrac{\rho_p}{\alpha_p} \Delta z_1 - \Delta z_2\)</span>. Take:</p>
+<p><span class="math display">\[
+(c_3 \beta_h \Delta z_1 + (c_3 \alpha_h - c_2\alpha_p)\Delta z_2 )
+\]</span></p>
+<p>extract the term <span class="math inline">\((c_2\alpha_p - c_3 \alpha_h)\)</span>:</p>
+<p><span class="math display">\[
+(c_2\alpha_p-c_3 \alpha_h)\left(\frac{c_3 \beta_h}{c_2\alpha_p-c_3 \alpha_h} \Delta z_1 - \Delta z_2 \right)
+\]</span></p>
+<p>To recover the right form, we need to make <span class="math inline">\(\frac{c_3 \beta_h}{c_2\alpha_p-c_3 \alpha_h} = \frac{\rho_p}{\alpha_p}\)</span>. Clearly, there are infinitely many choices.</p>
+<p>A convenient choice is <span class="math inline">\(c_1 = 0\)</span>, <span class="math inline">\(c_2 = \alpha_p \beta_h + \alpha_h \rho_p\)</span>, and <span class="math inline">\(c_3 = \alpha_p \rho_p\)</span>. In this case, we have:</p>
+<p><span class="math display">\[
+\dfrac{dV}{dt} = -\alpha_p \Delta z_3(\alpha_p \beta_h \Delta z_2 - \beta_h \rho_p \Delta z_1 + \alpha_p \Delta z_3) 
+\]</span></p>
+<p>Which can be rewritten as:</p>
+<p><span class="math display">\[
+\dfrac{dV}{dt} = -\alpha_p^2 (z_1 \beta_h + \rho_p)\Delta z_3^2
+\]</span></p>
+<p>which is clearly always negative whenever <span class="math inline">\(\Delta z_3 \neq 0\)</span>, given that <span class="math inline">\(z_1&gt;0\)</span> and all parameters are positive. We can write the Lyapunov function directly for the original system:</p>
+<p><span class="math display">\[
+W = c_2 (P - P^\star - P^\star \log(P/P^\star))+c_3 (P/H - P^\star/H^\star - (P^\star/ H^\star) \log(P H^\star/H P^\star))
+\]</span></p>
+<p>yielding:</p>
+<p><span class="math display">\[
+\dfrac{dW}{dt} = -\dfrac{\rho_p+\beta_h H}{H^2}(\rho_p H - \alpha_p P)^2
+\]</span></p>
+<p>which again is negative when we are not at equilibrium, proving global stability.</p>
 </div>
 <div id="numerical-analysis" class="section level2">
 <h2><span class="header-section-number">9.5</span> Numerical analysis</h2>
+<p>The derivation above is quite complex, and as always it is easier to find an answer when we know that an answer exists. One of the great advantages of the GLV embedding is that one can quite easily search for the constants numerically. The algorithm is as follows:</p>
+<ul>
+<li>Randomly generate <span class="math inline">\(\Delta z_i\)</span> by choosing random values between 0 and a sufficiently large number (say 10 times their respective equilibria) for each of the original species; from these random numbers, compute the corresponding <span class="math inline">\(\Delta z\)</span> for the new “species”;</li>
+<li>Build the matrix <span class="math inline">\(M\)</span>;</li>
+<li>For each choice of <span class="math inline">\(D(c)\)</span>, compute <span class="math inline">\(K = (1/2)(D(c) M + M^T D(c))\)</span>, and then the value of <span class="math inline">\(dV/dt\)</span> for each of the randomly determined <span class="math inline">\(\Delta z\)</span>: <span class="math inline">\(dV/dt = \Delta z^T K \Delta z\)</span>.</li>
+<li>If the value is negative for every choice of <span class="math inline">\(\Delta z\)</span>, then the constants in <span class="math inline">\(D(c)\)</span> are appropriate; if not, modify <span class="math inline">\(D(c)\)</span>, trying to minimize the number of <span class="math inline">\(\Delta z\)</span> leading to a positive result.</li>
+</ul>
+<p>For example, this code finds a set of constants for the Leslie-Gower model:</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="quasi-polynomial-systems.html#cb85-1"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb85-2"><a href="quasi-polynomial-systems.html#cb85-2"></a><span class="co"># choose random parameters </span></span>
+<span id="cb85-3"><a href="quasi-polynomial-systems.html#cb85-3"></a><span class="co"># (of course the same can be done for specific parameters)</span></span>
+<span id="cb85-4"><a href="quasi-polynomial-systems.html#cb85-4"></a>rh &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">1</span>)</span>
+<span id="cb85-5"><a href="quasi-polynomial-systems.html#cb85-5"></a>ah &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">1</span>)</span>
+<span id="cb85-6"><a href="quasi-polynomial-systems.html#cb85-6"></a>bh &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">1</span>)</span>
+<span id="cb85-7"><a href="quasi-polynomial-systems.html#cb85-7"></a>rp &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">1</span>)</span>
+<span id="cb85-8"><a href="quasi-polynomial-systems.html#cb85-8"></a>ap &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">1</span>)</span>
+<span id="cb85-9"><a href="quasi-polynomial-systems.html#cb85-9"></a><span class="co"># compute equilibria</span></span>
+<span id="cb85-10"><a href="quasi-polynomial-systems.html#cb85-10"></a>z1s &lt;-<span class="st"> </span>ap <span class="op">*</span><span class="st"> </span>rh <span class="op">/</span><span class="st"> </span>(ap <span class="op">*</span><span class="st"> </span>bh <span class="op">+</span><span class="st"> </span>ah <span class="op">*</span><span class="st"> </span>rp)</span>
+<span id="cb85-11"><a href="quasi-polynomial-systems.html#cb85-11"></a>z2s &lt;-<span class="st"> </span>rp <span class="op">*</span><span class="st"> </span>rh <span class="op">/</span><span class="st"> </span>(ap <span class="op">*</span><span class="st"> </span>bh <span class="op">+</span><span class="st"> </span>ah <span class="op">*</span><span class="st"> </span>rp)</span>
+<span id="cb85-12"><a href="quasi-polynomial-systems.html#cb85-12"></a><span class="co"># this is the equilibrium for &quot;z3&quot;</span></span>
+<span id="cb85-13"><a href="quasi-polynomial-systems.html#cb85-13"></a>z3s &lt;-<span class="st"> </span>z2s <span class="op">/</span><span class="st"> </span>z1s</span>
+<span id="cb85-14"><a href="quasi-polynomial-systems.html#cb85-14"></a><span class="co"># now choose random values </span></span>
+<span id="cb85-15"><a href="quasi-polynomial-systems.html#cb85-15"></a>npoints &lt;-<span class="st"> </span><span class="dv">1000</span></span>
+<span id="cb85-16"><a href="quasi-polynomial-systems.html#cb85-16"></a><span class="co"># for each zi</span></span>
+<span id="cb85-17"><a href="quasi-polynomial-systems.html#cb85-17"></a>z1 &lt;-<span class="st"> </span><span class="kw">runif</span>(npoints, <span class="dv">0</span>, <span class="dv">10</span> <span class="op">*</span><span class="st"> </span>z1s)</span>
+<span id="cb85-18"><a href="quasi-polynomial-systems.html#cb85-18"></a>z2 &lt;-<span class="st"> </span><span class="kw">runif</span>(npoints, <span class="dv">0</span>, <span class="dv">10</span> <span class="op">*</span><span class="st"> </span>z2s)</span>
+<span id="cb85-19"><a href="quasi-polynomial-systems.html#cb85-19"></a>z3 &lt;-<span class="st"> </span>z2 <span class="op">/</span><span class="st"> </span>z1</span>
+<span id="cb85-20"><a href="quasi-polynomial-systems.html#cb85-20"></a><span class="co"># now compute delta z</span></span>
+<span id="cb85-21"><a href="quasi-polynomial-systems.html#cb85-21"></a>deltaZ &lt;-<span class="st"> </span><span class="kw">cbind</span>(z1 <span class="op">-</span><span class="st"> </span>z1s, </span>
+<span id="cb85-22"><a href="quasi-polynomial-systems.html#cb85-22"></a>                z2 <span class="op">-</span><span class="st"> </span>z2s,</span>
+<span id="cb85-23"><a href="quasi-polynomial-systems.html#cb85-23"></a>                z3 <span class="op">-</span><span class="st"> </span>z3s)</span>
+<span id="cb85-24"><a href="quasi-polynomial-systems.html#cb85-24"></a><span class="co"># compute M</span></span>
+<span id="cb85-25"><a href="quasi-polynomial-systems.html#cb85-25"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(</span>
+<span id="cb85-26"><a href="quasi-polynomial-systems.html#cb85-26"></a>  <span class="op">-</span>bh, <span class="op">-</span>ah, <span class="dv">0</span>,</span>
+<span id="cb85-27"><a href="quasi-polynomial-systems.html#cb85-27"></a>  <span class="dv">0</span>, <span class="dv">0</span>, <span class="op">-</span>ap), <span class="dv">2</span>, <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb85-28"><a href="quasi-polynomial-systems.html#cb85-28"></a>B &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(</span>
+<span id="cb85-29"><a href="quasi-polynomial-systems.html#cb85-29"></a>  <span class="dv">1</span>, <span class="dv">0</span>,</span>
+<span id="cb85-30"><a href="quasi-polynomial-systems.html#cb85-30"></a>  <span class="dv">0</span>, <span class="dv">1</span>,</span>
+<span id="cb85-31"><a href="quasi-polynomial-systems.html#cb85-31"></a>  <span class="dv">-1</span>,<span class="dv">1</span>), <span class="dv">3</span>, <span class="dv">2</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb85-32"><a href="quasi-polynomial-systems.html#cb85-32"></a>M &lt;-<span class="st"> </span>B <span class="op">%*%</span><span class="st"> </span>A</span>
+<span id="cb85-33"><a href="quasi-polynomial-systems.html#cb85-33"></a></span>
+<span id="cb85-34"><a href="quasi-polynomial-systems.html#cb85-34"></a><span class="co"># this is the function we want to minimize</span></span>
+<span id="cb85-35"><a href="quasi-polynomial-systems.html#cb85-35"></a>LG_to_minimize &lt;-<span class="st"> </span><span class="cf">function</span>(const){</span>
+<span id="cb85-36"><a href="quasi-polynomial-systems.html#cb85-36"></a>  <span class="co"># keep constants positive, and </span></span>
+<span id="cb85-37"><a href="quasi-polynomial-systems.html#cb85-37"></a>  <span class="co"># with mean of 1 (for numerics)</span></span>
+<span id="cb85-38"><a href="quasi-polynomial-systems.html#cb85-38"></a>  const &lt;-<span class="st"> </span><span class="kw">abs</span>(const) <span class="op">/</span><span class="st"> </span><span class="kw">mean</span>(<span class="kw">abs</span>(const))</span>
+<span id="cb85-39"><a href="quasi-polynomial-systems.html#cb85-39"></a>  Dc &lt;-<span class="st"> </span><span class="kw">diag</span>(const)</span>
+<span id="cb85-40"><a href="quasi-polynomial-systems.html#cb85-40"></a>  K &lt;-<span class="st"> </span>(Dc <span class="op">%*%</span><span class="st"> </span>M)</span>
+<span id="cb85-41"><a href="quasi-polynomial-systems.html#cb85-41"></a>  K &lt;-<span class="st"> </span><span class="fl">0.5</span> <span class="op">*</span><span class="st"> </span>(K <span class="op">+</span><span class="st"> </span><span class="kw">t</span>(K))</span>
+<span id="cb85-42"><a href="quasi-polynomial-systems.html#cb85-42"></a>  <span class="co"># now compute dVdt for each deltaZ</span></span>
+<span id="cb85-43"><a href="quasi-polynomial-systems.html#cb85-43"></a>  target &lt;-<span class="st"> </span><span class="kw">apply</span>(deltaZ, <span class="dv">1</span>, </span>
+<span id="cb85-44"><a href="quasi-polynomial-systems.html#cb85-44"></a>                  <span class="cf">function</span>(dz) dz <span class="op">%*%</span><span class="st"> </span>K <span class="op">%*%</span><span class="st"> </span>dz)</span>
+<span id="cb85-45"><a href="quasi-polynomial-systems.html#cb85-45"></a>  <span class="co"># solution found</span></span>
+<span id="cb85-46"><a href="quasi-polynomial-systems.html#cb85-46"></a>  <span class="cf">if</span> (<span class="kw">all</span>(target <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>)) <span class="kw">return</span>(<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb85-47"><a href="quasi-polynomial-systems.html#cb85-47"></a>  <span class="co"># otherwise, try to minimize</span></span>
+<span id="cb85-48"><a href="quasi-polynomial-systems.html#cb85-48"></a>  <span class="kw">return</span>(<span class="kw">sum</span>(target[target <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>]))</span>
+<span id="cb85-49"><a href="quasi-polynomial-systems.html#cb85-49"></a>}</span>
+<span id="cb85-50"><a href="quasi-polynomial-systems.html#cb85-50"></a></span>
+<span id="cb85-51"><a href="quasi-polynomial-systems.html#cb85-51"></a><span class="co"># use optim to find a solution</span></span>
+<span id="cb85-52"><a href="quasi-polynomial-systems.html#cb85-52"></a>tmp &lt;-<span class="st"> </span><span class="kw">optim</span>(<span class="dt">par =</span> <span class="kw">runif</span>(<span class="dv">3</span>), <span class="dt">fn =</span> LG_to_minimize)</span>
+<span id="cb85-53"><a href="quasi-polynomial-systems.html#cb85-53"></a><span class="cf">if</span>(tmp<span class="op">$</span>value <span class="op">==</span><span class="st"> </span><span class="dv">-1</span>) {</span>
+<span id="cb85-54"><a href="quasi-polynomial-systems.html#cb85-54"></a>  <span class="kw">print</span>(<span class="st">&quot;Found a set of constants&quot;</span>)</span>
+<span id="cb85-55"><a href="quasi-polynomial-systems.html#cb85-55"></a>  solution &lt;-<span class="st"> </span>tmp<span class="op">$</span>par</span>
+<span id="cb85-56"><a href="quasi-polynomial-systems.html#cb85-56"></a>  <span class="kw">print</span>(<span class="kw">round</span>(<span class="kw">abs</span>(solution) <span class="op">/</span><span class="st"> </span><span class="kw">mean</span>(<span class="kw">abs</span>(solution)),<span class="dv">3</span>))</span>
+<span id="cb85-57"><a href="quasi-polynomial-systems.html#cb85-57"></a>}</span></code></pre></div>
+<p>[1] “Found a set of constants”
+[1] 0.573 1.902 0.525</p>
+<p>Which shows that a solution indeed exists. Note that, provided that the choice of <span class="math inline">\(\Delta z\)</span> is extensive enough, the constants found in this way indeed determine the global stability of the equilibrium. Typically, infinitely many choices are possible—but certain choices of constants are better than others, for example allowing for a clean analytical derivation.</p>
+<p>Naturally, the constants we have derived analytically are also appropriate:</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="quasi-polynomial-systems.html#cb86-1"></a>c1 &lt;-<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb86-2"><a href="quasi-polynomial-systems.html#cb86-2"></a>c2 &lt;-<span class="st"> </span>ap <span class="op">*</span><span class="st"> </span>bh <span class="op">+</span><span class="st"> </span>ah <span class="op">*</span><span class="st"> </span>rp</span>
+<span id="cb86-3"><a href="quasi-polynomial-systems.html#cb86-3"></a>c3 &lt;-<span class="st"> </span>ap <span class="op">*</span><span class="st"> </span>rp</span>
+<span id="cb86-4"><a href="quasi-polynomial-systems.html#cb86-4"></a><span class="kw">LG_to_minimize</span>(<span class="kw">c</span>(c1, c2, c3))</span></code></pre></div>
+<p>[1] -1</p>
+</div>
+<div id="systems-with-many-equations" class="section level2">
+<h2><span class="header-section-number">9.6</span> Systems with many equations</h2>
+<p>The same type of embedding can help derive Lyapunov functions for systems with many equations. For example, let’s examine a MacArthur consumer resource model in which resources are supplied externally. There are <span class="math inline">\(n\)</span> resources, with dynamics:</p>
+<p><span class="math display">\[
+\dfrac{d x_i}{dt} = k_i - d_i x_i - x_i \sum_j C_{ij} y_j
+\]</span></p>
+<p>where <span class="math inline">\(k_i &gt; 0\)</span> is the external input to resource <span class="math inline">\(i\)</span>, <span class="math inline">\(d_i \geq 0\)</span> models the degradation of the resource, and <span class="math inline">\(C\)</span> is a matrix containing the consumption rates for the consumers <span class="math inline">\(y_j\)</span>.</p>
+<p>The dynamics of the consumers are governed by:</p>
+<p><span class="math display">\[
+\dfrac{dy_i}{dt} = -m_i y_i + y_i \epsilon_i \sum_j C_{ji} x_j
+\]</span></p>
+<p>where <span class="math inline">\(m_i &gt; 0\)</span> is the mortality, and for simplicity the transformation efficiency <span class="math inline">\(\epsilon_i &gt; 0\)</span> is set to be predator-specific, but equal for all resources. Our goal is to show that if a feasible coexistence equilibrium exists, it is globally stable.</p>
+<p>We rewrite the system in matrix form as:</p>
+<p><span class="math display">\[
+\begin{cases}
+\dfrac{dx}{dt} = D(x)(-d - Cy - D(k)x^{-1}) = D(x)(-d -Cy - D(k)v)\\
+\dfrac{dy}{dt} = D(y)(-m + D(\epsilon)C^T x)
+\end{cases}
+\]</span></p>
+<p>which is a QP system. To higlight the monomials that will give rise to new equations, we have defined <span class="math inline">\(v_i = 1 / x_i\)</span>. Using the GLV embedding, we recover a system of <span class="math inline">\(3n\)</span> equations:</p>
+<p><span class="math display">\[
+s = (-d, -m)^T \quad A = \begin{pmatrix}
+0_n &amp; -C &amp; D(k)\\ D(\epsilon) C^T &amp; 0_n &amp; 0_n\end{pmatrix} \quad B = \begin{pmatrix} I_n  &amp; 0_n\\ 0_n &amp; I_n\\ -I_n &amp; 0_n\end{pmatrix}
+\]</span></p>
+<p>Where <span class="math inline">\(I_n\)</span> is the <span class="math inline">\(n\times n\)</span> identity matrix, and <span class="math inline">\(0_n\)</span> is an <span class="math inline">\(n \times n\)</span> matrix of zeros.</p>
+<p>The GLV is therefore defined by the vector of growth rates:</p>
+<p><span class="math display">\[
+r = B s = (-m, -d, m)^T
+\]</span></p>
+<p>and the matrix of interactions:</p>
+<p><span class="math display">\[
+M = B A = \begin{pmatrix}
+0_n &amp; -C &amp; D(k)\\
+D(\epsilon) C^T &amp; 0_n &amp; 0_n\\
+0_n &amp; C &amp; -D(k)
+\end{pmatrix}
+\]</span></p>
+<p>Now compute <span class="math inline">\(K\)</span>; taking as constants <span class="math inline">\(c = (1_n, \epsilon^{-1}, 0_n)\)</span> makes <span class="math inline">\(K\)</span> very sparse:</p>
+<p><span class="math display">\[
+K = \frac{1}{2}(D(c)M + M^T D(c)) = \frac{1}{2}\begin{pmatrix}
+0_n &amp; 0_n &amp; D(k)\\
+0_n &amp; 0_n &amp; 0_n \\
+D(k) &amp; 0_n &amp; 0_n
+\end{pmatrix}
+\]</span></p>
+<p>Now define <span class="math inline">\(z = (x, y, v)^T\)</span>, and compute <span class="math inline">\(dV/dt\)</span>:</p>
+<p><span class="math display">\[
+\dfrac{dV}{dt} = \Delta x^T D(k) \Delta v
+\]</span></p>
+<p>Finally, notice that <span class="math inline">\(v = 1/x\)</span>, and therefore:</p>
+<p><span class="math display">\[
+\Delta v_i = \dfrac{1}{x_i} - \dfrac{1}{x_i^\star} = \dfrac{1}{\Delta x_i + x_i^\star} - \dfrac{1}{x_i^\star} = -\dfrac{\Delta x_i}{x_i^\star x_i}
+\]</span></p>
+<p>This proves the stability of the equilibrium, given that</p>
+<p><span class="math display">\[
+\dfrac{dV}{dt} = \Delta x^T D(k) \Delta v = -D(k) \dfrac{\Delta x^2}{x^\star x}
+\]</span></p>
+</div>
+<div id="glv-embedding-for-non-qp-systems" class="section level2">
+<h2><span class="header-section-number">9.7</span> GLV embedding for non-QP systems</h2>
+<p>Finally, we consider a simple case in which the original system is not already in QP form. Consider a very simple model for facultative mutualism:</p>
+<p><span class="math display">\[
+\begin{cases}
+\dfrac{dx_1}{dt} = x_1(1 - x_1 + \alpha \dfrac{x_2}{1+x_2})\\
+\dfrac{dx_2}{dt} = x_2(1 - x_2 + \alpha \dfrac{x_1}{1+x_1})
+\end{cases}
+\]</span></p>
+<p>In the absence of the mutualist, each species grows logistically. However, they can coexist at higher abundance–though the beneficial effect eventually saturates. Again, our task is to prove the global stability of the coexistence equilibrium.</p>
+<p>This model is not in QP form. To turn it into QP form, we need to define <span class="math inline">\(v_1 = x_1 / (1 + x_1)\)</span> and <span class="math inline">\(v_2 = x_2 / (1+x_2)\)</span>. We write two new equations for <span class="math inline">\(v_1\)</span> and <span class="math inline">\(v_2\)</span>, resulting in a system of four equations:</p>
+<p><span class="math display">\[
+\begin{cases}
+\dfrac{dx_1}{dt} = x_1(1 - x_1 + \alpha v_2)\\
+\dfrac{dx_2}{dt} = x_2(1 - x_2 + \alpha v_1)\\
+\dfrac{dv_1}{dt} = v_1(1 - 2 v_1 + \alpha v_2 - \alpha v_1 v_2)\\
+\dfrac{dv_2}{dt} = v_2(1 - 2 v_2 + \alpha v_1 - \alpha v_1 v_2)\\
+\end{cases}
+\]</span></p>
+<p>which is in QP form. Now we can perform the GLV embedding, resulting in a new equation for <span class="math inline">\(p = v_1 v_2\)</span>:</p>
+<p><span class="math display">\[
+z = (x_1, x_2, v_1, v_2, p)^T
+\]</span>
+<span class="math display">\[
+s = (1,1,1,1)^T \quad A = \begin{pmatrix} 
+-1 &amp; 0 &amp; 0 &amp; \alpha &amp; 0\\
+0 &amp; -1 &amp; \alpha &amp; 0 &amp; 0\\
+0 &amp; 0 &amp; -2 &amp; \alpha &amp;-\alpha\\
+0 &amp; 0 &amp; \alpha &amp;-2 &amp; -\alpha\\
+\end{pmatrix} \quad B = \begin{pmatrix}
+1 &amp; 0 &amp; 0 &amp; 0\\
+0 &amp; 1 &amp; 0 &amp; 0\\
+0 &amp; 0 &amp; 1 &amp; 0\\
+0 &amp; 0 &amp; 0 &amp; 1\\
+0 &amp; 0 &amp; 1 &amp; 1\\
+\end{pmatrix}
+\]</span></p>
+<p>FINISH THIS</p>
+<div class="boxhomework">
+<p><strong>Homework 9</strong></p>
+<p>METAPOP</p>
+</div>
 
 </div>
 </div>
 <h3>References</h3>
 <div id="refs" class="references">
+<div id="ref-brenig1988complete">
+<p>Brenig, Léon. 1988. “Complete Factorisation and Analytic Solutions of Generalized Lotka-Volterra Equations.” <em>Physics Letters A</em> 133 (7-8): 378–82.</p>
+</div>
 <div id="ref-goh1977global">
 <p>Goh, Bo S. 1977. “Global Stability in Many-Species Systems.” <em>The American Naturalist</em> 111 (977): 135–43.</p>
 </div>
 <div id="ref-hernandez1998algebraic">
 <p>Hernández-Bermejo, Benito, Vı́ctor Fairén, and Léon Brenig. 1998. “Algebraic Recasting of Nonlinear Systems of Odes into Universal Formats.” <em>Journal of Physics A: Mathematical and General</em> 31 (10): 2415.</p>
+</div>
+<div id="ref-leslie1945use">
+<p>Leslie, Patrick H. 1945. “On the Use of Matrices in Certain Population Mathematics.” <em>Biometrika</em> 33 (3): 183–212.</p>
+</div>
+<div id="ref-leslie1948some">
+<p>Leslie, Patrick H. 1948. “Some Further Notes on the Use of Matrices in Population Mathematics.” <em>Biometrika</em> 35 (3/4): 213–45.</p>
+</div>
+<div id="ref-strogatz2018nonlinear">
+<p>Strogatz, Steven H. 2018. <em>Nonlinear Dynamics and Chaos: With Applications to Physics, Biology, Chemistry, and Engineering</em>. CRC Press.</p>
 </div>
 </div>
             </section>
