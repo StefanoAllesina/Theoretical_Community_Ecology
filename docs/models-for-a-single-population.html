@@ -24,7 +24,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2021-02-19" />
+<meta name="date" content="2021-03-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -262,7 +262,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.3.2" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#the-mean-field-approximation"><i class="fa fa-check"></i><b>8.3.2</b> The mean-field approximation</a></li>
 </ul></li>
 <li class="chapter" data-level="8.4" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#metapopulations-on-randomly-distributed-patches"><i class="fa fa-check"></i><b>8.4</b> Metapopulations on randomly distributed patches</a></li>
-<li class="chapter" data-level="8.5" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#optional-ecosystem-engineering-and-metapopulations"><i class="fa fa-check"></i><b>8.5</b> [Optional] Ecosystem engineering and metapopulations</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html"><i class="fa fa-check"></i><b>9</b> Quasi-polynomial systems</a><ul>
 <li class="chapter" data-level="9.1" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#global-stability-2"><i class="fa fa-check"></i><b>9.1</b> Global stability</a></li>
@@ -281,6 +280,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.1.3" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#bounding-eigenvalues-using-the-symmetric-part"><i class="fa fa-check"></i><b>10.1.3</b> Bounding eigenvalues using the symmetric part</a></li>
 </ul></li>
 <li class="chapter" data-level="10.2" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#exercise"><i class="fa fa-check"></i><b>10.2</b> Exercise</a></li>
+<li class="chapter" data-level="10.3" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#extra"><i class="fa fa-check"></i><b>10.3</b> Extra</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -307,7 +307,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>Lesson plan</strong>:</p>
 <ol style="list-style-type: decimal">
 <li>We start by discussing what it means to solve an initial-value problem: the solution is an expression that allows us to calculate <span class="math inline">\(x(t)\)</span> for any <span class="math inline">\(t\)</span>. A few ecologically-relevant models can be solved explicitly, for example the exponential and logistic growth models.</li>
-<li>Because solving differential equations is a laborious process, and in many cases writing the solution is impossible or does not give us any insight on the dynamics, we introduce a graphical model that allows us to effortlessly sketch the dynamics of any ODE (i.e., models with a single equation).</li>
+<li>Because solving differential equations is a laborious process, and in many cases writing the solution is impossible or does not give us any insight on the dynamics, we introduce a graphical method that allows us to effortlessly sketch the dynamics of any ODE (i.e., models with a single equation).</li>
 <li>This allows us to introduce essential concepts such as the notion of an equilibrium and its stability.</li>
 <li>We show that determining stability using this graphical method is equivalent to performing stability analysis via linearization around an equilibrium, a method that will be extended to systems of multiple ODEs in the next chapter.</li>
 <li>We briefly discuss the idea of bifurcation points — i.e., particular choices of parameters for which the dynamics of the system change qualitatively.</li>
@@ -316,7 +316,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="types-of-dynamical-systems" class="section level2">
 <h2><span class="header-section-number">1.1</span> Types of dynamical systems</h2>
 <p>Dynamical systems describe the change of certain variables, typically in time, space or a combination of the two. They have found applications in all scientific disciplines, and were introduced in ecology and evolutionary biology at the beginning of the twentieth century.</p>
-<p>Broadly, dynamical systems can be divided into <strong>continuous</strong> (described by differential equations), or <strong>discrete</strong> (described by maps, or difference equations) models. Many models for population dynamics can be written as (systems of) first-order ordinary differential equations, i.e. equations containing functions of one (or more) independent variables and their derivatives (typically, with respect to time).</p>
+<p>Broadly, dynamical systems can be divided into <strong>continuous</strong> (described by differential equations), and <strong>discrete</strong> (described by maps, or difference equations) models. Many models for population dynamics can be written as (systems of) first-order ordinary differential equations, i.e. equations containing functions of one (or more) independent variables and their first derivative (typically, with respect to time).</p>
 <p><strong>Ordinary</strong> means we’re not dealing with partial differential equations (used in ecology for example for reaction-diffusion equations, or spatial models). <strong>First-order</strong>, mean that they contain only the first derivative with respect to time. Here we will concentrate on <strong>autonomous</strong> systems, meaning that they are time-invariant (e.g., coefficients do not change in time). We can write these systems as:</p>
 <p><span class="math display">\[
 \dfrac{d x(t)}{d t} = f(x(t))
@@ -329,7 +329,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math display">\[
 \dfrac{d x(t)}{d t} = f(x(t)), \;\; x(0) = x_0
 \]</span></p>
-<p>where the independent variable <span class="math inline">\(t\)</span> denotes time and is considered non-negative. <span class="math inline">\(x(t)\)</span> is the state of the system (e.g., the density of the species) at time <span class="math inline">\(t\)</span>, <span class="math inline">\(x(t) \in \mathbb{R}^n\)</span>, and the function <span class="math inline">\(f\)</span> models the evolution of the system, mapping <span class="math inline">\(\mathbb{R}^n \to \mathbb{R}^n\)</span>. The vector <span class="math inline">\(x_0 = x(0) \in \mathbb{R}^n\)</span> marks the <em>initial condition</em> of the system.</p>
+<p>where the independent variable <span class="math inline">\(t\)</span> denotes time, and is considered non-negative. The vector <span class="math inline">\(x(t)\)</span> tracks the state of the system (e.g., the density of the species) at time <span class="math inline">\(t\)</span>, <span class="math inline">\(x(t) \in \mathbb{R}^n\)</span>, and the function <span class="math inline">\(f\)</span> models the evolution of the system, mapping <span class="math inline">\(\mathbb{R}^n \to \mathbb{R}^n\)</span>. The vector <span class="math inline">\(x_0 = x(0) \in \mathbb{R}^n\)</span> marks the <em>initial condition</em> of the system.</p>
 <p>The simplest and most common case in ecology is that in which <span class="math inline">\(f\)</span> is (infinitely) many times continuously differentiable, a.k.a. <em>smooth</em>. If this is the case, then the solution <span class="math inline">\(x(t)\)</span> exists and is unique.</p>
 <p>In ecological models, dynamics are invariant with respect to the non-negative orthant <span class="math inline">\(\mathbb{R}^n_{0+}\)</span>, i.e., the vector <span class="math inline">\(x(t)\)</span> remains non-negative whenever initialized at non-negative initial conditions <span class="math inline">\(x_0 \in \mathbb{R}^n_{0+}\)</span>. The function <span class="math inline">\(f\)</span> is <em>essentially non-negative</em> if whenever <span class="math inline">\(x_i = 0\)</span>, then <span class="math inline">\(f_i(x) \geq 0\)</span> for all <span class="math inline">\(x \in \mathbb{R}^n_{0+}\)</span>. A dynamical system is non-negative only if <span class="math inline">\(f\)</span> is essentially non-negative.</p>
 <p>We can solve the (system of) ODE(s) if we can write an explicit equation for <span class="math inline">\(x(t)\)</span> given the parameters and the initial conditions.</p>
@@ -381,8 +381,8 @@ x(t) = x_0 e^{\rho\, t}
 <p>again, we can separate the equation:</p>
 <p><span class="math display">\[
 \dfrac{1}{x(t) (1 - \alpha\, x(t))} d x(t) = \rho\,  dt
-\]</span>
-the r.h.s. is trivial to integrate, but the l.h.s. is trickier. We can transform it into a simpler expression by using partial fractions. We want to write:</p>
+\]</span></p>
+<p>the r.h.s. is trivial to integrate, but the l.h.s. is trickier. We can transform it into a simpler expression by using partial fractions. We want to write:</p>
 <p><span class="math display">\[
 \dfrac{1}{x(t) (1 - \alpha\, x(t))} = \dfrac{A}{x(t)} + \dfrac{B}{1 - \alpha\, x(t)}
 \]</span></p>
@@ -438,7 +438,7 @@ where <span class="math inline">\(1 &gt; \eta &gt; 0\)</span> is the proportion 
 <p>Now think of a perturbation: if we were to perturb <span class="math inline">\(x^\star = 0\)</span> by introducing a few individuals, we would find that the population starts growing (i.e., <span class="math inline">\(dx(t) / dt &gt; 0\)</span>), meaning that the point is unstable. Thus, using the graphical method introduced above, we can easily identify equilibria (i.e., where the curve intercepts the x-axis), and their stability (i.e., by determining whether the curve around the equilibrium is above or below <span class="math inline">\(d x(t)/dt = 0\)</span>).</p>
 <p>Next, let’s consider the logistic growth equation:</p>
 <p><span class="math display">\[
-\dfrac{d x(t)}{dt} = \rho\, x(t) (1 - \alpha\, x(t))
+\dfrac{d x(t)}{dt} = \rho\, x(t) (1 - \alpha\, x(t)) =\rho\, x(t) - \rho\, \alpha\,x(t)^2
 \]</span></p>
 <p>We can draw the graph (note the quadratic term—we’re describing a parabola):</p>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-5-1.png" width="480" style="display: block; margin: auto;" /></p>
@@ -453,10 +453,10 @@ where <span class="math inline">\(1 &gt; \eta &gt; 0\)</span> is the proportion 
 <p><span class="math display">\[
 \dfrac{d x(t)}{dt} = \rho\, x(t) (x(t) - \gamma) (1 - \alpha\, x(t))
 \]</span></p>
-<p>where <span class="math inline">\(0&lt;\gamma&lt;1 / \alpha\)</span>. Plotting,</p>
+<p>where <span class="math inline">\(0 &lt; \gamma &lt; 1 / \alpha\)</span>. Plotting,</p>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-7-1.png" width="480" style="display: block; margin: auto;" /></p>
-<p>In this model, there are two stable equilibria (<span class="math inline">\(x^\star = 0\)</span> and <span class="math inline">\(x^\star = 1 / \alpha\)</span>), separated by an unstable equilibrium (<span class="math inline">\(x^\star= \gamma\)</span>). Depending on the initial condition, we might end up with either—we call this situation bistability.</p>
-<p>Note that bistability makes it clear that we can only apply small perturbations to the equilibrium to probe its stability—for example, imagine being at <span class="math inline">\(x^\star = 1 / \alpha\)</span> and perturbing the population by bringing it below <span class="math inline">\(\gamma\)</span>; then we would find that the population goes extinct, suggesting that <span class="math inline">\(x^\star = 1 / \alpha\)</span> is “somewhat unstable”.</p>
+<p>In this model, there are two stable equilibria (<span class="math inline">\(x^\star = 0\)</span> and <span class="math inline">\(x^\star = 1 / \alpha\)</span>), separated by an unstable equilibrium (<span class="math inline">\(x^\star= \gamma\)</span>). Depending on the initial conditions, we might end up in either of the stable equilibria—we call this situation bistability.</p>
+<p>Note that bistability makes it clear that we can only apply small perturbations to the equilibrium to probe its “local” stability—for example, imagine being at <span class="math inline">\(x^\star = 1 / \alpha\)</span> and perturbing the population by bringing it below <span class="math inline">\(\gamma\)</span>; then we would find that the population goes extinct, suggesting that <span class="math inline">\(x^\star = 1 / \alpha\)</span> is “somewhat unstable”.</p>
 <div id="stability-using-derivatives" class="section level3">
 <h3><span class="header-section-number">1.5.1</span> Stability using derivatives</h3>
 <p>You might have noticed in the previous graphs that whenever the curve <span class="math inline">\(dx(t) /dt\)</span> is negative on the left of a point and positive on its right we find that the point is unstable, while conversely a point for which <span class="math inline">\(dx(t) /dt\)</span> is positive on the left and negative on the right is stable. We can formalize this by taking the derivative of <span class="math inline">\(dx(t) /d t\)</span> with respect to <span class="math inline">\(x(t)\)</span>, and evaluating this function at different equilibria.</p>
@@ -469,12 +469,12 @@ This is always posive when <span class="math inline">\(\rho &gt; 0\)</span>, and
 <p><span class="math display">\[
 \dfrac{\partial f(x)}{\partial x} = \dfrac{\partial (\rho\, x - \rho\, \alpha\, x^2)}{\partial x}  = \rho - 2 \rho\, \alpha\, x
 \]</span></p>
-<p>When we evaluate this function at the equilibrium <span class="math inline">\(x^\star = 0\)</span>, we obtain <span class="math inline">\(\rho &gt; 0\)</span>, and as such the equilibrium is unstable. Conversely, when we evaluate the fuction at <span class="math inline">\(x^\star = 1 / \alpha\)</span>, we obtain <span class="math inline">\(\rho - 2 \rho \to -\rho\)</span> and therefore the equilibrium is stable.</p>
+<p>When we evaluate this function at the equilibrium <span class="math inline">\(x^\star = 0\)</span>, we obtain <span class="math inline">\(\rho &gt; 0\)</span>, and as such the equilibrium is unstable. Conversely, when we evaluate the fuction at <span class="math inline">\(x^\star = 1 / \alpha\)</span>, we obtain <span class="math inline">\(\rho - 2 \rho = -\rho\)</span> and therefore the equilibrium is stable.</p>
 <p>Finally, for the model with Allee effect, we have:</p>
 <p><span class="math display">\[
 \dfrac{\partial (\rho\, x (x-\gamma)(1-\alpha\, x))}{\partial x}  = - \rho\, \gamma + 2 \rho\, x(1 + \alpha) - 3 \rho\, \alpha\, x^2
-\]</span>
-At <span class="math inline">\(x^\star = 0\)</span>, we find <span class="math inline">\(-\rho\, \gamma\)</span> which is always negative, and as such <span class="math inline">\(x^\star = 0\)</span> is stable. At <span class="math inline">\(x^\star = \gamma\)</span> we have <span class="math inline">\(\rho\, \gamma\, (1- \gamma\, \alpha)\)</span> which is positive (as <span class="math inline">\(\gamma\, \alpha &lt; 1\)</span>) and as such is an unstable equilibrium. Finally, for <span class="math inline">\(x^\star = 1/\alpha\)</span> we have <span class="math inline">\(\rho (\gamma - 1/\alpha)\)</span> which is always negative.</p>
+\]</span></p>
+<p>At <span class="math inline">\(x^\star = 0\)</span>, we find <span class="math inline">\(-\rho\, \gamma\)</span> which is always negative, and as such <span class="math inline">\(x^\star = 0\)</span> is stable. At <span class="math inline">\(x^\star = \gamma\)</span> we have <span class="math inline">\(\rho\, \gamma\, (1- \gamma\, \alpha)\)</span> which is positive (as <span class="math inline">\(\gamma\, \alpha &lt; 1\)</span>) and as such is an unstable equilibrium. Finally, for <span class="math inline">\(x^\star = 1/\alpha\)</span> we have <span class="math inline">\(\rho (\gamma - 1/\alpha)\)</span> which is always negative.</p>
 </div>
 <div id="what-are-we-doing-when-probing-stability-using-derivatives" class="section level3">
 <h3><span class="header-section-number">1.5.2</span> What are we doing when probing stability using derivatives?</h3>
@@ -495,8 +495,8 @@ f(\Delta x(t) + x^\star) = f(x^\star) + \left . \frac{df(x)}{dx} \right |_{x^\st
 </div>
 <div id="bifurcations" class="section level2">
 <h2><span class="header-section-number">1.6</span> Bifurcations</h2>
-<p>The shape of the graphs above might depend on the value of parameters. When a small change in one or several parameters causes a qualitative change in the behavior of the system, we say the system has crossed a <strong>bifurcation</strong> point (the term “bifurcation” was introduced by Henri Poincaré in 1885). At a bifurcation point, equilibria could disappear or be created, change their stability, the system could start cycling, etc.</p>
-<p>In low-dimensional system, there are a variety of different behaviors, each of which has its own name (e.g., saddle-node, pitchfork, transcritical, Hopf, period-doubling, …, bifurcation). The <strong>codimension</strong> of a bifurcation is the number of parameters we need to change the behavior of the system. Clearly, codimension-1 and -2 bifurcations are the simplest and most studied.</p>
+<p>The shape of the graphs above might depend on the value of parameters. Whenever a small change in one or several parameters causes a qualitative change in the behavior of the system, we speak of a <strong>bifurcation</strong> point (the term “bifurcation” was introduced by Henri Poincaré in 1885). At a bifurcation point, equilibria could disappear or be created, change their stability, the system could start cycling, etc.</p>
+<p>In low-dimensional system, there are a variety of different behaviors, each of which has its own name (e.g., saddle-node, pitchfork, transcritical, Hopf, period-doubling, …, bifurcation). The <strong>codimension</strong> of a bifurcation is the number of parameters we need to change to alter the behavior of the system. Clearly, codimension-1 and -2 bifurcations are the simplest and most studied.</p>
 <p>Here we just show the main idea using a simple example. For a detailed and accessible introduction, see <span class="citation">Strogatz (<a href="#ref-strogatz2018nonlinear" role="doc-biblioref">2018</a>)</span> and <span class="citation">Seydel (<a href="#ref-seydel2009practical" role="doc-biblioref">2009</a>)</span>.</p>
 <p>Consider the model:</p>
 <p><span class="math display">\[
@@ -516,8 +516,8 @@ f(\Delta x(t) + x^\star) = f(x^\star) + \left . \frac{df(x)}{dx} \right |_{x^\st
 <p>Draw the bifurcation diagram for logistic growth model with harvesting:</p>
 <p><span class="math display">\[
 \dfrac{d x(t)}{dt} = \rho\, x(t) (1 - \alpha\, x(t)) - \eta\, x(t)
-\]</span>
-where <span class="math inline">\(1 &gt; \eta &gt; 0\)</span> is the proportion of individuals being harvested.</p>
+\]</span></p>
+<p>where <span class="math inline">\(1 &gt; \eta &gt; 0\)</span> is the proportion of individuals being harvested.</p>
 <p><em>Details</em></p>
 <ul>
 <li>take <span class="math inline">\(\rho = 1\)</span>, <span class="math inline">\(\alpha = 1\)</span> and vary <span class="math inline">\(\eta\)</span> between 0 and 1.</li>
@@ -529,26 +529,26 @@ where <span class="math inline">\(1 &gt; \eta &gt; 0\)</span> is the proportion 
 <p>A few interesting references on detecting the approaching of a bifurcation in experimental systems:</p>
 <div class="boxpaper">
 <p><strong>Key paper: <span class="citation">Scheffer et al. (<a href="#ref-scheffer2009early" role="doc-biblioref">2009</a>)</span></strong></p>
-<p>Starting in the early 2000s, much work went into trying to anticipate dramatic changes in natural and man-made systems (e.g., lakes turning eutrophic, fisheries collapsing). In this review, Scheffer <em>et al.</em> summarize previous work and present an accessible introduction to the problem.</p>
+<p>Starting in the early 2000s, much work went into trying to anticipate dramatic changes in natural and man-made systems (e.g., lakes turning eutrophic, fisheries collapsing, desertification). In this review, Scheffer <em>et al.</em> summarize previous work and present an accessible introduction to the problem.</p>
 <p><strong>Key paper: <span class="citation">Dai et al. (<a href="#ref-dai2012generic" role="doc-biblioref">2012</a>)</span></strong></p>
 <p>Dai <em>et al.</em> grew populations of <em>Saccharomyces cerevisiae</em> on sucrose. Because sucrose is split outside the cell, it creates an Allee effect: when the population density is high, it is energetically convenient to produce the enzyme to spit the sucrose, as the different cells pool their efforts; when population density is low, the gain is not sufficient to balance the cost. By tuning the mortality (dilution), they were able to experimentally recreate the bifurcation diagram of the exercise above. The data from the experiments are <a href="https://doi.org/10.5061/dryad.p2481134">here</a>.</p>
 </div>
 </div>
 <div id="long-term-behavior-of-1-d-systems" class="section level2">
 <h2><span class="header-section-number">1.7</span> Long term behavior of 1-D systems</h2>
-<p>First-order (i.e., single-equation) ODEs can produce a very limited variety of long-terms behaviors: for <span class="math inline">\(t \to \infty\)</span> we can only have <span class="math inline">\(x(t) \to \pm \infty\)</span> or <span class="math inline">\(x(t) \to x^\star\)</span>. For population models, this means that either growth is unbounded (e.g., exponential growth model), or the population will reach an equilibrium point (possibly, out of many).</p>
+<p>First-order, single-equation ODEs can produce a very limited variety of long-terms behaviors: for <span class="math inline">\(t \to \infty\)</span> we can only have <span class="math inline">\(x(t) \to \pm \infty\)</span> or <span class="math inline">\(x(t) \to x^\star\)</span>. For population models, this means that either growth is unbounded (e.g., exponential growth model), or the population will reach an equilibrium point (possibly, out of many).</p>
 <p>This is a direct consequence of the uniqueness of trajectories: because we are moving in a 1-dimensional space, the fact that trajectories cannot cross means that if we are at a certain point <span class="math inline">\(x(t) = x_t\)</span>, then either <span class="math inline">\(dx(t)/dt &gt;0\)</span>, <span class="math inline">\(dx(t)/dt &lt;0\)</span>, or <span class="math inline">\(dx(t)/dt =0\)</span>, but can take only one value, preventing more complex behaviors such as cycles or chaos.</p>
 <p>For smooth functions and autonomous systems, one needs at least two equations to produce cycles and three equations to produce chaos. This is in stark contrast with difference equations—a single, innocent-looking difference equation can give rise to all sorts of dynamics.</p>
 <div class="boxpaper">
 <p><strong>Key paper: <span class="citation">May (<a href="#ref-may1976simple" role="doc-biblioref">1976</a>)</span></strong></p>
-<p>May takes a possible model for the logistic growth in discrete time, and shows how this very simple model can give rise to equilibria, cycles and chaos. This is one of the papers that launched an all-out effort to explore chaotic dynamics that lasted for the best part of the 1980s.</p>
+<p>May took a possible model for the logistic growth in discrete time, and showed how this very simple model can give rise to equilibria, cycles and chaos. This is one of the papers that launched an all-out effort to explore chaotic dynamics that lasted for the best part of the 1980s.</p>
 </div>
 </div>
 <div id="lyapunov-functions" class="section level2">
 <h2><span class="header-section-number">1.8</span> Lyapunov functions</h2>
 <p>While in many cases we cannot write an explicit solution for a (system of) differential equation(s), we might be able to determine the stability of equilibria and their basin of attraction (i.e., the set of initial conditions eventually leading to the equilibrium <span class="math inline">\(x^\star\)</span>) by considering functions that change monotonically through the dynamics.</p>
-<p>Suppose that <span class="math inline">\(\dfrac{d x(t)}{dt} =f(x(t))\)</span>, and that <span class="math inline">\(x^\star\)</span> is an equilibrium. Let <span class="math inline">\(V(x)\)</span> be a function defined in an open set <span class="math inline">\(\mathcal O\)</span> containing <span class="math inline">\(x^\star\)</span>, such that a) <span class="math inline">\(V(x^\star) = 0\)</span> and <span class="math inline">\(V(x) &gt; 0\)</span> for any <span class="math inline">\(x \neq x^\star\)</span>, and b) <span class="math inline">\(d V /dt \leq 0\)</span> for all <span class="math inline">\(x \in \mathcal O - x^\star\)</span>. Then <span class="math inline">\(V\)</span> is a <em>Lyapunov function</em> for the model, and <span class="math inline">\(x^\star\)</span> is stable. The Lyapunov function is called <em>strict</em>, and the equilibrium <span class="math inline">\(x^\star\)</span> <em>asymptotically stable</em> if <span class="math inline">\(d V /dt &lt; 0\)</span>.</p>
-<p>While Lyapunov functions are great, because we can prove stability without the need to solve the system, there is no general rule to construct such a function. Often, “candidate” Lyapunov functions are available, but the process of finding the right function typically requires a lot of ingenuity and trial and errors.</p>
+<p>Suppose that <span class="math inline">\(\dfrac{d x(t)}{dt} =f(x(t))\)</span>, and that <span class="math inline">\(x^\star\)</span> is an equilibrium. Let <span class="math inline">\(V(x)\)</span> be a function defined in an open set <span class="math inline">\(\mathcal O\)</span> containing <span class="math inline">\(x^\star\)</span>, such that a) <span class="math inline">\(V(x^\star) = 0\)</span> and <span class="math inline">\(V(x) &gt; 0\)</span> for any <span class="math inline">\(x \in \mathcal O, x \neq x^\star\)</span>, and b) <span class="math inline">\(d V /dt \leq 0\)</span> for all <span class="math inline">\(x \in \mathcal O - x^\star\)</span>. Then <span class="math inline">\(V\)</span> is a <em>Lyapunov function</em> for the model, and <span class="math inline">\(x^\star\)</span> is stable. The Lyapunov function is called <em>strict</em>, and the equilibrium <span class="math inline">\(x^\star\)</span> <em>asymptotically stable</em> if <span class="math inline">\(d V /dt &lt; 0\)</span> (i.e., all trajectories starting in <span class="math inline">\(\matcal O\)</span> will eventually reach <span class="math inline">\(x^\star\)</span>).</p>
+<p>While Lyapunov functions are great, because we can prove stability without the need to solve the system, there is no general rule to construct them. Often, “candidate” Lyapunov functions are available, but the process of finding the right function typically requires a lot of ingenuity and trial and errors.</p>
 <p>Fortunately, for system with a single state a quadratic function is guaranteed to solve the problem. Take the model for logistic growth (with <span class="math inline">\(\rho &gt; 0\)</span> and <span class="math inline">\(\alpha &gt; 0\)</span>, and the candidate Lyapunov function:</p>
 <p><span class="math display">\[
 V(x(t)) = (x(t) - x^\star)^2
@@ -564,12 +564,12 @@ V(x(t)) = (x(t) - x^\star)^2
 <p>and as such <span class="math inline">\(x^\star\)</span> is asymptotically stable. The basin of attraction (i.e., where the Lyapunov function has the desired properties) is <span class="math inline">\(x \in \mathbb{R}_+\)</span>. There can be several alternative Lyapunov functions. For example, consider:</p>
 <p><span class="math display">\[
 V(x(t)) = x(t) - x^\star - x^\star \log \dfrac{x(t)}{x^\star}
-\]</span>
-which is positive for <span class="math inline">\(x(t) &gt; 0\)</span> and <span class="math inline">\(x(t) \neq x^\star\)</span>, taking the derivative w.r.t. time, we find:</p>
+\]</span></p>
+<p>which is positive for <span class="math inline">\(x(t) &gt; 0\)</span> and <span class="math inline">\(x(t) \neq x^\star\)</span>, taking the derivative w.r.t. time, we find:</p>
 <p><span class="math display">\[
 \dfrac{d V(x(t))}{d t} = \left(1 - \dfrac{x^\star}{x(t)}\right)\rho\, x(t) (1 - \alpha\, x(t)) = -\rho\, x^\star (x(t) - x^\star)^2 
-\]</span>
-which again is negative whenever <span class="math inline">\(x^\star &gt; 0\)</span>, <span class="math inline">\(\rho &gt;0\)</span> and <span class="math inline">\(x(t) \neq x^\star\)</span>.</p>
+\]</span></p>
+<p>which again is negative whenever <span class="math inline">\(x^\star &gt; 0\)</span>, <span class="math inline">\(\rho &gt;0\)</span> and <span class="math inline">\(x(t) \neq x^\star\)</span>.</p>
 
 </div>
 </div>

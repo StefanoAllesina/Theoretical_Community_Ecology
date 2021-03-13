@@ -24,7 +24,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2021-02-19" />
+<meta name="date" content="2021-03-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -262,7 +262,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.3.2" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#the-mean-field-approximation"><i class="fa fa-check"></i><b>8.3.2</b> The mean-field approximation</a></li>
 </ul></li>
 <li class="chapter" data-level="8.4" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#metapopulations-on-randomly-distributed-patches"><i class="fa fa-check"></i><b>8.4</b> Metapopulations on randomly distributed patches</a></li>
-<li class="chapter" data-level="8.5" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#optional-ecosystem-engineering-and-metapopulations"><i class="fa fa-check"></i><b>8.5</b> [Optional] Ecosystem engineering and metapopulations</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html"><i class="fa fa-check"></i><b>9</b> Quasi-polynomial systems</a><ul>
 <li class="chapter" data-level="9.1" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#global-stability-2"><i class="fa fa-check"></i><b>9.1</b> Global stability</a></li>
@@ -281,6 +280,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.1.3" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#bounding-eigenvalues-using-the-symmetric-part"><i class="fa fa-check"></i><b>10.1.3</b> Bounding eigenvalues using the symmetric part</a></li>
 </ul></li>
 <li class="chapter" data-level="10.2" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#exercise"><i class="fa fa-check"></i><b>10.2</b> Exercise</a></li>
+<li class="chapter" data-level="10.3" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#extra"><i class="fa fa-check"></i><b>10.3</b> Extra</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -634,7 +634,7 @@ D(k) &amp; 0_n &amp; 0_n
 \]</span></p>
 <p>This proves the stability of the equilibrium, given that</p>
 <p><span class="math display">\[
-\dfrac{dV}{dt} = \Delta x^T D(k) \Delta v = -D(k) \dfrac{\Delta x^2}{x^\star x}
+\dfrac{dV}{dt} = \Delta x^T D(k) \Delta v = -k^T \dfrac{\Delta x^2}{x^\star x}
 \]</span></p>
 </div>
 <div id="glv-embedding-for-non-qp-systems" class="section level2">

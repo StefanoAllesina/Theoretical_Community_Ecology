@@ -85,3 +85,20 @@ $$
 Find the two equilibria of the system, and perform the stability analysis.
 
 We describe our methods in this chapter.
+
+
+## Extra
+
+Because $M_{i,i} = 0$, we can solve for $x_i^\star$ and write:
+
+$$
+x_{i}^\star = \dfrac{\sum M_{ij}x_j^\star}{\delta + \sum M_{ij}x_j^\star} = 1 - \dfrac{\delta}{\delta + \sum M_{ij}x_j^\star} = 1 - \dfrac{1}{1 + \tau \sum M_{ij}x_j^\star}
+$$
+
+where $\tau = 1 / \delta$. We observe that a trivial solution is $x_i^\star = 0$ for all $i$ (global extinction of the population). If any $x_i^\star > 0$, then all of them must also be different from zero (and in fact, they all must be positive). Given that all $x_j^\star \leq 1$, we can write:
+
+$$
+x_{i}^\star = 1 - \dfrac{1}{1 + \tau \sum M_{ij} + \tau \sum M_{ij}(1-x_j^\star)}
+$$
+
+and therefore $0 \leq x_i^\star \leq 1 - \dfrac{1}{1 + \tau \sum M_{ij}}$.

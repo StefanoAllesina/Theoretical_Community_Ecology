@@ -1,4 +1,7 @@
 # Metapopulation dynamics on networks
+```{r, include=FALSE}
+source("common_settings.R")
+```
 
 **Lesson plan**:
 
@@ -93,36 +96,51 @@ $$
 
 They also consider the patches $a_1, \ldots, a_n$ to have different "values" (i.e., support populations of different sizes). In this context, it makes sense to assume that the extinction rate in patch $i$ is $\delta_i = \delta/a_i$. Similarly, the probability of colonization should decrease with distance, and be directly proportional to patch values; for example, one could choose $\gamma_{ij} = \gamma e^{-\alpha D_{ij}} a_j$, where $D$ is a matrix of Euclidean distances between patches, $\alpha$ models the typical mobility of the species (i.e., the typical "dispersal bout" is of length $1/\alpha$), and $\gamma$ is a constant. With these assumptions, the dynamics are described by:
 
-
 $$
 \dfrac{d x_i}{dt} = \gamma (1 - x_i) \sum_{j\neq i} e^{-\alpha D_{ij}} a_j x_j - \dfrac{\delta}{a_i} x_i
 $$
 
-At equilibrium, we have:
+Now we want to dervice a condition for the existence of a positive equilibrium (i.e., at equilibrium the species is expected with probability nonzero in all patches). At equilibrium, we have:
 
 $$
 \gamma (1 - x_i^\star) \sum_{j\neq i} e^{-\alpha D_{ij}} a_j x_j^\star= \dfrac{\delta}{a_i} x_i^\star
 $$
 
-It is convenient to multiply both sides by $a_i$, and to define the **dispersal matrix** $M$, with zero on the diagonal, and $M_{ij} = M_{ji} = a_i a_j \gamma e^{-\alpha D_{ij}}$. Then, the equilibrium condition reads
+It is convenient to multiply both sides by $a_i$, and to define the **dispersal matrix** $M$, with zero on the diagonal, and $M_{ij} = M_{ji} = a_i a_j \gamma e^{-\alpha D_{ij}}$. Then, the equilibrium condition reads:
 
 $$
 (1-x_i^\star) \sum_{j}M_{ij} x^\star_j - \delta x_i^\star  = 0
 $$
 
-Because $M_{i,i} = 0$, we can solve for $x_i^\star$ and write:
+The matrix $M$ has zero on the diagonal. Then, $\sum_{j \neq i}M_{ij}x^\star_j = \sum_{j}M_{ij}x^\star_j$. Note that then if $\sum_{j}M_{ij}x^\star_j$ for any $i$, we have $x_i^\star = 0$. This means that patches that are disconnected ($\sum_j M_{ij} =0$), or that are connected to patches where the species is absent ($\sum_{j}M_{ij}x^\star_j = 0$ with $\sum_j M_{ij}>0$) are vacant at equilibrium. If, on the other hand, we assume that not all $x_j$ are zero, we can write:
 
 $$
-x_{i}^\star = \dfrac{\sum M_{ij}x_j^\star}{\delta + \sum M_{ij}x_j^\star} = 1 - \dfrac{\delta}{\delta + \sum M_{ij}x_j^\star} = 1 - \dfrac{1}{1 + \tau \sum M_{ij}x_j^\star}
+1-x_i^\star = \delta \frac{x_i^\star}{\sum_{j}M_{ij}x_j^\star}
+$$
+Which can be written compactly as:
+
+$$
+x_i^\star = 1 - \delta \frac{x_i^\star}{(Mx^\star)_i}
 $$
 
-where $\tau = 1 / \delta$. We observe that a trivial solution is $x_i^\star = 0$ for all $i$ (global extinction of the population). If any $x_i^\star > 0$, then all of them must also be different from zero (and in fact, they all must be positive). Given that all $x_j^\star \leq 1$, we can write:
+Now we need a result from the theory of nonnegative matrices (such as $M$).
+
+:::boxmath
+
+**Collatz-Wielandt formula**
+
+A matrix $A$ is called nonnegative $A \geq 0$ if $A_{ij} \geq 0$ for all $i,j$. There exists a positive eigenvalue $\rho$ with associated eigenvector $v$ such that $Av = \rho v$ and $v$ has positive components (Perron-Frobenius). Moreover, $|\rho| \geq \lambda_i$ for all other eigenvalues, and every other eigenvector has at least a negative component. Finally, we have that for a nonnegative vector $x$
 
 $$
-x_{i}^\star = 1 - \dfrac{1}{1 + \tau \sum M_{ij} + \tau \sum M_{ij}(1-x_j^\star)}
+\rho = \mathop{\max}_{x \in \mathbb R^n_{0+}, x \neq 0} \quad \mathop{\min}_{x_i \neq 0} \frac{(Ax)_i}{x_i}
 $$
 
-and therefore $0 \leq x_i^\star \leq 1 - \dfrac{1}{1 + \tau \sum M_{ij}}$.
+As such, $\rho \geq \mathop{\min}_{x_i \neq 0} \frac{(Ax)_i}{x_i}$. 
+:::
+
+Because of the Collatz-Wielandt formula, we have that, whenever $1 - \delta \frac{x_i^\star}{(Mx^\star)_i} \geq 1 -\dfrac{\delta}{\rho} \geq 0$ we have all $x_i >0$. As such, in this model, the spectral radius $\rho$ plays the same role as the colonization rate in Levins' model. The spectral radius is therefore called the *metapopulation capacity*.
+
+Note also that the same result is found for any $M \geq 0$ (not necessarily based on distances etc.).
 
 ## SIS on a contact network
 
@@ -130,7 +148,15 @@ Interestingly, the same results above have been derived in the context of virus 
 
 ### The full model
 
-We can imagine the process of spread of a pathogen on a network of $n$ individuals as a graph in which each node is a label detaling who is infected. There are $2^n$ nodes, ranging from $V_0 = 0,0, \ldots, 0$ (the state in which the pathogen is extinct) to $V_{2^n} = 1,1,\ldots, 1$ (the state in which all individuals are infected). Recovery flips a one into a zero, and infection a zero into a one (without loss of generality, we can assume only one event happens at each "time step"). We connect any two nodes in the network $V_i \to V_j$ if an event (i.e., infection, recovery) can send the system from state $i$ to state $j$. The system therefore describes a [Markov Chain](https://en.wikipedia.org/wiki/Markov_chain) with $2^n$ states. Note also that the state $0$ is the "coffin state" for the system (once the pathogen is extinct, there is no way to go back). 
+We can imagine the process of the spread of a pathogen on a network of $n$ individuals as a graph, in which each node is a label detailing who is infected. There are $2^n$ nodes, ranging from $V_0 = (0,0, \ldots, 0)$ (the state in which the pathogen is extinct) to $V_{2^n-1} = (1,1,\ldots, 1)$ (the state in which all individuals are infected). Recovery flips a one into a zero, and infection a zero into a one (without loss of generality, we can assume only one event happens at each "time step"). We connect any two nodes in the network $V_i \to V_j$ if an event (i.e., infection, recovery) can send the system from state $i$ to state $j$. The system therefore describes a [Markov Chain](https://en.wikipedia.org/wiki/Markov_chain) with $2^n$ states. Note also that the state $0$ is the "coffin state" for the system (once the pathogen is extinct, there is no way to go back). 
+
+```{r, echo=FALSE}
+source("dat/build_SIS_transition.R")
+plot(g_social, layout = layout_with_sugiyama(g_social, attributes = "all")$layout)
+plot(g_transitions, 
+     layout = layout_with_sugiyama(g_transitions)$layout,
+     vertex.shape = "none")
+```
 
 ### The mean-field approximation
 
@@ -156,15 +182,78 @@ $$
 
 which is the same as the model of Hanski and Ovaskainen above. Interestingly, this is but an approximation of the full model described by the Markov Chain above---for example @cator2012second derive the model when tracking all the $E[x_i x_j]$, resulting in a better approximation of the full model (at the cost of having an additional $\binom{n}{2}$) equations.
 
+:::boxhomework
+
+**Homework 8 [Long]**
+
+Implement an event-driven simulation of the spread of a disease on a network. The simulation approach is taken from @li2012susceptible:
+
+"we take a nodal-central, event-driven approach. An event can either be the curing of a node or the spreading of the infection from one node to another. Events are stored in a timeline as tickets. [...] Tickets are continuously taken from the timeline and passed on to the owner. If the ticket owner is a node, the ticket indicates either a curing or a spreading event. In the case of a curing event, the node simply changes its state from infected to healthy; in the case of a spreading event, it will spread the infection to the neighbor mentioned in the ticket. If the neighbor was not already infected, it will now become infected and create one or more tickets. A newly infected node will always create a ticket for its own curing event. According to continuous-time Markov theory, the time between infection and curing is exponentially distributed with rate $\delta$ and is stored by the node for future reference. An infected node also generates spreading times at which it will spread the infection to its neighbors. The spreading times are again exponentially distributed but now with rate $\beta$. If the spreading time does not exceed the node's curing time, a ticket is created for the spreading event. All newly created tickets are stored in the timeline. Finally, the owner of the original ticket generates a new spreading time, which, if not exceeding its own curing time, creates a new spreading ticket for the same neighbor. If the ticket is not owned by a node, it is a system ticket."
+
+Simulate the spread of a disease on an adjacency matrix (with at least 10 nodes and 30 connections) of your choice. Initialize the simulation by generating an infection for one of the nodes. Repeat the simulation 100 times, tracking and averaging the amount of time each node is infected.
+
+**Optional**
+
+Then write the system of differential equations above, and follow dynamics until an equilibrium is reached. Compare the results of the simulation with those from the dynamical model.
+:::
+
 ## Metapopulations on randomly distributed patches
 
-Grilli et al.
+@grilli2015metapopulation considered the case in which a) $N$ patches are uniformly, randomly arranged in a $d-$dimensional landscape (e.g., 1-dimensional for the dunes ecosystems on the shore of Lake Michigan, 2-dimensional for an agricultural landscape; for 3 dimensions consider mountains, for 4 dimensions add time [e.g., temporary ponds in the Alps], for 5 or more dimensions, invoke string theory!)---we indicate the position of patch $i$ as $x_i$; b) one can choose a "dispersal kernel" $ f(|x_i−x_j|/\xi)$, c) patch values are randomly sampled from a distribution with mean 1 (which we can do w.l.o.g.) and variance $\sigma^2$. 
 
-## [Optional] Ecosystem engineering and metapopulations
+For example, when dispersal decreases exponentially with distance (as above), we have an exponential kernel:
 
-New work with Zach
+$$
+f\left( \frac{|x_i-x_j|}{\xi} \right) = \exp \left( -\frac{|x_i -
+  x_j|^2}{2 \xi^2}\right)
+$$
 
-Homework: Gillespie-based simulation using event-driven simulations.
-Contrast approximation (NIMFA/Hanski-Ovaskainen)
+Because the matrices $M$ formed by a given kernel belong to the ensemble of *Euclidean Random Matrices*, one can compute an approximation for $\rho$ quite easily. In particular, for a given number of dimensions $d$, the size of the landscape, etc., we define an "effective number of neighbors" $n_e$ and we have $\rho \geq n_e (1 + \sigma^2)$. Take the landscape to be a hypercube with length $L$. Then whenever the "dispersal range" $\xi \ll L$, we can approximate 
 
+$$
+n_e \approx \frac{N}{L^d} G_f(d) \xi^d
+$$
 
+Where $G_f(d)$ is a constant that depends on the kernel shape. Call $\mu = N/L^d$ to be the density of patches in the landscape. We can simplify the calculation by considering the density to be fixed, but both $N$ and $L$ tending to infinity (see SI of  @grilli2015metapopulation). Then, for the exponential kernel, we have:
+
+$$
+\begin{split}
+n_e =& \mu \int \exp \left( - \frac{\sqrt{\sum_{k=1}^d
+    x_{(k)}^{2}}}{\xi} \right) \; d x_{(1)}\cdots d x_{(d)} \\ =&
+\frac{2 \pi^{d/2} \Gamma(d) }{ \Gamma(d/2) } \mu \xi^d \ ,
+\end{split}
+$$
+
+where $\Gamma(d)$ is the Gamma function. Similarly, for the Gaussian kernel:
+
+$$
+f\left( \frac{|x_i-x_j|}{\xi} \right) = \exp \left( -\frac{|x_i -
+  x_j|^2}{2 \xi^2}\right)
+$$
+
+we obtain:
+
+$$
+\begin{split}
+n_e =& \mu \int \exp \left( - \frac{\sum_{k=1}^d x_{(k)}^2}{2 \xi^2}
+\right) \; d x_{(1)}\cdots d x_{(d)} \\ =& (2 \pi )^{d/2} \mu
+\xi^d
+\end{split}
+$$
+
+and finally, for a Rectangular kernel:
+
+$$
+f\left( \frac{|x_i-x_j|}{\xi} \right) = 
+\left\{ \begin{array}{ll} 1, & |x_i - x_j| \le \xi \\ 0, & |x_i - x_j| > \xi \end{array} \right .
+$$
+
+we have 
+
+$$
+n_e = \frac{\pi ^{d/2}}{\Gamma \left( d / 2 + 1 \right)} \mu \xi ^d
+$$
+
+This means for example that, when $d=1$ the exponential and the rectangular kernel have the same value of $n_e$, while in two dimensions the Gaussian and exponential kernel have the same value of $n_e$. This means that two large matrices built with different kernels can have approximately the same $\rho$.
+
+Using similar techniques, one can determine that "disordered" patch arrangements always lead to higher capacity than "ordered" arrangements.

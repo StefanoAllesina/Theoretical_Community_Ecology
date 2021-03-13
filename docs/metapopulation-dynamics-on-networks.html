@@ -24,7 +24,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2021-02-19" />
+<meta name="date" content="2021-03-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -262,7 +262,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.3.2" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#the-mean-field-approximation"><i class="fa fa-check"></i><b>8.3.2</b> The mean-field approximation</a></li>
 </ul></li>
 <li class="chapter" data-level="8.4" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#metapopulations-on-randomly-distributed-patches"><i class="fa fa-check"></i><b>8.4</b> Metapopulations on randomly distributed patches</a></li>
-<li class="chapter" data-level="8.5" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#optional-ecosystem-engineering-and-metapopulations"><i class="fa fa-check"></i><b>8.5</b> [Optional] Ecosystem engineering and metapopulations</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html"><i class="fa fa-check"></i><b>9</b> Quasi-polynomial systems</a><ul>
 <li class="chapter" data-level="9.1" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#global-stability-2"><i class="fa fa-check"></i><b>9.1</b> Global stability</a></li>
@@ -281,6 +280,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.1.3" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#bounding-eigenvalues-using-the-symmetric-part"><i class="fa fa-check"></i><b>10.1.3</b> Bounding eigenvalues using the symmetric part</a></li>
 </ul></li>
 <li class="chapter" data-level="10.2" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#exercise"><i class="fa fa-check"></i><b>10.2</b> Exercise</a></li>
+<li class="chapter" data-level="10.3" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#extra"><i class="fa fa-check"></i><b>10.3</b> Extra</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -366,30 +366,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math display">\[
 \dfrac{d x_i}{dt} = \gamma (1 - x_i) \sum_{j\neq i} e^{-\alpha D_{ij}} a_j x_j - \dfrac{\delta}{a_i} x_i
 \]</span></p>
-<p>At equilibrium, we have:</p>
+<p>Now we want to dervice a condition for the existence of a positive equilibrium (i.e., at equilibrium the species is expected with probability nonzero in all patches). At equilibrium, we have:</p>
 <p><span class="math display">\[
 \gamma (1 - x_i^\star) \sum_{j\neq i} e^{-\alpha D_{ij}} a_j x_j^\star= \dfrac{\delta}{a_i} x_i^\star
 \]</span></p>
-<p>It is convenient to multiply both sides by <span class="math inline">\(a_i\)</span>, and to define the <strong>dispersal matrix</strong> <span class="math inline">\(M\)</span>, with zero on the diagonal, and <span class="math inline">\(M_{ij} = M_{ji} = a_i a_j \gamma e^{-\alpha D_{ij}}\)</span>. Then, the equilibrium condition reads</p>
+<p>It is convenient to multiply both sides by <span class="math inline">\(a_i\)</span>, and to define the <strong>dispersal matrix</strong> <span class="math inline">\(M\)</span>, with zero on the diagonal, and <span class="math inline">\(M_{ij} = M_{ji} = a_i a_j \gamma e^{-\alpha D_{ij}}\)</span>. Then, the equilibrium condition reads:</p>
 <p><span class="math display">\[
 (1-x_i^\star) \sum_{j}M_{ij} x^\star_j - \delta x_i^\star  = 0
 \]</span></p>
-<p>Because <span class="math inline">\(M_{i,i} = 0\)</span>, we can solve for <span class="math inline">\(x_i^\star\)</span> and write:</p>
+<p>The matrix <span class="math inline">\(M\)</span> has zero on the diagonal. Then, <span class="math inline">\(\sum_{j \neq i}M_{ij}x^\star_j = \sum_{j}M_{ij}x^\star_j\)</span>. Note that then if <span class="math inline">\(\sum_{j}M_{ij}x^\star_j\)</span> for any <span class="math inline">\(i\)</span>, we have <span class="math inline">\(x_i^\star = 0\)</span>. This means that patches that are disconnected (<span class="math inline">\(\sum_j M_{ij} =0\)</span>), or that are connected to patches where the species is absent (<span class="math inline">\(\sum_{j}M_{ij}x^\star_j = 0\)</span> with <span class="math inline">\(\sum_j M_{ij}&gt;0\)</span>) are vacant at equilibrium. If, on the other hand, we assume that not all <span class="math inline">\(x_j\)</span> are zero, we can write:</p>
 <p><span class="math display">\[
-x_{i}^\star = \dfrac{\sum M_{ij}x_j^\star}{\delta + \sum M_{ij}x_j^\star} = 1 - \dfrac{\delta}{\delta + \sum M_{ij}x_j^\star} = 1 - \dfrac{1}{1 + \tau \sum M_{ij}x_j^\star}
-\]</span></p>
-<p>where <span class="math inline">\(\tau = 1 / \delta\)</span>. We observe that a trivial solution is <span class="math inline">\(x_i^\star = 0\)</span> for all <span class="math inline">\(i\)</span> (global extinction of the population). If any <span class="math inline">\(x_i^\star &gt; 0\)</span>, then all of them must also be different from zero (and in fact, they all must be positive). Given that all <span class="math inline">\(x_j^\star \leq 1\)</span>, we can write:</p>
+1-x_i^\star = \delta \frac{x_i^\star}{\sum_{j}M_{ij}x_j^\star}
+\]</span>
+Which can be written compactly as:</p>
 <p><span class="math display">\[
-x_{i}^\star = 1 - \dfrac{1}{1 + \tau \sum M_{ij} + \tau \sum M_{ij}(1-x_j^\star)}
+x_i^\star = 1 - \delta \frac{x_i^\star}{(Mx^\star)_i}
 \]</span></p>
-<p>and therefore <span class="math inline">\(0 \leq x_i^\star \leq 1 - \dfrac{1}{1 + \tau \sum M_{ij}}\)</span>.</p>
+<p>Now we need a result from the theory of nonnegative matrices (such as <span class="math inline">\(M\)</span>).</p>
+<div class="boxmath">
+<p><strong>Collatz-Wielandt formula</strong></p>
+<p>A matrix <span class="math inline">\(A\)</span> is called nonnegative <span class="math inline">\(A \geq 0\)</span> if <span class="math inline">\(A_{ij} \geq 0\)</span> for all <span class="math inline">\(i,j\)</span>. There exists a positive eigenvalue <span class="math inline">\(\rho\)</span> with associated eigenvector <span class="math inline">\(v\)</span> such that <span class="math inline">\(Av = \rho v\)</span> and <span class="math inline">\(v\)</span> has positive components (Perron-Frobenius). Moreover, <span class="math inline">\(|\rho| \geq \lambda_i\)</span> for all other eigenvalues, and every other eigenvector has at least a negative component. Finally, we have that for a nonnegative vector <span class="math inline">\(x\)</span></p>
+<p><span class="math display">\[
+\rho = \mathop{\max}_{x \in \mathbb R^n_{0+}, x \neq 0} \quad \mathop{\min}_{x_i \neq 0} \frac{(Ax)_i}{x_i}
+\]</span></p>
+<p>As such, <span class="math inline">\(\rho \geq \mathop{\min}_{x_i \neq 0} \frac{(Ax)_i}{x_i}\)</span>.</p>
+</div>
+<p>Because of the Collatz-Wielandt formula, we have that, whenever <span class="math inline">\(1 - \delta \frac{x_i^\star}{(Mx^\star)_i} \geq 1 -\dfrac{\delta}{\rho} \geq 0\)</span> we have all <span class="math inline">\(x_i &gt;0\)</span>. As such, in this model, the spectral radius <span class="math inline">\(\rho\)</span> plays the same role as the colonization rate in Levins’ model. The spectral radius is therefore called the <em>metapopulation capacity</em>.</p>
+<p>Note also that the same result is found for any <span class="math inline">\(M \geq 0\)</span> (not necessarily based on distances etc.).</p>
 </div>
 <div id="sis-on-a-contact-network" class="section level2">
 <h2><span class="header-section-number">8.3</span> SIS on a contact network</h2>
 <p>Interestingly, the same results above have been derived in the context of virus spread on networks by <span class="citation">Van Mieghem, Omic, and Kooij (<a href="#ref-van2008virus" role="doc-biblioref">2008</a>)</span>. We follow their derivation as it shows what type of approximations we’re making when writing the equations above.</p>
 <div id="the-full-model" class="section level3">
 <h3><span class="header-section-number">8.3.1</span> The full model</h3>
-<p>We can imagine the process of spread of a pathogen on a network of <span class="math inline">\(n\)</span> individuals as a graph in which each node is a label detaling who is infected. There are <span class="math inline">\(2^n\)</span> nodes, ranging from <span class="math inline">\(V_0 = 0,0, \ldots, 0\)</span> (the state in which the pathogen is extinct) to <span class="math inline">\(V_{2^n} = 1,1,\ldots, 1\)</span> (the state in which all individuals are infected). Recovery flips a one into a zero, and infection a zero into a one (without loss of generality, we can assume only one event happens at each “time step”). We connect any two nodes in the network <span class="math inline">\(V_i \to V_j\)</span> if an event (i.e., infection, recovery) can send the system from state <span class="math inline">\(i\)</span> to state <span class="math inline">\(j\)</span>. The system therefore describes a <a href="https://en.wikipedia.org/wiki/Markov_chain">Markov Chain</a> with <span class="math inline">\(2^n\)</span> states. Note also that the state <span class="math inline">\(0\)</span> is the “coffin state” for the system (once the pathogen is extinct, there is no way to go back).</p>
+<p>We can imagine the process of the spread of a pathogen on a network of <span class="math inline">\(n\)</span> individuals as a graph, in which each node is a label detailing who is infected. There are <span class="math inline">\(2^n\)</span> nodes, ranging from <span class="math inline">\(V_0 = (0,0, \ldots, 0)\)</span> (the state in which the pathogen is extinct) to <span class="math inline">\(V_{2^n-1} = (1,1,\ldots, 1)\)</span> (the state in which all individuals are infected). Recovery flips a one into a zero, and infection a zero into a one (without loss of generality, we can assume only one event happens at each “time step”). We connect any two nodes in the network <span class="math inline">\(V_i \to V_j\)</span> if an event (i.e., infection, recovery) can send the system from state <span class="math inline">\(i\)</span> to state <span class="math inline">\(j\)</span>. The system therefore describes a <a href="https://en.wikipedia.org/wiki/Markov_chain">Markov Chain</a> with <span class="math inline">\(2^n\)</span> states. Note also that the state <span class="math inline">\(0\)</span> is the “coffin state” for the system (once the pathogen is extinct, there is no way to go back).</p>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-49-1.png" width="480" style="display: block; margin: auto;" /><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-49-2.png" width="480" style="display: block; margin: auto;" /></p>
 </div>
 <div id="the-mean-field-approximation" class="section level3">
 <h3><span class="header-section-number">8.3.2</span> The mean-field approximation</h3>
@@ -407,17 +418,60 @@ x_{i}^\star = 1 - \dfrac{1}{1 + \tau \sum M_{ij} + \tau \sum M_{ij}(1-x_j^\star)
 \dfrac{d E[x_i]}{dt} = -\delta E[x_i] + \beta (1 - E[x_i])\sum_j A_{ij} E[x_j]
 \]</span></p>
 <p>which is the same as the model of Hanski and Ovaskainen above. Interestingly, this is but an approximation of the full model described by the Markov Chain above—for example <span class="citation">Cator and Van Mieghem (<a href="#ref-cator2012second" role="doc-biblioref">2012</a>)</span> derive the model when tracking all the <span class="math inline">\(E[x_i x_j]\)</span>, resulting in a better approximation of the full model (at the cost of having an additional <span class="math inline">\(\binom{n}{2}\)</span>) equations.</p>
+<div class="boxhomework">
+<p><strong>Homework 8 [Long]</strong></p>
+<p>Implement an event-driven simulation of the spread of a disease on a network. The simulation approach is taken from <span class="citation">Li, Bovenkamp, and Van Mieghem (<a href="#ref-li2012susceptible" role="doc-biblioref">2012</a>)</span>:</p>
+<p>“we take a nodal-central, event-driven approach. An event can either be the curing of a node or the spreading of the infection from one node to another. Events are stored in a timeline as tickets. […] Tickets are continuously taken from the timeline and passed on to the owner. If the ticket owner is a node, the ticket indicates either a curing or a spreading event. In the case of a curing event, the node simply changes its state from infected to healthy; in the case of a spreading event, it will spread the infection to the neighbor mentioned in the ticket. If the neighbor was not already infected, it will now become infected and create one or more tickets. A newly infected node will always create a ticket for its own curing event. According to continuous-time Markov theory, the time between infection and curing is exponentially distributed with rate <span class="math inline">\(\delta\)</span> and is stored by the node for future reference. An infected node also generates spreading times at which it will spread the infection to its neighbors. The spreading times are again exponentially distributed but now with rate <span class="math inline">\(\beta\)</span>. If the spreading time does not exceed the node’s curing time, a ticket is created for the spreading event. All newly created tickets are stored in the timeline. Finally, the owner of the original ticket generates a new spreading time, which, if not exceeding its own curing time, creates a new spreading ticket for the same neighbor. If the ticket is not owned by a node, it is a system ticket.”</p>
+<p>Simulate the spread of a disease on an adjacency matrix (with at least 10 nodes and 30 connections) of your choice. Initialize the simulation by generating an infection for one of the nodes. Repeat the simulation 100 times, tracking and averaging the amount of time each node is infected.</p>
+<p><strong>Optional</strong></p>
+<p>Then write the system of differential equations above, and follow dynamics until an equilibrium is reached. Compare the results of the simulation with those from the dynamical model.</p>
+</div>
 </div>
 </div>
 <div id="metapopulations-on-randomly-distributed-patches" class="section level2">
 <h2><span class="header-section-number">8.4</span> Metapopulations on randomly distributed patches</h2>
-<p>Grilli et al.</p>
-</div>
-<div id="optional-ecosystem-engineering-and-metapopulations" class="section level2">
-<h2><span class="header-section-number">8.5</span> [Optional] Ecosystem engineering and metapopulations</h2>
-<p>New work with Zach</p>
-<p>Homework: Gillespie-based simulation using event-driven simulations.
-Contrast approximation (NIMFA/Hanski-Ovaskainen)</p>
+<p><span class="citation">Grilli, Barabás, and Allesina (<a href="#ref-grilli2015metapopulation" role="doc-biblioref">2015</a>)</span> considered the case in which a) <span class="math inline">\(N\)</span> patches are uniformly, randomly arranged in a <span class="math inline">\(d-\)</span>dimensional landscape (e.g., 1-dimensional for the dunes ecosystems on the shore of Lake Michigan, 2-dimensional for an agricultural landscape; for 3 dimensions consider mountains, for 4 dimensions add time [e.g., temporary ponds in the Alps], for 5 or more dimensions, invoke string theory!)—we indicate the position of patch <span class="math inline">\(i\)</span> as <span class="math inline">\(x_i\)</span>; b) one can choose a “dispersal kernel” $ f(|x_i−x_j|/)$, c) patch values are randomly sampled from a distribution with mean 1 (which we can do w.l.o.g.) and variance <span class="math inline">\(\sigma^2\)</span>.</p>
+<p>For example, when dispersal decreases exponentially with distance (as above), we have an exponential kernel:</p>
+<p><span class="math display">\[
+f\left( \frac{|x_i-x_j|}{\xi} \right) = \exp \left( -\frac{|x_i -
+  x_j|^2}{2 \xi^2}\right)
+\]</span></p>
+<p>Because the matrices <span class="math inline">\(M\)</span> formed by a given kernel belong to the ensemble of <em>Euclidean Random Matrices</em>, one can compute an approximation for <span class="math inline">\(\rho\)</span> quite easily. In particular, for a given number of dimensions <span class="math inline">\(d\)</span>, the size of the landscape, etc., we define an “effective number of neighbors” <span class="math inline">\(n_e\)</span> and we have <span class="math inline">\(\rho \geq n_e (1 + \sigma^2)\)</span>. Take the landscape to be a hypercube with length <span class="math inline">\(L\)</span>. Then whenever the “dispersal range” <span class="math inline">\(\xi \ll L\)</span>, we can approximate</p>
+<p><span class="math display">\[
+n_e \approx \frac{N}{L^d} G_f(d) \xi^d
+\]</span></p>
+<p>Where <span class="math inline">\(G_f(d)\)</span> is a constant that depends on the kernel shape. Call <span class="math inline">\(\mu = N/L^d\)</span> to be the density of patches in the landscape. We can simplify the calculation by considering the density to be fixed, but both <span class="math inline">\(N\)</span> and <span class="math inline">\(L\)</span> tending to infinity (see SI of <span class="citation">Grilli, Barabás, and Allesina (<a href="#ref-grilli2015metapopulation" role="doc-biblioref">2015</a>)</span>). Then, for the exponential kernel, we have:</p>
+<p><span class="math display">\[
+\begin{split}
+n_e =&amp; \mu \int \exp \left( - \frac{\sqrt{\sum_{k=1}^d
+    x_{(k)}^{2}}}{\xi} \right) \; d x_{(1)}\cdots d x_{(d)} \\ =&amp;
+\frac{2 \pi^{d/2} \Gamma(d) }{ \Gamma(d/2) } \mu \xi^d \ ,
+\end{split}
+\]</span></p>
+<p>where <span class="math inline">\(\Gamma(d)\)</span> is the Gamma function. Similarly, for the Gaussian kernel:</p>
+<p><span class="math display">\[
+f\left( \frac{|x_i-x_j|}{\xi} \right) = \exp \left( -\frac{|x_i -
+  x_j|^2}{2 \xi^2}\right)
+\]</span></p>
+<p>we obtain:</p>
+<p><span class="math display">\[
+\begin{split}
+n_e =&amp; \mu \int \exp \left( - \frac{\sum_{k=1}^d x_{(k)}^2}{2 \xi^2}
+\right) \; d x_{(1)}\cdots d x_{(d)} \\ =&amp; (2 \pi )^{d/2} \mu
+\xi^d
+\end{split}
+\]</span></p>
+<p>and finally, for a Rectangular kernel:</p>
+<p><span class="math display">\[
+f\left( \frac{|x_i-x_j|}{\xi} \right) = 
+\left\{ \begin{array}{ll} 1, &amp; |x_i - x_j| \le \xi \\ 0, &amp; |x_i - x_j| &gt; \xi \end{array} \right .
+\]</span></p>
+<p>we have</p>
+<p><span class="math display">\[
+n_e = \frac{\pi ^{d/2}}{\Gamma \left( d / 2 + 1 \right)} \mu \xi ^d
+\]</span></p>
+<p>This means for example that, when <span class="math inline">\(d=1\)</span> the exponential and the rectangular kernel have the same value of <span class="math inline">\(n_e\)</span>, while in two dimensions the Gaussian and exponential kernel have the same value of <span class="math inline">\(n_e\)</span>. This means that two large matrices built with different kernels can have approximately the same <span class="math inline">\(\rho\)</span>.</p>
+<p>Using similar techniques, one can determine that “disordered” patch arrangements always lead to higher capacity than “ordered” arrangements.</p>
 
 </div>
 </div>
@@ -425,6 +479,9 @@ Contrast approximation (NIMFA/Hanski-Ovaskainen)</p>
 <div id="refs" class="references">
 <div id="ref-cator2012second">
 <p>Cator, Eric, and Piet Van Mieghem. 2012. “Second-Order Mean-Field Susceptible-Infected-Susceptible Epidemic Threshold.” <em>Physical Review E</em> 85 (5): 056111.</p>
+</div>
+<div id="ref-grilli2015metapopulation">
+<p>Grilli, Jacopo, György Barabás, and Stefano Allesina. 2015. “Metapopulation Persistence in Random Fragmented Landscapes.” <em>PLoS Comput Biol</em> 11 (5): e1004251.</p>
 </div>
 <div id="ref-hanski2000metapopulation">
 <p>Hanski, Ilkka, and Otso Ovaskainen. 2000. “The Metapopulation Capacity of a Fragmented Landscape.” <em>Nature</em> 404 (6779): 755–58.</p>
@@ -437,6 +494,9 @@ Contrast approximation (NIMFA/Hanski-Ovaskainen)</p>
 </div>
 <div id="ref-levins1969some">
 <p>Levins, Richard. 1969. “Some Demographic and Genetic Consequences of Environmental Heterogeneity for Biological Control.” <em>American Entomologist</em> 15 (3): 237–40.</p>
+</div>
+<div id="ref-li2012susceptible">
+<p>Li, Cong, Ruud van de Bovenkamp, and Piet Van Mieghem. 2012. “Susceptible-Infected-Susceptible Model: A Comparison of N-Intertwined and Heterogeneous Mean-Field Approximations.” <em>Physical Review E</em> 86 (2): 026116.</p>
 </div>
 <div id="ref-macarthur1967limiting">
 <p>MacArthur, Robert, and Richard Levins. 1967. “The Limiting Similarity, Convergence, and Divergence of Coexisting Species.” <em>The American Naturalist</em> 101 (921): 377–85.</p>

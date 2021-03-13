@@ -123,7 +123,7 @@ But how do we know whether dynamics will cycle toward the equilibrium, spiral aw
 
 ## Local stability analysis
 
-Suppose that a feasible (i.e., positive) equilibrium $x^\star$ exists for a given model. Then we can ask whether it is **attractive**, i.e. if trajectories started at initial condition $x(0)$ will eventually reach $x^\star$. This problem is in general difficult to solve (but see below); as an alternative, we can test for **local asymptotic stability**, i.e., ask whether **the system will return to the equilibrium if perturbed infinitesimally away from it**. In general, whenever we describe an ecological community as a system of nonlinear, autonomous ODEs:
+Suppose that a feasible (i.e., positive) equilibrium $x^\star$ exists for a given model. Then we can ask whether it is **attractive** (stable), i.e. if trajectories started at initial condition $x(0)$ will eventually reach $x^\star$. This problem is in general difficult to solve (but see below); as an alternative, we can test for **local asymptotic stability**, i.e., ask whether **the system will return to the equilibrium if perturbed infinitesimally away from it**. In general, whenever we describe an ecological community as a system of nonlinear, autonomous ODEs:
 
 $$
 \frac{d x_i (t)}{d t} = f_i (x(t)) \;,
@@ -243,10 +243,10 @@ Note that considering the first two terms of the Taylor expansion results in sec
 
 :::
 
-Suppose that a system is resting at an equilibrium $x^\star$, and that it is slightly perturbed away from it. $\Delta x(0) = x(0)-x^\star$ is the state of the system immediately after the perturbation. Taylor-expanding around $x^\star$ and taking only the linear term, we have:
+Suppose that a system is resting at an equilibrium $x^\star$, and that it is slightly perturbed away from it. $\Delta x(t) = x(t) - x^\star$ is the state of the system immediately after the perturbation. Taylor-expanding around $x^\star$ and taking only the linear term, we have:
 
 $$
-f(\Delta x(0)) = f(x^\star)+ \left. J \right|_{x^\star} \Delta x(0) = \left. J \right|_{x^\star} \Delta x(0)
+f(\Delta x(t)) = f(x^\star)+ \left. J \right|_{x^\star} \Delta x(t) = \left. J \right|_{x^\star} \Delta x(t)
 $$
 
 Where $J$ is the Jacobian matrix of the system, whose elements are defined as:
@@ -327,7 +327,7 @@ A v = \lambda v\\
 \end{aligned}
 $$
 
-if $v$ is nonzero, then the matrix $\lambda I - A$ must be singular (i.e., have at least one eigenvalue equal to zero). Because the determinant is the product of the eigenvalues, then the determinant must also be zero. 
+if $v$ is nonzero, then the matrix $\lambda I - A$ must be singular (i.e., have at least one eigenvalue equal to zero), and $v$ should be the eigenvector of $\lambda I - A$ corresponding to a zero eigenvalue. Because the determinant is the product of the eigenvalues, then the determinant must also be zero. 
 
 For a $2 \times 2$ matrix, we have:
 
@@ -352,6 +352,7 @@ where $\text{tr}(M) = \sum_i M_{ii} = \sum_i \lambda_i$, and $\det(M) = \prod_i 
 $$
 \lambda = \frac{\text{tr}(M) \pm \sqrt{(\text{tr}(M))^2 - 4 \det(M)}}{2}
 $$
+
 Find the eigenvalues for the matrix $A$ above:
 
 $$
@@ -402,6 +403,8 @@ S(A) = \begin{pmatrix}
 $$
 
 has eigenvalues with negative real part. When a matrix is stable due to its sign-pattern (rather than specific values of the coefficients), it is called *qualitatively stable*.
+
+Find all $3 \times 3$ matrices that are sign-stable. 
 
 :::
 
@@ -519,7 +522,6 @@ ggplot(data = tibble(t = t, x = Re(xt[2,]))) + aes(x = t, y = x) + geom_line() +
 
 In fact, all the possible trajectories in planar systems can be classified using only the determinant (product of eigenvalues) and the trace (sum of the eigenvalues) of the matrix $A$:
 
-
 ```{r, echo=FALSE,out.width = "95%"}
 knitr::include_graphics('img/phase.jpg')
 ```
@@ -610,7 +612,7 @@ Volterra graciously conceded *"I recognize his priority, and am sorry not to hav
 
 ### Constant of motion for Lotka-Volterra Predator-Prey 
 
-Volterra wrote:
+Write:
 
 $$
 \dfrac{d x(t)}{d y(t)} = \dfrac{\rho\, x(t) - \alpha\, x(t)\, y(t)}{-\delta\, y(t)  + \beta\, x(t)\, y(t)}
@@ -652,7 +654,7 @@ $$
 \dfrac{d V(x,y)}{dt} = \left(\beta - \dfrac{\delta}{x} \right) \dfrac{dx}{dt}+\left(\alpha - \dfrac{\rho}{y} \right) \dfrac{dy}{dt} = 0
 $$
 
-As such, the dynamics are such that $V(x,y)$ remains constant.
+Therefore, the dynamics are such that $V(x,y)$ remains constant.
 
 ### Analysis of Predator-Prey model with logistic growth for the prey
 
@@ -665,7 +667,7 @@ $$
 \end{cases}
 $$
 
-First, we find the equilibria. From the first equation, we have $x^\star = 0$, or $y^\star = 1 - x^\star /2$; from the second equation, we have $y^\star = 0$ or $x^\star = 1$. Combining them, we find that either $(x^\star, y^\star) = (0, 0)$ (trival), $(x^\star, y^\star) = (2, 0)$ (boundary), or $(x^\star, y^\star) = (1, 1/2)$ (coexistence). 
+First, we find the equilibria. From the first equation, we have $x^\star = 0$, or $y^\star = 1 - x^\star /2$; from the second equation, we have $y^\star = 0$ or $x^\star = 1$. Combining them, we find that either $(x^\star, y^\star)^T = (0, 0)^T$ (trival), $(x^\star, y^\star)^T = (2, 0)^T$ (boundary), or $(x^\star, y^\star)^T = (1, 1/2)$ (coexistence)^T. 
 
 The isoclines of zero growth are $y = 1 - x/2$ for the prey, and $x = 1$ for the predator. The Jacobian for the system is
 

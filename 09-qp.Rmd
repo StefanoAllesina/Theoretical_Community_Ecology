@@ -427,7 +427,7 @@ $$
 This proves the stability of the equilibrium, given that 
 
 $$
-\dfrac{dV}{dt} = \Delta x^T D(k) \Delta v = -D(k) \dfrac{\Delta x^2}{x^\star x}
+\dfrac{dV}{dt} = \Delta x^T D(k) \Delta v = -k^T \dfrac{\Delta x^2}{x^\star x}
 $$
 
 ## GLV embedding for non-QP systems

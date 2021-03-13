@@ -7,7 +7,7 @@ source("common_settings.R")
 **Lesson plan**:
 
 1. We start by discussing what it means to solve an initial-value problem: the solution is an expression that allows us to calculate $x(t)$ for any $t$. A few ecologically-relevant models can be solved explicitly, for example the exponential and logistic growth models.
-1. Because solving differential equations is a laborious process, and in many cases writing the solution is impossible or does not give us any insight on the dynamics, we introduce a graphical model that allows us to effortlessly sketch the dynamics of any ODE (i.e., models with a single equation).
+1. Because solving differential equations is a laborious process, and in many cases writing the solution is impossible or does not give us any insight on the dynamics, we introduce a graphical method that allows us to effortlessly sketch the dynamics of any ODE (i.e., models with a single equation).
 1. This allows us to introduce essential concepts such as the notion of an equilibrium and its stability.
 1. We show that determining stability using this graphical method is equivalent to performing stability analysis via linearization around an equilibrium, a method that will be extended to systems of multiple ODEs in the next chapter.
 1. We briefly discuss the idea of bifurcation points --- i.e., particular choices of parameters for which the dynamics of the system change qualitatively.
@@ -17,7 +17,7 @@ source("common_settings.R")
 
 Dynamical systems describe the change of certain variables, typically in time, space or a combination of the two. They have found applications in all scientific disciplines, and were introduced in ecology and evolutionary biology at the beginning of the twentieth century. 
 
-Broadly, dynamical systems can be divided into **continuous** (described by differential equations), or **discrete** (described by maps, or difference equations) models. Many models for population dynamics can be written as (systems of) first-order ordinary differential equations, i.e. equations containing functions of one (or more) independent variables and their derivatives (typically, with respect to time). 
+Broadly, dynamical systems can be divided into **continuous** (described by differential equations), and **discrete** (described by maps, or difference equations) models. Many models for population dynamics can be written as (systems of) first-order ordinary differential equations, i.e. equations containing functions of one (or more) independent variables and their first derivative (typically, with respect to time). 
 
 **Ordinary** means we're not dealing with partial differential equations (used in ecology for example for reaction-diffusion equations, or spatial models). **First-order**, mean that they contain only the first derivative with respect to time. Here we will concentrate on **autonomous** systems, meaning that they are time-invariant (e.g., coefficients do not change in time). We can write these systems as:
 
@@ -35,7 +35,7 @@ $$
 \dfrac{d x(t)}{d t} = f(x(t)), \;\; x(0) = x_0
 $$
 
-where the independent variable $t$ denotes time and is considered non-negative. $x(t)$ is the state of the system (e.g., the density of the species) at time $t$, $x(t) \in \mathbb{R}^n$, and the function $f$ models the evolution of the system, mapping $\mathbb{R}^n \to \mathbb{R}^n$. The vector $x_0 = x(0)  \in \mathbb{R}^n$ marks the *initial condition* of the system.
+where the independent variable $t$ denotes time, and is considered non-negative. The vector $x(t)$ tracks the state of the system (e.g., the density of the species) at time $t$, $x(t) \in \mathbb{R}^n$, and the function $f$ models the evolution of the system, mapping $\mathbb{R}^n \to \mathbb{R}^n$. The vector $x_0 = x(0)  \in \mathbb{R}^n$ marks the *initial condition* of the system.
 
 The simplest and most common case in ecology is that in which $f$ is (infinitely) many times continuously differentiable, a.k.a. *smooth*. If this is the case, then the solution $x(t)$ exists and is unique.
 
@@ -110,6 +110,7 @@ again, we can separate the equation:
 $$
 \dfrac{1}{x(t) (1 - \alpha\, x(t))} d x(t) = \rho\,  dt
 $$
+
 the r.h.s. is trivial to integrate, but the l.h.s. is trickier. We can transform it into a simpler expression by using partial fractions. We want to write:
 
 $$
@@ -161,7 +162,6 @@ which provides an explicit solution for this (very simple) model.
 
 **Homework 1a**
 
-
 Find the solution for the logistic growth with harvesting:
 
 $$
@@ -205,7 +205,7 @@ Now think of a perturbation: if we were to perturb $x^\star = 0$ by introducing 
 Next, let's consider the logistic growth equation:
 
 $$
-\dfrac{d x(t)}{dt} = \rho\, x(t) (1 - \alpha\, x(t))
+\dfrac{d x(t)}{dt} = \rho\, x(t) (1 - \alpha\, x(t)) =\rho\, x(t) - \rho\, \alpha\,x(t)^2
 $$
 
 We can draw the graph (note the quadratic term---we're describing a parabola):
@@ -249,7 +249,7 @@ $$
 \dfrac{d x(t)}{dt} = \rho\, x(t) (x(t) - \gamma) (1 - \alpha\, x(t))
 $$
 
-where $0<\gamma<1 / \alpha$. Plotting,
+where $0 < \gamma < 1 / \alpha$. Plotting,
 
 ```{r, echo = FALSE}
 r <- 0.5 # only makes sense if positive
@@ -275,9 +275,9 @@ ggplot(tibble(dxdt = dxdt, x = x)) +
   scale_x_continuous("x(t)") + scale_y_continuous("dx(t) / dt") + my_theme
 ```
 
-In this model, there are two stable equilibria ($x^\star = 0$ and $x^\star = 1  / \alpha$), separated by an unstable equilibrium ($x^\star= \gamma$). Depending on the initial condition, we might end up with either---we call this situation bistability.
+In this model, there are two stable equilibria ($x^\star = 0$ and $x^\star = 1  / \alpha$), separated by an unstable equilibrium ($x^\star= \gamma$). Depending on the initial conditions, we might end up in either of the stable equilibria---we call this situation bistability.
 
-Note that bistability makes it clear that we can only apply small perturbations to the equilibrium to probe its stability---for example, imagine being at $x^\star = 1 / \alpha$ and perturbing the population by bringing it below $\gamma$; then we would find that the population goes extinct, suggesting that $x^\star = 1 / \alpha$ is "somewhat unstable".
+Note that bistability makes it clear that we can only apply small perturbations to the equilibrium to probe its "local" stability---for example, imagine being at $x^\star = 1 / \alpha$ and perturbing the population by bringing it below $\gamma$; then we would find that the population goes extinct, suggesting that $x^\star = 1 / \alpha$ is "somewhat unstable".
 
 ### Stability using derivatives
 
@@ -296,13 +296,14 @@ $$
 \dfrac{\partial f(x)}{\partial x} = \dfrac{\partial (\rho\, x - \rho\, \alpha\, x^2)}{\partial x}  = \rho - 2 \rho\, \alpha\, x
 $$
 
-When we evaluate this function at the equilibrium $x^\star = 0$, we obtain $\rho > 0$, and as such the equilibrium is unstable. Conversely, when we evaluate the fuction at $x^\star = 1 / \alpha$, we obtain $\rho  - 2 \rho \to -\rho$ and therefore the equilibrium is stable.
+When we evaluate this function at the equilibrium $x^\star = 0$, we obtain $\rho > 0$, and as such the equilibrium is unstable. Conversely, when we evaluate the fuction at $x^\star = 1 / \alpha$, we obtain $\rho  - 2 \rho = -\rho$ and therefore the equilibrium is stable.
 
 Finally, for the model with Allee effect, we have:
 
 $$
 \dfrac{\partial (\rho\, x (x-\gamma)(1-\alpha\, x))}{\partial x}  = - \rho\, \gamma + 2 \rho\, x(1 + \alpha) - 3 \rho\, \alpha\, x^2
 $$
+
 At $x^\star = 0$, we find $-\rho\, \gamma$ which is always negative, and as such $x^\star = 0$ is stable. At $x^\star = \gamma$ we have $\rho\, \gamma\, (1- \gamma\, \alpha)$ which is positive (as $\gamma\, \alpha < 1$) and as such is an unstable equilibrium. Finally, for $x^\star = 1/\alpha$ we have $\rho (\gamma - 1/\alpha)$ which is always negative.
 
 ### What are we doing when probing stability using derivatives?
@@ -329,9 +330,9 @@ which is the equation for the exponential growth we have seen above. If $\left .
 
 ## Bifurcations
 
-The shape of the graphs above might depend on the value of parameters. When a small change in one or several parameters causes a qualitative change in the behavior of the system, we say the system has crossed a **bifurcation** point (the term "bifurcation" was introduced by  Henri Poincaré in 1885). At a bifurcation point, equilibria could disappear or be created, change their stability, the system could start cycling, etc.
+The shape of the graphs above might depend on the value of parameters. Whenever a small change in one or several parameters causes a qualitative change in the behavior of the system, we speak of a **bifurcation** point (the term "bifurcation" was introduced by  Henri Poincaré in 1885). At a bifurcation point, equilibria could disappear or be created, change their stability, the system could start cycling, etc.
 
-In low-dimensional system, there are a variety of different behaviors, each of which has its own name (e.g., saddle-node, pitchfork, transcritical, Hopf, period-doubling, ..., bifurcation). The **codimension** of a bifurcation is the number of parameters we need to change the behavior of the system. Clearly, codimension-1 and -2 bifurcations are the simplest and most studied. 
+In low-dimensional system, there are a variety of different behaviors, each of which has its own name (e.g., saddle-node, pitchfork, transcritical, Hopf, period-doubling, ..., bifurcation). The **codimension** of a bifurcation is the number of parameters we need to change to alter the behavior of the system. Clearly, codimension-1 and -2 bifurcations are the simplest and most studied. 
 
 Here we just show the main idea using a simple example. For a detailed and accessible introduction, see  @strogatz2018nonlinear and @seydel2009practical.
 
@@ -417,10 +418,10 @@ Note that the rate at which the system approaches (moves away from) the stable (
 
 Draw the bifurcation diagram for logistic growth model with harvesting:
 
-
 $$
 \dfrac{d x(t)}{dt} = \rho\, x(t) (1 - \alpha\, x(t)) - \eta\, x(t)
 $$
+
 where $1 > \eta > 0$ is the proportion of individuals being harvested.
 
 *Details*
@@ -437,16 +438,17 @@ A few interesting references on detecting the approaching of a bifurcation in ex
 :::boxpaper
 **Key paper: @scheffer2009early**
 
-Starting in the early 2000s, much work went into trying to anticipate dramatic changes in natural and man-made systems (e.g., lakes turning eutrophic, fisheries collapsing). In this review, Scheffer *et al.* summarize previous work and present an accessible introduction to the problem.
+Starting in the early 2000s, much work went into trying to anticipate dramatic changes in natural and man-made systems (e.g., lakes turning eutrophic, fisheries collapsing, desertification). In this review, Scheffer *et al.* summarize previous work and present an accessible introduction to the problem.
 
 **Key paper: @dai2012generic**
 
 Dai *et al.* grew populations of *Saccharomyces cerevisiae* on sucrose. Because sucrose is split outside the cell, it creates an Allee effect: when the population density is high, it is energetically convenient to produce the enzyme to spit the sucrose, as the different cells pool their efforts; when population density is low, the gain is not sufficient to balance the cost. By tuning the mortality (dilution), they were able to experimentally recreate the bifurcation diagram of the exercise above. The data from the experiments are [here](https://doi.org/10.5061/dryad.p2481134).
+
 :::
 
 ## Long term behavior of 1-D systems
 
-First-order (i.e., single-equation) ODEs can produce a very limited variety of long-terms behaviors: for $t \to \infty$ we can only have $x(t) \to \pm \infty$ or $x(t) \to x^\star$. For population models, this means that either growth is unbounded (e.g., exponential growth model), or the population will reach an equilibrium point (possibly, out of many).
+First-order, single-equation ODEs can produce a very limited variety of long-terms behaviors: for $t \to \infty$ we can only have $x(t) \to \pm \infty$ or $x(t) \to x^\star$. For population models, this means that either growth is unbounded (e.g., exponential growth model), or the population will reach an equilibrium point (possibly, out of many).
 
 This is a direct consequence of the uniqueness of trajectories: because we are moving in a 1-dimensional space, the fact that trajectories cannot cross means that if we are at a certain point $x(t) = x_t$, then either $dx(t)/dt >0$, $dx(t)/dt <0$, or $dx(t)/dt =0$, but can take only one value, preventing more complex behaviors such as cycles or chaos.
 
@@ -455,7 +457,7 @@ For smooth functions and autonomous systems, one needs at least two equations to
 :::boxpaper
 **Key paper: @may1976simple**
 
-May takes a possible model for the logistic growth in discrete time, and shows how this very simple model can give rise to equilibria, cycles and chaos. This is one of the papers that launched an all-out effort to explore chaotic dynamics that lasted for the best part of the 1980s.
+May took a possible model for the logistic growth in discrete time, and showed how this very simple model can give rise to equilibria, cycles and chaos. This is one of the papers that launched an all-out effort to explore chaotic dynamics that lasted for the best part of the 1980s.
 
 :::
 
@@ -463,9 +465,9 @@ May takes a possible model for the logistic growth in discrete time, and shows h
 
 While in many cases we cannot write an explicit solution for a (system of) differential equation(s), we might be able to determine the stability of equilibria and their basin of attraction (i.e., the set of initial conditions eventually leading to the equilibrium $x^\star$) by considering functions that change monotonically through the dynamics.
 
-Suppose that $\dfrac{d x(t)}{dt} =f(x(t))$, and that $x^\star$ is an equilibrium. Let $V(x)$ be a function defined in an open set $\mathcal O$ containing $x^\star$, such that a) $V(x^\star) = 0$ and $V(x) > 0$ for any $x \neq x^\star$, and b) $d V /dt \leq 0$ for all $x \in \mathcal O - x^\star$. Then $V$ is a *Lyapunov function* for the model, and $x^\star$ is stable. The Lyapunov function is called *strict*, and the equilibrium $x^\star$ *asymptotically stable* if $d V /dt < 0$.
+Suppose that $\dfrac{d x(t)}{dt} =f(x(t))$, and that $x^\star$ is an equilibrium. Let $V(x)$ be a function defined in an open set $\mathcal O$ containing $x^\star$, such that a) $V(x^\star) = 0$ and $V(x) > 0$ for any $x \in \mathcal O, x \neq x^\star$, and b) $d V /dt \leq 0$ for all $x \in \mathcal O - x^\star$. Then $V$ is a *Lyapunov function* for the model, and $x^\star$ is stable. The Lyapunov function is called *strict*, and the equilibrium $x^\star$ *asymptotically stable* if $d V /dt < 0$ (i.e., all trajectories starting in $\matcal O$ will eventually reach $x^\star$).
 
-While Lyapunov functions are great, because we can prove stability without the need to solve the system, there is no general rule to construct such a function. Often, "candidate" Lyapunov functions are available, but the process of finding the right function typically requires a lot of ingenuity and trial and errors.
+While Lyapunov functions are great, because we can prove stability without the need to solve the system, there is no general rule to construct them. Often, "candidate" Lyapunov functions are available, but the process of finding the right function typically requires a lot of ingenuity and trial and errors.
 
 Fortunately, for system with a single state a quadratic function is guaranteed to solve the problem. Take the model for logistic growth (with $\rho > 0$ and $\alpha > 0$, and the candidate Lyapunov function:
 
@@ -490,10 +492,11 @@ and as such $x^\star$ is asymptotically stable. The basin of attraction (i.e., w
 $$
 V(x(t)) = x(t) - x^\star - x^\star \log \dfrac{x(t)}{x^\star}
 $$
+
 which is positive for $x(t) > 0$ and $x(t) \neq x^\star$, taking the derivative w.r.t. time, we find:
 
 $$
 \dfrac{d V(x(t))}{d t} = \left(1 - \dfrac{x^\star}{x(t)}\right)\rho\, x(t) (1 - \alpha\, x(t)) = -\rho\, x^\star (x(t) - x^\star)^2 
 $$
-which again is negative whenever $x^\star > 0$, $\rho >0$ and $x(t) \neq x^\star$.
 
+which again is negative whenever $x^\star > 0$, $\rho >0$ and $x(t) \neq x^\star$.
