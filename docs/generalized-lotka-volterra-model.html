@@ -337,7 +337,7 @@ x(t) = \frac{\rho\, {x_0}\, e^{\rho t}}{\rho- \alpha\, {x_0} \left(e^{\rho t}-1\
 <p><span class="math display">\[
 \dfrac{d p(t)}{dt} = \gamma\, p(t)(1 - p(t)) - \epsilon\, p(t) = p(t) ((\gamma - \epsilon) - \gamma\,  p(t))
 \]</span></p>
-<p>which is equivalent to the logistic equation above with <span class="math inline">\(\rho = \gamma -\epsilon\)</span> and <span class="math inline">\(\alpha = -\gamma\)</span>. As such, asymptotically the proportion of patches occupied by the population will be <span class="math inline">\(-\rho/\alpha = (\gamma -\epsilon) / \gamma\)</span>.</p>
+<p>which is equivalent to the logistic equation above with <span class="math inline">\(\rho = \gamma -\epsilon\)</span> and <span class="math inline">\(\alpha = -\gamma\)</span>. As such, asymptotically the proportion of patches occupied by the population will be <span class="math inline">\(-\rho/\alpha = (\gamma -\epsilon) / \gamma = 1 - \epsilon / \gamma\)</span>.</p>
 </div>
 <div id="s-i-s-model" class="section level3">
 <h3><span class="header-section-number">3.2.2</span> S-I-S model</h3>
@@ -359,9 +359,8 @@ x(t) = \frac{\rho\, {x_0}\, e^{\rho t}}{\rho- \alpha\, {x_0} \left(e^{\rho t}-1\
 <h2><span class="header-section-number">3.3</span> Multi-species dynamics</h2>
 <div id="existence-of-an-equilibrium" class="section level3">
 <h3><span class="header-section-number">3.3.1</span> Existence of an equilibrium</h3>
-<p>Returning to the multi-species system, and in analogy with the single species, we can look for stationary points (equilibria). If the matrix <span class="math inline">\(A\)</span> is not singular, then we can look for a solution of <span class="math inline">\(r + Ax = 0\)</span> that has positive components (called a <strong>feasible equilibrium</strong>). <strong>If such point exists, it is unique</strong> and is the solution of <span class="math inline">\(Ax^\star = -r\)</span>, <span class="math inline">\(x^\star = -A^{-1}r\)</span>.</p>
-<p>Suppose that the GLV has no feasible equilibrium. Then all trajectories (if bounded; some could grow to infinity) reach the boundary of <span class="math inline">\(\mathbb R^n_{0+}\)</span>. Practically, this means that <strong>to ensure coexistence of all species, it is necessary to have an equilibrium in the interior <span class="math inline">\(\mathbb R^n_{+}\)</span></strong>.</p>
-<p>For a proof, see Theorem 5.2.1 in <span class="citation">Hofbauer and Sigmund (<a href="#ref-hofbauer1998evolutionary" role="doc-biblioref">1998</a>)</span>.</p>
+<p>Returning to the multi-species system, and in analogy with the single species model, we can look for stationary points (fixed points, equilibria). If the matrix <span class="math inline">\(A\)</span> is not singular, then we can look for a solution of <span class="math inline">\(r + Ax = 0\)</span> that has positive components (called a <strong>feasible equilibrium</strong>). <strong>If such point exists, it is unique</strong> and is the solution of <span class="math inline">\(Ax^\star = -r\)</span>, <span class="math inline">\(x^\star = -A^{-1}r\)</span>.</p>
+<p>Suppose that the GLV has no feasible equilibrium. Then all trajectories (if bounded; some could grow to infinity) reach the boundary of <span class="math inline">\(\mathbb R^n_{0+}\)</span>. Practically, this means that <strong>to ensure coexistence of all species, it is necessary to have an equilibrium in the interior <span class="math inline">\(\mathbb R^n_{+}\)</span></strong>. For a proof, see Theorem 5.2.1 in <span class="citation">Hofbauer and Sigmund (<a href="#ref-hofbauer1998evolutionary" role="doc-biblioref">1998</a>)</span>.</p>
 </div>
 <div id="stability-of-the-coexistence-equilibrium" class="section level3">
 <h3><span class="header-section-number">3.3.2</span> Stability of the coexistence equilibrium</h3>
@@ -390,7 +389,7 @@ M = \left. {J} \right|_{ {x}^\star} = D(x^\star)A
 </div>
 <div id="types-of-dynamics" class="section level3">
 <h3><span class="header-section-number">3.3.3</span> Types of dynamics</h3>
-<p>As we’ve seen before, for a single population, there are only three types of dynamics that can be displayed by a GLV model: either the population grows to infinity, shrinks to zero, or asymptotically reaches a steady state.</p>
+<p>As we’ve seen before, for a single population, there are only three types of dynamics that can be displayed by a GLV model with a single species: either the population grows to infinity, shrinks to zero, or asymptotically reaches a steady state.</p>
 <p><span class="citation">Smale (<a href="#ref-smale1976differential" role="doc-biblioref">1976</a>)</span> and <span class="citation">Hirsch (<a href="#ref-hirsch1982systems" role="doc-biblioref">1982</a>)</span> showed that limit cylces are possible for three or more species, and that any dynamics can be found for competitive GLV systems with five or more species.</p>
 <p>A few examples taken from <span class="citation">Barabás, J. Michalska-Smith, and Allesina (<a href="#ref-barabas2016effect" role="doc-biblioref">2016</a>)</span>. First, a competitive system in which a feasible equilibrium does not exist, leading to the extinction of a species. For example, take</p>
 <p><span class="math display">\[
@@ -414,8 +413,7 @@ r = \begin{pmatrix}
 \]</span></p>
 <p>and as such dynamics will lead to a boundary equilibrium:</p>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/glvex1-1.png" width="480" style="display: block; margin: auto;" /></p>
-<p>Showing that species 2 goes extinct.</p>
-<p>Then, a case in which the equilibrium exists, and is attractive (stable). Take:</p>
+<p>Showing that species 2 goes extinct. Then, a case in which the equilibrium exists, and is attractive (stable). Take:</p>
 <p><span class="math display">\[
 r = \begin{pmatrix} 
 10\\

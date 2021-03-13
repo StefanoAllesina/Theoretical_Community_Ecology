@@ -46,7 +46,7 @@ $$
 \dfrac{d p(t)}{dt} = \gamma\, p(t)(1 - p(t)) - \epsilon\, p(t) = p(t) ((\gamma - \epsilon) - \gamma\,  p(t))
 $$
 
-which is equivalent to the logistic equation above with $\rho = \gamma -\epsilon$ and $\alpha = -\gamma$. As such, asymptotically the proportion of patches occupied by the population will be $-\rho/\alpha = (\gamma -\epsilon) / \gamma$.
+which is equivalent to the logistic equation above with $\rho = \gamma -\epsilon$ and $\alpha = -\gamma$. As such, asymptotically the proportion of patches occupied by the population will be $-\rho/\alpha = (\gamma -\epsilon) / \gamma = 1 - \epsilon / \gamma$.
 
 ### S-I-S model
 
@@ -71,11 +71,9 @@ which is again the equation for the logistic growth with $\rho = \beta - \gamma$
 
 ### Existence of an equilibrium
 
-Returning to the multi-species system, and in analogy with the single species, we can look for stationary points (equilibria). If the matrix $A$ is not singular, then we can look for a solution of $r + Ax = 0$ that has positive components (called a **feasible equilibrium**). **If such point exists, it is unique** and is the solution of $Ax^\star = -r$, $x^\star = -A^{-1}r$. 
+Returning to the multi-species system, and in analogy with the single species model, we can look for stationary points (fixed points, equilibria). If the matrix $A$ is not singular, then we can look for a solution of $r + Ax = 0$ that has positive components (called a **feasible equilibrium**). **If such point exists, it is unique** and is the solution of $Ax^\star = -r$, $x^\star = -A^{-1}r$. 
 
-Suppose that the GLV has no feasible equilibrium. Then all trajectories (if bounded; some could grow to infinity) reach the boundary of $\mathbb R^n_{0+}$. Practically, this means that **to ensure coexistence of all species, it is necessary to have an equilibrium in the interior $\mathbb R^n_{+}$**. 
-
-For a proof, see Theorem 5.2.1 in @hofbauer1998evolutionary.
+Suppose that the GLV has no feasible equilibrium. Then all trajectories (if bounded; some could grow to infinity) reach the boundary of $\mathbb R^n_{0+}$. Practically, this means that **to ensure coexistence of all species, it is necessary to have an equilibrium in the interior $\mathbb R^n_{+}$**. For a proof, see Theorem 5.2.1 in @hofbauer1998evolutionary.
 
 ### Stability of the coexistence equilibrium
 
@@ -114,7 +112,7 @@ A matrix $A$ is called *stable* if all its eigenvalues have negative real part. 
 
 ### Types of dynamics
 
-As we've seen before, for a single population, there are only three types of dynamics that can be displayed by a GLV model: either the population grows to infinity, shrinks to zero, or asymptotically reaches a steady state. 
+As we've seen before, for a single population, there are only three types of dynamics that can be displayed by a GLV model with a single species: either the population grows to infinity, shrinks to zero, or asymptotically reaches a steady state. 
 
 @smale1976differential and @hirsch1982systems showed that limit cylces are possible for three or more species, and that any dynamics can be found for competitive GLV systems with five or more species.
 
@@ -191,9 +189,7 @@ x0_1 <- runif(3)
 res_1 <- integrate_GLV(r_1, A_1, x0_1)
 ```
 
-Showing that species 2 goes extinct.
-
-Then, a case in which the equilibrium exists, and is attractive (stable). Take:
+Showing that species 2 goes extinct. Then, a case in which the equilibrium exists, and is attractive (stable). Take:
 
 $$
 r = \begin{pmatrix} 
