@@ -169,6 +169,8 @@ $$
 $$
 where $1 > \eta > 0$ is the proportion of individuals being harvested.
 
+Suppose that we want to maximize the amount we can harvest, and that we want to be able to sustain this harvest indefinitely. What level $\eta$ should we choose?
+
 :::
 
 ## Qualitative analysis of models for a single population
