@@ -53,9 +53,9 @@
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -64,16 +64,14 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -82,9 +80,9 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  {  }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+a.sourceLine::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -333,7 +331,7 @@ x(t) = \frac{\rho\, {x_0}\, e^{\rho t}}{\rho- \alpha\, {x_0} \left(e^{\rho t}-1\
 \]</span></p>
 <div id="metapopulation-dynamics" class="section level3">
 <h3><span class="header-section-number">3.2.1</span> Metapopulation dynamics</h3>
-<p>Consider a fragmented landscape in which habitable patches are connected by dispersal (for simplicity, suppose that all patches are reachable from any other). Call <span class="math inline">\(p(t)\)</span> the proportion of patches occupied by the species of interest at time <span class="math inline">\(t\)</span>, and assume that a) an empty patch (the proportion of empty patches is <span class="math inline">\(1 - p(t)\)</span>) is colonized by the species with rate <span class="math inline">\(\gamma\, p(t)\)</span>, where <span class="math inline">\(\gamma\)</span> is the “colonization rate”, and b) that occupied patches become empty at rate <span class="math inline">\(\epsilon\, p(t)\)</span> (“extinction rate”). We want to model the proportion of patches occupied by the population at time <span class="math inline">\(t\)</span> <span class="citation">(Levins <a href="#ref-levins1969some" role="doc-biblioref">1969</a>)</span>:</p>
+<p>Consider a fragmented landscape in which habitable patches are connected by dispersal (for simplicity, suppose that all patches are reachable from any other). Call <span class="math inline">\(p(t)\)</span> the proportion of patches occupied by the species of interest at time <span class="math inline">\(t\)</span>, and assume that a) an empty patch (the proportion of empty patches is <span class="math inline">\(1 - p(t)\)</span>) is colonized by the species with rate <span class="math inline">\(\gamma\, p(t)\)</span>, where <span class="math inline">\(\gamma\)</span> is the “colonization rate”, and b) that occupied patches become empty at rate <span class="math inline">\(\epsilon\, p(t)\)</span> (“extinction rate”). We want to model the proportion of patches occupied by the population at time <span class="math inline">\(t\)</span> <span class="citation">(Levins <a href="#ref-levins1969some">1969</a>)</span>:</p>
 <p><span class="math display">\[
 \dfrac{d p(t)}{dt} = \gamma\, p(t)(1 - p(t)) - \epsilon\, p(t) = p(t) ((\gamma - \epsilon) - \gamma\,  p(t))
 \]</span></p>
@@ -360,7 +358,7 @@ x(t) = \frac{\rho\, {x_0}\, e^{\rho t}}{\rho- \alpha\, {x_0} \left(e^{\rho t}-1\
 <div id="existence-of-an-equilibrium" class="section level3">
 <h3><span class="header-section-number">3.3.1</span> Existence of an equilibrium</h3>
 <p>Returning to the multi-species system, and in analogy with the single species model, we can look for stationary points (fixed points, equilibria). If the matrix <span class="math inline">\(A\)</span> is not singular, then we can look for a solution of <span class="math inline">\(r + Ax = 0\)</span> that has positive components (called a <strong>feasible equilibrium</strong>). <strong>If such point exists, it is unique</strong> and is the solution of <span class="math inline">\(Ax^\star = -r\)</span>, <span class="math inline">\(x^\star = -A^{-1}r\)</span>.</p>
-<p>Suppose that the GLV has no feasible equilibrium. Then all trajectories (if bounded; some could grow to infinity) reach the boundary of <span class="math inline">\(\mathbb R^n_{0+}\)</span>. Practically, this means that <strong>to ensure coexistence of all species, it is necessary to have an equilibrium in the interior <span class="math inline">\(\mathbb R^n_{+}\)</span></strong>. For a proof, see Theorem 5.2.1 in <span class="citation">Hofbauer and Sigmund (<a href="#ref-hofbauer1998evolutionary" role="doc-biblioref">1998</a>)</span>.</p>
+<p>Suppose that the GLV has no feasible equilibrium. Then all trajectories (if bounded; some could grow to infinity) reach the boundary of <span class="math inline">\(\mathbb R^n_{0+}\)</span>. Practically, this means that <strong>to ensure coexistence of all species, it is necessary to have an equilibrium in the interior <span class="math inline">\(\mathbb R^n_{+}\)</span></strong>. For a proof, see Theorem 5.2.1 in <span class="citation">Hofbauer and Sigmund (<a href="#ref-hofbauer1998evolutionary">1998</a>)</span>.</p>
 </div>
 <div id="stability-of-the-coexistence-equilibrium" class="section level3">
 <h3><span class="header-section-number">3.3.2</span> Stability of the coexistence equilibrium</h3>
@@ -390,8 +388,8 @@ M = \left. {J} \right|_{ {x}^\star} = D(x^\star)A
 <div id="types-of-dynamics" class="section level3">
 <h3><span class="header-section-number">3.3.3</span> Types of dynamics</h3>
 <p>As we’ve seen before, for a single population, there are only three types of dynamics that can be displayed by a GLV model with a single species: either the population grows to infinity, shrinks to zero, or asymptotically reaches a steady state.</p>
-<p><span class="citation">Smale (<a href="#ref-smale1976differential" role="doc-biblioref">1976</a>)</span> and <span class="citation">Hirsch (<a href="#ref-hirsch1982systems" role="doc-biblioref">1982</a>)</span> showed that limit cylces are possible for three or more species, and that any dynamics can be found for competitive GLV systems with five or more species.</p>
-<p>A few examples taken from <span class="citation">Barabás, J. Michalska-Smith, and Allesina (<a href="#ref-barabas2016effect" role="doc-biblioref">2016</a>)</span>. First, a competitive system in which a feasible equilibrium does not exist, leading to the extinction of a species. For example, take</p>
+<p><span class="citation">Smale (<a href="#ref-smale1976differential">1976</a>)</span> and <span class="citation">Hirsch (<a href="#ref-hirsch1982systems">1982</a>)</span> showed that limit cylces are possible for three or more species, and that any dynamics can be found for competitive GLV systems with five or more species.</p>
+<p>A few examples taken from <span class="citation">Barabás, J. Michalska-Smith, and Allesina (<a href="#ref-barabas2016effect">2016</a>)</span>. First, a competitive system in which a feasible equilibrium does not exist, leading to the extinction of a species. For example, take</p>
 <p><span class="math display">\[
 r = \begin{pmatrix} 
 1\\
@@ -499,9 +497,9 @@ V(x(t)) = 1^T C \left( x(t) -x^\star -x^\star \cdot \log (x(t) / x^\star)\right)
 <p>Robert MacArthur was born in Toronto, and moved to Vermont when his father (a geneticist) became a professor at Marlboro College.</p>
 <p>He studied mathematics first at Marlboro College and then at Brown University. He enrolled as a PhD student in mathematics at Yale, but quickly switched to studying ecology with George Evelyn Hutchinson.</p>
 <p>He was a professor first at the University of Pennsylvania and then at Princeton University. In his brief career (he died at age 45) he revolutionized ecology, by making it into a rigorous, predictive science based on general principles.</p>
-<p>He is recognized for developing the <em>Theory of Island Biogeography</em> (with E. O. Wilson, <span class="citation">MacArthur and Wilson (<a href="#ref-macarthur2001theory" role="doc-biblioref">2001</a>)</span>), the investigation of limiting similarity (with R. Levins, <span class="citation">MacArthur and Levins (<a href="#ref-macarthur1967limiting" role="doc-biblioref">1967</a>)</span>), the contributions to the complexity-stability debate (<span class="citation">MacArthur (<a href="#ref-macarthur1955fluctuations" role="doc-biblioref">1955</a>)</span>, see next lecture). The consumer-resource model he proposed in 1969 now bears his name (published also in <span class="citation">MacArthur (<a href="#ref-macarthur1970species" role="doc-biblioref">1970</a>)</span> in a longer form—the first paper in the journal Theoretical Population Biology!).</p>
+<p>He is recognized for developing the <em>Theory of Island Biogeography</em> (with E. O. Wilson, <span class="citation">MacArthur and Wilson (<a href="#ref-macarthur2001theory">2001</a>)</span>), the investigation of limiting similarity (with R. Levins, <span class="citation">MacArthur and Levins (<a href="#ref-macarthur1967limiting">1967</a>)</span>), the contributions to the complexity-stability debate (<span class="citation">MacArthur (<a href="#ref-macarthur1955fluctuations">1955</a>)</span>, see next lecture). The consumer-resource model he proposed in 1969 now bears his name (published also in <span class="citation">MacArthur (<a href="#ref-macarthur1970species">1970</a>)</span> in a longer form—the first paper in the journal Theoretical Population Biology!).</p>
 </div>
-<p>MacArtur considered a system with two classes of equations: those describing the dynamics of consumers <span class="math inline">\((x_i)\)</span> and resources (<span class="math inline">\(y_i\)</span>). Resources do not interact with each other, and consumers interact only through the sharing of resources. Several parameterizations are possible—here we choose a simple formulation that retains the main features of the model (see <span class="citation">Case and Casten (<a href="#ref-case1979global" role="doc-biblioref">1979</a>)</span> for a slightly more general model):</p>
+<p>MacArtur considered a system with two classes of equations: those describing the dynamics of consumers <span class="math inline">\((x_i)\)</span> and resources (<span class="math inline">\(y_i\)</span>). Resources do not interact with each other, and consumers interact only through the sharing of resources. Several parameterizations are possible—here we choose a simple formulation that retains the main features of the model (see <span class="citation">Case and Casten (<a href="#ref-case1979global">1979</a>)</span> for a slightly more general model):</p>
 <p><span class="math display">\[
 \begin{cases}
 \dfrac{d y_i}{dt} = y_i \left(r_i - b_i\, y_i - \sum_j P_{ij}\, x_j \right)\\
@@ -575,7 +573,7 @@ S &amp; -S A_{12}A_{22}^{-1}\\
 \]</span></p>
 <p>where <span class="math inline">\(S = (A_{11} - A_{12}A_{22}^{-1} A_{21})^{-1}\)</span></p>
 </div>
-<p>We can rewrite the system as a generalized Lotka-Volterra model (see <span class="citation">Case and Casten (<a href="#ref-case1979global" role="doc-biblioref">1979</a>)</span>). We define:</p>
+<p>We can rewrite the system as a generalized Lotka-Volterra model (see <span class="citation">Case and Casten (<a href="#ref-case1979global">1979</a>)</span>). We define:</p>
 <p><span class="math display">\[
 z = (y,x)^T\;\;s = (r, -m)^T
 \]</span></p>
@@ -602,9 +600,9 @@ A \begin{pmatrix} w_1\\ w_2 \end{pmatrix} = \begin{pmatrix} A_{11}w_1 + A_{12} w
 <li>Now suppose that <span class="math inline">\(w_1 \neq 0\)</span> and <span class="math inline">\(w_2 = 0\)</span>, but this implies <span class="math inline">\(A_{11}w_1 = 0\)</span> with <span class="math inline">\(w_1 \neq 0\)</span>, which is impossible given that <span class="math inline">\(A_{11}\)</span> is clearly of full rank.</li>
 <li>We are left with the case in which both <span class="math inline">\(w_1 \neq 0\)</span> and <span class="math inline">\(w_2 \neq 0\)</span>. We have <span class="math inline">\(A_{21} w_1 = 0\)</span>, but <span class="math inline">\(A_{21} w_1= D(v)P^T w_1 = 0\)</span>, which implies <span class="math inline">\(P^T w_1 = 0\)</span> because all <span class="math inline">\(v_i &gt; 0\)</span>. Then, multiply the first set of equations by <span class="math inline">\(w_1^T\)</span> and the second by <span class="math inline">\(w_2^T\)</span>. We obtain <span class="math inline">\(w_1^T A_{11} w_1 - w_1^T P w_2 = 0\)</span> and <span class="math inline">\(w_2^T D(v)P^T w_1 = 0 = w_2^T P^T w_1\)</span>. But then <span class="math inline">\(w_1^T P w_2 = 0\)</span>, leaving us with <span class="math inline">\(w_1^T A_{11} w_1 = 0\)</span> with <span class="math inline">\(w_1 \neq 0\)</span>, which is again a contradiction because <span class="math inline">\(A_{11}\)</span> is clearly negative definite (and as such <span class="math inline">\(w_1^T A_{11} w_1 \leq 0\)</span>, with equality implying <span class="math inline">\(w_1 = 0\)</span>).</li>
 </ul>
-<p>We have proven that <span class="math inline">\(A\)</span> is nonsingular, and therefore a unique equilibrium point for the system exists (the equilibrium for the moment needs not to be feasible) whenever <span class="math inline">\(A_{11} = -D(b)\)</span> is negative definite (which is always the case whenever resources are self-regulating) and, importantly, <span class="math inline">\(A_{12}\)</span> has rank <span class="math inline">\(k\)</span> (the number of consumers). This in turn implies that <strong>the number of resources must be larger (or equal) than the number of consumers</strong>. A similar argument is developed in the classic <span class="citation">Levin (<a href="#ref-levin1970community" role="doc-biblioref">1970</a>)</span>.</p>
+<p>We have proven that <span class="math inline">\(A\)</span> is nonsingular, and therefore a unique equilibrium point for the system exists (the equilibrium for the moment needs not to be feasible) whenever <span class="math inline">\(A_{11} = -D(b)\)</span> is negative definite (which is always the case whenever resources are self-regulating) and, importantly, <span class="math inline">\(A_{12}\)</span> has rank <span class="math inline">\(k\)</span> (the number of consumers). This in turn implies that <strong>the number of resources must be larger (or equal) than the number of consumers</strong>. A similar argument is developed in the classic <span class="citation">Levin (<a href="#ref-levin1970community">1970</a>)</span>.</p>
 <div class="boxpaper">
-<p><strong>Key paper: <span class="citation">Levin (<a href="#ref-levin1970community" role="doc-biblioref">1970</a>)</span></strong></p>
+<p><strong>Key paper: <span class="citation">Levin (<a href="#ref-levin1970community">1970</a>)</span></strong></p>
 <p>Starting from fairly generic assumptions, the principle of competitive exclusion is generalized: <em>No stable equilibrium can be attained in an ecological community in which some <span class="math inline">\(r\)</span> components are limited by less than <span class="math inline">\(r\)</span> limiting factors. In particular, no stable equilibrium is possible if some <span class="math inline">\(r\)</span> species are limited by less than <span class="math inline">\(r\)</span> factors.</em></p>
 </div>
 </div>
@@ -648,7 +646,7 @@ P^T &amp; 0_{k,k}
 </div>
 <div id="separation-of-time-scales" class="section level3">
 <h3><span class="header-section-number">3.4.3</span> Separation of time-scales</h3>
-<p>In the original article, <span class="citation">MacArthur (<a href="#ref-macarthur1970species" role="doc-biblioref">1970</a>)</span> takes an interesting shortcut, which can shed light on the behavior of the GLV when the matrix of interactions is symmetric (i.e., <span class="math inline">\(A = A^T\)</span>). Consider the Consumer-Resource model above, and assume that resources equilibrate quickly compared to the dynamics of the consumers. In practice, this means that the system operates on two different time scales, such that the consumers perceive resources to be constantly at equilibrium.</p>
+<p>In the original article, <span class="citation">MacArthur (<a href="#ref-macarthur1970species">1970</a>)</span> takes an interesting shortcut, which can shed light on the behavior of the GLV when the matrix of interactions is symmetric (i.e., <span class="math inline">\(A = A^T\)</span>). Consider the Consumer-Resource model above, and assume that resources equilibrate quickly compared to the dynamics of the consumers. In practice, this means that the system operates on two different time scales, such that the consumers perceive resources to be constantly at equilibrium.</p>
 <p>We solve the equations for the resources:</p>
 <p><span class="math display">\[
 \begin{align}
@@ -691,7 +689,7 @@ And therefore, by chain rule:</p>
 <p><span class="math display">\[
 \dfrac{d V(x(t))} {d t} = \sum_i \dfrac{\partial V}{\partial x_i} \dfrac{d x_i}{d t} = \sum_i x_i v_i \frac{1}{2}\left(\dfrac{\partial V}{\partial x_i} \right)^2
 \]</span></p>
-<p>which is always nonnegative, and is zero at equilibrium. Therefore, <span class="math inline">\(V(x(t))\)</span> is maximized through the dynamics. This holds even more generally, as we will see in the next lecture and in the following homework. In a way, competitive dynamics are “optimizing” <span class="math inline">\(V\)</span>, by following a gradient. This argument can be further expanded, showing that many ecological models can be interpreted as optimization processes (<span class="citation">Marsland III, Cui, and Mehta (<a href="#ref-marsland2019minimum" role="doc-biblioref">2019</a>)</span>).</p>
+<p>which is always nonnegative, and is zero at equilibrium. Therefore, <span class="math inline">\(V(x(t))\)</span> is maximized through the dynamics. This holds even more generally, as we will see in the next lecture and in the following homework. In a way, competitive dynamics are “optimizing” <span class="math inline">\(V\)</span>, by following a gradient. This argument can be further expanded, showing that many ecological models can be interpreted as optimization processes (<span class="citation">Marsland III, Cui, and Mehta (<a href="#ref-marsland2019minimum">2019</a>)</span>).</p>
 <div class="boxhomework">
 <p><strong>Homework 3b</strong></p>
 <p>Consider a five-species system with symmetric, stable <span class="math inline">\(B\)</span> (with all positive coefficients) and positive <span class="math inline">\(s\)</span>, yielding the feasible equilibrium <span class="math inline">\(x^\star\)</span>.</p>
@@ -707,9 +705,9 @@ And therefore, by chain rule:</p>
 <h2><span class="header-section-number">3.5</span> Further readings</h2>
 <p>On the theory of GLV:</p>
 <ul>
-<li><p><span class="citation">Hofbauer and Sigmund (<a href="#ref-hofbauer1998evolutionary" role="doc-biblioref">1998</a>)</span> is a wonderful introduction to dynamical systems in ecology and population genetics, with a nice introduction to evolutionary game theory.</p></li>
-<li><p><span class="citation">Hadeler, Mackey, and Stevens (<a href="#ref-hadeler2017topics" role="doc-biblioref">2017</a>)</span> contains a more mathematically-oriented treatment of the material covered in the first part of this lecture.</p></li>
-<li><p><span class="citation">Baigent (<a href="#ref-baigent2016lotka" role="doc-biblioref">2016</a>)</span> is a mathematical introduction to Lotka-Volterra dynamics.</p></li>
+<li><p><span class="citation">Hofbauer and Sigmund (<a href="#ref-hofbauer1998evolutionary">1998</a>)</span> is a wonderful introduction to dynamical systems in ecology and population genetics, with a nice introduction to evolutionary game theory.</p></li>
+<li><p><span class="citation">Hadeler, Mackey, and Stevens (<a href="#ref-hadeler2017topics">2017</a>)</span> contains a more mathematically-oriented treatment of the material covered in the first part of this lecture.</p></li>
+<li><p><span class="citation">Baigent (<a href="#ref-baigent2016lotka">2016</a>)</span> is a mathematical introduction to Lotka-Volterra dynamics.</p></li>
 </ul>
 
 </div>
@@ -720,43 +718,43 @@ And therefore, by chain rule:</p>
 <p>Baigent, Stephen A. 2016. “Lotka-Volterra Dynamics: An Introduction.” In. World Scientific.</p>
 </div>
 <div id="ref-barabas2016effect">
-<p>Barabás, György, Matthew J. Michalska-Smith, and Stefano Allesina. 2016. “The Effect of Intra-and Interspecific Competition on Coexistence in Multispecies Communities.” <em>The American Naturalist</em> 188 (1): E1–E12.</p>
+<p>Barabás, György, Matthew J. Michalska-Smith, and Stefano Allesina. 2016. “The Effect of Intra-and Interspecific Competition on Coexistence in Multispecies Communities.” <em>The American Naturalist</em> 188 (1). University of Chicago Press Chicago, IL: E1–E12.</p>
 </div>
 <div id="ref-case1979global">
-<p>Case, Ted J, and Richard G Casten. 1979. “Global Stability and Multiple Domains of Attraction in Ecological Systems.” <em>The American Naturalist</em> 113 (5): 705–14.</p>
+<p>Case, Ted J, and Richard G Casten. 1979. “Global Stability and Multiple Domains of Attraction in Ecological Systems.” <em>The American Naturalist</em> 113 (5). University of Chicago Press: 705–14.</p>
 </div>
 <div id="ref-hadeler2017topics">
 <p>Hadeler, Karl Peter, Michael C Mackey, and Angela Stevens. 2017. <em>Topics in Mathematical Biology</em>. Springer.</p>
 </div>
 <div id="ref-hirsch1982systems">
-<p>Hirsch, Morris W. 1982. “Systems of Differential Equations Which Are Competitive or Cooperative: I. Limit Sets.” <em>SIAM Journal on Mathematical Analysis</em> 13 (2): 167–79.</p>
+<p>Hirsch, Morris W. 1982. “Systems of Differential Equations Which Are Competitive or Cooperative: I. Limit Sets.” <em>SIAM Journal on Mathematical Analysis</em> 13 (2). SIAM: 167–79.</p>
 </div>
 <div id="ref-hofbauer1998evolutionary">
 <p>Hofbauer, Josef, and Karl Sigmund. 1998. <em>Evolutionary Games and Population Dynamics</em>. Cambridge University Press.</p>
 </div>
 <div id="ref-levin1970community">
-<p>Levin, Simon A. 1970. “Community Equilibria and Stability, and an Extension of the Competitive Exclusion Principle.” <em>The American Naturalist</em> 104 (939): 413–23.</p>
+<p>Levin, Simon A. 1970. “Community Equilibria and Stability, and an Extension of the Competitive Exclusion Principle.” <em>The American Naturalist</em> 104 (939). University of Chicago Press: 413–23.</p>
 </div>
 <div id="ref-levins1969some">
-<p>Levins, Richard. 1969. “Some Demographic and Genetic Consequences of Environmental Heterogeneity for Biological Control.” <em>American Entomologist</em> 15 (3): 237–40.</p>
+<p>Levins, Richard. 1969. “Some Demographic and Genetic Consequences of Environmental Heterogeneity for Biological Control.” <em>American Entomologist</em> 15 (3). Oxford University Press: 237–40.</p>
 </div>
 <div id="ref-macarthur1955fluctuations">
-<p>MacArthur, Robert. 1955. “Fluctuations of Animal Populations and a Measure of Community Stability.” <em>Ecology</em> 36 (3): 533–36.</p>
+<p>MacArthur, Robert. 1955. “Fluctuations of Animal Populations and a Measure of Community Stability.” <em>Ecology</em> 36 (3). JSTOR: 533–36.</p>
 </div>
 <div id="ref-macarthur1970species">
-<p>MacArthur, Robert. 1970. “Species Packing and Competitive Equilibrium for Many Species.” <em>Theoretical Population Biology</em> 1 (1): 1–11.</p>
+<p>MacArthur, Robert. 1970. “Species Packing and Competitive Equilibrium for Many Species.” <em>Theoretical Population Biology</em> 1 (1). Elsevier: 1–11.</p>
 </div>
 <div id="ref-macarthur2001theory">
 <p>MacArthur, Robert H, and Edward O Wilson. 2001. <em>The Theory of Island Biogeography</em>. Vol. 1. Princeton university press.</p>
 </div>
 <div id="ref-macarthur1967limiting">
-<p>MacArthur, Robert, and Richard Levins. 1967. “The Limiting Similarity, Convergence, and Divergence of Coexisting Species.” <em>The American Naturalist</em> 101 (921): 377–85.</p>
+<p>MacArthur, Robert, and Richard Levins. 1967. “The Limiting Similarity, Convergence, and Divergence of Coexisting Species.” <em>The American Naturalist</em> 101 (921). Science Press: 377–85.</p>
 </div>
 <div id="ref-marsland2019minimum">
 <p>Marsland III, Robert, Wenping Cui, and Pankaj Mehta. 2019. “The Minimum Environmental Perturbation Principle: A New Perspective on Niche Theory.” <em>arXiv Preprint arXiv:1901.09673</em>.</p>
 </div>
 <div id="ref-smale1976differential">
-<p>Smale, Steve. 1976. “On the Differential Equations of Species in Competition.” <em>Journal of Mathematical Biology</em> 3 (1): 5–7.</p>
+<p>Smale, Steve. 1976. “On the Differential Equations of Species in Competition.” <em>Journal of Mathematical Biology</em> 3 (1). Springer: 5–7.</p>
 </div>
 </div>
             </section>

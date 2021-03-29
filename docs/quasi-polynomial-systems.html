@@ -53,9 +53,9 @@
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -64,16 +64,14 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -82,9 +80,9 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  {  }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+a.sourceLine::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -315,7 +313,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="global-stability-2" class="section level2">
 <h2><span class="header-section-number">9.1</span> Global stability</h2>
 <p>Many dynamical models describing ecological, epidemiological and evolutionary systems have equilibria that are globally stable (e.g., SIR, SIS, logistic growth, Levins’ metapopulation model, MacArthur’s consumer-resource model).</p>
-<p>By far, the most powerful method to prove the global stability of an equilibrium is the so-called “Lyapunov direct method”, which we’ve encountered several times already. The main drawback of this method is that devising an appropriate Lyapunov function requires ingenuityand—as <span class="citation">Strogatz (<a href="#ref-strogatz2018nonlinear" role="doc-biblioref">2018</a>)</span> put it—a good deal of “divine inspiration”. Here we take a different approach: we embed our model of interest into a (possibly larger) GLV model, and then attempt applying the typical Lyapunov function for GLV to our transformed system (an embedding originally proposed by <span class="citation">Brenig (<a href="#ref-brenig1988complete" role="doc-biblioref">1988</a>)</span>). In practice, this will require us to think carefully about how perturbations in the original system translate into the perturbations of the (larger) GLV model.</p>
+<p>By far, the most powerful method to prove the global stability of an equilibrium is the so-called “Lyapunov direct method”, which we’ve encountered several times already. The main drawback of this method is that devising an appropriate Lyapunov function requires ingenuityand—as <span class="citation">Strogatz (<a href="#ref-strogatz2018nonlinear">2018</a>)</span> put it—a good deal of “divine inspiration”. Here we take a different approach: we embed our model of interest into a (possibly larger) GLV model, and then attempt applying the typical Lyapunov function for GLV to our transformed system (an embedding originally proposed by <span class="citation">Brenig (<a href="#ref-brenig1988complete">1988</a>)</span>). In practice, this will require us to think carefully about how perturbations in the original system translate into the perturbations of the (larger) GLV model.</p>
 <p>We first show how systems that are in “Quasi-Polynomial” (QP) form can be embedded into a larger GLV by means of simple matrix operations. Then, we discuss strategies to determine global stability for the embedding. Finally, we show that other models can be turned into QP, and from there into GLV.</p>
 </div>
 <div id="from-qp-to-glv" class="section level2">
@@ -324,12 +322,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math display">\[
 \frac{d x_i(t)}{d t} = x_i(t) \left(s_i + \sum_{j = i}^m A_{ij} \prod_{k=1}^n x_k(t)^{B_{jk}}\right)
 \]</span></p>
-<p>where <span class="math inline">\(s\)</span> is a vector of “growth rates” (not necessarily positive), <span class="math inline">\(A\)</span> is a matrix of interactions, and <span class="math inline">\(B\)</span> a <span class="math inline">\(m \times n\)</span> matrix of exponents. Note that if we take <span class="math inline">\(m = n\)</span> and <span class="math inline">\(B = I_n\)</span> (the identity matrix), we recover the GLV model. If <span class="math inline">\(B\)</span> contains only integers, then we have a polynomial system. Extending this model to real (but not necessarily integer) numbers <span class="math inline">\(B_{jk}\)</span>, we have a “Quasi-Polynomial” (QP) system (<span class="citation">Hernández-Bermejo, Fairén, and Brenig (<a href="#ref-hernandez1998algebraic" role="doc-biblioref">1998</a>)</span>).</p>
+<p>where <span class="math inline">\(s\)</span> is a vector of “growth rates” (not necessarily positive), <span class="math inline">\(A\)</span> is a matrix of interactions, and <span class="math inline">\(B\)</span> a <span class="math inline">\(m \times n\)</span> matrix of exponents. Note that if we take <span class="math inline">\(m = n\)</span> and <span class="math inline">\(B = I_n\)</span> (the identity matrix), we recover the GLV model. If <span class="math inline">\(B\)</span> contains only integers, then we have a polynomial system. Extending this model to real (but not necessarily integer) numbers <span class="math inline">\(B_{jk}\)</span>, we have a “Quasi-Polynomial” (QP) system (<span class="citation">Hernández-Bermejo, Fairén, and Brenig (<a href="#ref-hernandez1998algebraic">1998</a>)</span>).</p>
 <p>In general, we assume that <span class="math inline">\(A\)</span> is of size <span class="math inline">\(n \times m\)</span>, <span class="math inline">\(B\)</span> is <span class="math inline">\(m \times n\)</span>, and that the <span class="math inline">\(x_i(t)\)</span> are real and positive (if that’s not the case, one needs to perform a change of variables that ensures positivity). The system has <span class="math inline">\(n\)</span> variables (the <span class="math inline">\(x_i(t)\)</span>), and we can identify <span class="math inline">\(m\)</span> “quasi-monomials”:</p>
 <p><span class="math display">\[
 \prod_{k=1}^n x_k^{B_{jk}}
 \]</span></p>
-<p>Several models in ecology and evolution belong to this class. For example, a model that departs from the GLV family is the so-called Leslie-Gower predator-prey model (<span class="citation">Leslie (<a href="#ref-leslie1948some" role="doc-biblioref">1948</a>)</span>):</p>
+<p>Several models in ecology and evolution belong to this class. For example, a model that departs from the GLV family is the so-called Leslie-Gower predator-prey model (<span class="citation">Leslie (<a href="#ref-leslie1948some">1948</a>)</span>):</p>
 <p><span class="math display">\[
 \begin{cases}
 \dfrac{d H}{dt} = H(\rho_h - \alpha_h P - \beta_h H)\\
@@ -341,7 +339,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>History: Patrick H. Leslie (1900-1972)</strong></p>
 <p><img src="img/Leslie.jpg" width="35%" style="display: block; margin: auto;" /></p>
 <p>Born in Scotland, he studied physiology at Oxford University (Christ Church College). He worked for a few years in the department of pathology, and in 1935 he joined the Bureau of Animal Population, a new center led by Charles Elton. There, he worked on population dynamics mergin theoretical work and applications.</p>
-<p>In 1945 he published in Biometrika his masterpiece, <em>On the use of matrices in certain population mathematics</em> (<span class="citation">Leslie (<a href="#ref-leslie1945use" role="doc-biblioref">1945</a>)</span>). In this paper, he developed models for structured populations, which were then extended in several ways, and are still in use today. The so-called Leslie-Gower predator-prey model is developed in a follow-up paper in the same journal (<span class="citation">Leslie (<a href="#ref-leslie1948some" role="doc-biblioref">1948</a>)</span>).</p>
+<p>In 1945 he published in Biometrika his masterpiece, <em>On the use of matrices in certain population mathematics</em> (<span class="citation">Leslie (<a href="#ref-leslie1945use">1945</a>)</span>). In this paper, he developed models for structured populations, which were then extended in several ways, and are still in use today. The so-called Leslie-Gower predator-prey model is developed in a follow-up paper in the same journal (<span class="citation">Leslie (<a href="#ref-leslie1948some">1948</a>)</span>).</p>
 </div>
 <p>Solving for the coexistence equilibrium, we find:</p>
 <p><span class="math display">\[
@@ -407,7 +405,7 @@ M = B A = \begin{pmatrix}
 </div>
 <div id="stability-of-glv" class="section level2">
 <h2><span class="header-section-number">9.3</span> Stability of GLV</h2>
-<p>Before proceeding to prove the stability of the coexistence equilibrium for the Leslie-Gower model, we need to revisit the Lyapunov function for the GLV introduced by <span class="citation">Goh (<a href="#ref-goh1977global" role="doc-biblioref">1977</a>)</span>, which we have encountered before. Take a GLV:</p>
+<p>Before proceeding to prove the stability of the coexistence equilibrium for the Leslie-Gower model, we need to revisit the Lyapunov function for the GLV introduced by <span class="citation">Goh (<a href="#ref-goh1977global">1977</a>)</span>, which we have encountered before. Take a GLV:</p>
 <p><span class="math display">\[
 \dfrac{d z}{d t} = D(z)(r + M z) = D(z)(M(z - z^\star)) = D(z)M\Delta z
 \]</span></p>
@@ -512,71 +510,71 @@ W = c_2 (P - P^\star - P^\star \log(P/P^\star))+c_3 (P/H - P^\star/H^\star - (P^
 <li>If the value is negative for every choice of <span class="math inline">\(\Delta z\)</span>, then the constants in <span class="math inline">\(D(c)\)</span> are appropriate; if not, modify <span class="math inline">\(D(c)\)</span>, trying to minimize the number of <span class="math inline">\(\Delta z\)</span> leading to a positive result.</li>
 </ul>
 <p>For example, this code finds a set of constants for the Leslie-Gower model:</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="quasi-polynomial-systems.html#cb85-1"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb85-2"><a href="quasi-polynomial-systems.html#cb85-2"></a><span class="co"># choose random parameters </span></span>
-<span id="cb85-3"><a href="quasi-polynomial-systems.html#cb85-3"></a><span class="co"># (of course the same can be done for specific parameters)</span></span>
-<span id="cb85-4"><a href="quasi-polynomial-systems.html#cb85-4"></a>rh &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">1</span>)</span>
-<span id="cb85-5"><a href="quasi-polynomial-systems.html#cb85-5"></a>ah &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">1</span>)</span>
-<span id="cb85-6"><a href="quasi-polynomial-systems.html#cb85-6"></a>bh &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">1</span>)</span>
-<span id="cb85-7"><a href="quasi-polynomial-systems.html#cb85-7"></a>rp &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">1</span>)</span>
-<span id="cb85-8"><a href="quasi-polynomial-systems.html#cb85-8"></a>ap &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">1</span>)</span>
-<span id="cb85-9"><a href="quasi-polynomial-systems.html#cb85-9"></a><span class="co"># compute equilibria</span></span>
-<span id="cb85-10"><a href="quasi-polynomial-systems.html#cb85-10"></a>z1s &lt;-<span class="st"> </span>ap <span class="op">*</span><span class="st"> </span>rh <span class="op">/</span><span class="st"> </span>(ap <span class="op">*</span><span class="st"> </span>bh <span class="op">+</span><span class="st"> </span>ah <span class="op">*</span><span class="st"> </span>rp)</span>
-<span id="cb85-11"><a href="quasi-polynomial-systems.html#cb85-11"></a>z2s &lt;-<span class="st"> </span>rp <span class="op">*</span><span class="st"> </span>rh <span class="op">/</span><span class="st"> </span>(ap <span class="op">*</span><span class="st"> </span>bh <span class="op">+</span><span class="st"> </span>ah <span class="op">*</span><span class="st"> </span>rp)</span>
-<span id="cb85-12"><a href="quasi-polynomial-systems.html#cb85-12"></a><span class="co"># this is the equilibrium for &quot;z3&quot;</span></span>
-<span id="cb85-13"><a href="quasi-polynomial-systems.html#cb85-13"></a>z3s &lt;-<span class="st"> </span>z2s <span class="op">/</span><span class="st"> </span>z1s</span>
-<span id="cb85-14"><a href="quasi-polynomial-systems.html#cb85-14"></a><span class="co"># now choose random values </span></span>
-<span id="cb85-15"><a href="quasi-polynomial-systems.html#cb85-15"></a>npoints &lt;-<span class="st"> </span><span class="dv">1000</span></span>
-<span id="cb85-16"><a href="quasi-polynomial-systems.html#cb85-16"></a><span class="co"># for each zi</span></span>
-<span id="cb85-17"><a href="quasi-polynomial-systems.html#cb85-17"></a>z1 &lt;-<span class="st"> </span><span class="kw">runif</span>(npoints, <span class="dv">0</span>, <span class="dv">10</span> <span class="op">*</span><span class="st"> </span>z1s)</span>
-<span id="cb85-18"><a href="quasi-polynomial-systems.html#cb85-18"></a>z2 &lt;-<span class="st"> </span><span class="kw">runif</span>(npoints, <span class="dv">0</span>, <span class="dv">10</span> <span class="op">*</span><span class="st"> </span>z2s)</span>
-<span id="cb85-19"><a href="quasi-polynomial-systems.html#cb85-19"></a>z3 &lt;-<span class="st"> </span>z2 <span class="op">/</span><span class="st"> </span>z1</span>
-<span id="cb85-20"><a href="quasi-polynomial-systems.html#cb85-20"></a><span class="co"># now compute delta z</span></span>
-<span id="cb85-21"><a href="quasi-polynomial-systems.html#cb85-21"></a>deltaZ &lt;-<span class="st"> </span><span class="kw">cbind</span>(z1 <span class="op">-</span><span class="st"> </span>z1s, </span>
-<span id="cb85-22"><a href="quasi-polynomial-systems.html#cb85-22"></a>                z2 <span class="op">-</span><span class="st"> </span>z2s,</span>
-<span id="cb85-23"><a href="quasi-polynomial-systems.html#cb85-23"></a>                z3 <span class="op">-</span><span class="st"> </span>z3s)</span>
-<span id="cb85-24"><a href="quasi-polynomial-systems.html#cb85-24"></a><span class="co"># compute M</span></span>
-<span id="cb85-25"><a href="quasi-polynomial-systems.html#cb85-25"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(</span>
-<span id="cb85-26"><a href="quasi-polynomial-systems.html#cb85-26"></a>  <span class="op">-</span>bh, <span class="op">-</span>ah, <span class="dv">0</span>,</span>
-<span id="cb85-27"><a href="quasi-polynomial-systems.html#cb85-27"></a>  <span class="dv">0</span>, <span class="dv">0</span>, <span class="op">-</span>ap), <span class="dv">2</span>, <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb85-28"><a href="quasi-polynomial-systems.html#cb85-28"></a>B &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(</span>
-<span id="cb85-29"><a href="quasi-polynomial-systems.html#cb85-29"></a>  <span class="dv">1</span>, <span class="dv">0</span>,</span>
-<span id="cb85-30"><a href="quasi-polynomial-systems.html#cb85-30"></a>  <span class="dv">0</span>, <span class="dv">1</span>,</span>
-<span id="cb85-31"><a href="quasi-polynomial-systems.html#cb85-31"></a>  <span class="dv">-1</span>,<span class="dv">1</span>), <span class="dv">3</span>, <span class="dv">2</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb85-32"><a href="quasi-polynomial-systems.html#cb85-32"></a>M &lt;-<span class="st"> </span>B <span class="op">%*%</span><span class="st"> </span>A</span>
-<span id="cb85-33"><a href="quasi-polynomial-systems.html#cb85-33"></a></span>
-<span id="cb85-34"><a href="quasi-polynomial-systems.html#cb85-34"></a><span class="co"># this is the function we want to minimize</span></span>
-<span id="cb85-35"><a href="quasi-polynomial-systems.html#cb85-35"></a>LG_to_minimize &lt;-<span class="st"> </span><span class="cf">function</span>(const){</span>
-<span id="cb85-36"><a href="quasi-polynomial-systems.html#cb85-36"></a>  <span class="co"># keep constants positive, and </span></span>
-<span id="cb85-37"><a href="quasi-polynomial-systems.html#cb85-37"></a>  <span class="co"># with mean of 1 (for numerics)</span></span>
-<span id="cb85-38"><a href="quasi-polynomial-systems.html#cb85-38"></a>  const &lt;-<span class="st"> </span><span class="kw">abs</span>(const) <span class="op">/</span><span class="st"> </span><span class="kw">mean</span>(<span class="kw">abs</span>(const))</span>
-<span id="cb85-39"><a href="quasi-polynomial-systems.html#cb85-39"></a>  Dc &lt;-<span class="st"> </span><span class="kw">diag</span>(const)</span>
-<span id="cb85-40"><a href="quasi-polynomial-systems.html#cb85-40"></a>  K &lt;-<span class="st"> </span>(Dc <span class="op">%*%</span><span class="st"> </span>M)</span>
-<span id="cb85-41"><a href="quasi-polynomial-systems.html#cb85-41"></a>  K &lt;-<span class="st"> </span><span class="fl">0.5</span> <span class="op">*</span><span class="st"> </span>(K <span class="op">+</span><span class="st"> </span><span class="kw">t</span>(K))</span>
-<span id="cb85-42"><a href="quasi-polynomial-systems.html#cb85-42"></a>  <span class="co"># now compute dVdt for each deltaZ</span></span>
-<span id="cb85-43"><a href="quasi-polynomial-systems.html#cb85-43"></a>  target &lt;-<span class="st"> </span><span class="kw">apply</span>(deltaZ, <span class="dv">1</span>, </span>
-<span id="cb85-44"><a href="quasi-polynomial-systems.html#cb85-44"></a>                  <span class="cf">function</span>(dz) dz <span class="op">%*%</span><span class="st"> </span>K <span class="op">%*%</span><span class="st"> </span>dz)</span>
-<span id="cb85-45"><a href="quasi-polynomial-systems.html#cb85-45"></a>  <span class="co"># solution found</span></span>
-<span id="cb85-46"><a href="quasi-polynomial-systems.html#cb85-46"></a>  <span class="cf">if</span> (<span class="kw">all</span>(target <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>)) <span class="kw">return</span>(<span class="op">-</span><span class="dv">1</span>)</span>
-<span id="cb85-47"><a href="quasi-polynomial-systems.html#cb85-47"></a>  <span class="co"># otherwise, try to minimize</span></span>
-<span id="cb85-48"><a href="quasi-polynomial-systems.html#cb85-48"></a>  <span class="kw">return</span>(<span class="kw">sum</span>(target[target <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>]))</span>
-<span id="cb85-49"><a href="quasi-polynomial-systems.html#cb85-49"></a>}</span>
-<span id="cb85-50"><a href="quasi-polynomial-systems.html#cb85-50"></a></span>
-<span id="cb85-51"><a href="quasi-polynomial-systems.html#cb85-51"></a><span class="co"># use optim to find a solution</span></span>
-<span id="cb85-52"><a href="quasi-polynomial-systems.html#cb85-52"></a>tmp &lt;-<span class="st"> </span><span class="kw">optim</span>(<span class="dt">par =</span> <span class="kw">runif</span>(<span class="dv">3</span>), <span class="dt">fn =</span> LG_to_minimize)</span>
-<span id="cb85-53"><a href="quasi-polynomial-systems.html#cb85-53"></a><span class="cf">if</span>(tmp<span class="op">$</span>value <span class="op">==</span><span class="st"> </span><span class="dv">-1</span>) {</span>
-<span id="cb85-54"><a href="quasi-polynomial-systems.html#cb85-54"></a>  <span class="kw">print</span>(<span class="st">&quot;Found a set of constants&quot;</span>)</span>
-<span id="cb85-55"><a href="quasi-polynomial-systems.html#cb85-55"></a>  solution &lt;-<span class="st"> </span>tmp<span class="op">$</span>par</span>
-<span id="cb85-56"><a href="quasi-polynomial-systems.html#cb85-56"></a>  <span class="kw">print</span>(<span class="kw">round</span>(<span class="kw">abs</span>(solution) <span class="op">/</span><span class="st"> </span><span class="kw">mean</span>(<span class="kw">abs</span>(solution)),<span class="dv">3</span>))</span>
-<span id="cb85-57"><a href="quasi-polynomial-systems.html#cb85-57"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb85-2" data-line-number="2"><span class="co"># choose random parameters </span></a>
+<a class="sourceLine" id="cb85-3" data-line-number="3"><span class="co"># (of course the same can be done for specific parameters)</span></a>
+<a class="sourceLine" id="cb85-4" data-line-number="4">rh &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb85-5" data-line-number="5">ah &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb85-6" data-line-number="6">bh &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb85-7" data-line-number="7">rp &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb85-8" data-line-number="8">ap &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb85-9" data-line-number="9"><span class="co"># compute equilibria</span></a>
+<a class="sourceLine" id="cb85-10" data-line-number="10">z1s &lt;-<span class="st"> </span>ap <span class="op">*</span><span class="st"> </span>rh <span class="op">/</span><span class="st"> </span>(ap <span class="op">*</span><span class="st"> </span>bh <span class="op">+</span><span class="st"> </span>ah <span class="op">*</span><span class="st"> </span>rp)</a>
+<a class="sourceLine" id="cb85-11" data-line-number="11">z2s &lt;-<span class="st"> </span>rp <span class="op">*</span><span class="st"> </span>rh <span class="op">/</span><span class="st"> </span>(ap <span class="op">*</span><span class="st"> </span>bh <span class="op">+</span><span class="st"> </span>ah <span class="op">*</span><span class="st"> </span>rp)</a>
+<a class="sourceLine" id="cb85-12" data-line-number="12"><span class="co"># this is the equilibrium for &quot;z3&quot;</span></a>
+<a class="sourceLine" id="cb85-13" data-line-number="13">z3s &lt;-<span class="st"> </span>z2s <span class="op">/</span><span class="st"> </span>z1s</a>
+<a class="sourceLine" id="cb85-14" data-line-number="14"><span class="co"># now choose random values </span></a>
+<a class="sourceLine" id="cb85-15" data-line-number="15">npoints &lt;-<span class="st"> </span><span class="dv">1000</span></a>
+<a class="sourceLine" id="cb85-16" data-line-number="16"><span class="co"># for each zi</span></a>
+<a class="sourceLine" id="cb85-17" data-line-number="17">z1 &lt;-<span class="st"> </span><span class="kw">runif</span>(npoints, <span class="dv">0</span>, <span class="dv">10</span> <span class="op">*</span><span class="st"> </span>z1s)</a>
+<a class="sourceLine" id="cb85-18" data-line-number="18">z2 &lt;-<span class="st"> </span><span class="kw">runif</span>(npoints, <span class="dv">0</span>, <span class="dv">10</span> <span class="op">*</span><span class="st"> </span>z2s)</a>
+<a class="sourceLine" id="cb85-19" data-line-number="19">z3 &lt;-<span class="st"> </span>z2 <span class="op">/</span><span class="st"> </span>z1</a>
+<a class="sourceLine" id="cb85-20" data-line-number="20"><span class="co"># now compute delta z</span></a>
+<a class="sourceLine" id="cb85-21" data-line-number="21">deltaZ &lt;-<span class="st"> </span><span class="kw">cbind</span>(z1 <span class="op">-</span><span class="st"> </span>z1s, </a>
+<a class="sourceLine" id="cb85-22" data-line-number="22">                z2 <span class="op">-</span><span class="st"> </span>z2s,</a>
+<a class="sourceLine" id="cb85-23" data-line-number="23">                z3 <span class="op">-</span><span class="st"> </span>z3s)</a>
+<a class="sourceLine" id="cb85-24" data-line-number="24"><span class="co"># compute M</span></a>
+<a class="sourceLine" id="cb85-25" data-line-number="25">A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(</a>
+<a class="sourceLine" id="cb85-26" data-line-number="26">  <span class="op">-</span>bh, <span class="op">-</span>ah, <span class="dv">0</span>,</a>
+<a class="sourceLine" id="cb85-27" data-line-number="27">  <span class="dv">0</span>, <span class="dv">0</span>, <span class="op">-</span>ap), <span class="dv">2</span>, <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb85-28" data-line-number="28">B &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(</a>
+<a class="sourceLine" id="cb85-29" data-line-number="29">  <span class="dv">1</span>, <span class="dv">0</span>,</a>
+<a class="sourceLine" id="cb85-30" data-line-number="30">  <span class="dv">0</span>, <span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb85-31" data-line-number="31">  <span class="dv">-1</span>,<span class="dv">1</span>), <span class="dv">3</span>, <span class="dv">2</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb85-32" data-line-number="32">M &lt;-<span class="st"> </span>B <span class="op">%*%</span><span class="st"> </span>A</a>
+<a class="sourceLine" id="cb85-33" data-line-number="33"></a>
+<a class="sourceLine" id="cb85-34" data-line-number="34"><span class="co"># this is the function we want to minimize</span></a>
+<a class="sourceLine" id="cb85-35" data-line-number="35">LG_to_minimize &lt;-<span class="st"> </span><span class="cf">function</span>(const){</a>
+<a class="sourceLine" id="cb85-36" data-line-number="36">  <span class="co"># keep constants positive, and </span></a>
+<a class="sourceLine" id="cb85-37" data-line-number="37">  <span class="co"># with mean of 1 (for numerics)</span></a>
+<a class="sourceLine" id="cb85-38" data-line-number="38">  const &lt;-<span class="st"> </span><span class="kw">abs</span>(const) <span class="op">/</span><span class="st"> </span><span class="kw">mean</span>(<span class="kw">abs</span>(const))</a>
+<a class="sourceLine" id="cb85-39" data-line-number="39">  Dc &lt;-<span class="st"> </span><span class="kw">diag</span>(const)</a>
+<a class="sourceLine" id="cb85-40" data-line-number="40">  K &lt;-<span class="st"> </span>(Dc <span class="op">%*%</span><span class="st"> </span>M)</a>
+<a class="sourceLine" id="cb85-41" data-line-number="41">  K &lt;-<span class="st"> </span><span class="fl">0.5</span> <span class="op">*</span><span class="st"> </span>(K <span class="op">+</span><span class="st"> </span><span class="kw">t</span>(K))</a>
+<a class="sourceLine" id="cb85-42" data-line-number="42">  <span class="co"># now compute dVdt for each deltaZ</span></a>
+<a class="sourceLine" id="cb85-43" data-line-number="43">  target &lt;-<span class="st"> </span><span class="kw">apply</span>(deltaZ, <span class="dv">1</span>, </a>
+<a class="sourceLine" id="cb85-44" data-line-number="44">                  <span class="cf">function</span>(dz) dz <span class="op">%*%</span><span class="st"> </span>K <span class="op">%*%</span><span class="st"> </span>dz)</a>
+<a class="sourceLine" id="cb85-45" data-line-number="45">  <span class="co"># solution found</span></a>
+<a class="sourceLine" id="cb85-46" data-line-number="46">  <span class="cf">if</span> (<span class="kw">all</span>(target <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>)) <span class="kw">return</span>(<span class="op">-</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb85-47" data-line-number="47">  <span class="co"># otherwise, try to minimize</span></a>
+<a class="sourceLine" id="cb85-48" data-line-number="48">  <span class="kw">return</span>(<span class="kw">sum</span>(target[target <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>]))</a>
+<a class="sourceLine" id="cb85-49" data-line-number="49">}</a>
+<a class="sourceLine" id="cb85-50" data-line-number="50"></a>
+<a class="sourceLine" id="cb85-51" data-line-number="51"><span class="co"># use optim to find a solution</span></a>
+<a class="sourceLine" id="cb85-52" data-line-number="52">tmp &lt;-<span class="st"> </span><span class="kw">optim</span>(<span class="dt">par =</span> <span class="kw">runif</span>(<span class="dv">3</span>), <span class="dt">fn =</span> LG_to_minimize)</a>
+<a class="sourceLine" id="cb85-53" data-line-number="53"><span class="cf">if</span>(tmp<span class="op">$</span>value <span class="op">==</span><span class="st"> </span><span class="dv">-1</span>) {</a>
+<a class="sourceLine" id="cb85-54" data-line-number="54">  <span class="kw">print</span>(<span class="st">&quot;Found a set of constants&quot;</span>)</a>
+<a class="sourceLine" id="cb85-55" data-line-number="55">  solution &lt;-<span class="st"> </span>tmp<span class="op">$</span>par</a>
+<a class="sourceLine" id="cb85-56" data-line-number="56">  <span class="kw">print</span>(<span class="kw">round</span>(<span class="kw">abs</span>(solution) <span class="op">/</span><span class="st"> </span><span class="kw">mean</span>(<span class="kw">abs</span>(solution)),<span class="dv">3</span>))</a>
+<a class="sourceLine" id="cb85-57" data-line-number="57">}</a></code></pre></div>
 <p>[1] “Found a set of constants”
 [1] 0.573 1.902 0.525</p>
 <p>Which shows that a solution indeed exists. Note that, provided that the choice of <span class="math inline">\(\Delta z\)</span> is extensive enough, the constants found in this way indeed determine the global stability of the equilibrium. Typically, infinitely many choices are possible—but certain choices of constants are better than others, for example allowing for a clean analytical derivation.</p>
 <p>Naturally, the constants we have derived analytically are also appropriate:</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="quasi-polynomial-systems.html#cb86-1"></a>c1 &lt;-<span class="st"> </span><span class="dv">0</span></span>
-<span id="cb86-2"><a href="quasi-polynomial-systems.html#cb86-2"></a>c2 &lt;-<span class="st"> </span>ap <span class="op">*</span><span class="st"> </span>bh <span class="op">+</span><span class="st"> </span>ah <span class="op">*</span><span class="st"> </span>rp</span>
-<span id="cb86-3"><a href="quasi-polynomial-systems.html#cb86-3"></a>c3 &lt;-<span class="st"> </span>ap <span class="op">*</span><span class="st"> </span>rp</span>
-<span id="cb86-4"><a href="quasi-polynomial-systems.html#cb86-4"></a><span class="kw">LG_to_minimize</span>(<span class="kw">c</span>(c1, c2, c3))</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" data-line-number="1">c1 &lt;-<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb86-2" data-line-number="2">c2 &lt;-<span class="st"> </span>ap <span class="op">*</span><span class="st"> </span>bh <span class="op">+</span><span class="st"> </span>ah <span class="op">*</span><span class="st"> </span>rp</a>
+<a class="sourceLine" id="cb86-3" data-line-number="3">c3 &lt;-<span class="st"> </span>ap <span class="op">*</span><span class="st"> </span>rp</a>
+<a class="sourceLine" id="cb86-4" data-line-number="4"><span class="kw">LG_to_minimize</span>(<span class="kw">c</span>(c1, c2, c3))</a></code></pre></div>
 <p>[1] -1</p>
 </div>
 <div id="systems-with-many-equations" class="section level2">
@@ -685,19 +683,19 @@ s = (1,1,1,1)^T \quad A = \begin{pmatrix}
 <h3>References</h3>
 <div id="refs" class="references">
 <div id="ref-brenig1988complete">
-<p>Brenig, Léon. 1988. “Complete Factorisation and Analytic Solutions of Generalized Lotka-Volterra Equations.” <em>Physics Letters A</em> 133 (7-8): 378–82.</p>
+<p>Brenig, Léon. 1988. “Complete Factorisation and Analytic Solutions of Generalized Lotka-Volterra Equations.” <em>Physics Letters A</em> 133 (7-8). Elsevier: 378–82.</p>
 </div>
 <div id="ref-goh1977global">
-<p>Goh, Bo S. 1977. “Global Stability in Many-Species Systems.” <em>The American Naturalist</em> 111 (977): 135–43.</p>
+<p>Goh, Bo S. 1977. “Global Stability in Many-Species Systems.” <em>The American Naturalist</em> 111 (977). University of Chicago Press: 135–43.</p>
 </div>
 <div id="ref-hernandez1998algebraic">
-<p>Hernández-Bermejo, Benito, Vı́ctor Fairén, and Léon Brenig. 1998. “Algebraic Recasting of Nonlinear Systems of Odes into Universal Formats.” <em>Journal of Physics A: Mathematical and General</em> 31 (10): 2415.</p>
+<p>Hernández-Bermejo, Benito, Vı'ctor Fairén, and Léon Brenig. 1998. “Algebraic Recasting of Nonlinear Systems of Odes into Universal Formats.” <em>Journal of Physics A: Mathematical and General</em> 31 (10). IOP Publishing: 2415.</p>
 </div>
 <div id="ref-leslie1945use">
-<p>Leslie, Patrick H. 1945. “On the Use of Matrices in Certain Population Mathematics.” <em>Biometrika</em> 33 (3): 183–212.</p>
+<p>Leslie, Patrick H. 1945. “On the Use of Matrices in Certain Population Mathematics.” <em>Biometrika</em> 33 (3). JSTOR: 183–212.</p>
 </div>
 <div id="ref-leslie1948some">
-<p>Leslie, Patrick H. 1948. “Some Further Notes on the Use of Matrices in Population Mathematics.” <em>Biometrika</em> 35 (3/4): 213–45.</p>
+<p>Leslie, Patrick H. 1948. “Some Further Notes on the Use of Matrices in Population Mathematics.” <em>Biometrika</em> 35 (3/4). JSTOR: 213–45.</p>
 </div>
 <div id="ref-strogatz2018nonlinear">
 <p>Strogatz, Steven H. 2018. <em>Nonlinear Dynamics and Chaos: With Applications to Physics, Biology, Chemistry, and Engineering</em>. CRC Press.</p>

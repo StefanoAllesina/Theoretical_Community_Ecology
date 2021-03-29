@@ -288,7 +288,7 @@ You might have noticed in the previous graphs that whenever the curve $dx(t) /dt
 For example, for the exponential growth model, we have:
 
 $$
-\dfrac{\partial}{\partial x} \dfrac{dx}{dt} = \dfrac{\partial f(x)}{\partial x} = \dfrac{\partial (r x)}{\partial x} = \rho
+\dfrac{\partial}{\partial x} \dfrac{dx}{dt} = \dfrac{\partial f(x)}{\partial x} = \dfrac{\partial (\rho x)}{\partial x} = \rho
 $$
 This is always posive when $\rho > 0$, and as such the only equilibrium ($x^\star = 0$) is unstable.
 
@@ -471,7 +471,7 @@ Suppose that $\dfrac{d x(t)}{dt} =f(x(t))$, and that $x^\star$ is an equilibrium
 
 While Lyapunov functions are great, because we can prove stability without the need to solve the system, there is no general rule to construct them. Often, "candidate" Lyapunov functions are available, but the process of finding the right function typically requires a lot of ingenuity and trial and errors.
 
-Fortunately, for system with a single state a quadratic function is guaranteed to solve the problem. Take the model for logistic growth (with $\rho > 0$ and $\alpha > 0$, and the candidate Lyapunov function:
+Fortunately, for system with a single state a quadratic function is guaranteed to solve the problem. Take the model for logistic growth (with $\rho > 0$ and $\alpha > 0$), and the candidate Lyapunov function:
 
 $$
 V(x(t)) = (x(t) - x^\star)^2

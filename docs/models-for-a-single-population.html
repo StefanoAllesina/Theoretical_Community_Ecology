@@ -53,9 +53,9 @@
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -64,16 +64,14 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -82,9 +80,9 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  {  }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+a.sourceLine::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -463,7 +461,7 @@ where <span class="math inline">\(1 &gt; \eta &gt; 0\)</span> is the proportion 
 <p>You might have noticed in the previous graphs that whenever the curve <span class="math inline">\(dx(t) /dt\)</span> is negative on the left of a point and positive on its right we find that the point is unstable, while conversely a point for which <span class="math inline">\(dx(t) /dt\)</span> is positive on the left and negative on the right is stable. We can formalize this by taking the derivative of <span class="math inline">\(dx(t) /d t\)</span> with respect to <span class="math inline">\(x(t)\)</span>, and evaluating this function at different equilibria.</p>
 <p>For example, for the exponential growth model, we have:</p>
 <p><span class="math display">\[
-\dfrac{\partial}{\partial x} \dfrac{dx}{dt} = \dfrac{\partial f(x)}{\partial x} = \dfrac{\partial (r x)}{\partial x} = \rho
+\dfrac{\partial}{\partial x} \dfrac{dx}{dt} = \dfrac{\partial f(x)}{\partial x} = \dfrac{\partial (\rho x)}{\partial x} = \rho
 \]</span>
 This is always posive when <span class="math inline">\(\rho &gt; 0\)</span>, and as such the only equilibrium (<span class="math inline">\(x^\star = 0\)</span>) is unstable.</p>
 <p>For the logistic growth, we find:</p>
@@ -498,7 +496,7 @@ f(\Delta x(t) + x^\star) = f(x^\star) + \left . \frac{df(x)}{dx} \right |_{x^\st
 <h2><span class="header-section-number">1.6</span> Bifurcations</h2>
 <p>The shape of the graphs above might depend on the value of parameters. Whenever a small change in one or several parameters causes a qualitative change in the behavior of the system, we speak of a <strong>bifurcation</strong> point (the term “bifurcation” was introduced by Henri Poincaré in 1885). At a bifurcation point, equilibria could disappear or be created, change their stability, the system could start cycling, etc.</p>
 <p>In low-dimensional system, there are a variety of different behaviors, each of which has its own name (e.g., saddle-node, pitchfork, transcritical, Hopf, period-doubling, …, bifurcation). The <strong>codimension</strong> of a bifurcation is the number of parameters we need to change to alter the behavior of the system. Clearly, codimension-1 and -2 bifurcations are the simplest and most studied.</p>
-<p>Here we just show the main idea using a simple example. For a detailed and accessible introduction, see <span class="citation">Strogatz (<a href="#ref-strogatz2018nonlinear" role="doc-biblioref">2018</a>)</span> and <span class="citation">Seydel (<a href="#ref-seydel2009practical" role="doc-biblioref">2009</a>)</span>.</p>
+<p>Here we just show the main idea using a simple example. For a detailed and accessible introduction, see <span class="citation">Strogatz (<a href="#ref-strogatz2018nonlinear">2018</a>)</span> and <span class="citation">Seydel (<a href="#ref-seydel2009practical">2009</a>)</span>.</p>
 <p>Consider the model:</p>
 <p><span class="math display">\[
 \dfrac{d x}{dt} = \rho + x^2
@@ -529,9 +527,9 @@ f(\Delta x(t) + x^\star) = f(x^\star) + \left . \frac{df(x)}{dx} \right |_{x^\st
 </div>
 <p>A few interesting references on detecting the approaching of a bifurcation in experimental systems:</p>
 <div class="boxpaper">
-<p><strong>Key paper: <span class="citation">Scheffer et al. (<a href="#ref-scheffer2009early" role="doc-biblioref">2009</a>)</span></strong></p>
+<p><strong>Key paper: <span class="citation">Scheffer et al. (<a href="#ref-scheffer2009early">2009</a>)</span></strong></p>
 <p>Starting in the early 2000s, much work went into trying to anticipate dramatic changes in natural and man-made systems (e.g., lakes turning eutrophic, fisheries collapsing, desertification). In this review, Scheffer <em>et al.</em> summarize previous work and present an accessible introduction to the problem.</p>
-<p><strong>Key paper: <span class="citation">Dai et al. (<a href="#ref-dai2012generic" role="doc-biblioref">2012</a>)</span></strong></p>
+<p><strong>Key paper: <span class="citation">Dai et al. (<a href="#ref-dai2012generic">2012</a>)</span></strong></p>
 <p>Dai <em>et al.</em> grew populations of <em>Saccharomyces cerevisiae</em> on sucrose. Because sucrose is split outside the cell, it creates an Allee effect: when the population density is high, it is energetically convenient to produce the enzyme to spit the sucrose, as the different cells pool their efforts; when population density is low, the gain is not sufficient to balance the cost. By tuning the mortality (dilution), they were able to experimentally recreate the bifurcation diagram of the exercise above. The data from the experiments are <a href="https://doi.org/10.5061/dryad.p2481134">here</a>.</p>
 </div>
 </div>
@@ -541,7 +539,7 @@ f(\Delta x(t) + x^\star) = f(x^\star) + \left . \frac{df(x)}{dx} \right |_{x^\st
 <p>This is a direct consequence of the uniqueness of trajectories: because we are moving in a 1-dimensional space, the fact that trajectories cannot cross means that if we are at a certain point <span class="math inline">\(x(t) = x_t\)</span>, then either <span class="math inline">\(dx(t)/dt &gt;0\)</span>, <span class="math inline">\(dx(t)/dt &lt;0\)</span>, or <span class="math inline">\(dx(t)/dt =0\)</span>, but can take only one value, preventing more complex behaviors such as cycles or chaos.</p>
 <p>For smooth functions and autonomous systems, one needs at least two equations to produce cycles and three equations to produce chaos. This is in stark contrast with difference equations—a single, innocent-looking difference equation can give rise to all sorts of dynamics.</p>
 <div class="boxpaper">
-<p><strong>Key paper: <span class="citation">May (<a href="#ref-may1976simple" role="doc-biblioref">1976</a>)</span></strong></p>
+<p><strong>Key paper: <span class="citation">May (<a href="#ref-may1976simple">1976</a>)</span></strong></p>
 <p>May took a possible model for the logistic growth in discrete time, and showed how this very simple model can give rise to equilibria, cycles and chaos. This is one of the papers that launched an all-out effort to explore chaotic dynamics that lasted for the best part of the 1980s.</p>
 </div>
 </div>
@@ -550,7 +548,7 @@ f(\Delta x(t) + x^\star) = f(x^\star) + \left . \frac{df(x)}{dx} \right |_{x^\st
 <p>While in many cases we cannot write an explicit solution for a (system of) differential equation(s), we might be able to determine the stability of equilibria and their basin of attraction (i.e., the set of initial conditions eventually leading to the equilibrium <span class="math inline">\(x^\star\)</span>) by considering functions that change monotonically through the dynamics.</p>
 <p>Suppose that <span class="math inline">\(\dfrac{d x(t)}{dt} =f(x(t))\)</span>, and that <span class="math inline">\(x^\star\)</span> is an equilibrium. Let <span class="math inline">\(V(x)\)</span> be a function defined in an open set <span class="math inline">\(\mathcal O\)</span> containing <span class="math inline">\(x^\star\)</span>, such that a) <span class="math inline">\(V(x^\star) = 0\)</span> and <span class="math inline">\(V(x) &gt; 0\)</span> for any <span class="math inline">\(x \in \mathcal O, x \neq x^\star\)</span>, and b) <span class="math inline">\(d V /dt \leq 0\)</span> for all <span class="math inline">\(x \in \mathcal O - x^\star\)</span>. Then <span class="math inline">\(V\)</span> is a <em>Lyapunov function</em> for the model, and <span class="math inline">\(x^\star\)</span> is stable. The Lyapunov function is called <em>strict</em>, and the equilibrium <span class="math inline">\(x^\star\)</span> <em>asymptotically stable</em> if <span class="math inline">\(d V /dt &lt; 0\)</span> (i.e., all trajectories starting in <span class="math inline">\(\mathcal O\)</span> will eventually reach <span class="math inline">\(x^\star\)</span>).</p>
 <p>While Lyapunov functions are great, because we can prove stability without the need to solve the system, there is no general rule to construct them. Often, “candidate” Lyapunov functions are available, but the process of finding the right function typically requires a lot of ingenuity and trial and errors.</p>
-<p>Fortunately, for system with a single state a quadratic function is guaranteed to solve the problem. Take the model for logistic growth (with <span class="math inline">\(\rho &gt; 0\)</span> and <span class="math inline">\(\alpha &gt; 0\)</span>, and the candidate Lyapunov function:</p>
+<p>Fortunately, for system with a single state a quadratic function is guaranteed to solve the problem. Take the model for logistic growth (with <span class="math inline">\(\rho &gt; 0\)</span> and <span class="math inline">\(\alpha &gt; 0\)</span>), and the candidate Lyapunov function:</p>
 <p><span class="math display">\[
 V(x(t)) = (x(t) - x^\star)^2
 \]</span></p>
@@ -577,13 +575,13 @@ V(x(t)) = x(t) - x^\star - x^\star \log \dfrac{x(t)}{x^\star}
 <h3>References</h3>
 <div id="refs" class="references">
 <div id="ref-dai2012generic">
-<p>Dai, Lei, Daan Vorselen, Kirill S Korolev, and Jeff Gore. 2012. “Generic Indicators for Loss of Resilience Before a Tipping Point Leading to Population Collapse.” <em>Science</em> 336 (6085): 1175–7.</p>
+<p>Dai, Lei, Daan Vorselen, Kirill S Korolev, and Jeff Gore. 2012. “Generic Indicators for Loss of Resilience Before a Tipping Point Leading to Population Collapse.” <em>Science</em> 336 (6085). American Association for the Advancement of Science: 1175–7.</p>
 </div>
 <div id="ref-may1976simple">
-<p>May, Robert M. 1976. “Simple Mathematical Models with Very Complicated Dynamics.” <em>Nature</em> 261 (5560): 459–67.</p>
+<p>May, Robert M. 1976. “Simple Mathematical Models with Very Complicated Dynamics.” <em>Nature</em> 261 (5560). Springer: 459–67.</p>
 </div>
 <div id="ref-scheffer2009early">
-<p>Scheffer, Marten, Jordi Bascompte, William A Brock, Victor Brovkin, Stephen R Carpenter, Vasilis Dakos, Hermann Held, Egbert H Van Nes, Max Rietkerk, and George Sugihara. 2009. “Early-Warning Signals for Critical Transitions.” <em>Nature</em> 461 (7260): 53–59.</p>
+<p>Scheffer, Marten, Jordi Bascompte, William A Brock, Victor Brovkin, Stephen R Carpenter, Vasilis Dakos, Hermann Held, Egbert H Van Nes, Max Rietkerk, and George Sugihara. 2009. “Early-Warning Signals for Critical Transitions.” <em>Nature</em> 461 (7260). Nature Publishing Group: 53–59.</p>
 </div>
 <div id="ref-seydel2009practical">
 <p>Seydel, Rüdiger. 2009. <em>Practical Bifurcation and Stability Analysis</em>. Vol. 5. Springer Science &amp; Business Media.</p>
