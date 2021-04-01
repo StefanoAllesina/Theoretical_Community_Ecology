@@ -428,7 +428,7 @@ where $1 > \eta > 0$ is the proportion of individuals being harvested.
 
 *Details*
 
-- take $\rho = 1$, $\alpha = 1$ and vary $\eta$ between 0 and 1.
+- take $\rho = 1$, $\alpha = 1$ and vary $\eta$ between 0 and 1.5.
 - write code to solve the initial value problem from a random initial condition $x(0) \sim \mathcal U[0, 2]$ (i.e., sampled independently from a uniform distribution between 0 and 2); document the possible outcomes.
 - write code to plot the bifurcation diagram---for each value of $\eta$, mark stable and unstable equilibria.
 - what is the critical $\eta_c$ where a bifurcation occurs?
