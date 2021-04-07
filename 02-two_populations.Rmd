@@ -582,8 +582,8 @@ which has eigenvalues $\rho > 0$ amd $-\delta < 0$ --- the equilibrium is unstab
 
 $$
 M_c = \left . J \right|_{(\delta / \beta, \rho / \alpha)^T} = \begin{pmatrix}
-0 & \dfrac{\alpha\, \delta}{\beta} \\
--\dfrac{\beta\, \rho}{\alpha} & 0
+0 & -\dfrac{\alpha\, \delta}{\beta} \\
+\dfrac{\beta\, \rho}{\alpha} & 0
 \end{pmatrix} 
 $$
 

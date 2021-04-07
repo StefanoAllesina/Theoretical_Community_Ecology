@@ -24,7 +24,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2021-04-01" />
+<meta name="date" content="2021-04-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,9 +53,9 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -64,14 +64,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -80,9 +82,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -326,8 +328,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="boxhistory">
 <p><strong>History: Alfred J. Lotka (1880-1949)</strong></p>
 <p><img src="img/Lotka.jpg" width="25%" style="display: block; margin: auto;" /></p>
-<p>Alfred Lotka was born to French-speaking American parents in Lemberg (then part of the Habsburg empire, now Lviv, Ukraine). He studied in France, Germany and England, receiving a BSc in 1901 and a DSc in 1912 from Birmingham university. He moved to the US in 1902, and worked at the US Patent office, as an editor of Scientific American, and as a statistician at the Metropolitan Life Insturance Company in NYC. He wrote more than a hundred papers and five books, spanning a large range of topics. He’s best known for the book <em>Elements of Physical Biology</em>, his contributions to demography, and one of the first studies dealing with bibliometrics <span class="citation">(Lotka <a href="#ref-lotka1926frequency">1926</a>)</span>.</p>
-<p>Starting in 1910 (reprinted as <span class="citation">Lotka (<a href="#ref-lotka2002contribution">2002</a>)</span>) he investigated coupled differential equations relating to chemical as well as ecological dynamics. In <span class="citation">Lotka (<a href="#ref-lotka1920analytical">1920</a>)</span> he studied a system of two ODEs that gave rise to perpetual oscillations: <em>“It was, therefore, with considerable surprise that the writer, on applying his method to certain special cases, found these to lead to undamped, and hence indefinitely continued, oscillations.”</em> He went on to describe <em>“1. A species of organism <span class="math inline">\(S_1\)</span>, a plant species, say, deriving its nourishment from a source presented in such large excess that the mass of the source may be considered constant during the period of time with which we are concerned. 2. A species <span class="math inline">\(S_2\)</span>, for example a herbivorous animal species, feeding on <span class="math inline">\(S_1\)</span>.”</em></p>
+<p>Alfred Lotka was born to French-speaking American parents in Lemberg (then part of the Habsburg empire, now Lviv, Ukraine). He studied in France, Germany and England, receiving a BSc in 1901 and a DSc in 1912 from Birmingham university. He moved to the US in 1902, and worked at the US Patent office, as an editor of Scientific American, and as a statistician at the Metropolitan Life Insturance Company in NYC. He wrote more than a hundred papers and five books, spanning a large range of topics. He’s best known for the book <em>Elements of Physical Biology</em>, his contributions to demography, and one of the first studies dealing with bibliometrics <span class="citation">(Lotka <a href="#ref-lotka1926frequency" role="doc-biblioref">1926</a>)</span>.</p>
+<p>Starting in 1910 (reprinted as <span class="citation">Lotka (<a href="#ref-lotka2002contribution" role="doc-biblioref">2002</a>)</span>) he investigated coupled differential equations relating to chemical as well as ecological dynamics. In <span class="citation">Lotka (<a href="#ref-lotka1920analytical" role="doc-biblioref">1920</a>)</span> he studied a system of two ODEs that gave rise to perpetual oscillations: <em>“It was, therefore, with considerable surprise that the writer, on applying his method to certain special cases, found these to lead to undamped, and hence indefinitely continued, oscillations.”</em> He went on to describe <em>“1. A species of organism <span class="math inline">\(S_1\)</span>, a plant species, say, deriving its nourishment from a source presented in such large excess that the mass of the source may be considered constant during the period of time with which we are concerned. 2. A species <span class="math inline">\(S_2\)</span>, for example a herbivorous animal species, feeding on <span class="math inline">\(S_1\)</span>.”</em></p>
 <p>The equations he had derived (and then studied later in more detail) are now termed Lotka-Volterra equations.</p>
 </div>
 <p>Let’s look at a possible trajectory for the system, to gain an intuition of what can happen:</p>
@@ -544,8 +546,8 @@ S(A) = \begin{pmatrix}
 <p>Find all <span class="math inline">\(3 \times 3\)</span> matrices that are sign-stable.</p>
 </div>
 <div class="boxpaper">
-<p><strong>Key paper: <span class="citation">May (<a href="#ref-may1973qualitative">1973</a>)</span></strong></p>
-<p>The idea of “sign-stability” was first introduced in economics. May borrowed the idea to analyze simple food webs. Analysis of ecological models based on sign (rather than magnitude) of coefficients was further developed by Richard Levins and collaborators. A good modern summary, along with a few new results, are provided by <span class="citation">Dambacher et al. (<a href="#ref-dambacher2003qualitative">2003</a>)</span>.</p>
+<p><strong>Key paper: <span class="citation">May (<a href="#ref-may1973qualitative" role="doc-biblioref">1973</a>)</span></strong></p>
+<p>The idea of “sign-stability” was first introduced in economics. May borrowed the idea to analyze simple food webs. Analysis of ecological models based on sign (rather than magnitude) of coefficients was further developed by Richard Levins and collaborators. A good modern summary, along with a few new results, are provided by <span class="citation">Dambacher et al. (<a href="#ref-dambacher2003qualitative" role="doc-biblioref">2003</a>)</span>.</p>
 </div>
 <p>We can now analyze systems of linear ODEs.</p>
 <div class="boxmath">
@@ -640,8 +642,8 @@ M_0 = \left . J \right|_{(0, 0)^T} = \begin{pmatrix}
 <p>which has eigenvalues <span class="math inline">\(\rho &gt; 0\)</span> amd <span class="math inline">\(-\delta &lt; 0\)</span> — the equilibrium is unstable. The coexistence equilibrium <span class="math inline">\((x^\star, y^\star)^T = (\delta / \beta, \rho / \alpha)^T\)</span> yields the community matrix:</p>
 <p><span class="math display">\[
 M_c = \left . J \right|_{(\delta / \beta, \rho / \alpha)^T} = \begin{pmatrix}
-0 &amp; \dfrac{\alpha\, \delta}{\beta} \\
--\dfrac{\beta\, \rho}{\alpha} &amp; 0
+0 &amp; -\dfrac{\alpha\, \delta}{\beta} \\
+\dfrac{\beta\, \rho}{\alpha} &amp; 0
 \end{pmatrix} 
 \]</span></p>
 <p>which has purely imaginary eigenvalues <span class="math inline">\(\lambda = \pm i \sqrt{\rho \, \delta}\)</span>. As such the equilibrium is not attractive nor unstable. In fact, Lotka and Volterra were (independently) able to prove that the system cycles neutrally around the equilibrium.</p>
@@ -649,7 +651,7 @@ M_c = \left . J \right|_{(\delta / \beta, \rho / \alpha)^T} = \begin{pmatrix}
 <p><strong>Vito Volterra (1860-1940)</strong></p>
 <p><img src="img/Volterra.jpg" width="25%" style="display: block; margin: auto;" /></p>
 <p>Vito Volterra was born in Ancona (then part of the Papal State) in a poor jewish family. The financial situation precipitated with the death of his father, when Vito was two. Vito and his mother went to live with relatives in Turin and then Florence. Volterra showed amazing mathematical talent at a very young age. Antonio Roiti, professor of physics in Florence, noticed the budding mathematician and hired him as his assistant, so that he could continue his studies. He went on to enroll at the Scuola Normale in Pisa, receiving a degree in Physics in 1882. At age 23 he was made full professor of Rational Mechanics in Pisa, and then in 1900 of Mathematical Physics in Rome. For thirty years, he contributed important studies in mathematics, and enriched academic life in Italy (for example, he was the first director of the National Center for Research). In 1931 he refused to take an oath of loyalty to the fascist regime (only 12 professors out of 1250 refused), and was therefore forced to resign (his take on the fascist enterprise: <em>“Empires die, but Euclid’s theorems keep their youth forever”</em>).</p>
-<p>His interest in mathematical ecology is due to Umberto D’Ancona (his son-in-law), who had studied the trends in fisheries in the Adriatic sea before and immediately after WWI. In 1914-1918 fisheries in the Adriatic had stopped completely because of the conflict. D’Ancona had noticed that, while herbivorous fish had remained about constant, the piscivorous fish had increased dramatically in numbers. The problem piqued Volterra who immediately published a sophisticated study, proposing the same equations studied by Lotka. In a short letter to Nature <span class="citation">(Volterra <a href="#ref-volterra1926fluctuations">1926</a><a href="#ref-volterra1926fluctuations">a</a>)</span>, he stated the so-called “Volterra’s Effect” (which he termed “Law III”): <em>“a complete closure of the fishery was a form of ‘protection’ under which the voracious fishes were much the better and prospered accordingly, but the ordinary food-fishes, on which these are accustomed to prey, were worse off than before.”</em> This brief paper was a summary of a much more extensive article <span class="citation">(Volterra <a href="#ref-volterra1926variazioni">1926</a><a href="#ref-volterra1926variazioni">b</a>)</span>.</p>
+<p>His interest in mathematical ecology is due to Umberto D’Ancona (his son-in-law), who had studied the trends in fisheries in the Adriatic sea before and immediately after WWI. In 1914-1918 fisheries in the Adriatic had stopped completely because of the conflict. D’Ancona had noticed that, while herbivorous fish had remained about constant, the piscivorous fish had increased dramatically in numbers. The problem piqued Volterra who immediately published a sophisticated study, proposing the same equations studied by Lotka. In a short letter to Nature <span class="citation">(Volterra <a href="#ref-volterra1926fluctuations" role="doc-biblioref">1926</a><a href="#ref-volterra1926fluctuations" role="doc-biblioref">a</a>)</span>, he stated the so-called “Volterra’s Effect” (which he termed “Law III”): <em>“a complete closure of the fishery was a form of ‘protection’ under which the voracious fishes were much the better and prospered accordingly, but the ordinary food-fishes, on which these are accustomed to prey, were worse off than before.”</em> This brief paper was a summary of a much more extensive article <span class="citation">(Volterra <a href="#ref-volterra1926variazioni" role="doc-biblioref">1926</a><a href="#ref-volterra1926variazioni" role="doc-biblioref">b</a>)</span>.</p>
 <p><em>Lotka-Volterra interactions</em></p>
 <p>In 1927, Lotka wrote to Nature to raise the issue that the equations studied by Volterra and the figures presented in Volterra’s brief article were identical to those found in <em>Elements of Physical Biology</em> (published in 1925). He concluded: <em>“It would be gratifying if Prof. Volterra’s publication should direct attention to a field and method of inquiry which apparently has hitherto passed almost unnoticed.”</em></p>
 <p>Volterra graciously conceded <em>“I recognize his priority, and am sorry not to have known his work, and therefore not have been able to mention it.”</em> He however listed a few points in which the two authors had pursued different directions, and concluded <em>“Working independently the one from the other, we have found some common results, and this confirms the exactitude and the interest in the position of the problem. I agree with him in his conclusions that these studies and these methods of research deserve to receive greated attention from scholars, and should give rise to important applications.”</em></p>
@@ -748,19 +750,19 @@ V(x,y) = \left(x - x^\star - x^\star \log \dfrac{x}{x^\star} \right) +
 <h3>References</h3>
 <div id="refs" class="references">
 <div id="ref-dambacher2003qualitative">
-<p>Dambacher, Jeffrey M, Hang-Kwang Luh, Hiram W Li, and Philippe A Rossignol. 2003. “Qualitative Stability and Ambiguity in Model Ecosystems.” <em>The American Naturalist</em> 161 (6). The University of Chicago Press: 876–88.</p>
+<p>Dambacher, Jeffrey M, Hang-Kwang Luh, Hiram W Li, and Philippe A Rossignol. 2003. “Qualitative Stability and Ambiguity in Model Ecosystems.” <em>The American Naturalist</em> 161 (6): 876–88.</p>
 </div>
 <div id="ref-lotka1920analytical">
-<p>Lotka, Alfred J. 1920. “Analytical Note on Certain Rhythmic Relations in Organic Systems.” <em>Proceedings of the National Academy of Sciences</em> 6 (7). National Acad Sciences: 410–15.</p>
+<p>Lotka, Alfred J. 1920. “Analytical Note on Certain Rhythmic Relations in Organic Systems.” <em>Proceedings of the National Academy of Sciences</em> 6 (7): 410–15.</p>
 </div>
 <div id="ref-lotka1926frequency">
-<p>Lotka, Alfred J. 1926. “The Frequency Distribution of Scientific Productivity.” <em>Journal of the Washington Academy of Sciences</em> 16 (12). JSTOR: 317–23.</p>
+<p>Lotka, Alfred J. 1926. “The Frequency Distribution of Scientific Productivity.” <em>Journal of the Washington Academy of Sciences</em> 16 (12): 317–23.</p>
 </div>
 <div id="ref-lotka2002contribution">
-<p>Lotka, Alfred J. 2002. “Contribution to the Theory of Periodic Reactions.” <em>The Journal of Physical Chemistry</em> 14 (3). ACS Publications: 271–74.</p>
+<p>Lotka, Alfred J. 2002. “Contribution to the Theory of Periodic Reactions.” <em>The Journal of Physical Chemistry</em> 14 (3): 271–74.</p>
 </div>
 <div id="ref-may1973qualitative">
-<p>May, Robert M. 1973. “Qualitative Stability in Model Ecosystems.” <em>Ecology</em> 54 (3). Wiley Online Library: 638–41.</p>
+<p>May, Robert M. 1973. “Qualitative Stability in Model Ecosystems.” <em>Ecology</em> 54 (3): 638–41.</p>
 </div>
 <div id="ref-volterra1926fluctuations">
 <p>Volterra, Vito. 1926a. “Fluctuations in the Abundance of a Species Considered Mathematically.” <em>Nature</em> 118: 558–60.</p>

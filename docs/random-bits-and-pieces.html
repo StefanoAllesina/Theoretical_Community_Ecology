@@ -24,7 +24,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2021-04-01" />
+<meta name="date" content="2021-04-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,9 +53,9 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -64,14 +64,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -80,9 +82,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -387,118 +389,118 @@ x_{i}^\star = 1 - \dfrac{1}{1 + \tau \sum M_{ij} + \tau \sum M_{ij}(1-x_j^\star)
 <p>Allesina, Stefano, and Jacopo Grilli. 2020. “Models for Large Ecological Communities—a Random Matrix Approach.” In <em>Theoretical Ecology: Concepts and Applications</em>, edited by Kevin S McCann and Gabriel Gellner, 74–92. Oxford University Press.</p>
 </div>
 <div>
-<p>Allesina, Stefano, and Jonathan M Levine. 2011. “A Competitive Network Theory of Species Diversity.” <em>Proceedings of the National Academy of Sciences</em> 108 (14). National Acad Sciences: 5638–42.</p>
+<p>Allesina, Stefano, and Jonathan M Levine. 2011. “A Competitive Network Theory of Species Diversity.” <em>Proceedings of the National Academy of Sciences</em> 108 (14): 5638–42.</p>
 </div>
 <div>
-<p>Allesina, Stefano, and Si Tang. 2012. “Stability Criteria for Complex Ecosystems.” <em>Nature</em> 483 (7388). Nature Publishing Group: 205.</p>
+<p>Allesina, Stefano, and Si Tang. 2012. “Stability Criteria for Complex Ecosystems.” <em>Nature</em> 483 (7388): 205.</p>
 </div>
 <div>
-<p>———. 2015. “The Stability–Complexity Relationship at Age 40: A Random Matrix Perspective.” <em>Population Ecology</em> 57 (1). Wiley Online Library: 63–75.</p>
+<p>———. 2015. “The Stability–Complexity Relationship at Age 40: A Random Matrix Perspective.” <em>Population Ecology</em> 57 (1): 63–75.</p>
 </div>
 <div>
-<p>Amor, Daniel R, Christoph Ratzke, and Jeff Gore. 2020. “Transient Invaders Can Induce Shifts Between Alternative Stable States of Microbial Communities.” <em>Science Advances</em> 6 (8). American Association for the Advancement of Science: eaay8676.</p>
+<p>Amor, Daniel R, Christoph Ratzke, and Jeff Gore. 2020. “Transient Invaders Can Induce Shifts Between Alternative Stable States of Microbial Communities.” <em>Science Advances</em> 6 (8): eaay8676.</p>
 </div>
 <div>
 <p>Anderson, Roy M, and Robert M May. 1992. <em>Infectious Diseases of Humans: Dynamics and Control</em>. Oxford university press.</p>
 </div>
 <div>
-<p>Axelrod, Robert, and William D Hamilton. 1981. “The Evolution of Cooperation.” <em>Science</em> 211 (4489). American Association for the Advancement of Science: 1390–6.</p>
+<p>Axelrod, Robert, and William D Hamilton. 1981. “The Evolution of Cooperation.” <em>Science</em> 211 (4489): 1390–6.</p>
 </div>
 <div>
 <p>Baigent, Stephen A. 2016. “Lotka-Volterra Dynamics: An Introduction.” In. World Scientific.</p>
 </div>
 <div>
-<p>Barabás, György, Matthew J. Michalska-Smith, and Stefano Allesina. 2016. “The Effect of Intra-and Interspecific Competition on Coexistence in Multispecies Communities.” <em>The American Naturalist</em> 188 (1). University of Chicago Press Chicago, IL: E1–E12.</p>
+<p>Barabás, György, Matthew J. Michalska-Smith, and Stefano Allesina. 2016. “The Effect of Intra-and Interspecific Competition on Coexistence in Multispecies Communities.” <em>The American Naturalist</em> 188 (1): E1–E12.</p>
 </div>
 <div>
-<p>Biroli, Giulio, Guy Bunin, and Chiara Cammarota. 2018. “Marginally Stable Equilibria in Critical Ecosystems.” <em>New Journal of Physics</em> 20 (8). IOP Publishing: 083051.</p>
+<p>Biroli, Giulio, Guy Bunin, and Chiara Cammarota. 2018. “Marginally Stable Equilibria in Critical Ecosystems.” <em>New Journal of Physics</em> 20 (8): 083051.</p>
 </div>
 <div>
-<p>Bittleston, Leonora S, Matti Gralka, Gabriel E Leventhal, Itzhak Mizrahi, and Otto X Cordero. 2020. “Context-Dependent Dynamics Lead to the Assembly of Functionally Distinct Microbial Communities.” <em>Nature Communications</em> 11 (1). Nature Publishing Group: 1–10.</p>
+<p>Bittleston, Leonora S, Matti Gralka, Gabriel E Leventhal, Itzhak Mizrahi, and Otto X Cordero. 2020. “Context-Dependent Dynamics Lead to the Assembly of Functionally Distinct Microbial Communities.” <em>Nature Communications</em> 11 (1): 1–10.</p>
 </div>
 <div>
-<p>Brandl, Florian. 2017. “The Distribution of Optimal Strategies in Symmetric Zero-Sum Games.” <em>Games and Economic Behavior</em> 104. Elsevier: 674–80.</p>
+<p>Brandl, Florian. 2017. “The Distribution of Optimal Strategies in Symmetric Zero-Sum Games.” <em>Games and Economic Behavior</em> 104: 674–80.</p>
 </div>
 <div>
-<p>Brenig, Léon. 1988. “Complete Factorisation and Analytic Solutions of Generalized Lotka-Volterra Equations.” <em>Physics Letters A</em> 133 (7-8). Elsevier: 378–82.</p>
+<p>Brenig, Léon. 1988. “Complete Factorisation and Analytic Solutions of Generalized Lotka-Volterra Equations.” <em>Physics Letters A</em> 133 (7-8): 378–82.</p>
 </div>
 <div>
-<p>Cadotte, Marc W. 2013. “Experimental Evidence That Evolutionarily Diverse Assemblages Result in Higher Productivity.” <em>Proceedings of the National Academy of Sciences</em> 110 (22). National Acad Sciences: 8996–9000.</p>
+<p>Cadotte, Marc W. 2013. “Experimental Evidence That Evolutionarily Diverse Assemblages Result in Higher Productivity.” <em>Proceedings of the National Academy of Sciences</em> 110 (22): 8996–9000.</p>
 </div>
 <div>
 <p>Cadotte, Marc W, and T Jonathan Davies. 2016. <em>Phylogenies in Ecology: A Guide to Concepts and Methods</em>. Princeton University Press.</p>
 </div>
 <div>
-<p>Capitán, José A, José A Cuesta, and Jordi Bascompte. 2009. “Statistical Mechanics of Ecosystem Assembly.” <em>Physical Review Letters</em> 103 (16). APS: 168101.</p>
+<p>Capitán, José A, José A Cuesta, and Jordi Bascompte. 2009. “Statistical Mechanics of Ecosystem Assembly.” <em>Physical Review Letters</em> 103 (16): 168101.</p>
 </div>
 <div>
-<p>Case, Ted J, and Richard G Casten. 1979. “Global Stability and Multiple Domains of Attraction in Ecological Systems.” <em>The American Naturalist</em> 113 (5). University of Chicago Press: 705–14.</p>
+<p>Case, Ted J, and Richard G Casten. 1979. “Global Stability and Multiple Domains of Attraction in Ecological Systems.” <em>The American Naturalist</em> 113 (5): 705–14.</p>
 </div>
 <div>
-<p>Cator, Eric, and Piet Van Mieghem. 2012. “Second-Order Mean-Field Susceptible-Infected-Susceptible Epidemic Threshold.” <em>Physical Review E</em> 85 (5). APS: 056111.</p>
+<p>Cator, Eric, and Piet Van Mieghem. 2012. “Second-Order Mean-Field Susceptible-Infected-Susceptible Epidemic Threshold.” <em>Physical Review E</em> 85 (5): 056111.</p>
 </div>
 <div>
-<p>Clutton-Brock, Tim. 2009. “Cooperation Between Non-Kin in Animal Societies.” <em>Nature</em> 462 (7269). Nature Publishing Group: 51–57.</p>
+<p>Clutton-Brock, Tim. 2009. “Cooperation Between Non-Kin in Animal Societies.” <em>Nature</em> 462 (7269): 51–57.</p>
 </div>
 <div>
-<p>Dai, Lei, Daan Vorselen, Kirill S Korolev, and Jeff Gore. 2012. “Generic Indicators for Loss of Resilience Before a Tipping Point Leading to Population Collapse.” <em>Science</em> 336 (6085). American Association for the Advancement of Science: 1175–7.</p>
+<p>Dai, Lei, Daan Vorselen, Kirill S Korolev, and Jeff Gore. 2012. “Generic Indicators for Loss of Resilience Before a Tipping Point Leading to Population Collapse.” <em>Science</em> 336 (6085): 1175–7.</p>
 </div>
 <div>
-<p>Dambacher, Jeffrey M, Hang-Kwang Luh, Hiram W Li, and Philippe A Rossignol. 2003. “Qualitative Stability and Ambiguity in Model Ecosystems.” <em>The American Naturalist</em> 161 (6). The University of Chicago Press: 876–88.</p>
+<p>Dambacher, Jeffrey M, Hang-Kwang Luh, Hiram W Li, and Philippe A Rossignol. 2003. “Qualitative Stability and Ambiguity in Model Ecosystems.” <em>The American Naturalist</em> 161 (6): 876–88.</p>
 </div>
 <div>
-<p>Diamond, Jared M. 1975. “Assembly of Species Communities.” <em>Ecology and Evolution of Communities</em>. Harvard University Press, 342–444.</p>
+<p>Diamond, Jared M. 1975. “Assembly of Species Communities.” <em>Ecology and Evolution of Communities</em>, 342–444.</p>
 </div>
 <div>
-<p>Drake, James A. 1991. “Community-Assembly Mechanics and the Structure of an Experimental Species Ensemble.” <em>The American Naturalist</em> 137 (1). University of Chicago Press: 1–26.</p>
+<p>Drake, James A. 1991. “Community-Assembly Mechanics and the Structure of an Experimental Species Ensemble.” <em>The American Naturalist</em> 137 (1): 1–26.</p>
 </div>
 <div>
 <p>Ellner, Stephen P, and John Guckenheimer. 2011. <em>Dynamic Models in Biology</em>. Princeton University Press.</p>
 </div>
 <div>
-<p>Fisher, David C, and Richard B Reeves. 1995. “Optimal Strategies for Random Tournament Games.” <em>Linear Algebra and Its Applications</em> 217. Elsevier: 83–85.</p>
+<p>Fisher, David C, and Richard B Reeves. 1995. “Optimal Strategies for Random Tournament Games.” <em>Linear Algebra and Its Applications</em> 217: 83–85.</p>
 </div>
 <div>
-<p>Fukami, Tadashi. 2015. “Historical Contingency in Community Assembly: Integrating Niches, Species Pools, and Priority Effects.” <em>Annual Review of Ecology, Evolution, and Systematics</em> 46. Annual Reviews: 1–23.</p>
+<p>Fukami, Tadashi. 2015. “Historical Contingency in Community Assembly: Integrating Niches, Species Pools, and Priority Effects.” <em>Annual Review of Ecology, Evolution, and Systematics</em> 46: 1–23.</p>
 </div>
 <div>
-<p>Goh, Bo S. 1977. “Global Stability in Many-Species Systems.” <em>The American Naturalist</em> 111 (977). University of Chicago Press: 135–43.</p>
+<p>Goh, Bo S. 1977. “Global Stability in Many-Species Systems.” <em>The American Naturalist</em> 111 (977): 135–43.</p>
 </div>
 <div>
-<p>Gotelli, Nicholas J. 1999. “How Do Communities Come Together?” <em>Science</em> 286 (5445). American Association for the Advancement of Science: 1684–5.</p>
+<p>Gotelli, Nicholas J. 1999. “How Do Communities Come Together?” <em>Science</em> 286 (5445): 1684–5.</p>
 </div>
 <div>
 <p>Gotelli, Nicholas J, and Gary R Graves. 1996. <em>Null Models in Ecology</em>.</p>
 </div>
 <div>
-<p>Gould, Stephen Jay, and Richard C Lewontin. 1979. “The Spandrels of San Marco and the Panglossian Paradigm: A Critique of the Adaptationist Programme.” <em>Proceedings of the Royal Society of London. Series B. Biological Sciences</em> 205 (1161). The Royal Society London: 581–98.</p>
+<p>Gould, Stephen Jay, and Richard C Lewontin. 1979. “The Spandrels of San Marco and the Panglossian Paradigm: A Critique of the Adaptationist Programme.” <em>Proceedings of the Royal Society of London. Series B. Biological Sciences</em> 205 (1161): 581–98.</p>
 </div>
 <div>
-<p>Grilli, Jacopo, György Barabás, and Stefano Allesina. 2015. “Metapopulation Persistence in Random Fragmented Landscapes.” <em>PLoS Comput Biol</em> 11 (5). Public Library of Science: e1004251.</p>
+<p>Grilli, Jacopo, György Barabás, and Stefano Allesina. 2015. “Metapopulation Persistence in Random Fragmented Landscapes.” <em>PLoS Comput Biol</em> 11 (5): e1004251.</p>
 </div>
 <div>
-<p>Grilli, Jacopo, György Barabás, Matthew J Michalska-Smith, and Stefano Allesina. 2017. “Higher-Order Interactions Stabilize Dynamics in Competitive Network Models.” <em>Nature</em> 548 (7666). Nature Publishing Group: 210.</p>
+<p>Grilli, Jacopo, György Barabás, Matthew J Michalska-Smith, and Stefano Allesina. 2017. “Higher-Order Interactions Stabilize Dynamics in Competitive Network Models.” <em>Nature</em> 548 (7666): 210.</p>
 </div>
 <div>
 <p>Hadeler, Karl Peter, Michael C Mackey, and Angela Stevens. 2017. <em>Topics in Mathematical Biology</em>. Springer.</p>
 </div>
 <div>
-<p>Haldane, Andrew G, and Robert M May. 2011. “Systemic Risk in Banking Ecosystems.” <em>Nature</em> 469 (7330). Nature Publishing Group: 351–55.</p>
+<p>Haldane, Andrew G, and Robert M May. 2011. “Systemic Risk in Banking Ecosystems.” <em>Nature</em> 469 (7330): 351–55.</p>
 </div>
 <div>
-<p>Hang-Kwang, Luh, and Stuart L Pimm. 1993. “The Assembly of Ecological Communities: A Minimalist Approach.” <em>Journal of Animal Ecology</em>. JSTOR, 749–65.</p>
+<p>Hang-Kwang, Luh, and Stuart L Pimm. 1993. “The Assembly of Ecological Communities: A Minimalist Approach.” <em>Journal of Animal Ecology</em>, 749–65.</p>
 </div>
 <div>
-<p>Hanski, Ilkka, and Otso Ovaskainen. 2000. “The Metapopulation Capacity of a Fragmented Landscape.” <em>Nature</em> 404 (6779). Nature Publishing Group: 755–58.</p>
+<p>Hanski, Ilkka, and Otso Ovaskainen. 2000. “The Metapopulation Capacity of a Fragmented Landscape.” <em>Nature</em> 404 (6779): 755–58.</p>
 </div>
 <div>
-<p>Hector, Aea, B Schmid, C Beierkuhnlein, MC Caldeira, M Diemer, PG Dimitrakopoulos, JA Finn, et al. 1999. “Plant Diversity and Productivity Experiments in European Grasslands.” <em>Science</em> 286 (5442). American Association for the Advancement of Science: 1123–7.</p>
+<p>Hector, Aea, B Schmid, C Beierkuhnlein, MC Caldeira, M Diemer, PG Dimitrakopoulos, JA Finn, et al. 1999. “Plant Diversity and Productivity Experiments in European Grasslands.” <em>Science</em> 286 (5442): 1123–7.</p>
 </div>
 <div>
-<p>Hernández-Bermejo, Benito, Vı'ctor Fairén, and Léon Brenig. 1998. “Algebraic Recasting of Nonlinear Systems of Odes into Universal Formats.” <em>Journal of Physics A: Mathematical and General</em> 31 (10). IOP Publishing: 2415.</p>
+<p>Hernández-Bermejo, Benito, Vı́ctor Fairén, and Léon Brenig. 1998. “Algebraic Recasting of Nonlinear Systems of Odes into Universal Formats.” <em>Journal of Physics A: Mathematical and General</em> 31 (10): 2415.</p>
 </div>
 <div>
-<p>Hirsch, Morris W. 1982. “Systems of Differential Equations Which Are Competitive or Cooperative: I. Limit Sets.” <em>SIAM Journal on Mathematical Analysis</em> 13 (2). SIAM: 167–79.</p>
+<p>Hirsch, Morris W. 1982. “Systems of Differential Equations Which Are Competitive or Cooperative: I. Limit Sets.” <em>SIAM Journal on Mathematical Analysis</em> 13 (2): 167–79.</p>
 </div>
 <div>
 <p>Hirsch, Morris W, Stephen Smale, and Robert L Devaney. 2012. <em>Differential Equations, Dynamical Systems, and an Introduction to Chaos</em>. Academic press.</p>
@@ -510,106 +512,106 @@ x_{i}^\star = 1 - \dfrac{1}{1 + \tau \sum M_{ij} + \tau \sum M_{ij}(1-x_j^\star)
 <p>Hubbell, Stephen P. 2001. <em>The Unified Neutral Theory of Biodiversity and Biogeography</em>. Vol. 32. Princeton University Press.</p>
 </div>
 <div>
-<p>Kuebbing, Sara E, Aimée T Classen, Nathan J Sanders, and Daniel Simberloff. 2015. “Above-and Below-Ground Effects of Plant Diversity Depend on Species Origin: An Experimental Test with Multiple Invaders.” <em>New Phytologist</em> 208 (3). Wiley Online Library: 727–35.</p>
+<p>Kuebbing, Sara E, Aimée T Classen, Nathan J Sanders, and Daniel Simberloff. 2015. “Above-and Below-Ground Effects of Plant Diversity Depend on Species Origin: An Experimental Test with Multiple Invaders.” <em>New Phytologist</em> 208 (3): 727–35.</p>
 </div>
 <div>
-<p>Law, Richard, and R Daniel Morton. 1993. “Alternative Permanent States of Ecological Communities.” <em>Ecology</em> 74 (5). Wiley Online Library: 1347–61.</p>
+<p>Law, Richard, and R Daniel Morton. 1993. “Alternative Permanent States of Ecological Communities.” <em>Ecology</em> 74 (5): 1347–61.</p>
 </div>
 <div>
-<p>———. 1996. “Permanence and the Assembly of Ecological Communities.” <em>Ecology</em> 77 (3). Wiley Online Library: 762–75.</p>
+<p>———. 1996. “Permanence and the Assembly of Ecological Communities.” <em>Ecology</em> 77 (3): 762–75.</p>
 </div>
 <div>
-<p>Leslie, Patrick H. 1945. “On the Use of Matrices in Certain Population Mathematics.” <em>Biometrika</em> 33 (3). JSTOR: 183–212.</p>
+<p>Leslie, Patrick H. 1945. “On the Use of Matrices in Certain Population Mathematics.” <em>Biometrika</em> 33 (3): 183–212.</p>
 </div>
 <div>
-<p>———. 1948. “Some Further Notes on the Use of Matrices in Population Mathematics.” <em>Biometrika</em> 35 (3/4). JSTOR: 213–45.</p>
+<p>———. 1948. “Some Further Notes on the Use of Matrices in Population Mathematics.” <em>Biometrika</em> 35 (3/4): 213–45.</p>
 </div>
 <div>
-<p>Levin, Simon A. 1970. “Community Equilibria and Stability, and an Extension of the Competitive Exclusion Principle.” <em>The American Naturalist</em> 104 (939). University of Chicago Press: 413–23.</p>
+<p>Levin, Simon A. 1970. “Community Equilibria and Stability, and an Extension of the Competitive Exclusion Principle.” <em>The American Naturalist</em> 104 (939): 413–23.</p>
 </div>
 <div>
-<p>Levins, Richard. 1966. “The Strategy of Model Building in Population Biology.” <em>American Scientist</em> 54 (4). JSTOR: 421–31.</p>
+<p>Levins, Richard. 1966. “The Strategy of Model Building in Population Biology.” <em>American Scientist</em> 54 (4): 421–31.</p>
 </div>
 <div>
 <p>———. 1968. <em>Evolution in Changing Environments: Some Theoretical Explorations</em>. Princeton University Press.</p>
 </div>
 <div>
-<p>———. 1969. “Some Demographic and Genetic Consequences of Environmental Heterogeneity for Biological Control.” <em>American Entomologist</em> 15 (3). Oxford University Press: 237–40.</p>
+<p>———. 1969. “Some Demographic and Genetic Consequences of Environmental Heterogeneity for Biological Control.” <em>American Entomologist</em> 15 (3): 237–40.</p>
 </div>
 <div>
-<p>Li, Cong, Ruud van de Bovenkamp, and Piet Van Mieghem. 2012. “Susceptible-Infected-Susceptible Model: A Comparison of N-Intertwined and Heterogeneous Mean-Field Approximations.” <em>Physical Review E</em> 86 (2). APS: 026116.</p>
+<p>Li, Cong, Ruud van de Bovenkamp, and Piet Van Mieghem. 2012. “Susceptible-Infected-Susceptible Model: A Comparison of N-Intertwined and Heterogeneous Mean-Field Approximations.” <em>Physical Review E</em> 86 (2): 026116.</p>
 </div>
 <div>
-<p>Lotka, Alfred J. 1920. “Analytical Note on Certain Rhythmic Relations in Organic Systems.” <em>Proceedings of the National Academy of Sciences</em> 6 (7). National Acad Sciences: 410–15.</p>
+<p>Lotka, Alfred J. 1920. “Analytical Note on Certain Rhythmic Relations in Organic Systems.” <em>Proceedings of the National Academy of Sciences</em> 6 (7): 410–15.</p>
 </div>
 <div>
-<p>———. 1926. “The Frequency Distribution of Scientific Productivity.” <em>Journal of the Washington Academy of Sciences</em> 16 (12). JSTOR: 317–23.</p>
+<p>———. 1926. “The Frequency Distribution of Scientific Productivity.” <em>Journal of the Washington Academy of Sciences</em> 16 (12): 317–23.</p>
 </div>
 <div>
-<p>———. 2002. “Contribution to the Theory of Periodic Reactions.” <em>The Journal of Physical Chemistry</em> 14 (3). ACS Publications: 271–74.</p>
+<p>———. 2002. “Contribution to the Theory of Periodic Reactions.” <em>The Journal of Physical Chemistry</em> 14 (3): 271–74.</p>
 </div>
 <div>
-<p>MacArthur, Robert. 1955. “Fluctuations of Animal Populations and a Measure of Community Stability.” <em>Ecology</em> 36 (3). JSTOR: 533–36.</p>
+<p>MacArthur, Robert. 1955. “Fluctuations of Animal Populations and a Measure of Community Stability.” <em>Ecology</em> 36 (3): 533–36.</p>
 </div>
 <div>
-<p>———. 1970. “Species Packing and Competitive Equilibrium for Many Species.” <em>Theoretical Population Biology</em> 1 (1). Elsevier: 1–11.</p>
+<p>———. 1970. “Species Packing and Competitive Equilibrium for Many Species.” <em>Theoretical Population Biology</em> 1 (1): 1–11.</p>
 </div>
 <div>
 <p>MacArthur, Robert H, and Edward O Wilson. 2001. <em>The Theory of Island Biogeography</em>. Vol. 1. Princeton university press.</p>
 </div>
 <div>
-<p>MacArthur, Robert, and Richard Levins. 1967. “The Limiting Similarity, Convergence, and Divergence of Coexisting Species.” <em>The American Naturalist</em> 101 (921). Science Press: 377–85.</p>
+<p>MacArthur, Robert, and Richard Levins. 1967. “The Limiting Similarity, Convergence, and Divergence of Coexisting Species.” <em>The American Naturalist</em> 101 (921): 377–85.</p>
 </div>
 <div>
 <p>Marsland III, Robert, Wenping Cui, and Pankaj Mehta. 2019. “The Minimum Environmental Perturbation Principle: A New Perspective on Niche Theory.” <em>arXiv Preprint arXiv:1901.09673</em>.</p>
 </div>
 <div>
-<p>May, Robert M. 1972. “Will a Large Complex System Be Stable?” <em>Nature</em> 238 (5364). Springer: 413–14.</p>
+<p>May, Robert M. 1972. “Will a Large Complex System Be Stable?” <em>Nature</em> 238 (5364): 413–14.</p>
 </div>
 <div>
-<p>———. 1973. “Qualitative Stability in Model Ecosystems.” <em>Ecology</em> 54 (3). Wiley Online Library: 638–41.</p>
+<p>———. 1973. “Qualitative Stability in Model Ecosystems.” <em>Ecology</em> 54 (3): 638–41.</p>
 </div>
 <div>
-<p>———. 1976. “Simple Mathematical Models with Very Complicated Dynamics.” <em>Nature</em> 261 (5560). Springer: 459–67.</p>
+<p>———. 1976. “Simple Mathematical Models with Very Complicated Dynamics.” <em>Nature</em> 261 (5560): 459–67.</p>
 </div>
 <div>
-<p>———. 1988. “How Many Species Are There on Earth?” <em>Science</em> 241 (4872). American Association for the Advancement of Science: 1441–9.</p>
+<p>———. 1988. “How Many Species Are There on Earth?” <em>Science</em> 241 (4872): 1441–9.</p>
 </div>
 <div>
-<p>———. 1997. “The Scientific Wealth of Nations.” <em>Science</em> 275 (5301). JSTOR: 793–96.</p>
+<p>———. 1997. “The Scientific Wealth of Nations.” <em>Science</em> 275 (5301): 793–96.</p>
 </div>
 <div>
-<p>Maynard, Daniel S, Zachary R Miller, and Stefano Allesina. 2020. “Predicting Coexistence in Experimental Ecological Communities.” <em>Nature Ecology &amp; Evolution</em> 4. Cold Spring Harbor Laboratory: 91–100.</p>
+<p>Maynard, Daniel S, Zachary R Miller, and Stefano Allesina. 2020. “Predicting Coexistence in Experimental Ecological Communities.” <em>Nature Ecology &amp; Evolution</em> 4: 91–100.</p>
 </div>
 <div>
-<p>Maynard, Daniel S, Carlos A Serván, and Stefano Allesina. 2018. “Network Spandrels Reflect Ecological Assembly.” <em>Ecology Letters</em> 21 (3). Wiley Online Library: 324–34.</p>
+<p>Maynard, Daniel S, Carlos A Serván, and Stefano Allesina. 2018. “Network Spandrels Reflect Ecological Assembly.” <em>Ecology Letters</em> 21 (3): 324–34.</p>
 </div>
 <div>
 <p>Maynard Smith, John. 1982. <em>Evolution and the Theory of Games</em>. Cambridge university press.</p>
 </div>
 <div>
-<p>McCann, Kevin Shear. 2000. “The Diversity–Stability Debate.” <em>Nature</em> 405 (6783). Nature Publishing Group: 228–33.</p>
+<p>McCann, Kevin Shear. 2000. “The Diversity–Stability Debate.” <em>Nature</em> 405 (6783): 228–33.</p>
 </div>
 <div>
-<p>Morton, R Daniel, Richard Law, Stuart L Pimm, and James A Drake. 1996. “On Models for Assembling Ecological Communities.” <em>Oikos</em>. JSTOR, 493–99.</p>
+<p>Morton, R Daniel, Richard Law, Stuart L Pimm, and James A Drake. 1996. “On Models for Assembling Ecological Communities.” <em>Oikos</em>, 493–99.</p>
 </div>
 <div>
-<p>Nash, John F. 1950. “Equilibrium Points in N-Person Games.” <em>Proceedings of the National Academy of Sciences</em> 36 (1). USA: 48–49.</p>
+<p>Nash, John F. 1950. “Equilibrium Points in N-Person Games.” <em>Proceedings of the National Academy of Sciences</em> 36 (1): 48–49.</p>
 </div>
 <div>
-<p>Nowak, Martin A, and Robert M May. 1992. “Evolutionary Games and Spatial Chaos.” <em>Nature</em> 359 (6398). Nature Publishing Group: 826–29.</p>
+<p>Nowak, Martin A, and Robert M May. 1992. “Evolutionary Games and Spatial Chaos.” <em>Nature</em> 359 (6398): 826–29.</p>
 </div>
 <div>
-<p>Nowak, Martin A, and Karl Sigmund. 2005. “Evolution of Indirect Reciprocity.” <em>Nature</em> 437 (7063). Nature Publishing Group: 1291–8.</p>
+<p>Nowak, Martin A, and Karl Sigmund. 2005. “Evolution of Indirect Reciprocity.” <em>Nature</em> 437 (7063): 1291–8.</p>
 </div>
 <div>
-<p>O’Rourke, Sean, and David Renfrew. 2014. “Low Rank Perturbations of Large Elliptic Random Matrices.” <em>Electronic Journal of Probability</em> 19. The Institute of Mathematical Statistics; the Bernoulli Society.</p>
+<p>O’Rourke, Sean, and David Renfrew. 2014. “Low Rank Perturbations of Large Elliptic Random Matrices.” <em>Electronic Journal of Probability</em> 19.</p>
 </div>
 <div>
-<p>Ovaskainen, Otso, and Ilkka Hanski. 2001. “Spatially Structured Metapopulation Models: Global and Local Assessment of Metapopulation Capacity.” <em>Theoretical Population Biology</em> 60 (4). Elsevier: 281–302.</p>
+<p>Ovaskainen, Otso, and Ilkka Hanski. 2001. “Spatially Structured Metapopulation Models: Global and Local Assessment of Metapopulation Capacity.” <em>Theoretical Population Biology</em> 60 (4): 281–302.</p>
 </div>
 <div>
-<p>Page, Karen M, and Martin A Nowak. 2002. “Unifying Evolutionary Dynamics.” <em>Journal of Theoretical Biology</em> 219 (1). Elsevier: 93–98.</p>
+<p>Page, Karen M, and Martin A Nowak. 2002. “Unifying Evolutionary Dynamics.” <em>Journal of Theoretical Biology</em> 219 (1): 93–98.</p>
 </div>
 <div>
 <p>Pielou, Evelyn C. 1977. <em>Mathematical Ecology</em>. 574.50151. Wiley,</p>
@@ -618,43 +620,43 @@ x_{i}^\star = 1 - \dfrac{1}{1 + \tau \sum M_{ij} + \tau \sum M_{ij}(1-x_j^\star)
 <p>Puccia, Charles J, and Richard Levins. 2013. <em>Qualitative Modeling of Complex Systems: An Introduction to Loop Analysis and Time Averaging</em>. Harvard University Press.</p>
 </div>
 <div>
-<p>Scheffer, Marten, Jordi Bascompte, William A Brock, Victor Brovkin, Stephen R Carpenter, Vasilis Dakos, Hermann Held, Egbert H Van Nes, Max Rietkerk, and George Sugihara. 2009. “Early-Warning Signals for Critical Transitions.” <em>Nature</em> 461 (7260). Nature Publishing Group: 53–59.</p>
+<p>Scheffer, Marten, Jordi Bascompte, William A Brock, Victor Brovkin, Stephen R Carpenter, Vasilis Dakos, Hermann Held, Egbert H Van Nes, Max Rietkerk, and George Sugihara. 2009. “Early-Warning Signals for Critical Transitions.” <em>Nature</em> 461 (7260): 53–59.</p>
 </div>
 <div>
-<p>Schreiber, Sebastian J, and Seth Rittenhouse. 2004. “From Simple Rules to Cycling in Community Assembly.” <em>Oikos</em> 105 (2). Wiley Online Library: 349–58.</p>
+<p>Schreiber, Sebastian J, and Seth Rittenhouse. 2004. “From Simple Rules to Cycling in Community Assembly.” <em>Oikos</em> 105 (2): 349–58.</p>
 </div>
 <div>
-<p>Serván, Carlos A, and Stefano Allesina. 2020. “Tractable Models of Ecological Assembly.” <em>bioRxiv</em>. Cold Spring Harbor Laboratory.</p>
+<p>Serván, Carlos A, and Stefano Allesina. 2020. “Tractable Models of Ecological Assembly.” <em>bioRxiv</em>.</p>
 </div>
 <div>
-<p>Serván, Carlos A, José A Capitán, Jacopo Grilli, Kent E Morrison, and Stefano Allesina. 2018. “Coexistence of Many Species in Random Ecosystems.” <em>Nature Ecology &amp; Evolution</em> 2 (8). Nature Publishing Group: 1237.</p>
+<p>Serván, Carlos A, José A Capitán, Jacopo Grilli, Kent E Morrison, and Stefano Allesina. 2018. “Coexistence of Many Species in Random Ecosystems.” <em>Nature Ecology &amp; Evolution</em> 2 (8): 1237.</p>
 </div>
 <div>
 <p>Seydel, Rüdiger. 2009. <em>Practical Bifurcation and Stability Analysis</em>. Vol. 5. Springer Science &amp; Business Media.</p>
 </div>
 <div>
-<p>Sigmund, Karl. 1995. “Darwin’s &quot;Circles of Complexity&quot;: Assembling Ecological Communities.” <em>Complexity</em> 1 (1). Wiley Online Library: 40–44.</p>
+<p>Sigmund, Karl. 1995. “Darwin’s "Circles of Complexity": Assembling Ecological Communities.” <em>Complexity</em> 1 (1): 40–44.</p>
 </div>
 <div>
-<p>Smale, Steve. 1976. “On the Differential Equations of Species in Competition.” <em>Journal of Mathematical Biology</em> 3 (1). Springer: 5–7.</p>
+<p>Smale, Steve. 1976. “On the Differential Equations of Species in Competition.” <em>Journal of Mathematical Biology</em> 3 (1): 5–7.</p>
 </div>
 <div>
-<p>Solé, Ricard V, and Sergi Valverde. 2006. “Are Network Motifs the Spandrels of Cellular Complexity?” <em>Trends in Ecology &amp; Evolution</em> 21 (8). Elsevier: 419–22.</p>
+<p>Solé, Ricard V, and Sergi Valverde. 2006. “Are Network Motifs the Spandrels of Cellular Complexity?” <em>Trends in Ecology &amp; Evolution</em> 21 (8): 419–22.</p>
 </div>
 <div>
 <p>Strogatz, Steven H. 2018. <em>Nonlinear Dynamics and Chaos: With Applications to Physics, Biology, Chemistry, and Engineering</em>. CRC Press.</p>
 </div>
 <div>
-<p>Suweis, Samir, Filippo Simini, Jayanth R Banavar, and Amos Maritan. 2013. “Emergence of Structural and Dynamical Properties of Ecological Mutualistic Networks.” <em>Nature</em> 500 (7463). Nature Publishing Group: 449–52.</p>
+<p>Suweis, Samir, Filippo Simini, Jayanth R Banavar, and Amos Maritan. 2013. “Emergence of Structural and Dynamical Properties of Ecological Mutualistic Networks.” <em>Nature</em> 500 (7463): 449–52.</p>
 </div>
 <div>
 <p>Szederkenyi, Gabor, Attila Magyar, and Katalin M Hangos. 2018. <em>Analysis and Control of Polynomial Dynamic Models with Biological Applications</em>. Academic Press.</p>
 </div>
 <div>
-<p>Tilman, David, Peter B Reich, Johannes Knops, David Wedin, Troy Mielke, and Clarence Lehman. 2001. “Diversity and Productivity in a Long-Term Grassland Experiment.” <em>Science</em> 294 (5543). American Association for the Advancement of Science: 843–45.</p>
+<p>Tilman, David, Peter B Reich, Johannes Knops, David Wedin, Troy Mielke, and Clarence Lehman. 2001. “Diversity and Productivity in a Long-Term Grassland Experiment.” <em>Science</em> 294 (5543): 843–45.</p>
 </div>
 <div>
-<p>Van Mieghem, Piet, Jasmina Omic, and Robert Kooij. 2008. “Virus Spread in Networks.” <em>IEEE/ACM Transactions on Networking</em> 17 (1). IEEE: 1–14.</p>
+<p>Van Mieghem, Piet, Jasmina Omic, and Robert Kooij. 2008. “Virus Spread in Networks.” <em>IEEE/ACM Transactions on Networking</em> 17 (1): 1–14.</p>
 </div>
 <div>
 <p>Volterra, Vito. 1926a. “Fluctuations in the Abundance of a Species Considered Mathematically.” <em>Nature</em> 118: 558–60.</p>
