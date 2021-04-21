@@ -24,7 +24,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2021-04-07" />
+<meta name="date" content="2021-04-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -498,7 +498,7 @@ V(x(t)) = 1^T C \left( x(t) -x^\star -x^\star \cdot \log (x(t) / x^\star)\right)
 <p><img src="img/MacArthur.jpg" width="25%" style="display: block; margin: auto;" /></p>
 <p>Robert MacArthur was born in Toronto, and moved to Vermont when his father (a geneticist) became a professor at Marlboro College.</p>
 <p>He studied mathematics first at Marlboro College and then at Brown University. He enrolled as a PhD student in mathematics at Yale, but quickly switched to studying ecology with George Evelyn Hutchinson.</p>
-<p>He was a professor first at the University of Pennsylvania and then at Princeton University. In his brief career (he died at age 45) he revolutionized ecology, by making it into a rigorous, predictive science based on general principles.</p>
+<p>He was a professor first at the University of Pennsylvania and then at Princeton University. In his brief career (he died at age 42) he revolutionized ecology, by making it into a rigorous, predictive science based on general principles.</p>
 <p>He is recognized for developing the <em>Theory of Island Biogeography</em> (with E. O. Wilson, <span class="citation">MacArthur and Wilson (<a href="#ref-macarthur2001theory" role="doc-biblioref">2001</a>)</span>), the investigation of limiting similarity (with R. Levins, <span class="citation">MacArthur and Levins (<a href="#ref-macarthur1967limiting" role="doc-biblioref">1967</a>)</span>), the contributions to the complexity-stability debate (<span class="citation">MacArthur (<a href="#ref-macarthur1955fluctuations" role="doc-biblioref">1955</a>)</span>, see next lecture). The consumer-resource model he proposed in 1969 now bears his name (published also in <span class="citation">MacArthur (<a href="#ref-macarthur1970species" role="doc-biblioref">1970</a>)</span> in a longer form—the first paper in the journal Theoretical Population Biology!).</p>
 </div>
 <p>MacArtur considered a system with two classes of equations: those describing the dynamics of consumers <span class="math inline">\((x_i)\)</span> and resources (<span class="math inline">\(y_i\)</span>). Resources do not interact with each other, and consumers interact only through the sharing of resources. Several parameterizations are possible—here we choose a simple formulation that retains the main features of the model (see <span class="citation">Case and Casten (<a href="#ref-case1979global" role="doc-biblioref">1979</a>)</span> for a slightly more general model):</p>
@@ -670,26 +670,30 @@ y = D(b)^{-1} (r - P\,x)
 </div>
 <div id="lyapunov-function-for-symmetric-lotka-volterra" class="section level3">
 <h3><span class="header-section-number">3.4.4</span> Lyapunov function for symmetric Lotka-Volterra</h3>
+<p>We have the equations:</p>
+<p><span class="math display">\[
+\dfrac{d x_i}{d t} = x_i v_i \left(s_i - \sum_{j} B_{ij} x_j \right)
+\]</span></p>
 <p>At equilibrium, we have <span class="math inline">\(x^\star = B^{-1} s\)</span>. Consider the function:</p>
 <p><span class="math display">\[
 V(x(t)) = 2 \sum_i s_i x_i - \sum_{ij} B_{ij} x_i x_j
 \]</span></p>
 <p>Note that <span class="math inline">\(\sum_i s_i x_i &gt; 0\)</span> and that whenever <span class="math inline">\(B\)</span> is stable (and because it’s symmetric, negative definite), <span class="math inline">\(- \sum_{ij} B_{ij} x_i x_j &gt; 0\)</span>. At equilibrium, we have:</p>
 <p><span class="math display">\[
-V(x^\star) = 2 \sum_i s_i x_i^\star - \sum_{ij} x_j^\star B_{ij}  B_{ij}^{-1} s_j = 2 \sum_i s_i x_i^\star - \sum_j s_j x_j^\star = \sum_i s_i x_i^\star
+V( x^\star ) = \sum_i \left(s_i x_i^\star + \left(s_i x_i^\star - \sum_j B_{ij} x_j^\star \right) \right) = \sum_i s_i x_i^\star
 \]</span></p>
 <p>It is of particular interest the case in which <span class="math inline">\(s_i = 1\)</span> for all <span class="math inline">\(i\)</span> and <span class="math inline">\(V(x^\star)\)</span> is simply the total biomass of the system at equilibrium.</p>
 <p>Now, let’s take the derivative of <span class="math inline">\(V(x(t))\)</span> with respect to <span class="math inline">\(x_i\)</span>:</p>
 <p><span class="math display">\[
 \dfrac{\partial V}{\partial x_i} = 2 s_i - 2 \sum_j B_{ij} x_j
-\]</span></p>
-<p>But then:</p>
+\]</span>
+The <span class="math inline">\(2\)</span> in front of the <span class="math inline">\(B_{ij}\)</span> stems from the fact that we are summing over both <span class="math inline">\(B_{ij} x_i x_j\)</span> and <span class="math inline">\(B_{ji} x_j x_i\)</span>. But then:</p>
 <p><span class="math display">\[
 \dfrac{d x_i}{d t} = x_i v_i \left(s_i -\sum_j B_{ij} x_j\right) = x_i v_i \frac{1}{2}\dfrac{\partial V}{\partial x_i}
 \]</span>
 And therefore, by chain rule:</p>
 <p><span class="math display">\[
-\dfrac{d V(x(t))} {d t} = \sum_i \dfrac{\partial V}{\partial x_i} \dfrac{d x_i}{d t} = \sum_i x_i v_i \frac{1}{2}\left(\dfrac{\partial V}{\partial x_i} \right)^2
+\dfrac{d V} {d t} = \sum_i \dfrac{\partial V}{\partial x_i} \dfrac{d x_i}{d t} = \sum_i x_i v_i \frac{1}{2}\left(\dfrac{\partial V}{\partial x_i} \right)^2
 \]</span></p>
 <p>which is always nonnegative, and is zero at equilibrium. Therefore, <span class="math inline">\(V(x(t))\)</span> is maximized through the dynamics. This holds even more generally, as we will see in the next lecture and in the following homework. In a way, competitive dynamics are “optimizing” <span class="math inline">\(V\)</span>, by following a gradient. This argument can be further expanded, showing that many ecological models can be interpreted as optimization processes (<span class="citation">Marsland III, Cui, and Mehta (<a href="#ref-marsland2019minimum" role="doc-biblioref">2019</a>)</span>).</p>
 <div class="boxhomework">

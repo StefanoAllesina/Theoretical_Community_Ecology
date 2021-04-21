@@ -5,6 +5,7 @@ source("common_settings.R")
 ```
 
 **Lesson plan**:
+
 1. We consider the problem of co-culturing several species taken from a pool in all possible combinations.
 1. This type of experiments has been conducted to test hypotheses on the relationship between diversity and ecosystem functioning.
 1. The number of combinations grows quickly with the size of the pool, making experiments difficult.
@@ -13,6 +14,14 @@ source("common_settings.R")
 1. We test whether our model is able to predict the outcomes of experiments out-of-fit.
 
 ## Background: Diversity and Ecosystem Functioning
+
+:::boxpaper
+
+**Key paper: @tilman2001diversity**
+
+This paper present the results of the biodiversity-ecosystem functioning experiments carried out at Cedar Creek, Minnesota, by Tilman and collaborators. These multi-year experiments are among the largest ever carried out in ecology, and have been hugely influential. The same type of experiments have been carried out with different organisms, in the lab, and in mesocosms.
+
+:::
 
 Ecologists have performed large experiments in which different assemblages of species are co-cultured. These experiments have been conducted with plants (for example, Biodiversity Ecosystem Functioning experiments e.g., @hector1999plant @tilman2001diversity, @cadotte2013experimental) and in the laboratory using protozoan, algae or bacteria. Two commonly-encountered problems in this type of experiments have to to with the scaling of the number of experiments with the number of species, and with the probability of coexistence.
 
@@ -37,7 +46,7 @@ We can then cycle through each of the $2^n - 1$ assemblages that can be formed, 
 In `R`:
 
 ```{r, randomglvpars}
-set.seed(3)
+set.seed(18) # this gives enough endpoints, but only 25
 # take a random matrix of interactions: 
 # -Aij <- U[0,1]; -Aii <- Sqrt(2) + U[0,1]
 # all interactions are competitive
@@ -45,7 +54,7 @@ n <- 5
 A <- -matrix(runif(n * n), n, n)
 diag(A) <- diag(A) - sqrt(2)
 # choose positive growth rates
-r <- runif(n) + 0.5
+r <- runif(n) 
 ```
 
 Now go through all possible combinations:
@@ -82,11 +91,20 @@ knitr::kable(
 )
 ```
 
+:::boxpaper
+
+**Key paper: @tilman1997plant**
+
+We are not the first people to consider "in-silico" biodiversity experiments. Tilman and collaborators were doing the same more than twenty years ago! For a more sophisticated model, see @loreau1998biodiversity.
+
+:::
+
+
 ## Total biomass
 
 Our simulated communties have much in common with BEF experiments. For example, plotting the species richness on the x-axis and the total biomass on the y-axis, we recover the typical pattern found in real experiments (@hector1999plant, @tilman2001diversity, @cadotte2013experimental):
 
-```{r, glvbefplot, warning=FALSE}
+```{r, glvbefplot, warning=FALSE, message=FALSE}
 library(tidyverse) # plotting and wrangling
 total_biomass <- rowSums(E)
 species_richness <- rowSums(E > 0)
@@ -117,30 +135,30 @@ where $(B^{(k)})^{-1}$ is the inverse of the $B^{(k)}$ sub-matrix of $B$ in whic
 We now want to link the matrix $B$ with the results of the experiments, stored in matrix $E$. Call $x^{(k)}_i$ the recorded density of taxon $i$ in community $k$ (i.e., stored in one of the rows of $E$). We know that, whenever a feasible equilibrium exist,
 
 $$
-(B^{(k)}) x^{(k)}= 1^{(k)}
+(B^{(k)}) x^{(k)}= -1^{(k)}
 $$
 which can be seen as a system of as many equations as there are species in $k$. Then, we can build a matrix $P$ where each row represents an equation of form:
 
 $$
-\sum_{j \in k} b_{ij} x_j^{(k)} = 1
+\sum_{j \in k} b_{ij} x_j^{(k)} = -1
 $$
 
 and we have a column for each coefficient in $B$. For example, take three taxa, and suppose that we can culture each in isolation, and that the all assemblages coexist when co-cultured. We can write 12 equations: monocultures ($k \in \{1, 2, 4\}$) give rise to a single equation; co-cultures of two taxa to two equations each ($k \in \{3, 5, 6 \}$); and communities with three taxa to three independent equations ($k = 7$). Here are the 12 equations we can write:
 
 $$
 \begin{aligned}
-b_{11} x_1^{(1)} &= 1\\
-b_{22} x_2^{(2)} &= 1\\
-b_{11} x_1^{(3)} + b_{12}x_2^{(3)} &= 1\\
-b_{21} x_1^{(3)} + b_{22}x_2^{(3)} &= 1\\
-b_{33} x_3^{(4)} &= 1\\
-b_{11} x_1^{(5)} + b_{13} x_3^{(5)} &= 1\\
-b_{31} x_1^{(5)} + b_{33} x_3^{(5)} &= 1\\
-b_{22} x_2^{(6)} + b_{23} x_3^{(6)} &= 1\\
-b_{32} x_2^{(6)} + b_{33} x_3^{(6)} &= 1\\
-b_{11} x_1^{(7)} + b_{12} x_2^{(7)} + b_{13} x_3^{(7)} & = 1\\
-b_{21} x_1^{(7)} + b_{22} x_2^{(7)} + b_{23} x_3^{(7)} & = 1\\
-b_{31} x_1^{(7)} + b_{32} x_2^{(7)} + b_{33} x_3^{(7)} & = 1
+b_{11} x_1^{(1)} &= -1\\
+b_{22} x_2^{(2)} &= -1\\
+b_{11} x_1^{(3)} + b_{12}x_2^{(3)} &= -1\\
+b_{21} x_1^{(3)} + b_{22}x_2^{(3)} &= -1\\
+b_{33} x_3^{(4)} &= -1\\
+b_{11} x_1^{(5)} + b_{13} x_3^{(5)} &= -1\\
+b_{31} x_1^{(5)} + b_{33} x_3^{(5)} &= -1\\
+b_{22} x_2^{(6)} + b_{23} x_3^{(6)} &= -1\\
+b_{32} x_2^{(6)} + b_{33} x_3^{(6)} &= -1\\
+b_{11} x_1^{(7)} + b_{12} x_2^{(7)} + b_{13} x_3^{(7)} & = -1\\
+b_{21} x_1^{(7)} + b_{22} x_2^{(7)} + b_{23} x_3^{(7)} & = -1\\
+b_{31} x_1^{(7)} + b_{32} x_2^{(7)} + b_{33} x_3^{(7)} & = -1
 \end{aligned}
 $$
 
@@ -172,7 +190,7 @@ b_{31}\\
 b_{32}\\
 b_{33}
 \end{pmatrix} 
-= 
+= -
 \begin{pmatrix}
 1\\
 1\\
@@ -213,7 +231,7 @@ Suppose that $A$ has linearly independent columns (i.e., it is of full column ra
 
 $$A^+ = (A^T A)^{-1}A^T$$ 
 
-This is called the left inverse because $A^+A= (A^T A)^{-1}A^TA=I$. When $A$ has independent rows, one can compute the *right inverse*. Note that a generalized inverse $A^+$ exists even if $A$ is not of full column nor row rank, but in this case it is not unique.
+This is called the left inverse because $A^+A= (A^T A)^{-1} A^T A=I$. When $A$ has independent rows, one can compute the *right inverse*. Note that a generalized inverse $A^+$ exists even if $A$ is not of full column nor full row rank, but in this case it is not unique.
 
 **Application: least squares**
 
@@ -240,7 +258,7 @@ in particular, it can be proven that the solution $\hat{b}$ minimizes the SSQ: c
 :::
 
 
-One can recognize the equation above as a linear regression, and choose $\hat{v}(B) = P^{+}1$ (where $P^{+}$ is the Moore-Penrose pseudo-inverse of $P$). Before doing that, however, we can try to simplify the calculation by rearranging the rows of $P$:
+One can recognize the equation above as a linear regression, and choose $\widehat{v(B)} = -P^{+}1$ (where $P^{+}$ is the Moore-Penrose pseudo-inverse of $P$). Before doing that, however, we can try to simplify the calculation by rearranging the rows of $P$:
 
 $$
 \begin{pmatrix}
@@ -268,7 +286,7 @@ b_{31}\\
 b_{32}\\
 b_{33}
 \end{pmatrix} 
-= 
+= -
 \begin{pmatrix}
 1\\
 1\\
@@ -299,7 +317,7 @@ b_{11}\\
 b_{12}\\
 b_{13}
 \end{pmatrix} 
-= 
+= - 
 \begin{pmatrix}
 1\\
 1\\
@@ -343,9 +361,9 @@ ggplot(data = tibble(real = as.vector(B),
   aes(x = real, y = fitted) + geom_point() + 
   geom_abline(slope = 1, intercept = 0)
 print("predicted")
-solve(fitted_B, - rep(1, n))
+c(0, solve(fitted_B[2:5, 2:5], - rep(1, 4)))
 print("observed")
-E[(2^n -1), ]
+E[25, ]
 ```
 
 The equation $E_i B_i = -1$ shows that all the equilibria of species $i$ in a GLV system are arranged on a hyperplane.
@@ -367,16 +385,17 @@ As seen above, for GLV, the matrix $B = D(r)^{-1}A$ encodes all the equilibria (
 Having played with synthetic data, we can start thinking about data stemming from real experiments. In particular, consider the linear, additive model:
 
 $$
-x_i^{(k)} = \gamma_i - \sum_{j\neq i} \theta_{ij} x_j^{(k)}
+x_i^{(k)} = \gamma_i + \sum_{j\neq i} \theta_{ij} x_j^{(k)}
 $$
+
 where $x_i^{(k)}$ is the density of species $i$ in community $k$,  $\gamma_i$ models the density of $i$ when grown in isolation, and the parameters $\theta_{ij}$ model how the density of $i$ is influenced by the other species in community $k$. Dividing both sides by $\gamma_i$ and rearranging:
 
 $$
-\sum_{j\neq i} (\theta_{ij} /\gamma_i) x_j^{(k)} + (1/{\gamma_i}) x_i^{(k)}= \sum_j b_{ij} x_j^{(k)} = 1
+\sum_{j\neq i} (\theta_{ij} /\gamma_i) x_j^{(k)} - (1/{\gamma_i}) x_i^{(k)} = \sum_j b_{ij} x_j^{(k)} = -1
 $$
-which is exactly the same system of equations found above. As such, fitting a linear, addittive model for the biomass of each species in each plot is equivalent to finding the equilibrium strcuture of a GLV model that approximates the data.
+where we have definied $b_{ij} = \theta_{ij} / \gamma_i$ for $i \neq j$, and $b_{ii} = - 1 / \gamma_i$. Note that this is exactly the same system of equations found above. As such, fitting a linear, addittive model for the biomass of each species in each plot is equivalent to finding the equilibrium strcuture of a GLV model that approximates the data.
 
-One thing to consider when modeling real data, contrary to simulated data, is the structure of the errors. For example, empirical data often contain replicates that reach slightly different densities. Moreover, what is typically done in these types of experiments is to sort and measure biomass for a section of each plot, and then to multiply to extrapolate the biomass for the whole plot. As such, if the error is normally distributed for the sub-plot, then it's going to be lognormally distributed for the whole plot. Furthermore, we need to link the rows of matrix $P$ above, because when we make an error in measuring $x_j^{(k)}$, the value is reported over several values. Following @maynard2019predicting, we do the following:
+One thing to consider when modeling real data, contrary to simulated data, is the structure of the errors. For example, empirical data often contain replicates that reach slightly different densities (while this is impossible in GLV). Moreover, what is typically done in these types of experiments is to sort and measure biomass for a section of each plot, and then to multiply to extrapolate the biomass for the whole plot. As such, if the error is normally distributed for the sub-plot, then it's going to be lognormally distributed for the whole plot. Furthermore, we need to link the rows of matrix $P$ above, because when we make an error in measuring $x_j^{(k)}$, the value is reported over several values. Following @maynard2019predicting, we do the following:
 
 - Propose a matrix $B$
 - Compute the predicted abundance for all species in all observed assemblages (call them $\tilde{x}_j^{(k)}$)
@@ -450,6 +469,7 @@ solution <- compute_SSQ(best_B, E)
 ```
 
 Now let's write code to show a nice plot of the predicted vs. observed values for all communities:
+
 ```{r, plotendpoints}
 plot_solution <- function(solution, oof = NULL){
   # add a column with community composition
@@ -499,6 +519,7 @@ plot_solution(solution)
 ```
 
 ## Predicting real data out of fit
+
 Exactly as done for the GLV simulated data, we can attempt fitting the matrix $B$ using only part of the experimental data, and then predict the rest out-of-fit. This is a powerful test to make sure that a) we have chosen a good structure for the statistical model, and b) we are not overfitting. For example, let's try to predict all triplets out of fit. First, we fit the model using only the information about monocultures, pairs, and the quadruplet (11 experiments); then, we use the fitted matrix to predict all of the data and plot:
 
 ```{r, kuebnumerics2}
@@ -552,4 +573,11 @@ plot_solution(solution_oof3, oof)
 
 You can see that we predict a lack of coexistence for the system with all four species, while experimentally we have observed coexistence in all ten replicates. @maynard2019predicting have demonstrated that experimental designs mixing high- and low-abundance experiments provide the best fit while minimizing the number of experiments.
 
+:::boxpaper
+
+**Key paper: @loreau2001partitioning**
+
+Ecologists are fond of the idea of partitioning effects into (hopefully) orthogonal components that have a clear biological interpretation. In this hugely influential paper, Loreau and Hector show how the effect of diversity on functioning can be partitioned into "selection" (dominance of species with particular traits) vs. "complementarity" (increased resource use due to niche partitioning). As for any hugely influential idea, critics abound---and some are over the top (@pillai2019not), leading to rebuttals of rebuttals (@loreau2019not, @wagg2019not, @pillai2019not3, @pillai2019not2)...
+
+:::
 

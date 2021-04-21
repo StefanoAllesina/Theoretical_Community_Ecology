@@ -24,7 +24,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2021-04-07" />
+<meta name="date" content="2021-04-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -605,7 +605,7 @@ y_j(t) = y_j(0)\, e^{(\alpha + i\, \beta) t} = y_j(0)\, e^{\alpha\, t} (\cos(\be
 \]</span></p>
 <p>obtaining:</p>
 <p><span class="math display">\[
-\Delta x(t) = \Delta x(0) e^{Mt} = \Delta x(0) Q e^{\Lambda t} Q^{-1}
+\Delta x(t) =  e^{Mt}\Delta x(0) =  Q e^{\Lambda t} Q^{-1}\Delta x(0)
 \]</span></p>
 <p>Where <span class="math inline">\(Q\)</span> is the matrix containing the (unit) eigenvectors of <span class="math inline">\(M\)</span>, and <span class="math inline">\(\Lambda\)</span> is a diagonal matrix containing the eigenvalues of <span class="math inline">\(M\)</span>. As such, the eigenvalues of <span class="math inline">\(M\)</span> determine the stability of the equilibrium <span class="math inline">\({x}^\star\)</span>: if all the eigenvalues have negative real part, then the system will eventually return to the equilibrium after sufficiently small perturbations; conversely, if any of the eigenvalues have positive real part, the system will move away from the equilibrium whenever perturbed. Therefore, depending on the sign of the “rightmost” eigenvalue of <span class="math inline">\({M}\)</span>, <span class="math inline">\(\lambda_1\)</span>, we can determine the stability of <span class="math inline">\({x}^\star\)</span>:</p>
 <p><span class="math display">\[

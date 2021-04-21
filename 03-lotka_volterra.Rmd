@@ -337,7 +337,7 @@ Robert MacArthur was born in Toronto, and moved to Vermont when his father (a ge
 
 He studied mathematics first at Marlboro College and then at Brown University. He enrolled as a PhD student in mathematics at Yale, but quickly switched to studying ecology with George Evelyn Hutchinson. 
 
-He was a professor first at the University of Pennsylvania and then at Princeton University. In his brief career (he died at age 45) he revolutionized ecology, by making it into a rigorous, predictive science based on general principles.
+He was a professor first at the University of Pennsylvania and then at Princeton University. In his brief career (he died at age 42) he revolutionized ecology, by making it into a rigorous, predictive science based on general principles.
 
 He is recognized for developing the *Theory of Island Biogeography* (with E. O. Wilson, @macarthur2001theory), the investigation of limiting similarity (with R. Levins, @macarthur1967limiting), the contributions to the complexity-stability debate (@macarthur1955fluctuations, see next lecture). The consumer-resource model he proposed in 1969 now bears his name (published also in @macarthur1970species in a longer form---the first paper in the journal Theoretical Population Biology!).
 
@@ -563,6 +563,12 @@ Which is again GLV, with "growth rates" $s = P^T\, D(b)^{-1} r - D(v)^{-1}m$ and
 
 ### Lyapunov function for symmetric Lotka-Volterra
 
+We have the equations:
+
+$$
+\dfrac{d x_i}{d t} = x_i v_i \left(s_i - \sum_{j} B_{ij} x_j \right)
+$$
+
 At equilibrium, we have $x^\star = B^{-1} s$. Consider the function:
 
 $$
@@ -572,7 +578,7 @@ $$
 Note that $\sum_i s_i x_i > 0$ and that whenever $B$ is stable (and because it's symmetric, negative definite), $- \sum_{ij} B_{ij} x_i x_j > 0$. At equilibrium, we have:
 
 $$
-V(x^\star) = 2 \sum_i s_i x_i^\star - \sum_{ij} x_j^\star B_{ij}  B_{ij}^{-1} s_j = 2 \sum_i s_i x_i^\star - \sum_j s_j x_j^\star = \sum_i s_i x_i^\star
+V( x^\star ) = \sum_i \left(s_i x_i^\star + \left(s_i x_i^\star - \sum_j B_{ij} x_j^\star \right) \right) = \sum_i s_i x_i^\star
 $$
 
 It is of particular interest the case in which $s_i = 1$ for all $i$ and $V(x^\star)$ is simply the total biomass of the system at equilibrium. 
@@ -582,8 +588,7 @@ Now, let's take the derivative of $V(x(t))$ with respect to $x_i$:
 $$
 \dfrac{\partial V}{\partial x_i} = 2 s_i - 2 \sum_j B_{ij} x_j
 $$
-
-But then:
+The $2$ in front of the $B_{ij}$ stems from the fact that we are summing over both $B_{ij} x_i x_j$ and $B_{ji} x_j x_i$. But then:
 
 $$
 \dfrac{d x_i}{d t} = x_i v_i \left(s_i -\sum_j B_{ij} x_j\right) = x_i v_i \frac{1}{2}\dfrac{\partial V}{\partial x_i}
@@ -591,7 +596,7 @@ $$
 And therefore, by chain rule:
 
 $$
-\dfrac{d V(x(t))} {d t} = \sum_i \dfrac{\partial V}{\partial x_i} \dfrac{d x_i}{d t} = \sum_i x_i v_i \frac{1}{2}\left(\dfrac{\partial V}{\partial x_i} \right)^2
+\dfrac{d V} {d t} = \sum_i \dfrac{\partial V}{\partial x_i} \dfrac{d x_i}{d t} = \sum_i x_i v_i \frac{1}{2}\left(\dfrac{\partial V}{\partial x_i} \right)^2
 $$
 
 which is always nonnegative, and is zero at equilibrium. Therefore, $V(x(t))$ is maximized through the dynamics. This holds even more generally, as we will see in the next lecture and in the following homework. In a way, competitive dynamics are "optimizing" $V$, by following a gradient. This argument can be further expanded, showing that many ecological models can be interpreted as optimization processes (@marsland2019minimum).

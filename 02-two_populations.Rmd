@@ -536,7 +536,7 @@ $$
 obtaining:
 
 $$
-\Delta x(t) = \Delta x(0) e^{Mt} = \Delta x(0) Q e^{\Lambda t} Q^{-1}
+\Delta x(t) =  e^{Mt}\Delta x(0) =  Q e^{\Lambda t} Q^{-1}\Delta x(0)
 $$
 
 Where $Q$ is the matrix containing the (unit) eigenvectors of $M$, and $\Lambda$ is a diagonal matrix containing the eigenvalues of $M$. As such, the eigenvalues of $M$ determine the stability of the equilibrium ${x}^\star$: if all the eigenvalues have negative real part, then the system will eventually return to the equilibrium after sufficiently small perturbations; conversely, if any of the eigenvalues have positive real part, the system will move away from the equilibrium whenever perturbed. Therefore, depending on the sign of the "rightmost" eigenvalue of ${M}$, $\lambda_1$, we can determine the stability of ${x}^\star$:
