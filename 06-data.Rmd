@@ -162,7 +162,7 @@ b_{31} x_1^{(7)} + b_{32} x_2^{(7)} + b_{33} x_3^{(7)} & = -1
 \end{aligned}
 $$
 
-We can summarize the equations in a more compact form as $P v(B)=1$:
+We can summarize the equations in a more compact form as $P v(B) = - 1$:
 
 $$
 \begin{pmatrix}
@@ -345,7 +345,7 @@ ggplot(data = tibble(real = as.vector(B),
   geom_abline(slope = 1, intercept = 0)
 ```
 
-Notice that in general the system of equations is over-determined. As such, we can fit using a subset of the experiments, and then predict the rest of the experiments out-of-fit. For example, let's fit again using the information on monocultures and pairs only, and then predict experiment 31, in which all species should coexist:
+Notice that in general the system of equations is over-determined. As such, we can fit using a subset of the experiments, and then predict the rest of the experiments out-of-fit. For example, let's fit again using the information on monocultures and pairs only, and then predict experiment 25, in which all species but the first coexist:
 
 ```{r, examplefitendpoints2}
 E_partial <- E[rowSums(E> 0) < 3, ]
@@ -450,8 +450,12 @@ To test this method, we are going to use the data from @kuebbing2015above, who c
 ```{r, loadkueb}
 url <- "https://github.com/dsmaynard/endpoints/raw/master/data/Kuebbing_plants/natives.csv"
 E <- as.matrix(read_csv(url))
+knitr::kable(
 head(E)
+)
+knitr::kable(
 tail(E)
+)
 ```
 
 And let's try to find a good numerical solution starting from the identity matrix:
@@ -577,7 +581,7 @@ You can see that we predict a lack of coexistence for the system with all four s
 
 **Key paper: @loreau2001partitioning**
 
-Ecologists are fond of the idea of partitioning effects into (hopefully) orthogonal components that have a clear biological interpretation. In this hugely influential paper, Loreau and Hector show how the effect of diversity on functioning can be partitioned into "selection" (dominance of species with particular traits) vs. "complementarity" (increased resource use due to niche partitioning). As for any hugely influential idea, critics abound---and some are over the top (@pillai2019not), leading to rebuttals of rebuttals (@loreau2019not, @wagg2019not, @pillai2019not3, @pillai2019not2)...
+Ecologists are fond of the idea of partitioning effects into (hopefully) orthogonal components that have a clear biological interpretation. In this influential paper, Loreau and Hector show how the effect of diversity on functioning can be partitioned into "selection" (dominance of species with particular traits) vs. "complementarity" (increased resource use due to niche partitioning). As for any interesting idea, critics abound---and some are over the top (@pillai2019not), leading to rebuttals of rebuttals (@loreau2019not, @wagg2019not, @pillai2019not3, @pillai2019not2)...
 
 :::
 
