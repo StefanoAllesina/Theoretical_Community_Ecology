@@ -411,20 +411,23 @@ r^{(n-k)} + A^{(n-k,k)}x^{(k)} &lt; 0
 <div id="lyapunov-stability-and-saturated-equilibria" class="section level3">
 <h3><span class="header-section-number">5.2.2</span> Lyapunov stability and saturated equilibria</h3>
 <p>We have seen in previous section that, whenever there exists a matrix <span class="math inline">\(C\)</span> such that <span class="math inline">\(CA + A^T C\)</span> is negative definite and we have a feasible equilibrium <span class="math inline">\(x^\star\)</span> then the equilibrium is globally stable. Now we consider the case in which a feasible equilibrium does not exist. However, we can prove that a <strong>saturated equilibrium</strong> exists and is unique: we have an equilibrium <span class="math inline">\(\bar{x}\)</span> in which some components are positive and some are zero such that <span class="math inline">\(k\)</span> species coexist at a globally stable equilibrium, and the remaining <span class="math inline">\((n-k)\)</span> species cannot invade it.</p>
-<p>Following <span class="citation">Hofbauer and Sigmund (<a href="#ref-hofbauer1998evolutionary" role="doc-biblioref">1998</a>)</span> (section 15.3), we write:</p>
+<p>Following <span class="citation">Hofbauer and Sigmund (<a href="#ref-hofbauer1998evolutionary" role="doc-biblioref">1998</a>)</span> (section 15.3), we assume that all species <span class="math inline">\(x_i &gt; 0\)</span>, and write:</p>
 <p><span class="math display">\[
-V(x) = -\sum_i c_i (\bar{x}_i \log x_i - x_i)
+V(x) = \sum_i c_i (x_i - \bar{x_i} -\bar{x}_i \log x_i / \bar{x_i} )
 \]</span></p>
-<p>yielding:</p>
+<p>where for simplicity, we take <span class="math inline">\(0 \log{x /0} = 0\)</span>. Note that this is always positive whenever <span class="math inline">\(x \neq \bar{x}\)</span>.</p>
+<p>We derive with respect to time, obtaining:</p>
 <p><span class="math display">\[
 \begin{aligned}
-\dfrac{dV(x)}{dt} &amp;= -\sum_i c_i \left(\bar{x}_i \frac{d \log x_i}{dt} - \frac{d x_i}{dt} \right) \\
-&amp;= -\sum_i c_i \left( \bar{x}_i - x_i \right)  \left( r_i + \sum_j A_{ij} x_j \right) \\
-&amp;= -\sum_i c_i \left( \bar{x}_i - x_i \right)  \left( r_i + \sum_j A_{ij} (x_j - \bar{x}_j) +  \sum_j A_{ij} \bar{x}_j \right) \\
-&amp;= \sum_{i,j} \left( \bar{x}_i - x_i \right) c_i A_{ij} \left( \bar{x}_j - x_j \right) + \sum_i c_i \left( \bar{x}_i - x_i \right) \left(r_i + \sum_j A_{ij} \bar{x}_j \right)
+\dfrac{dV(x)}{dt} &amp;= \sum_i c_i \left(\frac{d x_i}{dt} - \bar{x}_i \frac{d \log x_i}{dt} \right) \\
+&amp;= \sum_i c_i \left( x_i - \bar{x}_i \right)  \left( r_i + \sum_j A_{ij} x_j \right) \\
+&amp;= \sum_i c_i \left( x_i  - \bar{x}_i \right)  \left( r_i + \sum_j A_{ij} (x_j - \bar{x}_j) +  \sum_j A_{ij} \bar{x}_j \right) \\
+&amp;= \sum_{i,j} \left( x_i  - \bar{x}_i \right) c_i A_{ij} \left( \bar{x}_j - x_j \right) + \sum_i c_i \left( x_i - \bar{x}_i\right) \left(r_i + \sum_j A_{ij} \bar{x}_j \right)
 \end{aligned}
 \]</span></p>
-<p>The first term is negative for all <span class="math inline">\(x \neq \bar{x}\)</span>, and is zero at the saturated equilibrium point. The second term is zero for all <span class="math inline">\(\bar{x}_i &gt; 0\)</span>: <span class="math inline">\(r_i + \sum_j A_{ij} \bar{x}_j = 0\)</span>, given that <span class="math inline">\(\bar{x}\)</span> is an equilibrium for the species at positive density; for the remaining species (for which <span class="math inline">\(\bar{x}_i = 0\)</span>), this amounts to the invasion criterion above, and must therefore be negative. As such <span class="math inline">\(V(x)\)</span> is a Lyapunov function for the system, assuming negative values everywhere but at <span class="math inline">\(\bar{x}\)</span>.</p>
+<p>The first term is negative for all <span class="math inline">\(x \neq \bar{x}\)</span> (because <span class="math inline">\(CA\)</span> is negative definite), and is zero at the saturated equilibrium point (because <span class="math inline">\(x = \bar{x}\)</span>).</p>
+<p>The second term is zero for all <span class="math inline">\(\bar{x}_i &gt; 0\)</span>: <span class="math inline">\(r_i + \sum_j A_{ij} \bar{x}_j = 0\)</span>, given that <span class="math inline">\(\bar{x}_i\)</span> is an equilibrium for the species at positive density. For the remaining species (for which <span class="math inline">\(\bar{x}_i = 0\)</span>), this amounts to the invasion criterion above, and must therefore be negative at the saturated equilibrium <span class="math inline">\(\bar{x}\)</span>, yielding again a negative term.</p>
+<p>As such <span class="math inline">\(V(x)\)</span> is a Lyapunov function for the system, assuming negative values everywhere but at <span class="math inline">\(\bar{x}\)</span>.</p>
 </div>
 </div>
 <div id="top-down-assembly" class="section level2">
@@ -438,10 +441,8 @@ V(x) = -\sum_i c_i (\bar{x}_i \log x_i - x_i)
 </div>
 <div id="simulating-final-composition" class="section level3">
 <h3><span class="header-section-number">5.3.2</span> Simulating final composition</h3>
-<p>Now, let’s simulate cases in which species do interact with each other. First, we load the functions we’ve written before:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="ecological-assembly.html#cb1-1"></a><span class="co"># this file contains functions to integrate GLV dynamics</span></span>
-<span id="cb1-2"><a href="ecological-assembly.html#cb1-2"></a><span class="co"># and plot the results</span></span>
-<span id="cb1-3"><a href="ecological-assembly.html#cb1-3"></a><span class="kw">source</span>(<span class="st">&quot;dat/general_code_assembly.R&quot;</span>)</span></code></pre></div>
+<p>Now, let’s simulate cases in which species do interact with each other, but <span class="math inline">\(A\)</span> is still D-stable. First, we load some functions to integrate GLV dynamics and plot results:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="ecological-assembly.html#cb1-1"></a><span class="kw">source</span>(<span class="st">&quot;dat/general_code_assembly.R&quot;</span>)</span></code></pre></div>
 <p>And then write functions to give us a (barely) stable, symmetric matrix <span class="math inline">\(A\)</span>, and random growth rates:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="ecological-assembly.html#cb2-1"></a><span class="co"># function to build symmetric, Lyapunov Diagonally-stable matrix</span></span>
 <span id="cb2-2"><a href="ecological-assembly.html#cb2-2"></a>build_LDstable &lt;-<span class="st"> </span><span class="cf">function</span>(n){</span>
@@ -472,9 +473,8 @@ V(x) = -\sum_i c_i (\bar{x}_i \log x_i - x_i)
 <p><img src="Theoretical_Community_Ecology_files/figure-html/rndzooex1-1.png" width="480" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="ecological-assembly.html#cb4-1"></a>knitr<span class="op">::</span><span class="kw">kable</span>(</span>
 <span id="cb4-2"><a href="ecological-assembly.html#cb4-2"></a>out<span class="op">$</span>ts <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb4-3"><a href="ecological-assembly.html#cb4-3"></a><span class="st">  </span><span class="kw">filter</span>(out<span class="op">$</span>ts<span class="op">$</span>time <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(out<span class="op">$</span>ts<span class="op">$</span>time))<span class="co"># %&gt;% </span></span>
-<span id="cb4-4"><a href="ecological-assembly.html#cb4-4"></a>  <span class="co">#select(-time) </span></span>
-<span id="cb4-5"><a href="ecological-assembly.html#cb4-5"></a>)</span></code></pre></div>
+<span id="cb4-3"><a href="ecological-assembly.html#cb4-3"></a><span class="st">  </span><span class="kw">filter</span>(out<span class="op">$</span>ts<span class="op">$</span>time <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(out<span class="op">$</span>ts<span class="op">$</span>time))</span>
+<span id="cb4-4"><a href="ecological-assembly.html#cb4-4"></a>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -529,9 +529,8 @@ V(x) = -\sum_i c_i (\bar{x}_i \log x_i - x_i)
 <p><img src="Theoretical_Community_Ecology_files/figure-html/rndzooex2-1.png" width="480" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="ecological-assembly.html#cb6-1"></a>knitr<span class="op">::</span><span class="kw">kable</span>(</span>
 <span id="cb6-2"><a href="ecological-assembly.html#cb6-2"></a>out<span class="op">$</span>ts <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb6-3"><a href="ecological-assembly.html#cb6-3"></a><span class="st">  </span><span class="kw">filter</span>(out<span class="op">$</span>ts<span class="op">$</span>time <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(out<span class="op">$</span>ts<span class="op">$</span>time))<span class="co">#%&gt;% </span></span>
-<span id="cb6-4"><a href="ecological-assembly.html#cb6-4"></a>  <span class="co">#select(-time) </span></span>
-<span id="cb6-5"><a href="ecological-assembly.html#cb6-5"></a>)</span></code></pre></div>
+<span id="cb6-3"><a href="ecological-assembly.html#cb6-3"></a><span class="st">  </span><span class="kw">filter</span>(out<span class="op">$</span>ts<span class="op">$</span>time <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(out<span class="op">$</span>ts<span class="op">$</span>time))</span>
+<span id="cb6-4"><a href="ecological-assembly.html#cb6-4"></a>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -578,7 +577,7 @@ V(x) = -\sum_i c_i (\bar{x}_i \log x_i - x_i)
 </tr>
 </tbody>
 </table>
-<p>As you can see, the system still goes to the same equilibrium, with 3 and 5 extinct. Turns out, for this type of system, one does not even need to integrate dynamics: the Lemke–Howson algorithm can be adapted to solve the problem efficiently <span class="citation">(Serván et al. <a href="#ref-servan2018coexistence" role="doc-biblioref">2018</a>)</span>. I have coded up the algorithm already, and you can load the function <code>get_final_composition(A, r)</code> by typing:</p>
+<p>As you can see, the system still goes to the same equilibrium, with 3 and 5 extinct. Turns out, for this type of system, one does not even need to integrate dynamics: the Lemke–Howson algorithm can be adapted to solve the problem efficiently <span class="citation">(Serván et al. <a href="#ref-servan2018coexistence" role="doc-biblioref">2018</a>)</span> (this is an efficient algorithm to find Nash equilibria in a game—we will hear more about this in the next lecture). I have coded up the algorithm already, and you can load the function <code>get_final_composition(A, r)</code> by typing:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="ecological-assembly.html#cb7-1"></a><span class="kw">source</span>(<span class="st">&quot;dat/L-H.R&quot;</span>)</span>
 <span id="cb7-2"><a href="ecological-assembly.html#cb7-2"></a><span class="kw">get_final_composition</span>(A, r) <span class="co"># use LH instead of integrating dynamics</span></span></code></pre></div>
 <p>[1] 0.4290300 0.2761030 0.0000000 0.4021761 0.0000000 0.6453202 0.5776840</p>
@@ -611,7 +610,9 @@ V(x) = -\sum_i c_i (\bar{x}_i \log x_i - x_i)
 <span id="cb9-4"><a href="ecological-assembly.html#cb9-4"></a>pl &lt;-<span class="st"> </span>pl <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">data =</span> tbinom, <span class="kw">aes</span>(<span class="dt">x =</span> ncoexisting, <span class="dt">y =</span> expectation))</span>
 <span id="cb9-5"><a href="ecological-assembly.html#cb9-5"></a><span class="kw">show</span>(pl)</span></code></pre></div>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/randomzoo-2.png" width="480" style="display: block; margin: auto;" /></p>
-<p>We find again that the number of coexisting species follows the binomial distribution with parameters <span class="math inline">\(n\)</span> and <span class="math inline">\(1/2\)</span> (i.e., exactly the same result found for non interacting species). To prove this fact, let’s begin with showing that the probability of having all species coexisting is <span class="math inline">\(1 / 2^n\)</span>. For this, we need <span class="math inline">\(x^\star = -A^{-1}r\)</span> to be feasible. For each possible <span class="math inline">\(A\)</span> (invertible) and <span class="math inline">\(r\)</span>, we have that the vector <span class="math inline">\(- A^{-1}r\)</span> will display a certain pattern of signs. Proving that the probability that all <span class="math inline">\(n\)</span> species coexist is <span class="math inline">\(1 / 2^n\)</span> amounts to proving that all sign patterns are equally probable. To this end, define the matrix <span class="math inline">\(D_k = (-1)^{\delta_{ik}} \delta_{ij}\)</span>. This is like the identity matrix, but with element <span class="math inline">\(k\)</span> of the diagonal set to <span class="math inline">\(-1\)</span> instead of <span class="math inline">\(1\)</span>. We have that:</p>
+<p>We find again that the number of coexisting species follows the binomial distribution with parameters <span class="math inline">\(n\)</span> and <span class="math inline">\(1/2\)</span> (i.e., exactly the same result found for non interacting species).</p>
+<p>This can be proven using a clever strategy devised by Carlos. To illustrate it, let’s show that the probability of having all species coexisting is <span class="math inline">\(1 / 2^n\)</span>. For this, we need <span class="math inline">\(x^\star = -A^{-1}r\)</span> to be feasible (then the equilibrium is reached because of the stability of <span class="math inline">\(A\)</span>).</p>
+<p>For each possible <span class="math inline">\(A\)</span> (invertible) and <span class="math inline">\(r\)</span>, we have that the vector <span class="math inline">\(- A^{-1}r\)</span> will display a certain pattern of signs. Proving that the probability that all <span class="math inline">\(n\)</span> species coexist is <span class="math inline">\(1 / 2^n\)</span> amounts to proving that all sign patterns are equally probable. To this end, define the matrix <span class="math inline">\(D_k = (-1)^{\delta_{ik}} \delta_{ij}\)</span>. This matrix is like the identity matrix, but with element <span class="math inline">\(k\)</span> of the diagonal set to <span class="math inline">\(-1\)</span> instead of <span class="math inline">\(1\)</span>. We have that:</p>
 <p><span class="math display">\[
 (D_k A D_k) D_k x^\star = -D_k r
 \]</span></p>
@@ -638,7 +639,7 @@ V(x) = -\sum_i c_i (\bar{x}_i \log x_i - x_i)
 </div>
 <div id="a-random-zoo-in-the-wild" class="section level3">
 <h3><span class="header-section-number">5.3.4</span> A random zoo in the wild</h3>
-<p>One might object that the derivations above have no parallel in reality. However, I think that they can be seen as a simplified version of an experiment done routinely by ecologists. Take for example the work of <span class="citation">Bittleston et al. (<a href="#ref-bittleston2020context" role="doc-biblioref">2020</a>)</span>. They sampled bacterial communities from ten different pitcher plants, and cultured them in the laboratory on a synthetic medium. They tracked the change of richness in time. This is their Figure 2 (look at panel b):</p>
+<p>One might object that the derivations above have no parallel in reality. However, they can be seen as a simplified version of an experiment done routinely by ecologists. Take for example the work of <span class="citation">Bittleston et al. (<a href="#ref-bittleston2020context" role="doc-biblioref">2020</a>)</span>. They sampled bacterial communities from ten different pitcher plants, and cultured them in the laboratory on a synthetic medium. They tracked the change of richness in time. This is their Figure 2 (look at panel b):</p>
 <center>
 <img src="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41467-020-15169-0/MediaObjects/41467_2020_15169_Fig2_HTML.png">
 </center>
@@ -788,7 +789,7 @@ V(x) = -\sum_i c_i (\bar{x}_i \log x_i - x_i)
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="ecological-assembly.html#cb20-1"></a>x</span></code></pre></div>
 <p>[1] 1.7588344 2.5440743 0.0000000 0.7860178 1.8730535 2.5502055 0.6961259
 [8] 1.6956878 0.0000000 0.0000000</p>
-<p>As such, given enough time, any assembly history for a symmetric, stable matrix <span class="math inline">\(A\)</span> will eventually reach the final composition represented by the saturated equilibrium (<span class="citation">Serván and Allesina (<a href="#ref-servan2020tractable" role="doc-biblioref">2020</a>)</span>).</p>
+<p>In fact, given enough time, any assembly history for a symmetric, stable matrix <span class="math inline">\(A\)</span> will eventually reach the final composition represented by the saturated equilibrium (<span class="citation">Serván and Allesina (<a href="#ref-servan2020tractable" role="doc-biblioref">2020</a>)</span>).</p>
 <p>Interestingly, this is not the case when the matrix is not symmetric. <span class="citation">Serván et al. (<a href="#ref-servan2018coexistence" role="doc-biblioref">2018</a>)</span> conjectured however that the probability of finding a system whose final composition cannot be assembled one species at a time decreases rapidly with the size of the pool, as long as <span class="math inline">\(A\)</span> is Lyapunov Diagonally stable.</p>
 </div>
 </div>
@@ -804,14 +805,15 @@ V(x) = -\sum_i c_i (\bar{x}_i \log x_i - x_i)
 <span id="cb21-7"><a href="ecological-assembly.html#cb21-7"></a>A_pruned &lt;-<span class="st"> </span>A[xstar <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>, xstar <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>]</span>
 <span id="cb21-8"><a href="ecological-assembly.html#cb21-8"></a>r_pruned &lt;-<span class="st"> </span>r[xstar <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>]</span></code></pre></div>
 <p>Are the properties of matrix <span class="math inline">\(A\)</span> different from those of the pruned version <span class="math inline">\(\tilde{A}\)</span>? We probe this in two ways: first, we build a graph with the strongest interactions, and plot it.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="ecological-assembly.html#cb22-1"></a>plot_graph_strong &lt;-<span class="st"> </span><span class="cf">function</span>(B, <span class="dt">quantile =</span> <span class="fl">0.75</span>){</span>
-<span id="cb22-2"><a href="ecological-assembly.html#cb22-2"></a>  Bstrong &lt;-<span class="st"> </span><span class="kw">abs</span>(B)</span>
-<span id="cb22-3"><a href="ecological-assembly.html#cb22-3"></a>  <span class="kw">diag</span>(Bstrong) &lt;-<span class="st"> </span><span class="dv">0</span></span>
-<span id="cb22-4"><a href="ecological-assembly.html#cb22-4"></a>  Bstrong[Bstrong <span class="op">&lt;</span><span class="st"> </span><span class="kw">quantile</span>(Bstrong, quantile)] &lt;-<span class="st"> </span><span class="dv">0</span></span>
-<span id="cb22-5"><a href="ecological-assembly.html#cb22-5"></a>  gr &lt;-<span class="st"> </span><span class="kw">graph_from_adjacency_matrix</span>((Bstrong <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="op">*</span><span class="st"> </span><span class="dv">1</span>, <span class="dt">mode =</span> <span class="st">&quot;undirected&quot;</span>)</span>
-<span id="cb22-6"><a href="ecological-assembly.html#cb22-6"></a>  <span class="kw">plot</span>(gr, <span class="dt">vertex.size=</span><span class="dv">10</span>, <span class="dt">vertex.label=</span><span class="ot">NA</span>, <span class="dt">layout=</span>layout_with_fr)</span>
-<span id="cb22-7"><a href="ecological-assembly.html#cb22-7"></a>}</span>
-<span id="cb22-8"><a href="ecological-assembly.html#cb22-8"></a><span class="kw">plot_graph_strong</span>(A)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="ecological-assembly.html#cb22-1"></a><span class="co"># draw an edge i-&gt;j if Bij is above the 75% of strengths (in abs)</span></span>
+<span id="cb22-2"><a href="ecological-assembly.html#cb22-2"></a>plot_graph_strong &lt;-<span class="st"> </span><span class="cf">function</span>(B, <span class="dt">quantile =</span> <span class="fl">0.75</span>){</span>
+<span id="cb22-3"><a href="ecological-assembly.html#cb22-3"></a>  Bstrong &lt;-<span class="st"> </span><span class="kw">abs</span>(B)</span>
+<span id="cb22-4"><a href="ecological-assembly.html#cb22-4"></a>  <span class="kw">diag</span>(Bstrong) &lt;-<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb22-5"><a href="ecological-assembly.html#cb22-5"></a>  Bstrong[Bstrong <span class="op">&lt;</span><span class="st"> </span><span class="kw">quantile</span>(Bstrong, quantile)] &lt;-<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb22-6"><a href="ecological-assembly.html#cb22-6"></a>  gr &lt;-<span class="st"> </span><span class="kw">graph_from_adjacency_matrix</span>((Bstrong <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="op">*</span><span class="st"> </span><span class="dv">1</span>, <span class="dt">mode =</span> <span class="st">&quot;undirected&quot;</span>)</span>
+<span id="cb22-7"><a href="ecological-assembly.html#cb22-7"></a>  <span class="kw">plot</span>(gr, <span class="dt">vertex.size=</span><span class="dv">10</span>, <span class="dt">vertex.label=</span><span class="ot">NA</span>, <span class="dt">layout=</span>layout_with_fr)</span>
+<span id="cb22-8"><a href="ecological-assembly.html#cb22-8"></a>}</span>
+<span id="cb22-9"><a href="ecological-assembly.html#cb22-9"></a><span class="kw">plot_graph_strong</span>(A)</span></code></pre></div>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/plotnetworksrz-1.png" width="480" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="ecological-assembly.html#cb23-1"></a><span class="kw">plot_graph_strong</span>(A_pruned)</span></code></pre></div>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/plotnetworksrz-2.png" width="480" style="display: block; margin: auto;" /></p>

@@ -156,24 +156,30 @@ an equilibrium $\bar{x}$ for which a) the $x^{(k)}$ is feasible and stable (when
 
 We have seen in previous section that, whenever there exists a matrix $C$ such that $CA + A^T C$ is negative definite and we have a feasible equilibrium $x^\star$ then the equilibrium is globally stable. Now we consider the case in which a feasible equilibrium does not exist. However, we can prove that a **saturated equilibrium** exists and is unique: we have an equilibrium $\bar{x}$ in which some components are positive and some are zero such that $k$ species coexist at a globally stable equilibrium, and the remaining $(n-k)$ species cannot invade it. 
 
-Following @hofbauer1998evolutionary (section 15.3), we write:
+Following @hofbauer1998evolutionary (section 15.3), we assume that all species $x_i > 0$, and write:
 
 $$
-V(x) = -\sum_i c_i (\bar{x}_i \log x_i - x_i)
+V(x) = \sum_i c_i (x_i - \bar{x_i} -\bar{x}_i \log x_i / \bar{x_i} )
 $$
 
-yielding:
+where for simplicity, we take $0 \log{x /0} = 0$. Note that this is always positive whenever $x \neq \bar{x}$.
+
+We derive with respect to time, obtaining:
 
 $$
 \begin{aligned}
-\dfrac{dV(x)}{dt} &= -\sum_i c_i \left(\bar{x}_i \frac{d \log x_i}{dt} - \frac{d x_i}{dt} \right) \\
-&= -\sum_i c_i \left( \bar{x}_i - x_i \right)  \left( r_i + \sum_j A_{ij} x_j \right) \\
-&= -\sum_i c_i \left( \bar{x}_i - x_i \right)  \left( r_i + \sum_j A_{ij} (x_j - \bar{x}_j) +  \sum_j A_{ij} \bar{x}_j \right) \\
-&= \sum_{i,j} \left( \bar{x}_i - x_i \right) c_i A_{ij} \left( \bar{x}_j - x_j \right) + \sum_i c_i \left( \bar{x}_i - x_i \right) \left(r_i + \sum_j A_{ij} \bar{x}_j \right)
+\dfrac{dV(x)}{dt} &= \sum_i c_i \left(\frac{d x_i}{dt} - \bar{x}_i \frac{d \log x_i}{dt} \right) \\
+&= \sum_i c_i \left( x_i - \bar{x}_i \right)  \left( r_i + \sum_j A_{ij} x_j \right) \\
+&= \sum_i c_i \left( x_i  - \bar{x}_i \right)  \left( r_i + \sum_j A_{ij} (x_j - \bar{x}_j) +  \sum_j A_{ij} \bar{x}_j \right) \\
+&= \sum_{i,j} \left( x_i  - \bar{x}_i \right) c_i A_{ij} \left( \bar{x}_j - x_j \right) + \sum_i c_i \left( x_i - \bar{x}_i\right) \left(r_i + \sum_j A_{ij} \bar{x}_j \right)
 \end{aligned}
 $$
 
-The first term is negative for all $x \neq \bar{x}$, and is zero at the saturated equilibrium point. The second term is zero for all $\bar{x}_i > 0$: $r_i + \sum_j A_{ij} \bar{x}_j = 0$, given that $\bar{x}$ is an equilibrium for the species at positive density; for the remaining species (for which $\bar{x}_i = 0$), this amounts to the invasion criterion above, and must therefore be negative. As such $V(x)$ is a Lyapunov function for the system, assuming negative values everywhere but at $\bar{x}$.
+The first term is negative for all $x \neq \bar{x}$ (because $CA$ is negative definite), and is zero at the saturated equilibrium point (because $x = \bar{x}$). 
+
+The second term is zero for all $\bar{x}_i > 0$: $r_i + \sum_j A_{ij} \bar{x}_j = 0$, given that $\bar{x}_i$ is an equilibrium for the species at positive density. For the remaining species (for which $\bar{x}_i = 0$), this amounts to the invasion criterion above, and must therefore be negative at the saturated equilibrium $\bar{x}$, yielding again a negative term. 
+
+As such $V(x)$ is a Lyapunov function for the system, assuming negative values everywhere but at $\bar{x}$.
 
 ## Top-down assembly
 
@@ -189,11 +195,9 @@ Suppose that the growth rates are drawn from a normal distribution centered at z
 
 ### Simulating final composition
 
-Now, let's simulate cases in which species do interact with each other. First, we load the functions we've written before:
+Now, let's simulate cases in which species do interact with each other, but $A$ is still D-stable. First, we load some functions to integrate GLV dynamics and plot results:
 
 ```{r, glvfunctionsrz, message=FALSE, warning=FALSE}
-# this file contains functions to integrate GLV dynamics
-# and plot the results
 source("dat/general_code_assembly.R")
 ```
 
@@ -232,8 +236,7 @@ out <- GLV_dynamics(z0 = x0, A = A, r = r, maxtime = 25, bytime = 0.1)
 show(plot_dynamics(out))
 knitr::kable(
 out$ts %>% 
-  filter(out$ts$time == max(out$ts$time))# %>% 
-  #select(-time) 
+  filter(out$ts$time == max(out$ts$time))
 )
 ```
 
@@ -246,12 +249,11 @@ out <- GLV_dynamics(z0 = x0, A = A, r = r, maxtime = 25, bytime = 0.1)
 show(plot_dynamics(out))
 knitr::kable(
 out$ts %>% 
-  filter(out$ts$time == max(out$ts$time))#%>% 
-  #select(-time) 
+  filter(out$ts$time == max(out$ts$time))
 )
 ```
 
-As you can see, the system still goes to the same equilibrium, with 3 and 5 extinct. Turns out, for this type of system, one does not even need to integrate dynamics: the Lemke–Howson algorithm can be adapted to solve the problem efficiently [@servan2018coexistence]. I have coded up the algorithm already, and you can load the function `get_final_composition(A, r)` by typing:
+As you can see, the system still goes to the same equilibrium, with 3 and 5 extinct. Turns out, for this type of system, one does not even need to integrate dynamics: the Lemke–Howson algorithm can be adapted to solve the problem efficiently [@servan2018coexistence] (this is an efficient algorithm to find Nash equilibria in a game---we will hear more about this in the next lecture). I have coded up the algorithm already, and you can load the function `get_final_composition(A, r)` by typing:
 
 ```{r rndzooex3}
 source("dat/L-H.R")
@@ -289,7 +291,11 @@ pl <- pl + geom_point(data = tbinom, aes(x = ncoexisting, y = expectation))
 show(pl)
 ```
 
-We find again that the number of coexisting species follows the binomial distribution with parameters $n$ and $1/2$ (i.e., exactly the same result found for non interacting species). To prove this fact, let's begin with showing that the probability of having all species coexisting is $1 / 2^n$. For this, we need $x^\star = -A^{-1}r$ to be feasible. For each possible $A$ (invertible) and $r$, we have that the vector $- A^{-1}r$ will display a certain pattern of signs. Proving that the probability that all $n$ species coexist is $1 / 2^n$ amounts to proving that all sign patterns are equally probable. To this end, define the matrix $D_k = (-1)^{\delta_{ik}} \delta_{ij}$. This is like the identity matrix, but with element $k$ of the diagonal set to $-1$ instead of $1$. We have that:
+We find again that the number of coexisting species follows the binomial distribution with parameters $n$ and $1/2$ (i.e., exactly the same result found for non interacting species). 
+
+This can be proven using a clever strategy devised by Carlos. To illustrate it, let's show that the probability of having all species coexisting is $1 / 2^n$. For this, we need $x^\star = -A^{-1}r$ to be feasible (then the equilibrium is reached because of the stability of $A$).
+
+For each possible $A$ (invertible) and $r$, we have that the vector $- A^{-1}r$ will display a certain pattern of signs. Proving that the probability that all $n$ species coexist is $1 / 2^n$ amounts to proving that all sign patterns are equally probable. To this end, define the matrix $D_k = (-1)^{\delta_{ik}} \delta_{ij}$. This matrix is like the identity matrix, but with element $k$ of the diagonal set to $-1$ instead of $1$. We have that:
 
 $$
 (D_k A D_k) D_k x^\star = -D_k r
@@ -323,7 +329,7 @@ We can complicate the model substantially, but the results are qualitatively unc
 
 ### A random zoo in the wild
 
-One might object that the derivations above have no parallel in reality. However, I think that they can be seen as a simplified version of an experiment done routinely by ecologists. Take for example the work of @bittleston2020context. They sampled bacterial communities from ten different pitcher plants, and cultured them in the laboratory on a synthetic medium. They tracked the change of richness in time. This is their Figure 2 (look at panel b):
+One might object that the derivations above have no parallel in reality. However, they can be seen as a simplified version of an experiment done routinely by ecologists. Take for example the work of @bittleston2020context. They sampled bacterial communities from ten different pitcher plants, and cultured them in the laboratory on a synthetic medium. They tracked the change of richness in time. This is their Figure 2 (look at panel b):
 
 ```{r, echo=FALSE}
 url <- "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41467-020-15169-0/MediaObjects/41467_2020_15169_Fig2_HTML.png"
@@ -404,7 +410,7 @@ get_final_composition(A, r)
 x
 ```
 
-As such, given enough time, any assembly history for a symmetric, stable matrix $A$ will eventually reach the final composition represented by the saturated equilibrium (@servan2020tractable).
+In fact, given enough time, any assembly history for a symmetric, stable matrix $A$ will eventually reach the final composition represented by the saturated equilibrium (@servan2020tractable).
 
 Interestingly, this is not the case when the matrix is not symmetric. @servan2018coexistence conjectured however that the probability of finding a system whose final composition cannot be assembled one species at a time decreases rapidly with the size of the pool, as long as $A$ is Lyapunov Diagonally stable.
 
@@ -426,6 +432,7 @@ r_pruned <- r[xstar > 0]
 Are the properties of matrix $A$ different from those of the pruned version $\tilde{A}$? We probe this in two ways: first, we build a graph with the strongest interactions, and plot it.
 
 ```{r plotnetworksrz}
+# draw an edge i->j if Bij is above the 75% of strengths (in abs)
 plot_graph_strong <- function(B, quantile = 0.75){
   Bstrong <- abs(B)
   diag(Bstrong) <- 0
