@@ -140,7 +140,7 @@ $$
 \dfrac{d x_i}{dt} = x_i \left( \sum_j A_{ij} x_j - \sum_{jk} x_j A_{jk} x_k \right)
 $$
 
-If we define $f = A x$ as a vector reporting the "fitness"" of each population at time $t$, and $\bar{f} =  \sum_{jk} x_j A_{jk} x_k = x^T A x$ as the average fitness at time $t$ we can write the replicator equation more compactly as:
+If we define $f = A x$ as a vector reporting the "fitness" of each population at time $t$, and $\bar{f} =  \sum_{jk} x_j A_{jk} x_k = x^T A x$ as the average fitness at time $t$ we can write the replicator equation more compactly as:
 
 $$
 \dfrac{d x_i}{dt} = x_i (f_i - \bar{f})
@@ -250,7 +250,7 @@ $$
 we then have a new $n+1$ dimensional GLV system:
 
 $$
-\dfrac{d \tilde{x}}{dt} = D(\tilde{x})A \tilde{x}
+\dfrac{d \tilde{x}}{dt} = D(\tilde{x}) \tilde{A} \tilde{x}
 $$
 
 Now we want to move from abundances to frequencies/proportions. Note that we drop all the tilde signs for easier typing. Define:
