@@ -376,7 +376,7 @@ As seen above, for GLV, the matrix $B = D(r)^{-1}A$ encodes all the equilibria (
 
 1. Does the matrix $B$ informs us on invasibility? Take a sub-community $k$ resting at its feasible equilibrium point. Can one determine whether a species $i \notin k$ can invade when rare by inspecting the matrix $B$?
 
-2. When does the matrix $B$ can be used to determine the stability of the feasible equilibrium for a subset $k$?
+2. When can the matrix $B$ be used to determine the stability of the feasible equilibrium for a subset $k$?
 
 :::
 

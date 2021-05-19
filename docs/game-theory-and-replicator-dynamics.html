@@ -24,7 +24,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2021-04-22" />
+<meta name="date" content="2021-05-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -306,7 +306,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Lecture 7</span> Game theory and replicator dynamics</h1>
 <div id="game-theory" class="section level2">
 <h2><span class="header-section-number">7.1</span> Game theory</h2>
-<p>We briefly introduce the study of mathematical models of games, and their relations to the GLV model. While the origin of game theory can be traced back to the 1700s, modern game theory started with von Neumann’s paper <em>On the Theory of Games of Strategy</em>, published in 1928, and with the subsequent 1944 book with Morgensten <em>Theory of Games and Economic Behavior</em>. John Nash’s paper <span class="citation">(Nash <a href="#ref-nash1950equilibrium" role="doc-biblioref">1950</a>)</span> introduced the notion of a <strong>Nash Equilibrium</strong> (NE). Originally, game theory was studied by economists and mathematicians, but with a series of papers in the early 1970s, and the subsequent book <em>Evolution and the Theory of Games</em> <span class="citation">(Maynard Smith <a href="#ref-smith1982evolution" role="doc-biblioref">1982</a>)</span>, John Maynard Smith showed how the same tools could be used to study evolutionary dynamics, introducing the influential concept of an <strong>Evolutionary Stable Strategy</strong> (ESS). Evolutionary game theory was greatly advanced through the introduction of the <strong>Replicator Equation</strong> (RE), which, as we will see later, has strong connection with the GLV model. For a detailaed introduction to evolutionary game theory see <span class="citation">Hofbauer and Sigmund (<a href="#ref-hofbauer1998evolutionary" role="doc-biblioref">1998</a>)</span>.</p>
+<p>We briefly introduce the study of mathematical models of games, and their relations to the GLV model. While the origin of game theory can be traced back to the 1700s, modern game theory started with von Neumann’s paper <em>On the Theory of Games of Strategy</em>, published in 1928, and with the subsequent 1944 book with Morgensten <em>Theory of Games and Economic Behavior</em>. John Nash’s paper <span class="citation">(Nash <a href="#ref-nash1950equilibrium" role="doc-biblioref">1950</a>)</span> introduced the notion of a <strong>Nash Equilibrium</strong> (NE), and proved that any non-cooperative game has at least one such equilibrium. Originally, game theory was studied by economists and mathematicians, but with a series of papers in the early 1970s, and the subsequent book <em>Evolution and the Theory of Games</em> <span class="citation">(Maynard Smith <a href="#ref-smith1982evolution" role="doc-biblioref">1982</a>)</span>, John Maynard Smith showed how the same tools could be used to study evolutionary dynamics, introducing the influential concept of an <strong>Evolutionary Stable Strategy</strong> (ESS). Evolutionary game theory was greatly advanced through the introduction of the <strong>Replicator Equation</strong> (RE), which, as we will see later, has strong connection with the GLV model. For a detailaed introduction to evolutionary game theory see <span class="citation">Hofbauer and Sigmund (<a href="#ref-hofbauer1998evolutionary" role="doc-biblioref">1998</a>)</span>.</p>
 <div class="boxhistory">
 <p><strong>History: John Maynard Smith (1920-2004)</strong></p>
 <p><img src="img/Maynard_Smith.jpg" width="35%" style="display: block; margin: auto;" /></p>
@@ -356,11 +356,11 @@ B = \begin{pmatrix}
 </div>
 <div id="mixed-strategies" class="section level2">
 <h2><span class="header-section-number">7.3</span> Mixed strategies</h2>
-<p>Above, the player could choose one out of two strategies. A generalization of this situation is one in which players play <strong>mixed strategies</strong>, i.e., play a given strategy at random according to a set of probabilities. Call <span class="math inline">\(x_i\)</span> the probability that player 1 plays strategy <span class="math inline">\(i\)</span>; then <span class="math inline">\(\sum_i x_i = 1\)</span>. Similarly, <span class="math inline">\(y_i\)</span> is the probability that player 2 plays strategy <span class="math inline">\(i\)</span>. A natural choice for the payoff of player 1 is therefore:</p>
+<p>Above, the player could choose one out of two strategies. A generalization of this situation is one in which players play <strong>mixed strategies</strong>, i.e., play a given strategy at random according to a set of probabilities. Call <span class="math inline">\(x_i\)</span> the probability that player 1 plays strategy <span class="math inline">\(i\)</span>; then <span class="math inline">\(x_i \geq 0\)</span>, and <span class="math inline">\(\sum_i x_i = 1\)</span>. Similarly, <span class="math inline">\(y_i\)</span> is the probability that player 2 plays strategy <span class="math inline">\(i\)</span>. A natural choice for the payoff of player 1 is therefore:</p>
 <p><span class="math display">\[
-\sum_{i=1}^m \sum_{j = 1}^n x_i y_j \pi_1 (s_1, s_2) = x^T A y
+\sum_{i=1}^m \sum_{j = 1}^n x_i y_j \pi_1 (s_i, s_j) = x^T A y
 \]</span></p>
-<p>Similarly, we have <span class="math inline">\(y^T B x\)</span> for player 2.</p>
+<p>which amounts to the expected payoff for player 1. Similarly, we have <span class="math inline">\(y^T B x\)</span> for player 2.</p>
 <p>A mixed strategy <span class="math inline">\(x\)</span> is dominated by mixed strategy <span class="math inline">\(\tilde{x}\)</span> if <span class="math inline">\(\tilde{x}^T A y \geq x^T A y\)</span> for every <span class="math inline">\(y\)</span>. The condition can be written as <span class="math inline">\((\tilde{x} - x)^T A y \geq 0\)</span>.</p>
 </div>
 <div id="nash-equilibria" class="section level2">
@@ -372,7 +372,7 @@ B = \begin{pmatrix}
 \tilde{y}^T B \tilde{x} \geq y^T B \tilde{x} &amp;\quad \text{for all } y
 \end{aligned}
 \]</span></p>
-<p>Nash proved that every two-person game has at least one Nash Equilibrium.</p>
+<p>Nash proved that every non-cooperative game has at least one Nash Equilibrium.</p>
 </div>
 <div id="evolutionary-stable-strategies" class="section level2">
 <h2><span class="header-section-number">7.5</span> Evolutionary stable strategies</h2>
@@ -468,7 +468,37 @@ A = \begin{pmatrix}
 </div>
 <div id="equivalence-with-glv" class="section level3">
 <h3><span class="header-section-number">7.6.3</span> Equivalence with GLV</h3>
-<p>For a given <span class="math inline">\(n-\)</span>species GLV system, there is an equivalent <span class="math inline">\((n+1)-\)</span>dimensional replicator equation with zeros in the last row of the matrix. To show this, let’s take our functions for integrating GLV:</p>
+<p>For a given <span class="math inline">\(n-\)</span>species GLV system, there is an equivalent <span class="math inline">\((n+1)-\)</span>dimensional replicator equation with zeros in the last row of the matrix.</p>
+<p>Take the GLV model with <span class="math inline">\(n\)</span> species:</p>
+<p><span class="math display">\[
+\dfrac{d x}{dt} = D(x)(r + A x)
+\]</span></p>
+<p>and add a “new species” <span class="math inline">\(x_{n + 1}\)</span> such that <span class="math inline">\(x_{n+1}(0) = 1\)</span>; define <span class="math inline">\(\tilde{x} = \{x, x_{n+1} \}\)</span> and the matrix:</p>
+<p><span class="math display">\[
+\tilde{A}=\begin{pmatrix}
+A &amp; r\\
+0 &amp; 0
+\end{pmatrix}
+\]</span></p>
+<p>we then have a new <span class="math inline">\(n+1\)</span> dimensional GLV system:</p>
+<p><span class="math display">\[
+\dfrac{d \tilde{x}}{dt} = D(\tilde{x})A \tilde{x}
+\]</span></p>
+<p>Now we want to move from abundances to frequencies/proportions. Note that we drop all the tilde signs for easier typing. Define:</p>
+<p><span class="math display">\[
+y_i = \dfrac{x_i}{\sum_j x_j}
+\]</span></p>
+<p>Then,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\dfrac{d y_i}{dt} &amp;= \sum_k \dfrac{\partial y_i}{\partial x_k} \dfrac{d x_k}{dt}\\
+&amp;= \dfrac{1}{\sum_j x_j}\dfrac{d x_i}{dt}-\dfrac{1}{(\sum_j x_j)^2} x_i \sum_k \dfrac{d x_k}{dt}\\
+&amp;= \dfrac{1}{\sum_j x_j} x_i \sum_l A_{il}x_l - \dfrac{1}{(\sum_j x_j)^2} x_i \sum_k \left( x_k \sum_l A_{kl} x_l\right)\\
+&amp;= y_i \sum_l A_{il}x_l- y_i \sum_k \left( y_k \sum_l A_{kl} x_l\right)\\
+&amp;=(\sum_j x_j) y_i \left( \sum_l A_{il}y_l - \sum_{k,l} A_{kl} y_k y_l\right)
+\end{aligned}
+\]</span></p>
+<p>Finally, you rescale time using <span class="math inline">\(\sum_j x_j\)</span> to obtain the replicator equation. To show this is indeed the case, let’s take our functions for integrating GLV:</p>
 <div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="game-theory-and-replicator-dynamics.html#cb69-1"></a><span class="co"># Generalized Lotka-Volterra model</span></span>
 <span id="cb69-2"><a href="game-theory-and-replicator-dynamics.html#cb69-2"></a>GLV &lt;-<span class="st"> </span><span class="cf">function</span>(t, x, parameters){</span>
 <span id="cb69-3"><a href="game-theory-and-replicator-dynamics.html#cb69-3"></a>  <span class="kw">with</span>(<span class="kw">as.list</span>(<span class="kw">c</span>(x, parameters)), {</span>
@@ -497,17 +527,17 @@ A = \begin{pmatrix}
 <span id="cb70-5"><a href="game-theory-and-replicator-dynamics.html#cb70-5"></a>x0 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.1</span>, <span class="dv">3</span>, <span class="dv">1</span>)</span>
 <span id="cb70-6"><a href="game-theory-and-replicator-dynamics.html#cb70-6"></a>glvex &lt;-<span class="st"> </span><span class="kw">integrate_GLV</span>(r, A, x0)</span></code></pre></div>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/exampleglvtore1-1.png" width="480" style="display: block; margin: auto;" /></p>
-<p>And now build the corresponding replicator equation. The matrix of payoffs <span class="math inline">\(B\)</span> becomes:</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="game-theory-and-replicator-dynamics.html#cb71-1"></a>B &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">4</span>)</span>
-<span id="cb71-2"><a href="game-theory-and-replicator-dynamics.html#cb71-2"></a>B[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>] &lt;-<span class="st"> </span>A</span>
-<span id="cb71-3"><a href="game-theory-and-replicator-dynamics.html#cb71-3"></a>B[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dv">4</span>] &lt;-<span class="st"> </span>r</span></code></pre></div>
+<p>And now build the corresponding replicator equation. The matrix of payoffs <span class="math inline">\(\tilde{A}\)</span> becomes:</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="game-theory-and-replicator-dynamics.html#cb71-1"></a>Atilde &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">4</span>)</span>
+<span id="cb71-2"><a href="game-theory-and-replicator-dynamics.html#cb71-2"></a>Atilde[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>] &lt;-<span class="st"> </span>A</span>
+<span id="cb71-3"><a href="game-theory-and-replicator-dynamics.html#cb71-3"></a>Atilde[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dv">4</span>] &lt;-<span class="st"> </span>r</span></code></pre></div>
 <p><span class="math display">\[
 \begin{bmatrix}-1&amp;0.5&amp;0.1&amp;1 \\-0.7&amp;-2&amp;0&amp;2 \\-0.3&amp;0&amp;-5&amp;3 \\0&amp;0&amp;0&amp;0 \\\end{bmatrix} 
 \]</span></p>
 <p>Integrate the dynamics:</p>
 <div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="game-theory-and-replicator-dynamics.html#cb72-1"></a>y0 &lt;-<span class="st"> </span><span class="kw">c</span>(x0, <span class="dv">1</span>) <span class="co"># add an extra &quot;species&quot;</span></span>
 <span id="cb72-2"><a href="game-theory-and-replicator-dynamics.html#cb72-2"></a>y0 &lt;-<span class="st"> </span>y0 <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(y0) <span class="co"># project on the simplex</span></span>
-<span id="cb72-3"><a href="game-theory-and-replicator-dynamics.html#cb72-3"></a>reex &lt;-<span class="st"> </span><span class="kw">integrate_RE</span>(B, y0)</span></code></pre></div>
+<span id="cb72-3"><a href="game-theory-and-replicator-dynamics.html#cb72-3"></a>reex &lt;-<span class="st"> </span><span class="kw">integrate_RE</span>(Atilde, y0)</span></code></pre></div>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/redynamicsfromglv2-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>Now let’s look at the equilibrium of the GLV model:</p>
 <div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="game-theory-and-replicator-dynamics.html#cb73-1"></a>knitr<span class="op">::</span><span class="kw">kable</span>(glvex <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(time <span class="op">==</span><span class="st"> </span><span class="dv">100</span>))</span></code></pre></div>

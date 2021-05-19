@@ -5,7 +5,8 @@ source("common_settings.R")
 ```
 
 ## Game theory
-We briefly introduce the study of mathematical models of games, and their relations to the GLV model. While the origin of game theory can be traced back to the 1700s, modern game theory started with von Neumann's paper *On the Theory of Games of Strategy*, published in 1928, and with the subsequent 1944 book with Morgensten *Theory of Games and Economic Behavior*. John Nash's paper [@nash1950equilibrium] introduced the notion of a **Nash Equilibrium** (NE). Originally, game theory was studied by economists and mathematicians, but with a series of papers in the early 1970s, and the subsequent book *Evolution and the Theory of Games* [@smith1982evolution], John Maynard Smith showed how the same tools could be used to study evolutionary dynamics, introducing the influential concept of an **Evolutionary Stable Strategy** (ESS). Evolutionary game theory was greatly advanced through the introduction of the **Replicator Equation** (RE), which, as we will see later, has strong connection with the GLV model. For a detailaed introduction to evolutionary game theory see @hofbauer1998evolutionary.
+
+We briefly introduce the study of mathematical models of games, and their relations to the GLV model. While the origin of game theory can be traced back to the 1700s, modern game theory started with von Neumann's paper *On the Theory of Games of Strategy*, published in 1928, and with the subsequent 1944 book with Morgensten *Theory of Games and Economic Behavior*. John Nash's paper [@nash1950equilibrium] introduced the notion of a **Nash Equilibrium** (NE), and proved that any non-cooperative game has at least one such equilibrium. Originally, game theory was studied by economists and mathematicians, but with a series of papers in the early 1970s, and the subsequent book *Evolution and the Theory of Games* [@smith1982evolution], John Maynard Smith showed how the same tools could be used to study evolutionary dynamics, introducing the influential concept of an **Evolutionary Stable Strategy** (ESS). Evolutionary game theory was greatly advanced through the introduction of the **Replicator Equation** (RE), which, as we will see later, has strong connection with the GLV model. For a detailaed introduction to evolutionary game theory see @hofbauer1998evolutionary.
 
 :::boxhistory
 
@@ -88,13 +89,13 @@ Cooperation can evolve via indirect reciprocity (I help you in the hope that som
 
 ## Mixed strategies
 
-Above, the player could choose one out of two strategies. A generalization of this situation is one in which players play **mixed strategies**, i.e., play a given strategy at random according to a set of probabilities. Call $x_i$ the probability that player 1 plays strategy $i$; then $\sum_i x_i = 1$. Similarly, $y_i$ is the probability that player 2 plays strategy $i$. A natural choice for the payoff of player 1 is therefore:
+Above, the player could choose one out of two strategies. A generalization of this situation is one in which players play **mixed strategies**, i.e., play a given strategy at random according to a set of probabilities. Call $x_i$ the probability that player 1 plays strategy $i$; then $x_i \geq 0$, and $\sum_i x_i = 1$. Similarly, $y_i$ is the probability that player 2 plays strategy $i$. A natural choice for the payoff of player 1 is therefore:
 
 $$
-\sum_{i=1}^m \sum_{j = 1}^n x_i y_j \pi_1 (s_1, s_2) = x^T A y
+\sum_{i=1}^m \sum_{j = 1}^n x_i y_j \pi_1 (s_i, s_j) = x^T A y
 $$
 
-Similarly, we have $y^T B x$ for player 2.
+which amounts to the expected payoff for player 1. Similarly, we have $y^T B x$ for player 2.
 
 A mixed strategy $x$ is dominated by mixed strategy $\tilde{x}$ if $\tilde{x}^T A y \geq x^T A y$ for every $y$. The condition can be written as $(\tilde{x} - x)^T A y \geq 0$.
 
@@ -109,7 +110,7 @@ $$
 \end{aligned}
 $$
 
-Nash proved that every two-person game has at least one Nash Equilibrium.
+Nash proved that every non-cooperative game has at least one Nash Equilibrium.
 
 ## Evolutionary stable strategies
 
@@ -229,7 +230,48 @@ rps <- integrate_RE(A, x0)
 
 ### Equivalence with GLV
 
-For a given $n-$species GLV system, there is an equivalent $(n+1)-$dimensional replicator equation with zeros in the last row of the matrix. To show this, let's take our functions for integrating GLV:
+For a given $n-$species GLV system, there is an equivalent $(n+1)-$dimensional replicator equation with zeros in the last row of the matrix. 
+
+Take the GLV model with $n$ species:
+
+$$
+\dfrac{d x}{dt} = D(x)(r + A x)
+$$
+
+and add a "new species" $x_{n + 1}$ such that $x_{n+1}(0) = 1$; define $\tilde{x} = \{x, x_{n+1} \}$ and the matrix:
+
+$$
+\tilde{A}=\begin{pmatrix}
+A & r\\
+0 & 0
+\end{pmatrix}
+$$
+
+we then have a new $n+1$ dimensional GLV system:
+
+$$
+\dfrac{d \tilde{x}}{dt} = D(\tilde{x})A \tilde{x}
+$$
+
+Now we want to move from abundances to frequencies/proportions. Note that we drop all the tilde signs for easier typing. Define:
+
+$$
+y_i = \dfrac{x_i}{\sum_j x_j}
+$$
+
+Then,
+
+$$
+\begin{aligned}
+\dfrac{d y_i}{dt} &= \sum_k \dfrac{\partial y_i}{\partial x_k} \dfrac{d x_k}{dt}\\
+&= \dfrac{1}{\sum_j x_j}\dfrac{d x_i}{dt}-\dfrac{1}{(\sum_j x_j)^2} x_i \sum_k \dfrac{d x_k}{dt}\\
+&= \dfrac{1}{\sum_j x_j} x_i \sum_l A_{il}x_l - \dfrac{1}{(\sum_j x_j)^2} x_i \sum_k \left( x_k \sum_l A_{kl} x_l\right)\\
+&= y_i \sum_l A_{il}x_l- y_i \sum_k \left( y_k \sum_l A_{kl} x_l\right)\\
+&=(\sum_j x_j) y_i \left( \sum_l A_{il}y_l - \sum_{k,l} A_{kl} y_k y_l\right)
+\end{aligned}
+$$
+
+Finally, you rescale time using $\sum_j x_j$ to obtain the replicator equation. To show this is indeed the case, let's take our functions for integrating GLV:
 
 ```{r, glvfunctions2}
 # Generalized Lotka-Volterra model
@@ -265,16 +307,16 @@ x0 <- c(0.1, 3, 1)
 glvex <- integrate_GLV(r, A, x0)
 ```
 
-And now build the corresponding replicator equation. The matrix of payoffs $B$ becomes:
+And now build the corresponding replicator equation. The matrix of payoffs $\tilde{A}$ becomes:
 
 ```{r, redynamicsfromglv}
-B <- matrix(0, 4, 4)
-B[1:3, 1:3] <- A
-B[1:3, 4] <- r
+Atilde <- matrix(0, 4, 4)
+Atilde[1:3, 1:3] <- A
+Atilde[1:3, 4] <- r
 ```
 
 $$
-`r write_matex2(B)` 
+`r write_matex2(Atilde)` 
 $$
 
 Integrate the dynamics:
@@ -282,7 +324,7 @@ Integrate the dynamics:
 ```{r, redynamicsfromglv2}
 y0 <- c(x0, 1) # add an extra "species"
 y0 <- y0 / sum(y0) # project on the simplex
-reex <- integrate_RE(B, y0)
+reex <- integrate_RE(Atilde, y0)
 ```
 
 Now let's look at the equilibrium of the GLV model:

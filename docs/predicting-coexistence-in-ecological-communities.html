@@ -24,7 +24,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2021-04-22" />
+<meta name="date" content="2021-05-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -797,7 +797,7 @@ b_{13}
 <p>As seen above, for GLV, the matrix <span class="math inline">\(B = D(r)^{-1}A\)</span> encodes all the equilibria (feasible or unfeasible) for the model. Knowing <span class="math inline">\(B\)</span> is therefore all we need to determine the existence of a feasible equilibrium for any community we can form from the pool.</p>
 <ol style="list-style-type: decimal">
 <li><p>Does the matrix <span class="math inline">\(B\)</span> informs us on invasibility? Take a sub-community <span class="math inline">\(k\)</span> resting at its feasible equilibrium point. Can one determine whether a species <span class="math inline">\(i \notin k\)</span> can invade when rare by inspecting the matrix <span class="math inline">\(B\)</span>?</p></li>
-<li><p>When does the matrix <span class="math inline">\(B\)</span> can be used to determine the stability of the feasible equilibrium for a subset <span class="math inline">\(k\)</span>?</p></li>
+<li><p>When can the matrix <span class="math inline">\(B\)</span> be used to determine the stability of the feasible equilibrium for a subset <span class="math inline">\(k\)</span>?</p></li>
 </ol>
 </div>
 </div>
@@ -863,7 +863,7 @@ where we have definied <span class="math inline">\(b_{ij} = \theta_{ij} / \gamma
 <div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="predicting-coexistence-in-ecological-communities.html#cb57-1"></a>url &lt;-<span class="st"> &quot;https://github.com/dsmaynard/endpoints/raw/master/data/Kuebbing_plants/natives.csv&quot;</span></span>
 <span id="cb57-2"><a href="predicting-coexistence-in-ecological-communities.html#cb57-2"></a>E &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(<span class="kw">read_csv</span>(url))</span></code></pre></div>
 <pre><code>## 
-## ── Column specification ────────────────────────
+## ── Column specification ──────────────────────────────────
 ## cols(
 ##   as = col_double(),
 ##   fa = col_double(),
