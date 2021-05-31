@@ -389,7 +389,7 @@ We now show how the equations above can arise when modeling ecological dynamics.
 
 $$
 \begin{aligned}
-  \dfrac{d x}{dt} &= x_i \left(\sum_j 2 H_{ij} x_j - 1 \right) \\
+  \dfrac{d x_i}{dt} &= x_i \left(\sum_j 2 H_{ij} x_j - 1 \right) \\
   &=x_i \sum_j (2 H_{ij} x_j - x_j) \\
   &= x_i \sum_j (H_{ij} x_j  + (1 - H_{ji}) x_j - x_j) \\
   &= x_i \sum_j (H_{ij} - H_{ji}) x_j \\
@@ -483,7 +483,7 @@ while(TRUE){
   set.seed(i)
   H <- random_H(n)
   x_star <- find_optimal_strategy(H)
-  if (all(x_star) > 0) break
+  if (all(x_star > 0)) break
 }
 # payoff matrix
 A <- H - t(H)

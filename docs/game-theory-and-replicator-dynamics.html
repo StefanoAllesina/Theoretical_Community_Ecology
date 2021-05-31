@@ -24,7 +24,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2021-05-19" />
+<meta name="date" content="2021-05-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -666,7 +666,7 @@ A x^\star = 0
 <p>We now show how the equations above can arise when modeling ecological dynamics. Suppose that a forest is composed of a fixed number of trees. Each time a tree dies (with rate <span class="math inline">\(d = 1\)</span> for all species), a gap in the canopy opens, and species will compete to colonize it. Let’s assume that two seeds (sampled with probability proportional to the density of the species) land in the empty patch, and that they compete to fill the gap. Call <span class="math inline">\(H_{ij}\)</span> the probability that <span class="math inline">\(i\)</span> wins when competing with <span class="math inline">\(j\)</span>; we have <span class="math inline">\(H_{ij} + H_{ji} = 1\)</span>. We can write the dynamics <span class="citation">(Grilli et al. <a href="#ref-grilli2017higher" role="doc-biblioref">2017</a>)</span> as:</p>
 <p><span class="math display">\[
 \begin{aligned}
-  \dfrac{d x}{dt} &amp;= x_i \left(\sum_j 2 H_{ij} x_j - 1 \right) \\
+  \dfrac{d x_i}{dt} &amp;= x_i \left(\sum_j 2 H_{ij} x_j - 1 \right) \\
   &amp;=x_i \sum_j (2 H_{ij} x_j - x_j) \\
   &amp;= x_i \sum_j (H_{ij} x_j  + (1 - H_{ji}) x_j - x_j) \\
   &amp;= x_i \sum_j (H_{ij} - H_{ji}) x_j \\
@@ -745,7 +745,7 @@ V(x) = -\sum_i x_i^\star \log \frac{x_i}{x_i^\star} .
 <span id="cb79-6"><a href="game-theory-and-replicator-dynamics.html#cb79-6"></a>  <span class="kw">set.seed</span>(i)</span>
 <span id="cb79-7"><a href="game-theory-and-replicator-dynamics.html#cb79-7"></a>  H &lt;-<span class="st"> </span><span class="kw">random_H</span>(n)</span>
 <span id="cb79-8"><a href="game-theory-and-replicator-dynamics.html#cb79-8"></a>  x_star &lt;-<span class="st"> </span><span class="kw">find_optimal_strategy</span>(H)</span>
-<span id="cb79-9"><a href="game-theory-and-replicator-dynamics.html#cb79-9"></a>  <span class="cf">if</span> (<span class="kw">all</span>(x_star) <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="cf">break</span></span>
+<span id="cb79-9"><a href="game-theory-and-replicator-dynamics.html#cb79-9"></a>  <span class="cf">if</span> (<span class="kw">all</span>(x_star <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>)) <span class="cf">break</span></span>
 <span id="cb79-10"><a href="game-theory-and-replicator-dynamics.html#cb79-10"></a>}</span>
 <span id="cb79-11"><a href="game-theory-and-replicator-dynamics.html#cb79-11"></a><span class="co"># payoff matrix</span></span>
 <span id="cb79-12"><a href="game-theory-and-replicator-dynamics.html#cb79-12"></a>A &lt;-<span class="st"> </span>H <span class="op">-</span><span class="st"> </span><span class="kw">t</span>(H)</span>

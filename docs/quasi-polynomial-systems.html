@@ -24,7 +24,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2021-05-19" />
+<meta name="date" content="2021-05-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -310,12 +310,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>We show how any QP-system can be written as a larger-dimensional Generalized Lotka-Volterra model.</li>
 <li>This means that the machinery we built for analyzing GLV models can be used to tackle a variety of models that at face value do not seem to fall in this class. We show how to determine global stability in several ecological and epidemiological models using this method.</li>
 <li>This also shows that the GLV model is in a way a “universal” model.</li>
-<li>For a simple application, we examine models of metapopulation dynamics with ecosystem engineering.</li>
 </ol>
 <div id="global-stability-2" class="section level2">
 <h2><span class="header-section-number">9.1</span> Global stability</h2>
 <p>Many dynamical models describing ecological, epidemiological and evolutionary systems have equilibria that are globally stable (e.g., SIR, SIS, logistic growth, Levins’ metapopulation model, MacArthur’s consumer-resource model).</p>
-<p>By far, the most powerful method to prove the global stability of an equilibrium is the so-called “Lyapunov direct method”, which we’ve encountered several times already. The main drawback of this method is that devising an appropriate Lyapunov function requires ingenuityand—as <span class="citation">Strogatz (<a href="#ref-strogatz2018nonlinear" role="doc-biblioref">2018</a>)</span> put it—a good deal of “divine inspiration”. Here we take a different approach: we embed our model of interest into a (possibly larger) GLV model, and then attempt applying the typical Lyapunov function for GLV to our transformed system (an embedding originally proposed by <span class="citation">Brenig (<a href="#ref-brenig1988complete" role="doc-biblioref">1988</a>)</span>). In practice, this will require us to think carefully about how perturbations in the original system translate into the perturbations of the (larger) GLV model.</p>
+<p>By far, the most powerful method to prove the global stability of an equilibrium is the so-called “Lyapunov direct method”, which we’ve encountered several times already. The main drawback of this method is that devising an appropriate Lyapunov function requires ingenuity and—as <span class="citation">Strogatz (<a href="#ref-strogatz2018nonlinear" role="doc-biblioref">2018</a>)</span> put it—a good deal of “divine inspiration”. Here we take a different approach: we embed our model of interest into a (possibly larger) GLV model, and then attempt applying the typical Lyapunov function for GLV to our transformed system (an embedding originally proposed by <span class="citation">Brenig (<a href="#ref-brenig1988complete" role="doc-biblioref">1988</a>)</span>). In practice, this will require us to think carefully about how perturbations in the original system translate into the perturbations of the (larger) GLV model.</p>
 <p>We first show how systems that are in “Quasi-Polynomial” (QP) form can be embedded into a larger GLV by means of simple matrix operations. Then, we discuss strategies to determine global stability for the embedding. Finally, we show that other models can be turned into QP, and from there into GLV.</p>
 </div>
 <div id="from-qp-to-glv" class="section level2">
@@ -327,7 +326,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>where <span class="math inline">\(s\)</span> is a vector of “growth rates” (not necessarily positive), <span class="math inline">\(A\)</span> is a matrix of interactions, and <span class="math inline">\(B\)</span> a <span class="math inline">\(m \times n\)</span> matrix of exponents. Note that if we take <span class="math inline">\(m = n\)</span> and <span class="math inline">\(B = I_n\)</span> (the identity matrix), we recover the GLV model. If <span class="math inline">\(B\)</span> contains only integers, then we have a polynomial system. Extending this model to real (but not necessarily integer) numbers <span class="math inline">\(B_{jk}\)</span>, we have a “Quasi-Polynomial” (QP) system (<span class="citation">Hernández-Bermejo, Fairén, and Brenig (<a href="#ref-hernandez1998algebraic" role="doc-biblioref">1998</a>)</span>).</p>
 <p>In general, we assume that <span class="math inline">\(A\)</span> is of size <span class="math inline">\(n \times m\)</span>, <span class="math inline">\(B\)</span> is <span class="math inline">\(m \times n\)</span>, and that the <span class="math inline">\(x_i(t)\)</span> are real and positive (if that’s not the case, one needs to perform a change of variables that ensures positivity). The system has <span class="math inline">\(n\)</span> variables (the <span class="math inline">\(x_i(t)\)</span>), and we can identify <span class="math inline">\(m\)</span> “quasi-monomials”:</p>
 <p><span class="math display">\[
-\prod_{k=1}^n x_k^{B_{jk}}
+z_j = \prod_{k=1}^n x_k^{B_{jk}}
 \]</span></p>
 <p>Several models in ecology and evolution belong to this class. For example, a model that departs from the GLV family is the so-called Leslie-Gower predator-prey model (<span class="citation">Leslie (<a href="#ref-leslie1948some" role="doc-biblioref">1948</a>)</span>):</p>
 <p><span class="math display">\[
@@ -674,11 +673,38 @@ s = (1,1,1,1)^T \quad A = \begin{pmatrix}
 0 &amp; 0 &amp; 1 &amp; 1\\
 \end{pmatrix}
 \]</span></p>
-<p>FINISH THIS</p>
-<div class="boxhomework">
-<p><strong>Homework 9</strong></p>
-<p>METAPOP</p>
-</div>
+<p>We have:</p>
+<p><span class="math display">\[
+M = \begin{pmatrix}
+ -1 &amp; 0 &amp; 0 &amp; \alpha  &amp; 0 \\
+ 0 &amp; -1 &amp; \alpha  &amp; 0 &amp; 0 \\
+ 0 &amp; 0 &amp; -2 &amp; \alpha  &amp; -\alpha  \\
+ 0 &amp; 0 &amp; \alpha  &amp; 2 &amp; -\alpha  \\
+ 0 &amp; 0 &amp; \alpha -2 &amp; \alpha +2 &amp; -2 \alpha  \\
+\end{pmatrix}
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+r = \begin{pmatrix} 1,1,1,1,2
+\end{pmatrix}^T
+\]</span></p>
+<p>Setting <span class="math inline">\(c = (1,1,0,0,0)\)</span>, we obtain</p>
+<p><span class="math display">\[
+\dfrac{dV}{dt} = -\Delta z_1^2 - \Delta z_2^2 + \alpha (\Delta z_1 \Delta z_4 + \Delta z_2 \Delta z_3)
+\]</span></p>
+<p>Note however that <span class="math inline">\(\Delta z_3\)</span> and <span class="math inline">\(\Delta z_4\)</span> are defined by <span class="math inline">\(\Delta z_1\)</span> and <span class="math inline">\(\Delta z_2\)</span>:</p>
+<p><span class="math display">\[
+\Delta z_3 = \dfrac{x_1}{1+x_1}-\dfrac{x_1^\star}{1+x_1^\star} = \dfrac{1}{1 + x_1^\star} - \dfrac{1}{1 + x_1^\star + \Delta z_1}
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+\Delta z_4 = \dfrac{x_2}{1+x_2}-\dfrac{x_2^\star}{1+x_2^\star} = \dfrac{1}{1 + x_2^\star} - \dfrac{1}{1 + x_2^\star + \Delta z_2}
+\]</span></p>
+<p>Plugging in the values for the equilibrium, and simplifying, we finally obtain:</p>
+<p><span class="math display">\[
+\dfrac{dV}{dt} = -\Delta z_1^2 - \Delta z_2^2 + \frac{8 \alpha  \Delta z1 \Delta z2 \left(\sqrt{\alpha ^2+4}+\alpha +\Delta z1+\Delta z2+2\right)}{\left(\sqrt{\alpha ^2+4}+\alpha +2\right) \left(\sqrt{\alpha ^2+4}+\alpha +2 \Delta z1+2\right) \left(\sqrt{\alpha ^2+4}+\alpha +2 \Delta z2+2\right)}
+\]</span></p>
+<p>which is never positive if <span class="math inline">\(\Delta z_1 &gt; - x_1^\star\)</span>, <span class="math inline">\(\Delta z_2 &gt; - x_2^\star\)</span> and <span class="math inline">\(\alpha &gt; 0\)</span>. This proves the stability of the coexistence equilibrium.</p>
 
 </div>
 </div>

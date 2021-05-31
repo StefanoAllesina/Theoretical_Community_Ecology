@@ -8,7 +8,6 @@ source("common_settings.R")
 1. We analyze Levins' metapopulation model, which we've encountered before.
 1. We introduce the idea of a network of dispersal, and see how metapopulation persistence depends on network structure.
 1. We draw a parallel with Susceptible-Infected-Susceptible models, in which individuals play the role of habitable patches and parasites disperse on a network of contacts. 
-1. Finally, we discuss recent extensions of metapopulation models including several complications.
 
 ## Metapopulations
 
@@ -22,7 +21,7 @@ In 1969, Richard Levins---then a professor at U. Chicago---proposed a simple mod
 knitr::include_graphics('img/Levins.jpg')
 ```
 
-Born in Brooklyn, New York, he studied agriculture and mathematics at Cornell. Early on, influenced by geneticist and polymath Haldane, he became a Marxist activist. Upon graduation, having been blacklisted as a communist (and with the Korean War raging), he moved to Puerto Rico with his wife, and set up a farm. In his spare time, he conducted experiments on fruit flies, organized anti-colonialist rallies and anti-war protests, and taught at the University of Puerto Rico. In 1964, he was invited to Cuba to help organize the biology department of the University of Havana. He received his doctorate from Columbia University in 1965. In 1967 he moved to the University of Chicago, where he joined Richard Lewontin---whith whom he established a lifelong collaboration. They both moved to Harvard in 19XX.
+Born in Brooklyn, New York, he studied agriculture and mathematics at Cornell. Early on, influenced by geneticist and polymath Haldane, he became a Marxist activist. Upon graduation, having been blacklisted as a communist (and with the Korean War raging), he moved to Puerto Rico with his wife, and set up a farm. In his spare time, he conducted experiments on fruit flies, organized anti-colonialist rallies and anti-war protests, and taught at the University of Puerto Rico. In 1964, he was invited to Cuba to help organize the biology department of the University of Havana. He received his doctorate from Columbia University in 1965. In 1967 he moved to the University of Chicago, where he joined Richard Lewontin---whith whom he established a lifelong collaboration. They both moved to Harvard in the late 1970s.
 
 It is impossible to summarize his numerous contributions to ecology, mathematics, political science, and the philosophy of science. He has inspired countless ecologists, and his approach and style are still visible in many of the research programs being carried out today. Of particular interest for this class, his theory of evolution in a changing environment (@levins1968evolution), the development of the idea of limiting similarity (@macarthur1967limiting), his work on metapopulation dynamics (@levins1969some), and the development of Loop Analysis (i.e., a qualitative theory for dynamical systems, @puccia2013qualitative).
 
