@@ -24,7 +24,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2021-05-31" />
+<meta name="date" content="2021-06-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -373,7 +373,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math display">\[
 (1-x_i^\star) \sum_{j}M_{ij} x^\star_j - \delta x_i^\star  = 0
 \]</span></p>
-<p>The matrix <span class="math inline">\(M\)</span> has zero on the diagonal. Then, <span class="math inline">\(\sum_{j \neq i}M_{ij}x^\star_j = \sum_{j}M_{ij}x^\star_j\)</span>. Note that then if <span class="math inline">\(\sum_{j}M_{ij}x^\star_j\)</span> for any <span class="math inline">\(i\)</span>, we have <span class="math inline">\(x_i^\star = 0\)</span>. This means that patches that are disconnected (<span class="math inline">\(\sum_j M_{ij} =0\)</span>), or that are connected to patches where the species is absent (<span class="math inline">\(\sum_{j}M_{ij}x^\star_j = 0\)</span> with <span class="math inline">\(\sum_j M_{ij}&gt;0\)</span>) are vacant at equilibrium. If, on the other hand, we assume that not all <span class="math inline">\(x_j\)</span> are zero, we can write:</p>
+<p>The matrix <span class="math inline">\(M\)</span> has zero on the diagonal. Then, <span class="math inline">\(\sum_{j \neq i}M_{ij}x^\star_j = \sum_{j}M_{ij}x^\star_j\)</span>. Note that then if <span class="math inline">\(\sum_{j}M_{ij}x^\star_j = 0\)</span> for any <span class="math inline">\(i\)</span>, we have <span class="math inline">\(x_i^\star = 0\)</span>. This means that patches that are disconnected (<span class="math inline">\(\sum_j M_{ij} =0\)</span>), or that are connected to patches where the species is absent (<span class="math inline">\(\sum_{j}M_{ij}x^\star_j = 0\)</span> with <span class="math inline">\(\sum_j M_{ij}&gt;0\)</span>). If, on the other hand, we assume that not all <span class="math inline">\(x_j\)</span> are zero, we can write:</p>
 <p><span class="math display">\[
 1-x_i^\star = \delta \frac{x_i^\star}{\sum_{j}M_{ij}x_j^\star}
 \]</span>
@@ -384,7 +384,7 @@ x_i^\star = 1 - \delta \frac{x_i^\star}{(Mx^\star)_i}
 <p>Now we need a result from the theory of nonnegative matrices (such as <span class="math inline">\(M\)</span>).</p>
 <div class="boxmath">
 <p><strong>Collatz-Wielandt formula</strong></p>
-<p>A matrix <span class="math inline">\(A\)</span> is called nonnegative <span class="math inline">\(A \geq 0\)</span> if <span class="math inline">\(A_{ij} \geq 0\)</span> for all <span class="math inline">\(i,j\)</span>. There exists a positive eigenvalue <span class="math inline">\(\rho\)</span> with associated eigenvector <span class="math inline">\(v\)</span> such that <span class="math inline">\(Av = \rho v\)</span> and <span class="math inline">\(v\)</span> has positive components (Perron-Frobenius). Moreover, <span class="math inline">\(|\rho| \geq \lambda_i\)</span> for all other eigenvalues, and every other eigenvector has at least a negative component. Finally, we have that for a nonnegative vector <span class="math inline">\(x\)</span></p>
+<p>A matrix <span class="math inline">\(A\)</span> is called nonnegative <span class="math inline">\(A \geq 0\)</span> if <span class="math inline">\(A_{ij} \geq 0\)</span> for all <span class="math inline">\(i,j\)</span>. There exists a positive eigenvalue <span class="math inline">\(\rho\)</span> with associated eigenvector <span class="math inline">\(v\)</span> such that <span class="math inline">\(Av = \rho v\)</span> and <span class="math inline">\(v\)</span> has positive components (Perron-Frobenius). Moreover, <span class="math inline">\(|\rho| \geq |\lambda_i|\)</span> for all other eigenvalues, and every other eigenvector has at least a negative component. Finally, we have that for a nonnegative vector <span class="math inline">\(x\)</span></p>
 <p><span class="math display">\[
 \rho = \mathop{\max}_{x \in \mathbb R^n_{0+}, x \neq 0} \quad \mathop{\min}_{x_i \neq 0} \frac{(Ax)_i}{x_i}
 \]</span></p>
@@ -429,7 +429,7 @@ x_i^\star = 1 - \delta \frac{x_i^\star}{(Mx^\star)_i}
 </div>
 <div id="metapopulations-on-randomly-distributed-patches" class="section level2">
 <h2><span class="header-section-number">8.4</span> Metapopulations on randomly distributed patches</h2>
-<p><span class="citation">Grilli, Barabás, and Allesina (<a href="#ref-grilli2015metapopulation" role="doc-biblioref">2015</a>)</span> considered the case in which a) <span class="math inline">\(N\)</span> patches are uniformly, randomly arranged in a <span class="math inline">\(d-\)</span>dimensional landscape (e.g., 1-dimensional for the dunes ecosystems on the shore of Lake Michigan, 2-dimensional for an agricultural landscape; for 3 dimensions consider mountains, for 4 dimensions add time [e.g., temporary ponds in the Alps], for 5 or more dimensions, invoke string theory!)—we indicate the position of patch <span class="math inline">\(i\)</span> as <span class="math inline">\(x_i\)</span>; b) one can choose a “dispersal kernel” $ f(|x_i−x_j|/)$, c) patch values are randomly sampled from a distribution with mean 1 (which we can do w.l.o.g.) and variance <span class="math inline">\(\sigma^2\)</span>.</p>
+<p><span class="citation">Grilli, Barabás, and Allesina (<a href="#ref-grilli2015metapopulation" role="doc-biblioref">2015</a>)</span> considered the case in which a) <span class="math inline">\(N\)</span> patches are uniformly, randomly arranged in a <span class="math inline">\(d-\)</span>dimensional landscape (e.g., 1-dimensional for the dunes ecosystems on the shore of Lake Michigan, 2-dimensional for an agricultural landscape; for 3 dimensions consider mountains, for 4 dimensions add time [e.g., temporary ponds in the Alps], for 5 or more dimensions, invoke string theory!)—we indicate the position of patch <span class="math inline">\(i\)</span> as <span class="math inline">\(x_i\)</span>; b) one can choose a “dispersal kernel” <span class="math inline">\(f(|x_i−x_j|/\xi)\)</span>, c) patch values are randomly sampled from a distribution with mean 1 (which we can do w.l.o.g.) and variance <span class="math inline">\(\sigma^2\)</span>.</p>
 <p>For example, when dispersal decreases exponentially with distance (as above), we have an exponential kernel:</p>
 <p><span class="math display">\[
 f\left( \frac{|x_i-x_j|}{\xi} \right) = \exp \left( -\frac{|x_i -

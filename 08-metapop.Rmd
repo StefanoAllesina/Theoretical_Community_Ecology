@@ -111,7 +111,7 @@ $$
 (1-x_i^\star) \sum_{j}M_{ij} x^\star_j - \delta x_i^\star  = 0
 $$
 
-The matrix $M$ has zero on the diagonal. Then, $\sum_{j \neq i}M_{ij}x^\star_j = \sum_{j}M_{ij}x^\star_j$. Note that then if $\sum_{j}M_{ij}x^\star_j$ for any $i$, we have $x_i^\star = 0$. This means that patches that are disconnected ($\sum_j M_{ij} =0$), or that are connected to patches where the species is absent ($\sum_{j}M_{ij}x^\star_j = 0$ with $\sum_j M_{ij}>0$) are vacant at equilibrium. If, on the other hand, we assume that not all $x_j$ are zero, we can write:
+The matrix $M$ has zero on the diagonal. Then, $\sum_{j \neq i}M_{ij}x^\star_j = \sum_{j}M_{ij}x^\star_j$. Note that then if $\sum_{j}M_{ij}x^\star_j = 0$ for any $i$, we have $x_i^\star = 0$. This means that patches that are disconnected ($\sum_j M_{ij} =0$), or that are connected to patches where the species is absent ($\sum_{j}M_{ij}x^\star_j = 0$ with $\sum_j M_{ij}>0$). If, on the other hand, we assume that not all $x_j$ are zero, we can write:
 
 $$
 1-x_i^\star = \delta \frac{x_i^\star}{\sum_{j}M_{ij}x_j^\star}
@@ -128,7 +128,7 @@ Now we need a result from the theory of nonnegative matrices (such as $M$).
 
 **Collatz-Wielandt formula**
 
-A matrix $A$ is called nonnegative $A \geq 0$ if $A_{ij} \geq 0$ for all $i,j$. There exists a positive eigenvalue $\rho$ with associated eigenvector $v$ such that $Av = \rho v$ and $v$ has positive components (Perron-Frobenius). Moreover, $|\rho| \geq \lambda_i$ for all other eigenvalues, and every other eigenvector has at least a negative component. Finally, we have that for a nonnegative vector $x$
+A matrix $A$ is called nonnegative $A \geq 0$ if $A_{ij} \geq 0$ for all $i,j$. There exists a positive eigenvalue $\rho$ with associated eigenvector $v$ such that $Av = \rho v$ and $v$ has positive components (Perron-Frobenius). Moreover, $|\rho| \geq |\lambda_i|$ for all other eigenvalues, and every other eigenvector has at least a negative component. Finally, we have that for a nonnegative vector $x$
 
 $$
 \rho = \mathop{\max}_{x \in \mathbb R^n_{0+}, x \neq 0} \quad \mathop{\min}_{x_i \neq 0} \frac{(Ax)_i}{x_i}
@@ -198,7 +198,7 @@ Then write the system of differential equations above, and follow dynamics until
 
 ## Metapopulations on randomly distributed patches
 
-@grilli2015metapopulation considered the case in which a) $N$ patches are uniformly, randomly arranged in a $d-$dimensional landscape (e.g., 1-dimensional for the dunes ecosystems on the shore of Lake Michigan, 2-dimensional for an agricultural landscape; for 3 dimensions consider mountains, for 4 dimensions add time [e.g., temporary ponds in the Alps], for 5 or more dimensions, invoke string theory!)---we indicate the position of patch $i$ as $x_i$; b) one can choose a "dispersal kernel" $ f(|x_i−x_j|/\xi)$, c) patch values are randomly sampled from a distribution with mean 1 (which we can do w.l.o.g.) and variance $\sigma^2$. 
+@grilli2015metapopulation considered the case in which a) $N$ patches are uniformly, randomly arranged in a $d-$dimensional landscape (e.g., 1-dimensional for the dunes ecosystems on the shore of Lake Michigan, 2-dimensional for an agricultural landscape; for 3 dimensions consider mountains, for 4 dimensions add time [e.g., temporary ponds in the Alps], for 5 or more dimensions, invoke string theory!)---we indicate the position of patch $i$ as $x_i$; b) one can choose a "dispersal kernel" $f(|x_i−x_j|/\xi)$, c) patch values are randomly sampled from a distribution with mean 1 (which we can do w.l.o.g.) and variance $\sigma^2$. 
 
 For example, when dispersal decreases exponentially with distance (as above), we have an exponential kernel:
 
