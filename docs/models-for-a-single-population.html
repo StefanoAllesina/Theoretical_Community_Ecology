@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Lecture 1 Models for a single population | Theoretical Community Ecology</title>
   <meta name="description" content="A graduate course in theoretical community ecology focusing on systems with multiple species." />
-  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24.1 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Lecture 1 Models for a single population | Theoretical Community Ecology" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2021-06-02" />
+<meta name="date" content="2022-03-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,9 @@
   
 <link rel="prev" href="index.html"/>
 <link rel="next" href="models-for-two-populations.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,22 +51,23 @@
 
 
 
-
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -84,7 +87,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -117,6 +120,29 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -133,11 +159,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Theoretical Community Ecology</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preliminaries</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preliminaries</a>
+<ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#approach-and-target-audience"><i class="fa fa-check"></i>Approach and target audience</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#topics"><i class="fa fa-check"></i>Topics</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#notation"><i class="fa fa-check"></i>Notation</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#grading-and-code-of-conduct"><i class="fa fa-check"></i>Grading and code of conduct</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#grading-and-code-of-conduct"><i class="fa fa-check"></i>Grading and code of conduct</a>
+<ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#homework-80"><i class="fa fa-check"></i>Homework (80%)</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#review-20"><i class="fa fa-check"></i>Review (20%)</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#accommodation-for-students-with-disabilities"><i class="fa fa-check"></i>Accommodation for students with disabilities</a></li>
@@ -146,12 +174,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#sources"><i class="fa fa-check"></i>Sources</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html"><i class="fa fa-check"></i><b>1</b> Models for a single population</a><ul>
+<li class="chapter" data-level="1" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html"><i class="fa fa-check"></i><b>1</b> Models for a single population</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#types-of-dynamical-systems"><i class="fa fa-check"></i><b>1.1</b> Types of dynamical systems</a></li>
 <li class="chapter" data-level="1.2" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#initial-value-problems"><i class="fa fa-check"></i><b>1.2</b> Initial-value problems</a></li>
 <li class="chapter" data-level="1.3" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#solvable-model-exponential-growth"><i class="fa fa-check"></i><b>1.3</b> Solvable model: Exponential growth</a></li>
 <li class="chapter" data-level="1.4" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#solvable-model-logistic-growth"><i class="fa fa-check"></i><b>1.4</b> Solvable model: Logistic growth</a></li>
-<li class="chapter" data-level="1.5" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#qualitative-analysis-of-models-for-a-single-population"><i class="fa fa-check"></i><b>1.5</b> Qualitative analysis of models for a single population</a><ul>
+<li class="chapter" data-level="1.5" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#qualitative-analysis-of-models-for-a-single-population"><i class="fa fa-check"></i><b>1.5</b> Qualitative analysis of models for a single population</a>
+<ul>
 <li class="chapter" data-level="1.5.1" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#stability-using-derivatives"><i class="fa fa-check"></i><b>1.5.1</b> Stability using derivatives</a></li>
 <li class="chapter" data-level="1.5.2" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#what-are-we-doing-when-probing-stability-using-derivatives"><i class="fa fa-check"></i><b>1.5.2</b> What are we doing when probing stability using derivatives?</a></li>
 </ul></li>
@@ -159,30 +189,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.7" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#long-term-behavior-of-1-d-systems"><i class="fa fa-check"></i><b>1.7</b> Long term behavior of 1-D systems</a></li>
 <li class="chapter" data-level="1.8" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#lyapunov-functions"><i class="fa fa-check"></i><b>1.8</b> Lyapunov functions</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html"><i class="fa fa-check"></i><b>2</b> Models for two populations</a><ul>
-<li class="chapter" data-level="2.1" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#qualitative-analysis-of-models-for-two-populations"><i class="fa fa-check"></i><b>2.1</b> Qualitative analysis of models for two populations</a><ul>
+<li class="chapter" data-level="2" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html"><i class="fa fa-check"></i><b>2</b> Models for two populations</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#qualitative-analysis-of-models-for-two-populations"><i class="fa fa-check"></i><b>2.1</b> Qualitative analysis of models for two populations</a>
+<ul>
 <li class="chapter" data-level="2.1.1" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#isoclines-of-null-growth"><i class="fa fa-check"></i><b>2.1.1</b> Isoclines of null growth</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#local-stability-analysis"><i class="fa fa-check"></i><b>2.2</b> Local stability analysis</a></li>
-<li class="chapter" data-level="2.3" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#stability-analysis-of-the-lotka-volterra-predator-prey-model"><i class="fa fa-check"></i><b>2.3</b> Stability analysis of the Lotka-Volterra Predator-Prey model</a><ul>
+<li class="chapter" data-level="2.3" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#stability-analysis-of-the-lotka-volterra-predator-prey-model"><i class="fa fa-check"></i><b>2.3</b> Stability analysis of the Lotka-Volterra Predator-Prey model</a>
+<ul>
 <li class="chapter" data-level="2.3.1" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#constant-of-motion-for-lotka-volterra-predator-prey"><i class="fa fa-check"></i><b>2.3.1</b> Constant of motion for Lotka-Volterra Predator-Prey</a></li>
 <li class="chapter" data-level="2.3.2" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#analysis-of-predator-prey-model-with-logistic-growth-for-the-prey"><i class="fa fa-check"></i><b>2.3.2</b> Analysis of Predator-Prey model with logistic growth for the prey</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html"><i class="fa fa-check"></i><b>3</b> Generalized Lotka-Volterra model</a><ul>
+<li class="chapter" data-level="3" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html"><i class="fa fa-check"></i><b>3</b> Generalized Lotka-Volterra model</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#formulation"><i class="fa fa-check"></i><b>3.1</b> Formulation</a></li>
-<li class="chapter" data-level="3.2" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#a-single-population"><i class="fa fa-check"></i><b>3.2</b> A single population</a><ul>
+<li class="chapter" data-level="3.2" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#a-single-population"><i class="fa fa-check"></i><b>3.2</b> A single population</a>
+<ul>
 <li class="chapter" data-level="3.2.1" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#metapopulation-dynamics"><i class="fa fa-check"></i><b>3.2.1</b> Metapopulation dynamics</a></li>
 <li class="chapter" data-level="3.2.2" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#s-i-s-model"><i class="fa fa-check"></i><b>3.2.2</b> S-I-S model</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#multi-species-dynamics"><i class="fa fa-check"></i><b>3.3</b> Multi-species dynamics</a><ul>
+<li class="chapter" data-level="3.3" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#multi-species-dynamics"><i class="fa fa-check"></i><b>3.3</b> Multi-species dynamics</a>
+<ul>
 <li class="chapter" data-level="3.3.1" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#existence-of-an-equilibrium"><i class="fa fa-check"></i><b>3.3.1</b> Existence of an equilibrium</a></li>
 <li class="chapter" data-level="3.3.2" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#stability-of-the-coexistence-equilibrium"><i class="fa fa-check"></i><b>3.3.2</b> Stability of the coexistence equilibrium</a></li>
 <li class="chapter" data-level="3.3.3" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#types-of-dynamics"><i class="fa fa-check"></i><b>3.3.3</b> Types of dynamics</a></li>
 <li class="chapter" data-level="3.3.4" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#the-equilibrium-is-the-time-average"><i class="fa fa-check"></i><b>3.3.4</b> The equilibrium is the time-average</a></li>
 <li class="chapter" data-level="3.3.5" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#lyapunov-diagonal-stability-and-global-stability"><i class="fa fa-check"></i><b>3.3.5</b> Lyapunov diagonal stability and global stability</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#macarthurs-consumer-resource-model"><i class="fa fa-check"></i><b>3.4</b> MacArthur’s consumer-resource model</a><ul>
+<li class="chapter" data-level="3.4" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#macarthurs-consumer-resource-model"><i class="fa fa-check"></i><b>3.4</b> MacArthur’s consumer-resource model</a>
+<ul>
 <li class="chapter" data-level="3.4.1" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#existence-of-an-equilibrium-1"><i class="fa fa-check"></i><b>3.4.1</b> Existence of an equilibrium</a></li>
 <li class="chapter" data-level="3.4.2" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#global-stability-1"><i class="fa fa-check"></i><b>3.4.2</b> Global stability</a></li>
 <li class="chapter" data-level="3.4.3" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#separation-of-time-scales"><i class="fa fa-check"></i><b>3.4.3</b> Separation of time-scales</a></li>
@@ -190,7 +227,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.5" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#further-readings"><i class="fa fa-check"></i><b>3.5</b> Further readings</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html"><i class="fa fa-check"></i><b>4</b> Stability of large ecological communities</a><ul>
+<li class="chapter" data-level="4" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html"><i class="fa fa-check"></i><b>4</b> Stability of large ecological communities</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#complexity-and-stability"><i class="fa fa-check"></i><b>4.1</b> Complexity and stability</a></li>
 <li class="chapter" data-level="4.2" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#the-stability-of-random-ecosystems"><i class="fa fa-check"></i><b>4.2</b> The stability of random ecosystems</a></li>
 <li class="chapter" data-level="4.3" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#accounting-for-interaction-types"><i class="fa fa-check"></i><b>4.3</b> Accounting for interaction types</a></li>
@@ -200,17 +238,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.7" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#structured-matrices"><i class="fa fa-check"></i><b>4.7</b> Structured matrices</a></li>
 <li class="chapter" data-level="4.8" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#further-readings-1"><i class="fa fa-check"></i><b>4.8</b> Further readings</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="ecological-assembly.html"><a href="ecological-assembly.html"><i class="fa fa-check"></i><b>5</b> Ecological assembly</a><ul>
-<li class="chapter" data-level="5.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#assembly"><i class="fa fa-check"></i><b>5.1</b> Assembly</a><ul>
+<li class="chapter" data-level="5" data-path="ecological-assembly.html"><a href="ecological-assembly.html"><i class="fa fa-check"></i><b>5</b> Ecological assembly</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#assembly"><i class="fa fa-check"></i><b>5.1</b> Assembly</a>
+<ul>
 <li class="chapter" data-level="5.1.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#what-makes-the-study-of-assembly-difficult"><i class="fa fa-check"></i><b>5.1.1</b> What makes the study of assembly difficult?</a></li>
 <li class="chapter" data-level="5.1.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#ecological-assembly-without-tears"><i class="fa fa-check"></i><b>5.1.2</b> Ecological assembly without tears</a></li>
 <li class="chapter" data-level="5.1.3" data-path="ecological-assembly.html"><a href="ecological-assembly.html#top-down-and-bottom-up-assembly"><i class="fa fa-check"></i><b>5.1.3</b> Top-down and bottom-up assembly</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#modeling-invasions"><i class="fa fa-check"></i><b>5.2</b> Modeling invasions</a><ul>
+<li class="chapter" data-level="5.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#modeling-invasions"><i class="fa fa-check"></i><b>5.2</b> Modeling invasions</a>
+<ul>
 <li class="chapter" data-level="5.2.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#invasions-in-multispecies-communities"><i class="fa fa-check"></i><b>5.2.1</b> Invasions in multispecies communities</a></li>
 <li class="chapter" data-level="5.2.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#lyapunov-stability-and-saturated-equilibria"><i class="fa fa-check"></i><b>5.2.2</b> Lyapunov stability and saturated equilibria</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="ecological-assembly.html"><a href="ecological-assembly.html#top-down-assembly"><i class="fa fa-check"></i><b>5.3</b> Top-down assembly</a><ul>
+<li class="chapter" data-level="5.3" data-path="ecological-assembly.html"><a href="ecological-assembly.html#top-down-assembly"><i class="fa fa-check"></i><b>5.3</b> Top-down assembly</a>
+<ul>
 <li class="chapter" data-level="5.3.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#a-trivial-case"><i class="fa fa-check"></i><b>5.3.1</b> A trivial case</a></li>
 <li class="chapter" data-level="5.3.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#simulating-final-composition"><i class="fa fa-check"></i><b>5.3.2</b> Simulating final composition</a></li>
 <li class="chapter" data-level="5.3.3" data-path="ecological-assembly.html"><a href="ecological-assembly.html#a-random-zoo"><i class="fa fa-check"></i><b>5.3.3</b> A random zoo</a></li>
@@ -218,7 +260,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.3.5" data-path="ecological-assembly.html"><a href="ecological-assembly.html#assembly-and-saturated-equilibrium"><i class="fa fa-check"></i><b>5.3.5</b> Assembly and saturated equilibrium</a></li>
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="ecological-assembly.html"><a href="ecological-assembly.html#network-spandrels"><i class="fa fa-check"></i><b>5.4</b> Network spandrels</a></li>
-<li class="chapter" data-level="5.5" data-path="ecological-assembly.html"><a href="ecological-assembly.html#bottom-up-assembly"><i class="fa fa-check"></i><b>5.5</b> Bottom-up assembly</a><ul>
+<li class="chapter" data-level="5.5" data-path="ecological-assembly.html"><a href="ecological-assembly.html#bottom-up-assembly"><i class="fa fa-check"></i><b>5.5</b> Bottom-up assembly</a>
+<ul>
 <li class="chapter" data-level="5.5.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#an-assembly-graph"><i class="fa fa-check"></i><b>5.5.1</b> An assembly graph</a></li>
 <li class="chapter" data-level="5.5.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#how-many-invasions"><i class="fa fa-check"></i><b>5.5.2</b> How many invasions?</a></li>
 <li class="chapter" data-level="5.5.3" data-path="ecological-assembly.html"><a href="ecological-assembly.html#properties-of-the-assembly-graph"><i class="fa fa-check"></i><b>5.5.3</b> Properties of the assembly graph</a></li>
@@ -229,7 +272,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.5.8" data-path="ecological-assembly.html"><a href="ecological-assembly.html#conclusions"><i class="fa fa-check"></i><b>5.5.8</b> Conclusions</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html"><i class="fa fa-check"></i><b>6</b> Predicting coexistence in ecological communities</a><ul>
+<li class="chapter" data-level="6" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html"><i class="fa fa-check"></i><b>6</b> Predicting coexistence in ecological communities</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#background-diversity-and-ecosystem-functioning"><i class="fa fa-check"></i><b>6.1</b> Background: Diversity and Ecosystem Functioning</a></li>
 <li class="chapter" data-level="6.2" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#synthetic-communities-using-the-glv-model"><i class="fa fa-check"></i><b>6.2</b> Synthetic communities using the GLV model</a></li>
 <li class="chapter" data-level="6.3" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#total-biomass"><i class="fa fa-check"></i><b>6.3</b> Total biomass</a></li>
@@ -237,15 +281,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.5" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#fitting-real-data"><i class="fa fa-check"></i><b>6.5</b> Fitting real data</a></li>
 <li class="chapter" data-level="6.6" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#predicting-real-data-out-of-fit"><i class="fa fa-check"></i><b>6.6</b> Predicting real data out of fit</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html"><i class="fa fa-check"></i><b>7</b> Game theory and replicator dynamics</a><ul>
+<li class="chapter" data-level="7" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html"><i class="fa fa-check"></i><b>7</b> Game theory and replicator dynamics</a>
+<ul>
 <li class="chapter" data-level="7.1" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#game-theory"><i class="fa fa-check"></i><b>7.1</b> Game theory</a></li>
-<li class="chapter" data-level="7.2" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#two-player-matrix-games"><i class="fa fa-check"></i><b>7.2</b> Two-player matrix games</a><ul>
+<li class="chapter" data-level="7.2" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#two-player-matrix-games"><i class="fa fa-check"></i><b>7.2</b> Two-player matrix games</a>
+<ul>
 <li class="chapter" data-level="7.2.1" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#example-the-prisoners-dilemma"><i class="fa fa-check"></i><b>7.2.1</b> Example: the prisoner’s dilemma</a></li>
 </ul></li>
 <li class="chapter" data-level="7.3" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#mixed-strategies"><i class="fa fa-check"></i><b>7.3</b> Mixed strategies</a></li>
 <li class="chapter" data-level="7.4" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#nash-equilibria"><i class="fa fa-check"></i><b>7.4</b> Nash Equilibria</a></li>
 <li class="chapter" data-level="7.5" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#evolutionary-stable-strategies"><i class="fa fa-check"></i><b>7.5</b> Evolutionary stable strategies</a></li>
-<li class="chapter" data-level="7.6" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#replicator-dynamics"><i class="fa fa-check"></i><b>7.6</b> Replicator dynamics</a><ul>
+<li class="chapter" data-level="7.6" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#replicator-dynamics"><i class="fa fa-check"></i><b>7.6</b> Replicator dynamics</a>
+<ul>
 <li class="chapter" data-level="7.6.1" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#invariants"><i class="fa fa-check"></i><b>7.6.1</b> Invariants</a></li>
 <li class="chapter" data-level="7.6.2" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#rock-paper-scissor"><i class="fa fa-check"></i><b>7.6.2</b> Rock-paper-scissor</a></li>
 <li class="chapter" data-level="7.6.3" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#equivalence-with-glv"><i class="fa fa-check"></i><b>7.6.3</b> Equivalence with GLV</a></li>
@@ -254,16 +301,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.6.6" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#higher-order-interactions"><i class="fa fa-check"></i><b>7.6.6</b> Higher-order interactions</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html"><i class="fa fa-check"></i><b>8</b> Metapopulation dynamics on networks</a><ul>
+<li class="chapter" data-level="8" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html"><i class="fa fa-check"></i><b>8</b> Metapopulation dynamics on networks</a>
+<ul>
 <li class="chapter" data-level="8.1" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#metapopulations"><i class="fa fa-check"></i><b>8.1</b> Metapopulations</a></li>
 <li class="chapter" data-level="8.2" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#hanski-ovaskainen-2000"><i class="fa fa-check"></i><b>8.2</b> Hanski Ovaskainen 2000</a></li>
-<li class="chapter" data-level="8.3" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#sis-on-a-contact-network"><i class="fa fa-check"></i><b>8.3</b> SIS on a contact network</a><ul>
+<li class="chapter" data-level="8.3" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#sis-on-a-contact-network"><i class="fa fa-check"></i><b>8.3</b> SIS on a contact network</a>
+<ul>
 <li class="chapter" data-level="8.3.1" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#the-full-model"><i class="fa fa-check"></i><b>8.3.1</b> The full model</a></li>
 <li class="chapter" data-level="8.3.2" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#the-mean-field-approximation"><i class="fa fa-check"></i><b>8.3.2</b> The mean-field approximation</a></li>
 </ul></li>
 <li class="chapter" data-level="8.4" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#metapopulations-on-randomly-distributed-patches"><i class="fa fa-check"></i><b>8.4</b> Metapopulations on randomly distributed patches</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html"><i class="fa fa-check"></i><b>9</b> Quasi-polynomial systems</a><ul>
+<li class="chapter" data-level="9" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html"><i class="fa fa-check"></i><b>9</b> Quasi-polynomial systems</a>
+<ul>
 <li class="chapter" data-level="9.1" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#global-stability-2"><i class="fa fa-check"></i><b>9.1</b> Global stability</a></li>
 <li class="chapter" data-level="9.2" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#from-qp-to-glv"><i class="fa fa-check"></i><b>9.2</b> From QP to GLV</a></li>
 <li class="chapter" data-level="9.3" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#stability-of-glv"><i class="fa fa-check"></i><b>9.3</b> Stability of GLV</a></li>
@@ -273,8 +323,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.7" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#glv-embedding-for-non-qp-systems"><i class="fa fa-check"></i><b>9.7</b> GLV embedding for non-QP systems</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
-<li class="chapter" data-level="10" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html"><i class="fa fa-check"></i><b>10</b> Random bits and pieces</a><ul>
-<li class="chapter" data-level="10.1" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#stability-of-larger-matrices"><i class="fa fa-check"></i><b>10.1</b> Stability of larger matrices</a><ul>
+<li class="chapter" data-level="10" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html"><i class="fa fa-check"></i><b>10</b> Random bits and pieces</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#stability-of-larger-matrices"><i class="fa fa-check"></i><b>10.1</b> Stability of larger matrices</a>
+<ul>
 <li class="chapter" data-level="10.1.1" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#descartes-rule-of-signs"><i class="fa fa-check"></i><b>10.1.1</b> Descartes’ rule of signs</a></li>
 <li class="chapter" data-level="10.1.2" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#routh-hurwitz-criterion"><i class="fa fa-check"></i><b>10.1.2</b> Routh-Hurwitz criterion</a></li>
 <li class="chapter" data-level="10.1.3" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#bounding-eigenvalues-using-the-symmetric-part"><i class="fa fa-check"></i><b>10.1.3</b> Bounding eigenvalues using the symmetric part</a></li>
@@ -302,7 +354,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="models-for-a-single-population" class="section level1">
+<div id="models-for-a-single-population" class="section level1" number="1">
 <h1><span class="header-section-number">Lecture 1</span> Models for a single population</h1>
 <p><strong>Lesson plan</strong>:</p>
 <ol style="list-style-type: decimal">
@@ -313,7 +365,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>We briefly discuss the idea of bifurcation points — i.e., particular choices of parameters for which the dynamics of the system change qualitatively.</li>
 <li>We conclude by introducing the idea of Lyapunov functions, allowing us to determine global stability of an equilibrium without the need to explicitly solve the model. We will see a lot of these functions when we study larger systems.</li>
 </ol>
-<div id="types-of-dynamical-systems" class="section level2">
+<div id="types-of-dynamical-systems" class="section level2" number="1.1">
 <h2><span class="header-section-number">1.1</span> Types of dynamical systems</h2>
 <p>Dynamical systems describe the change of certain variables, typically in time, space or a combination of the two. They have found applications in all scientific disciplines, and were introduced in ecology and evolutionary biology at the beginning of the twentieth century.</p>
 <p>Broadly, dynamical systems can be divided into <strong>continuous</strong> (described by differential equations), and <strong>discrete</strong> (described by maps, or difference equations) models. Many models for population dynamics can be written as (systems of) first-order ordinary differential equations, i.e. equations containing functions of one (or more) independent variables and their first derivative (typically, with respect to time).</p>
@@ -323,7 +375,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \]</span></p>
 <p>In general, we will examine cases in which <span class="math inline">\(f(x(t))\)</span> is a nonlinear function of <span class="math inline">\(x(t)\)</span>. We typically deal with <strong>deterministic</strong> systems, in which randomness plays no role in determining future states. Stochastic differential equations, on the other hand, include random components.</p>
 </div>
-<div id="initial-value-problems" class="section level2">
+<div id="initial-value-problems" class="section level2" number="1.2">
 <h2><span class="header-section-number">1.2</span> Initial-value problems</h2>
 <p>Typically, we would like to track the evolution of the system in time, starting from known initial conditions. For example,</p>
 <p><span class="math display">\[
@@ -335,7 +387,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We can solve the (system of) ODE(s) if we can write an explicit equation for <span class="math inline">\(x(t)\)</span> given the parameters and the initial conditions.</p>
 <p>In practice, we rarely can solve the equations we’re interested in. We can however prove that, if <span class="math inline">\(f(x(t))\)</span> is sufficiently well-behaved (technically, if <span class="math inline">\(f(x)\)</span> is Lipschitz continuous, for example, if it has bounded derivatives), then the initial-value problem above has a solution, the solution is unique, and depends continuously on the intial conditions and the parameters. This means that if we start the system at any point <span class="math inline">\(x(t)= x_t\)</span>, we cannot have multiple trajectories intersecting.</p>
 </div>
-<div id="solvable-model-exponential-growth" class="section level2">
+<div id="solvable-model-exponential-growth" class="section level2" number="1.3">
 <h2><span class="header-section-number">1.3</span> Solvable model: Exponential growth</h2>
 <div class="boxhistory">
 <p><strong>History: Pierre-François Verhulst (1804-1849)</strong></p>
@@ -372,7 +424,7 @@ x(t) = x_0 e^{\rho\, t}
 \]</span></p>
 <p>which is our solution. If we know the value of <span class="math inline">\(\rho\)</span> and the initial density <span class="math inline">\(x_0\)</span>, we can directly write the population density <span class="math inline">\(x(t)\)</span> for any <span class="math inline">\(t\)</span>.</p>
 </div>
-<div id="solvable-model-logistic-growth" class="section level2">
+<div id="solvable-model-logistic-growth" class="section level2" number="1.4">
 <h2><span class="header-section-number">1.4</span> Solvable model: Logistic growth</h2>
 <p>Another model that can be solved explicitly is that of the logistic growth:</p>
 <p><span class="math display">\[
@@ -426,7 +478,7 @@ where <span class="math inline">\(1 &gt; \eta &gt; 0\)</span> is the proportion 
 <p>Suppose that we want to maximize the amount we can harvest, and that we want to be able to sustain this harvest indefinitely. What level <span class="math inline">\(\eta\)</span> should we choose?</p>
 </div>
 </div>
-<div id="qualitative-analysis-of-models-for-a-single-population" class="section level2">
+<div id="qualitative-analysis-of-models-for-a-single-population" class="section level2" number="1.5">
 <h2><span class="header-section-number">1.5</span> Qualitative analysis of models for a single population</h2>
 <p>Because in general we cannot write an explicit solution for our models of interest, we attempt a qualitative analysis by: a) finding fixed points (equilibria); b) providing a qualitative description of the dynamics; c) probing the stability of fixed points; d) gaining an understanding of the system (nature of attractors, changes of behavior for different parameters) without deriving an explicit solution.</p>
 <p>When we are dealing with a single population, we can use a graphical method. Simply, plot <span class="math inline">\(dx(t) /dt\)</span> against <span class="math inline">\(x(t)\)</span>. We think of <span class="math inline">\(x(t)\)</span> as moving along the <span class="math inline">\(x\)</span> axis, at a velocity determined by the <span class="math inline">\(y\)</span> coordinate. For the exponential growth function:</p>
@@ -457,8 +509,8 @@ where <span class="math inline">\(1 &gt; \eta &gt; 0\)</span> is the proportion 
 <p>where <span class="math inline">\(0 &lt; \gamma &lt; 1 / \alpha\)</span>. Plotting,</p>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-7-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>In this model, there are two stable equilibria (<span class="math inline">\(x^\star = 0\)</span> and <span class="math inline">\(x^\star = 1 / \alpha\)</span>), separated by an unstable equilibrium (<span class="math inline">\(x^\star= \gamma\)</span>). Depending on the initial conditions, we might end up in either of the stable equilibria—we call this situation bistability.</p>
-<p>Note that bistability makes it clear that we can only apply small perturbations to the equilibrium to probe its “local” stability—for example, imagine being at <span class="math inline">\(x^\star = 1 / \alpha\)</span> and perturbing the population by bringing it below <span class="math inline">\(\gamma\)</span>; then we would find that the population goes extinct, suggesting that <span class="math inline">\(x^\star = 1 / \alpha\)</span> is “somewhat unstable”.</p>
-<div id="stability-using-derivatives" class="section level3">
+<p>Note that bistability makes it clear that we can only apply small perturbations to the equilibrium to probe its “local” stability—for example, imagine being at <span class="math inline">\(x^\star = 1 / \alpha\)</span> and perturbing the population by bringing it below <span class="math inline">\(\gamma\)</span>; then we would find that the population goes extinct, suggesting that <span class="math inline">\(x^\star = 1 / \alpha\)</span> is “somewhat unstable.”</p>
+<div id="stability-using-derivatives" class="section level3" number="1.5.1">
 <h3><span class="header-section-number">1.5.1</span> Stability using derivatives</h3>
 <p>You might have noticed in the previous graphs that whenever the curve <span class="math inline">\(dx(t) /dt\)</span> is negative on the left of a point and positive on its right we find that the point is unstable, while conversely a point for which <span class="math inline">\(dx(t) /dt\)</span> is positive on the left and negative on the right is stable. We can formalize this by taking the derivative of <span class="math inline">\(dx(t) /d t\)</span> with respect to <span class="math inline">\(x(t)\)</span>, and evaluating this function at different equilibria.</p>
 <p>For example, for the exponential growth model, we have:</p>
@@ -477,7 +529,7 @@ This is always posive when <span class="math inline">\(\rho &gt; 0\)</span>, and
 \]</span></p>
 <p>At <span class="math inline">\(x^\star = 0\)</span>, we find <span class="math inline">\(-\rho\, \gamma\)</span> which is always negative, and as such <span class="math inline">\(x^\star = 0\)</span> is stable. At <span class="math inline">\(x^\star = \gamma\)</span> we have <span class="math inline">\(\rho\, \gamma\, (1- \gamma\, \alpha)\)</span> which is positive (as <span class="math inline">\(\gamma\, \alpha &lt; 1\)</span>) and as such is an unstable equilibrium. Finally, for <span class="math inline">\(x^\star = 1/\alpha\)</span> we have <span class="math inline">\(\rho (\gamma - 1/\alpha)\)</span> which is always negative.</p>
 </div>
-<div id="what-are-we-doing-when-probing-stability-using-derivatives" class="section level3">
+<div id="what-are-we-doing-when-probing-stability-using-derivatives" class="section level3" number="1.5.2">
 <h3><span class="header-section-number">1.5.2</span> What are we doing when probing stability using derivatives?</h3>
 <p>More formally, we can think of describing the dynamics of a perturbation around the equilibrium. Call <span class="math inline">\(\Delta x(t) = x(t) - x^\star\)</span>, and approximate the dynamics around the equilibrium. We want to write the dynamics of <span class="math inline">\(\Delta x(t)\)</span>. By chain rule, <span class="math inline">\(\frac{d \Delta x(t)}{dt} = \frac{d \Delta x(t)}{d x(t)} \frac{d x(t)}{dt}\)</span>, and as such</p>
 <p><span class="math display">\[
@@ -494,18 +546,18 @@ f(\Delta x(t) + x^\star) = f(x^\star) + \left . \frac{df(x)}{dx} \right |_{x^\st
 <p>which is the equation for the exponential growth we have seen above. If <span class="math inline">\(\left . \frac{d f(x)}{d x}\right |_{x^\star} &lt; 0\)</span> the perturbation <span class="math inline">\(\Delta x(t)\)</span> will die out, while if it is positive it will increase quickly. Note that the analysis is valid only in the immediate surroundings of <span class="math inline">\(x^\star\)</span>—i.e., only where the terms we have neglected are indeed negligible.</p>
 </div>
 </div>
-<div id="bifurcations" class="section level2">
+<div id="bifurcations" class="section level2" number="1.6">
 <h2><span class="header-section-number">1.6</span> Bifurcations</h2>
 <p>The shape of the graphs above might depend on the value of parameters. Whenever a small change in one or several parameters causes a qualitative change in the behavior of the system, we speak of a <strong>bifurcation</strong> point (the term “bifurcation” was introduced by Henri Poincaré in 1885). At a bifurcation point, equilibria could disappear or be created, change their stability, the system could start cycling, etc.</p>
 <p>In low-dimensional system, there are a variety of different behaviors, each of which has its own name (e.g., saddle-node, pitchfork, transcritical, Hopf, period-doubling, …, bifurcation). The <strong>codimension</strong> of a bifurcation is the number of parameters we need to change to alter the behavior of the system. Clearly, codimension-1 and -2 bifurcations are the simplest and most studied.</p>
-<p>Here we just show the main idea using a simple example. For a detailed and accessible introduction, see <span class="citation">Strogatz (<a href="#ref-strogatz2018nonlinear" role="doc-biblioref">2018</a>)</span> and <span class="citation">Seydel (<a href="#ref-seydel2009practical" role="doc-biblioref">2009</a>)</span>.</p>
+<p>Here we just show the main idea using a simple example. For a detailed and accessible introduction, see <span class="citation"><a href="#ref-strogatz2018nonlinear" role="doc-biblioref">Strogatz</a> (<a href="#ref-strogatz2018nonlinear" role="doc-biblioref">2018</a>)</span> and <span class="citation"><a href="#ref-seydel2009practical" role="doc-biblioref">Seydel</a> (<a href="#ref-seydel2009practical" role="doc-biblioref">2009</a>)</span>.</p>
 <p>Consider the model:</p>
 <p><span class="math display">\[
 \dfrac{d x}{dt} = \rho + x^2
 \]</span></p>
 <p>The equilibria of the system, when they exist, are given by <span class="math inline">\(x^\star = \pm \sqrt{-\rho}\)</span>. It is clear that, when <span class="math inline">\(\rho &lt; 0\)</span> we will have two equilibria, when <span class="math inline">\(\rho = 0\)</span> a single equilibrium <span class="math inline">\(x^\star = 0\)</span>, and that when <span class="math inline">\(\rho &gt; 0\)</span> no (real) equilibrium exists. As such, the shape of the diagrams we have sketched above depend on <span class="math inline">\(\rho\)</span>. For example, when <span class="math inline">\(\rho = -4\)</span>, we have:</p>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-8-1.png" width="480" style="display: block; margin: auto;" /></p>
-<p>The equilibrium on the left is stable, while the one on the right is unstable. The graph is qualitatively the same for any <span class="math inline">\(\rho &lt; 0\)</span>. When <span class="math inline">\(\rho = 0\)</span>, however, the two equilibria “collide”, and merge into the single “half-stable” equilibrium:</p>
+<p>The equilibrium on the left is stable, while the one on the right is unstable. The graph is qualitatively the same for any <span class="math inline">\(\rho &lt; 0\)</span>. When <span class="math inline">\(\rho = 0\)</span>, however, the two equilibria “collide,” and merge into the single “half-stable” equilibrium:</p>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-9-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>The equilibrium <span class="math inline">\(x^\star = 0\)</span> is stable if we approach it from the left, while unstable if we are reaching it from the right. When we cross the bifurcation <span class="math inline">\(\rho_c = 0\)</span>, the equilibrium disappears altogether, leading to unbounded growth:</p>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-10-1.png" width="480" style="display: block; margin: auto;" /></p>
@@ -529,23 +581,23 @@ f(\Delta x(t) + x^\star) = f(x^\star) + \left . \frac{df(x)}{dx} \right |_{x^\st
 </div>
 <p>A few interesting references on detecting the approaching of a bifurcation in experimental systems:</p>
 <div class="boxpaper">
-<p><strong>Key paper: <span class="citation">Scheffer et al. (<a href="#ref-scheffer2009early" role="doc-biblioref">2009</a>)</span></strong></p>
+<p><strong>Key paper: <span class="citation"><a href="#ref-scheffer2009early" role="doc-biblioref">Scheffer et al.</a> (<a href="#ref-scheffer2009early" role="doc-biblioref">2009</a>)</span></strong></p>
 <p>Starting in the early 2000s, much work went into trying to anticipate dramatic changes in natural and man-made systems (e.g., lakes turning eutrophic, fisheries collapsing, desertification). In this review, Scheffer <em>et al.</em> summarize previous work and present an accessible introduction to the problem.</p>
-<p><strong>Key paper: <span class="citation">Dai et al. (<a href="#ref-dai2012generic" role="doc-biblioref">2012</a>)</span></strong></p>
+<p><strong>Key paper: <span class="citation"><a href="#ref-dai2012generic" role="doc-biblioref">Dai et al.</a> (<a href="#ref-dai2012generic" role="doc-biblioref">2012</a>)</span></strong></p>
 <p>Dai <em>et al.</em> grew populations of <em>Saccharomyces cerevisiae</em> on sucrose. Because sucrose is split outside the cell, it creates an Allee effect: when the population density is high, it is energetically convenient to produce the enzyme to spit the sucrose, as the different cells pool their efforts; when population density is low, the gain is not sufficient to balance the cost. By tuning the mortality (dilution), they were able to experimentally recreate the bifurcation diagram of the exercise above. The data from the experiments are <a href="https://doi.org/10.5061/dryad.p2481134">here</a>.</p>
 </div>
 </div>
-<div id="long-term-behavior-of-1-d-systems" class="section level2">
+<div id="long-term-behavior-of-1-d-systems" class="section level2" number="1.7">
 <h2><span class="header-section-number">1.7</span> Long term behavior of 1-D systems</h2>
 <p>First-order, single-equation ODEs can produce a very limited variety of long-terms behaviors: for <span class="math inline">\(t \to \infty\)</span> we can only have <span class="math inline">\(x(t) \to \pm \infty\)</span> or <span class="math inline">\(x(t) \to x^\star\)</span>. For population models, this means that either growth is unbounded (e.g., exponential growth model), or the population will reach an equilibrium point (possibly, out of many).</p>
 <p>This is a direct consequence of the uniqueness of trajectories: because we are moving in a 1-dimensional space, the fact that trajectories cannot cross means that if we are at a certain point <span class="math inline">\(x(t) = x_t\)</span>, then either <span class="math inline">\(dx(t)/dt &gt;0\)</span>, <span class="math inline">\(dx(t)/dt &lt;0\)</span>, or <span class="math inline">\(dx(t)/dt =0\)</span>, but can take only one value, preventing more complex behaviors such as cycles or chaos.</p>
 <p>For smooth functions and autonomous systems, one needs at least two equations to produce cycles and three equations to produce chaos. This is in stark contrast with difference equations—a single, innocent-looking difference equation can give rise to all sorts of dynamics.</p>
 <div class="boxpaper">
-<p><strong>Key paper: <span class="citation">May (<a href="#ref-may1976simple" role="doc-biblioref">1976</a>)</span></strong></p>
+<p><strong>Key paper: <span class="citation"><a href="#ref-may1976simple" role="doc-biblioref">May</a> (<a href="#ref-may1976simple" role="doc-biblioref">1976</a>)</span></strong></p>
 <p>May took a possible model for the logistic growth in discrete time, and showed how this very simple model can give rise to equilibria, cycles and chaos. This is one of the papers that launched an all-out effort to explore chaotic dynamics that lasted for the best part of the 1980s.</p>
 </div>
 </div>
-<div id="lyapunov-functions" class="section level2">
+<div id="lyapunov-functions" class="section level2" number="1.8">
 <h2><span class="header-section-number">1.8</span> Lyapunov functions</h2>
 <p>While in many cases we cannot write an explicit solution for a (system of) differential equation(s), we might be able to determine the stability of equilibria and their basin of attraction (i.e., the set of initial conditions eventually leading to the equilibrium <span class="math inline">\(x^\star\)</span>) by considering functions that change monotonically through the dynamics.</p>
 <p>Suppose that <span class="math inline">\(\dfrac{d x(t)}{dt} =f(x(t))\)</span>, and that <span class="math inline">\(x^\star\)</span> is an equilibrium. Let <span class="math inline">\(V(x)\)</span> be a function defined in an open set <span class="math inline">\(\mathcal O\)</span> containing <span class="math inline">\(x^\star\)</span>, such that a) <span class="math inline">\(V(x^\star) = 0\)</span> and <span class="math inline">\(V(x) &gt; 0\)</span> for any <span class="math inline">\(x \in \mathcal O, x \neq x^\star\)</span>, and b) <span class="math inline">\(d V /dt \leq 0\)</span> for all <span class="math inline">\(x \in \mathcal O \neq x^\star\)</span>. Then <span class="math inline">\(V\)</span> is a <em>Lyapunov function</em> for the model, and <span class="math inline">\(x^\star\)</span> is stable. The Lyapunov function is called <em>strict</em>, and the equilibrium <span class="math inline">\(x^\star\)</span> <em>asymptotically stable</em> if <span class="math inline">\(d V /dt &lt; 0\)</span> (i.e., all trajectories starting in <span class="math inline">\(\mathcal O\)</span> will eventually reach <span class="math inline">\(x^\star\)</span>).</p>
@@ -562,7 +614,16 @@ V(x(t)) = (x(t) - x^\star)^2
 <p><span class="math display">\[
 \dfrac{d V(x(t))}{d t} = 2 \rho\, x(t) \left(x(t) - \dfrac{1}{\alpha}\right) (1 - \alpha\, x(t))= -\dfrac{\rho\, x(t)}{\alpha}\left(x(t) - \dfrac{1}{\alpha}\right)^2
 \]</span></p>
-<p>and as such <span class="math inline">\(x^\star\)</span> is asymptotically stable. The basin of attraction (i.e., where the Lyapunov function has the desired properties) is <span class="math inline">\(x \in \mathbb{R}_+\)</span>. There can be several alternative Lyapunov functions. For example, consider:</p>
+<p>and as such <span class="math inline">\(x^\star\)</span> is asymptotically stable. The basin of attraction (i.e., where the Lyapunov function has the desired properties) is <span class="math inline">\(x \in \mathbb{R}_+\)</span>. There can be several alternative Lyapunov functions.</p>
+<p>A classic candidate Lyapunov function for the Lotka-Volterra model we are going to see many times in the lecture notes starts from a logarithmic inequality: if <span class="math inline">\(y&gt;0\)</span>, then <span class="math inline">\(\log y \leq y- 1\)</span>, and thus <span class="math inline">\(y - 1 -\log y \geq 0\)</span>. Take <span class="math inline">\(y = \frac{x}{x^\star}\)</span>, with <span class="math inline">\(x\)</span> and <span class="math inline">\(x^\star\)</span> positive. Then,</p>
+<p><span class="math display">\[
+\frac{x}{x^\star} - 1 - \log \frac{x}{x^\star} \geq 0
+\]</span></p>
+<p>Now multiply by <span class="math inline">\(x^\star\)</span>, obtaining:</p>
+<p><span class="math display">\[
+x - x^\star - \log x^\star \frac{x}{x^\star} \geq 0
+\]</span></p>
+<p>We can use this as our Lyapunov function for the logistic growth model:</p>
 <p><span class="math display">\[
 V(x(t)) = x(t) - x^\star - x^\star \log \dfrac{x(t)}{x^\star}
 \]</span></p>
@@ -575,21 +636,21 @@ V(x(t)) = x(t) - x^\star - x^\star \log \dfrac{x(t)}{x^\star}
 </div>
 </div>
 <h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-dai2012generic">
-<p>Dai, Lei, Daan Vorselen, Kirill S Korolev, and Jeff Gore. 2012. “Generic Indicators for Loss of Resilience Before a Tipping Point Leading to Population Collapse.” <em>Science</em> 336 (6085): 1175–7.</p>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-dai2012generic" class="csl-entry">
+Dai, Lei, Daan Vorselen, Kirill S Korolev, and Jeff Gore. 2012. <span>“Generic Indicators for Loss of Resilience Before a Tipping Point Leading to Population Collapse.”</span> <em>Science</em> 336 (6085): 1175–77.
 </div>
-<div id="ref-may1976simple">
-<p>May, Robert M. 1976. “Simple Mathematical Models with Very Complicated Dynamics.” <em>Nature</em> 261 (5560): 459–67.</p>
+<div id="ref-may1976simple" class="csl-entry">
+———. 1976. <span>“Simple Mathematical Models with Very Complicated Dynamics.”</span> <em>Nature</em> 261 (5560): 459–67.
 </div>
-<div id="ref-scheffer2009early">
-<p>Scheffer, Marten, Jordi Bascompte, William A Brock, Victor Brovkin, Stephen R Carpenter, Vasilis Dakos, Hermann Held, Egbert H Van Nes, Max Rietkerk, and George Sugihara. 2009. “Early-Warning Signals for Critical Transitions.” <em>Nature</em> 461 (7260): 53–59.</p>
+<div id="ref-scheffer2009early" class="csl-entry">
+Scheffer, Marten, Jordi Bascompte, William A Brock, Victor Brovkin, Stephen R Carpenter, Vasilis Dakos, Hermann Held, Egbert H Van Nes, Max Rietkerk, and George Sugihara. 2009. <span>“Early-Warning Signals for Critical Transitions.”</span> <em>Nature</em> 461 (7260): 53–59.
 </div>
-<div id="ref-seydel2009practical">
-<p>Seydel, Rüdiger. 2009. <em>Practical Bifurcation and Stability Analysis</em>. Vol. 5. Springer Science &amp; Business Media.</p>
+<div id="ref-seydel2009practical" class="csl-entry">
+Seydel, Rüdiger. 2009. <em>Practical Bifurcation and Stability Analysis</em>. Vol. 5. Springer Science &amp; Business Media.
 </div>
-<div id="ref-strogatz2018nonlinear">
-<p>Strogatz, Steven H. 2018. <em>Nonlinear Dynamics and Chaos: With Applications to Physics, Biology, Chemistry, and Engineering</em>. CRC Press.</p>
+<div id="ref-strogatz2018nonlinear" class="csl-entry">
+Strogatz, Steven H. 2018. <em>Nonlinear Dynamics and Chaos: With Applications to Physics, Biology, Chemistry, and Engineering</em>. CRC Press.
 </div>
 </div>
             </section>
@@ -602,7 +663,6 @@ V(x(t)) = x(t) - x^\star - x^\star \log \dfrac{x(t)}{x^\star}
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -621,6 +681,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -641,6 +702,10 @@ gitbook.start({
 "text": null
 },
 "download": ["Theoretical_Community_Ecology.pdf", "Theoretical_Community_Ecology.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

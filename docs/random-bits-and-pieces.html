@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Lecture 10 Random bits and pieces | Theoretical Community Ecology</title>
   <meta name="description" content="A graduate course in theoretical community ecology focusing on systems with multiple species." />
-  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24.1 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Lecture 10 Random bits and pieces | Theoretical Community Ecology" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2021-06-02" />
+<meta name="date" content="2022-03-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,9 @@
   
 <link rel="prev" href="references.html"/>
 
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,22 +51,23 @@
 
 
 
-
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -84,7 +87,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -117,6 +120,29 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -133,11 +159,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Theoretical Community Ecology</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preliminaries</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preliminaries</a>
+<ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#approach-and-target-audience"><i class="fa fa-check"></i>Approach and target audience</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#topics"><i class="fa fa-check"></i>Topics</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#notation"><i class="fa fa-check"></i>Notation</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#grading-and-code-of-conduct"><i class="fa fa-check"></i>Grading and code of conduct</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#grading-and-code-of-conduct"><i class="fa fa-check"></i>Grading and code of conduct</a>
+<ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#homework-80"><i class="fa fa-check"></i>Homework (80%)</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#review-20"><i class="fa fa-check"></i>Review (20%)</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#accommodation-for-students-with-disabilities"><i class="fa fa-check"></i>Accommodation for students with disabilities</a></li>
@@ -146,12 +174,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#sources"><i class="fa fa-check"></i>Sources</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html"><i class="fa fa-check"></i><b>1</b> Models for a single population</a><ul>
+<li class="chapter" data-level="1" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html"><i class="fa fa-check"></i><b>1</b> Models for a single population</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#types-of-dynamical-systems"><i class="fa fa-check"></i><b>1.1</b> Types of dynamical systems</a></li>
 <li class="chapter" data-level="1.2" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#initial-value-problems"><i class="fa fa-check"></i><b>1.2</b> Initial-value problems</a></li>
 <li class="chapter" data-level="1.3" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#solvable-model-exponential-growth"><i class="fa fa-check"></i><b>1.3</b> Solvable model: Exponential growth</a></li>
 <li class="chapter" data-level="1.4" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#solvable-model-logistic-growth"><i class="fa fa-check"></i><b>1.4</b> Solvable model: Logistic growth</a></li>
-<li class="chapter" data-level="1.5" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#qualitative-analysis-of-models-for-a-single-population"><i class="fa fa-check"></i><b>1.5</b> Qualitative analysis of models for a single population</a><ul>
+<li class="chapter" data-level="1.5" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#qualitative-analysis-of-models-for-a-single-population"><i class="fa fa-check"></i><b>1.5</b> Qualitative analysis of models for a single population</a>
+<ul>
 <li class="chapter" data-level="1.5.1" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#stability-using-derivatives"><i class="fa fa-check"></i><b>1.5.1</b> Stability using derivatives</a></li>
 <li class="chapter" data-level="1.5.2" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#what-are-we-doing-when-probing-stability-using-derivatives"><i class="fa fa-check"></i><b>1.5.2</b> What are we doing when probing stability using derivatives?</a></li>
 </ul></li>
@@ -159,30 +189,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.7" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#long-term-behavior-of-1-d-systems"><i class="fa fa-check"></i><b>1.7</b> Long term behavior of 1-D systems</a></li>
 <li class="chapter" data-level="1.8" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#lyapunov-functions"><i class="fa fa-check"></i><b>1.8</b> Lyapunov functions</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html"><i class="fa fa-check"></i><b>2</b> Models for two populations</a><ul>
-<li class="chapter" data-level="2.1" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#qualitative-analysis-of-models-for-two-populations"><i class="fa fa-check"></i><b>2.1</b> Qualitative analysis of models for two populations</a><ul>
+<li class="chapter" data-level="2" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html"><i class="fa fa-check"></i><b>2</b> Models for two populations</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#qualitative-analysis-of-models-for-two-populations"><i class="fa fa-check"></i><b>2.1</b> Qualitative analysis of models for two populations</a>
+<ul>
 <li class="chapter" data-level="2.1.1" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#isoclines-of-null-growth"><i class="fa fa-check"></i><b>2.1.1</b> Isoclines of null growth</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#local-stability-analysis"><i class="fa fa-check"></i><b>2.2</b> Local stability analysis</a></li>
-<li class="chapter" data-level="2.3" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#stability-analysis-of-the-lotka-volterra-predator-prey-model"><i class="fa fa-check"></i><b>2.3</b> Stability analysis of the Lotka-Volterra Predator-Prey model</a><ul>
+<li class="chapter" data-level="2.3" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#stability-analysis-of-the-lotka-volterra-predator-prey-model"><i class="fa fa-check"></i><b>2.3</b> Stability analysis of the Lotka-Volterra Predator-Prey model</a>
+<ul>
 <li class="chapter" data-level="2.3.1" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#constant-of-motion-for-lotka-volterra-predator-prey"><i class="fa fa-check"></i><b>2.3.1</b> Constant of motion for Lotka-Volterra Predator-Prey</a></li>
 <li class="chapter" data-level="2.3.2" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#analysis-of-predator-prey-model-with-logistic-growth-for-the-prey"><i class="fa fa-check"></i><b>2.3.2</b> Analysis of Predator-Prey model with logistic growth for the prey</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html"><i class="fa fa-check"></i><b>3</b> Generalized Lotka-Volterra model</a><ul>
+<li class="chapter" data-level="3" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html"><i class="fa fa-check"></i><b>3</b> Generalized Lotka-Volterra model</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#formulation"><i class="fa fa-check"></i><b>3.1</b> Formulation</a></li>
-<li class="chapter" data-level="3.2" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#a-single-population"><i class="fa fa-check"></i><b>3.2</b> A single population</a><ul>
+<li class="chapter" data-level="3.2" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#a-single-population"><i class="fa fa-check"></i><b>3.2</b> A single population</a>
+<ul>
 <li class="chapter" data-level="3.2.1" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#metapopulation-dynamics"><i class="fa fa-check"></i><b>3.2.1</b> Metapopulation dynamics</a></li>
 <li class="chapter" data-level="3.2.2" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#s-i-s-model"><i class="fa fa-check"></i><b>3.2.2</b> S-I-S model</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#multi-species-dynamics"><i class="fa fa-check"></i><b>3.3</b> Multi-species dynamics</a><ul>
+<li class="chapter" data-level="3.3" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#multi-species-dynamics"><i class="fa fa-check"></i><b>3.3</b> Multi-species dynamics</a>
+<ul>
 <li class="chapter" data-level="3.3.1" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#existence-of-an-equilibrium"><i class="fa fa-check"></i><b>3.3.1</b> Existence of an equilibrium</a></li>
 <li class="chapter" data-level="3.3.2" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#stability-of-the-coexistence-equilibrium"><i class="fa fa-check"></i><b>3.3.2</b> Stability of the coexistence equilibrium</a></li>
 <li class="chapter" data-level="3.3.3" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#types-of-dynamics"><i class="fa fa-check"></i><b>3.3.3</b> Types of dynamics</a></li>
 <li class="chapter" data-level="3.3.4" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#the-equilibrium-is-the-time-average"><i class="fa fa-check"></i><b>3.3.4</b> The equilibrium is the time-average</a></li>
 <li class="chapter" data-level="3.3.5" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#lyapunov-diagonal-stability-and-global-stability"><i class="fa fa-check"></i><b>3.3.5</b> Lyapunov diagonal stability and global stability</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#macarthurs-consumer-resource-model"><i class="fa fa-check"></i><b>3.4</b> MacArthur’s consumer-resource model</a><ul>
+<li class="chapter" data-level="3.4" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#macarthurs-consumer-resource-model"><i class="fa fa-check"></i><b>3.4</b> MacArthur’s consumer-resource model</a>
+<ul>
 <li class="chapter" data-level="3.4.1" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#existence-of-an-equilibrium-1"><i class="fa fa-check"></i><b>3.4.1</b> Existence of an equilibrium</a></li>
 <li class="chapter" data-level="3.4.2" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#global-stability-1"><i class="fa fa-check"></i><b>3.4.2</b> Global stability</a></li>
 <li class="chapter" data-level="3.4.3" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#separation-of-time-scales"><i class="fa fa-check"></i><b>3.4.3</b> Separation of time-scales</a></li>
@@ -190,7 +227,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.5" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#further-readings"><i class="fa fa-check"></i><b>3.5</b> Further readings</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html"><i class="fa fa-check"></i><b>4</b> Stability of large ecological communities</a><ul>
+<li class="chapter" data-level="4" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html"><i class="fa fa-check"></i><b>4</b> Stability of large ecological communities</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#complexity-and-stability"><i class="fa fa-check"></i><b>4.1</b> Complexity and stability</a></li>
 <li class="chapter" data-level="4.2" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#the-stability-of-random-ecosystems"><i class="fa fa-check"></i><b>4.2</b> The stability of random ecosystems</a></li>
 <li class="chapter" data-level="4.3" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#accounting-for-interaction-types"><i class="fa fa-check"></i><b>4.3</b> Accounting for interaction types</a></li>
@@ -200,17 +238,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.7" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#structured-matrices"><i class="fa fa-check"></i><b>4.7</b> Structured matrices</a></li>
 <li class="chapter" data-level="4.8" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#further-readings-1"><i class="fa fa-check"></i><b>4.8</b> Further readings</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="ecological-assembly.html"><a href="ecological-assembly.html"><i class="fa fa-check"></i><b>5</b> Ecological assembly</a><ul>
-<li class="chapter" data-level="5.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#assembly"><i class="fa fa-check"></i><b>5.1</b> Assembly</a><ul>
+<li class="chapter" data-level="5" data-path="ecological-assembly.html"><a href="ecological-assembly.html"><i class="fa fa-check"></i><b>5</b> Ecological assembly</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#assembly"><i class="fa fa-check"></i><b>5.1</b> Assembly</a>
+<ul>
 <li class="chapter" data-level="5.1.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#what-makes-the-study-of-assembly-difficult"><i class="fa fa-check"></i><b>5.1.1</b> What makes the study of assembly difficult?</a></li>
 <li class="chapter" data-level="5.1.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#ecological-assembly-without-tears"><i class="fa fa-check"></i><b>5.1.2</b> Ecological assembly without tears</a></li>
 <li class="chapter" data-level="5.1.3" data-path="ecological-assembly.html"><a href="ecological-assembly.html#top-down-and-bottom-up-assembly"><i class="fa fa-check"></i><b>5.1.3</b> Top-down and bottom-up assembly</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#modeling-invasions"><i class="fa fa-check"></i><b>5.2</b> Modeling invasions</a><ul>
+<li class="chapter" data-level="5.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#modeling-invasions"><i class="fa fa-check"></i><b>5.2</b> Modeling invasions</a>
+<ul>
 <li class="chapter" data-level="5.2.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#invasions-in-multispecies-communities"><i class="fa fa-check"></i><b>5.2.1</b> Invasions in multispecies communities</a></li>
 <li class="chapter" data-level="5.2.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#lyapunov-stability-and-saturated-equilibria"><i class="fa fa-check"></i><b>5.2.2</b> Lyapunov stability and saturated equilibria</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="ecological-assembly.html"><a href="ecological-assembly.html#top-down-assembly"><i class="fa fa-check"></i><b>5.3</b> Top-down assembly</a><ul>
+<li class="chapter" data-level="5.3" data-path="ecological-assembly.html"><a href="ecological-assembly.html#top-down-assembly"><i class="fa fa-check"></i><b>5.3</b> Top-down assembly</a>
+<ul>
 <li class="chapter" data-level="5.3.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#a-trivial-case"><i class="fa fa-check"></i><b>5.3.1</b> A trivial case</a></li>
 <li class="chapter" data-level="5.3.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#simulating-final-composition"><i class="fa fa-check"></i><b>5.3.2</b> Simulating final composition</a></li>
 <li class="chapter" data-level="5.3.3" data-path="ecological-assembly.html"><a href="ecological-assembly.html#a-random-zoo"><i class="fa fa-check"></i><b>5.3.3</b> A random zoo</a></li>
@@ -218,7 +260,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.3.5" data-path="ecological-assembly.html"><a href="ecological-assembly.html#assembly-and-saturated-equilibrium"><i class="fa fa-check"></i><b>5.3.5</b> Assembly and saturated equilibrium</a></li>
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="ecological-assembly.html"><a href="ecological-assembly.html#network-spandrels"><i class="fa fa-check"></i><b>5.4</b> Network spandrels</a></li>
-<li class="chapter" data-level="5.5" data-path="ecological-assembly.html"><a href="ecological-assembly.html#bottom-up-assembly"><i class="fa fa-check"></i><b>5.5</b> Bottom-up assembly</a><ul>
+<li class="chapter" data-level="5.5" data-path="ecological-assembly.html"><a href="ecological-assembly.html#bottom-up-assembly"><i class="fa fa-check"></i><b>5.5</b> Bottom-up assembly</a>
+<ul>
 <li class="chapter" data-level="5.5.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#an-assembly-graph"><i class="fa fa-check"></i><b>5.5.1</b> An assembly graph</a></li>
 <li class="chapter" data-level="5.5.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#how-many-invasions"><i class="fa fa-check"></i><b>5.5.2</b> How many invasions?</a></li>
 <li class="chapter" data-level="5.5.3" data-path="ecological-assembly.html"><a href="ecological-assembly.html#properties-of-the-assembly-graph"><i class="fa fa-check"></i><b>5.5.3</b> Properties of the assembly graph</a></li>
@@ -229,7 +272,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.5.8" data-path="ecological-assembly.html"><a href="ecological-assembly.html#conclusions"><i class="fa fa-check"></i><b>5.5.8</b> Conclusions</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html"><i class="fa fa-check"></i><b>6</b> Predicting coexistence in ecological communities</a><ul>
+<li class="chapter" data-level="6" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html"><i class="fa fa-check"></i><b>6</b> Predicting coexistence in ecological communities</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#background-diversity-and-ecosystem-functioning"><i class="fa fa-check"></i><b>6.1</b> Background: Diversity and Ecosystem Functioning</a></li>
 <li class="chapter" data-level="6.2" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#synthetic-communities-using-the-glv-model"><i class="fa fa-check"></i><b>6.2</b> Synthetic communities using the GLV model</a></li>
 <li class="chapter" data-level="6.3" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#total-biomass"><i class="fa fa-check"></i><b>6.3</b> Total biomass</a></li>
@@ -237,15 +281,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.5" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#fitting-real-data"><i class="fa fa-check"></i><b>6.5</b> Fitting real data</a></li>
 <li class="chapter" data-level="6.6" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#predicting-real-data-out-of-fit"><i class="fa fa-check"></i><b>6.6</b> Predicting real data out of fit</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html"><i class="fa fa-check"></i><b>7</b> Game theory and replicator dynamics</a><ul>
+<li class="chapter" data-level="7" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html"><i class="fa fa-check"></i><b>7</b> Game theory and replicator dynamics</a>
+<ul>
 <li class="chapter" data-level="7.1" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#game-theory"><i class="fa fa-check"></i><b>7.1</b> Game theory</a></li>
-<li class="chapter" data-level="7.2" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#two-player-matrix-games"><i class="fa fa-check"></i><b>7.2</b> Two-player matrix games</a><ul>
+<li class="chapter" data-level="7.2" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#two-player-matrix-games"><i class="fa fa-check"></i><b>7.2</b> Two-player matrix games</a>
+<ul>
 <li class="chapter" data-level="7.2.1" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#example-the-prisoners-dilemma"><i class="fa fa-check"></i><b>7.2.1</b> Example: the prisoner’s dilemma</a></li>
 </ul></li>
 <li class="chapter" data-level="7.3" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#mixed-strategies"><i class="fa fa-check"></i><b>7.3</b> Mixed strategies</a></li>
 <li class="chapter" data-level="7.4" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#nash-equilibria"><i class="fa fa-check"></i><b>7.4</b> Nash Equilibria</a></li>
 <li class="chapter" data-level="7.5" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#evolutionary-stable-strategies"><i class="fa fa-check"></i><b>7.5</b> Evolutionary stable strategies</a></li>
-<li class="chapter" data-level="7.6" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#replicator-dynamics"><i class="fa fa-check"></i><b>7.6</b> Replicator dynamics</a><ul>
+<li class="chapter" data-level="7.6" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#replicator-dynamics"><i class="fa fa-check"></i><b>7.6</b> Replicator dynamics</a>
+<ul>
 <li class="chapter" data-level="7.6.1" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#invariants"><i class="fa fa-check"></i><b>7.6.1</b> Invariants</a></li>
 <li class="chapter" data-level="7.6.2" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#rock-paper-scissor"><i class="fa fa-check"></i><b>7.6.2</b> Rock-paper-scissor</a></li>
 <li class="chapter" data-level="7.6.3" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#equivalence-with-glv"><i class="fa fa-check"></i><b>7.6.3</b> Equivalence with GLV</a></li>
@@ -254,16 +301,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.6.6" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#higher-order-interactions"><i class="fa fa-check"></i><b>7.6.6</b> Higher-order interactions</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html"><i class="fa fa-check"></i><b>8</b> Metapopulation dynamics on networks</a><ul>
+<li class="chapter" data-level="8" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html"><i class="fa fa-check"></i><b>8</b> Metapopulation dynamics on networks</a>
+<ul>
 <li class="chapter" data-level="8.1" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#metapopulations"><i class="fa fa-check"></i><b>8.1</b> Metapopulations</a></li>
 <li class="chapter" data-level="8.2" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#hanski-ovaskainen-2000"><i class="fa fa-check"></i><b>8.2</b> Hanski Ovaskainen 2000</a></li>
-<li class="chapter" data-level="8.3" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#sis-on-a-contact-network"><i class="fa fa-check"></i><b>8.3</b> SIS on a contact network</a><ul>
+<li class="chapter" data-level="8.3" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#sis-on-a-contact-network"><i class="fa fa-check"></i><b>8.3</b> SIS on a contact network</a>
+<ul>
 <li class="chapter" data-level="8.3.1" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#the-full-model"><i class="fa fa-check"></i><b>8.3.1</b> The full model</a></li>
 <li class="chapter" data-level="8.3.2" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#the-mean-field-approximation"><i class="fa fa-check"></i><b>8.3.2</b> The mean-field approximation</a></li>
 </ul></li>
 <li class="chapter" data-level="8.4" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#metapopulations-on-randomly-distributed-patches"><i class="fa fa-check"></i><b>8.4</b> Metapopulations on randomly distributed patches</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html"><i class="fa fa-check"></i><b>9</b> Quasi-polynomial systems</a><ul>
+<li class="chapter" data-level="9" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html"><i class="fa fa-check"></i><b>9</b> Quasi-polynomial systems</a>
+<ul>
 <li class="chapter" data-level="9.1" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#global-stability-2"><i class="fa fa-check"></i><b>9.1</b> Global stability</a></li>
 <li class="chapter" data-level="9.2" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#from-qp-to-glv"><i class="fa fa-check"></i><b>9.2</b> From QP to GLV</a></li>
 <li class="chapter" data-level="9.3" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#stability-of-glv"><i class="fa fa-check"></i><b>9.3</b> Stability of GLV</a></li>
@@ -273,8 +323,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.7" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#glv-embedding-for-non-qp-systems"><i class="fa fa-check"></i><b>9.7</b> GLV embedding for non-QP systems</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
-<li class="chapter" data-level="10" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html"><i class="fa fa-check"></i><b>10</b> Random bits and pieces</a><ul>
-<li class="chapter" data-level="10.1" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#stability-of-larger-matrices"><i class="fa fa-check"></i><b>10.1</b> Stability of larger matrices</a><ul>
+<li class="chapter" data-level="10" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html"><i class="fa fa-check"></i><b>10</b> Random bits and pieces</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#stability-of-larger-matrices"><i class="fa fa-check"></i><b>10.1</b> Stability of larger matrices</a>
+<ul>
 <li class="chapter" data-level="10.1.1" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#descartes-rule-of-signs"><i class="fa fa-check"></i><b>10.1.1</b> Descartes’ rule of signs</a></li>
 <li class="chapter" data-level="10.1.2" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#routh-hurwitz-criterion"><i class="fa fa-check"></i><b>10.1.2</b> Routh-Hurwitz criterion</a></li>
 <li class="chapter" data-level="10.1.3" data-path="random-bits-and-pieces.html"><a href="random-bits-and-pieces.html#bounding-eigenvalues-using-the-symmetric-part"><i class="fa fa-check"></i><b>10.1.3</b> Bounding eigenvalues using the symmetric part</a></li>
@@ -302,12 +354,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="random-bits-and-pieces" class="section level1">
+<div id="random-bits-and-pieces" class="section level1" number="10">
 <h1><span class="header-section-number">Lecture 10</span> Random bits and pieces</h1>
-<div id="stability-of-larger-matrices" class="section level2">
+<div id="stability-of-larger-matrices" class="section level2" number="10.1">
 <h2><span class="header-section-number">10.1</span> Stability of larger matrices</h2>
 <p>There are a number of techniques that can be used to prove the stability of larger systems.</p>
-<div id="descartes-rule-of-signs" class="section level3">
+<div id="descartes-rule-of-signs" class="section level3" number="10.1.1">
 <h3><span class="header-section-number">10.1.1</span> Descartes’ rule of signs</h3>
 <p>For a single-variable polynomial with real coefficients are ordered by descending variable exponent, then the number of positive roots of the polynomial is either equal to the number of sign differences between consecutive nonzero coefficients, or is less than it by an even number. Multiple roots of the same value are counted separately. As such, if a polynomial has all coefficients of the same sign, it has no positive roots.</p>
 <p>By considering <span class="math inline">\(p(-\lambda)\)</span> we can find the maximum number of negative roots. For example, for the Lotka-Volterra predator-prey model, we have</p>
@@ -323,7 +375,7 @@ p(\lambda) = \lambda^2 + \dfrac{g}{d}
 \]</span></p>
 <p>Meaning that the number of positve roots is zero. Taking <span class="math inline">\(p(-\lambda) = (-\lambda)^2 + \dfrac{g}{d}\)</span> which again has only positive coefficients, meaning that the number of negative roots is also zero. As such, the eigenvalues are purely imaginary (center), <span class="math inline">\(\lambda = \pm i \sqrt{g / d}\)</span>.</p>
 </div>
-<div id="routh-hurwitz-criterion" class="section level3">
+<div id="routh-hurwitz-criterion" class="section level3" number="10.1.2">
 <h3><span class="header-section-number">10.1.2</span> Routh-Hurwitz criterion</h3>
 <p>You can use the coefficients of the polynomial to determine stability. The polynomial</p>
 <p><span class="math display">\[
@@ -337,7 +389,7 @@ p(\lambda) = \lambda^3 + a_2 \lambda^2 + a_1 \lambda + a_0
 <p>has roots in the left half-plane if <span class="math inline">\(a_2 &gt; 0\)</span>, <span class="math inline">\(a_0 &gt; 0\)</span>, and <span class="math inline">\(a_2 a_1 &gt; a_0\)</span>.</p>
 <p>These conditions can be extended to larger matrices, but they become increasingly involved.</p>
 </div>
-<div id="bounding-eigenvalues-using-the-symmetric-part" class="section level3">
+<div id="bounding-eigenvalues-using-the-symmetric-part" class="section level3" number="10.1.3">
 <h3><span class="header-section-number">10.1.3</span> Bounding eigenvalues using the symmetric part</h3>
 <p>Call <span class="math inline">\(\lambda_1 (A)\)</span> the eigenvalue of <span class="math inline">\(A\)</span> with the largest real part (i.e., the “rightmost” eigenvalue). Then</p>
 <p><span class="math display">\[
@@ -346,7 +398,7 @@ p(\lambda) = \lambda^3 + a_2 \lambda^2 + a_1 \lambda + a_0
 <p>if <span class="math inline">\(\lambda_1 ((A + A^T ) / 2) &lt; 0\)</span>, then <span class="math inline">\(A\)</span> is stable, and any matrix <span class="math inline">\(DA\)</span> with <span class="math inline">\(D\)</span> diagonal and positive is stable (<span class="math inline">\(D-\)</span>stability).</p>
 </div>
 </div>
-<div id="exercise" class="section level2">
+<div id="exercise" class="section level2" number="10.2">
 <h2><span class="header-section-number">10.2</span> Exercise</h2>
 <p>To make sure you can work with stability, consider the following model that Carlos and I are studying. We consider a simple variation on the LV predator-prey system, in which predators are divided into two classes, linked by reproduction (e.g., males and females), and each class has a different mortality rate:</p>
 <p><span class="math display">\[
@@ -372,7 +424,7 @@ p(\lambda) = \lambda^3 + a_2 \lambda^2 + a_1 \lambda + a_0
 <p>Find the two equilibria of the system, and perform the stability analysis.</p>
 <p>We describe our methods in this chapter.</p>
 </div>
-<div id="extra" class="section level2">
+<div id="extra" class="section level2" number="10.3">
 <h2><span class="header-section-number">10.3</span> Extra</h2>
 <p>Because <span class="math inline">\(M_{i,i} = 0\)</span>, we can solve for <span class="math inline">\(x_i^\star\)</span> and write:</p>
 <p><span class="math display">\[
@@ -384,312 +436,312 @@ x_{i}^\star = 1 - \dfrac{1}{1 + \tau \sum M_{ij} + \tau \sum M_{ij}(1-x_j^\star)
 \]</span></p>
 <p>and therefore <span class="math inline">\(0 \leq x_i^\star \leq 1 - \dfrac{1}{1 + \tau \sum M_{ij}}\)</span>.</p>
 
-<div id="refs" class="references">
-<div>
-<p>Allesina, Stefano, and Jacopo Grilli. 2020. “Models for Large Ecological Communities—a Random Matrix Approach.” In <em>Theoretical Ecology: Concepts and Applications</em>, edited by Kevin S McCann and Gabriel Gellner, 74–92. Oxford University Press.</p>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div class="csl-entry">
+Allesina, Stefano, and Jacopo Grilli. 2020. <span>“Models for Large Ecological Communities—a Random Matrix Approach.”</span> In <em>Theoretical Ecology: Concepts and Applications</em>, edited by Kevin S McCann and Gabriel Gellner, 74–92. Oxford University Press.
 </div>
-<div>
-<p>Allesina, Stefano, and Jonathan M Levine. 2011. “A Competitive Network Theory of Species Diversity.” <em>Proceedings of the National Academy of Sciences</em> 108 (14): 5638–42.</p>
+<div class="csl-entry">
+Allesina, Stefano, and Jonathan M Levine. 2011. <span>“A Competitive Network Theory of Species Diversity.”</span> <em>Proceedings of the National Academy of Sciences</em> 108 (14): 5638–42.
 </div>
-<div>
-<p>Allesina, Stefano, and Si Tang. 2012. “Stability Criteria for Complex Ecosystems.” <em>Nature</em> 483 (7388): 205.</p>
+<div class="csl-entry">
+Allesina, Stefano, and Si Tang. 2012. <span>“Stability Criteria for Complex Ecosystems.”</span> <em>Nature</em> 483 (7388): 205.
 </div>
-<div>
-<p>———. 2015. “The Stability–Complexity Relationship at Age 40: A Random Matrix Perspective.” <em>Population Ecology</em> 57 (1): 63–75.</p>
+<div class="csl-entry">
+———. 2015. <span>“The Stability–Complexity Relationship at Age 40: A Random Matrix Perspective.”</span> <em>Population Ecology</em> 57 (1): 63–75.
 </div>
-<div>
-<p>Amor, Daniel R, Christoph Ratzke, and Jeff Gore. 2020. “Transient Invaders Can Induce Shifts Between Alternative Stable States of Microbial Communities.” <em>Science Advances</em> 6 (8): eaay8676.</p>
+<div class="csl-entry">
+Amor, Daniel R, Christoph Ratzke, and Jeff Gore. 2020. <span>“Transient Invaders Can Induce Shifts Between Alternative Stable States of Microbial Communities.”</span> <em>Science Advances</em> 6 (8): eaay8676.
 </div>
-<div>
-<p>Anderson, Roy M, and Robert M May. 1992. <em>Infectious Diseases of Humans: Dynamics and Control</em>. Oxford university press.</p>
+<div class="csl-entry">
+Anderson, Roy M, and Robert M May. 1992. <em>Infectious Diseases of Humans: Dynamics and Control</em>. Oxford university press.
 </div>
-<div>
-<p>Axelrod, Robert, and William D Hamilton. 1981. “The Evolution of Cooperation.” <em>Science</em> 211 (4489): 1390–6.</p>
+<div class="csl-entry">
+Axelrod, Robert, and William D Hamilton. 1981. <span>“The Evolution of Cooperation.”</span> <em>Science</em> 211 (4489): 1390–96.
 </div>
-<div>
-<p>Baigent, Stephen A. 2016. “Lotka-Volterra Dynamics: An Introduction.” In. World Scientific.</p>
+<div class="csl-entry">
+Baigent, Stephen A. 2016. <span>“Lotka-Volterra Dynamics: An Introduction.”</span> In. World Scientific.
 </div>
-<div>
-<p>Barabás, György, Matthew J. Michalska-Smith, and Stefano Allesina. 2016. “The Effect of Intra-and Interspecific Competition on Coexistence in Multispecies Communities.” <em>The American Naturalist</em> 188 (1): E1–E12.</p>
+<div class="csl-entry">
+Barabás, György, Matthew J. Michalska-Smith, and Stefano Allesina. 2016. <span>“The Effect of Intra-and Interspecific Competition on Coexistence in Multispecies Communities.”</span> <em>The American Naturalist</em> 188 (1): E1–12.
 </div>
-<div>
-<p>Biroli, Giulio, Guy Bunin, and Chiara Cammarota. 2018. “Marginally Stable Equilibria in Critical Ecosystems.” <em>New Journal of Physics</em> 20 (8): 083051.</p>
+<div class="csl-entry">
+Biroli, Giulio, Guy Bunin, and Chiara Cammarota. 2018. <span>“Marginally Stable Equilibria in Critical Ecosystems.”</span> <em>New Journal of Physics</em> 20 (8): 083051.
 </div>
-<div>
-<p>Bittleston, Leonora S, Matti Gralka, Gabriel E Leventhal, Itzhak Mizrahi, and Otto X Cordero. 2020. “Context-Dependent Dynamics Lead to the Assembly of Functionally Distinct Microbial Communities.” <em>Nature Communications</em> 11 (1): 1–10.</p>
+<div class="csl-entry">
+Bittleston, Leonora S, Matti Gralka, Gabriel E Leventhal, Itzhak Mizrahi, and Otto X Cordero. 2020. <span>“Context-Dependent Dynamics Lead to the Assembly of Functionally Distinct Microbial Communities.”</span> <em>Nature Communications</em> 11 (1): 1–10.
 </div>
-<div>
-<p>Brandl, Florian. 2017. “The Distribution of Optimal Strategies in Symmetric Zero-Sum Games.” <em>Games and Economic Behavior</em> 104: 674–80.</p>
+<div class="csl-entry">
+Brandl, Florian. 2017. <span>“The Distribution of Optimal Strategies in Symmetric Zero-Sum Games.”</span> <em>Games and Economic Behavior</em> 104: 674–80.
 </div>
-<div>
-<p>Brenig, Léon. 1988. “Complete Factorisation and Analytic Solutions of Generalized Lotka-Volterra Equations.” <em>Physics Letters A</em> 133 (7-8): 378–82.</p>
+<div class="csl-entry">
+Brenig, Léon. 1988. <span>“Complete Factorisation and Analytic Solutions of Generalized Lotka-Volterra Equations.”</span> <em>Physics Letters A</em> 133 (7-8): 378–82.
 </div>
-<div>
-<p>Cadotte, Marc W. 2013. “Experimental Evidence That Evolutionarily Diverse Assemblages Result in Higher Productivity.” <em>Proceedings of the National Academy of Sciences</em> 110 (22): 8996–9000.</p>
+<div class="csl-entry">
+Cadotte, Marc W. 2013. <span>“Experimental Evidence That Evolutionarily Diverse Assemblages Result in Higher Productivity.”</span> <em>Proceedings of the National Academy of Sciences</em> 110 (22): 8996–9000.
 </div>
-<div>
-<p>Cadotte, Marc W, and T Jonathan Davies. 2016. <em>Phylogenies in Ecology: A Guide to Concepts and Methods</em>. Princeton University Press.</p>
+<div class="csl-entry">
+Cadotte, Marc W, and T Jonathan Davies. 2016. <em>Phylogenies in Ecology: A Guide to Concepts and Methods</em>. Princeton University Press.
 </div>
-<div>
-<p>Capitán, José A, José A Cuesta, and Jordi Bascompte. 2009. “Statistical Mechanics of Ecosystem Assembly.” <em>Physical Review Letters</em> 103 (16): 168101.</p>
+<div class="csl-entry">
+Capitán, José A, José A Cuesta, and Jordi Bascompte. 2009. <span>“Statistical Mechanics of Ecosystem Assembly.”</span> <em>Physical Review Letters</em> 103 (16): 168101.
 </div>
-<div>
-<p>Case, Ted J, and Richard G Casten. 1979. “Global Stability and Multiple Domains of Attraction in Ecological Systems.” <em>The American Naturalist</em> 113 (5): 705–14.</p>
+<div class="csl-entry">
+Case, Ted J, and Richard G Casten. 1979. <span>“Global Stability and Multiple Domains of Attraction in Ecological Systems.”</span> <em>The American Naturalist</em> 113 (5): 705–14.
 </div>
-<div>
-<p>Cator, Eric, and Piet Van Mieghem. 2012. “Second-Order Mean-Field Susceptible-Infected-Susceptible Epidemic Threshold.” <em>Physical Review E</em> 85 (5): 056111.</p>
+<div class="csl-entry">
+Cator, Eric, and Piet Van Mieghem. 2012. <span>“Second-Order Mean-Field Susceptible-Infected-Susceptible Epidemic Threshold.”</span> <em>Physical Review E</em> 85 (5): 056111.
 </div>
-<div>
-<p>Clutton-Brock, Tim. 2009. “Cooperation Between Non-Kin in Animal Societies.” <em>Nature</em> 462 (7269): 51–57.</p>
+<div class="csl-entry">
+Clutton-Brock, Tim. 2009. <span>“Cooperation Between Non-Kin in Animal Societies.”</span> <em>Nature</em> 462 (7269): 51–57.
 </div>
-<div>
-<p>Dai, Lei, Daan Vorselen, Kirill S Korolev, and Jeff Gore. 2012. “Generic Indicators for Loss of Resilience Before a Tipping Point Leading to Population Collapse.” <em>Science</em> 336 (6085): 1175–7.</p>
+<div class="csl-entry">
+Dai, Lei, Daan Vorselen, Kirill S Korolev, and Jeff Gore. 2012. <span>“Generic Indicators for Loss of Resilience Before a Tipping Point Leading to Population Collapse.”</span> <em>Science</em> 336 (6085): 1175–77.
 </div>
-<div>
-<p>Dambacher, Jeffrey M, Hang-Kwang Luh, Hiram W Li, and Philippe A Rossignol. 2003. “Qualitative Stability and Ambiguity in Model Ecosystems.” <em>The American Naturalist</em> 161 (6): 876–88.</p>
+<div class="csl-entry">
+Dambacher, Jeffrey M, Hang-Kwang Luh, Hiram W Li, and Philippe A Rossignol. 2003. <span>“Qualitative Stability and Ambiguity in Model Ecosystems.”</span> <em>The American Naturalist</em> 161 (6): 876–88.
 </div>
-<div>
-<p>Diamond, Jared M. 1975. “Assembly of Species Communities.” <em>Ecology and Evolution of Communities</em>, 342–444.</p>
+<div class="csl-entry">
+Diamond, Jared M. 1975. <span>“Assembly of Species Communities.”</span> <em>Ecology and Evolution of Communities</em>, 342–444.
 </div>
-<div>
-<p>Drake, James A. 1991. “Community-Assembly Mechanics and the Structure of an Experimental Species Ensemble.” <em>The American Naturalist</em> 137 (1): 1–26.</p>
+<div class="csl-entry">
+Drake, James A. 1991. <span>“Community-Assembly Mechanics and the Structure of an Experimental Species Ensemble.”</span> <em>The American Naturalist</em> 137 (1): 1–26.
 </div>
-<div>
-<p>Ellner, Stephen P, and John Guckenheimer. 2011. <em>Dynamic Models in Biology</em>. Princeton University Press.</p>
+<div class="csl-entry">
+Ellner, Stephen P, and John Guckenheimer. 2011. <em>Dynamic Models in Biology</em>. Princeton University Press.
 </div>
-<div>
-<p>Fisher, David C, and Richard B Reeves. 1995. “Optimal Strategies for Random Tournament Games.” <em>Linear Algebra and Its Applications</em> 217: 83–85.</p>
+<div class="csl-entry">
+Fisher, David C, and Richard B Reeves. 1995. <span>“Optimal Strategies for Random Tournament Games.”</span> <em>Linear Algebra and Its Applications</em> 217: 83–85.
 </div>
-<div>
-<p>Fukami, Tadashi. 2015. “Historical Contingency in Community Assembly: Integrating Niches, Species Pools, and Priority Effects.” <em>Annual Review of Ecology, Evolution, and Systematics</em> 46: 1–23.</p>
+<div class="csl-entry">
+Fukami, Tadashi. 2015. <span>“Historical Contingency in Community Assembly: Integrating Niches, Species Pools, and Priority Effects.”</span> <em>Annual Review of Ecology, Evolution, and Systematics</em> 46: 1–23.
 </div>
-<div>
-<p>Goh, Bo S. 1977. “Global Stability in Many-Species Systems.” <em>The American Naturalist</em> 111 (977): 135–43.</p>
+<div class="csl-entry">
+Goh, Bo S. 1977. <span>“Global Stability in Many-Species Systems.”</span> <em>The American Naturalist</em> 111 (977): 135–43.
 </div>
-<div>
-<p>Gotelli, Nicholas J. 1999. “How Do Communities Come Together?” <em>Science</em> 286 (5445): 1684–5.</p>
+<div class="csl-entry">
+Gotelli, Nicholas J. 1999. <span>“How Do Communities Come Together?”</span> <em>Science</em> 286 (5445): 1684–85.
 </div>
-<div>
-<p>Gotelli, Nicholas J, and Gary R Graves. 1996. <em>Null Models in Ecology</em>.</p>
+<div class="csl-entry">
+Gotelli, Nicholas J, and Gary R Graves. 1996. <em>Null Models in Ecology</em>.
 </div>
-<div>
-<p>Gould, Stephen Jay, and Richard C Lewontin. 1979. “The Spandrels of San Marco and the Panglossian Paradigm: A Critique of the Adaptationist Programme.” <em>Proceedings of the Royal Society of London. Series B. Biological Sciences</em> 205 (1161): 581–98.</p>
+<div class="csl-entry">
+Gould, Stephen Jay, and Richard C Lewontin. 1979. <span>“The Spandrels of San Marco and the Panglossian Paradigm: A Critique of the Adaptationist Programme.”</span> <em>Proceedings of the Royal Society of London. Series B. Biological Sciences</em> 205 (1161): 581–98.
 </div>
-<div>
-<p>Grilli, Jacopo, György Barabás, and Stefano Allesina. 2015. “Metapopulation Persistence in Random Fragmented Landscapes.” <em>PLoS Comput Biol</em> 11 (5): e1004251.</p>
+<div class="csl-entry">
+Grilli, Jacopo, György Barabás, and Stefano Allesina. 2015. <span>“Metapopulation Persistence in Random Fragmented Landscapes.”</span> <em>PLoS Comput Biol</em> 11 (5): e1004251.
 </div>
-<div>
-<p>Grilli, Jacopo, György Barabás, Matthew J Michalska-Smith, and Stefano Allesina. 2017. “Higher-Order Interactions Stabilize Dynamics in Competitive Network Models.” <em>Nature</em> 548 (7666): 210.</p>
+<div class="csl-entry">
+Grilli, Jacopo, György Barabás, Matthew J Michalska-Smith, and Stefano Allesina. 2017. <span>“Higher-Order Interactions Stabilize Dynamics in Competitive Network Models.”</span> <em>Nature</em> 548 (7666): 210.
 </div>
-<div>
-<p>Hadeler, Karl Peter, Michael C Mackey, and Angela Stevens. 2017. <em>Topics in Mathematical Biology</em>. Springer.</p>
+<div class="csl-entry">
+Hadeler, Karl Peter, Michael C Mackey, and Angela Stevens. 2017. <em>Topics in Mathematical Biology</em>. Springer.
 </div>
-<div>
-<p>Haldane, Andrew G, and Robert M May. 2011. “Systemic Risk in Banking Ecosystems.” <em>Nature</em> 469 (7330): 351–55.</p>
+<div class="csl-entry">
+Haldane, Andrew G, and Robert M May. 2011. <span>“Systemic Risk in Banking Ecosystems.”</span> <em>Nature</em> 469 (7330): 351–55.
 </div>
-<div>
-<p>Hang-Kwang, Luh, and Stuart L Pimm. 1993. “The Assembly of Ecological Communities: A Minimalist Approach.” <em>Journal of Animal Ecology</em>, 749–65.</p>
+<div class="csl-entry">
+Hang-Kwang, Luh, and Stuart L Pimm. 1993. <span>“The Assembly of Ecological Communities: A Minimalist Approach.”</span> <em>Journal of Animal Ecology</em>, 749–65.
 </div>
-<div>
-<p>Hanski, Ilkka, and Otso Ovaskainen. 2000. “The Metapopulation Capacity of a Fragmented Landscape.” <em>Nature</em> 404 (6779): 755–58.</p>
+<div class="csl-entry">
+Hanski, Ilkka, and Otso Ovaskainen. 2000. <span>“The Metapopulation Capacity of a Fragmented Landscape.”</span> <em>Nature</em> 404 (6779): 755–58.
 </div>
-<div>
-<p>Hector, Aea, B Schmid, C Beierkuhnlein, MC Caldeira, M Diemer, PG Dimitrakopoulos, JA Finn, et al. 1999. “Plant Diversity and Productivity Experiments in European Grasslands.” <em>Science</em> 286 (5442): 1123–7.</p>
+<div class="csl-entry">
+Hector, Aea, B Schmid, C Beierkuhnlein, MC Caldeira, M Diemer, PG Dimitrakopoulos, JA Finn, et al. 1999. <span>“Plant Diversity and Productivity Experiments in European Grasslands.”</span> <em>Science</em> 286 (5442): 1123–27.
 </div>
-<div>
-<p>Hernández-Bermejo, Benito, Vı́ctor Fairén, and Léon Brenig. 1998. “Algebraic Recasting of Nonlinear Systems of Odes into Universal Formats.” <em>Journal of Physics A: Mathematical and General</em> 31 (10): 2415.</p>
+<div class="csl-entry">
+Hernández-Bermejo, Benito, Vı́ctor Fairén, and Léon Brenig. 1998. <span>“Algebraic Recasting of Nonlinear Systems of ODEs into Universal Formats.”</span> <em>Journal of Physics A: Mathematical and General</em> 31 (10): 2415.
 </div>
-<div>
-<p>Hirsch, Morris W. 1982. “Systems of Differential Equations Which Are Competitive or Cooperative: I. Limit Sets.” <em>SIAM Journal on Mathematical Analysis</em> 13 (2): 167–79.</p>
+<div class="csl-entry">
+Hirsch, Morris W. 1982. <span>“Systems of Differential Equations Which Are Competitive or Cooperative: I. Limit Sets.”</span> <em>SIAM Journal on Mathematical Analysis</em> 13 (2): 167–79.
 </div>
-<div>
-<p>Hirsch, Morris W, Stephen Smale, and Robert L Devaney. 2012. <em>Differential Equations, Dynamical Systems, and an Introduction to Chaos</em>. Academic press.</p>
+<div class="csl-entry">
+Hirsch, Morris W, Stephen Smale, and Robert L Devaney. 2012. <em>Differential Equations, Dynamical Systems, and an Introduction to Chaos</em>. Academic press.
 </div>
-<div>
-<p>Hofbauer, Josef, and Karl Sigmund. 1998. <em>Evolutionary Games and Population Dynamics</em>. Cambridge University Press.</p>
+<div class="csl-entry">
+Hofbauer, Josef, and Karl Sigmund. 1998. <em>Evolutionary Games and Population Dynamics</em>. Cambridge University Press.
 </div>
-<div>
-<p>Hubbell, Stephen P. 2001. <em>The Unified Neutral Theory of Biodiversity and Biogeography</em>. Vol. 32. Princeton University Press.</p>
+<div class="csl-entry">
+Hubbell, Stephen P. 2001. <em>The Unified Neutral Theory of Biodiversity and Biogeography</em>. Vol. 32. Princeton University Press.
 </div>
-<div>
-<p>Kuebbing, Sara E, Aimée T Classen, Nathan J Sanders, and Daniel Simberloff. 2015. “Above-and Below-Ground Effects of Plant Diversity Depend on Species Origin: An Experimental Test with Multiple Invaders.” <em>New Phytologist</em> 208 (3): 727–35.</p>
+<div class="csl-entry">
+Kuebbing, Sara E, Aimée T Classen, Nathan J Sanders, and Daniel Simberloff. 2015. <span>“Above-and Below-Ground Effects of Plant Diversity Depend on Species Origin: An Experimental Test with Multiple Invaders.”</span> <em>New Phytologist</em> 208 (3): 727–35.
 </div>
-<div>
-<p>Law, Richard, and R Daniel Morton. 1993. “Alternative Permanent States of Ecological Communities.” <em>Ecology</em> 74 (5): 1347–61.</p>
+<div class="csl-entry">
+Law, Richard, and R Daniel Morton. 1993. <span>“Alternative Permanent States of Ecological Communities.”</span> <em>Ecology</em> 74 (5): 1347–61.
 </div>
-<div>
-<p>———. 1996. “Permanence and the Assembly of Ecological Communities.” <em>Ecology</em> 77 (3): 762–75.</p>
+<div class="csl-entry">
+———. 1996. <span>“Permanence and the Assembly of Ecological Communities.”</span> <em>Ecology</em> 77 (3): 762–75.
 </div>
-<div>
-<p>Leslie, Patrick H. 1945. “On the Use of Matrices in Certain Population Mathematics.” <em>Biometrika</em> 33 (3): 183–212.</p>
+<div class="csl-entry">
+Leslie, Patrick H. 1945. <span>“On the Use of Matrices in Certain Population Mathematics.”</span> <em>Biometrika</em> 33 (3): 183–212.
 </div>
-<div>
-<p>———. 1948. “Some Further Notes on the Use of Matrices in Population Mathematics.” <em>Biometrika</em> 35 (3/4): 213–45.</p>
+<div class="csl-entry">
+———. 1948. <span>“Some Further Notes on the Use of Matrices in Population Mathematics.”</span> <em>Biometrika</em> 35 (3/4): 213–45.
 </div>
-<div>
-<p>Levin, Simon A. 1970. “Community Equilibria and Stability, and an Extension of the Competitive Exclusion Principle.” <em>The American Naturalist</em> 104 (939): 413–23.</p>
+<div class="csl-entry">
+Levin, Simon A. 1970. <span>“Community Equilibria and Stability, and an Extension of the Competitive Exclusion Principle.”</span> <em>The American Naturalist</em> 104 (939): 413–23.
 </div>
-<div>
-<p>Levins, Richard. 1966. “The Strategy of Model Building in Population Biology.” <em>American Scientist</em> 54 (4): 421–31.</p>
+<div class="csl-entry">
+Levins, Richard. 1966. <span>“The Strategy of Model Building in Population Biology.”</span> <em>American Scientist</em> 54 (4): 421–31.
 </div>
-<div>
-<p>———. 1968. <em>Evolution in Changing Environments: Some Theoretical Explorations</em>. Princeton University Press.</p>
+<div class="csl-entry">
+———. 1968. <em>Evolution in Changing Environments: Some Theoretical Explorations</em>. Princeton University Press.
 </div>
-<div>
-<p>———. 1969. “Some Demographic and Genetic Consequences of Environmental Heterogeneity for Biological Control.” <em>American Entomologist</em> 15 (3): 237–40.</p>
+<div class="csl-entry">
+———. 1969. <span>“Some Demographic and Genetic Consequences of Environmental Heterogeneity for Biological Control.”</span> <em>American Entomologist</em> 15 (3): 237–40.
 </div>
-<div>
-<p>Li, Cong, Ruud van de Bovenkamp, and Piet Van Mieghem. 2012. “Susceptible-Infected-Susceptible Model: A Comparison of N-Intertwined and Heterogeneous Mean-Field Approximations.” <em>Physical Review E</em> 86 (2): 026116.</p>
+<div class="csl-entry">
+Li, Cong, Ruud van de Bovenkamp, and Piet Van Mieghem. 2012. <span>“Susceptible-Infected-Susceptible Model: A Comparison of n-Intertwined and Heterogeneous Mean-Field Approximations.”</span> <em>Physical Review E</em> 86 (2): 026116.
 </div>
-<div>
-<p>Loreau, Michel. 1998. “Biodiversity and Ecosystem Functioning: A Mechanistic Model.” <em>Proceedings of the National Academy of Sciences</em> 95 (10): 5632–6.</p>
+<div class="csl-entry">
+Loreau, Michel. 1998. <span>“Biodiversity and Ecosystem Functioning: A Mechanistic Model.”</span> <em>Proceedings of the National Academy of Sciences</em> 95 (10): 5632–36.
 </div>
-<div>
-<p>Loreau, Michel, and Andy Hector. 2001. “Partitioning Selection and Complementarity in Biodiversity Experiments.” <em>Nature</em> 412 (6842): 72–76.</p>
+<div class="csl-entry">
+Loreau, Michel, and Andy Hector. 2001. <span>“Partitioning Selection and Complementarity in Biodiversity Experiments.”</span> <em>Nature</em> 412 (6842): 72–76.
 </div>
-<div>
-<p>———. 2019. “Not Even Wrong: Comment by Loreau and Hector.” <em>Ecology</em> 100 (10): e02794.</p>
+<div class="csl-entry">
+———. 2019. <span>“Not Even Wrong: Comment by Loreau and Hector.”</span> <em>Ecology</em> 100 (10): e02794.
 </div>
-<div>
-<p>Lotka, Alfred J. 1920. “Analytical Note on Certain Rhythmic Relations in Organic Systems.” <em>Proceedings of the National Academy of Sciences</em> 6 (7): 410–15.</p>
+<div class="csl-entry">
+Lotka, Alfred J. 1920. <span>“Analytical Note on Certain Rhythmic Relations in Organic Systems.”</span> <em>Proceedings of the National Academy of Sciences</em> 6 (7): 410–15.
 </div>
-<div>
-<p>———. 1926. “The Frequency Distribution of Scientific Productivity.” <em>Journal of the Washington Academy of Sciences</em> 16 (12): 317–23.</p>
+<div class="csl-entry">
+———. 1926. <span>“The Frequency Distribution of Scientific Productivity.”</span> <em>Journal of the Washington Academy of Sciences</em> 16 (12): 317–23.
 </div>
-<div>
-<p>———. 2002. “Contribution to the Theory of Periodic Reactions.” <em>The Journal of Physical Chemistry</em> 14 (3): 271–74.</p>
+<div class="csl-entry">
+———. 2002. <span>“Contribution to the Theory of Periodic Reactions.”</span> <em>The Journal of Physical Chemistry</em> 14 (3): 271–74.
 </div>
-<div>
-<p>MacArthur, Robert. 1955. “Fluctuations of Animal Populations and a Measure of Community Stability.” <em>Ecology</em> 36 (3): 533–36.</p>
+<div class="csl-entry">
+MacArthur, Robert. 1955. <span>“Fluctuations of Animal Populations and a Measure of Community Stability.”</span> <em>Ecology</em> 36 (3): 533–36.
 </div>
-<div>
-<p>———. 1970. “Species Packing and Competitive Equilibrium for Many Species.” <em>Theoretical Population Biology</em> 1 (1): 1–11.</p>
+<div class="csl-entry">
+———. 1970. <span>“Species Packing and Competitive Equilibrium for Many Species.”</span> <em>Theoretical Population Biology</em> 1 (1): 1–11.
 </div>
-<div>
-<p>MacArthur, Robert H, and Edward O Wilson. 2001. <em>The Theory of Island Biogeography</em>. Vol. 1. Princeton university press.</p>
+<div class="csl-entry">
+MacArthur, Robert H, and Edward O Wilson. 2001. <em>The Theory of Island Biogeography</em>. Vol. 1. Princeton university press.
 </div>
-<div>
-<p>MacArthur, Robert, and Richard Levins. 1967. “The Limiting Similarity, Convergence, and Divergence of Coexisting Species.” <em>The American Naturalist</em> 101 (921): 377–85.</p>
+<div class="csl-entry">
+MacArthur, Robert, and Richard Levins. 1967. <span>“The Limiting Similarity, Convergence, and Divergence of Coexisting Species.”</span> <em>The American Naturalist</em> 101 (921): 377–85.
 </div>
-<div>
-<p>Marsland III, Robert, Wenping Cui, and Pankaj Mehta. 2019. “The Minimum Environmental Perturbation Principle: A New Perspective on Niche Theory.” <em>arXiv Preprint arXiv:1901.09673</em>.</p>
+<div class="csl-entry">
+Marsland III, Robert, Wenping Cui, and Pankaj Mehta. 2019. <span>“The Minimum Environmental Perturbation Principle: A New Perspective on Niche Theory.”</span> <em>arXiv Preprint arXiv:1901.09673</em>.
 </div>
-<div>
-<p>May, Robert M. 1972. “Will a Large Complex System Be Stable?” <em>Nature</em> 238 (5364): 413–14.</p>
+<div class="csl-entry">
+May, Robert M. 1972. <span>“Will a Large Complex System Be Stable?”</span> <em>Nature</em> 238 (5364): 413–14.
 </div>
-<div>
-<p>———. 1973. “Qualitative Stability in Model Ecosystems.” <em>Ecology</em> 54 (3): 638–41.</p>
+<div class="csl-entry">
+———. 1973. <span>“Qualitative Stability in Model Ecosystems.”</span> <em>Ecology</em> 54 (3): 638–41.
 </div>
-<div>
-<p>———. 1976. “Simple Mathematical Models with Very Complicated Dynamics.” <em>Nature</em> 261 (5560): 459–67.</p>
+<div class="csl-entry">
+———. 1976. <span>“Simple Mathematical Models with Very Complicated Dynamics.”</span> <em>Nature</em> 261 (5560): 459–67.
 </div>
-<div>
-<p>———. 1988. “How Many Species Are There on Earth?” <em>Science</em> 241 (4872): 1441–9.</p>
+<div class="csl-entry">
+———. 1988. <span>“How Many Species Are There on Earth?”</span> <em>Science</em> 241 (4872): 1441–49.
 </div>
-<div>
-<p>———. 1997. “The Scientific Wealth of Nations.” <em>Science</em> 275 (5301): 793–96.</p>
+<div class="csl-entry">
+———. 1997. <span>“The Scientific Wealth of Nations.”</span> <em>Science</em> 275 (5301): 793–96.
 </div>
-<div>
-<p>Maynard, Daniel S, Zachary R Miller, and Stefano Allesina. 2020. “Predicting Coexistence in Experimental Ecological Communities.” <em>Nature Ecology &amp; Evolution</em> 4: 91–100.</p>
+<div class="csl-entry">
+Maynard, Daniel S, Zachary R Miller, and Stefano Allesina. 2020. <span>“Predicting Coexistence in Experimental Ecological Communities.”</span> <em>Nature Ecology &amp; Evolution</em> 4: 91–100.
 </div>
-<div>
-<p>Maynard, Daniel S, Carlos A Serván, and Stefano Allesina. 2018. “Network Spandrels Reflect Ecological Assembly.” <em>Ecology Letters</em> 21 (3): 324–34.</p>
+<div class="csl-entry">
+Maynard, Daniel S, Carlos A Serván, and Stefano Allesina. 2018. <span>“Network Spandrels Reflect Ecological Assembly.”</span> <em>Ecology Letters</em> 21 (3): 324–34.
 </div>
-<div>
-<p>Maynard Smith, John. 1982. <em>Evolution and the Theory of Games</em>. Cambridge university press.</p>
+<div class="csl-entry">
+Maynard Smith, John. 1982. <em>Evolution and the Theory of Games</em>. Cambridge university press.
 </div>
-<div>
-<p>McCann, Kevin Shear. 2000. “The Diversity–Stability Debate.” <em>Nature</em> 405 (6783): 228–33.</p>
+<div class="csl-entry">
+McCann, Kevin Shear. 2000. <span>“The Diversity–Stability Debate.”</span> <em>Nature</em> 405 (6783): 228–33.
 </div>
-<div>
-<p>Morton, R Daniel, Richard Law, Stuart L Pimm, and James A Drake. 1996. “On Models for Assembling Ecological Communities.” <em>Oikos</em>, 493–99.</p>
+<div class="csl-entry">
+Morton, R Daniel, Richard Law, Stuart L Pimm, and James A Drake. 1996. <span>“On Models for Assembling Ecological Communities.”</span> <em>Oikos</em>, 493–99.
 </div>
-<div>
-<p>Nash, John F. 1950. “Equilibrium Points in N-Person Games.” <em>Proceedings of the National Academy of Sciences</em> 36 (1): 48–49.</p>
+<div class="csl-entry">
+Nash, John F. 1950. <span>“Equilibrium Points in n-Person Games.”</span> <em>Proceedings of the National Academy of Sciences</em> 36 (1): 48–49.
 </div>
-<div>
-<p>Nowak, Martin A, and Robert M May. 1992. “Evolutionary Games and Spatial Chaos.” <em>Nature</em> 359 (6398): 826–29.</p>
+<div class="csl-entry">
+Nowak, Martin A, and Robert M May. 1992. <span>“Evolutionary Games and Spatial Chaos.”</span> <em>Nature</em> 359 (6398): 826–29.
 </div>
-<div>
-<p>Nowak, Martin A, and Karl Sigmund. 2005. “Evolution of Indirect Reciprocity.” <em>Nature</em> 437 (7063): 1291–8.</p>
+<div class="csl-entry">
+Nowak, Martin A, and Karl Sigmund. 2005. <span>“Evolution of Indirect Reciprocity.”</span> <em>Nature</em> 437 (7063): 1291–98.
 </div>
-<div>
-<p>O’Rourke, Sean, and David Renfrew. 2014. “Low Rank Perturbations of Large Elliptic Random Matrices.” <em>Electronic Journal of Probability</em> 19.</p>
+<div class="csl-entry">
+O’Rourke, Sean, and David Renfrew. 2014. <span>“Low Rank Perturbations of Large Elliptic Random Matrices.”</span> <em>Electronic Journal of Probability</em> 19.
 </div>
-<div>
-<p>Ovaskainen, Otso, and Ilkka Hanski. 2001. “Spatially Structured Metapopulation Models: Global and Local Assessment of Metapopulation Capacity.” <em>Theoretical Population Biology</em> 60 (4): 281–302.</p>
+<div class="csl-entry">
+Ovaskainen, Otso, and Ilkka Hanski. 2001. <span>“Spatially Structured Metapopulation Models: Global and Local Assessment of Metapopulation Capacity.”</span> <em>Theoretical Population Biology</em> 60 (4): 281–302.
 </div>
-<div>
-<p>Page, Karen M, and Martin A Nowak. 2002. “Unifying Evolutionary Dynamics.” <em>Journal of Theoretical Biology</em> 219 (1): 93–98.</p>
+<div class="csl-entry">
+Page, Karen M, and Martin A Nowak. 2002. <span>“Unifying Evolutionary Dynamics.”</span> <em>Journal of Theoretical Biology</em> 219 (1): 93–98.
 </div>
-<div>
-<p>Pielou, Evelyn C. 1977. <em>Mathematical Ecology</em>. 574.50151. Wiley,</p>
+<div class="csl-entry">
+Pielou, Evelyn C. 1977. <em>Mathematical Ecology</em>. 574.50151. Wiley,.
 </div>
-<div>
-<p>Pillai, Pradeep, and Tarik C Gouhier. 2019a. “Not Even Wrong: Reply to Loreau and Hector.” <em>arXiv Preprint arXiv:1910.13563</em>.</p>
+<div class="csl-entry">
+Pillai, Pradeep, and Tarik C Gouhier. 2019a. <span>“Not Even Wrong: Reply to Loreau and Hector.”</span> <em>arXiv Preprint arXiv:1910.13563</em>.
 </div>
-<div>
-<p>———. 2019b. “Not Even Wrong: Reply to Wagg et Al.” <em>arXiv Preprint arXiv:1910.13670</em>.</p>
+<div class="csl-entry">
+———. 2019b. <span>“Not Even Wrong: Reply to Wagg Et Al.”</span> <em>arXiv Preprint arXiv:1910.13670</em>.
 </div>
-<div>
-<p>———. 2019c. “Not Even Wrong: The Spurious Measurement of Biodiversity’s Effects on Ecosystem Functioning.” <em>Ecology</em> 100 (7): e02645.</p>
+<div class="csl-entry">
+———. 2019c. <span>“Not Even Wrong: The Spurious Measurement of Biodiversity’s Effects on Ecosystem Functioning.”</span> <em>Ecology</em> 100 (7): e02645.
 </div>
-<div>
-<p>Puccia, Charles J, and Richard Levins. 2013. <em>Qualitative Modeling of Complex Systems: An Introduction to Loop Analysis and Time Averaging</em>. Harvard University Press.</p>
+<div class="csl-entry">
+Puccia, Charles J, and Richard Levins. 2013. <em>Qualitative Modeling of Complex Systems: An Introduction to Loop Analysis and Time Averaging</em>. Harvard University Press.
 </div>
-<div>
-<p>Scheffer, Marten, Jordi Bascompte, William A Brock, Victor Brovkin, Stephen R Carpenter, Vasilis Dakos, Hermann Held, Egbert H Van Nes, Max Rietkerk, and George Sugihara. 2009. “Early-Warning Signals for Critical Transitions.” <em>Nature</em> 461 (7260): 53–59.</p>
+<div class="csl-entry">
+Scheffer, Marten, Jordi Bascompte, William A Brock, Victor Brovkin, Stephen R Carpenter, Vasilis Dakos, Hermann Held, Egbert H Van Nes, Max Rietkerk, and George Sugihara. 2009. <span>“Early-Warning Signals for Critical Transitions.”</span> <em>Nature</em> 461 (7260): 53–59.
 </div>
-<div>
-<p>Schreiber, Sebastian J, and Seth Rittenhouse. 2004. “From Simple Rules to Cycling in Community Assembly.” <em>Oikos</em> 105 (2): 349–58.</p>
+<div class="csl-entry">
+Schreiber, Sebastian J, and Seth Rittenhouse. 2004. <span>“From Simple Rules to Cycling in Community Assembly.”</span> <em>Oikos</em> 105 (2): 349–58.
 </div>
-<div>
-<p>Serván, Carlos A, and Stefano Allesina. 2020. “Tractable Models of Ecological Assembly.” <em>bioRxiv</em>.</p>
+<div class="csl-entry">
+Serván, Carlos A, and Stefano Allesina. 2020. <span>“Tractable Models of Ecological Assembly.”</span> <em>bioRxiv</em>.
 </div>
-<div>
-<p>Serván, Carlos A, José A Capitán, Jacopo Grilli, Kent E Morrison, and Stefano Allesina. 2018. “Coexistence of Many Species in Random Ecosystems.” <em>Nature Ecology &amp; Evolution</em> 2 (8): 1237.</p>
+<div class="csl-entry">
+Serván, Carlos A, José A Capitán, Jacopo Grilli, Kent E Morrison, and Stefano Allesina. 2018. <span>“Coexistence of Many Species in Random Ecosystems.”</span> <em>Nature Ecology &amp; Evolution</em> 2 (8): 1237.
 </div>
-<div>
-<p>Seydel, Rüdiger. 2009. <em>Practical Bifurcation and Stability Analysis</em>. Vol. 5. Springer Science &amp; Business Media.</p>
+<div class="csl-entry">
+Seydel, Rüdiger. 2009. <em>Practical Bifurcation and Stability Analysis</em>. Vol. 5. Springer Science &amp; Business Media.
 </div>
-<div>
-<p>Sigmund, Karl. 1995. “Darwin’s "Circles of Complexity": Assembling Ecological Communities.” <em>Complexity</em> 1 (1): 40–44.</p>
+<div class="csl-entry">
+Sigmund, Karl. 1995. <span>“Darwin’s "Circles of Complexity": Assembling Ecological Communities.”</span> <em>Complexity</em> 1 (1): 40–44.
 </div>
-<div>
-<p>Smale, Steve. 1976. “On the Differential Equations of Species in Competition.” <em>Journal of Mathematical Biology</em> 3 (1): 5–7.</p>
+<div class="csl-entry">
+Smale, Steve. 1976. <span>“On the Differential Equations of Species in Competition.”</span> <em>Journal of Mathematical Biology</em> 3 (1): 5–7.
 </div>
-<div>
-<p>Solé, Ricard V, and Sergi Valverde. 2006. “Are Network Motifs the Spandrels of Cellular Complexity?” <em>Trends in Ecology &amp; Evolution</em> 21 (8): 419–22.</p>
+<div class="csl-entry">
+Solé, Ricard V, and Sergi Valverde. 2006. <span>“Are Network Motifs the Spandrels of Cellular Complexity?”</span> <em>Trends in Ecology &amp; Evolution</em> 21 (8): 419–22.
 </div>
-<div>
-<p>Strogatz, Steven H. 2018. <em>Nonlinear Dynamics and Chaos: With Applications to Physics, Biology, Chemistry, and Engineering</em>. CRC Press.</p>
+<div class="csl-entry">
+Strogatz, Steven H. 2018. <em>Nonlinear Dynamics and Chaos: With Applications to Physics, Biology, Chemistry, and Engineering</em>. CRC Press.
 </div>
-<div>
-<p>Suweis, Samir, Filippo Simini, Jayanth R Banavar, and Amos Maritan. 2013. “Emergence of Structural and Dynamical Properties of Ecological Mutualistic Networks.” <em>Nature</em> 500 (7463): 449–52.</p>
+<div class="csl-entry">
+Suweis, Samir, Filippo Simini, Jayanth R Banavar, and Amos Maritan. 2013. <span>“Emergence of Structural and Dynamical Properties of Ecological Mutualistic Networks.”</span> <em>Nature</em> 500 (7463): 449–52.
 </div>
-<div>
-<p>Szederkenyi, Gabor, Attila Magyar, and Katalin M Hangos. 2018. <em>Analysis and Control of Polynomial Dynamic Models with Biological Applications</em>. Academic Press.</p>
+<div class="csl-entry">
+Szederkenyi, Gabor, Attila Magyar, and Katalin M Hangos. 2018. <em>Analysis and Control of Polynomial Dynamic Models with Biological Applications</em>. Academic Press.
 </div>
-<div>
-<p>Tilman, David, Clarence L Lehman, and Kendall T Thomson. 1997. “Plant Diversity and Ecosystem Productivity: Theoretical Considerations.” <em>Proceedings of the National Academy of Sciences</em> 94 (5): 1857–61.</p>
+<div class="csl-entry">
+Tilman, David, Clarence L Lehman, and Kendall T Thomson. 1997. <span>“Plant Diversity and Ecosystem Productivity: Theoretical Considerations.”</span> <em>Proceedings of the National Academy of Sciences</em> 94 (5): 1857–61.
 </div>
-<div>
-<p>Tilman, David, Peter B Reich, Johannes Knops, David Wedin, Troy Mielke, and Clarence Lehman. 2001. “Diversity and Productivity in a Long-Term Grassland Experiment.” <em>Science</em> 294 (5543): 843–45.</p>
+<div class="csl-entry">
+Tilman, David, Peter B Reich, Johannes Knops, David Wedin, Troy Mielke, and Clarence Lehman. 2001. <span>“Diversity and Productivity in a Long-Term Grassland Experiment.”</span> <em>Science</em> 294 (5543): 843–45.
 </div>
-<div>
-<p>Van Mieghem, Piet, Jasmina Omic, and Robert Kooij. 2008. “Virus Spread in Networks.” <em>IEEE/ACM Transactions on Networking</em> 17 (1): 1–14.</p>
+<div class="csl-entry">
+Van Mieghem, Piet, Jasmina Omic, and Robert Kooij. 2008. <span>“Virus Spread in Networks.”</span> <em>IEEE/ACM Transactions On Networking</em> 17 (1): 1–14.
 </div>
-<div>
-<p>Volterra, Vito. 1926a. “Fluctuations in the Abundance of a Species Considered Mathematically.” <em>Nature</em> 118: 558–60.</p>
+<div class="csl-entry">
+Volterra, Vito. 1926a. <span>“Fluctuations in the Abundance of a Species Considered Mathematically.”</span> <em>Nature</em> 118: 558–60.
 </div>
-<div>
-<p>———. 1926b. “Variazioni E Fluttuazioni Del Numero d’individui in Specie Animali Conviventi.” <em>Memor. Accad. Lincei.</em> 6: 31–113.</p>
+<div class="csl-entry">
+———. 1926b. <span>“Variazioni e Fluttuazioni Del Numero d’individui in Specie Animali Conviventi.”</span> <em>Memor. Accad. Lincei.</em> 6: 31–113.
 </div>
-<div>
-<p>Wagg, Cameron, Kathryn E Barry, Michael J O’Brien, Andrew McKenzie-Gopsill, Christiane Roscher, Nico Eisenhauer, and Bernhard Schmid. 2019. “Not Even Wrong: Comment by Wagg et Al.” <em>Ecology</em> 100 (10): e02805.</p>
+<div class="csl-entry">
+Wagg, Cameron, Kathryn E Barry, Michael J O’Brien, Andrew McKenzie-Gopsill, Christiane Roscher, Nico Eisenhauer, and Bernhard Schmid. 2019. <span>“Not Even Wrong: Comment by Wagg Et Al.”</span> <em>Ecology</em> 100 (10): e02805.
 </div>
-<div>
-<p>Weiher, Evan, and Paul Keddy. 2001. <em>Ecological Assembly Rules: Perspectives, Advances, Retreats</em>. Cambridge University Press.</p>
+<div class="csl-entry">
+Weiher, Evan, and Paul Keddy. 2001. <em>Ecological Assembly Rules: Perspectives, Advances, Retreats</em>. Cambridge University Press.
 </div>
 </div>
 </div>
@@ -704,7 +756,6 @@ x_{i}^\star = 1 - \dfrac{1}{1 + \tau \sum M_{ij} + \tau \sum M_{ij}(1-x_j^\star)
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -723,6 +774,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -743,6 +795,10 @@ gitbook.start({
 "text": null
 },
 "download": ["Theoretical_Community_Ecology.pdf", "Theoretical_Community_Ecology.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

@@ -243,10 +243,10 @@ Note that considering the first two terms of the Taylor expansion results in sec
 
 :::
 
-Suppose that a system is resting at an equilibrium $x^\star$, and that it is slightly perturbed away from it. $\Delta x(t) = x(t) - x^\star$ is the state of the system immediately after the perturbation. Taylor-expanding around $x^\star$ and taking only the linear term, we have:
+Suppose that a system is resting at an equilibrium $x^\star$, and that it is slightly perturbed away from it. $x(t) =  \Delta x(t) + x^\star$ is the state of the system immediately after the perturbation. Taylor-expanding around $x^\star$ and taking only the linear term, we have:
 
 $$
-f(\Delta x(t)) = f(x^\star)+ \left. J \right|_{x^\star} \Delta x(t) = \left. J \right|_{x^\star} \Delta x(t)
+f(x(t)) = f(x^\star)+ \left. J \right|_{x^\star} \Delta x(t) = \left. J \right|_{x^\star} \Delta x(t)
 $$
 
 Where $J$ is the Jacobian matrix of the system, whose elements are defined as:

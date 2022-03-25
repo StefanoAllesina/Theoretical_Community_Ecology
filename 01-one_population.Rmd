@@ -489,7 +489,21 @@ $$
 \dfrac{d V(x(t))}{d t} = 2 \rho\, x(t) \left(x(t) - \dfrac{1}{\alpha}\right) (1 - \alpha\, x(t))= -\dfrac{\rho\, x(t)}{\alpha}\left(x(t) - \dfrac{1}{\alpha}\right)^2
 $$
 
-and as such $x^\star$ is asymptotically stable. The basin of attraction (i.e., where the Lyapunov function has the desired properties) is $x \in \mathbb{R}_+$. There can be several alternative Lyapunov functions. For example, consider:
+and as such $x^\star$ is asymptotically stable. The basin of attraction (i.e., where the Lyapunov function has the desired properties) is $x \in \mathbb{R}_+$. There can be several alternative Lyapunov functions.
+
+A classic candidate Lyapunov function for the Lotka-Volterra model we are going to see many times in the lecture notes starts from a logarithmic inequality: if $y>0$, then $\log y \leq y- 1$, and thus $y - 1 -\log y \geq 0$. Take $y = \frac{x}{x^\star}$, with $x$ and $x^\star$ positive. Then,
+
+$$
+\frac{x}{x^\star} - 1 - \log \frac{x}{x^\star} \geq 0
+$$
+
+Now multiply by $x^\star$, obtaining:
+
+$$
+x - x^\star - \log x^\star \frac{x}{x^\star} \geq 0
+$$
+
+We can use this as our Lyapunov function for the logistic growth model:
 
 $$
 V(x(t)) = x(t) - x^\star - x^\star \log \dfrac{x(t)}{x^\star}
