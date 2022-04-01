@@ -181,7 +181,7 @@ Consider the predator-prey model with Type II functional response:
 $$
 \begin{cases}
 \dfrac{d x(t)}{dt} = f_x = x(t) \left(1 - x(t) - \alpha\, \frac{y(t)}{1+ x(t)} \right)\\
-\dfrac{d y(t)}{dt} = f_y = y(t) \left(-1 - + \alpha\, \frac{x(t)}{1+ x(t)} \right)\\
+\dfrac{d y(t)}{dt} = f_y = y(t) \left(-1 + \alpha\, \frac{x(t)}{1+ x(t)} \right)\\
 \end{cases}
 $$
 The system has up to three equilibria: $(x^\star, y^\star) = (0,0)$, $(x^\star, y^\star) = (1,0)$, and, whenever $\alpha > 2$, $\left(\frac{1}{\alpha - 1}, \frac{\alpha - 2}{(\alpha - 1)^2}\right)$. The Jacobian for this system is:
@@ -381,6 +381,48 @@ If $A$ has eigenvalues $\lambda$, $B = \beta\, A$ has eigenvalues $\beta\, \lamb
 A matrix is positive definite if all its eigenvalues are real and positive. It is positive semi-definite if eigenvalues can be zero. The matrices $AA^T$ and $A^T A$ are positive semi-definite, and have the same eigenvalues up to some zeros (used in SVD and  PCA). Correlation and covariance matrices have these form.
 
 Provided that some mild conditions are satisfied, a matrix with non-negative entries has a unique largest real eigenvalue with a corresponding eigenvector that can be chosen to have strictly positive components ([Perron-Frobenius theorem](https://en.wikipedia.org/wiki/Perron%E2%80%93Frobenius_theorem)). A matrix with constant row sums $\theta$ has $\theta$ as the largest eigenvalue, and $v = 1$ as the corresponding eigenvector (e.g., Markov Chains).
+
+**Descartes' rule of signs**
+
+Take $\alpha_i$ to be the coefficients of the polynomial in standard form:
+
+$$
+P(\lambda) = \sum_{i=0}^n \alpha_i \lambda^i
+$$
+
+then the number of *real positive roots* of the polynomial is at most the number of sign changes in the sequence $\alpha_0, \ldots, \alpha_n$, omitting the zeros. As a corollary, the number of *real negative roots* is at most the number of sign changes when we write $P(-\lambda)$. In particular, to have no real positive roots, we need all the $\alpha_i$ to have the same sign (omitting the zeros). The difference between the number of sign changes and the number of positive roots is always even.
+
+*Example:*
+
+$$
+P(\lambda) = 1 + 4 \lambda - 5 \lambda^2 + \lambda^3
+$$
+we have two sign changes (the signs are $+ + - +$), and therefore the polynomial has at most two positive real roots (i.e., either two positive roots, or zero). Taking:
+
+$$
+P(-\lambda) = 1 - 4 \lambda - 5 \lambda^2 - \lambda^3
+$$
+
+we find a single change in signs, meaning that the polynomial has a negative real root. This polynomial has indeed one negative and two positive real roots.
+
+
+**Routh-Hurwitz criterion**
+
+The Routh-Hurwitz criterion allows to determine whether all the roots of a polynomial lie in the left half-plane (i.e., have negative real part). These polynomials are called stable, for reasons that will be obvious in a moment. It is easily stated for second and third-degree polynomials.
+
+The polynomial:
+
+$$
+P(\lambda) = \alpha_0 + \alpha_1 \lambda + \lambda^2
+$$
+is stable if and only if $\alpha_0 > 0$ and $\alpha_1 >0$.
+
+The polynomial:
+
+$$
+P(\lambda) = \alpha_0 + \alpha_1 \lambda + \alpha_2 \lambda^2 + \lambda^3
+$$
+is stable if and only if $\alpha_i > 0\quad \forall i$ and $\alpha_2 \alpha_1 > \alpha_0$.
 
 :::
 

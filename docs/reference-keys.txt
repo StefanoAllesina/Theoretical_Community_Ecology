@@ -104,10 +104,3 @@ stability-for-glv-embeddings
 numerical-analysis
 systems-with-many-equations
 glv-embedding-for-non-qp-systems
-random-bits-and-pieces
-stability-of-larger-matrices
-descartes-rule-of-signs
-routh-hurwitz-criterion
-bounding-eigenvalues-using-the-symmetric-part
-exercise
-extra
