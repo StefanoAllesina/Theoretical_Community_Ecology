@@ -601,7 +601,7 @@ div.csl-indent {
 </tbody>
 </table>
 <div class="boxpaper">
-<p><strong>Key paper: <span class="citation">Tilman, Lehman, and Thomson (<a href="#ref-tilman1997plant" role="doc-biblioref">1997</a>)</span></strong></p>
+<p><strong>Key paper: <span class="citation">Tilman et al. (<a href="#ref-tilman1997plant" role="doc-biblioref">1997</a>)</span></strong></p>
 <p>We are not the first people to consider “in-silico” biodiversity experiments. Tilman and collaborators were doing the same more than twenty years ago! For a more sophisticated model, see <span class="citation">Loreau (<a href="#ref-loreau1998biodiversity" role="doc-biblioref">1998</a>)</span>.</p>
 </div>
 </div>
@@ -852,7 +852,7 @@ x_i^{(k)} = \gamma_i + \sum_{j\neq i} \theta_{ij} x_j^{(k)}
 \sum_{j\neq i} (\theta_{ij} /\gamma_i) x_j^{(k)} - (1/{\gamma_i}) x_i^{(k)} = \sum_j b_{ij} x_j^{(k)} = -1
 \]</span>
 where we have definied <span class="math inline">\(b_{ij} = \theta_{ij} / \gamma_i\)</span> for <span class="math inline">\(i \neq j\)</span>, and <span class="math inline">\(b_{ii} = - 1 / \gamma_i\)</span>. Note that this is exactly the same system of equations found above. As such, fitting a linear, addittive model for the biomass of each species in each plot is equivalent to finding the equilibrium strcuture of a GLV model that approximates the data.</p>
-<p>One thing to consider when modeling real data, contrary to simulated data, is the structure of the errors. For example, empirical data often contain replicates that reach slightly different densities (while this is impossible in GLV). Moreover, what is typically done in these types of experiments is to sort and measure biomass for a section of each plot, and then to multiply to extrapolate the biomass for the whole plot. As such, if the error is normally distributed for the sub-plot, then it’s going to be lognormally distributed for the whole plot. Furthermore, we need to link the rows of matrix <span class="math inline">\(P\)</span> above, because when we make an error in measuring <span class="math inline">\(x_j^{(k)}\)</span>, the value is reported over several values. Following <span class="citation">Maynard, Miller, and Allesina (<a href="#ref-maynard2019predicting" role="doc-biblioref">2020</a>)</span>, we do the following:</p>
+<p>One thing to consider when modeling real data, contrary to simulated data, is the structure of the errors. For example, empirical data often contain replicates that reach slightly different densities (while this is impossible in GLV). Moreover, what is typically done in these types of experiments is to sort and measure biomass for a section of each plot, and then to multiply to extrapolate the biomass for the whole plot. As such, if the error is normally distributed for the sub-plot, then it’s going to be lognormally distributed for the whole plot. Furthermore, we need to link the rows of matrix <span class="math inline">\(P\)</span> above, because when we make an error in measuring <span class="math inline">\(x_j^{(k)}\)</span>, the value is reported over several values. Following <span class="citation">Maynard et al. (<a href="#ref-maynard2019predicting" role="doc-biblioref">2020</a>)</span>, we do the following:</p>
 <ul>
 <li>Propose a matrix <span class="math inline">\(B\)</span></li>
 <li>Compute the predicted abundance for all species in all observed assemblages (call them <span class="math inline">\(\tilde{x}_j^{(k)}\)</span>)</li>
@@ -1120,54 +1120,54 @@ where we have definied <span class="math inline">\(b_{ij} = \theta_{ij} / \gamma
 <span id="cb65-11"><a href="predicting-coexistence-in-ecological-communities.html#cb65-11" aria-hidden="true" tabindex="-1"></a>solution_oof3 <span class="ot">&lt;-</span> <span class="fu">compute_SSQ</span>(best_B_oof3, E)</span>
 <span id="cb65-12"><a href="predicting-coexistence-in-ecological-communities.html#cb65-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_solution</span>(solution_oof3, oof)</span></code></pre></div>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/kuebnumerics4-1.png" width="480" style="display: block; margin: auto;" /></p>
-<p>You can see that we predict a lack of coexistence for the system with all four species, while experimentally we have observed coexistence in all ten replicates. <span class="citation">Maynard, Miller, and Allesina (<a href="#ref-maynard2019predicting" role="doc-biblioref">2020</a>)</span> have demonstrated that experimental designs mixing high- and low-abundance experiments provide the best fit while minimizing the number of experiments.</p>
+<p>You can see that we predict a lack of coexistence for the system with all four species, while experimentally we have observed coexistence in all ten replicates. <span class="citation">Maynard et al. (<a href="#ref-maynard2019predicting" role="doc-biblioref">2020</a>)</span> have demonstrated that experimental designs mixing high- and low-abundance experiments provide the best fit while minimizing the number of experiments.</p>
 <div class="boxpaper">
 <p><strong>Key paper: <span class="citation">Loreau and Hector (<a href="#ref-loreau2001partitioning" role="doc-biblioref">2001</a>)</span></strong></p>
-<p>Ecologists are fond of the idea of partitioning effects into (hopefully) orthogonal components that have a clear biological interpretation. In this influential paper, Loreau and Hector show how the effect of diversity on functioning can be partitioned into “selection” (dominance of species with particular traits) vs. “complementarity” (increased resource use due to niche partitioning). As for any interesting idea, critics abound—and some are over the top (<span class="citation">Pillai and Gouhier (<a href="#ref-pillai2019not" role="doc-biblioref">2019c</a>)</span>), leading to rebuttals of rebuttals (<span class="citation">Loreau and Hector (<a href="#ref-loreau2019not" role="doc-biblioref">2019</a>)</span>, <span class="citation">Wagg et al. (<a href="#ref-wagg2019not" role="doc-biblioref">2019</a>)</span>, <span class="citation">Pillai and Gouhier (<a href="#ref-pillai2019not3" role="doc-biblioref">2019a</a>)</span>, <span class="citation">Pillai and Gouhier (<a href="#ref-pillai2019not2" role="doc-biblioref">2019b</a>)</span>)…</p>
+<p>Ecologists are fond of the idea of partitioning effects into (hopefully) orthogonal components that have a clear biological interpretation. In this influential paper, Loreau and Hector show how the effect of diversity on functioning can be partitioned into “selection” (dominance of species with particular traits) vs. “complementarity” (increased resource use due to niche partitioning). As for any interesting idea, critics abound—and some are over the top (<span class="citation">Pillai and Gouhier (<a href="#ref-pillai2019not" role="doc-biblioref">2019a</a>)</span>), leading to rebuttals of rebuttals (<span class="citation">Loreau and Hector (<a href="#ref-loreau2019not" role="doc-biblioref">2019</a>)</span>, <span class="citation">Wagg et al. (<a href="#ref-wagg2019not" role="doc-biblioref">2019</a>)</span>, <span class="citation">Pillai and Gouhier (<a href="#ref-pillai2019not3" role="doc-biblioref">2019b</a>)</span>, <span class="citation">Pillai and Gouhier (<a href="#ref-pillai2019not2" role="doc-biblioref">2019c</a>)</span>)…</p>
 </div>
 
 </div>
 </div>
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="refs" class="references csl-bib-body hanging-indent" line-spacing="2">
 <div id="ref-cadotte2013experimental" class="csl-entry">
-Cadotte, Marc W. 2013. <span>“Experimental Evidence That Evolutionarily Diverse Assemblages Result in Higher Productivity.”</span> <em>Proceedings of the National Academy of Sciences</em> 110 (22): 8996–9000.
+Cadotte, M. W. 2013. Experimental evidence that evolutionarily diverse assemblages result in higher productivity. Proceedings of the National Academy of Sciences 110:8996–9000.
 </div>
 <div id="ref-hector1999plant" class="csl-entry">
-Hector, Aea, B Schmid, C Beierkuhnlein, MC Caldeira, M Diemer, PG Dimitrakopoulos, JA Finn, et al. 1999. <span>“Plant Diversity and Productivity Experiments in European Grasslands.”</span> <em>Science</em> 286 (5442): 1123–27.
+Hector, A., B. Schmid, C. Beierkuhnlein, M. Caldeira, M. Diemer, P. Dimitrakopoulos, J. Finn, H. Freitas, P. Giller, J. Good, and others. 1999. Plant diversity and productivity experiments in european grasslands. science 286:1123–1127.
 </div>
 <div id="ref-kuebbing2015above" class="csl-entry">
-Kuebbing, Sara E, Aimée T Classen, Nathan J Sanders, and Daniel Simberloff. 2015. <span>“Above-and Below-Ground Effects of Plant Diversity Depend on Species Origin: An Experimental Test with Multiple Invaders.”</span> <em>New Phytologist</em> 208 (3): 727–35.
+Kuebbing, S. E., A. T. Classen, N. J. Sanders, and D. Simberloff. 2015. Above-and below-ground effects of plant diversity depend on species origin: An experimental test with multiple invaders. New Phytologist 208:727–735.
 </div>
 <div id="ref-loreau1998biodiversity" class="csl-entry">
-Loreau, Michel. 1998. <span>“Biodiversity and Ecosystem Functioning: A Mechanistic Model.”</span> <em>Proceedings of the National Academy of Sciences</em> 95 (10): 5632–36.
+Loreau, M. 1998. Biodiversity and ecosystem functioning: A mechanistic model. Proceedings of the National Academy of Sciences 95:5632–5636.
 </div>
 <div id="ref-loreau2001partitioning" class="csl-entry">
-Loreau, Michel, and Andy Hector. 2001. <span>“Partitioning Selection and Complementarity in Biodiversity Experiments.”</span> <em>Nature</em> 412 (6842): 72–76.
+Loreau, M., and A. Hector. 2001. Partitioning selection and complementarity in biodiversity experiments. Nature 412:72–76.
 </div>
 <div id="ref-loreau2019not" class="csl-entry">
-———. 2019. <span>“Not Even Wrong: Comment by Loreau and Hector.”</span> <em>Ecology</em> 100 (10): e02794.
+Loreau, M., and A. Hector. 2019. Not even wrong: Comment by loreau and hector. Ecology 100:e02794.
 </div>
 <div id="ref-maynard2019predicting" class="csl-entry">
-Maynard, Daniel S, Zachary R Miller, and Stefano Allesina. 2020. <span>“Predicting Coexistence in Experimental Ecological Communities.”</span> <em>Nature Ecology &amp; Evolution</em> 4: 91–100.
+Maynard, D. S., Z. R. Miller, and S. Allesina. 2020. Predicting coexistence in experimental ecological communities. Nature Ecology &amp; Evolution 4:91–100.
 </div>
 <div id="ref-pillai2019not3" class="csl-entry">
-Pillai, Pradeep, and Tarik C Gouhier. 2019a. <span>“Not Even Wrong: Reply to Loreau and Hector.”</span> <em>arXiv Preprint arXiv:1910.13563</em>.
+Pillai, P., and T. C. Gouhier. 2019b. Not even wrong: Reply to loreau and hector. arXiv preprint arXiv:1910.13563.
 </div>
 <div id="ref-pillai2019not2" class="csl-entry">
-———. 2019b. <span>“Not Even Wrong: Reply to Wagg Et Al.”</span> <em>arXiv Preprint arXiv:1910.13670</em>.
+Pillai, P., and T. C. Gouhier. 2019c. Not even wrong: Reply to wagg et al. arXiv preprint arXiv:1910.13670.
 </div>
 <div id="ref-pillai2019not" class="csl-entry">
-———. 2019c. <span>“Not Even Wrong: The Spurious Measurement of Biodiversity’s Effects on Ecosystem Functioning.”</span> <em>Ecology</em> 100 (7): e02645.
+Pillai, P., and T. C. Gouhier. 2019a. Not even wrong: The spurious measurement of biodiversity’s effects on ecosystem functioning. Ecology 100:e02645.
 </div>
 <div id="ref-tilman1997plant" class="csl-entry">
-Tilman, David, Clarence L Lehman, and Kendall T Thomson. 1997. <span>“Plant Diversity and Ecosystem Productivity: Theoretical Considerations.”</span> <em>Proceedings of the National Academy of Sciences</em> 94 (5): 1857–61.
+Tilman, D., C. L. Lehman, and K. T. Thomson. 1997. Plant diversity and ecosystem productivity: Theoretical considerations. Proceedings of the national academy of sciences 94:1857–1861.
 </div>
 <div id="ref-tilman2001diversity" class="csl-entry">
-Tilman, David, Peter B Reich, Johannes Knops, David Wedin, Troy Mielke, and Clarence Lehman. 2001. <span>“Diversity and Productivity in a Long-Term Grassland Experiment.”</span> <em>Science</em> 294 (5543): 843–45.
+Tilman, D., P. B. Reich, J. Knops, D. Wedin, T. Mielke, and C. Lehman. 2001. Diversity and productivity in a long-term grassland experiment. Science 294:843–845.
 </div>
 <div id="ref-wagg2019not" class="csl-entry">
-Wagg, Cameron, Kathryn E Barry, Michael J O’Brien, Andrew McKenzie-Gopsill, Christiane Roscher, Nico Eisenhauer, and Bernhard Schmid. 2019. <span>“Not Even Wrong: Comment by Wagg Et Al.”</span> <em>Ecology</em> 100 (10): e02805.
+Wagg, C., K. E. Barry, M. J. O’Brien, A. McKenzie-Gopsill, C. Roscher, N. Eisenhauer, and B. Schmid. 2019. Not even wrong: Comment by wagg et al. Ecology 100:e02805.
 </div>
 </div>
             </section>

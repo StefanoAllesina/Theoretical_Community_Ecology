@@ -585,6 +585,15 @@ $$
   \end{cases}
 $$
 
+:::boxpaper
+
+**Key paper: @neubert1997alternatives**
+
+As we have seen, some simple linear algebra can be used to determine the long-term behavior of an ecological system. As Neubert & Caswell show in this masterful paper, similar techniques can be used to determine the *transient* behavior of these systems: will perturbations amplify before subsiding? How far from the equilibrium can the system move? 
+
+:::
+
+
 ## Stability analysis of the Lotka-Volterra Predator-Prey model
 
 We still haven't figured out whether the coexistence equilibrium for the model
