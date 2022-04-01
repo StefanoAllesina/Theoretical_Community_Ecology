@@ -102,7 +102,7 @@ which is our solution. If we know the value of $\rho$ and the initial density $x
 Another model that can be solved explicitly is that of the logistic growth:
 
 $$
-\dfrac{d x(t)}{dt} = \rho\, x(t) (1 - \alpha\, x(t)), \;\; x(0) = 0
+\dfrac{d x(t)}{dt} = \rho\, x(t) (1 - \alpha\, x(t)), \;\; x(0) = x_0
 $$
 
 again, we can separate the equation:
