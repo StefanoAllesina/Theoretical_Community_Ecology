@@ -176,70 +176,65 @@ $$
 
 *Example*
 
-Consider the vector-valued function:
+Consider the predator-prey model with Type II functional response:
 
 $$
-f(x) = \begin{pmatrix}
-x_1^3 + 2 x_2^2\\
-x_1 - x_2^3
-\end{pmatrix}
+\begin{cases}
+\dfrac{d x(t)}{dt} = f_x = x(t) \left(1 - x(t) - \alpha\, \frac{y(t)}{1+ x(t)} \right)\\
+\dfrac{d y(t)}{dt} = f_y = y(t) \left(-1 - + \alpha\, \frac{x(t)}{1+ x(t)} \right)\\
+\end{cases}
 $$
-
-Approximate the function around a generic point $a = (a_1,a_2)^T$. The Jacobian is:
+The system has up to three equilibria: $(x^\star, y^\star) = (0,0)$, $(x^\star, y^\star) = (1,0)$, and, whenever $\alpha > 2$, $\left(\frac{1}{\alpha - 1}, \frac{\alpha - 2}{(\alpha - 1)^2}\right)$. The Jacobian for this system is:
 
 $$
 J = \begin{pmatrix}
-3 x_1^2 & 4 x_2\\
-1 & -3 x_2^2
+\frac{\partial f_x}{\partial x} & \frac{\partial f_x}{\partial y}\\
+\frac{\partial f_y}{\partial x} & \frac{\partial f_y}{\partial y}\\
+\end{pmatrix} = \begin{pmatrix}
+1 -2 x - \frac{\alpha y}{(x+1)^2} & - \frac{\alpha x}{(x+1)}\\
+\frac{\alpha y}{(x+1)^2} & -1 + \frac{\alpha x}{(x+1)}
+\end{pmatrix}
+$$
+The Hessian has two slices:
+
+$$
+H_x = \begin{pmatrix}
+\frac{\partial^2 f_x}{\partial x^2} &\frac{\partial^2 f_x}{\partial x \partial y}\\
+\frac{\partial^2 f_x}{\partial x \partial y} & \frac{\partial^2 f_x}{\partial x^2}\\
+\end{pmatrix} = \begin{pmatrix}
+2(-1 + \frac{\alpha y}{(x+1)^3})  &-\frac{\alpha}{(x+1)^2}\\
+-\frac{\alpha}{(x+1)^2} & 0\\
 \end{pmatrix}
 $$
 
-and the two slices of the Hessian tensor are:
+Similarly,
 
 $$
-H_1 = \begin{pmatrix}
-6 x_1 & 0 \\
-0 & 4
+H_y = \begin{pmatrix}
+-2 \frac{\alpha y}{(x+1)^3}  &\frac{\alpha}{(x+1)^2}\\
+\frac{\alpha}{(x+1)^2} & 0\\
 \end{pmatrix}
 $$
+Note that each slice of the Hessian is necessarily symmetric.
 
-and 
-
-$$
-H_2 = \begin{pmatrix}
-0 & 0 \\
-0 & -6 x_2
-\end{pmatrix}
-$$
-
-as such:
+Now we can approximate the dynamics at any point; for example, around the equilibrium with the prey alone:
 
 $$
-f(x) \approx \begin{pmatrix}
-a_1^3 + 2a_2^2 + 3 a_1^2 (x_1 - a_1)+ 4 a_2 (x_2-a_2) + 3 a_1 (x1-a_1)^2 + 2 (x_2 - a2)^2\\
-a_1 - a_2^3+x_1-a_1-3 a_2^2 (x_2-a_2)-3 a_2 (x_2 - a_2)^2
-\end{pmatrix} 
+\dfrac{d x(t)}{dt} \approx J_{11}|_{x^\star} \Delta x + J_{12}|_{x^\star} \Delta y + \frac{1}{2} H_{x,1,1}|_{x^\star} \Delta x^2 + \frac{1}{2} H_{x,2,2}|_{x^\star} \Delta y^2 + H_{x,1,2}|_{x^\star} \Delta x \Delta y
 $$
-
-For example, expanding around $a = (0, 0)^T$, we obtain:
+with some calculations, we obtain:
 
 $$
-f(x) \approx \begin{pmatrix}
-2 x_2^2\\
-x_1
-\end{pmatrix}
+\dfrac{d x(t)}{dt} \approx -\Delta x (1 + 2 \Delta x) - \frac{1}{2} \alpha (1 + \Delta x) \Delta y
 $$
-
-while around $a = (2, 1)^T$, we find:
+and similarly, 
 
 $$
-f(x) \approx \begin{pmatrix}
-2 (x_2^2 + 3 x_1 (x_1-2) + 4)\\
-x_1 + 3 x_2(x_2 - 3) + 5
-\end{pmatrix}
+\dfrac{d y(t)}{dt} \approx  \frac{1}{2} (\alpha -2 + \alpha \Delta x) \Delta y
 $$
+We can see already that, when $\Delta y > 0$ (the only sensible case), and $\Delta x = 0$, the predator can invade (at least initially) whenever $\alpha > 2$. 
 
-Note that considering the first two terms of the Taylor expansion results in second-degree polynomials; adding a cubic terms would in general yield a better approximation, etc. 
+By considering higher and higher order terms, we can have an increasingly good approximation of the system---always obtaining a polynomial system.
 
 :::
 
@@ -258,7 +253,7 @@ $$
 Each element of this matrix is therefore a function, whose value depends on $x$. When we evaluate the Jacobian matrix at an equilibrium point $x^\star$, we obtain the so-called "community matrix" $M$:
 
 $$
-  M = \left. {J} \right|_{ {x}^\star}
+M = \left. {J} \right|_{ {x}^\star}
 $$
 
 Note that, although each system has a unique Jacobian matrix, there are as many community matrices as there are equilibria. The community matrix details the effect of increasing the density of one species on any other species around the equilibrium point.
@@ -404,7 +399,7 @@ $$
 
 has eigenvalues with negative real part. When a matrix is stable due to its sign-pattern (rather than specific values of the coefficients), it is called *qualitatively stable*.
 
-Find all $3 \times 3$ matrices that are sign-stable. 
+Find all $3 \times 3$ matrices that are sign-stable. (Showing that there are no purely imaginary eigenvalues is challenging; proving that this is the case is optional).
 
 :::
 
@@ -578,7 +573,7 @@ M_0 = \left . J \right|_{(0, 0)^T} = \begin{pmatrix}
 \end{pmatrix} 
 $$
 
-which has eigenvalues $\rho > 0$ amd $-\delta < 0$ --- the equilibrium is unstable. The coexistence equilibrium $(x^\star, y^\star)^T = (\delta / \beta, \rho / \alpha)^T$ yields the community matrix:
+which has eigenvalues $\rho > 0$ and $-\delta < 0$ --- the equilibrium is unstable. The coexistence equilibrium $(x^\star, y^\star)^T = (\delta / \beta, \rho / \alpha)^T$ yields the community matrix:
 
 $$
 M_c = \left . J \right|_{(\delta / \beta, \rho / \alpha)^T} = \begin{pmatrix}

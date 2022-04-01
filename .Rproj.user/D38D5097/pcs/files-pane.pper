@@ -1,9 +1,9 @@
 {
-    "path": "~/GH/Theoretical_Community_Ecology",
+    "path": "~/GH/Theoretical_Community_Ecology/solutions",
     "sortOrder": [
         {
-            "columnIndex": 2,
-            "ascending": true
+            "ascending": true,
+            "columnIndex": 2
         }
     ]
 }
