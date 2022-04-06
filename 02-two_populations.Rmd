@@ -713,7 +713,7 @@ $$
 \end{cases}
 $$
 
-First, we find the equilibria. From the first equation, we have $x^\star = 0$, or $y^\star = 1 - x^\star /2$; from the second equation, we have $y^\star = 0$ or $x^\star = 1$. Combining them, we find that either $(x^\star, y^\star)^T = (0, 0)^T$ (trival), $(x^\star, y^\star)^T = (2, 0)^T$ (boundary), or $(x^\star, y^\star)^T = (1, 1/2)$ (coexistence)^T. 
+First, we find the equilibria. From the first equation, we have $x^\star = 0$, or $y^\star = 1 - x^\star /2$; from the second equation, we have $y^\star = 0$ or $x^\star = 1$. Combining them, we find that either $(x^\star, y^\star)^T = (0, 0)^T$ (trival), $(x^\star, y^\star)^T = (2, 0)^T$ (boundary), or $(x^\star, y^\star)^T = (1, 1/2)^T$ (coexistence). 
 
 The isoclines of zero growth are $y = 1 - x/2$ for the prey, and $x = 1$ for the predator. The Jacobian for the system is
 
