@@ -23,7 +23,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2022-04-06" />
+<meta name="date" content="2022-04-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -349,7 +349,7 @@ div.csl-indent {
 <li>We start by discussing the Generalized Lotka-Volterra model, which we are going to see over and over again in the remainder of the lectures.</li>
 <li>We discuss the existence of a “coexistence” equilibrium, as well as its local stability.</li>
 <li>We show that the GLV model can give rise to all sort of dynamics, including limit cycles and chaos.</li>
-<li>Despite this fact, the persistence of all species requires the existence of a feasible equilibrium, which is the time-average of the species’ densities for complex attractors.</li>
+<li>Despite this fact, the persistence of all species requires the existence of a feasible equilibrium, which is the time-average of the species’ densities.</li>
 <li>We introduce D-stability, allowing us to write a Lyapunov function to determine global stability in GLV models.</li>
 <li>We conclude by analyzing the MacArthur’s consumer-resource model, highlighting its deep connection to GLV.</li>
 </ol>
@@ -366,14 +366,14 @@ div.csl-indent {
 <p>The simplest case to study is that of a single population, in which case the equation becomes that of the logistic growth:</p>
 <p><span class="math display">\[
 \dfrac{dx(t)}{dt} = x(t)(\rho + \alpha x(t))
-\]</span></p>
-<p>As we’ve seen before, this is a separable ODE, with solution:</p>
+\]</span>
+Note that whenever <span class="math inline">\(\rho &gt; 0\)</span> and <span class="math inline">\(\alpha &lt; 0\)</span> there exists a feasible equilibrium <span class="math inline">\(x^\star = \rho / \alpha\)</span>. The equilibrium is globally stable (as shown using either a quadratic Lyapunov function, or the <span class="math inline">\(V = x - x^\star - x^\star \log (x / x^\star)\)</span>). As we’ve seen before, this is a separable ODE, with solution:</p>
 <p><span class="math display">\[
 x(t) = \frac{\rho\, {x_0}\, e^{\rho t}}{\rho- \alpha\, {x_0} \left(e^{\rho t}-1\right)}
 \]</span></p>
 <div id="metapopulation-dynamics" class="section level3 hasAnchor" number="3.2.1">
 <h3><span class="header-section-number">3.2.1</span> Metapopulation dynamics<a href="generalized-lotka-volterra-model.html#metapopulation-dynamics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Consider a fragmented landscape in which habitable patches are connected by dispersal (for simplicity, suppose that all patches are reachable from any other). Call <span class="math inline">\(p(t)\)</span> the proportion of patches occupied by the species of interest at time <span class="math inline">\(t\)</span>, and assume that a) an empty patch (the proportion of empty patches is <span class="math inline">\(1 - p(t)\)</span>) is colonized by the species with rate <span class="math inline">\(\gamma\, p(t)\)</span>, where <span class="math inline">\(\gamma\)</span> is the “colonization rate”, and b) that occupied patches become empty at rate <span class="math inline">\(\epsilon\, p(t)\)</span> (“extinction rate”). We want to model the proportion of patches occupied by the population at time <span class="math inline">\(t\)</span> <span class="citation">(<a href="#ref-levins1969some" role="doc-biblioref">Levins 1969</a>)</span>:</p>
+<p>Consider a fragmented landscape in which habitable patches are connected by dispersal (for simplicity, suppose that all patches are reachable from any other). Call <span class="math inline">\(p(t)\)</span> the proportion of patches occupied by the species of interest at time <span class="math inline">\(t\)</span>, and assume that a) an empty patch (the proportion of empty patches is <span class="math inline">\(1 - p(t)\)</span>) is colonized by the populations in other patches with rate <span class="math inline">\(\gamma\, p(t)\)</span>, where <span class="math inline">\(\gamma\)</span> is the “colonization rate”, and b) that occupied patches become empty at rate <span class="math inline">\(\epsilon\, p(t)\)</span> (“extinction rate”). We want to model the proportion of patches occupied by the population at time <span class="math inline">\(t\)</span> <span class="citation">(<a href="#ref-levins1969some" role="doc-biblioref">Levins 1969</a>)</span>:</p>
 <p><span class="math display">\[
 \dfrac{d p(t)}{dt} = \gamma\, p(t)(1 - p(t)) - \epsilon\, p(t) = p(t) ((\gamma - \epsilon) - \gamma\,  p(t))
 \]</span></p>
@@ -388,7 +388,7 @@ x(t) = \frac{\rho\, {x_0}\, e^{\rho t}}{\rho- \alpha\, {x_0} \left(e^{\rho t}-1\
 \dfrac{d I(t)}{dt} = \beta S(t) I(t) - \gamma I(t)
 \end{cases}
 \]</span></p>
-<p>take the second equation, and substitute <span class="math inline">\(S(t) = 1 - I(t)\)</span>; rearranging:</p>
+<p>Note that the equations sum to zero, because the quantity <span class="math inline">\(S(t)+I(t)=1\)</span> is conserved through the dynamics. Take the second equation, and substitute <span class="math inline">\(S(t) = 1 - I(t)\)</span>; rearranging:</p>
 <p><span class="math display">\[
 \dfrac{d I(t)}{dt} = \beta (1-I(t)) I(t) - \gamma I(t) = I(t)(\beta - \gamma -\beta I(t))
 \]</span></p>
@@ -419,19 +419,19 @@ M = \left. {J} \right|_{ {x}^\star} = D(x^\star)A
 <p>If the eigenvalues of <span class="math inline">\(M\)</span> have all negative real part, then <span class="math inline">\(x^\star\)</span> is locally asymptotically stable.</p>
 <div class="boxmath">
 <p><strong>D-stability and Lyapunov-Diagonal Stability</strong></p>
-<p>A matrix <span class="math inline">\(A\)</span> is called <em>stable</em> if all its eigenvalues have negative real part. A matrix <span class="math inline">\(A\)</span> is called <em>D-stable</em> if <span class="math inline">\(D(x) A\)</span> is stable for every choice of <span class="math inline">\(x\)</span> such <span class="math inline">\(x_i &gt; 0\; \forall i\)</span>. While conditions for <em>D-stability</em> are not known for matrices of size greater than 3, a <strong>sufficient</strong> condtion for <em>D-stability</em> is that there exists a diagonal matrix <span class="math inline">\(D\)</span> with positive elements on the diagonal such that <span class="math inline">\(DA + A^T D\)</span> is negative definite (i.e., has negative eigenvalues).</p>
+<p>A matrix <span class="math inline">\(A\)</span> is called <em>stable</em> if all its eigenvalues have negative real part. A matrix <span class="math inline">\(A\)</span> is called <em>D-stable</em> if <span class="math inline">\(D(x) A\)</span> is stable for every choice of <span class="math inline">\(x\)</span> such <span class="math inline">\(x_i &gt; 0\; \forall i\)</span>. While conditions for <em>D-stability</em> are not known for matrices of size greater than 3, a <strong>sufficient</strong> condition for <em>D-stability</em> is that there exists a diagonal matrix <span class="math inline">\(D\)</span> with positive elements on the diagonal such that <span class="math inline">\(DA + A^T D\)</span> is negative definite (i.e., has negative eigenvalues).</p>
 <p><strong>Consequences for Lotka-Volterra dynamics</strong></p>
 <ul>
 <li>If a matrix <span class="math inline">\(A\)</span> is stable and symmetric, it is <em>D-stable</em> (just take <span class="math inline">\(D = I\)</span>).</li>
-<li>Take a stable, non symmetric matrix <span class="math inline">\(A\)</span> such that <span class="math inline">\(A + A^T\)</span> is negative definite. Then any feasible equilibrium is stable: we have <span class="math inline">\(M = D(x^\star)A\)</span>, but if <span class="math inline">\(A\)</span> is <em>D-stable</em> then <span class="math inline">\(M\)</span> is stable.</li>
+<li>Take a GLV system with a stable, non symmetric matrix <span class="math inline">\(A\)</span> such that <span class="math inline">\(A + A^T\)</span> is negative definite. Then any feasible equilibrium is locally stable: we have <span class="math inline">\(M = D(x^\star)A\)</span>, but if <span class="math inline">\(A\)</span> is <em>D-stable</em> then <span class="math inline">\(M\)</span> is stable.</li>
 </ul>
 </div>
 </div>
 <div id="types-of-dynamics" class="section level3 hasAnchor" number="3.3.3">
 <h3><span class="header-section-number">3.3.3</span> Types of dynamics<a href="generalized-lotka-volterra-model.html#types-of-dynamics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>As we’ve seen before, for a single population, there are only three types of dynamics that can be displayed by a GLV model with a single species: either the population grows to infinity, shrinks to zero, or asymptotically reaches a steady state.</p>
-<p><span class="citation">Smale (<a href="#ref-smale1976differential" role="doc-biblioref">1976</a>)</span> and <span class="citation">Hirsch (<a href="#ref-hirsch1982systems" role="doc-biblioref">1982</a>)</span> showed that limit cylces are possible for three or more species, and that any dynamics can be found for competitive GLV systems with five or more species.</p>
-<p>A few examples taken from <span class="citation">Barabás et al. (<a href="#ref-barabas2016effect" role="doc-biblioref">2016</a>)</span>. First, a competitive system in which a feasible equilibrium does not exist, leading to the extinction of a species. For example, take</p>
+<p><span class="citation">Smale (<a href="#ref-smale1976differential" role="doc-biblioref">1976</a>)</span> and <span class="citation">Hirsch (<a href="#ref-hirsch1982systems" role="doc-biblioref">1982</a>)</span> showed that limit cycles are possible for three or more species, and that any dynamics can be found for competitive GLV systems with five or more species.</p>
+<p>A few examples taken from <span class="citation">Barabás et al. (<a href="#ref-barabas2016effect" role="doc-biblioref">2016</a>)</span>. First, a competitive system in which a feasible equilibrium does not exist, leading to the extinction of a species. Take</p>
 <p><span class="math display">\[
 r = \begin{pmatrix}
 1\\
@@ -451,7 +451,7 @@ r = \begin{pmatrix}
 -\dfrac{1}{12}\\
 \end{pmatrix}
 \]</span></p>
-<p>and as such dynamics will lead to a boundary equilibrium:</p>
+<p>and as such dynamics either explode or lead to a boundary equilibrium:</p>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/glvex1-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>Showing that species 2 goes extinct. Then, a case in which the equilibrium exists, and is attractive (stable). Take:</p>
 <p><span class="math display">\[
@@ -502,7 +502,11 @@ r = \begin{pmatrix}
 <p><span class="math display">\[
 \frac{1}{T}(\log(x(T)) - \log(x(0))) = 0 = r + A \left( \frac{1}{T} \int_0^T x(t) dt \right)
 \]</span>
-Note that the l.h.s. is zero because <span class="math inline">\(x(0) = x(T)\)</span>. Multiplying by the matrix inverse and rearranging:</p>
+Note that the l.h.s. is zero because <span class="math inline">\(x(0) = x(T)\)</span>. Now rearrange:</p>
+<p><span class="math display">\[
+-r = A \left( \frac{1}{T} \int_0^T x(t) dt \right)
+\]</span></p>
+<p>Multiplying by the matrix inverse:</p>
 <p><span class="math display">\[
 -A^{-1} r = x^\star =  \frac{1}{T} \int_0^T x(t) dt
 \]</span></p>
@@ -510,24 +514,24 @@ Note that the l.h.s. is zero because <span class="math inline">\(x(0) = x(T)\)</
 </div>
 <div id="lyapunov-diagonal-stability-and-global-stability" class="section level3 hasAnchor" number="3.3.5">
 <h3><span class="header-section-number">3.3.5</span> Lyapunov diagonal stability and global stability<a href="generalized-lotka-volterra-model.html#lyapunov-diagonal-stability-and-global-stability" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Suppose that there is a positive diagonal matrix <span class="math inline">\(C\)</span> such that <span class="math inline">\(C A + A^T C\)</span> is negative definite (i.e., has only negative eigenvalues; the eigenvalues are real because the matrix is symmetric). Then <span class="math inline">\(A\)</span> is <strong>Lyapunov-diagonally stable</strong>. If this is the case, then <span class="math inline">\(A\)</span> is stable, and any <span class="math inline">\(D A\)</span> with <span class="math inline">\(D\)</span> positive is also stable (called <span class="math inline">\(D-\)</span>stability).</p>
+<p>Suppose that there is a positive diagonal matrix <span class="math inline">\(D(w)\)</span> such that <span class="math inline">\(D(w) A + A^T D(w)\)</span> is negative definite (i.e., has only negative eigenvalues; the eigenvalues are real because the matrix is symmetric). Then <span class="math inline">\(A\)</span> is <strong>Lyapunov-diagonally stable</strong>. If this is the case, then <span class="math inline">\(A\)</span> is stable, and any <span class="math inline">\(D(w) A\)</span> with <span class="math inline">\(D(w)\)</span> positive is also stable (called <span class="math inline">\(D-\)</span>stability).</p>
 <p>Further, suppose that the GLV system with parameters <span class="math inline">\(A\)</span> and <span class="math inline">\(r\)</span> has a feasible equilibrium point <span class="math inline">\(x^\star\)</span>. Then the function:</p>
 <p><span class="math display">\[
-V(x(t)) = 1^T C \left( x(t) -x^\star -x^\star \cdot \log (x(t) / x^\star)\right)
+V(x(t)) = 1^T D(w) \left( x(t) -x^\star -D(x^\star)\log (x(t) / x^\star)\right)
 \]</span></p>
 <p>is a Lyapunov function for the GLV system. It is clear that <span class="math inline">\(V(x(t))\)</span> is positive everywhere in the positive orthant besides at equilibrium. Then, we need to show that the function decreases along the trajectories of the system.</p>
-<p>To prove this point, we start from <span class="math inline">\(r = -Ax^\star\)</span>. Substituting, we can write the GLV system as <span class="math inline">\(dx(t)/dt = D(x)A(x - x^\star)\)</span>; similarly, we can write <span class="math inline">\(d \log x(t)/dt = A(x - x^\star)\)</span>. Taking the derivative of <span class="math inline">\(V\)</span> with respect to time:</p>
+<p>To prove this point, we start from <span class="math inline">\(r = -A x^\star\)</span>. Substituting, we can write the GLV system as <span class="math inline">\(dx(t)/dt = D(x)A(x - x^\star)\)</span>; similarly, we can write <span class="math inline">\(d \log x(t)/dt = A(x - x^\star)\)</span>. Taking the derivative of <span class="math inline">\(V\)</span> with respect to time:</p>
 <p><span class="math display">\[
 \begin{aligned}
-\frac{d V(x(t))}{dt} &amp;= 1^T C \left(\frac{d x(t)}{dt} - D(x^\star) \frac{d \log x(t)}{dt} \right)\\
-&amp;= 1^T C \left(D(x)(A (x - x^\star)  - D(x^\star) A (x - x^\star) \right)\\
-&amp;= 1^T C \left(D(x - x^\star)  A (x - x^\star) \right)\\
-&amp;= 1^T \left(D(x - x^\star)  C A (x - x^\star) \right)\\
-&amp;= (x - x^\star)^T  CA (x - x^\star)\\
-&amp;= \frac{1}{2}(x - x^\star)^T  (CA + A^T C) (x - x^\star)\\
+\frac{d V(x(t))}{dt} &amp;= 1^T D(w) \left(\frac{d x(t)}{dt} - D(x^\star) \frac{d \log x(t)}{dt} \right)\\
+&amp;= 1^T D(w) \left(D(x)(A (x - x^\star)  - D(x^\star) A (x - x^\star) \right)\\
+&amp;= 1^T D(w) \left(D(x - x^\star)  A (x - x^\star) \right)\\
+&amp;= 1^T \left(D(x - x^\star)  D(w) A (x - x^\star) \right)\\
+&amp;= (x - x^\star)^T D(w) A (x - x^\star)\\
+&amp;= \frac{1}{2}(x - x^\star)^T  (D(w) A + A^T D(w)) (x - x^\star)\\
 \end{aligned}
 \]</span></p>
-<p>A matrix <span class="math inline">\(B\)</span> is negative definite if <span class="math inline">\(y^T B y &lt; 0\)</span> for all <span class="math inline">\(y \neq 0\)</span>. As such, if <span class="math inline">\(C A + A^T C\)</span>, then <span class="math inline">\(\frac{d V(x(t))}{dt} \leq 0\)</span>, i.e., will decrease in time (starting from any <span class="math inline">\(x(0)\)</span>) until the equilibrium <span class="math inline">\(x^\star\)</span> is reached.</p>
+<p>A matrix <span class="math inline">\(B\)</span> is negative definite if <span class="math inline">\(y^T B y &lt; 0\)</span> for all <span class="math inline">\(y \neq 0\)</span>. As such, if <span class="math inline">\(D(w) A + A^T D(w)\)</span>, then <span class="math inline">\(\frac{d V(x(t))}{dt} \leq 0\)</span>, i.e., will decrease in time (starting from any <span class="math inline">\(x(0)\)</span>) until the equilibrium <span class="math inline">\(x^\star\)</span> is reached.</p>
 <p>The results above show that <strong>if <span class="math inline">\(A\)</span> is Lyapunov diagonally-stable and a feasible equilibrium <span class="math inline">\(x^\star\)</span> exists, then all trajectories starting at a positive density will converge to the equilibrium</strong>. This property is often used to prove <strong>global stability</strong>.</p>
 </div>
 </div>
@@ -541,7 +545,7 @@ V(x(t)) = 1^T C \left( x(t) -x^\star -x^\star \cdot \log (x(t) / x^\star)\right)
 <p>He was a professor first at the University of Pennsylvania and then at Princeton University. In his brief career (he died at age 42) he revolutionized ecology, by making it into a rigorous, predictive science based on general principles.</p>
 <p>He is recognized for developing the <em>Theory of Island Biogeography</em> (with E. O. Wilson, <span class="citation">MacArthur and Wilson (<a href="#ref-macarthur2001theory" role="doc-biblioref">2001</a>)</span>), the investigation of limiting similarity (with R. Levins, <span class="citation">MacArthur and Levins (<a href="#ref-macarthur1967limiting" role="doc-biblioref">1967</a>)</span>), the contributions to the complexity-stability debate (<span class="citation">MacArthur (<a href="#ref-macarthur1955fluctuations" role="doc-biblioref">1955</a>)</span>, see next lecture). The consumer-resource model he proposed in 1969 now bears his name (published also in <span class="citation">MacArthur (<a href="#ref-macarthur1970species" role="doc-biblioref">1970</a>)</span> in a longer form—the first paper in the journal Theoretical Population Biology!).</p>
 </div>
-<p>MacArtur considered a system with two classes of equations: those describing the dynamics of consumers <span class="math inline">\((x_i)\)</span> and resources (<span class="math inline">\(y_i\)</span>). Resources do not interact with each other, and consumers interact only through the sharing of resources. Several parameterizations are possible—here we choose a simple formulation that retains the main features of the model (see <span class="citation">Case and Casten (<a href="#ref-case1979global" role="doc-biblioref">1979</a>)</span> for a slightly more general model):</p>
+<p>MacArthur considered a system with two classes of equations: those describing the dynamics of consumers <span class="math inline">\((x_i)\)</span> and resources (<span class="math inline">\(y_i\)</span>). Resources do not interact with each other (only with themselves), and consumers interact only through the sharing of resources. Several parameterizations are possible—here we choose a simple formulation that retains the main features of the model (see <span class="citation">Case and Casten (<a href="#ref-case1979global" role="doc-biblioref">1979</a>)</span> for a slightly more general model):</p>
 <p><span class="math display">\[
 \begin{cases}
 \dfrac{d y_i}{dt} = y_i \left(r_i - b_i\, y_i - \sum_j P_{ij}\, x_j \right)\\
@@ -625,24 +629,24 @@ A = \begin{pmatrix}
 A_{11} &amp; A_{12}\\
 A_{21} &amp; A_{22}
 \end{pmatrix}\; \text{with}\; A_{11} = -D(b),\; A_{12}=-P,\; A_{21} = D(v)P^T, A_{22} = 0_{k,k}
-\]</span>
-where <span class="math inline">\(0_{k,k}\)</span> is a <span class="math inline">\(k \times k\)</span> matrix of zeros. Now the system becomes:</p>
+\]</span></p>
+<p>where <span class="math inline">\(0_{k,k}\)</span> is a <span class="math inline">\(k \times k\)</span> matrix of zeros. Now the system becomes:</p>
 <p><span class="math display">\[
 \dfrac{d z}{d t} = D(z)(s + Az)
 \]</span></p>
 <div id="existence-of-an-equilibrium-1" class="section level3 hasAnchor" number="3.4.1">
 <h3><span class="header-section-number">3.4.1</span> Existence of an equilibrium<a href="generalized-lotka-volterra-model.html#existence-of-an-equilibrium-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>For simplicity, we concentrate on the study of the feasibility and stability of the coexistence equilibrium. If an equilibrium <span class="math inline">\(z^\star \neq 0\)</span> exists, it is the solution of <span class="math inline">\(Az^\star = -s\)</span>, which requires matrix <span class="math inline">\(A\)</span> to be non-singular. Matrix <span class="math inline">\(A\)</span> is nonsingular only if <span class="math inline">\(w = 0\)</span> is the only solution of <span class="math inline">\(Aw = 0\)</span>. We prove that <span class="math inline">\(A\)</span> is nonsingular whenever <span class="math inline">\(A_{12}\)</span> is of rank <span class="math inline">\(k\)</span>, and <span class="math inline">\(A_{11}\)</span> is negative definite. We do so by contradiction. First, because the matrix <span class="math inline">\(A\)</span> has a special structure, we can split <span class="math inline">\(w\)</span> into <span class="math inline">\((w_1, w_2)^T\)</span>, and write:</p>
+<p>For simplicity, we concentrate on the study of the feasibility and stability of the coexistence equilibrium. If an equilibrium <span class="math inline">\(z^\star \neq 0\)</span> exists, it is the solution of <span class="math inline">\(A z^\star = -s\)</span>, which requires matrix <span class="math inline">\(A\)</span> to be non-singular. Matrix <span class="math inline">\(A\)</span> is non-singular only if <span class="math inline">\(w = 0\)</span> is the only solution of <span class="math inline">\(Aw = 0\)</span>. We prove that <span class="math inline">\(A\)</span> is non-singular whenever <span class="math inline">\(A_{12}\)</span> is of rank <span class="math inline">\(k\)</span>, and <span class="math inline">\(A_{11}\)</span> is negative definite. We do so by contradiction. First, because the matrix <span class="math inline">\(A\)</span> has a special structure, we can split <span class="math inline">\(w\)</span> into <span class="math inline">\((w_1, w_2)^T\)</span>, and write:</p>
 <p><span class="math display">\[
 A \begin{pmatrix} w_1\\ w_2 \end{pmatrix} = \begin{pmatrix} A_{11}w_1 + A_{12} w_2\\ A_{21}w_1 \end{pmatrix} = \begin{pmatrix} 0_n\\ 0_k \end{pmatrix}
 \]</span></p>
 <p>We therefore have <span class="math inline">\(A_{21} w_1 = 0\)</span> and <span class="math inline">\(A_{11}w_1 + A_{12} w_2 = 0\)</span>.</p>
 <ul>
 <li>Suppose that <span class="math inline">\(w_1 =0\)</span> and <span class="math inline">\(w_2 \neq 0\)</span>; then we find <span class="math inline">\(A_{12} w_2 = 0\)</span> with <span class="math inline">\(w_2 \neq 0\)</span>, which is not possible when <span class="math inline">\(A_{12}\)</span> has rank <span class="math inline">\(k\)</span>.</li>
-<li>Now suppose that <span class="math inline">\(w_1 \neq 0\)</span> and <span class="math inline">\(w_2 = 0\)</span>, but this implies <span class="math inline">\(A_{11}w_1 = 0\)</span> with <span class="math inline">\(w_1 \neq 0\)</span>, which is impossible given that <span class="math inline">\(A_{11}\)</span> is clearly of full rank.</li>
+<li>Now suppose that <span class="math inline">\(w_1 \neq 0\)</span> and <span class="math inline">\(w_2 = 0\)</span>, but this implies <span class="math inline">\(A_{11}w_1 = 0\)</span> with <span class="math inline">\(w_1 \neq 0\)</span>, which is impossible given that <span class="math inline">\(A_{11}\)</span> is clearly of full rank (rank <span class="math inline">\(n\)</span>).</li>
 <li>We are left with the case in which both <span class="math inline">\(w_1 \neq 0\)</span> and <span class="math inline">\(w_2 \neq 0\)</span>. We have <span class="math inline">\(A_{21} w_1 = 0\)</span>, but <span class="math inline">\(A_{21} w_1= D(v)P^T w_1 = 0\)</span>, which implies <span class="math inline">\(P^T w_1 = 0\)</span> because all <span class="math inline">\(v_i &gt; 0\)</span>. Then, multiply the first set of equations by <span class="math inline">\(w_1^T\)</span> and the second by <span class="math inline">\(w_2^T\)</span>. We obtain <span class="math inline">\(w_1^T A_{11} w_1 - w_1^T P w_2 = 0\)</span> and <span class="math inline">\(w_2^T D(v)P^T w_1 = 0 = w_2^T P^T w_1\)</span>. But then <span class="math inline">\(w_1^T P w_2 = 0\)</span>, leaving us with <span class="math inline">\(w_1^T A_{11} w_1 = 0\)</span> with <span class="math inline">\(w_1 \neq 0\)</span>, which is again a contradiction because <span class="math inline">\(A_{11}\)</span> is clearly negative definite (and as such <span class="math inline">\(w_1^T A_{11} w_1 \leq 0\)</span>, with equality implying <span class="math inline">\(w_1 = 0\)</span>).</li>
 </ul>
-<p>We have proven that <span class="math inline">\(A\)</span> is nonsingular, and therefore a unique equilibrium point for the system exists (the equilibrium for the moment needs not to be feasible) whenever <span class="math inline">\(A_{11} = -D(b)\)</span> is negative definite (which is always the case whenever resources are self-regulating) and, importantly, <span class="math inline">\(A_{12}\)</span> has rank <span class="math inline">\(k\)</span> (the number of consumers). This in turn implies that <strong>the number of resources must be larger (or equal) than the number of consumers</strong>. A similar argument is developed in the classic <span class="citation">Levin (<a href="#ref-levin1970community" role="doc-biblioref">1970</a>)</span>.</p>
+<p>We have proven that <span class="math inline">\(A\)</span> is non-singular, and therefore a unique equilibrium point for the system exists (the equilibrium for the moment needs not to be feasible) whenever <span class="math inline">\(A_{11} = -D(b)\)</span> is negative definite (which is always the case whenever resources are self-regulating) and, importantly, <span class="math inline">\(A_{12}\)</span> has rank <span class="math inline">\(k\)</span> (the number of consumers). This in turn implies that <strong>the number of resources must be larger (or equal) than the number of consumers</strong>. A similar argument is developed in the classic <span class="citation">Levin (<a href="#ref-levin1970community" role="doc-biblioref">1970</a>)</span>.</p>
 <div class="boxpaper">
 <p><strong>Key paper: <span class="citation">Levin (<a href="#ref-levin1970community" role="doc-biblioref">1970</a>)</span></strong></p>
 <p>Starting from fairly generic assumptions, the principle of competitive exclusion is generalized: <em>No stable equilibrium can be attained in an ecological community in which some <span class="math inline">\(r\)</span> components are limited by less than <span class="math inline">\(r\)</span> limiting factors. In particular, no stable equilibrium is possible if some <span class="math inline">\(r\)</span> species are limited by less than <span class="math inline">\(r\)</span> factors.</em></p>
@@ -680,7 +684,7 @@ P^T &amp; 0_{k,k}
 &amp;= (y - y^\star)^T  (-D(b)) (y - y^\star)
 \end{align}
 \]</span></p>
-<p>which is zero only at equilibrium. This proves that any feasible equilibrium is stable.</p>
+<p>which is zero only when the resources are at equilibrium. We can invoke LaSalle’s invariance principle to prove that any feasible equilibrium is stable.</p>
 <div class="boxhomework">
 <p><strong>Homework 3a</strong></p>
 <p>Prove the local stability of the feasible coexistence equilibrium.</p>
@@ -706,7 +710,7 @@ y = D(b)^{-1} (r - P\,x)
 &amp;= D(x) D(v)\left(s - B\,x\right)
 \end{aligned}
 \]</span></p>
-<p>Which is again GLV, with “growth rates” <span class="math inline">\(s = P^T\, D(b)^{-1} r - D(v)^{-1}m\)</span> and “interactions” <span class="math inline">\(B = P^T D(b)^{-1} P\)</span>, which, importantly, is symmetric (note also that if <span class="math inline">\(P\)</span> is of rank <span class="math inline">\(k\)</span> and <span class="math inline">\(b &gt; 0\)</span>, then <span class="math inline">\(B\)</span> is of full rank).</p>
+<p>Which is again GLV, with growth rates <span class="math inline">\(s = P^T\, D(b)^{-1} r - D(v)^{-1}m\)</span> and interaction matrix <span class="math inline">\(B = P^T D(b)^{-1} P\)</span>, which, importantly, is symmetric (note also that if <span class="math inline">\(P\)</span> is of rank <span class="math inline">\(k\)</span> and <span class="math inline">\(b &gt; 0\)</span>, then <span class="math inline">\(B\)</span> is of full rank).</p>
 </div>
 <div id="lyapunov-function-for-symmetric-lotka-volterra" class="section level3 hasAnchor" number="3.4.4">
 <h3><span class="header-section-number">3.4.4</span> Lyapunov function for symmetric Lotka-Volterra<a href="generalized-lotka-volterra-model.html#lyapunov-function-for-symmetric-lotka-volterra" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -726,16 +730,16 @@ V( x^\star ) = \sum_i \left(s_i x_i^\star + \left(s_i x_i^\star - \sum_j B_{ij} 
 <p>Now, let’s take the derivative of <span class="math inline">\(V(x(t))\)</span> with respect to <span class="math inline">\(x_i\)</span>:</p>
 <p><span class="math display">\[
 \dfrac{\partial V}{\partial x_i} = 2 s_i - 2 \sum_j B_{ij} x_j
-\]</span>
-The <span class="math inline">\(2\)</span> in front of the <span class="math inline">\(B_{ij}\)</span> stems from the fact that we are summing over both <span class="math inline">\(B_{ij} x_i x_j\)</span> and <span class="math inline">\(B_{ji} x_j x_i\)</span>. But then:</p>
+\]</span></p>
+<p>The <span class="math inline">\(2\)</span> in front of the <span class="math inline">\(B_{ij}\)</span> stems from the fact that we are summing over both <span class="math inline">\(B_{ij} x_i x_j\)</span> and <span class="math inline">\(B_{ji} x_j x_i\)</span>. But then:</p>
 <p><span class="math display">\[
 \dfrac{d x_i}{d t} = x_i v_i \left(s_i -\sum_j B_{ij} x_j\right) = x_i v_i \frac{1}{2}\dfrac{\partial V}{\partial x_i}
-\]</span>
-And therefore, by chain rule:</p>
+\]</span></p>
+<p>And therefore, by chain rule:</p>
 <p><span class="math display">\[
 \dfrac{d V} {d t} = \sum_i \dfrac{\partial V}{\partial x_i} \dfrac{d x_i}{d t} = \sum_i x_i v_i \frac{1}{2}\left(\dfrac{\partial V}{\partial x_i} \right)^2
 \]</span></p>
-<p>which is always nonnegative, and is zero at equilibrium. Therefore, <span class="math inline">\(V(x(t))\)</span> is maximized through the dynamics. This holds even more generally, as we will see in the next lecture and in the following homework. In a way, competitive dynamics are “optimizing” <span class="math inline">\(V\)</span>, by following a gradient. This argument can be further expanded, showing that many ecological models can be interpreted as optimization processes (<span class="citation">Marsland III et al. (<a href="#ref-marsland2019minimum" role="doc-biblioref">2019</a>)</span>).</p>
+<p>which is always non-negative, and is zero at equilibrium. Therefore, <span class="math inline">\(V(x(t))\)</span> is maximized through the dynamics. This holds even more generally, as we will see in the next lecture and in the following homework. In a way, symmetric, competitive dynamics are “optimizing” <span class="math inline">\(V\)</span>, by following a gradient. This argument can be further expanded, showing that many ecological models can be interpreted as optimization processes (<span class="citation">Marsland III et al. (<a href="#ref-marsland2019minimum" role="doc-biblioref">2019</a>)</span>).</p>
 <div class="boxhomework">
 <p><strong>Homework 3b</strong></p>
 <p>Consider a five-species system with symmetric, stable <span class="math inline">\(B\)</span> (with all positive coefficients) and positive <span class="math inline">\(s\)</span>, yielding the feasible equilibrium <span class="math inline">\(x^\star\)</span>.</p>
