@@ -23,7 +23,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2022-04-11" />
+<meta name="date" content="2022-04-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -415,7 +415,7 @@ div.csl-indent {
 <div id="accounting-for-interaction-types" class="section level2 hasAnchor" number="4.3">
 <h2><span class="header-section-number">4.3</span> Accounting for interaction types<a href="stability-of-large-ecological-communities.html#accounting-for-interaction-types" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In ecological communities, the effect of species <span class="math inline">\(i\)</span> on <span class="math inline">\(j\)</span> and that of <span class="math inline">\(j\)</span> on <span class="math inline">\(i\)</span> are typically not independent (as assumed above): in the case of competition between species, we expect them both to be negative; for consumption, if one is positive, the other is negative, and so forth. A more refined model of a random matrix would therefore sample interactions in pairs from a bivariate distribution. The elliptic law can deal with this case:</p>
-<p><strong>Elliptic law:</strong> Take a non-symmetric, <span class="math inline">\(n \times n\)</span> random matrix in which the pairs of coefficients <span class="math inline">\((X_{ij}, X_{ji})\)</span> are sampled independently from a bivariate distribution defined by a vector of means <span class="math inline">\(m = (0,0)^t\)</span> and a covariance matrix <span class="math inline">\(\Sigma = \begin{pmatrix} 1 &amp; \rho\\ \rho &amp; 1 \end{pmatrix}\)</span>. Then, as <span class="math inline">\(n \to \infty\)</span>, the e.s.d. of <span class="math inline">\({X} / \sqrt{n}\)</span> converges to the elliptic law:</p>
+<p><strong>Elliptic law:</strong> Take a non-symmetric, <span class="math inline">\(n \times n\)</span> random matrix in which the pairs of coefficients <span class="math inline">\((X_{ij}, X_{ji})\)</span> are sampled independently from a bivariate distribution defined by a vector of means <span class="math inline">\(m = (0,0)^T\)</span> and a covariance matrix <span class="math inline">\(\Sigma = \begin{pmatrix} 1 &amp; \rho\\ \rho &amp; 1 \end{pmatrix}\)</span>. Then, as <span class="math inline">\(n \to \infty\)</span>, the e.s.d. of <span class="math inline">\({X} / \sqrt{n}\)</span> converges to the elliptic law:</p>
 <p><span class="math display">\[
   \mu(\lambda) = \begin{cases} \frac{1}{\pi (1 - \rho^2) } \quad
     \text{if} \; \frac{(\text{Re}(\lambda))^2}{(1 + \rho)^2} +
@@ -499,7 +499,7 @@ and call <span class="math inline">\(\lambda&#39;\)</span> the eigenvalues of <s
 <p>On random matrices and stability:</p>
 <ul>
 <li><span class="citation">Allesina and Tang (<a href="#ref-allesina2015stability" role="doc-biblioref">2015</a>)</span> is an opinionated review on applications of random matrices in ecology.</li>
-<li>The lectures follow <span class="citation">Allesina and Grilli (<a href="#ref-theorecolrandom" role="doc-biblioref">2020</a>)</span> quite closely. The online version of the book is available through the library.</li>
+<li>The lecture follows <span class="citation">Allesina and Grilli (<a href="#ref-theorecolrandom" role="doc-biblioref">2020</a>)</span> quite closely. The online version of the book is available through the library.</li>
 </ul>
 
 </div>

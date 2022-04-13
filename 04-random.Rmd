@@ -178,7 +178,7 @@ pl_p
 
 In ecological communities, the effect of species $i$ on $j$ and that of $j$ on $i$ are typically not independent (as assumed above): in the case of competition between species, we expect them both to be negative; for consumption, if one is positive, the other is negative, and so forth. A more refined model of a random matrix would therefore sample interactions in pairs from a bivariate distribution. The elliptic law can deal with this case:
 
-**Elliptic law:** Take a non-symmetric, $n \times n$ random matrix in which the pairs of coefficients $(X_{ij}, X_{ji})$ are sampled independently from a bivariate distribution defined by a vector of means $m = (0,0)^t$ and a covariance matrix $\Sigma = \begin{pmatrix} 1 & \rho\\ \rho & 1 \end{pmatrix}$. Then, as $n \to \infty$, the e.s.d. of ${X} / \sqrt{n}$ converges to the elliptic law:
+**Elliptic law:** Take a non-symmetric, $n \times n$ random matrix in which the pairs of coefficients $(X_{ij}, X_{ji})$ are sampled independently from a bivariate distribution defined by a vector of means $m = (0,0)^T$ and a covariance matrix $\Sigma = \begin{pmatrix} 1 & \rho\\ \rho & 1 \end{pmatrix}$. Then, as $n \to \infty$, the e.s.d. of ${X} / \sqrt{n}$ converges to the elliptic law:
 
 $$
   \mu(\lambda) = \begin{cases} \frac{1}{\pi (1 - \rho^2) } \quad
@@ -434,5 +434,5 @@ Study the spectrum of the community matrix of a competitive community in which s
 On random matrices and stability:
 
 - @allesina2015stability is an opinionated review on applications of random matrices in ecology.
-- The lectures follow @theorecolrandom quite closely. The online version of the book is available through the library.
+- The lecture follows @theorecolrandom quite closely. The online version of the book is available through the library.
 
