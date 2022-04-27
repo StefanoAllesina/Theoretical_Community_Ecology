@@ -1,3 +1,4 @@
+base
 tidyverse
 ggplot2
 tibble
@@ -13,4 +14,3 @@ latex2exp
 MASS
 igraph
 lpSolve
-base
