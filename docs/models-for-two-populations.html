@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Lecture 2 Models for two populations | Theoretical Community Ecology</title>
+  <meta name="description" content="A graduate course in theoretical community ecology focusing on systems with multiple species." />
+  <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Lecture 2 Models for two populations | Theoretical Community Ecology" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="A graduate course in theoretical community ecology focusing on systems with multiple species." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Lecture 2 Models for two populations | Theoretical Community Ecology" />
+  
+  <meta name="twitter:description" content="A graduate course in theoretical community ecology focusing on systems with multiple species." />
+  
+
+<meta name="author" content="Stefano Allesina" />
+
+
+<meta name="date" content="2022-05-03" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="models-for-a-single-population.html"/>
+<link rel="next" href="generalized-lotka-volterra-model.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Theoretical Community Ecology</a></li>
+
+<li class="divider"></li>
+<li><a href="index.html#preliminaries">Preliminaries<span></span></a>
+<ul>
+<li><a href="index.html#approach-and-target-audience">Approach and target audience<span></span></a></li>
+<li><a href="index.html#topics">Topics<span></span></a></li>
+<li><a href="index.html#notation">Notation<span></span></a></li>
+<li><a href="index.html#grading-and-code-of-conduct">Grading and code of conduct<span></span></a>
+<ul>
+<li><a href="index.html#homework-80">Homework (80%)<span></span></a></li>
+<li><a href="index.html#review-20">Review (20%)<span></span></a></li>
+<li><a href="index.html#accommodation-for-students-with-disabilities">Accommodation for students with disabilities<span></span></a></li>
+</ul></li>
+<li><a href="index.html#a-note-about-biographies">A note about biographies<span></span></a></li>
+<li><a href="index.html#sources">Sources<span></span></a></li>
+<li><a href="index.html#acknowledgements">Acknowledgements<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html"><i class="fa fa-check"></i><b>1</b> Models for a single population<span></span></a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#types-of-dynamical-systems"><i class="fa fa-check"></i><b>1.1</b> Types of dynamical systems<span></span></a></li>
+<li class="chapter" data-level="1.2" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#initial-value-problems"><i class="fa fa-check"></i><b>1.2</b> Initial-value problems<span></span></a></li>
+<li class="chapter" data-level="1.3" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#solvable-model-exponential-growth"><i class="fa fa-check"></i><b>1.3</b> Solvable model: Exponential growth<span></span></a></li>
+<li class="chapter" data-level="1.4" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#solvable-model-logistic-growth"><i class="fa fa-check"></i><b>1.4</b> Solvable model: Logistic growth<span></span></a></li>
+<li class="chapter" data-level="1.5" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#qualitative-analysis-of-models-for-a-single-population"><i class="fa fa-check"></i><b>1.5</b> Qualitative analysis of models for a single population<span></span></a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#stability-using-derivatives"><i class="fa fa-check"></i><b>1.5.1</b> Stability using derivatives<span></span></a></li>
+<li class="chapter" data-level="1.5.2" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#what-are-we-doing-when-probing-stability-using-derivatives"><i class="fa fa-check"></i><b>1.5.2</b> What are we doing when probing stability using derivatives?<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#bifurcations"><i class="fa fa-check"></i><b>1.6</b> Bifurcations<span></span></a></li>
+<li class="chapter" data-level="1.7" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#long-term-behavior-of-1-d-systems"><i class="fa fa-check"></i><b>1.7</b> Long term behavior of 1-D systems<span></span></a></li>
+<li class="chapter" data-level="1.8" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#lyapunov-functions"><i class="fa fa-check"></i><b>1.8</b> Lyapunov functions<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html"><i class="fa fa-check"></i><b>2</b> Models for two populations<span></span></a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#qualitative-analysis-of-models-for-two-populations"><i class="fa fa-check"></i><b>2.1</b> Qualitative analysis of models for two populations<span></span></a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#isoclines-of-null-growth"><i class="fa fa-check"></i><b>2.1.1</b> Isoclines of null growth<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#local-stability-analysis"><i class="fa fa-check"></i><b>2.2</b> Local stability analysis<span></span></a></li>
+<li class="chapter" data-level="2.3" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#stability-analysis-of-the-lotka-volterra-predator-prey-model"><i class="fa fa-check"></i><b>2.3</b> Stability analysis of the Lotka-Volterra Predator-Prey model<span></span></a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#constant-of-motion-for-lotka-volterra-predator-prey"><i class="fa fa-check"></i><b>2.3.1</b> Constant of motion for Lotka-Volterra Predator-Prey<span></span></a></li>
+<li class="chapter" data-level="2.3.2" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#analysis-of-predator-prey-model-with-logistic-growth-for-the-prey"><i class="fa fa-check"></i><b>2.3.2</b> Analysis of Predator-Prey model with logistic growth for the prey<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html"><i class="fa fa-check"></i><b>3</b> Generalized Lotka-Volterra model<span></span></a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#formulation"><i class="fa fa-check"></i><b>3.1</b> Formulation<span></span></a></li>
+<li class="chapter" data-level="3.2" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#a-single-population"><i class="fa fa-check"></i><b>3.2</b> A single population<span></span></a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#metapopulation-dynamics"><i class="fa fa-check"></i><b>3.2.1</b> Metapopulation dynamics<span></span></a></li>
+<li class="chapter" data-level="3.2.2" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#s-i-s-model"><i class="fa fa-check"></i><b>3.2.2</b> S-I-S model<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#multi-species-dynamics"><i class="fa fa-check"></i><b>3.3</b> Multi-species dynamics<span></span></a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#existence-of-an-equilibrium"><i class="fa fa-check"></i><b>3.3.1</b> Existence of an equilibrium<span></span></a></li>
+<li class="chapter" data-level="3.3.2" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#stability-of-the-coexistence-equilibrium"><i class="fa fa-check"></i><b>3.3.2</b> Stability of the coexistence equilibrium<span></span></a></li>
+<li class="chapter" data-level="3.3.3" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#types-of-dynamics"><i class="fa fa-check"></i><b>3.3.3</b> Types of dynamics<span></span></a></li>
+<li class="chapter" data-level="3.3.4" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#the-equilibrium-is-the-time-average"><i class="fa fa-check"></i><b>3.3.4</b> The equilibrium is the time-average<span></span></a></li>
+<li class="chapter" data-level="3.3.5" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#lyapunov-diagonal-stability-and-global-stability"><i class="fa fa-check"></i><b>3.3.5</b> Lyapunov diagonal stability and global stability<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#macarthurs-consumer-resource-model"><i class="fa fa-check"></i><b>3.4</b> MacArthur’s consumer-resource model<span></span></a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#existence-of-an-equilibrium-1"><i class="fa fa-check"></i><b>3.4.1</b> Existence of an equilibrium<span></span></a></li>
+<li class="chapter" data-level="3.4.2" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#global-stability-1"><i class="fa fa-check"></i><b>3.4.2</b> Global stability<span></span></a></li>
+<li class="chapter" data-level="3.4.3" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#separation-of-time-scales"><i class="fa fa-check"></i><b>3.4.3</b> Separation of time-scales<span></span></a></li>
+<li class="chapter" data-level="3.4.4" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#lyapunov-function-for-symmetric-lotka-volterra"><i class="fa fa-check"></i><b>3.4.4</b> Lyapunov function for symmetric Lotka-Volterra<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#further-readings"><i class="fa fa-check"></i><b>3.5</b> Further readings<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html"><i class="fa fa-check"></i><b>4</b> Stability of large ecological communities<span></span></a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#complexity-and-stability"><i class="fa fa-check"></i><b>4.1</b> Complexity and stability<span></span></a></li>
+<li class="chapter" data-level="4.2" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#the-stability-of-random-ecosystems"><i class="fa fa-check"></i><b>4.2</b> The stability of random ecosystems<span></span></a></li>
+<li class="chapter" data-level="4.3" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#accounting-for-interaction-types"><i class="fa fa-check"></i><b>4.3</b> Accounting for interaction types<span></span></a></li>
+<li class="chapter" data-level="4.4" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#symmetric-matrices"><i class="fa fa-check"></i><b>4.4</b> Symmetric matrices<span></span></a></li>
+<li class="chapter" data-level="4.5" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#covariance-matrices"><i class="fa fa-check"></i><b>4.5</b> Covariance matrices<span></span></a></li>
+<li class="chapter" data-level="4.6" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#small-rank-perturbations"><i class="fa fa-check"></i><b>4.6</b> Small-rank perturbations<span></span></a></li>
+<li class="chapter" data-level="4.7" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#structured-matrices"><i class="fa fa-check"></i><b>4.7</b> Structured matrices<span></span></a></li>
+<li class="chapter" data-level="4.8" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#further-readings-1"><i class="fa fa-check"></i><b>4.8</b> Further readings<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="ecological-assembly.html"><a href="ecological-assembly.html"><i class="fa fa-check"></i><b>5</b> Ecological assembly<span></span></a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#assembly"><i class="fa fa-check"></i><b>5.1</b> Assembly<span></span></a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#what-makes-the-study-of-assembly-difficult"><i class="fa fa-check"></i><b>5.1.1</b> What makes the study of assembly difficult?<span></span></a></li>
+<li class="chapter" data-level="5.1.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#ecological-assembly-without-tears"><i class="fa fa-check"></i><b>5.1.2</b> Ecological assembly without tears<span></span></a></li>
+<li class="chapter" data-level="5.1.3" data-path="ecological-assembly.html"><a href="ecological-assembly.html#top-down-and-bottom-up-assembly"><i class="fa fa-check"></i><b>5.1.3</b> Top-down and bottom-up assembly<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#modeling-invasions"><i class="fa fa-check"></i><b>5.2</b> Modeling invasions<span></span></a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#invasions-in-multispecies-communities"><i class="fa fa-check"></i><b>5.2.1</b> Invasions in multispecies communities<span></span></a></li>
+<li class="chapter" data-level="5.2.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#lyapunov-stability-and-saturated-equilibria"><i class="fa fa-check"></i><b>5.2.2</b> Lyapunov stability and saturated equilibria<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="ecological-assembly.html"><a href="ecological-assembly.html#top-down-assembly"><i class="fa fa-check"></i><b>5.3</b> Top-down assembly<span></span></a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#a-trivial-case"><i class="fa fa-check"></i><b>5.3.1</b> A trivial case<span></span></a></li>
+<li class="chapter" data-level="5.3.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#simulating-final-composition"><i class="fa fa-check"></i><b>5.3.2</b> Simulating final composition<span></span></a></li>
+<li class="chapter" data-level="5.3.3" data-path="ecological-assembly.html"><a href="ecological-assembly.html#a-random-zoo"><i class="fa fa-check"></i><b>5.3.3</b> A random zoo<span></span></a></li>
+<li class="chapter" data-level="5.3.4" data-path="ecological-assembly.html"><a href="ecological-assembly.html#a-random-zoo-in-the-wild"><i class="fa fa-check"></i><b>5.3.4</b> A random zoo in the wild<span></span></a></li>
+<li class="chapter" data-level="5.3.5" data-path="ecological-assembly.html"><a href="ecological-assembly.html#assembly-and-saturated-equilibrium"><i class="fa fa-check"></i><b>5.3.5</b> Assembly and saturated equilibrium<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="ecological-assembly.html"><a href="ecological-assembly.html#network-spandrels"><i class="fa fa-check"></i><b>5.4</b> Network spandrels<span></span></a></li>
+<li class="chapter" data-level="5.5" data-path="ecological-assembly.html"><a href="ecological-assembly.html#bottom-up-assembly"><i class="fa fa-check"></i><b>5.5</b> Bottom-up assembly<span></span></a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#an-assembly-graph"><i class="fa fa-check"></i><b>5.5.1</b> An assembly graph<span></span></a></li>
+<li class="chapter" data-level="5.5.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#how-many-invasions"><i class="fa fa-check"></i><b>5.5.2</b> How many invasions?<span></span></a></li>
+<li class="chapter" data-level="5.5.3" data-path="ecological-assembly.html"><a href="ecological-assembly.html#properties-of-the-assembly-graph"><i class="fa fa-check"></i><b>5.5.3</b> Properties of the assembly graph<span></span></a></li>
+<li class="chapter" data-level="5.5.4" data-path="ecological-assembly.html"><a href="ecological-assembly.html#assembly-graphs-for-glv"><i class="fa fa-check"></i><b>5.5.4</b> Assembly graphs for GLV<span></span></a></li>
+<li class="chapter" data-level="5.5.5" data-path="ecological-assembly.html"><a href="ecological-assembly.html#relationship-with-lyapunov-functions"><i class="fa fa-check"></i><b>5.5.5</b> Relationship with Lyapunov functions<span></span></a></li>
+<li class="chapter" data-level="5.5.6" data-path="ecological-assembly.html"><a href="ecological-assembly.html#how-many-assembly-endpoints"><i class="fa fa-check"></i><b>5.5.6</b> How many assembly endpoints?<span></span></a></li>
+<li class="chapter" data-level="5.5.7" data-path="ecological-assembly.html"><a href="ecological-assembly.html#build-your-own-assembly-graph"><i class="fa fa-check"></i><b>5.5.7</b> Build your own assembly graph!<span></span></a></li>
+<li class="chapter" data-level="5.5.8" data-path="ecological-assembly.html"><a href="ecological-assembly.html#conclusions"><i class="fa fa-check"></i><b>5.5.8</b> Conclusions<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html"><i class="fa fa-check"></i><b>6</b> Predicting coexistence in ecological communities<span></span></a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#background-diversity-and-ecosystem-functioning"><i class="fa fa-check"></i><b>6.1</b> Background: Diversity and Ecosystem Functioning<span></span></a></li>
+<li class="chapter" data-level="6.2" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#synthetic-communities-using-the-glv-model"><i class="fa fa-check"></i><b>6.2</b> Synthetic communities using the GLV model<span></span></a></li>
+<li class="chapter" data-level="6.3" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#total-biomass"><i class="fa fa-check"></i><b>6.3</b> Total biomass<span></span></a></li>
+<li class="chapter" data-level="6.4" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#hyperplanes"><i class="fa fa-check"></i><b>6.4</b> Hyperplanes<span></span></a></li>
+<li class="chapter" data-level="6.5" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#fitting-real-data"><i class="fa fa-check"></i><b>6.5</b> Fitting real data<span></span></a></li>
+<li class="chapter" data-level="6.6" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#predicting-real-data-out-of-fit"><i class="fa fa-check"></i><b>6.6</b> Predicting real data out of fit<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html"><i class="fa fa-check"></i><b>7</b> Game theory and replicator dynamics<span></span></a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#game-theory"><i class="fa fa-check"></i><b>7.1</b> Game theory<span></span></a></li>
+<li class="chapter" data-level="7.2" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#two-player-matrix-games"><i class="fa fa-check"></i><b>7.2</b> Two-player matrix games<span></span></a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#example-the-prisoners-dilemma"><i class="fa fa-check"></i><b>7.2.1</b> Example: the prisoner’s dilemma<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#mixed-strategies"><i class="fa fa-check"></i><b>7.3</b> Mixed strategies<span></span></a></li>
+<li class="chapter" data-level="7.4" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#nash-equilibria"><i class="fa fa-check"></i><b>7.4</b> Nash Equilibria<span></span></a></li>
+<li class="chapter" data-level="7.5" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#evolutionary-stable-strategies"><i class="fa fa-check"></i><b>7.5</b> Evolutionary stable strategies<span></span></a></li>
+<li class="chapter" data-level="7.6" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#replicator-dynamics"><i class="fa fa-check"></i><b>7.6</b> Replicator dynamics<span></span></a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#invariants"><i class="fa fa-check"></i><b>7.6.1</b> Invariants<span></span></a></li>
+<li class="chapter" data-level="7.6.2" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#rock-paper-scissor"><i class="fa fa-check"></i><b>7.6.2</b> Rock-paper-scissor<span></span></a></li>
+<li class="chapter" data-level="7.6.3" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#equivalence-with-glv"><i class="fa fa-check"></i><b>7.6.3</b> Equivalence with GLV<span></span></a></li>
+<li class="chapter" data-level="7.6.4" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#hypertournament-games"><i class="fa fa-check"></i><b>7.6.4</b> Hypertournament games<span></span></a></li>
+<li class="chapter" data-level="7.6.5" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#lyapunov-function"><i class="fa fa-check"></i><b>7.6.5</b> Lyapunov function<span></span></a></li>
+<li class="chapter" data-level="7.6.6" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#higher-order-interactions"><i class="fa fa-check"></i><b>7.6.6</b> Higher-order interactions<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html"><i class="fa fa-check"></i><b>8</b> Metapopulation dynamics on networks<span></span></a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#metapopulations"><i class="fa fa-check"></i><b>8.1</b> Metapopulations<span></span></a></li>
+<li class="chapter" data-level="8.2" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#hanski-ovaskainen-2000"><i class="fa fa-check"></i><b>8.2</b> Hanski Ovaskainen 2000<span></span></a></li>
+<li class="chapter" data-level="8.3" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#sis-on-a-contact-network"><i class="fa fa-check"></i><b>8.3</b> SIS on a contact network<span></span></a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#the-full-model"><i class="fa fa-check"></i><b>8.3.1</b> The full model<span></span></a></li>
+<li class="chapter" data-level="8.3.2" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#the-mean-field-approximation"><i class="fa fa-check"></i><b>8.3.2</b> The mean-field approximation<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#metapopulations-on-randomly-distributed-patches"><i class="fa fa-check"></i><b>8.4</b> Metapopulations on randomly distributed patches<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html"><i class="fa fa-check"></i><b>9</b> Quasi-polynomial systems<span></span></a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#global-stability-2"><i class="fa fa-check"></i><b>9.1</b> Global stability<span></span></a></li>
+<li class="chapter" data-level="9.2" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#from-qp-to-glv"><i class="fa fa-check"></i><b>9.2</b> From QP to GLV<span></span></a></li>
+<li class="chapter" data-level="9.3" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#stability-of-glv"><i class="fa fa-check"></i><b>9.3</b> Stability of GLV<span></span></a></li>
+<li class="chapter" data-level="9.4" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#stability-for-glv-embeddings"><i class="fa fa-check"></i><b>9.4</b> Stability for GLV embeddings<span></span></a></li>
+<li class="chapter" data-level="9.5" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#numerical-analysis"><i class="fa fa-check"></i><b>9.5</b> Numerical analysis<span></span></a></li>
+<li class="chapter" data-level="9.6" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#systems-with-many-equations"><i class="fa fa-check"></i><b>9.6</b> Systems with many equations<span></span></a></li>
+<li class="chapter" data-level="9.7" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#glv-embedding-for-non-qp-systems"><i class="fa fa-check"></i><b>9.7</b> GLV embedding for non-QP systems<span></span></a></li>
+</ul></li>
+<li><a href="references.html#references">References<span></span></a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Theoretical Community Ecology</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="models-for-two-populations" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Lecture 2</span> Models for two populations<a href="models-for-two-populations.html#models-for-two-populations" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><strong>Lesson plan</strong>:</p>
+<ol style="list-style-type: decimal">
+<li>We discuss the concepts introduced in the previous chapter in the context of two-dimensional (“planar”) systems of differential equation.</li>
+<li>We summarize important concepts from linear algebra: eigenvalues and eigenvectors, the matrix exponential.</li>
+<li>We show how these concepts can be used to solve linear systems of differential equations.</li>
+<li>We introduce the “community matrix”, allowing us to determine the local asymptotic stability of equilibria.</li>
+<li>We analyze in detail the classic Lotka-Volterra predator-prey model, and a version of the model in which the prey grows logistically.</li>
+</ol>
+<div id="qualitative-analysis-of-models-for-two-populations" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Qualitative analysis of models for two populations<a href="models-for-two-populations.html#qualitative-analysis-of-models-for-two-populations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In this section, we extend the qualitative analysis we’ve performed for a single populations to models with two populations. Many of the methods introduced below extend to the case of multiple populations.</p>
+<div id="isoclines-of-null-growth" class="section level3 hasAnchor" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> Isoclines of null growth<a href="models-for-two-populations.html#isoclines-of-null-growth" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Take a two-dimensional model. For each equation, we can write the solution of <span class="math inline">\(dx/dt = 0\)</span> as a function of <span class="math inline">\(y\)</span>, thereby defining the curve in the <span class="math inline">\((x, y)\)</span> plane (the “phase plane”) for which the growth of species <span class="math inline">\(x\)</span> is zero. For a concrete example, take the classic predator-prey Lotka-Volterra system:</p>
+<p><span class="math display">\[
+\begin{cases}
+\dfrac{d x(t)}{dt} = \rho\, x(t) - \alpha\, x(t)\, y(t)\\
+\dfrac{d y(t)}{dt} = -\delta\, y(t)  + \beta\, x(t)\, y(t)
+\end{cases}
+\]</span></p>
+<p>where <span class="math inline">\(x(t)\)</span> is the density of the prey species at time <span class="math inline">\(t\)</span> and <span class="math inline">\(y(t)\)</span> that of the predator. We can interpret <span class="math inline">\(\rho\)</span> as the intrinsic growth rate of the prey (i.e., the growth when the predator is absent), <span class="math inline">\(\delta\)</span> as the death rate of the predator, and <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> as the loss of (gain in) growth due to predation.</p>
+<div class="boxhistory">
+<p><strong>History: Alfred J. Lotka (1880-1949)</strong></p>
+<p><img src="img/Lotka.jpg" width="25%" style="display: block; margin: auto;" /></p>
+<p>Alfred Lotka was born to French-speaking American parents in Lemberg (then part of the Habsburg empire, now Lviv, Ukraine). He studied in France, Germany and England, receiving a BSc in 1901 and a DSc in 1912 from Birmingham university. He moved to the US in 1902, and worked at the US Patent office, as an editor of Scientific American, and as a statistician at the Metropolitan Life Insturance Company in NYC. He wrote more than a hundred papers and five books, spanning a large range of topics. He’s best known for the book <em>Elements of Physical Biology</em>, his contributions to demography, and one of the first studies dealing with bibliometrics <span class="citation">(<a href="#ref-lotka1926frequency" role="doc-biblioref">Lotka 1926</a>)</span>.</p>
+<p>Starting in 1910 (reprinted as <span class="citation">Lotka (<a href="#ref-lotka2002contribution" role="doc-biblioref">2002</a>)</span>) he investigated coupled differential equations relating to chemical as well as ecological dynamics. In <span class="citation">Lotka (<a href="#ref-lotka1920analytical" role="doc-biblioref">1920</a>)</span> he studied a system of two ODEs that gave rise to perpetual oscillations: <em>“It was, therefore, with considerable surprise that the writer, on applying his method to certain special cases, found these to lead to undamped, and hence indefinitely continued, oscillations.”</em> He went on to describe <em>“1. A species of organism <span class="math inline">\(S_1\)</span>, a plant species, say, deriving its nourishment from a source presented in such large excess that the mass of the source may be considered constant during the period of time with which we are concerned. 2. A species <span class="math inline">\(S_2\)</span>, for example a herbivorous animal species, feeding on <span class="math inline">\(S_1\)</span>.”</em></p>
+<p>The equations he had derived (and then studied later in more detail) are now termed Lotka-Volterra equations.</p>
+</div>
+<p>Let’s look at a possible trajectory for the system, to gain an intuition of what can happen:</p>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-14-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>You can see that the population densities, when drawn in the “phase plane” cycle counterclockwise. Let’s try to understand why.</p>
+<p>The equation for the prey is zero either when <span class="math inline">\(x(t) = 0\)</span> or when <span class="math inline">\(\rho - \alpha\,y(t) = 0\)</span>, yielding <span class="math inline">\(y(t) = \rho / \alpha\)</span>. Whenever the density of the predator <span class="math inline">\(y(t) &lt; \rho / \alpha\)</span>, prey will grow; conversely, whenever <span class="math inline">\(y(t) &gt; \rho / \alpha\)</span>, prey will decline.</p>
+<p>Graphically:</p>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-15-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>Similarly, the equation for the predator is zero either when <span class="math inline">\(y(t) = 0\)</span> or when <span class="math inline">\(-\delta + \beta\, x(t) = 0\)</span>, yielding <span class="math inline">\(x(t) = \delta / \beta\)</span>. Whenever the density of the prey <span class="math inline">\(x(t) &lt; \delta / \beta\)</span>, predators will decline; conversely, whenever <span class="math inline">\(x(t) &gt; x(t) = \delta / \beta\)</span>, predators will grow.</p>
+<p>Graphically:</p>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-16-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>Now let’s put the two graphs together:</p>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-17-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>Clearly, a possible equilibrium of the system is <span class="math inline">\((x^\star, y^\star)^T = (0, 0)^T\)</span> (often called the “trivial” equilibrium). You can see that there is another equilibrium where the two isoclines meet <span class="math inline">\((x^\star, y^\star)^T = (\delta / \beta, \rho / \alpha)^T\)</span>, and that the dynamics will tend to cycle around the equilibrium.</p>
+<p>But how do we know whether dynamics will cycle toward the equilibrium, spiral away from it, or describe closed orbits? To answer this question, we can try to extend our linear analysis by Taylor-expanding the dynamics around the equilibrium.</p>
+</div>
+</div>
+<div id="local-stability-analysis" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Local stability analysis<a href="models-for-two-populations.html#local-stability-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Suppose that a feasible (i.e., positive) equilibrium <span class="math inline">\(x^\star\)</span> exists for a given model. Then we can ask whether it is <strong>attractive</strong> (stable), i.e. if trajectories started at initial condition <span class="math inline">\(x(0)\)</span> will eventually reach <span class="math inline">\(x^\star\)</span>. This problem is in general difficult to solve (but see below); as an alternative, we can test for <strong>local asymptotic stability</strong>, i.e., ask whether <strong>the system will return to the equilibrium if perturbed infinitesimally away from it</strong>. In general, whenever we describe an ecological community as a system of nonlinear, autonomous ODEs:</p>
+<p><span class="math display">\[
+\frac{d x_i (t)}{d t} = f_i (x(t)) \;,
+\]</span></p>
+<p>we define an equilibrium <span class="math inline">\(x^\star\)</span> as a vector of densities such that:</p>
+<p><span class="math display">\[
+\left. \frac{d x_i}{d t} \right|_{{x}^\star} = f_i
+({x}^\star) = 0 \quad \forall i
+\]</span></p>
+<p>A given system might have a multitude of equilibria. When the system is resting at an equilibrium point, it will remain there unless it is perturbed away from it. Local stability analysis is a method to probe whether a system that is perturbed infinitesimally away from an equilibrium will eventually return to it, or rather move away from it.</p>
+<div class="boxmath">
+<p><strong>Taylor series</strong></p>
+<p><em>Single-variable</em>: suppose function <span class="math inline">\(f\)</span> infinitely differentiable around a point <span class="math inline">\(x = a\)</span>. Then</p>
+<p><span class="math display">\[
+f(x) = \sum_{k = 0}^\infty \dfrac{D^{k} f(a)}{k!} (x-a)^k = f(a) + \left. \dfrac{d f}{d x} \right|_{a} (x-a)+ \dfrac{1}{2}\left. \dfrac{d^2 f}{d x^2} \right|_{a} (x-a)^2 + \cdots
+\]</span></p>
+<p>where <span class="math inline">\(D^{k} f(a)\)</span> is the <span class="math inline">\(k\)</span>-th derivative of <span class="math inline">\(f(x)\)</span> w.r.t. <span class="math inline">\(x\)</span>, evaluated at <span class="math inline">\(a\)</span>.</p>
+<p><em>Vector-valued functions</em>: now <span class="math inline">\(f(x)\)</span> is a vector-valued function, and <span class="math inline">\(x\)</span> a vector. To expand around the point <span class="math inline">\(a\)</span>, we need to define the Jacobian matrix</p>
+<p><span class="math display">\[
+J = Df(x)
+\]</span></p>
+<p>with elements:</p>
+<p><span class="math display">\[
+J_{ij} = \dfrac{\partial f_i({x})}{\partial x_j}
+\]</span></p>
+<p>Next, we define the Hessian tensor (in this case, a three-dimensional tensor):</p>
+<p><span class="math display">\[
+H_{ijk} = \dfrac{\partial^2 f_i(x)}{\partial x_j\, \partial x_k}
+\]</span></p>
+<p>It is convenient to write the Taylor expansion in component form:</p>
+<p><span class="math display">\[
+f_i(x) \approx f_i(a) + \sum_j \left . J_{ij} \right|_{a} (x_j - a_j) +\dfrac{1}{2} \sum_j \sum_k \left. H_{ijk} \right|_a (x_j-a_j)(x_k-a_k)
+\]</span></p>
+<p><em>Example</em></p>
+<p>Consider the predator-prey model with Type II functional response:</p>
+<p><span class="math display">\[
+\begin{cases}
+\dfrac{d x(t)}{dt} = f_x = x(t) \left(1 - x(t) - \alpha\, \frac{y(t)}{1+ x(t)} \right)\\
+\dfrac{d y(t)}{dt} = f_y = y(t) \left(-1 + \alpha\, \frac{x(t)}{1+ x(t)} \right)\\
+\end{cases}
+\]</span>
+The system has up to three equilibria: <span class="math inline">\((x^\star, y^\star) = (0,0)\)</span>, <span class="math inline">\((x^\star, y^\star) = (1,0)\)</span>, and, whenever <span class="math inline">\(\alpha &gt; 2\)</span>, <span class="math inline">\(\left(\frac{1}{\alpha - 1}, \frac{\alpha - 2}{(\alpha - 1)^2}\right)\)</span>. The Jacobian for this system is:</p>
+<p><span class="math display">\[
+J = \begin{pmatrix}
+\frac{\partial f_x}{\partial x} &amp; \frac{\partial f_x}{\partial y}\\
+\frac{\partial f_y}{\partial x} &amp; \frac{\partial f_y}{\partial y}\\
+\end{pmatrix} = \begin{pmatrix}
+1 -2 x - \frac{\alpha y}{(x+1)^2} &amp; - \frac{\alpha x}{(x+1)}\\
+\frac{\alpha y}{(x+1)^2} &amp; -1 + \frac{\alpha x}{(x+1)}
+\end{pmatrix}
+\]</span>
+The Hessian has two slices:</p>
+<p><span class="math display">\[
+H_x = \begin{pmatrix}
+\frac{\partial^2 f_x}{\partial x^2} &amp;\frac{\partial^2 f_x}{\partial x \partial y}\\
+\frac{\partial^2 f_x}{\partial x \partial y} &amp; \frac{\partial^2 f_x}{\partial x^2}\\
+\end{pmatrix} = \begin{pmatrix}
+2(-1 + \frac{\alpha y}{(x+1)^3})  &amp;-\frac{\alpha}{(x+1)^2}\\
+-\frac{\alpha}{(x+1)^2} &amp; 0\\
+\end{pmatrix}
+\]</span></p>
+<p>Similarly,</p>
+<p><span class="math display">\[
+H_y = \begin{pmatrix}
+-2 \frac{\alpha y}{(x+1)^3}  &amp;\frac{\alpha}{(x+1)^2}\\
+\frac{\alpha}{(x+1)^2} &amp; 0\\
+\end{pmatrix}
+\]</span>
+Note that each slice of the Hessian is necessarily symmetric.</p>
+<p>Now we can approximate the dynamics at any point; for example, around the equilibrium with the prey alone:</p>
+<p><span class="math display">\[
+\dfrac{d x(t)}{dt} \approx J_{11}|_{x^\star} \Delta x + J_{12}|_{x^\star} \Delta y + \frac{1}{2} H_{x,1,1}|_{x^\star} \Delta x^2 + \frac{1}{2} H_{x,2,2}|_{x^\star} \Delta y^2 + H_{x,1,2}|_{x^\star} \Delta x \Delta y
+\]</span>
+with some calculations, we obtain:</p>
+<p><span class="math display">\[
+\dfrac{d x(t)}{dt} \approx -\Delta x (1 + 2 \Delta x) - \frac{1}{2} \alpha (1 + \Delta x) \Delta y
+\]</span>
+and similarly,</p>
+<p><span class="math display">\[
+\dfrac{d y(t)}{dt} \approx  \frac{1}{2} (\alpha -2 + \alpha \Delta x) \Delta y
+\]</span>
+We can see already that, when <span class="math inline">\(\Delta y &gt; 0\)</span> (the only sensible case), and <span class="math inline">\(\Delta x = 0\)</span>, the predator can invade (at least initially) whenever <span class="math inline">\(\alpha &gt; 2\)</span>.</p>
+<p>By considering higher and higher order terms, we can have an increasingly good approximation of the system—always obtaining a polynomial system.</p>
+</div>
+<p>Suppose that a system is resting at an equilibrium <span class="math inline">\(x^\star\)</span>, and that it is slightly perturbed away from it. <span class="math inline">\(x(t) = \Delta x(t) + x^\star\)</span> is the state of the system immediately after the perturbation. Taylor-expanding around <span class="math inline">\(x^\star\)</span> and taking only the linear term, we have:</p>
+<p><span class="math display">\[
+f(x(t)) = f(x^\star)+ \left. J \right|_{x^\star} \Delta x(t) = \left. J \right|_{x^\star} \Delta x(t)
+\]</span></p>
+<p>Where <span class="math inline">\(J\)</span> is the Jacobian matrix of the system, whose elements are defined as:</p>
+<p><span class="math display">\[
+J_{ij} = \frac{\partial f_i({x})}{\partial x_j}
+\]</span></p>
+<p>Each element of this matrix is therefore a function, whose value depends on <span class="math inline">\(x\)</span>. When we evaluate the Jacobian matrix at an equilibrium point <span class="math inline">\(x^\star\)</span>, we obtain the so-called “community matrix” <span class="math inline">\(M\)</span>:</p>
+<p><span class="math display">\[
+M = \left. {J} \right|_{ {x}^\star}
+\]</span></p>
+<p>Note that, although each system has a unique Jacobian matrix, there are as many community matrices as there are equilibria. The community matrix details the effect of increasing the density of one species on any other species around the equilibrium point.</p>
+<p>We can therefore write the differential equation:</p>
+<p><span class="math display">\[
+\frac{d \Delta x(t)}{dt} \approx M \Delta x(t)
+\]</span></p>
+<p>which is a system of linear differential equations—i.e., the simplest system of ODEs, which can be solved in full generality.</p>
+<p>To solve the system, we need to recap a few important concepts from linear algebra.</p>
+<div class="boxmath">
+<p><strong>Eigenvalues and eigenvectors</strong></p>
+<p>For a matrix <span class="math inline">\(M\)</span>, we have that if <span class="math inline">\(M v = \lambda v\)</span> with <span class="math inline">\(v\)</span> different from the zero vector, then <span class="math inline">\(\lambda\)</span> is an eigenvalue and <span class="math inline">\(v\)</span> the corresponding eigenvector. Practically, you can think of a matrix as an operator that turns a vector into another vector. If the resulting vector is a rescaled version of the initial vector, then you’ve found an eigenvector of the matrix, and the rescaling factor is the associated eigenvalue.</p>
+<p>For example, show that <span class="math inline">\((1, 1)^t\)</span> is an eigenvector of the matrix:</p>
+<p><span class="math display">\[
+A =
+\begin{pmatrix}
+1 + a &amp; 1-a\\
+2a + 2 &amp; -2a
+\end{pmatrix}
+\]</span></p>
+<p>We have:</p>
+<p><span class="math display">\[
+Av = \begin{pmatrix}
+(1 + a) v_1 + (1-a) v_2\\
+(2a + 2) v_1 - 2a v_2
+\end{pmatrix}
+\]</span></p>
+<p>if <span class="math inline">\(v = (1, 1)^t\)</span>, we have:</p>
+<p><span class="math display">\[
+Av = \begin{pmatrix}
+2\\
+2
+\end{pmatrix} = 2\, v
+\]</span></p>
+<p>and as such <span class="math inline">\(v\)</span> is an eigenvector of <span class="math inline">\(M\)</span>, with associated eigenvalue <span class="math inline">\(\lambda = 2\)</span>.</p>
+<p><strong>Finding eigenvalues</strong></p>
+<p>The eigenvalues of a matrix <span class="math inline">\(M\)</span> are the roots (zeros) of the chacteristic polynomial:</p>
+<p><span class="math display">\[
+p(\lambda) = \det(\lambda I - M) = 0
+\]</span></p>
+<p>Where does this equation come from? We write:</p>
+<p><span class="math display">\[
+\begin{aligned}
+A v = \lambda v\\
+\lambda v - Av = 0\\
+(\lambda I - A)v = 0
+\end{aligned}
+\]</span></p>
+<p>if <span class="math inline">\(v\)</span> is nonzero, then the matrix <span class="math inline">\(\lambda I - A\)</span> must be singular (i.e., have at least one eigenvalue equal to zero), and <span class="math inline">\(v\)</span> should be the eigenvector of <span class="math inline">\(\lambda I - A\)</span> corresponding to a zero eigenvalue. Because the determinant is the product of the eigenvalues, then the determinant must also be zero.</p>
+<p>For a <span class="math inline">\(2 \times 2\)</span> matrix, we have:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\det \begin{pmatrix}
+\lambda - a_{11} &amp; -a_{12}\\
+-a_{21} &amp; \lambda -a_{22}
+\end{pmatrix} &amp;= (\lambda - a_{11}) (\lambda - a_{22}) - a_{12} a_{21}\\
+&amp;= \lambda^2 - \lambda (a_{11} + a_{22}) + a_{11} a_{22} -  a_{12} a_{21}
+\end{aligned}
+\]</span></p>
+<p>More compactly,</p>
+<p><span class="math display">\[
+p(\lambda) = \lambda^2 - \lambda\, \text{tr}(A) + \det(A)
+\]</span></p>
+<p>where <span class="math inline">\(\text{tr}(M) = \sum_i M_{ii} = \sum_i \lambda_i\)</span>, and <span class="math inline">\(\det(M) = \prod_i \lambda_i\)</span>. We therefore find:</p>
+<p><span class="math display">\[
+\lambda = \frac{\text{tr}(M) \pm \sqrt{(\text{tr}(M))^2 - 4 \det(M)}}{2}
+\]</span></p>
+<p>Find the eigenvalues for the matrix <span class="math inline">\(A\)</span> above:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\lambda &amp;= \frac{1-a \pm \sqrt{(1-a)^2+8(1+a)}}{2}\\
+&amp;= \frac{1-a \pm \sqrt{(1+a^2 -2 a + 8 a + 8)}}{2} \\
+&amp;= \frac{1-a \pm (a+ 3)}{2}
+\end{aligned}
+\]</span></p>
+<p>The eigenvalues are therefore <span class="math inline">\(\lambda_1 = 2\)</span> and <span class="math inline">\(\lambda_2 = -(1+a)\)</span>.</p>
+<p><strong>Facts about eigenvalues and eigenvectors</strong></p>
+<p>Given a matrix <span class="math inline">\(A\)</span>, of size <span class="math inline">\(n \times n\)</span>, a complex number <span class="math inline">\(\lambda\)</span> is an eigenvalue of <span class="math inline">\(A\)</span> if there is a nonzero (complex) vector <span class="math inline">\(v\)</span> such that <span class="math inline">\(A v = \lambda v\)</span>. The vector <span class="math inline">\(v\)</span> is called the eigenvector of <span class="math inline">\(A\)</span> associated with <span class="math inline">\(\lambda\)</span>. Note that eigenvectors are defined up to multiplication: if <span class="math inline">\(v\)</span> is an eigenvector, then <span class="math inline">\(\alpha\, v\)</span>, with <span class="math inline">\(\alpha\)</span> real is also an eigenvector. Often, we choose <span class="math inline">\(v\)</span> such that its norm <span class="math inline">\(\sqrt{\sum_i v_i^2} = 1\)</span> (called “unit” eigenvector).</p>
+<p>A matrix of size <span class="math inline">\(n\)</span> has at most <span class="math inline">\(n\)</span> distinct eigenvalues. If all eigenvalues are distinct then the eigenvectors are linearly independent. This means that if we build the matrix <span class="math inline">\(V = (v_1, v_2, \ldots, v_n)\)</span>, then <span class="math inline">\(V\)</span> is invertible.</p>
+<p>Because of the fact above, and diagonalizable matrix (e.g., a sufficient condition is to have all eigenvalues distinct), then we can write:</p>
+<p><span class="math display">\[
+A = V \Lambda V^{-1}
+\]</span></p>
+<p>where <span class="math inline">\(V\)</span> is the matrix of eigenvectors, and <span class="math inline">\(\Lambda\)</span> a diagonal matrix with the eigenvalues of <span class="math inline">\(A\)</span> on the diagonal. As such, <span class="math inline">\(V^{-1} A V = \Lambda\)</span>. This is a “similarity transformation”, meaning that the eigenvalues of <span class="math inline">\(A\)</span> and <span class="math inline">\(\Lambda\)</span> are (obviously) the same.</p>
+<p>If the matrix <span class="math inline">\(A\)</span> contains only real numbers (as always the case in population models), then the eigenvalues of <span class="math inline">\(A\)</span> are either real, or form pairs of complex conjugate eigenvalues of form <span class="math inline">\(\alpha \pm i\, \beta\)</span>. This means for example that all odd-sized real matrices have at least one real eigenvalue. If <span class="math inline">\(A\)</span> is real and symmetric, all eigenvalues are real, and all eigenvectors are orthogonal, and if it is diagonalizable we can write <span class="math inline">\(A = V \Lambda V^{T}\)</span>. A diagonal matrix <span class="math inline">\(A\)</span> has eigenvalues <span class="math inline">\(\lambda_i = A_{ii}\)</span></p>
+<p>If <span class="math inline">\(A\)</span> has eigenvalues <span class="math inline">\(\lambda\)</span>, <span class="math inline">\(B = \beta\, A\)</span> has eigenvalues <span class="math inline">\(\beta\, \lambda\)</span>, and <span class="math inline">\(C = A + \gamma\, I\)</span> has eigenvalues <span class="math inline">\(\lambda + \gamma\)</span>. The eigenvalues of <span class="math inline">\(A^2 = A \times A\)</span> are <span class="math inline">\(\lambda^2\)</span>, and the eigenvalues of <span class="math inline">\(A^{-1}\)</span> are <span class="math inline">\(\lambda^{-1}\)</span>. The eigenvalues of <span class="math inline">\(A^T\)</span> are the same as those of <span class="math inline">\(A\)</span> (but the eigenvectors are not the same in general). <span class="math inline">\(A + A^T\)</span> (this matrix is symmetric) has only real eigenvalues, and <span class="math inline">\(A - A^T\)</span> (this matrix is skew-symmetric) has purely imaginary eigenvalues.</p>
+<p>A matrix is positive definite if all its eigenvalues are real and positive. It is positive semi-definite if eigenvalues can be zero. The matrices <span class="math inline">\(AA^T\)</span> and <span class="math inline">\(A^T A\)</span> are positive semi-definite, and have the same eigenvalues up to some zeros (used in SVD and PCA). Correlation and covariance matrices have these form.</p>
+<p>Provided that some mild conditions are satisfied, a matrix with non-negative entries has a unique largest real eigenvalue with a corresponding eigenvector that can be chosen to have strictly positive components (<a href="https://en.wikipedia.org/wiki/Perron%E2%80%93Frobenius_theorem">Perron-Frobenius theorem</a>). A matrix with constant row sums <span class="math inline">\(\theta\)</span> has <span class="math inline">\(\theta\)</span> as the largest eigenvalue, and <span class="math inline">\(v = 1\)</span> as the corresponding eigenvector (e.g., Markov Chains).</p>
+<p><strong>Descartes’ rule of signs</strong></p>
+<p>Take <span class="math inline">\(\alpha_i\)</span> to be the coefficients of the polynomial in standard form:</p>
+<p><span class="math display">\[
+P(\lambda) = \sum_{i=0}^n \alpha_i \lambda^i
+\]</span></p>
+<p>then the number of <em>real positive roots</em> of the polynomial is at most the number of sign changes in the sequence <span class="math inline">\(\alpha_0, \ldots, \alpha_n\)</span>, omitting the zeros. As a corollary, the number of <em>real negative roots</em> is at most the number of sign changes when we write <span class="math inline">\(P(-\lambda)\)</span>. In particular, to have no real positive roots, we need all the <span class="math inline">\(\alpha_i\)</span> to have the same sign (omitting the zeros). The difference between the number of sign changes and the number of positive roots is always even.</p>
+<p><em>Example:</em></p>
+<p><span class="math display">\[
+P(\lambda) = 1 + 4 \lambda - 5 \lambda^2 + \lambda^3
+\]</span>
+we have two sign changes (the signs are <span class="math inline">\(+ + - +\)</span>), and therefore the polynomial has at most two positive real roots (i.e., either two positive roots, or zero). Taking:</p>
+<p><span class="math display">\[
+P(-\lambda) = 1 - 4 \lambda - 5 \lambda^2 - \lambda^3
+\]</span></p>
+<p>we find a single change in signs, meaning that the polynomial has a negative real root. This polynomial has indeed one negative and two positive real roots.</p>
+<p><strong>Routh-Hurwitz criterion</strong></p>
+<p>The Routh-Hurwitz criterion allows to determine whether all the roots of a polynomial lie in the left half-plane (i.e., have negative real part). These polynomials are called stable, for reasons that will be obvious in a moment. It is easily stated for second and third-degree polynomials.</p>
+<p>The polynomial:</p>
+<p><span class="math display">\[
+P(\lambda) = \alpha_0 + \alpha_1 \lambda + \lambda^2
+\]</span>
+is stable if and only if <span class="math inline">\(\alpha_0 &gt; 0\)</span> and <span class="math inline">\(\alpha_1 &gt;0\)</span>.</p>
+<p>The polynomial:</p>
+<p><span class="math display">\[
+P(\lambda) = \alpha_0 + \alpha_1 \lambda + \alpha_2 \lambda^2 + \lambda^3
+\]</span>
+is stable if and only if <span class="math inline">\(\alpha_i &gt; 0\quad \forall i\)</span> and <span class="math inline">\(\alpha_2 \alpha_1 &gt; \alpha_0\)</span>.</p>
+</div>
+<div class="boxhomework">
+<p><strong>Homework 2a</strong></p>
+<p>Show that a matrix <span class="math inline">\(A\)</span> with sign-pattern:</p>
+<p><span class="math display">\[
+S(A) = \begin{pmatrix}
+- &amp; +\\
+- &amp; 0
+\end{pmatrix}
+\]</span></p>
+<p>has eigenvalues with negative real part. When a matrix is stable due to its sign-pattern (rather than specific values of the coefficients), it is called <em>qualitatively stable</em>.</p>
+<p>Find all <span class="math inline">\(3 \times 3\)</span> matrices that are sign-stable. (Showing that there are no purely imaginary eigenvalues is challenging; proving that this is the case is optional).</p>
+</div>
+<div class="boxpaper">
+<p><strong>Key paper: <span class="citation">May (<a href="#ref-may1973qualitative" role="doc-biblioref">1973</a>)</span></strong></p>
+<p>The idea of “sign-stability” was first introduced in economics. May borrowed the idea to analyze simple food webs. Analysis of ecological models based on sign (rather than magnitude) of coefficients was further developed by Richard Levins and collaborators. A good modern summary, along with a few new results, are provided by <span class="citation">Dambacher et al. (<a href="#ref-dambacher2003qualitative" role="doc-biblioref">2003</a>)</span>.</p>
+</div>
+<p>We can now analyze systems of linear ODEs.</p>
+<div class="boxmath">
+<p><strong>Solution of linear systems of ODEs</strong></p>
+<p><em>Matrix exponential</em></p>
+<p>In analogy with the power series</p>
+<p><span class="math display">\[
+e^x = \sum_{n=0}^{\infty} \dfrac{x^n}{n!} = 1 + x + \dfrac{x^2}{2} + \dfrac{x^3}{6} + \dfrac{x^4}{24} + \ldots
+\]</span></p>
+<p>we define the matrix exponential</p>
+<p><span class="math display">\[
+e^X = \sum_{n=0}^{\infty} \dfrac{1}{n!}X^n = I + X + \dfrac{1}{2}X^2 + \dfrac{1}{6}X^3 + \dfrac{1}{24}X^4 + \ldots
+\]</span></p>
+<p>where <span class="math inline">\(X^2 = X \times X\)</span> and so on.</p>
+<p><em>Solution of systems of linear ODEs</em></p>
+<p>This allows us to solve the system of linear differential equations</p>
+<p><span class="math display">\[
+\dfrac{d x(t)}{dt}  = A x(t)
+\]</span></p>
+<p>with <span class="math inline">\(x(0) = x_0\)</span>. When the determinant of <span class="math inline">\(A\)</span>, <span class="math inline">\(\det A \neq 0\)</span>, the only equilibrium of the system is <span class="math inline">\(x^\star = 0\)</span>. If <span class="math inline">\(\det A = 0\)</span> (and <span class="math inline">\(A \neq 0\)</span>), on the other hand, there are infinitely many equilibria, all belonging to the same line (in 2-d). By writing the solution we can determine whether trajectories will approach or move away from an equilibrium. We write the solution as:</p>
+<p><span class="math display">\[
+x(t) = e^{A t} x_0
+\]</span></p>
+<p>Importantly, we have that, if <span class="math inline">\(A\)</span> is diagonalizable,</p>
+<p><span class="math display">\[
+e^{A t} = V e^{\Lambda t}V^{-1}
+\]</span></p>
+<p>where <span class="math inline">\(\Lambda\)</span> is the diagonal matrix containing the eigenvalues of <span class="math inline">\(A\)</span>. Because <span class="math inline">\(\Lambda\)</span> is diagonal, we can solve the exponential explicitly:</p>
+<p><span class="math display">\[
+e^{\Lambda t} = \begin{pmatrix}e^{\lambda_{1}t} &amp; 0 &amp; \ldots &amp; 0\\0&amp; e^{\lambda_{2}t} &amp; \ldots &amp; 0\\\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\0&amp; 0&amp; \ldots &amp; e^{\lambda_{n}t}
+\end{pmatrix}
+\]</span></p>
+<p>Now we want to study the dynamics of the system. To keep the complexity to a minimum, we define <span class="math inline">\(y(t) = V^{-1} x(t)\)</span>, meaning that we are choosing the most appropriate coordinates to study our trajectories. Our equation becomes:</p>
+<p><span class="math display">\[
+\begin{aligned}
+x(t) &amp;= V e^{\Lambda t} V^{-1} x_0\\
+V^{-1}x(t) &amp;= V^{-1}V e^{\Lambda t} V^{-1} x_0\\
+y(t) = e^{\Lambda t} y_0
+\end{aligned}
+\]</span></p>
+<p>And therefore <span class="math inline">\(y_j(t) = e^{(\lambda_j)t} y_j(0)\)</span>. Clealry, if all <span class="math inline">\(\lambda_j\)</span> are real and negative, the trajectories will die out, and the origin <span class="math inline">\(y^\star = 0\)</span> is stable. Similarly, if any eigenvalue is real and positive, then the perturbation will amplify in at least one direction. Next, we consider <span class="math inline">\(\lambda_j\)</span> to be complex. In this case, <span class="math inline">\(\lambda_j = \alpha + i\, \beta\)</span>. Using Euler’s formula, we have</p>
+<p><span class="math display">\[
+y_j(t) = y_j(0)\, e^{(\alpha + i\, \beta) t} = y_j(0)\, e^{\alpha\, t} (\cos(\beta\, t) + i \sin(\beta\, t))
+\]</span></p>
+<p>As such, the solution will oscillate, with damped oscillations whenever <span class="math inline">\(a &lt; 0\)</span> and increasing oscillations when <span class="math inline">\(a &gt; 0\)</span>. For example, a case of damped oscillations:</p>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-18-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>and of increasing oscillations:</p>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-19-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>In fact, all the possible trajectories in planar systems can be classified using only the determinant (product of eigenvalues) and the trace (sum of the eigenvalues) of the matrix <span class="math inline">\(A\)</span>:</p>
+<p><img src="img/phase.jpg" width="95%" style="display: block; margin: auto;" /></p>
+</div>
+<p>Now we can solve the system of ODEs:</p>
+<p><span class="math display">\[
+\frac{d \Delta x(t)}{dt} \approx M \Delta x(t)
+\]</span></p>
+<p>obtaining:</p>
+<p><span class="math display">\[
+\Delta x(t) =  e^{Mt}\Delta x(0) =  Q e^{\Lambda t} Q^{-1}\Delta x(0)
+\]</span></p>
+<p>Where <span class="math inline">\(Q\)</span> is the matrix containing the (unit) eigenvectors of <span class="math inline">\(M\)</span>, and <span class="math inline">\(\Lambda\)</span> is a diagonal matrix containing the eigenvalues of <span class="math inline">\(M\)</span>. As such, the eigenvalues of <span class="math inline">\(M\)</span> determine the stability of the equilibrium <span class="math inline">\({x}^\star\)</span>: if all the eigenvalues have negative real part, then the system will eventually return to the equilibrium after sufficiently small perturbations; conversely, if any of the eigenvalues have positive real part, the system will move away from the equilibrium whenever perturbed. Therefore, depending on the sign of the “rightmost” eigenvalue of <span class="math inline">\({M}\)</span>, <span class="math inline">\(\lambda_1\)</span>, we can determine the stability of <span class="math inline">\({x}^\star\)</span>:</p>
+<p><span class="math display">\[
+  \text{Re}(\lambda_1) \begin{cases}
+    &lt; 0 \to {x}^\star \quad \text{is stable}\\
+    &gt; 0 \to {x}^\star \quad \text{is unstable}
+  \end{cases}
+\]</span></p>
+<div class="boxpaper">
+<p><strong>Key paper: <span class="citation">Neubert and Caswell (<a href="#ref-neubert1997alternatives" role="doc-biblioref">1997</a>)</span></strong></p>
+<p>As we have seen, some simple linear algebra can be used to determine the long-term behavior of an ecological system. As Neubert &amp; Caswell show in this masterful paper, similar techniques can be used to determine the <em>transient</em> behavior of these systems: will perturbations amplify before subsiding? How far from the equilibrium can the system move?</p>
+</div>
+</div>
+<div id="stability-analysis-of-the-lotka-volterra-predator-prey-model" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Stability analysis of the Lotka-Volterra Predator-Prey model<a href="models-for-two-populations.html#stability-analysis-of-the-lotka-volterra-predator-prey-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We still haven’t figured out whether the coexistence equilibrium for the model</p>
+<p><span class="math display">\[
+\begin{cases}
+\dfrac{d x(t)}{dt} = \rho\, x(t) - \alpha\, x(t)\, y(t)\\
+\dfrac{d y(t)}{dt} = -\delta\, y(t)  + \beta\, x(t)\, y(t)
+\end{cases}
+\]</span></p>
+<p>is stable or not. The Jacobian becomes:</p>
+<p><span class="math display">\[
+J =
+\begin{pmatrix}
+\rho - \alpha\, y &amp; -\alpha\, x\\
+\beta\, y &amp; -\delta + \beta\, x
+\end{pmatrix}
+\]</span></p>
+<p>The community matrix for the equilibrium <span class="math inline">\((x^\star, y^\star)^T = (0, 0)^T\)</span> is:</p>
+<p><span class="math display">\[
+M_0 = \left . J \right|_{(0, 0)^T} = \begin{pmatrix}
+\rho &amp; 0\\
+0 &amp; -\delta
+\end{pmatrix}
+\]</span></p>
+<p>which has eigenvalues <span class="math inline">\(\rho &gt; 0\)</span> and <span class="math inline">\(-\delta &lt; 0\)</span> — the equilibrium is unstable. The coexistence equilibrium <span class="math inline">\((x^\star, y^\star)^T = (\delta / \beta, \rho / \alpha)^T\)</span> yields the community matrix:</p>
+<p><span class="math display">\[
+M_c = \left . J \right|_{(\delta / \beta, \rho / \alpha)^T} = \begin{pmatrix}
+0 &amp; -\dfrac{\alpha\, \delta}{\beta} \\
+\dfrac{\beta\, \rho}{\alpha} &amp; 0
+\end{pmatrix}
+\]</span></p>
+<p>which has purely imaginary eigenvalues <span class="math inline">\(\lambda = \pm i \sqrt{\rho \, \delta}\)</span>. As such the equilibrium is not attractive nor unstable. In fact, Lotka and Volterra were (independently) able to prove that the system cycles neutrally around the equilibrium.</p>
+<div class="boxhistory">
+<p><strong>Vito Volterra (1860-1940)</strong></p>
+<p><img src="img/Volterra.jpg" width="25%" style="display: block; margin: auto;" /></p>
+<p>Vito Volterra was born in Ancona (then part of the Papal State) in a poor jewish family. The financial situation precipitated with the death of his father, when Vito was two. Vito and his mother went to live with relatives in Turin and then Florence. Volterra showed amazing mathematical talent at a very young age. Antonio Roiti, professor of physics in Florence, noticed the budding mathematician and hired him as his assistant, so that he could continue his studies. He went on to enroll at the Scuola Normale in Pisa, receiving a degree in Physics in 1882. At age 23 he was made full professor of Rational Mechanics in Pisa, and then in 1900 of Mathematical Physics in Rome. For thirty years, he contributed important studies in mathematics, and enriched academic life in Italy (for example, he was the first director of the National Center for Research). In 1931 he refused to take an oath of loyalty to the fascist regime (only 12 professors out of 1250 refused), and was therefore forced to resign (his take on the fascist enterprise: <em>“Empires die, but Euclid’s theorems keep their youth forever”</em>).</p>
+<p>His interest in mathematical ecology is due to Umberto D’Ancona (his son-in-law), who had studied the trends in fisheries in the Adriatic sea before and immediately after WWI. In 1914-1918 fisheries in the Adriatic had stopped completely because of the conflict. D’Ancona had noticed that, while herbivorous fish had remained about constant, the piscivorous fish had increased dramatically in numbers. The problem piqued Volterra who immediately published a sophisticated study, proposing the same equations studied by Lotka. In a short letter to Nature <span class="citation">(<a href="#ref-volterra1926fluctuations" role="doc-biblioref">Volterra 1926a</a>)</span>, he stated the so-called “Volterra’s Effect” (which he termed “Law III”): <em>“a complete closure of the fishery was a form of ‘protection’ under which the voracious fishes were much the better and prospered accordingly, but the ordinary food-fishes, on which these are accustomed to prey, were worse off than before.”</em> This brief paper was a summary of a much more extensive article <span class="citation">(<a href="#ref-volterra1926variazioni" role="doc-biblioref">Volterra 1926b</a>)</span>.</p>
+<p><em>Lotka-Volterra interactions</em></p>
+<p>In 1927, Lotka wrote to Nature to raise the issue that the equations studied by Volterra and the figures presented in Volterra’s brief article were identical to those found in <em>Elements of Physical Biology</em> (published in 1925). He concluded: <em>“It would be gratifying if Prof. Volterra’s publication should direct attention to a field and method of inquiry which apparently has hitherto passed almost unnoticed.”</em></p>
+<p>Volterra graciously conceded <em>“I recognize his priority, and am sorry not to have known his work, and therefore not have been able to mention it.”</em> He however listed a few points in which the two authors had pursued different directions, and concluded <em>“Working independently the one from the other, we have found some common results, and this confirms the exactitude and the interest in the position of the problem. I agree with him in his conclusions that these studies and these methods of research deserve to receive greated attention from scholars, and should give rise to important applications.”</em></p>
+</div>
+<div id="constant-of-motion-for-lotka-volterra-predator-prey" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Constant of motion for Lotka-Volterra Predator-Prey<a href="models-for-two-populations.html#constant-of-motion-for-lotka-volterra-predator-prey" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Write:</p>
+<p><span class="math display">\[
+\dfrac{d x(t)}{d y(t)} = \dfrac{\rho\, x(t) - \alpha\, x(t)\, y(t)}{-\delta\, y(t)  + \beta\, x(t)\, y(t)}
+\]</span></p>
+<p>As such:</p>
+<p><span class="math display">\[
+(-\delta\, y  + \beta\, x\, y)\, d x = (\rho\, x - \alpha\, x\, y)\, d y
+\]</span></p>
+<p>dividing both sides by <span class="math inline">\(x\, y\)</span>, we obtain:</p>
+<p><span class="math display">\[
+\left(-\dfrac{\delta}{x}  + \beta \right)\, d x = \left(\dfrac{\rho}{y} - \alpha \right)\, d y
+\]</span></p>
+<p>Integrating both sides:</p>
+<p><span class="math display">\[
+\beta\, x - \delta\, \log x = - \alpha\, y + \rho\, \log y + C
+\]</span></p>
+<p>where <span class="math inline">\(C\)</span> is a constant of integration. Rearranging, and substituting <span class="math inline">\(x^\star = \delta / \beta\)</span> and <span class="math inline">\(y^\star = \rho / \alpha\)</span>, we obtain:</p>
+<p><span class="math display">\[
+\beta (x - x^\star \log x) + \alpha (y - y^\star \log y) = C
+\]</span></p>
+<p>This means that the system has a constant of motion (a.k.a. “first integral”): the value of <span class="math inline">\(C\)</span> depends on the initial conditions, and then the system will cycle around the equilibrium in closed orbits. Note that a) <span class="math inline">\(C&gt;0\)</span> if the initial conditions are different from the equilibrium; b) <span class="math inline">\(C = C_m &gt; 0\)</span> if we are at equilibrium; and therefore c) <span class="math inline">\(C \geq C_m\)</span> for all (positive) initial conditions.</p>
+<p>We can use <span class="math inline">\(C\)</span> as a Lyapunov function:</p>
+<p><span class="math display">\[
+V(x,y) = \beta (x - x^\star \log x) + \alpha (y - y^\star \log y)
+\]</span></p>
+<p><span class="math display">\[
+\dfrac{d V(x,y)}{dt} = \left(\beta - \dfrac{\delta}{x} \right) \dfrac{dx}{dt}+\left(\alpha - \dfrac{\rho}{y} \right) \dfrac{dy}{dt} = 0
+\]</span></p>
+<p>Therefore, the dynamics are such that <span class="math inline">\(V(x,y)\)</span> remains constant.</p>
+</div>
+<div id="analysis-of-predator-prey-model-with-logistic-growth-for-the-prey" class="section level3 hasAnchor" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> Analysis of Predator-Prey model with logistic growth for the prey<a href="models-for-two-populations.html#analysis-of-predator-prey-model-with-logistic-growth-for-the-prey" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In the classic Lotka-Volterra model, the local stability analysis of the coexistence equilibrium is inconclusive. When however the prey grows logistically it is easy to show that the equilibrium is now stable. For example, consider the system</p>
+<p><span class="math display">\[
+\begin{cases}
+\dfrac{dx}{dt} = x (1 - x/2 -y)\\
+\dfrac{dy}{dt} = y (x - 1)
+\end{cases}
+\]</span></p>
+<p>First, we find the equilibria. From the first equation, we have <span class="math inline">\(x^\star = 0\)</span>, or <span class="math inline">\(y^\star = 1 - x^\star /2\)</span>; from the second equation, we have <span class="math inline">\(y^\star = 0\)</span> or <span class="math inline">\(x^\star = 1\)</span>. Combining them, we find that either <span class="math inline">\((x^\star, y^\star)^T = (0, 0)^T\)</span> (trival), <span class="math inline">\((x^\star, y^\star)^T = (2, 0)^T\)</span> (boundary), or <span class="math inline">\((x^\star, y^\star)^T = (1, 1/2)^T\)</span> (coexistence).</p>
+<p>The isoclines of zero growth are <span class="math inline">\(y = 1 - x/2\)</span> for the prey, and <span class="math inline">\(x = 1\)</span> for the predator. The Jacobian for the system is</p>
+<p><span class="math display">\[
+J = \begin{pmatrix}
+1 - x - y &amp; -x\\
+y &amp; x -1
+\end{pmatrix}
+\]</span></p>
+<p>At the equilibrium <span class="math inline">\((x^\star, y^\star) = (1, 1/2)\)</span>, we have:</p>
+<p><span class="math display">\[
+M = \begin{pmatrix}
+- \frac{1}{2} &amp; -1\\
+\frac{1}{2} &amp; 0
+\end{pmatrix}
+\]</span></p>
+<p>The trace is <span class="math inline">\(-1/2\)</span> and the determinant <span class="math inline">\(1/2\)</span>, as such the equilibrium is stable. The eigenvalues are given by:</p>
+<p><span class="math display">\[
+p(\lambda) = \lambda^2 + \frac{1}{2} \lambda + \frac{1}{2}
+\]</span></p>
+<p>Obtaining:</p>
+<p><span class="math display">\[
+\lambda = \dfrac{-\frac{1}{2} \pm \sqrt{\frac{1}{4} - 2}}{2} = \dfrac{-1 \pm i \sqrt{7}}{4}
+\]</span></p>
+<p>And as such small perturbations will oscillate back to equilibrium. Numerically:</p>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-21-1.png" width="480" style="display: block; margin: auto;" /></p>
+<div id="global-stability" class="section level4 hasAnchor" number="2.3.2.1">
+<h4><span class="header-section-number">2.3.2.1</span> Global stability<a href="models-for-two-populations.html#global-stability" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>We can write a Lyapunov function for the system above. Take:</p>
+<p><span class="math display">\[
+V(x,y) = \left(x - x^\star - x^\star \log \dfrac{x}{x^\star} \right) +
+\left(y - y^\star - y^\star \log \dfrac{y}{y^\star} \right) = (x - 1 - \log x) + \left(y - \dfrac{1}{2} - \dfrac{1}{2} \log 2y \right)
+\]</span></p>
+<p>Derive with respect to time to obtain:</p>
+<p><span class="math display">\[
+\dfrac{d V(x,y)}{dt} = -\dfrac{1}{2}(1-x)^2 &lt; 0
+\]</span></p>
+<p>As such, the equilibrium <span class="math inline">\((x^\star, y^\star) = (1, 1/2)\)</span> is globally stable.</p>
+<div class="boxhomework">
+<p><strong>Homework 2b</strong></p>
+<p>Take the competitive Lotka-Volterra model:</p>
+<p><span class="math display">\[
+\dfrac{dx}{dt} = D(x) (r - Ax)
+\]</span></p>
+<p>with the coefficients of <span class="math inline">\(r = (r_1, r_2)^T\)</span> and <span class="math inline">\(A\)</span> all positive. Discuss the existence of a coexistence equilibrium and its stability. Write a Lyapunov function for the case in which <span class="math inline">\(A_{11} = A_{22} &gt; A_{12} = A_{21}\)</span>.</p>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent" line-spacing="2">
+<div id="ref-dambacher2003qualitative" class="csl-entry">
+Dambacher, J. M., H.-K. Luh, H. W. Li, and P. A. Rossignol. 2003. Qualitative stability and ambiguity in model ecosystems. The American Naturalist 161:876–888.
+</div>
+<div id="ref-lotka1920analytical" class="csl-entry">
+Lotka, A. J. 1920. Analytical note on certain rhythmic relations in organic systems. Proceedings of the National Academy of Sciences 6:410–415.
+</div>
+<div id="ref-lotka1926frequency" class="csl-entry">
+Lotka, A. J. 1926. The frequency distribution of scientific productivity. Journal of the Washington academy of sciences 16:317–323.
+</div>
+<div id="ref-lotka2002contribution" class="csl-entry">
+Lotka, A. J. 2002. Contribution to the theory of periodic reactions. The Journal of Physical Chemistry 14:271–274.
+</div>
+<div id="ref-may1973qualitative" class="csl-entry">
+May, R. M. 1973. Qualitative stability in model ecosystems. Ecology 54:638–641.
+</div>
+<div id="ref-neubert1997alternatives" class="csl-entry">
+Neubert, M. G., and H. Caswell. 1997. Alternatives to resilience for measuring the responses of ecological systems to perturbations. Ecology 78:653–665.
+</div>
+<div id="ref-volterra1926variazioni" class="csl-entry">
+Volterra, V. 1926b. Variazioni e fluttuazioni del numero d’individui in specie animali conviventi. Memor. Accad. Lincei. 6:31–113.
+</div>
+<div id="ref-volterra1926fluctuations" class="csl-entry">
+Volterra, V. 1926a. Fluctuations in the abundance of a species considered mathematically. Nature 118:558–560.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="models-for-a-single-population.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="generalized-lotka-volterra-model.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Theoretical_Community_Ecology.pdf", "Theoretical_Community_Ecology.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Lecture 9 Quasi-polynomial systems | Theoretical Community Ecology</title>
+  <meta name="description" content="A graduate course in theoretical community ecology focusing on systems with multiple species." />
+  <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Lecture 9 Quasi-polynomial systems | Theoretical Community Ecology" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="A graduate course in theoretical community ecology focusing on systems with multiple species." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Lecture 9 Quasi-polynomial systems | Theoretical Community Ecology" />
+  
+  <meta name="twitter:description" content="A graduate course in theoretical community ecology focusing on systems with multiple species." />
+  
+
+<meta name="author" content="Stefano Allesina" />
+
+
+<meta name="date" content="2022-05-03" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="metapopulation-dynamics-on-networks.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Theoretical Community Ecology</a></li>
+
+<li class="divider"></li>
+<li><a href="index.html#preliminaries">Preliminaries<span></span></a>
+<ul>
+<li><a href="index.html#approach-and-target-audience">Approach and target audience<span></span></a></li>
+<li><a href="index.html#topics">Topics<span></span></a></li>
+<li><a href="index.html#notation">Notation<span></span></a></li>
+<li><a href="index.html#grading-and-code-of-conduct">Grading and code of conduct<span></span></a>
+<ul>
+<li><a href="index.html#homework-80">Homework (80%)<span></span></a></li>
+<li><a href="index.html#review-20">Review (20%)<span></span></a></li>
+<li><a href="index.html#accommodation-for-students-with-disabilities">Accommodation for students with disabilities<span></span></a></li>
+</ul></li>
+<li><a href="index.html#a-note-about-biographies">A note about biographies<span></span></a></li>
+<li><a href="index.html#sources">Sources<span></span></a></li>
+<li><a href="index.html#acknowledgements">Acknowledgements<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html"><i class="fa fa-check"></i><b>1</b> Models for a single population<span></span></a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#types-of-dynamical-systems"><i class="fa fa-check"></i><b>1.1</b> Types of dynamical systems<span></span></a></li>
+<li class="chapter" data-level="1.2" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#initial-value-problems"><i class="fa fa-check"></i><b>1.2</b> Initial-value problems<span></span></a></li>
+<li class="chapter" data-level="1.3" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#solvable-model-exponential-growth"><i class="fa fa-check"></i><b>1.3</b> Solvable model: Exponential growth<span></span></a></li>
+<li class="chapter" data-level="1.4" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#solvable-model-logistic-growth"><i class="fa fa-check"></i><b>1.4</b> Solvable model: Logistic growth<span></span></a></li>
+<li class="chapter" data-level="1.5" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#qualitative-analysis-of-models-for-a-single-population"><i class="fa fa-check"></i><b>1.5</b> Qualitative analysis of models for a single population<span></span></a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#stability-using-derivatives"><i class="fa fa-check"></i><b>1.5.1</b> Stability using derivatives<span></span></a></li>
+<li class="chapter" data-level="1.5.2" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#what-are-we-doing-when-probing-stability-using-derivatives"><i class="fa fa-check"></i><b>1.5.2</b> What are we doing when probing stability using derivatives?<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#bifurcations"><i class="fa fa-check"></i><b>1.6</b> Bifurcations<span></span></a></li>
+<li class="chapter" data-level="1.7" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#long-term-behavior-of-1-d-systems"><i class="fa fa-check"></i><b>1.7</b> Long term behavior of 1-D systems<span></span></a></li>
+<li class="chapter" data-level="1.8" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#lyapunov-functions"><i class="fa fa-check"></i><b>1.8</b> Lyapunov functions<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html"><i class="fa fa-check"></i><b>2</b> Models for two populations<span></span></a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#qualitative-analysis-of-models-for-two-populations"><i class="fa fa-check"></i><b>2.1</b> Qualitative analysis of models for two populations<span></span></a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#isoclines-of-null-growth"><i class="fa fa-check"></i><b>2.1.1</b> Isoclines of null growth<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#local-stability-analysis"><i class="fa fa-check"></i><b>2.2</b> Local stability analysis<span></span></a></li>
+<li class="chapter" data-level="2.3" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#stability-analysis-of-the-lotka-volterra-predator-prey-model"><i class="fa fa-check"></i><b>2.3</b> Stability analysis of the Lotka-Volterra Predator-Prey model<span></span></a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#constant-of-motion-for-lotka-volterra-predator-prey"><i class="fa fa-check"></i><b>2.3.1</b> Constant of motion for Lotka-Volterra Predator-Prey<span></span></a></li>
+<li class="chapter" data-level="2.3.2" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#analysis-of-predator-prey-model-with-logistic-growth-for-the-prey"><i class="fa fa-check"></i><b>2.3.2</b> Analysis of Predator-Prey model with logistic growth for the prey<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html"><i class="fa fa-check"></i><b>3</b> Generalized Lotka-Volterra model<span></span></a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#formulation"><i class="fa fa-check"></i><b>3.1</b> Formulation<span></span></a></li>
+<li class="chapter" data-level="3.2" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#a-single-population"><i class="fa fa-check"></i><b>3.2</b> A single population<span></span></a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#metapopulation-dynamics"><i class="fa fa-check"></i><b>3.2.1</b> Metapopulation dynamics<span></span></a></li>
+<li class="chapter" data-level="3.2.2" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#s-i-s-model"><i class="fa fa-check"></i><b>3.2.2</b> S-I-S model<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#multi-species-dynamics"><i class="fa fa-check"></i><b>3.3</b> Multi-species dynamics<span></span></a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#existence-of-an-equilibrium"><i class="fa fa-check"></i><b>3.3.1</b> Existence of an equilibrium<span></span></a></li>
+<li class="chapter" data-level="3.3.2" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#stability-of-the-coexistence-equilibrium"><i class="fa fa-check"></i><b>3.3.2</b> Stability of the coexistence equilibrium<span></span></a></li>
+<li class="chapter" data-level="3.3.3" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#types-of-dynamics"><i class="fa fa-check"></i><b>3.3.3</b> Types of dynamics<span></span></a></li>
+<li class="chapter" data-level="3.3.4" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#the-equilibrium-is-the-time-average"><i class="fa fa-check"></i><b>3.3.4</b> The equilibrium is the time-average<span></span></a></li>
+<li class="chapter" data-level="3.3.5" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#lyapunov-diagonal-stability-and-global-stability"><i class="fa fa-check"></i><b>3.3.5</b> Lyapunov diagonal stability and global stability<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#macarthurs-consumer-resource-model"><i class="fa fa-check"></i><b>3.4</b> MacArthur’s consumer-resource model<span></span></a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#existence-of-an-equilibrium-1"><i class="fa fa-check"></i><b>3.4.1</b> Existence of an equilibrium<span></span></a></li>
+<li class="chapter" data-level="3.4.2" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#global-stability-1"><i class="fa fa-check"></i><b>3.4.2</b> Global stability<span></span></a></li>
+<li class="chapter" data-level="3.4.3" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#separation-of-time-scales"><i class="fa fa-check"></i><b>3.4.3</b> Separation of time-scales<span></span></a></li>
+<li class="chapter" data-level="3.4.4" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#lyapunov-function-for-symmetric-lotka-volterra"><i class="fa fa-check"></i><b>3.4.4</b> Lyapunov function for symmetric Lotka-Volterra<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#further-readings"><i class="fa fa-check"></i><b>3.5</b> Further readings<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html"><i class="fa fa-check"></i><b>4</b> Stability of large ecological communities<span></span></a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#complexity-and-stability"><i class="fa fa-check"></i><b>4.1</b> Complexity and stability<span></span></a></li>
+<li class="chapter" data-level="4.2" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#the-stability-of-random-ecosystems"><i class="fa fa-check"></i><b>4.2</b> The stability of random ecosystems<span></span></a></li>
+<li class="chapter" data-level="4.3" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#accounting-for-interaction-types"><i class="fa fa-check"></i><b>4.3</b> Accounting for interaction types<span></span></a></li>
+<li class="chapter" data-level="4.4" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#symmetric-matrices"><i class="fa fa-check"></i><b>4.4</b> Symmetric matrices<span></span></a></li>
+<li class="chapter" data-level="4.5" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#covariance-matrices"><i class="fa fa-check"></i><b>4.5</b> Covariance matrices<span></span></a></li>
+<li class="chapter" data-level="4.6" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#small-rank-perturbations"><i class="fa fa-check"></i><b>4.6</b> Small-rank perturbations<span></span></a></li>
+<li class="chapter" data-level="4.7" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#structured-matrices"><i class="fa fa-check"></i><b>4.7</b> Structured matrices<span></span></a></li>
+<li class="chapter" data-level="4.8" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#further-readings-1"><i class="fa fa-check"></i><b>4.8</b> Further readings<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="ecological-assembly.html"><a href="ecological-assembly.html"><i class="fa fa-check"></i><b>5</b> Ecological assembly<span></span></a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#assembly"><i class="fa fa-check"></i><b>5.1</b> Assembly<span></span></a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#what-makes-the-study-of-assembly-difficult"><i class="fa fa-check"></i><b>5.1.1</b> What makes the study of assembly difficult?<span></span></a></li>
+<li class="chapter" data-level="5.1.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#ecological-assembly-without-tears"><i class="fa fa-check"></i><b>5.1.2</b> Ecological assembly without tears<span></span></a></li>
+<li class="chapter" data-level="5.1.3" data-path="ecological-assembly.html"><a href="ecological-assembly.html#top-down-and-bottom-up-assembly"><i class="fa fa-check"></i><b>5.1.3</b> Top-down and bottom-up assembly<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#modeling-invasions"><i class="fa fa-check"></i><b>5.2</b> Modeling invasions<span></span></a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#invasions-in-multispecies-communities"><i class="fa fa-check"></i><b>5.2.1</b> Invasions in multispecies communities<span></span></a></li>
+<li class="chapter" data-level="5.2.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#lyapunov-stability-and-saturated-equilibria"><i class="fa fa-check"></i><b>5.2.2</b> Lyapunov stability and saturated equilibria<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="ecological-assembly.html"><a href="ecological-assembly.html#top-down-assembly"><i class="fa fa-check"></i><b>5.3</b> Top-down assembly<span></span></a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#a-trivial-case"><i class="fa fa-check"></i><b>5.3.1</b> A trivial case<span></span></a></li>
+<li class="chapter" data-level="5.3.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#simulating-final-composition"><i class="fa fa-check"></i><b>5.3.2</b> Simulating final composition<span></span></a></li>
+<li class="chapter" data-level="5.3.3" data-path="ecological-assembly.html"><a href="ecological-assembly.html#a-random-zoo"><i class="fa fa-check"></i><b>5.3.3</b> A random zoo<span></span></a></li>
+<li class="chapter" data-level="5.3.4" data-path="ecological-assembly.html"><a href="ecological-assembly.html#a-random-zoo-in-the-wild"><i class="fa fa-check"></i><b>5.3.4</b> A random zoo in the wild<span></span></a></li>
+<li class="chapter" data-level="5.3.5" data-path="ecological-assembly.html"><a href="ecological-assembly.html#assembly-and-saturated-equilibrium"><i class="fa fa-check"></i><b>5.3.5</b> Assembly and saturated equilibrium<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="ecological-assembly.html"><a href="ecological-assembly.html#network-spandrels"><i class="fa fa-check"></i><b>5.4</b> Network spandrels<span></span></a></li>
+<li class="chapter" data-level="5.5" data-path="ecological-assembly.html"><a href="ecological-assembly.html#bottom-up-assembly"><i class="fa fa-check"></i><b>5.5</b> Bottom-up assembly<span></span></a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#an-assembly-graph"><i class="fa fa-check"></i><b>5.5.1</b> An assembly graph<span></span></a></li>
+<li class="chapter" data-level="5.5.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#how-many-invasions"><i class="fa fa-check"></i><b>5.5.2</b> How many invasions?<span></span></a></li>
+<li class="chapter" data-level="5.5.3" data-path="ecological-assembly.html"><a href="ecological-assembly.html#properties-of-the-assembly-graph"><i class="fa fa-check"></i><b>5.5.3</b> Properties of the assembly graph<span></span></a></li>
+<li class="chapter" data-level="5.5.4" data-path="ecological-assembly.html"><a href="ecological-assembly.html#assembly-graphs-for-glv"><i class="fa fa-check"></i><b>5.5.4</b> Assembly graphs for GLV<span></span></a></li>
+<li class="chapter" data-level="5.5.5" data-path="ecological-assembly.html"><a href="ecological-assembly.html#relationship-with-lyapunov-functions"><i class="fa fa-check"></i><b>5.5.5</b> Relationship with Lyapunov functions<span></span></a></li>
+<li class="chapter" data-level="5.5.6" data-path="ecological-assembly.html"><a href="ecological-assembly.html#how-many-assembly-endpoints"><i class="fa fa-check"></i><b>5.5.6</b> How many assembly endpoints?<span></span></a></li>
+<li class="chapter" data-level="5.5.7" data-path="ecological-assembly.html"><a href="ecological-assembly.html#build-your-own-assembly-graph"><i class="fa fa-check"></i><b>5.5.7</b> Build your own assembly graph!<span></span></a></li>
+<li class="chapter" data-level="5.5.8" data-path="ecological-assembly.html"><a href="ecological-assembly.html#conclusions"><i class="fa fa-check"></i><b>5.5.8</b> Conclusions<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html"><i class="fa fa-check"></i><b>6</b> Predicting coexistence in ecological communities<span></span></a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#background-diversity-and-ecosystem-functioning"><i class="fa fa-check"></i><b>6.1</b> Background: Diversity and Ecosystem Functioning<span></span></a></li>
+<li class="chapter" data-level="6.2" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#synthetic-communities-using-the-glv-model"><i class="fa fa-check"></i><b>6.2</b> Synthetic communities using the GLV model<span></span></a></li>
+<li class="chapter" data-level="6.3" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#total-biomass"><i class="fa fa-check"></i><b>6.3</b> Total biomass<span></span></a></li>
+<li class="chapter" data-level="6.4" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#hyperplanes"><i class="fa fa-check"></i><b>6.4</b> Hyperplanes<span></span></a></li>
+<li class="chapter" data-level="6.5" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#fitting-real-data"><i class="fa fa-check"></i><b>6.5</b> Fitting real data<span></span></a></li>
+<li class="chapter" data-level="6.6" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#predicting-real-data-out-of-fit"><i class="fa fa-check"></i><b>6.6</b> Predicting real data out of fit<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html"><i class="fa fa-check"></i><b>7</b> Game theory and replicator dynamics<span></span></a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#game-theory"><i class="fa fa-check"></i><b>7.1</b> Game theory<span></span></a></li>
+<li class="chapter" data-level="7.2" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#two-player-matrix-games"><i class="fa fa-check"></i><b>7.2</b> Two-player matrix games<span></span></a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#example-the-prisoners-dilemma"><i class="fa fa-check"></i><b>7.2.1</b> Example: the prisoner’s dilemma<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#mixed-strategies"><i class="fa fa-check"></i><b>7.3</b> Mixed strategies<span></span></a></li>
+<li class="chapter" data-level="7.4" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#nash-equilibria"><i class="fa fa-check"></i><b>7.4</b> Nash Equilibria<span></span></a></li>
+<li class="chapter" data-level="7.5" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#evolutionary-stable-strategies"><i class="fa fa-check"></i><b>7.5</b> Evolutionary stable strategies<span></span></a></li>
+<li class="chapter" data-level="7.6" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#replicator-dynamics"><i class="fa fa-check"></i><b>7.6</b> Replicator dynamics<span></span></a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#invariants"><i class="fa fa-check"></i><b>7.6.1</b> Invariants<span></span></a></li>
+<li class="chapter" data-level="7.6.2" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#rock-paper-scissor"><i class="fa fa-check"></i><b>7.6.2</b> Rock-paper-scissor<span></span></a></li>
+<li class="chapter" data-level="7.6.3" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#equivalence-with-glv"><i class="fa fa-check"></i><b>7.6.3</b> Equivalence with GLV<span></span></a></li>
+<li class="chapter" data-level="7.6.4" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#hypertournament-games"><i class="fa fa-check"></i><b>7.6.4</b> Hypertournament games<span></span></a></li>
+<li class="chapter" data-level="7.6.5" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#lyapunov-function"><i class="fa fa-check"></i><b>7.6.5</b> Lyapunov function<span></span></a></li>
+<li class="chapter" data-level="7.6.6" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#higher-order-interactions"><i class="fa fa-check"></i><b>7.6.6</b> Higher-order interactions<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html"><i class="fa fa-check"></i><b>8</b> Metapopulation dynamics on networks<span></span></a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#metapopulations"><i class="fa fa-check"></i><b>8.1</b> Metapopulations<span></span></a></li>
+<li class="chapter" data-level="8.2" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#hanski-ovaskainen-2000"><i class="fa fa-check"></i><b>8.2</b> Hanski Ovaskainen 2000<span></span></a></li>
+<li class="chapter" data-level="8.3" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#sis-on-a-contact-network"><i class="fa fa-check"></i><b>8.3</b> SIS on a contact network<span></span></a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#the-full-model"><i class="fa fa-check"></i><b>8.3.1</b> The full model<span></span></a></li>
+<li class="chapter" data-level="8.3.2" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#the-mean-field-approximation"><i class="fa fa-check"></i><b>8.3.2</b> The mean-field approximation<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#metapopulations-on-randomly-distributed-patches"><i class="fa fa-check"></i><b>8.4</b> Metapopulations on randomly distributed patches<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html"><i class="fa fa-check"></i><b>9</b> Quasi-polynomial systems<span></span></a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#global-stability-2"><i class="fa fa-check"></i><b>9.1</b> Global stability<span></span></a></li>
+<li class="chapter" data-level="9.2" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#from-qp-to-glv"><i class="fa fa-check"></i><b>9.2</b> From QP to GLV<span></span></a></li>
+<li class="chapter" data-level="9.3" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#stability-of-glv"><i class="fa fa-check"></i><b>9.3</b> Stability of GLV<span></span></a></li>
+<li class="chapter" data-level="9.4" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#stability-for-glv-embeddings"><i class="fa fa-check"></i><b>9.4</b> Stability for GLV embeddings<span></span></a></li>
+<li class="chapter" data-level="9.5" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#numerical-analysis"><i class="fa fa-check"></i><b>9.5</b> Numerical analysis<span></span></a></li>
+<li class="chapter" data-level="9.6" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#systems-with-many-equations"><i class="fa fa-check"></i><b>9.6</b> Systems with many equations<span></span></a></li>
+<li class="chapter" data-level="9.7" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#glv-embedding-for-non-qp-systems"><i class="fa fa-check"></i><b>9.7</b> GLV embedding for non-QP systems<span></span></a></li>
+</ul></li>
+<li><a href="references.html#references">References<span></span></a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Theoretical Community Ecology</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="quasi-polynomial-systems" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">Lecture 9</span> Quasi-polynomial systems<a href="quasi-polynomial-systems.html#quasi-polynomial-systems" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><strong>Lesson plan</strong>:</p>
+<ol style="list-style-type: decimal">
+<li>We discuss a fairly general class of dynamical systems, called “Quasi-Polynomial” (QP-)systems.</li>
+<li>We show how any QP-system can be written as a larger-dimensional Generalized Lotka-Volterra model.</li>
+<li>This means that the machinery we built for analyzing GLV models can be used to tackle a variety of models that at face value do not seem to fall in this class. We show how to determine global stability in several ecological and epidemiological models using this method.</li>
+<li>This also shows that the GLV model is in a way a “universal” model.</li>
+</ol>
+<div id="global-stability-2" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> Global stability<a href="quasi-polynomial-systems.html#global-stability-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Many dynamical models describing ecological, epidemiological and evolutionary systems have equilibria that are globally stable (e.g., SIR, SIS, logistic growth, Levins’ metapopulation model, MacArthur’s consumer-resource model).</p>
+<p>By far, the most powerful method to prove the global stability of an equilibrium is the so-called “Lyapunov direct method”, which we’ve encountered several times already. The main drawback of this method is that devising an appropriate Lyapunov function requires ingenuity and—as <span class="citation">Strogatz (<a href="#ref-strogatz2018nonlinear" role="doc-biblioref">2018</a>)</span> put it—a good deal of “divine inspiration”. Here we take a different approach: we embed our model of interest into a (possibly larger) GLV model, and then attempt applying the typical Lyapunov function for GLV to our transformed system (an embedding originally proposed by <span class="citation">Brenig (<a href="#ref-brenig1988complete" role="doc-biblioref">1988</a>)</span>). In practice, this will require us to think carefully about how perturbations in the original system translate into the perturbations of the (larger) GLV model.</p>
+<p>We first show how systems that are in “Quasi-Polynomial” (QP) form can be embedded into a larger GLV by means of simple matrix operations. Then, we discuss strategies to determine global stability for the embedding. Finally, we show that other models can be turned into QP, and from there into GLV.</p>
+</div>
+<div id="from-qp-to-glv" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> From QP to GLV<a href="quasi-polynomial-systems.html#from-qp-to-glv" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We call a Quasi-Polynomial system a system of <span class="math inline">\(n\)</span> ODEs that can be written as:</p>
+<p><span class="math display">\[
+\frac{d x_i(t)}{d t} = x_i(t) \left(s_i + \sum_{j = i}^m A_{ij} \prod_{k=1}^n x_k(t)^{B_{jk}}\right)
+\]</span></p>
+<p>where <span class="math inline">\(s\)</span> is a vector of “growth rates” (not necessarily positive), <span class="math inline">\(A\)</span> is a matrix of interactions, and <span class="math inline">\(B\)</span> a <span class="math inline">\(m \times n\)</span> matrix of exponents. Note that if we take <span class="math inline">\(m = n\)</span> and <span class="math inline">\(B = I_n\)</span> (the identity matrix), we recover the GLV model. If <span class="math inline">\(B\)</span> contains only integers, then we have a polynomial system. Extending this model to real (but not necessarily integer) numbers <span class="math inline">\(B_{jk}\)</span>, we have a “Quasi-Polynomial” (QP) system (<span class="citation">Hernández-Bermejo et al. (<a href="#ref-hernandez1998algebraic" role="doc-biblioref">1998</a>)</span>).</p>
+<p>In general, we assume that <span class="math inline">\(A\)</span> is of size <span class="math inline">\(n \times m\)</span>, <span class="math inline">\(B\)</span> is <span class="math inline">\(m \times n\)</span>, and that the <span class="math inline">\(x_i(t)\)</span> are real and positive (if that’s not the case, one needs to perform a change of variables that ensures positivity). The system has <span class="math inline">\(n\)</span> variables (the <span class="math inline">\(x_i(t)\)</span>), and we can identify <span class="math inline">\(m\)</span> “quasi-monomials”:</p>
+<p><span class="math display">\[
+z_j = \prod_{k=1}^n x_k^{B_{jk}}
+\]</span></p>
+<p>Several models in ecology and evolution belong to this class. For example, a model that departs from the GLV family is the so-called Leslie-Gower predator-prey model (<span class="citation">Leslie (<a href="#ref-leslie1948some" role="doc-biblioref">1948</a>)</span>):</p>
+<p><span class="math display">\[
+\begin{cases}
+\dfrac{d H}{dt} = H(\rho_h - \alpha_h P - \beta_h H)\\
+\dfrac{d P}{dt} = P \left(\rho_p - \alpha_p \dfrac{P}{H} \right)
+\end{cases}
+\]</span></p>
+<p>The equation for the prey (<span class="math inline">\(H\)</span>) is in GLV form. However, the rate of increase (decrease) of the predator depends on the ratio between predators and prey: when prey are abundant, predators grow with rate close to <span class="math inline">\(\rho_p\)</span>; if prey are scarce, on the other hand, predators decline.</p>
+<div class="boxhistory">
+<p><strong>History: Patrick H. Leslie (1900-1972)</strong></p>
+<p><img src="img/Leslie.jpg" width="35%" style="display: block; margin: auto;" /></p>
+<p>Born in Scotland, he studied physiology at Oxford University (Christ Church College). He worked for a few years in the department of pathology, and in 1935 he joined the Bureau of Animal Population, a new center led by Charles Elton. There, he worked on population dynamics mergin theoretical work and applications.</p>
+<p>In 1945 he published in Biometrika his masterpiece, <em>On the use of matrices in certain population mathematics</em> (<span class="citation">Leslie (<a href="#ref-leslie1945use" role="doc-biblioref">1945</a>)</span>). In this paper, he developed models for structured populations, which were then extended in several ways, and are still in use today. The so-called Leslie-Gower predator-prey model is developed in a follow-up paper in the same journal (<span class="citation">Leslie (<a href="#ref-leslie1948some" role="doc-biblioref">1948</a>)</span>).</p>
+</div>
+<p>Solving for the coexistence equilibrium, we find:</p>
+<p><span class="math display">\[
+\begin{cases}
+H^\star = \dfrac{\alpha_p \rho_h}{\alpha_p \beta_h + \alpha_h \rho_p}\\
+P^\star = \dfrac{\rho_p \rho_h}{\alpha_p \beta_h + \alpha_h \rho_p}
+\end{cases}
+\]</span></p>
+<p>Note that the model is in QP-form. We recognize three monomials:</p>
+<p><span class="math display">\[
+\begin{pmatrix}
+H\\
+P\\
+\dfrac{P}{H}
+\end{pmatrix}
+=
+\begin{pmatrix}
+H^1 P^0\\
+H^0 P^1\\
+H^{-1}P^1
+\end{pmatrix}
+\]</span></p>
+<p>And the associated parameters:</p>
+<p><span class="math display">\[
+s = (\rho_h, \rho_p) \quad A = \begin{pmatrix} -\beta_h &amp; -\alpha_h &amp; 0\\ 0 &amp; 0 &amp; -\alpha_p \end{pmatrix} \quad B = \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1 \\ -1 &amp; 1 \end{pmatrix}
+\]</span></p>
+<p>Now we want to turn this models into a Generalized Lotka-Volterra model. We take the new variables to be our monomials:</p>
+<p><span class="math display">\[
+z =
+\begin{pmatrix}
+z_1\\
+z_2\\
+z_3
+\end{pmatrix}
+=
+\begin{pmatrix}
+H^1 P^0\\
+H^0 P^1\\
+H^{-1}P^1
+\end{pmatrix}
+\]</span></p>
+<p>and transform the growth rates:</p>
+<p><span class="math display">\[
+r = \begin{pmatrix}
+r_1\\
+r_2\\
+r_3
+\end{pmatrix} = B s = \begin{pmatrix}
+\rho_h\\
+\rho_p\\
+\rho_p - \rho_h
+\end{pmatrix}
+\]</span></p>
+<p>and the matrix of interactions:</p>
+<p><span class="math display">\[
+M = B A = \begin{pmatrix}
+-\beta_h &amp; -\alpha_h &amp; 0\\
+0 &amp; 0 &amp; -\alpha_p\\
+\beta_h &amp; \alpha_h &amp; -\alpha_p\
+\end{pmatrix}
+\]</span></p>
+<p>The GLV system is clearly equivalent (topologically) to the original system, but has now three equations instead of two. Using the transformation <span class="math inline">\(r = Bs\)</span>, <span class="math inline">\(M = BA\)</span>, we can embed any QP system into a (typically, larger) GLV.</p>
+</div>
+<div id="stability-of-glv" class="section level2 hasAnchor" number="9.3">
+<h2><span class="header-section-number">9.3</span> Stability of GLV<a href="quasi-polynomial-systems.html#stability-of-glv" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Before proceeding to prove the stability of the coexistence equilibrium for the Leslie-Gower model, we need to revisit the Lyapunov function for the GLV introduced by <span class="citation">Goh (<a href="#ref-goh1977global" role="doc-biblioref">1977</a>)</span>, which we have encountered before. Take a GLV:</p>
+<p><span class="math display">\[
+\dfrac{d z}{d t} = D(z)(r + M z) = D(z)(M(z - z^\star)) = D(z)M\Delta z
+\]</span></p>
+<p>where <span class="math inline">\(\Delta z\)</span> is a vector of deviations from the equilibrium. Suppose that all species densities remain positive through the dynamics; then, we can write the dynamics of the logarithm of the species densities (where <span class="math inline">\(\log z\)</span> is a vector containing the logarithms of the densities):</p>
+<p><span class="math display">\[
+\dfrac{d \log z}{d t} = r + M z = M \Delta z
+\]</span></p>
+<p>We can take the “candidate Lyapunov function”:</p>
+<p><span class="math display">\[
+V = 1^T D(c)(z - z^\star - D(z^\star) \log (z/z^\star))
+\]</span></p>
+<p>where <span class="math inline">\(D(c)\)</span> is a diagonal matrix with positive diagonal coefficients. Deriving w.r.t. time, we find:</p>
+<p><span class="math display">\[
+\dfrac{dV}{dt} = 1^T D(c) \left( \dfrac{dz}{dt} - D(z^\star) \dfrac{d\log z}{d t} \right)
+\]</span></p>
+<p>substituting:</p>
+<p><span class="math display">\[
+\dfrac{dV}{dt} = 1^T D(c) \left( D(z) M \Delta z  - D(z^\star) M \Delta z \right) =
+1^T D(c) D(\Delta z) M \Delta z
+\]</span></p>
+<p>Because diagonal matrices commute (i.e., <span class="math inline">\(D_1 D_2 = D_2 D_1\)</span>), we can write:</p>
+<p><span class="math display">\[
+\dfrac{dV}{dt} = 1^T D(\Delta z) D(c) M \Delta z
+\]</span></p>
+<p>Finally, we absorb the <span class="math inline">\(D(\Delta z)\)</span>:</p>
+<p><span class="math display">\[
+\dfrac{dV}{dt} = \Delta z^T D(c) M \Delta z
+\]</span></p>
+<p>If a matrix <span class="math inline">\(K\)</span> is negative definite (semi-definite), then <span class="math inline">\(x^T K x &lt; 0\)</span> (<span class="math inline">\(\leq 0\)</span>) for any <span class="math inline">\(x \neq 0\)</span>. As such, if we were to find a positive definite, diagonal matrix <span class="math inline">\(D(c)\)</span> such that <span class="math inline">\(D(c) M\)</span> is negative semi-definite, we would have proved the global stability of the equilibrium (<span class="math inline">\(V\)</span> is positive whenever <span class="math inline">\(z &gt; 0\)</span> and <span class="math inline">\(z \neq z^\star\)</span>, and if <span class="math inline">\(D(c) M\)</span> is negative definite <span class="math inline">\(V\)</span> decreases in time). Because it is typically easier to work with symmetric matrices, w.l.o.g. we can take <span class="math inline">\(K = \frac{1}{2} (D(c)M + M^T D(c))\)</span>, which yields exactly the same result: <span class="math inline">\(\Delta z^T D(c) M \Delta z = \Delta z^T K \Delta z\)</span>.</p>
+<p>The expression above has been used countless times to prove the stability of GLV models. Note that when our model is indeed a GLV, the <span class="math inline">\(\Delta z_i\)</span> are radially unbounded: <span class="math inline">\(\Delta z_i \in [-z_i^\star, \infty)\)</span> (where the left bound is given by the fact that <span class="math inline">\(z_i\)</span> must be positive). In this case, it therefore makes much sense to try to make <span class="math inline">\(K\)</span> negative definite.</p>
+</div>
+<div id="stability-for-glv-embeddings" class="section level2 hasAnchor" number="9.4">
+<h2><span class="header-section-number">9.4</span> Stability for GLV embeddings<a href="quasi-polynomial-systems.html#stability-for-glv-embeddings" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This is however not the case when our equations have obtained by embedding a lower-dimensional system into a larger GLV. Because we have created new “species” by combining the original species, the perturbations of the “new species” are set by the perturbations of the original species. For example, in the Leslie-Gower embedding we have that <span class="math inline">\(z_3 = P / H = z_2 / z_1\)</span>, and therefore:</p>
+<p><span class="math display">\[
+\Delta z =
+\begin{pmatrix}
+\Delta z_1\\
+\Delta z_2\\
+\Delta z_3
+\end{pmatrix} =
+\begin{pmatrix}
+\Delta z_1\\
+\Delta z_2\\
+\dfrac{\Delta z_2 + z_2^\star}{\Delta z_1 + z_1^\star} - \dfrac{z_2^\star}{z_1^\star}
+\end{pmatrix} =
+\begin{pmatrix}
+\Delta z_1\\
+\Delta z_2\\
+\dfrac{\Delta z_2 - \dfrac{z_2^\star}{z_1^\star} \Delta z_1}{z_1}
+\end{pmatrix}
+\]</span></p>
+<p>showing that the third perturbation is a function of the first two.</p>
+<p>Computing the matrix <span class="math inline">\(K\)</span> for this system, we obtain:</p>
+<p><span class="math display">\[
+K = \frac{1}{2}(D(c) M + M^T D(c)) = \frac{1}{2}
+\begin{pmatrix}
+-2 c_1 \beta_h &amp; - c_1 \alpha_h &amp; c_3 \beta_h\\
+- c_1 \alpha_h &amp; 0 &amp; - c_2\alpha_p + c_3 \alpha_h\\
+c_3 \beta_h &amp; - c_2\alpha_p + c_3 \alpha_h &amp; -2 c_3 \alpha_p\
+\end{pmatrix}
+\]</span></p>
+<p>and taking <span class="math inline">\(\Delta z^T K \Delta z\)</span>, we obtain:</p>
+<p><span class="math display">\[
+\dfrac{dV}{dt} = \Delta z^T K \Delta z = -c_1 \Delta z_1 (\beta_h \Delta z_1 + \alpha_h \Delta z_2) + (c_3 \beta_h \Delta z_1 + (c_3 \alpha_h - c_2\alpha_p)\Delta z_2 )\Delta z_3 - c_3 \alpha_p \Delta z_3^2
+\]</span></p>
+<p>Note that the last term is negative for any choice of <span class="math inline">\(c_3 &gt; 0\)</span>, which is a good start. We can also make <span class="math inline">\(c_1 = 0\)</span>, thereby killing the first term. What remains to be determined is how to handle <span class="math inline">\((c_3 \beta_h \Delta z_1 + (c_3 \alpha_h - c_2\alpha_p)\Delta z_2 )\Delta z_3\)</span>. Because we know that <span class="math inline">\(\Delta z_3\)</span> is a function of <span class="math inline">\(\Delta z_1\)</span> and <span class="math inline">\(\Delta z_2\)</span>, we can try to choose appropriate constants to make <span class="math inline">\((c_3 \beta_h \Delta z_1 + (c_3 \alpha_h - c_2\alpha_p)\Delta z_2 )\)</span> proportional to <span class="math inline">\(-\Delta z_3\)</span>, thereby obtaining a function that decreases in time, with form <span class="math inline">\(-\theta \Delta z_3^2\)</span> and <span class="math inline">\(\theta\)</span> positive.</p>
+<p>We have shown above that <span class="math inline">\(-\Delta z_3 \propto \dfrac{z_2^\star}{z_1^\star} \Delta z_1 - \Delta z_2 = \dfrac{\rho_p}{\alpha_p} \Delta z_1 - \Delta z_2\)</span>. Take:</p>
+<p><span class="math display">\[
+(c_3 \beta_h \Delta z_1 + (c_3 \alpha_h - c_2\alpha_p)\Delta z_2 )
+\]</span></p>
+<p>extract the term <span class="math inline">\((c_2\alpha_p - c_3 \alpha_h)\)</span>:</p>
+<p><span class="math display">\[
+(c_2\alpha_p-c_3 \alpha_h)\left(\frac{c_3 \beta_h}{c_2\alpha_p-c_3 \alpha_h} \Delta z_1 - \Delta z_2 \right)
+\]</span></p>
+<p>To recover the right form, we need to make <span class="math inline">\(\frac{c_3 \beta_h}{c_2\alpha_p-c_3 \alpha_h} = \frac{\rho_p}{\alpha_p}\)</span>. Clearly, there are infinitely many choices.</p>
+<p>A convenient choice is <span class="math inline">\(c_1 = 0\)</span>, <span class="math inline">\(c_2 = \alpha_p \beta_h + \alpha_h \rho_p\)</span>, and <span class="math inline">\(c_3 = \alpha_p \rho_p\)</span>. In this case, we have:</p>
+<p><span class="math display">\[
+\dfrac{dV}{dt} = -\alpha_p \Delta z_3(\alpha_p \beta_h \Delta z_2 - \beta_h \rho_p \Delta z_1 + \alpha_p \Delta z_3)
+\]</span></p>
+<p>Which can be rewritten as:</p>
+<p><span class="math display">\[
+\dfrac{dV}{dt} = -\alpha_p^2 (z_1 \beta_h + \rho_p)\Delta z_3^2
+\]</span></p>
+<p>which is clearly always negative whenever <span class="math inline">\(\Delta z_3 \neq 0\)</span>, given that <span class="math inline">\(z_1&gt;0\)</span> and all parameters are positive. We can write the Lyapunov function directly for the original system:</p>
+<p><span class="math display">\[
+W = c_2 (P - P^\star - P^\star \log(P/P^\star))+c_3 (P/H - P^\star/H^\star - (P^\star/ H^\star) \log(P H^\star/H P^\star))
+\]</span></p>
+<p>yielding:</p>
+<p><span class="math display">\[
+\dfrac{dW}{dt} = -\dfrac{\rho_p+\beta_h H}{H^2}(\rho_p H - \alpha_p P)^2
+\]</span></p>
+<p>which again is negative when we are not at equilibrium, proving global stability.</p>
+</div>
+<div id="numerical-analysis" class="section level2 hasAnchor" number="9.5">
+<h2><span class="header-section-number">9.5</span> Numerical analysis<a href="quasi-polynomial-systems.html#numerical-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The derivation above is quite complex, and as always it is easier to find an answer when we know that an answer exists. One of the great advantages of the GLV embedding is that one can quite easily search for the constants numerically. The algorithm is as follows:</p>
+<ul>
+<li>Randomly generate <span class="math inline">\(\Delta z_i\)</span> by choosing random values between 0 and a sufficiently large number (say 10 times their respective equilibria) for each of the original species; from these random numbers, compute the corresponding <span class="math inline">\(\Delta z\)</span> for the new “species”;</li>
+<li>Build the matrix <span class="math inline">\(M\)</span>;</li>
+<li>For each choice of <span class="math inline">\(D(c)\)</span>, compute <span class="math inline">\(K = (1/2)(D(c) M + M^T D(c))\)</span>, and then the value of <span class="math inline">\(dV/dt\)</span> for each of the randomly determined <span class="math inline">\(\Delta z\)</span>: <span class="math inline">\(dV/dt = \Delta z^T K \Delta z\)</span>.</li>
+<li>If the value is negative for every choice of <span class="math inline">\(\Delta z\)</span>, then the constants in <span class="math inline">\(D(c)\)</span> are appropriate; if not, modify <span class="math inline">\(D(c)\)</span>, trying to minimize the number of <span class="math inline">\(\Delta z\)</span> leading to a positive result.</li>
+</ul>
+<p>For example, this code finds a set of constants for the Leslie-Gower model:</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="quasi-polynomial-systems.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb82-2"><a href="quasi-polynomial-systems.html#cb82-2" aria-hidden="true" tabindex="-1"></a><span class="co"># choose random parameters </span></span>
+<span id="cb82-3"><a href="quasi-polynomial-systems.html#cb82-3" aria-hidden="true" tabindex="-1"></a><span class="co"># (of course the same can be done for specific parameters)</span></span>
+<span id="cb82-4"><a href="quasi-polynomial-systems.html#cb82-4" aria-hidden="true" tabindex="-1"></a>rh <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>)</span>
+<span id="cb82-5"><a href="quasi-polynomial-systems.html#cb82-5" aria-hidden="true" tabindex="-1"></a>ah <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>)</span>
+<span id="cb82-6"><a href="quasi-polynomial-systems.html#cb82-6" aria-hidden="true" tabindex="-1"></a>bh <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>)</span>
+<span id="cb82-7"><a href="quasi-polynomial-systems.html#cb82-7" aria-hidden="true" tabindex="-1"></a>rp <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>)</span>
+<span id="cb82-8"><a href="quasi-polynomial-systems.html#cb82-8" aria-hidden="true" tabindex="-1"></a>ap <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>)</span>
+<span id="cb82-9"><a href="quasi-polynomial-systems.html#cb82-9" aria-hidden="true" tabindex="-1"></a><span class="co"># compute equilibria</span></span>
+<span id="cb82-10"><a href="quasi-polynomial-systems.html#cb82-10" aria-hidden="true" tabindex="-1"></a>z1s <span class="ot">&lt;-</span> ap <span class="sc">*</span> rh <span class="sc">/</span> (ap <span class="sc">*</span> bh <span class="sc">+</span> ah <span class="sc">*</span> rp)</span>
+<span id="cb82-11"><a href="quasi-polynomial-systems.html#cb82-11" aria-hidden="true" tabindex="-1"></a>z2s <span class="ot">&lt;-</span> rp <span class="sc">*</span> rh <span class="sc">/</span> (ap <span class="sc">*</span> bh <span class="sc">+</span> ah <span class="sc">*</span> rp)</span>
+<span id="cb82-12"><a href="quasi-polynomial-systems.html#cb82-12" aria-hidden="true" tabindex="-1"></a><span class="co"># this is the equilibrium for &quot;z3&quot;</span></span>
+<span id="cb82-13"><a href="quasi-polynomial-systems.html#cb82-13" aria-hidden="true" tabindex="-1"></a>z3s <span class="ot">&lt;-</span> z2s <span class="sc">/</span> z1s</span>
+<span id="cb82-14"><a href="quasi-polynomial-systems.html#cb82-14" aria-hidden="true" tabindex="-1"></a><span class="co"># now choose random values </span></span>
+<span id="cb82-15"><a href="quasi-polynomial-systems.html#cb82-15" aria-hidden="true" tabindex="-1"></a>npoints <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb82-16"><a href="quasi-polynomial-systems.html#cb82-16" aria-hidden="true" tabindex="-1"></a><span class="co"># for each zi</span></span>
+<span id="cb82-17"><a href="quasi-polynomial-systems.html#cb82-17" aria-hidden="true" tabindex="-1"></a>z1 <span class="ot">&lt;-</span> <span class="fu">runif</span>(npoints, <span class="dv">0</span>, <span class="dv">10</span> <span class="sc">*</span> z1s)</span>
+<span id="cb82-18"><a href="quasi-polynomial-systems.html#cb82-18" aria-hidden="true" tabindex="-1"></a>z2 <span class="ot">&lt;-</span> <span class="fu">runif</span>(npoints, <span class="dv">0</span>, <span class="dv">10</span> <span class="sc">*</span> z2s)</span>
+<span id="cb82-19"><a href="quasi-polynomial-systems.html#cb82-19" aria-hidden="true" tabindex="-1"></a>z3 <span class="ot">&lt;-</span> z2 <span class="sc">/</span> z1</span>
+<span id="cb82-20"><a href="quasi-polynomial-systems.html#cb82-20" aria-hidden="true" tabindex="-1"></a><span class="co"># now compute delta z</span></span>
+<span id="cb82-21"><a href="quasi-polynomial-systems.html#cb82-21" aria-hidden="true" tabindex="-1"></a>deltaZ <span class="ot">&lt;-</span> <span class="fu">cbind</span>(z1 <span class="sc">-</span> z1s, </span>
+<span id="cb82-22"><a href="quasi-polynomial-systems.html#cb82-22" aria-hidden="true" tabindex="-1"></a>                z2 <span class="sc">-</span> z2s,</span>
+<span id="cb82-23"><a href="quasi-polynomial-systems.html#cb82-23" aria-hidden="true" tabindex="-1"></a>                z3 <span class="sc">-</span> z3s)</span>
+<span id="cb82-24"><a href="quasi-polynomial-systems.html#cb82-24" aria-hidden="true" tabindex="-1"></a><span class="co"># compute M</span></span>
+<span id="cb82-25"><a href="quasi-polynomial-systems.html#cb82-25" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(</span>
+<span id="cb82-26"><a href="quasi-polynomial-systems.html#cb82-26" aria-hidden="true" tabindex="-1"></a>  <span class="sc">-</span>bh, <span class="sc">-</span>ah, <span class="dv">0</span>,</span>
+<span id="cb82-27"><a href="quasi-polynomial-systems.html#cb82-27" aria-hidden="true" tabindex="-1"></a>  <span class="dv">0</span>, <span class="dv">0</span>, <span class="sc">-</span>ap), <span class="dv">2</span>, <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb82-28"><a href="quasi-polynomial-systems.html#cb82-28" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(</span>
+<span id="cb82-29"><a href="quasi-polynomial-systems.html#cb82-29" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span>, <span class="dv">0</span>,</span>
+<span id="cb82-30"><a href="quasi-polynomial-systems.html#cb82-30" aria-hidden="true" tabindex="-1"></a>  <span class="dv">0</span>, <span class="dv">1</span>,</span>
+<span id="cb82-31"><a href="quasi-polynomial-systems.html#cb82-31" aria-hidden="true" tabindex="-1"></a>  <span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>), <span class="dv">3</span>, <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb82-32"><a href="quasi-polynomial-systems.html#cb82-32" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> B <span class="sc">%*%</span> A</span>
+<span id="cb82-33"><a href="quasi-polynomial-systems.html#cb82-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-34"><a href="quasi-polynomial-systems.html#cb82-34" aria-hidden="true" tabindex="-1"></a><span class="co"># this is the function we want to minimize</span></span>
+<span id="cb82-35"><a href="quasi-polynomial-systems.html#cb82-35" aria-hidden="true" tabindex="-1"></a>LG_to_minimize <span class="ot">&lt;-</span> <span class="cf">function</span>(const){</span>
+<span id="cb82-36"><a href="quasi-polynomial-systems.html#cb82-36" aria-hidden="true" tabindex="-1"></a>  <span class="co"># keep constants positive, and </span></span>
+<span id="cb82-37"><a href="quasi-polynomial-systems.html#cb82-37" aria-hidden="true" tabindex="-1"></a>  <span class="co"># with mean of 1 (for numerics)</span></span>
+<span id="cb82-38"><a href="quasi-polynomial-systems.html#cb82-38" aria-hidden="true" tabindex="-1"></a>  const <span class="ot">&lt;-</span> <span class="fu">abs</span>(const) <span class="sc">/</span> <span class="fu">mean</span>(<span class="fu">abs</span>(const))</span>
+<span id="cb82-39"><a href="quasi-polynomial-systems.html#cb82-39" aria-hidden="true" tabindex="-1"></a>  Dc <span class="ot">&lt;-</span> <span class="fu">diag</span>(const)</span>
+<span id="cb82-40"><a href="quasi-polynomial-systems.html#cb82-40" aria-hidden="true" tabindex="-1"></a>  K <span class="ot">&lt;-</span> (Dc <span class="sc">%*%</span> M)</span>
+<span id="cb82-41"><a href="quasi-polynomial-systems.html#cb82-41" aria-hidden="true" tabindex="-1"></a>  K <span class="ot">&lt;-</span> <span class="fl">0.5</span> <span class="sc">*</span> (K <span class="sc">+</span> <span class="fu">t</span>(K))</span>
+<span id="cb82-42"><a href="quasi-polynomial-systems.html#cb82-42" aria-hidden="true" tabindex="-1"></a>  <span class="co"># now compute dVdt for each deltaZ</span></span>
+<span id="cb82-43"><a href="quasi-polynomial-systems.html#cb82-43" aria-hidden="true" tabindex="-1"></a>  target <span class="ot">&lt;-</span> <span class="fu">apply</span>(deltaZ, <span class="dv">1</span>, </span>
+<span id="cb82-44"><a href="quasi-polynomial-systems.html#cb82-44" aria-hidden="true" tabindex="-1"></a>                  <span class="cf">function</span>(dz) dz <span class="sc">%*%</span> K <span class="sc">%*%</span> dz)</span>
+<span id="cb82-45"><a href="quasi-polynomial-systems.html#cb82-45" aria-hidden="true" tabindex="-1"></a>  <span class="co"># solution found</span></span>
+<span id="cb82-46"><a href="quasi-polynomial-systems.html#cb82-46" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">all</span>(target <span class="sc">&lt;</span> <span class="dv">0</span>)) <span class="fu">return</span>(<span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb82-47"><a href="quasi-polynomial-systems.html#cb82-47" aria-hidden="true" tabindex="-1"></a>  <span class="co"># otherwise, try to minimize</span></span>
+<span id="cb82-48"><a href="quasi-polynomial-systems.html#cb82-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">sum</span>(target[target <span class="sc">&gt;</span> <span class="dv">0</span>]))</span>
+<span id="cb82-49"><a href="quasi-polynomial-systems.html#cb82-49" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb82-50"><a href="quasi-polynomial-systems.html#cb82-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-51"><a href="quasi-polynomial-systems.html#cb82-51" aria-hidden="true" tabindex="-1"></a><span class="co"># use optim to find a solution</span></span>
+<span id="cb82-52"><a href="quasi-polynomial-systems.html#cb82-52" aria-hidden="true" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> <span class="fu">optim</span>(<span class="at">par =</span> <span class="fu">runif</span>(<span class="dv">3</span>), <span class="at">fn =</span> LG_to_minimize)</span>
+<span id="cb82-53"><a href="quasi-polynomial-systems.html#cb82-53" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(tmp<span class="sc">$</span>value <span class="sc">==</span> <span class="sc">-</span><span class="dv">1</span>) {</span>
+<span id="cb82-54"><a href="quasi-polynomial-systems.html#cb82-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Found a set of constants&quot;</span>)</span>
+<span id="cb82-55"><a href="quasi-polynomial-systems.html#cb82-55" aria-hidden="true" tabindex="-1"></a>  solution <span class="ot">&lt;-</span> tmp<span class="sc">$</span>par</span>
+<span id="cb82-56"><a href="quasi-polynomial-systems.html#cb82-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">round</span>(<span class="fu">abs</span>(solution) <span class="sc">/</span> <span class="fu">mean</span>(<span class="fu">abs</span>(solution)),<span class="dv">3</span>))</span>
+<span id="cb82-57"><a href="quasi-polynomial-systems.html#cb82-57" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>[1] “Found a set of constants”
+[1] 0.573 1.902 0.525</p>
+<p>Which shows that a solution indeed exists. Note that, provided that the choice of <span class="math inline">\(\Delta z\)</span> is extensive enough, the constants found in this way indeed determine the global stability of the equilibrium. Typically, infinitely many choices are possible—but certain choices of constants are better than others, for example allowing for a clean analytical derivation.</p>
+<p>Naturally, the constants we have derived analytically are also appropriate:</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="quasi-polynomial-systems.html#cb83-1" aria-hidden="true" tabindex="-1"></a>c1 <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb83-2"><a href="quasi-polynomial-systems.html#cb83-2" aria-hidden="true" tabindex="-1"></a>c2 <span class="ot">&lt;-</span> ap <span class="sc">*</span> bh <span class="sc">+</span> ah <span class="sc">*</span> rp</span>
+<span id="cb83-3"><a href="quasi-polynomial-systems.html#cb83-3" aria-hidden="true" tabindex="-1"></a>c3 <span class="ot">&lt;-</span> ap <span class="sc">*</span> rp</span>
+<span id="cb83-4"><a href="quasi-polynomial-systems.html#cb83-4" aria-hidden="true" tabindex="-1"></a><span class="fu">LG_to_minimize</span>(<span class="fu">c</span>(c1, c2, c3))</span></code></pre></div>
+<p>[1] -1</p>
+</div>
+<div id="systems-with-many-equations" class="section level2 hasAnchor" number="9.6">
+<h2><span class="header-section-number">9.6</span> Systems with many equations<a href="quasi-polynomial-systems.html#systems-with-many-equations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The same type of embedding can help derive Lyapunov functions for systems with many equations. For example, let’s examine a MacArthur consumer resource model in which resources are supplied externally. There are <span class="math inline">\(n\)</span> resources, with dynamics:</p>
+<p><span class="math display">\[
+\dfrac{d x_i}{dt} = k_i - d_i x_i - x_i \sum_j C_{ij} y_j
+\]</span></p>
+<p>where <span class="math inline">\(k_i &gt; 0\)</span> is the external input to resource <span class="math inline">\(i\)</span>, <span class="math inline">\(d_i \geq 0\)</span> models the degradation of the resource, and <span class="math inline">\(C\)</span> is a matrix containing the consumption rates for the consumers <span class="math inline">\(y_j\)</span>.</p>
+<p>The dynamics of the consumers are governed by:</p>
+<p><span class="math display">\[
+\dfrac{dy_i}{dt} = -m_i y_i + y_i \epsilon_i \sum_j C_{ji} x_j
+\]</span></p>
+<p>where <span class="math inline">\(m_i &gt; 0\)</span> is the mortality, and for simplicity the transformation efficiency <span class="math inline">\(\epsilon_i &gt; 0\)</span> is set to be predator-specific, but equal for all resources. Our goal is to show that if a feasible coexistence equilibrium exists, it is globally stable.</p>
+<p>We rewrite the system in matrix form as:</p>
+<p><span class="math display">\[
+\begin{cases}
+\dfrac{dx}{dt} = D(x)(-d - Cy - D(k)x^{-1}) = D(x)(-d -Cy - D(k)v)\\
+\dfrac{dy}{dt} = D(y)(-m + D(\epsilon)C^T x)
+\end{cases}
+\]</span></p>
+<p>which is a QP system. To higlight the monomials that will give rise to new equations, we have defined <span class="math inline">\(v_i = 1 / x_i\)</span>. Using the GLV embedding, we recover a system of <span class="math inline">\(3n\)</span> equations:</p>
+<p><span class="math display">\[
+s = (-d, -m)^T \quad A = \begin{pmatrix}
+0_n &amp; -C &amp; D(k)\\ D(\epsilon) C^T &amp; 0_n &amp; 0_n\end{pmatrix} \quad B = \begin{pmatrix} I_n  &amp; 0_n\\ 0_n &amp; I_n\\ -I_n &amp; 0_n\end{pmatrix}
+\]</span></p>
+<p>Where <span class="math inline">\(I_n\)</span> is the <span class="math inline">\(n\times n\)</span> identity matrix, and <span class="math inline">\(0_n\)</span> is an <span class="math inline">\(n \times n\)</span> matrix of zeros.</p>
+<p>The GLV is therefore defined by the vector of growth rates:</p>
+<p><span class="math display">\[
+r = B s = (-m, -d, m)^T
+\]</span></p>
+<p>and the matrix of interactions:</p>
+<p><span class="math display">\[
+M = B A = \begin{pmatrix}
+0_n &amp; -C &amp; D(k)\\
+D(\epsilon) C^T &amp; 0_n &amp; 0_n\\
+0_n &amp; C &amp; -D(k)
+\end{pmatrix}
+\]</span></p>
+<p>Now compute <span class="math inline">\(K\)</span>; taking as constants <span class="math inline">\(c = (1_n, \epsilon^{-1}, 0_n)\)</span> makes <span class="math inline">\(K\)</span> very sparse:</p>
+<p><span class="math display">\[
+K = \frac{1}{2}(D(c)M + M^T D(c)) = \frac{1}{2}\begin{pmatrix}
+0_n &amp; 0_n &amp; D(k)\\
+0_n &amp; 0_n &amp; 0_n \\
+D(k) &amp; 0_n &amp; 0_n
+\end{pmatrix}
+\]</span></p>
+<p>Now define <span class="math inline">\(z = (x, y, v)^T\)</span>, and compute <span class="math inline">\(dV/dt\)</span>:</p>
+<p><span class="math display">\[
+\dfrac{dV}{dt} = \Delta x^T D(k) \Delta v
+\]</span></p>
+<p>Finally, notice that <span class="math inline">\(v = 1/x\)</span>, and therefore:</p>
+<p><span class="math display">\[
+\Delta v_i = \dfrac{1}{x_i} - \dfrac{1}{x_i^\star} = \dfrac{1}{\Delta x_i + x_i^\star} - \dfrac{1}{x_i^\star} = -\dfrac{\Delta x_i}{x_i^\star x_i}
+\]</span></p>
+<p>This proves the stability of the equilibrium, given that</p>
+<p><span class="math display">\[
+\dfrac{dV}{dt} = \Delta x^T D(k) \Delta v = -k^T \dfrac{\Delta x^2}{x^\star x}
+\]</span></p>
+</div>
+<div id="glv-embedding-for-non-qp-systems" class="section level2 hasAnchor" number="9.7">
+<h2><span class="header-section-number">9.7</span> GLV embedding for non-QP systems<a href="quasi-polynomial-systems.html#glv-embedding-for-non-qp-systems" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Finally, we consider a simple case in which the original system is not already in QP form. Consider a very simple model for facultative mutualism:</p>
+<p><span class="math display">\[
+\begin{cases}
+\dfrac{dx_1}{dt} = x_1(1 - x_1 + \alpha \dfrac{x_2}{1+x_2})\\
+\dfrac{dx_2}{dt} = x_2(1 - x_2 + \alpha \dfrac{x_1}{1+x_1})
+\end{cases}
+\]</span></p>
+<p>In the absence of the mutualist, each species grows logistically. However, they can coexist at higher abundance–though the beneficial effect eventually saturates. Again, our task is to prove the global stability of the coexistence equilibrium.</p>
+<p>This model is not in QP form. To turn it into QP form, we need to define <span class="math inline">\(v_1 = x_1 / (1 + x_1)\)</span> and <span class="math inline">\(v_2 = x_2 / (1+x_2)\)</span>. We write two new equations for <span class="math inline">\(v_1\)</span> and <span class="math inline">\(v_2\)</span>, resulting in a system of four equations:</p>
+<p><span class="math display">\[
+\begin{cases}
+\dfrac{dx_1}{dt} = x_1(1 - x_1 + \alpha v_2)\\
+\dfrac{dx_2}{dt} = x_2(1 - x_2 + \alpha v_1)\\
+\dfrac{dv_1}{dt} = v_1(1 - 2 v_1 + \alpha v_2 - \alpha v_1 v_2)\\
+\dfrac{dv_2}{dt} = v_2(1 - 2 v_2 + \alpha v_1 - \alpha v_1 v_2)\\
+\end{cases}
+\]</span></p>
+<p>which is in QP form. Now we can perform the GLV embedding, resulting in a new equation for <span class="math inline">\(p = v_1 v_2\)</span>:</p>
+<p><span class="math display">\[
+z = (x_1, x_2, v_1, v_2, p)^T
+\]</span>
+<span class="math display">\[
+s = (1,1,1,1)^T \quad A = \begin{pmatrix}
+-1 &amp; 0 &amp; 0 &amp; \alpha &amp; 0\\
+0 &amp; -1 &amp; \alpha &amp; 0 &amp; 0\\
+0 &amp; 0 &amp; -2 &amp; \alpha &amp;-\alpha\\
+0 &amp; 0 &amp; \alpha &amp;-2 &amp; -\alpha\\
+\end{pmatrix} \quad B = \begin{pmatrix}
+1 &amp; 0 &amp; 0 &amp; 0\\
+0 &amp; 1 &amp; 0 &amp; 0\\
+0 &amp; 0 &amp; 1 &amp; 0\\
+0 &amp; 0 &amp; 0 &amp; 1\\
+0 &amp; 0 &amp; 1 &amp; 1\\
+\end{pmatrix}
+\]</span></p>
+<p>We have:</p>
+<p><span class="math display">\[
+M = \begin{pmatrix}
+-1 &amp; 0 &amp; 0 &amp; \alpha  &amp; 0 \\
+0 &amp; -1 &amp; \alpha  &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; -2 &amp; \alpha  &amp; -\alpha  \\
+0 &amp; 0 &amp; \alpha  &amp; 2 &amp; -\alpha  \\
+0 &amp; 0 &amp; \alpha -2 &amp; \alpha +2 &amp; -2 \alpha  \\
+\end{pmatrix}
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+r = \begin{pmatrix} 1,1,1,1,2
+\end{pmatrix}^T
+\]</span></p>
+<p>Setting <span class="math inline">\(c = (1,1,0,0,0)\)</span>, we obtain</p>
+<p><span class="math display">\[
+\dfrac{dV}{dt} = -\Delta z_1^2 - \Delta z_2^2 + \alpha (\Delta z_1 \Delta z_4 + \Delta z_2 \Delta z_3)
+\]</span></p>
+<p>Note however that <span class="math inline">\(\Delta z_3\)</span> and <span class="math inline">\(\Delta z_4\)</span> are defined by <span class="math inline">\(\Delta z_1\)</span> and <span class="math inline">\(\Delta z_2\)</span>:</p>
+<p><span class="math display">\[
+\Delta z_3 = \dfrac{x_1}{1+x_1}-\dfrac{x_1^\star}{1+x_1^\star} = \dfrac{1}{1 + x_1^\star} - \dfrac{1}{1 + x_1^\star + \Delta z_1}
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+\Delta z_4 = \dfrac{x_2}{1+x_2}-\dfrac{x_2^\star}{1+x_2^\star} = \dfrac{1}{1 + x_2^\star} - \dfrac{1}{1 + x_2^\star + \Delta z_2}
+\]</span></p>
+<p>Plugging in the values for the equilibrium, and simplifying, we finally obtain:</p>
+<p><span class="math display">\[
+\dfrac{dV}{dt} = -\Delta z_1^2 - \Delta z_2^2 + \frac{8 \alpha  \Delta z1 \Delta z2 \left(\sqrt{\alpha ^2+4}+\alpha +\Delta z1+\Delta z2+2\right)}{\left(\sqrt{\alpha ^2+4}+\alpha +2\right) \left(\sqrt{\alpha ^2+4}+\alpha +2 \Delta z1+2\right) \left(\sqrt{\alpha ^2+4}+\alpha +2 \Delta z2+2\right)}
+\]</span></p>
+<p>which is never positive if <span class="math inline">\(\Delta z_1 &gt; - x_1^\star\)</span>, <span class="math inline">\(\Delta z_2 &gt; - x_2^\star\)</span> and <span class="math inline">\(\alpha &gt; 0\)</span>. This proves the stability of the coexistence equilibrium.</p>
+
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent" line-spacing="2">
+<div id="ref-brenig1988complete" class="csl-entry">
+Brenig, L. 1988. Complete factorisation and analytic solutions of generalized lotka-volterra equations. Physics Letters A 133:378–382.
+</div>
+<div id="ref-goh1977global" class="csl-entry">
+Goh, B. S. 1977. Global stability in many-species systems. The American Naturalist 111:135–143.
+</div>
+<div id="ref-hernandez1998algebraic" class="csl-entry">
+Hernández-Bermejo, B., V. Fairén, and L. Brenig. 1998. Algebraic recasting of nonlinear systems of ODEs into universal formats. Journal of Physics A: Mathematical and General 31:2415.
+</div>
+<div id="ref-leslie1945use" class="csl-entry">
+Leslie, P. H. 1945. On the use of matrices in certain population mathematics. Biometrika 33:183–212.
+</div>
+<div id="ref-leslie1948some" class="csl-entry">
+Leslie, P. H. 1948. Some further notes on the use of matrices in population mathematics. Biometrika 35:213–245.
+</div>
+<div id="ref-strogatz2018nonlinear" class="csl-entry">
+Strogatz, S. H. 2018. Nonlinear dynamics and chaos: With applications to physics, biology, chemistry, and engineering. CRC Press.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="metapopulation-dynamics-on-networks.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Theoretical_Community_Ecology.pdf", "Theoretical_Community_Ecology.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
