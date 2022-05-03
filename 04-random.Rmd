@@ -190,7 +190,7 @@ $$
 
 Note that when $\rho = 0$, the elliptic law reduces to the circular law. Using the elliptic law, @allesina2012stability were able to extend May's criterion to ecological networks with different mixtures of interaction types. 
 
-Build a matrix $M$ by sampling the entries in pairs: $(M_{ij}, M_{ji})$ are zero with probability $(1-C)$, and with probability $C$ sampled independently from a bivariate distribution with mean $\nu = (0, 0)^T$, and covariance matrix $\Sigma = \sigma^2 \begin{pmatrix} 1 & \rho\\ \rho & 1\end{pmatrix}$. Then $\mathbb E[M_{ij}] = 0$, $\mathbb E[M_{ij}^2] = C \sigma^2$, and $\mathbb E[M_{ij} M_{ji}] = C \sigma^2 \rho$. By dividing the entries ${M}$ by $\sqrt{C \sigma^2}$, we obtain a matrix following the elliptic law. As such, the stability criterion becomes:
+Build a matrix $M$ by sampling the entries in pairs: $(M_{ij}, M_{ji})$ are zero with probability $(1-C)$, and with probability $C$ sampled independently from a bivariate distribution with mean $\nu = (0, 0)^T$, and covariance matrix $\Sigma = \sigma^2 \begin{pmatrix} 1 & \rho\\ \rho & 1\end{pmatrix}$. Then $\mathbb E[M_{ij}] = 0$, $\mathbb E[M_{ij}^2] = C \sigma^2$, and $\mathbb E[M_{ij} M_{ji}] = C \sigma^2 \rho$. By dividing the entries ${M}$ by $\sqrt{n C \sigma^2}$, we obtain a matrix following the elliptic law. As such, the stability criterion becomes:
 
 $$
 \sqrt{n C \sigma^2}(1 + \rho) < d
