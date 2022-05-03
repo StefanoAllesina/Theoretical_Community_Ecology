@@ -171,7 +171,7 @@ $$
 \dfrac{dV(x)}{dt} &= \sum_i c_i \left(\frac{d x_i}{dt} - \bar{x}_i \frac{d \log x_i}{dt} \right) \\
 &= \sum_i c_i \left( x_i - \bar{x}_i \right)  \left( r_i + \sum_j A_{ij} x_j \right) \\
 &= \sum_i c_i \left( x_i  - \bar{x}_i \right)  \left( r_i + \sum_j A_{ij} (x_j - \bar{x}_j) +  \sum_j A_{ij} \bar{x}_j \right) \\
-&= \sum_{i,j} \left( x_i  - \bar{x}_i \right) c_i A_{ij} \left( \bar{x}_j - x_j \right) + \sum_i c_i \left( x_i - \bar{x}_i\right) \left(r_i + \sum_j A_{ij} \bar{x}_j \right)
+&= \sum_{i,j} \left( x_i  - \bar{x}_i \right) c_i A_{ij} \left( x_j - \bar{x}_j \right) + \sum_i c_i \left( x_i - \bar{x}_i\right) \left(r_i + \sum_j A_{ij} \bar{x}_j \right)
 \end{aligned}
 $$
 
