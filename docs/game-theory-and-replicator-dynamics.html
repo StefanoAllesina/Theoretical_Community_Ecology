@@ -358,7 +358,7 @@ div.csl-indent {
 </div>
 <div class="boxhistory">
 <p><strong>History: George R. Price (1922-1975)</strong></p>
-<p><img src="img/Price.jpg" width="35%" style="display: block; margin: auto;" /></p>
+<p><img src="img/price.jpg" width="35%" style="display: block; margin: auto;" /></p>
 <p>One of the most remarkable characters in the history of biology, he was born in New York. He studied chemistry at U. Chicago, receiving a Ph.D. in 1946 (for work connected to the Manhattan Project). He went on to take a variery of jobs: teaching chemistry at Harvard, consulting at Argonne, researching at Bell Lab, writing popular science, working on medical research at U. Minnesota, and consulting for IBM on computer graphics.</p>
 <p>In 1966, he was operated for a tumor, and the operation resulted in a partial paralysis. With the money from his medical insurance, he moved to the UK to start a new life.</p>
 <p>Without any training in population genetics or statistics, he devised the Price equation, based on his readings of Hamilton’s papers on kin selection. This feat landed him a job at Galton Lab at UCL, despite his lack of credentials. His collaborations with Hamilton and Maynard-Smith led to the development of evolutionary game theory.</p>
@@ -468,46 +468,46 @@ A = \begin{pmatrix}
 \end{pmatrix}
 \]</span></p>
 <p>We start the population at a random initial condition, and track dynamics:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="game-theory-and-replicator-dynamics.html#cb1-1" tabindex="-1"></a><span class="co"># define the differential equation</span></span>
-<span id="cb1-2"><a href="game-theory-and-replicator-dynamics.html#cb1-2" tabindex="-1"></a>RE <span class="ot">&lt;-</span><span class="cf">function</span>(t, x, parameters){</span>
-<span id="cb1-3"><a href="game-theory-and-replicator-dynamics.html#cb1-3" tabindex="-1"></a>  <span class="fu">with</span>(<span class="fu">as.list</span>(<span class="fu">c</span>(x, parameters)), {</span>
-<span id="cb1-4"><a href="game-theory-and-replicator-dynamics.html#cb1-4" tabindex="-1"></a>    x[x <span class="sc">&lt;</span> <span class="dv">10</span><span class="sc">^-</span><span class="dv">8</span>] <span class="ot">&lt;-</span> <span class="dv">0</span> <span class="co"># prevent numerical problems</span></span>
-<span id="cb1-5"><a href="game-theory-and-replicator-dynamics.html#cb1-5" tabindex="-1"></a>    x <span class="ot">&lt;-</span> x <span class="sc">/</span> <span class="fu">sum</span>(x) <span class="co"># keep on simplex</span></span>
-<span id="cb1-6"><a href="game-theory-and-replicator-dynamics.html#cb1-6" tabindex="-1"></a>    dxdt <span class="ot">&lt;-</span> x <span class="sc">*</span> (A <span class="sc">%*%</span> x <span class="sc">-</span> <span class="fu">sum</span>(x <span class="sc">*</span> A <span class="sc">%*%</span> x))</span>
-<span id="cb1-7"><a href="game-theory-and-replicator-dynamics.html#cb1-7" tabindex="-1"></a>    <span class="fu">list</span>(dxdt)</span>
-<span id="cb1-8"><a href="game-theory-and-replicator-dynamics.html#cb1-8" tabindex="-1"></a>  })</span>
-<span id="cb1-9"><a href="game-theory-and-replicator-dynamics.html#cb1-9" tabindex="-1"></a>}</span>
-<span id="cb1-10"><a href="game-theory-and-replicator-dynamics.html#cb1-10" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="game-theory-and-replicator-dynamics.html#cb1-11" tabindex="-1"></a><span class="co"># general function to integrate RE</span></span>
-<span id="cb1-12"><a href="game-theory-and-replicator-dynamics.html#cb1-12" tabindex="-1"></a>integrate_RE <span class="ot">&lt;-</span> <span class="cf">function</span>(A, x0, <span class="at">maxtime =</span> <span class="dv">40</span>, <span class="at">steptime =</span> <span class="fl">0.05</span>){</span>
-<span id="cb1-13"><a href="game-theory-and-replicator-dynamics.html#cb1-13" tabindex="-1"></a>  times <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, maxtime, <span class="at">by =</span> steptime)</span>
-<span id="cb1-14"><a href="game-theory-and-replicator-dynamics.html#cb1-14" tabindex="-1"></a>  parameters <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">A =</span> A)</span>
-<span id="cb1-15"><a href="game-theory-and-replicator-dynamics.html#cb1-15" tabindex="-1"></a>  <span class="co"># solve numerically</span></span>
-<span id="cb1-16"><a href="game-theory-and-replicator-dynamics.html#cb1-16" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">ode</span>(<span class="at">y =</span> x0, <span class="at">times =</span> times, </span>
-<span id="cb1-17"><a href="game-theory-and-replicator-dynamics.html#cb1-17" tabindex="-1"></a>           <span class="at">func =</span> RE, <span class="at">parms =</span> parameters, </span>
-<span id="cb1-18"><a href="game-theory-and-replicator-dynamics.html#cb1-18" tabindex="-1"></a>           <span class="at">method =</span> <span class="st">&quot;ode45&quot;</span>)</span>
-<span id="cb1-19"><a href="game-theory-and-replicator-dynamics.html#cb1-19" tabindex="-1"></a>  <span class="co"># plot and make into tidy form</span></span>
-<span id="cb1-20"><a href="game-theory-and-replicator-dynamics.html#cb1-20" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">plot_ODE_output</span>(out)</span>
-<span id="cb1-21"><a href="game-theory-and-replicator-dynamics.html#cb1-21" tabindex="-1"></a>  <span class="fu">return</span>(out)</span>
-<span id="cb1-22"><a href="game-theory-and-replicator-dynamics.html#cb1-22" tabindex="-1"></a>}</span>
-<span id="cb1-23"><a href="game-theory-and-replicator-dynamics.html#cb1-23" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="game-theory-and-replicator-dynamics.html#cb1-24" tabindex="-1"></a><span class="co"># payoff matrix</span></span>
-<span id="cb1-25"><a href="game-theory-and-replicator-dynamics.html#cb1-25" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>,</span>
-<span id="cb1-26"><a href="game-theory-and-replicator-dynamics.html#cb1-26" tabindex="-1"></a>              <span class="dv">1</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="dv">1</span>,</span>
-<span id="cb1-27"><a href="game-theory-and-replicator-dynamics.html#cb1-27" tabindex="-1"></a>              <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>), <span class="dv">3</span>, <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1-28"><a href="game-theory-and-replicator-dynamics.html#cb1-28" tabindex="-1"></a><span class="co"># initial conditions</span></span>
-<span id="cb1-29"><a href="game-theory-and-replicator-dynamics.html#cb1-29" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">3</span>)</span>
-<span id="cb1-30"><a href="game-theory-and-replicator-dynamics.html#cb1-30" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> x0 <span class="sc">/</span> <span class="fu">sum</span>(x0)</span>
-<span id="cb1-31"><a href="game-theory-and-replicator-dynamics.html#cb1-31" tabindex="-1"></a>rps <span class="ot">&lt;-</span> <span class="fu">integrate_RE</span>(A, x0)</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="game-theory-and-replicator-dynamics.html#cb64-1" tabindex="-1"></a><span class="co"># define the differential equation</span></span>
+<span id="cb64-2"><a href="game-theory-and-replicator-dynamics.html#cb64-2" tabindex="-1"></a>RE <span class="ot">&lt;-</span><span class="cf">function</span>(t, x, parameters){</span>
+<span id="cb64-3"><a href="game-theory-and-replicator-dynamics.html#cb64-3" tabindex="-1"></a>  <span class="fu">with</span>(<span class="fu">as.list</span>(<span class="fu">c</span>(x, parameters)), {</span>
+<span id="cb64-4"><a href="game-theory-and-replicator-dynamics.html#cb64-4" tabindex="-1"></a>    x[x <span class="sc">&lt;</span> <span class="dv">10</span><span class="sc">^-</span><span class="dv">8</span>] <span class="ot">&lt;-</span> <span class="dv">0</span> <span class="co"># prevent numerical problems</span></span>
+<span id="cb64-5"><a href="game-theory-and-replicator-dynamics.html#cb64-5" tabindex="-1"></a>    x <span class="ot">&lt;-</span> x <span class="sc">/</span> <span class="fu">sum</span>(x) <span class="co"># keep on simplex</span></span>
+<span id="cb64-6"><a href="game-theory-and-replicator-dynamics.html#cb64-6" tabindex="-1"></a>    dxdt <span class="ot">&lt;-</span> x <span class="sc">*</span> (A <span class="sc">%*%</span> x <span class="sc">-</span> <span class="fu">sum</span>(x <span class="sc">*</span> A <span class="sc">%*%</span> x))</span>
+<span id="cb64-7"><a href="game-theory-and-replicator-dynamics.html#cb64-7" tabindex="-1"></a>    <span class="fu">list</span>(dxdt)</span>
+<span id="cb64-8"><a href="game-theory-and-replicator-dynamics.html#cb64-8" tabindex="-1"></a>  })</span>
+<span id="cb64-9"><a href="game-theory-and-replicator-dynamics.html#cb64-9" tabindex="-1"></a>}</span>
+<span id="cb64-10"><a href="game-theory-and-replicator-dynamics.html#cb64-10" tabindex="-1"></a></span>
+<span id="cb64-11"><a href="game-theory-and-replicator-dynamics.html#cb64-11" tabindex="-1"></a><span class="co"># general function to integrate RE</span></span>
+<span id="cb64-12"><a href="game-theory-and-replicator-dynamics.html#cb64-12" tabindex="-1"></a>integrate_RE <span class="ot">&lt;-</span> <span class="cf">function</span>(A, x0, <span class="at">maxtime =</span> <span class="dv">40</span>, <span class="at">steptime =</span> <span class="fl">0.05</span>){</span>
+<span id="cb64-13"><a href="game-theory-and-replicator-dynamics.html#cb64-13" tabindex="-1"></a>  times <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, maxtime, <span class="at">by =</span> steptime)</span>
+<span id="cb64-14"><a href="game-theory-and-replicator-dynamics.html#cb64-14" tabindex="-1"></a>  parameters <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">A =</span> A)</span>
+<span id="cb64-15"><a href="game-theory-and-replicator-dynamics.html#cb64-15" tabindex="-1"></a>  <span class="co"># solve numerically</span></span>
+<span id="cb64-16"><a href="game-theory-and-replicator-dynamics.html#cb64-16" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">ode</span>(<span class="at">y =</span> x0, <span class="at">times =</span> times, </span>
+<span id="cb64-17"><a href="game-theory-and-replicator-dynamics.html#cb64-17" tabindex="-1"></a>           <span class="at">func =</span> RE, <span class="at">parms =</span> parameters, </span>
+<span id="cb64-18"><a href="game-theory-and-replicator-dynamics.html#cb64-18" tabindex="-1"></a>           <span class="at">method =</span> <span class="st">&quot;ode45&quot;</span>)</span>
+<span id="cb64-19"><a href="game-theory-and-replicator-dynamics.html#cb64-19" tabindex="-1"></a>  <span class="co"># plot and make into tidy form</span></span>
+<span id="cb64-20"><a href="game-theory-and-replicator-dynamics.html#cb64-20" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">plot_ODE_output</span>(out)</span>
+<span id="cb64-21"><a href="game-theory-and-replicator-dynamics.html#cb64-21" tabindex="-1"></a>  <span class="fu">return</span>(out)</span>
+<span id="cb64-22"><a href="game-theory-and-replicator-dynamics.html#cb64-22" tabindex="-1"></a>}</span>
+<span id="cb64-23"><a href="game-theory-and-replicator-dynamics.html#cb64-23" tabindex="-1"></a></span>
+<span id="cb64-24"><a href="game-theory-and-replicator-dynamics.html#cb64-24" tabindex="-1"></a><span class="co"># payoff matrix</span></span>
+<span id="cb64-25"><a href="game-theory-and-replicator-dynamics.html#cb64-25" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>,</span>
+<span id="cb64-26"><a href="game-theory-and-replicator-dynamics.html#cb64-26" tabindex="-1"></a>              <span class="dv">1</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="dv">1</span>,</span>
+<span id="cb64-27"><a href="game-theory-and-replicator-dynamics.html#cb64-27" tabindex="-1"></a>              <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>), <span class="dv">3</span>, <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb64-28"><a href="game-theory-and-replicator-dynamics.html#cb64-28" tabindex="-1"></a><span class="co"># initial conditions</span></span>
+<span id="cb64-29"><a href="game-theory-and-replicator-dynamics.html#cb64-29" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">3</span>)</span>
+<span id="cb64-30"><a href="game-theory-and-replicator-dynamics.html#cb64-30" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> x0 <span class="sc">/</span> <span class="fu">sum</span>(x0)</span>
+<span id="cb64-31"><a href="game-theory-and-replicator-dynamics.html#cb64-31" tabindex="-1"></a>rps <span class="ot">&lt;-</span> <span class="fu">integrate_RE</span>(A, x0)</span></code></pre></div>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/refuctions-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>What if we start all populations at the same density?</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="game-theory-and-replicator-dynamics.html#cb2-1" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span> <span class="sc">/</span> <span class="dv">3</span>, <span class="dv">3</span>)</span>
-<span id="cb2-2"><a href="game-theory-and-replicator-dynamics.html#cb2-2" tabindex="-1"></a>rps <span class="ot">&lt;-</span> <span class="fu">integrate_RE</span>(A, x0)</span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="game-theory-and-replicator-dynamics.html#cb65-1" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span> <span class="sc">/</span> <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb65-2"><a href="game-theory-and-replicator-dynamics.html#cb65-2" tabindex="-1"></a>rps <span class="ot">&lt;-</span> <span class="fu">integrate_RE</span>(A, x0)</span></code></pre></div>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/rps2-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>And if they are close to the 1/3?</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="game-theory-and-replicator-dynamics.html#cb3-1" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, <span class="dv">3</span>) <span class="sc">+</span> <span class="fl">0.05</span> <span class="sc">*</span> <span class="fu">runif</span>(<span class="dv">3</span>)</span>
-<span id="cb3-2"><a href="game-theory-and-replicator-dynamics.html#cb3-2" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> x0 <span class="sc">/</span> <span class="fu">sum</span>(x0)</span>
-<span id="cb3-3"><a href="game-theory-and-replicator-dynamics.html#cb3-3" tabindex="-1"></a>rps <span class="ot">&lt;-</span> <span class="fu">integrate_RE</span>(A, x0)</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="game-theory-and-replicator-dynamics.html#cb66-1" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, <span class="dv">3</span>) <span class="sc">+</span> <span class="fl">0.05</span> <span class="sc">*</span> <span class="fu">runif</span>(<span class="dv">3</span>)</span>
+<span id="cb66-2"><a href="game-theory-and-replicator-dynamics.html#cb66-2" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> x0 <span class="sc">/</span> <span class="fu">sum</span>(x0)</span>
+<span id="cb66-3"><a href="game-theory-and-replicator-dynamics.html#cb66-3" tabindex="-1"></a>rps <span class="ot">&lt;-</span> <span class="fu">integrate_RE</span>(A, x0)</span></code></pre></div>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/rps3-1.png" width="480" style="display: block; margin: auto;" /></p>
 </div>
 <div id="equivalence-with-glv" class="section level3 hasAnchor" number="7.6.3">
@@ -543,48 +543,48 @@ y_i = \dfrac{x_i}{\sum_j x_j}
 \end{aligned}
 \]</span></p>
 <p>Finally, you rescale time using <span class="math inline">\(\sum_j x_j\)</span> to obtain the replicator equation. To show this is indeed the case, let’s take our functions for integrating GLV:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="game-theory-and-replicator-dynamics.html#cb4-1" tabindex="-1"></a><span class="co"># Generalized Lotka-Volterra model</span></span>
-<span id="cb4-2"><a href="game-theory-and-replicator-dynamics.html#cb4-2" tabindex="-1"></a>GLV <span class="ot">&lt;-</span> <span class="cf">function</span>(t, x, parameters){</span>
-<span id="cb4-3"><a href="game-theory-and-replicator-dynamics.html#cb4-3" tabindex="-1"></a>  <span class="fu">with</span>(<span class="fu">as.list</span>(<span class="fu">c</span>(x, parameters)), {</span>
-<span id="cb4-4"><a href="game-theory-and-replicator-dynamics.html#cb4-4" tabindex="-1"></a>    x[x <span class="sc">&lt;</span> <span class="dv">10</span><span class="sc">^-</span><span class="dv">8</span>] <span class="ot">&lt;-</span> <span class="dv">0</span> <span class="co"># prevent numerical problems</span></span>
-<span id="cb4-5"><a href="game-theory-and-replicator-dynamics.html#cb4-5" tabindex="-1"></a>    dxdt <span class="ot">&lt;-</span> x <span class="sc">*</span> (r <span class="sc">+</span> A <span class="sc">%*%</span> x)</span>
-<span id="cb4-6"><a href="game-theory-and-replicator-dynamics.html#cb4-6" tabindex="-1"></a>    <span class="fu">list</span>(dxdt)</span>
-<span id="cb4-7"><a href="game-theory-and-replicator-dynamics.html#cb4-7" tabindex="-1"></a>  })</span>
-<span id="cb4-8"><a href="game-theory-and-replicator-dynamics.html#cb4-8" tabindex="-1"></a>}</span>
-<span id="cb4-9"><a href="game-theory-and-replicator-dynamics.html#cb4-9" tabindex="-1"></a><span class="co"># general function to integrate GLV</span></span>
-<span id="cb4-10"><a href="game-theory-and-replicator-dynamics.html#cb4-10" tabindex="-1"></a>integrate_GLV <span class="ot">&lt;-</span> <span class="cf">function</span>(r, A, x0, <span class="at">maxtime =</span> <span class="dv">100</span>, <span class="at">steptime =</span> <span class="fl">0.5</span>){</span>
-<span id="cb4-11"><a href="game-theory-and-replicator-dynamics.html#cb4-11" tabindex="-1"></a>  times <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, maxtime, <span class="at">by =</span> steptime)</span>
-<span id="cb4-12"><a href="game-theory-and-replicator-dynamics.html#cb4-12" tabindex="-1"></a>  parameters <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">r =</span> r, <span class="at">A =</span> A)</span>
-<span id="cb4-13"><a href="game-theory-and-replicator-dynamics.html#cb4-13" tabindex="-1"></a>  <span class="co"># solve numerically</span></span>
-<span id="cb4-14"><a href="game-theory-and-replicator-dynamics.html#cb4-14" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">ode</span>(<span class="at">y =</span> x0, <span class="at">times =</span> times, </span>
-<span id="cb4-15"><a href="game-theory-and-replicator-dynamics.html#cb4-15" tabindex="-1"></a>           <span class="at">func =</span> GLV, <span class="at">parms =</span> parameters, </span>
-<span id="cb4-16"><a href="game-theory-and-replicator-dynamics.html#cb4-16" tabindex="-1"></a>           <span class="at">method =</span> <span class="st">&quot;ode45&quot;</span>)</span>
-<span id="cb4-17"><a href="game-theory-and-replicator-dynamics.html#cb4-17" tabindex="-1"></a>  <span class="co"># plot and make into tidy form</span></span>
-<span id="cb4-18"><a href="game-theory-and-replicator-dynamics.html#cb4-18" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">plot_ODE_output</span>(out)</span>
-<span id="cb4-19"><a href="game-theory-and-replicator-dynamics.html#cb4-19" tabindex="-1"></a>  <span class="fu">return</span>(out)</span>
-<span id="cb4-20"><a href="game-theory-and-replicator-dynamics.html#cb4-20" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="game-theory-and-replicator-dynamics.html#cb67-1" tabindex="-1"></a><span class="co"># Generalized Lotka-Volterra model</span></span>
+<span id="cb67-2"><a href="game-theory-and-replicator-dynamics.html#cb67-2" tabindex="-1"></a>GLV <span class="ot">&lt;-</span> <span class="cf">function</span>(t, x, parameters){</span>
+<span id="cb67-3"><a href="game-theory-and-replicator-dynamics.html#cb67-3" tabindex="-1"></a>  <span class="fu">with</span>(<span class="fu">as.list</span>(<span class="fu">c</span>(x, parameters)), {</span>
+<span id="cb67-4"><a href="game-theory-and-replicator-dynamics.html#cb67-4" tabindex="-1"></a>    x[x <span class="sc">&lt;</span> <span class="dv">10</span><span class="sc">^-</span><span class="dv">8</span>] <span class="ot">&lt;-</span> <span class="dv">0</span> <span class="co"># prevent numerical problems</span></span>
+<span id="cb67-5"><a href="game-theory-and-replicator-dynamics.html#cb67-5" tabindex="-1"></a>    dxdt <span class="ot">&lt;-</span> x <span class="sc">*</span> (r <span class="sc">+</span> A <span class="sc">%*%</span> x)</span>
+<span id="cb67-6"><a href="game-theory-and-replicator-dynamics.html#cb67-6" tabindex="-1"></a>    <span class="fu">list</span>(dxdt)</span>
+<span id="cb67-7"><a href="game-theory-and-replicator-dynamics.html#cb67-7" tabindex="-1"></a>  })</span>
+<span id="cb67-8"><a href="game-theory-and-replicator-dynamics.html#cb67-8" tabindex="-1"></a>}</span>
+<span id="cb67-9"><a href="game-theory-and-replicator-dynamics.html#cb67-9" tabindex="-1"></a><span class="co"># general function to integrate GLV</span></span>
+<span id="cb67-10"><a href="game-theory-and-replicator-dynamics.html#cb67-10" tabindex="-1"></a>integrate_GLV <span class="ot">&lt;-</span> <span class="cf">function</span>(r, A, x0, <span class="at">maxtime =</span> <span class="dv">100</span>, <span class="at">steptime =</span> <span class="fl">0.5</span>){</span>
+<span id="cb67-11"><a href="game-theory-and-replicator-dynamics.html#cb67-11" tabindex="-1"></a>  times <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, maxtime, <span class="at">by =</span> steptime)</span>
+<span id="cb67-12"><a href="game-theory-and-replicator-dynamics.html#cb67-12" tabindex="-1"></a>  parameters <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">r =</span> r, <span class="at">A =</span> A)</span>
+<span id="cb67-13"><a href="game-theory-and-replicator-dynamics.html#cb67-13" tabindex="-1"></a>  <span class="co"># solve numerically</span></span>
+<span id="cb67-14"><a href="game-theory-and-replicator-dynamics.html#cb67-14" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">ode</span>(<span class="at">y =</span> x0, <span class="at">times =</span> times, </span>
+<span id="cb67-15"><a href="game-theory-and-replicator-dynamics.html#cb67-15" tabindex="-1"></a>           <span class="at">func =</span> GLV, <span class="at">parms =</span> parameters, </span>
+<span id="cb67-16"><a href="game-theory-and-replicator-dynamics.html#cb67-16" tabindex="-1"></a>           <span class="at">method =</span> <span class="st">&quot;ode45&quot;</span>)</span>
+<span id="cb67-17"><a href="game-theory-and-replicator-dynamics.html#cb67-17" tabindex="-1"></a>  <span class="co"># plot and make into tidy form</span></span>
+<span id="cb67-18"><a href="game-theory-and-replicator-dynamics.html#cb67-18" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">plot_ODE_output</span>(out)</span>
+<span id="cb67-19"><a href="game-theory-and-replicator-dynamics.html#cb67-19" tabindex="-1"></a>  <span class="fu">return</span>(out)</span>
+<span id="cb67-20"><a href="game-theory-and-replicator-dynamics.html#cb67-20" tabindex="-1"></a>}</span></code></pre></div>
 <p>And integrate the simple system:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="game-theory-and-replicator-dynamics.html#cb5-1" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb5-2"><a href="game-theory-and-replicator-dynamics.html#cb5-2" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="fl">0.5</span>, <span class="fl">0.1</span>,</span>
-<span id="cb5-3"><a href="game-theory-and-replicator-dynamics.html#cb5-3" tabindex="-1"></a>              <span class="sc">-</span><span class="fl">0.7</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="dv">0</span>,</span>
-<span id="cb5-4"><a href="game-theory-and-replicator-dynamics.html#cb5-4" tabindex="-1"></a>              <span class="sc">-</span><span class="fl">0.3</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="dv">5</span>), <span class="dv">3</span>, <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb5-5"><a href="game-theory-and-replicator-dynamics.html#cb5-5" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="dv">3</span>, <span class="dv">1</span>)</span>
-<span id="cb5-6"><a href="game-theory-and-replicator-dynamics.html#cb5-6" tabindex="-1"></a>glvex <span class="ot">&lt;-</span> <span class="fu">integrate_GLV</span>(r, A, x0)</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="game-theory-and-replicator-dynamics.html#cb68-1" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb68-2"><a href="game-theory-and-replicator-dynamics.html#cb68-2" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="fl">0.5</span>, <span class="fl">0.1</span>,</span>
+<span id="cb68-3"><a href="game-theory-and-replicator-dynamics.html#cb68-3" tabindex="-1"></a>              <span class="sc">-</span><span class="fl">0.7</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="dv">0</span>,</span>
+<span id="cb68-4"><a href="game-theory-and-replicator-dynamics.html#cb68-4" tabindex="-1"></a>              <span class="sc">-</span><span class="fl">0.3</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="dv">5</span>), <span class="dv">3</span>, <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb68-5"><a href="game-theory-and-replicator-dynamics.html#cb68-5" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="dv">3</span>, <span class="dv">1</span>)</span>
+<span id="cb68-6"><a href="game-theory-and-replicator-dynamics.html#cb68-6" tabindex="-1"></a>glvex <span class="ot">&lt;-</span> <span class="fu">integrate_GLV</span>(r, A, x0)</span></code></pre></div>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/exampleglvtore1-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>And now build the corresponding replicator equation. The matrix of payoffs <span class="math inline">\(\tilde{A}\)</span> becomes:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="game-theory-and-replicator-dynamics.html#cb6-1" tabindex="-1"></a>Atilde <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">4</span>)</span>
-<span id="cb6-2"><a href="game-theory-and-replicator-dynamics.html#cb6-2" tabindex="-1"></a>Atilde[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>] <span class="ot">&lt;-</span> A</span>
-<span id="cb6-3"><a href="game-theory-and-replicator-dynamics.html#cb6-3" tabindex="-1"></a>Atilde[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">4</span>] <span class="ot">&lt;-</span> r</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="game-theory-and-replicator-dynamics.html#cb69-1" tabindex="-1"></a>Atilde <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">4</span>)</span>
+<span id="cb69-2"><a href="game-theory-and-replicator-dynamics.html#cb69-2" tabindex="-1"></a>Atilde[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>] <span class="ot">&lt;-</span> A</span>
+<span id="cb69-3"><a href="game-theory-and-replicator-dynamics.html#cb69-3" tabindex="-1"></a>Atilde[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">4</span>] <span class="ot">&lt;-</span> r</span></code></pre></div>
 <p><span class="math display">\[
 \begin{bmatrix}-1&amp;0.5&amp;0.1&amp;1 \\-0.7&amp;-2&amp;0&amp;2 \\-0.3&amp;0&amp;-5&amp;3 \\0&amp;0&amp;0&amp;0 \\\end{bmatrix}
 \]</span></p>
 <p>Integrate the dynamics:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="game-theory-and-replicator-dynamics.html#cb7-1" tabindex="-1"></a>y0 <span class="ot">&lt;-</span> <span class="fu">c</span>(x0, <span class="dv">1</span>) <span class="co"># add an extra &quot;species&quot;</span></span>
-<span id="cb7-2"><a href="game-theory-and-replicator-dynamics.html#cb7-2" tabindex="-1"></a>y0 <span class="ot">&lt;-</span> y0 <span class="sc">/</span> <span class="fu">sum</span>(y0) <span class="co"># project on the simplex</span></span>
-<span id="cb7-3"><a href="game-theory-and-replicator-dynamics.html#cb7-3" tabindex="-1"></a>reex <span class="ot">&lt;-</span> <span class="fu">integrate_RE</span>(Atilde, y0)</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="game-theory-and-replicator-dynamics.html#cb70-1" tabindex="-1"></a>y0 <span class="ot">&lt;-</span> <span class="fu">c</span>(x0, <span class="dv">1</span>) <span class="co"># add an extra &quot;species&quot;</span></span>
+<span id="cb70-2"><a href="game-theory-and-replicator-dynamics.html#cb70-2" tabindex="-1"></a>y0 <span class="ot">&lt;-</span> y0 <span class="sc">/</span> <span class="fu">sum</span>(y0) <span class="co"># project on the simplex</span></span>
+<span id="cb70-3"><a href="game-theory-and-replicator-dynamics.html#cb70-3" tabindex="-1"></a>reex <span class="ot">&lt;-</span> <span class="fu">integrate_RE</span>(Atilde, y0)</span></code></pre></div>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/redynamicsfromglv2-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>Now let’s look at the equilibrium of the GLV model:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="game-theory-and-replicator-dynamics.html#cb8-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(glvex <span class="sc">%&gt;%</span> <span class="fu">filter</span>(time <span class="sc">==</span> <span class="dv">100</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="game-theory-and-replicator-dynamics.html#cb71-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(glvex <span class="sc">%&gt;%</span> <span class="fu">filter</span>(time <span class="sc">==</span> <span class="dv">100</span>))</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -612,7 +612,7 @@ y_i = \dfrac{x_i}{\sum_j x_j}
 </tbody>
 </table>
 <p>And recover it from the RE equation (just divide by the density of the extra “species”):</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="game-theory-and-replicator-dynamics.html#cb9-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(reex <span class="sc">%&gt;%</span> <span class="fu">filter</span>(time <span class="sc">==</span> <span class="dv">40</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="game-theory-and-replicator-dynamics.html#cb72-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(reex <span class="sc">%&gt;%</span> <span class="fu">filter</span>(time <span class="sc">==</span> <span class="dv">40</span>))</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -644,8 +644,8 @@ y_i = \dfrac{x_i}{\sum_j x_j}
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="game-theory-and-replicator-dynamics.html#cb10-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(reex <span class="sc">%&gt;%</span> <span class="fu">filter</span>(time <span class="sc">==</span> <span class="dv">40</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb10-2"><a href="game-theory-and-replicator-dynamics.html#cb10-2" tabindex="-1"></a>               <span class="fu">mutate</span>(<span class="at">density =</span> density <span class="sc">/</span> <span class="fu">tail</span>(density, <span class="dv">1</span>)) )</span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="game-theory-and-replicator-dynamics.html#cb73-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(reex <span class="sc">%&gt;%</span> <span class="fu">filter</span>(time <span class="sc">==</span> <span class="dv">40</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb73-2"><a href="game-theory-and-replicator-dynamics.html#cb73-2" tabindex="-1"></a>               <span class="fu">mutate</span>(<span class="at">density =</span> density <span class="sc">/</span> <span class="fu">tail</span>(density, <span class="dv">1</span>)) )</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -678,11 +678,11 @@ y_i = \dfrac{x_i}{\sum_j x_j}
 </tbody>
 </table>
 <p>Not only the equilibria are the same, but also the dynamics are the same once time has been properly rescaled. Similarly, for each RE system we can always recover a matrix with zero in the last row by applying the transformations detailed above, and therefore recover the corresponding GLV. For example, take the matrix for the RPS above, and make each coefficient in the last row zero by adding the appropriate constant to each column. Then one recovers some sort of a predator-prey system:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="game-theory-and-replicator-dynamics.html#cb11-1" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
-<span id="cb11-2"><a href="game-theory-and-replicator-dynamics.html#cb11-2" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">2</span>,</span>
-<span id="cb11-3"><a href="game-theory-and-replicator-dynamics.html#cb11-3" tabindex="-1"></a>              <span class="sc">-</span><span class="dv">2</span>, <span class="dv">1</span>), <span class="dv">2</span>, <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb11-4"><a href="game-theory-and-replicator-dynamics.html#cb11-4" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.9</span>, <span class="fl">1.1</span>)</span>
-<span id="cb11-5"><a href="game-theory-and-replicator-dynamics.html#cb11-5" tabindex="-1"></a>glvex <span class="ot">&lt;-</span> <span class="fu">integrate_GLV</span>(r, A, x0, <span class="at">maxtime =</span> <span class="dv">15</span>, <span class="at">steptime =</span> <span class="fl">0.01</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="game-theory-and-replicator-dynamics.html#cb74-1" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb74-2"><a href="game-theory-and-replicator-dynamics.html#cb74-2" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">2</span>,</span>
+<span id="cb74-3"><a href="game-theory-and-replicator-dynamics.html#cb74-3" tabindex="-1"></a>              <span class="sc">-</span><span class="dv">2</span>, <span class="dv">1</span>), <span class="dv">2</span>, <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb74-4"><a href="game-theory-and-replicator-dynamics.html#cb74-4" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.9</span>, <span class="fl">1.1</span>)</span>
+<span id="cb74-5"><a href="game-theory-and-replicator-dynamics.html#cb74-5" tabindex="-1"></a>glvex <span class="ot">&lt;-</span> <span class="fu">integrate_GLV</span>(r, A, x0, <span class="at">maxtime =</span> <span class="dv">15</span>, <span class="at">steptime =</span> <span class="fl">0.01</span>)</span></code></pre></div>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/exampleretoglv1-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>in which the species oscillate around one.</p>
 <div class="boxpaper">
@@ -719,39 +719,39 @@ A x^\star = 0
 \]</span></p>
 <p>I.e., we recover the RE for a zero-sum game. What happens if we draw <span class="math inline">\(H\)</span> (and therefore <span class="math inline">\(A\)</span>) at random? <span class="citation">Allesina and Levine (<a href="#ref-allesina2011competitive">2011</a>)</span> and <span class="citation">Grilli et al. (<a href="#ref-grilli2017higher">2017</a>)</span> applied the results of <span class="citation">Fisher and Reeves (<a href="#ref-fisher1995optimal">1995</a>)</span> and <span class="citation">Brandl (<a href="#ref-brandl2017distribution">2017</a>)</span> to show that, when <span class="math inline">\(n\)</span> species compete, the probability of observing <span class="math inline">\(k\)</span> coexisting is <span class="math inline">\(p(k|n) = \binom{n}{k} 2^{1-n}\)</span> when <span class="math inline">\(k\)</span> is odd, and <span class="math inline">\(p(k|n) = 0\)</span> when <span class="math inline">\(k\)</span> is even.</p>
 <p>Importantly, to find the set of coexisting species we do not need to integrate dynamics. One can use linear programming to solve for the set of species that will coexist.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="game-theory-and-replicator-dynamics.html#cb12-1" tabindex="-1"></a><span class="fu">library</span>(lpSolve)</span>
-<span id="cb12-2"><a href="game-theory-and-replicator-dynamics.html#cb12-2" tabindex="-1"></a><span class="co"># Build a random matrix H such that H_ij + H_ji = 1</span></span>
-<span id="cb12-3"><a href="game-theory-and-replicator-dynamics.html#cb12-3" tabindex="-1"></a>random_H <span class="ot">&lt;-</span> <span class="cf">function</span>(n){</span>
-<span id="cb12-4"><a href="game-theory-and-replicator-dynamics.html#cb12-4" tabindex="-1"></a>  <span class="co"># build random hypertournament H</span></span>
-<span id="cb12-5"><a href="game-theory-and-replicator-dynamics.html#cb12-5" tabindex="-1"></a>  H <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">runif</span>(n <span class="sc">*</span> n), n, n)</span>
-<span id="cb12-6"><a href="game-theory-and-replicator-dynamics.html#cb12-6" tabindex="-1"></a>  <span class="fu">return</span>(H <span class="sc">/</span> (H <span class="sc">+</span> <span class="fu">t</span>(H)))</span>
-<span id="cb12-7"><a href="game-theory-and-replicator-dynamics.html#cb12-7" tabindex="-1"></a>}</span>
-<span id="cb12-8"><a href="game-theory-and-replicator-dynamics.html#cb12-8" tabindex="-1"></a><span class="co"># Find the optimal strategy for the two-person game encoded in H</span></span>
-<span id="cb12-9"><a href="game-theory-and-replicator-dynamics.html#cb12-9" tabindex="-1"></a><span class="co"># using linear programming.</span></span>
-<span id="cb12-10"><a href="game-theory-and-replicator-dynamics.html#cb12-10" tabindex="-1"></a><span class="co"># This is also the coexistence equilibrium of the dynamical system.</span></span>
-<span id="cb12-11"><a href="game-theory-and-replicator-dynamics.html#cb12-11" tabindex="-1"></a>find_optimal_strategy <span class="ot">&lt;-</span> <span class="cf">function</span>(H){</span>
-<span id="cb12-12"><a href="game-theory-and-replicator-dynamics.html#cb12-12" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">dim</span>(H)[<span class="dv">1</span>]</span>
-<span id="cb12-13"><a href="game-theory-and-replicator-dynamics.html#cb12-13" tabindex="-1"></a>  f.obj <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span>, n)</span>
-<span id="cb12-14"><a href="game-theory-and-replicator-dynamics.html#cb12-14" tabindex="-1"></a>  f.con <span class="ot">&lt;-</span> H</span>
-<span id="cb12-15"><a href="game-theory-and-replicator-dynamics.html#cb12-15" tabindex="-1"></a>  f.rhs <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span>, n)</span>
-<span id="cb12-16"><a href="game-theory-and-replicator-dynamics.html#cb12-16" tabindex="-1"></a>  f.dir <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">&quot;&lt;=&quot;</span>, n)</span>
-<span id="cb12-17"><a href="game-theory-and-replicator-dynamics.html#cb12-17" tabindex="-1"></a>  z <span class="ot">&lt;-</span> <span class="fu">lp</span> (<span class="st">&quot;max&quot;</span>, f.obj, f.con, f.dir, f.rhs)</span>
-<span id="cb12-18"><a href="game-theory-and-replicator-dynamics.html#cb12-18" tabindex="-1"></a>  <span class="fu">return</span>(z<span class="sc">$</span>solution <span class="sc">/</span> <span class="fu">sum</span>(z<span class="sc">$</span>solution))</span>
-<span id="cb12-19"><a href="game-theory-and-replicator-dynamics.html#cb12-19" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="game-theory-and-replicator-dynamics.html#cb75-1" tabindex="-1"></a><span class="fu">library</span>(lpSolve)</span>
+<span id="cb75-2"><a href="game-theory-and-replicator-dynamics.html#cb75-2" tabindex="-1"></a><span class="co"># Build a random matrix H such that H_ij + H_ji = 1</span></span>
+<span id="cb75-3"><a href="game-theory-and-replicator-dynamics.html#cb75-3" tabindex="-1"></a>random_H <span class="ot">&lt;-</span> <span class="cf">function</span>(n){</span>
+<span id="cb75-4"><a href="game-theory-and-replicator-dynamics.html#cb75-4" tabindex="-1"></a>  <span class="co"># build random hypertournament H</span></span>
+<span id="cb75-5"><a href="game-theory-and-replicator-dynamics.html#cb75-5" tabindex="-1"></a>  H <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">runif</span>(n <span class="sc">*</span> n), n, n)</span>
+<span id="cb75-6"><a href="game-theory-and-replicator-dynamics.html#cb75-6" tabindex="-1"></a>  <span class="fu">return</span>(H <span class="sc">/</span> (H <span class="sc">+</span> <span class="fu">t</span>(H)))</span>
+<span id="cb75-7"><a href="game-theory-and-replicator-dynamics.html#cb75-7" tabindex="-1"></a>}</span>
+<span id="cb75-8"><a href="game-theory-and-replicator-dynamics.html#cb75-8" tabindex="-1"></a><span class="co"># Find the optimal strategy for the two-person game encoded in H</span></span>
+<span id="cb75-9"><a href="game-theory-and-replicator-dynamics.html#cb75-9" tabindex="-1"></a><span class="co"># using linear programming.</span></span>
+<span id="cb75-10"><a href="game-theory-and-replicator-dynamics.html#cb75-10" tabindex="-1"></a><span class="co"># This is also the coexistence equilibrium of the dynamical system.</span></span>
+<span id="cb75-11"><a href="game-theory-and-replicator-dynamics.html#cb75-11" tabindex="-1"></a>find_optimal_strategy <span class="ot">&lt;-</span> <span class="cf">function</span>(H){</span>
+<span id="cb75-12"><a href="game-theory-and-replicator-dynamics.html#cb75-12" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">dim</span>(H)[<span class="dv">1</span>]</span>
+<span id="cb75-13"><a href="game-theory-and-replicator-dynamics.html#cb75-13" tabindex="-1"></a>  f.obj <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span>, n)</span>
+<span id="cb75-14"><a href="game-theory-and-replicator-dynamics.html#cb75-14" tabindex="-1"></a>  f.con <span class="ot">&lt;-</span> H</span>
+<span id="cb75-15"><a href="game-theory-and-replicator-dynamics.html#cb75-15" tabindex="-1"></a>  f.rhs <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span>, n)</span>
+<span id="cb75-16"><a href="game-theory-and-replicator-dynamics.html#cb75-16" tabindex="-1"></a>  f.dir <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">&quot;&lt;=&quot;</span>, n)</span>
+<span id="cb75-17"><a href="game-theory-and-replicator-dynamics.html#cb75-17" tabindex="-1"></a>  z <span class="ot">&lt;-</span> <span class="fu">lp</span> (<span class="st">&quot;max&quot;</span>, f.obj, f.con, f.dir, f.rhs)</span>
+<span id="cb75-18"><a href="game-theory-and-replicator-dynamics.html#cb75-18" tabindex="-1"></a>  <span class="fu">return</span>(z<span class="sc">$</span>solution <span class="sc">/</span> <span class="fu">sum</span>(z<span class="sc">$</span>solution))</span>
+<span id="cb75-19"><a href="game-theory-and-replicator-dynamics.html#cb75-19" tabindex="-1"></a>}</span></code></pre></div>
 <p>Now let’s try to count how many species suvive when starting with 10:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="game-theory-and-replicator-dynamics.html#cb13-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb13-2"><a href="game-theory-and-replicator-dynamics.html#cb13-2" tabindex="-1"></a>num_simulations <span class="ot">&lt;-</span> <span class="dv">5000</span></span>
-<span id="cb13-3"><a href="game-theory-and-replicator-dynamics.html#cb13-3" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">simulation =</span> <span class="dv">1</span><span class="sc">:</span>num_simulations, <span class="at">coexisting =</span> <span class="dv">0</span>)</span>
-<span id="cb13-4"><a href="game-theory-and-replicator-dynamics.html#cb13-4" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>num_simulations){</span>
-<span id="cb13-5"><a href="game-theory-and-replicator-dynamics.html#cb13-5" tabindex="-1"></a>  H <span class="ot">&lt;-</span> <span class="fu">random_H</span>(n)</span>
-<span id="cb13-6"><a href="game-theory-and-replicator-dynamics.html#cb13-6" tabindex="-1"></a>  coexisting <span class="ot">&lt;-</span> <span class="fu">find_optimal_strategy</span>(H)</span>
-<span id="cb13-7"><a href="game-theory-and-replicator-dynamics.html#cb13-7" tabindex="-1"></a>  results[i,<span class="st">&quot;coexisting&quot;</span>] <span class="ot">&lt;-</span> <span class="fu">sum</span>((coexisting <span class="sc">&gt;</span> <span class="dv">0</span>)<span class="sc">*</span><span class="dv">1</span>)</span>
-<span id="cb13-8"><a href="game-theory-and-replicator-dynamics.html#cb13-8" tabindex="-1"></a>}</span>
-<span id="cb13-9"><a href="game-theory-and-replicator-dynamics.html#cb13-9" tabindex="-1"></a><span class="co"># and plot</span></span>
-<span id="cb13-10"><a href="game-theory-and-replicator-dynamics.html#cb13-10" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> results) <span class="sc">+</span> </span>
-<span id="cb13-11"><a href="game-theory-and-replicator-dynamics.html#cb13-11" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> coexisting) <span class="sc">+</span> </span>
-<span id="cb13-12"><a href="game-theory-and-replicator-dynamics.html#cb13-12" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span> </span>
-<span id="cb13-13"><a href="game-theory-and-replicator-dynamics.html#cb13-13" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="game-theory-and-replicator-dynamics.html#cb76-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb76-2"><a href="game-theory-and-replicator-dynamics.html#cb76-2" tabindex="-1"></a>num_simulations <span class="ot">&lt;-</span> <span class="dv">5000</span></span>
+<span id="cb76-3"><a href="game-theory-and-replicator-dynamics.html#cb76-3" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">simulation =</span> <span class="dv">1</span><span class="sc">:</span>num_simulations, <span class="at">coexisting =</span> <span class="dv">0</span>)</span>
+<span id="cb76-4"><a href="game-theory-and-replicator-dynamics.html#cb76-4" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>num_simulations){</span>
+<span id="cb76-5"><a href="game-theory-and-replicator-dynamics.html#cb76-5" tabindex="-1"></a>  H <span class="ot">&lt;-</span> <span class="fu">random_H</span>(n)</span>
+<span id="cb76-6"><a href="game-theory-and-replicator-dynamics.html#cb76-6" tabindex="-1"></a>  coexisting <span class="ot">&lt;-</span> <span class="fu">find_optimal_strategy</span>(H)</span>
+<span id="cb76-7"><a href="game-theory-and-replicator-dynamics.html#cb76-7" tabindex="-1"></a>  results[i,<span class="st">&quot;coexisting&quot;</span>] <span class="ot">&lt;-</span> <span class="fu">sum</span>((coexisting <span class="sc">&gt;</span> <span class="dv">0</span>)<span class="sc">*</span><span class="dv">1</span>)</span>
+<span id="cb76-8"><a href="game-theory-and-replicator-dynamics.html#cb76-8" tabindex="-1"></a>}</span>
+<span id="cb76-9"><a href="game-theory-and-replicator-dynamics.html#cb76-9" tabindex="-1"></a><span class="co"># and plot</span></span>
+<span id="cb76-10"><a href="game-theory-and-replicator-dynamics.html#cb76-10" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> results) <span class="sc">+</span> </span>
+<span id="cb76-11"><a href="game-theory-and-replicator-dynamics.html#cb76-11" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> coexisting) <span class="sc">+</span> </span>
+<span id="cb76-12"><a href="game-theory-and-replicator-dynamics.html#cb76-12" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span> </span>
+<span id="cb76-13"><a href="game-theory-and-replicator-dynamics.html#cb76-13" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>)</span></code></pre></div>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/coexistlphist-1.png" width="480" style="display: block; margin: auto;" /></p>
 </div>
 </div>
@@ -781,22 +781,22 @@ V(x) = -\sum_i x_i^\star \log \frac{x_i}{x_i^\star} .
 \]</span></p>
 <p>We have found a constant of motion, meaning that the system will follow closed orbits. Hence, unless we start the system precisely at <span class="math inline">\(x^\star\)</span>, the abundances will cycle neutrally around the equilibrium.</p>
 <p>Let’s try with a larger system:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="game-theory-and-replicator-dynamics.html#cb14-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb14-2"><a href="game-theory-and-replicator-dynamics.html#cb14-2" tabindex="-1"></a><span class="co"># search for random H yielding all species coexisting</span></span>
-<span id="cb14-3"><a href="game-theory-and-replicator-dynamics.html#cb14-3" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb14-4"><a href="game-theory-and-replicator-dynamics.html#cb14-4" tabindex="-1"></a><span class="cf">while</span>(<span class="cn">TRUE</span>){</span>
-<span id="cb14-5"><a href="game-theory-and-replicator-dynamics.html#cb14-5" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb14-6"><a href="game-theory-and-replicator-dynamics.html#cb14-6" tabindex="-1"></a>  <span class="fu">set.seed</span>(i)</span>
-<span id="cb14-7"><a href="game-theory-and-replicator-dynamics.html#cb14-7" tabindex="-1"></a>  H <span class="ot">&lt;-</span> <span class="fu">random_H</span>(n)</span>
-<span id="cb14-8"><a href="game-theory-and-replicator-dynamics.html#cb14-8" tabindex="-1"></a>  x_star <span class="ot">&lt;-</span> <span class="fu">find_optimal_strategy</span>(H)</span>
-<span id="cb14-9"><a href="game-theory-and-replicator-dynamics.html#cb14-9" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">all</span>(x_star <span class="sc">&gt;</span> <span class="dv">0</span>)) <span class="cf">break</span></span>
-<span id="cb14-10"><a href="game-theory-and-replicator-dynamics.html#cb14-10" tabindex="-1"></a>}</span>
-<span id="cb14-11"><a href="game-theory-and-replicator-dynamics.html#cb14-11" tabindex="-1"></a><span class="co"># payoff matrix</span></span>
-<span id="cb14-12"><a href="game-theory-and-replicator-dynamics.html#cb14-12" tabindex="-1"></a>A <span class="ot">&lt;-</span> H <span class="sc">-</span> <span class="fu">t</span>(H)</span>
-<span id="cb14-13"><a href="game-theory-and-replicator-dynamics.html#cb14-13" tabindex="-1"></a><span class="co"># initial conditions close to equilibrium</span></span>
-<span id="cb14-14"><a href="game-theory-and-replicator-dynamics.html#cb14-14" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> x_star <span class="sc">+</span> <span class="fu">runif</span>(n) <span class="sc">*</span> <span class="fl">0.2</span></span>
-<span id="cb14-15"><a href="game-theory-and-replicator-dynamics.html#cb14-15" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> x0 <span class="sc">/</span> <span class="fu">sum</span>(x0)</span>
-<span id="cb14-16"><a href="game-theory-and-replicator-dynamics.html#cb14-16" tabindex="-1"></a>fivespp <span class="ot">&lt;-</span> <span class="fu">integrate_RE</span>(A, x0, <span class="at">maxtime =</span> <span class="dv">400</span>, <span class="at">steptime =</span> <span class="fl">0.1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="game-theory-and-replicator-dynamics.html#cb77-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb77-2"><a href="game-theory-and-replicator-dynamics.html#cb77-2" tabindex="-1"></a><span class="co"># search for random H yielding all species coexisting</span></span>
+<span id="cb77-3"><a href="game-theory-and-replicator-dynamics.html#cb77-3" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb77-4"><a href="game-theory-and-replicator-dynamics.html#cb77-4" tabindex="-1"></a><span class="cf">while</span>(<span class="cn">TRUE</span>){</span>
+<span id="cb77-5"><a href="game-theory-and-replicator-dynamics.html#cb77-5" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb77-6"><a href="game-theory-and-replicator-dynamics.html#cb77-6" tabindex="-1"></a>  <span class="fu">set.seed</span>(i)</span>
+<span id="cb77-7"><a href="game-theory-and-replicator-dynamics.html#cb77-7" tabindex="-1"></a>  H <span class="ot">&lt;-</span> <span class="fu">random_H</span>(n)</span>
+<span id="cb77-8"><a href="game-theory-and-replicator-dynamics.html#cb77-8" tabindex="-1"></a>  x_star <span class="ot">&lt;-</span> <span class="fu">find_optimal_strategy</span>(H)</span>
+<span id="cb77-9"><a href="game-theory-and-replicator-dynamics.html#cb77-9" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">all</span>(x_star <span class="sc">&gt;</span> <span class="dv">0</span>)) <span class="cf">break</span></span>
+<span id="cb77-10"><a href="game-theory-and-replicator-dynamics.html#cb77-10" tabindex="-1"></a>}</span>
+<span id="cb77-11"><a href="game-theory-and-replicator-dynamics.html#cb77-11" tabindex="-1"></a><span class="co"># payoff matrix</span></span>
+<span id="cb77-12"><a href="game-theory-and-replicator-dynamics.html#cb77-12" tabindex="-1"></a>A <span class="ot">&lt;-</span> H <span class="sc">-</span> <span class="fu">t</span>(H)</span>
+<span id="cb77-13"><a href="game-theory-and-replicator-dynamics.html#cb77-13" tabindex="-1"></a><span class="co"># initial conditions close to equilibrium</span></span>
+<span id="cb77-14"><a href="game-theory-and-replicator-dynamics.html#cb77-14" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> x_star <span class="sc">+</span> <span class="fu">runif</span>(n) <span class="sc">*</span> <span class="fl">0.2</span></span>
+<span id="cb77-15"><a href="game-theory-and-replicator-dynamics.html#cb77-15" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> x0 <span class="sc">/</span> <span class="fu">sum</span>(x0)</span>
+<span id="cb77-16"><a href="game-theory-and-replicator-dynamics.html#cb77-16" tabindex="-1"></a>fivespp <span class="ot">&lt;-</span> <span class="fu">integrate_RE</span>(A, x0, <span class="at">maxtime =</span> <span class="dv">400</span>, <span class="at">steptime =</span> <span class="fl">0.1</span>)</span></code></pre></div>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/reneutral-1.png" width="480" style="display: block; margin: auto;" /></p>
 <div class="boxhomework">
 <p><strong>Homework 7a</strong></p>
@@ -826,50 +826,50 @@ A = \begin{pmatrix}
 \dfrac{d x_i}{dt} = x_i \sum_{j,k} A_{ijk} x_j x_k
 \]</span></p>
 <p>where the tensor <span class="math inline">\(A\)</span> (a three-dimensional matrix) encodes the effect of a pair of species (<span class="math inline">\(j\)</span> and <span class="math inline">\(k\)</span>) on the density of <span class="math inline">\(i\)</span>. Importantly, one can choose the tensor such that the equilibrium is the same as for the two-player replicator equation: take <span class="math inline">\(A_{ijk} = 2 H_{ij} H_{ik} - H_{ji} H_{jk} - H_{ki} H_{kj}\)</span>, which can be derived from first principles by writing the stochastic dynamics. What is surprising is that, while the equilibrium is unchanged, the dynamics are now globally stable:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="game-theory-and-replicator-dynamics.html#cb15-1" tabindex="-1"></a><span class="co"># Now payoff is a tensor</span></span>
-<span id="cb15-2"><a href="game-theory-and-replicator-dynamics.html#cb15-2" tabindex="-1"></a>RE_3 <span class="ot">&lt;-</span> <span class="cf">function</span>(t, x, parameters){</span>
-<span id="cb15-3"><a href="game-theory-and-replicator-dynamics.html#cb15-3" tabindex="-1"></a>  <span class="fu">with</span>(<span class="fu">as.list</span>(<span class="fu">c</span>(x, parameters)), {</span>
-<span id="cb15-4"><a href="game-theory-and-replicator-dynamics.html#cb15-4" tabindex="-1"></a>    x[x <span class="sc">&lt;</span> <span class="dv">10</span><span class="sc">^-</span><span class="dv">8</span>] <span class="ot">&lt;-</span> <span class="dv">0</span> <span class="co"># prevent numerical problems</span></span>
-<span id="cb15-5"><a href="game-theory-and-replicator-dynamics.html#cb15-5" tabindex="-1"></a>    x <span class="ot">&lt;-</span> x <span class="sc">/</span> <span class="fu">sum</span>(x) <span class="co"># keep on simplex</span></span>
-<span id="cb15-6"><a href="game-theory-and-replicator-dynamics.html#cb15-6" tabindex="-1"></a>    n <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
-<span id="cb15-7"><a href="game-theory-and-replicator-dynamics.html#cb15-7" tabindex="-1"></a>    dxidt <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>, n)</span>
-<span id="cb15-8"><a href="game-theory-and-replicator-dynamics.html#cb15-8" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){</span>
-<span id="cb15-9"><a href="game-theory-and-replicator-dynamics.html#cb15-9" tabindex="-1"></a>      dxidt[i] <span class="ot">&lt;-</span> x[i] <span class="sc">*</span> x <span class="sc">%*%</span> P3[i,,] <span class="sc">%*%</span> x</span>
-<span id="cb15-10"><a href="game-theory-and-replicator-dynamics.html#cb15-10" tabindex="-1"></a>    }</span>
-<span id="cb15-11"><a href="game-theory-and-replicator-dynamics.html#cb15-11" tabindex="-1"></a>    <span class="fu">list</span>(dxidt)</span>
-<span id="cb15-12"><a href="game-theory-and-replicator-dynamics.html#cb15-12" tabindex="-1"></a>  })</span>
-<span id="cb15-13"><a href="game-theory-and-replicator-dynamics.html#cb15-13" tabindex="-1"></a>}</span>
-<span id="cb15-14"><a href="game-theory-and-replicator-dynamics.html#cb15-14" tabindex="-1"></a><span class="co"># general function to integrate RE_3</span></span>
-<span id="cb15-15"><a href="game-theory-and-replicator-dynamics.html#cb15-15" tabindex="-1"></a>integrate_RE_3 <span class="ot">&lt;-</span> <span class="cf">function</span>(H, x0, <span class="at">maxtime =</span> <span class="dv">40</span>, <span class="at">steptime =</span> <span class="fl">0.05</span>){</span>
-<span id="cb15-16"><a href="game-theory-and-replicator-dynamics.html#cb15-16" tabindex="-1"></a>  times <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, maxtime, <span class="at">by =</span> steptime)</span>
-<span id="cb15-17"><a href="game-theory-and-replicator-dynamics.html#cb15-17" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(H)</span>
-<span id="cb15-18"><a href="game-theory-and-replicator-dynamics.html#cb15-18" tabindex="-1"></a>  P3 <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="dv">0</span>, <span class="fu">c</span>(n, n, n))</span>
-<span id="cb15-19"><a href="game-theory-and-replicator-dynamics.html#cb15-19" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){</span>
-<span id="cb15-20"><a href="game-theory-and-replicator-dynamics.html#cb15-20" tabindex="-1"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){</span>
-<span id="cb15-21"><a href="game-theory-and-replicator-dynamics.html#cb15-21" tabindex="-1"></a>      <span class="cf">for</span> (k <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){</span>
-<span id="cb15-22"><a href="game-theory-and-replicator-dynamics.html#cb15-22" tabindex="-1"></a>        P3[i,j,k] <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> H[i,j] <span class="sc">*</span> H[i,k] <span class="sc">-</span>  H[j,i] <span class="sc">*</span> H[j,k] <span class="sc">-</span> H[k,i] <span class="sc">*</span> H[k,j]</span>
-<span id="cb15-23"><a href="game-theory-and-replicator-dynamics.html#cb15-23" tabindex="-1"></a>      }</span>
-<span id="cb15-24"><a href="game-theory-and-replicator-dynamics.html#cb15-24" tabindex="-1"></a>    }</span>
-<span id="cb15-25"><a href="game-theory-and-replicator-dynamics.html#cb15-25" tabindex="-1"></a>  }</span>
-<span id="cb15-26"><a href="game-theory-and-replicator-dynamics.html#cb15-26" tabindex="-1"></a>  parameters <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">P3 =</span> P3)</span>
-<span id="cb15-27"><a href="game-theory-and-replicator-dynamics.html#cb15-27" tabindex="-1"></a>  <span class="co"># solve numerically</span></span>
-<span id="cb15-28"><a href="game-theory-and-replicator-dynamics.html#cb15-28" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">ode</span>(<span class="at">y =</span> x0, <span class="at">times =</span> times, </span>
-<span id="cb15-29"><a href="game-theory-and-replicator-dynamics.html#cb15-29" tabindex="-1"></a>           <span class="at">func =</span> RE_3, <span class="at">parms =</span> parameters, </span>
-<span id="cb15-30"><a href="game-theory-and-replicator-dynamics.html#cb15-30" tabindex="-1"></a>           <span class="at">method =</span> <span class="st">&quot;ode45&quot;</span>)</span>
-<span id="cb15-31"><a href="game-theory-and-replicator-dynamics.html#cb15-31" tabindex="-1"></a>  <span class="co"># plot and make into tidy form</span></span>
-<span id="cb15-32"><a href="game-theory-and-replicator-dynamics.html#cb15-32" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">plot_ODE_output</span>(out)</span>
-<span id="cb15-33"><a href="game-theory-and-replicator-dynamics.html#cb15-33" tabindex="-1"></a>  <span class="fu">return</span>(out)</span>
-<span id="cb15-34"><a href="game-theory-and-replicator-dynamics.html#cb15-34" tabindex="-1"></a>}</span>
-<span id="cb15-35"><a href="game-theory-and-replicator-dynamics.html#cb15-35" tabindex="-1"></a><span class="co"># integrate the system above</span></span>
-<span id="cb15-36"><a href="game-theory-and-replicator-dynamics.html#cb15-36" tabindex="-1"></a>fivespp <span class="ot">&lt;-</span> <span class="fu">integrate_RE_3</span>(H, x0, <span class="at">maxtime =</span> <span class="dv">800</span>, <span class="at">steptime =</span> <span class="fl">0.1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="game-theory-and-replicator-dynamics.html#cb78-1" tabindex="-1"></a><span class="co"># Now payoff is a tensor</span></span>
+<span id="cb78-2"><a href="game-theory-and-replicator-dynamics.html#cb78-2" tabindex="-1"></a>RE_3 <span class="ot">&lt;-</span> <span class="cf">function</span>(t, x, parameters){</span>
+<span id="cb78-3"><a href="game-theory-and-replicator-dynamics.html#cb78-3" tabindex="-1"></a>  <span class="fu">with</span>(<span class="fu">as.list</span>(<span class="fu">c</span>(x, parameters)), {</span>
+<span id="cb78-4"><a href="game-theory-and-replicator-dynamics.html#cb78-4" tabindex="-1"></a>    x[x <span class="sc">&lt;</span> <span class="dv">10</span><span class="sc">^-</span><span class="dv">8</span>] <span class="ot">&lt;-</span> <span class="dv">0</span> <span class="co"># prevent numerical problems</span></span>
+<span id="cb78-5"><a href="game-theory-and-replicator-dynamics.html#cb78-5" tabindex="-1"></a>    x <span class="ot">&lt;-</span> x <span class="sc">/</span> <span class="fu">sum</span>(x) <span class="co"># keep on simplex</span></span>
+<span id="cb78-6"><a href="game-theory-and-replicator-dynamics.html#cb78-6" tabindex="-1"></a>    n <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb78-7"><a href="game-theory-and-replicator-dynamics.html#cb78-7" tabindex="-1"></a>    dxidt <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>, n)</span>
+<span id="cb78-8"><a href="game-theory-and-replicator-dynamics.html#cb78-8" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){</span>
+<span id="cb78-9"><a href="game-theory-and-replicator-dynamics.html#cb78-9" tabindex="-1"></a>      dxidt[i] <span class="ot">&lt;-</span> x[i] <span class="sc">*</span> x <span class="sc">%*%</span> P3[i,,] <span class="sc">%*%</span> x</span>
+<span id="cb78-10"><a href="game-theory-and-replicator-dynamics.html#cb78-10" tabindex="-1"></a>    }</span>
+<span id="cb78-11"><a href="game-theory-and-replicator-dynamics.html#cb78-11" tabindex="-1"></a>    <span class="fu">list</span>(dxidt)</span>
+<span id="cb78-12"><a href="game-theory-and-replicator-dynamics.html#cb78-12" tabindex="-1"></a>  })</span>
+<span id="cb78-13"><a href="game-theory-and-replicator-dynamics.html#cb78-13" tabindex="-1"></a>}</span>
+<span id="cb78-14"><a href="game-theory-and-replicator-dynamics.html#cb78-14" tabindex="-1"></a><span class="co"># general function to integrate RE_3</span></span>
+<span id="cb78-15"><a href="game-theory-and-replicator-dynamics.html#cb78-15" tabindex="-1"></a>integrate_RE_3 <span class="ot">&lt;-</span> <span class="cf">function</span>(H, x0, <span class="at">maxtime =</span> <span class="dv">40</span>, <span class="at">steptime =</span> <span class="fl">0.05</span>){</span>
+<span id="cb78-16"><a href="game-theory-and-replicator-dynamics.html#cb78-16" tabindex="-1"></a>  times <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, maxtime, <span class="at">by =</span> steptime)</span>
+<span id="cb78-17"><a href="game-theory-and-replicator-dynamics.html#cb78-17" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(H)</span>
+<span id="cb78-18"><a href="game-theory-and-replicator-dynamics.html#cb78-18" tabindex="-1"></a>  P3 <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="dv">0</span>, <span class="fu">c</span>(n, n, n))</span>
+<span id="cb78-19"><a href="game-theory-and-replicator-dynamics.html#cb78-19" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){</span>
+<span id="cb78-20"><a href="game-theory-and-replicator-dynamics.html#cb78-20" tabindex="-1"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){</span>
+<span id="cb78-21"><a href="game-theory-and-replicator-dynamics.html#cb78-21" tabindex="-1"></a>      <span class="cf">for</span> (k <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){</span>
+<span id="cb78-22"><a href="game-theory-and-replicator-dynamics.html#cb78-22" tabindex="-1"></a>        P3[i,j,k] <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> H[i,j] <span class="sc">*</span> H[i,k] <span class="sc">-</span>  H[j,i] <span class="sc">*</span> H[j,k] <span class="sc">-</span> H[k,i] <span class="sc">*</span> H[k,j]</span>
+<span id="cb78-23"><a href="game-theory-and-replicator-dynamics.html#cb78-23" tabindex="-1"></a>      }</span>
+<span id="cb78-24"><a href="game-theory-and-replicator-dynamics.html#cb78-24" tabindex="-1"></a>    }</span>
+<span id="cb78-25"><a href="game-theory-and-replicator-dynamics.html#cb78-25" tabindex="-1"></a>  }</span>
+<span id="cb78-26"><a href="game-theory-and-replicator-dynamics.html#cb78-26" tabindex="-1"></a>  parameters <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">P3 =</span> P3)</span>
+<span id="cb78-27"><a href="game-theory-and-replicator-dynamics.html#cb78-27" tabindex="-1"></a>  <span class="co"># solve numerically</span></span>
+<span id="cb78-28"><a href="game-theory-and-replicator-dynamics.html#cb78-28" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">ode</span>(<span class="at">y =</span> x0, <span class="at">times =</span> times, </span>
+<span id="cb78-29"><a href="game-theory-and-replicator-dynamics.html#cb78-29" tabindex="-1"></a>           <span class="at">func =</span> RE_3, <span class="at">parms =</span> parameters, </span>
+<span id="cb78-30"><a href="game-theory-and-replicator-dynamics.html#cb78-30" tabindex="-1"></a>           <span class="at">method =</span> <span class="st">&quot;ode45&quot;</span>)</span>
+<span id="cb78-31"><a href="game-theory-and-replicator-dynamics.html#cb78-31" tabindex="-1"></a>  <span class="co"># plot and make into tidy form</span></span>
+<span id="cb78-32"><a href="game-theory-and-replicator-dynamics.html#cb78-32" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">plot_ODE_output</span>(out)</span>
+<span id="cb78-33"><a href="game-theory-and-replicator-dynamics.html#cb78-33" tabindex="-1"></a>  <span class="fu">return</span>(out)</span>
+<span id="cb78-34"><a href="game-theory-and-replicator-dynamics.html#cb78-34" tabindex="-1"></a>}</span>
+<span id="cb78-35"><a href="game-theory-and-replicator-dynamics.html#cb78-35" tabindex="-1"></a><span class="co"># integrate the system above</span></span>
+<span id="cb78-36"><a href="game-theory-and-replicator-dynamics.html#cb78-36" tabindex="-1"></a>fivespp <span class="ot">&lt;-</span> <span class="fu">integrate_RE_3</span>(H, x0, <span class="at">maxtime =</span> <span class="dv">800</span>, <span class="at">steptime =</span> <span class="fl">0.1</span>)</span></code></pre></div>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/rehoi-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>And the rock-paper-scissors:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="game-theory-and-replicator-dynamics.html#cb16-1" tabindex="-1"></a>H <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>,</span>
-<span id="cb16-2"><a href="game-theory-and-replicator-dynamics.html#cb16-2" tabindex="-1"></a>              <span class="dv">0</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>, <span class="dv">1</span>,</span>
-<span id="cb16-3"><a href="game-theory-and-replicator-dynamics.html#cb16-3" tabindex="-1"></a>              <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>), <span class="dv">3</span>, <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb16-4"><a href="game-theory-and-replicator-dynamics.html#cb16-4" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">3</span>)</span>
-<span id="cb16-5"><a href="game-theory-and-replicator-dynamics.html#cb16-5" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> x0 <span class="sc">/</span> <span class="fu">sum</span>(x0)</span>
-<span id="cb16-6"><a href="game-theory-and-replicator-dynamics.html#cb16-6" tabindex="-1"></a>rps <span class="ot">&lt;-</span> <span class="fu">integrate_RE_3</span>(H, x0, <span class="at">maxtime =</span> <span class="dv">50</span>, <span class="at">steptime =</span> <span class="fl">0.1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="game-theory-and-replicator-dynamics.html#cb79-1" tabindex="-1"></a>H <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>,</span>
+<span id="cb79-2"><a href="game-theory-and-replicator-dynamics.html#cb79-2" tabindex="-1"></a>              <span class="dv">0</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>, <span class="dv">1</span>,</span>
+<span id="cb79-3"><a href="game-theory-and-replicator-dynamics.html#cb79-3" tabindex="-1"></a>              <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>), <span class="dv">3</span>, <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb79-4"><a href="game-theory-and-replicator-dynamics.html#cb79-4" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">3</span>)</span>
+<span id="cb79-5"><a href="game-theory-and-replicator-dynamics.html#cb79-5" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> x0 <span class="sc">/</span> <span class="fu">sum</span>(x0)</span>
+<span id="cb79-6"><a href="game-theory-and-replicator-dynamics.html#cb79-6" tabindex="-1"></a>rps <span class="ot">&lt;-</span> <span class="fu">integrate_RE_3</span>(H, x0, <span class="at">maxtime =</span> <span class="dv">50</span>, <span class="at">steptime =</span> <span class="fl">0.1</span>)</span></code></pre></div>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/rpshoi-1.png" width="480" style="display: block; margin: auto;" /></p>
 
 </div>

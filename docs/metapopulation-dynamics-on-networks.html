@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Lecture 8 Metapopulation dynamics on networks | Theoretical Community Ecology</title>
+  <meta name="description" content="A graduate course in theoretical community ecology focusing on systems with multiple species." />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Lecture 8 Metapopulation dynamics on networks | Theoretical Community Ecology" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="A graduate course in theoretical community ecology focusing on systems with multiple species." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Lecture 8 Metapopulation dynamics on networks | Theoretical Community Ecology" />
+  
+  <meta name="twitter:description" content="A graduate course in theoretical community ecology focusing on systems with multiple species." />
+  
+
+<meta name="author" content="Stefano Allesina" />
+
+
+<meta name="date" content="2024-09-30" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="game-theory-and-replicator-dynamics.html"/>
+<link rel="next" href="quasi-polynomial-systems.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Theoretical Community Ecology</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preliminaries</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#approach-and-target-audience"><i class="fa fa-check"></i>Approach and target audience</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#topics"><i class="fa fa-check"></i>Topics</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#notation"><i class="fa fa-check"></i>Notation</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#grading-and-code-of-conduct"><i class="fa fa-check"></i>Grading and code of conduct</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#homework-80"><i class="fa fa-check"></i>Homework (80%)</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#review-20"><i class="fa fa-check"></i>Review (20%)</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#accommodation-for-students-with-disabilities"><i class="fa fa-check"></i>Accommodation for students with disabilities</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#a-note-about-biographies"><i class="fa fa-check"></i>A note about biographies</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#sources"><i class="fa fa-check"></i>Sources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html"><i class="fa fa-check"></i><b>1</b> Models for a single population</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#types-of-dynamical-systems"><i class="fa fa-check"></i><b>1.1</b> Types of dynamical systems</a></li>
+<li class="chapter" data-level="1.2" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#initial-value-problems"><i class="fa fa-check"></i><b>1.2</b> Initial-value problems</a></li>
+<li class="chapter" data-level="1.3" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#solvable-model-exponential-growth"><i class="fa fa-check"></i><b>1.3</b> Solvable model: Exponential growth</a></li>
+<li class="chapter" data-level="1.4" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#solvable-model-logistic-growth"><i class="fa fa-check"></i><b>1.4</b> Solvable model: Logistic growth</a></li>
+<li class="chapter" data-level="1.5" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#qualitative-analysis-of-models-for-a-single-population"><i class="fa fa-check"></i><b>1.5</b> Qualitative analysis of models for a single population</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#stability-using-derivatives"><i class="fa fa-check"></i><b>1.5.1</b> Stability using derivatives</a></li>
+<li class="chapter" data-level="1.5.2" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#what-are-we-doing-when-probing-stability-using-derivatives"><i class="fa fa-check"></i><b>1.5.2</b> What are we doing when probing stability using derivatives?</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#bifurcations"><i class="fa fa-check"></i><b>1.6</b> Bifurcations</a></li>
+<li class="chapter" data-level="1.7" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#long-term-behavior-of-1-d-systems"><i class="fa fa-check"></i><b>1.7</b> Long term behavior of 1-D systems</a></li>
+<li class="chapter" data-level="1.8" data-path="models-for-a-single-population.html"><a href="models-for-a-single-population.html#lyapunov-functions"><i class="fa fa-check"></i><b>1.8</b> Lyapunov functions</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html"><i class="fa fa-check"></i><b>2</b> Models for two populations</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#qualitative-analysis-of-models-for-two-populations"><i class="fa fa-check"></i><b>2.1</b> Qualitative analysis of models for two populations</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#isoclines-of-null-growth"><i class="fa fa-check"></i><b>2.1.1</b> Isoclines of null growth</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#local-stability-analysis"><i class="fa fa-check"></i><b>2.2</b> Local stability analysis</a></li>
+<li class="chapter" data-level="2.3" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#stability-analysis-of-the-lotka-volterra-predator-prey-model"><i class="fa fa-check"></i><b>2.3</b> Stability analysis of the Lotka-Volterra Predator-Prey model</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#constant-of-motion-for-lotka-volterra-predator-prey"><i class="fa fa-check"></i><b>2.3.1</b> Constant of motion for Lotka-Volterra Predator-Prey</a></li>
+<li class="chapter" data-level="2.3.2" data-path="models-for-two-populations.html"><a href="models-for-two-populations.html#analysis-of-predator-prey-model-with-logistic-growth-for-the-prey"><i class="fa fa-check"></i><b>2.3.2</b> Analysis of Predator-Prey model with logistic growth for the prey</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html"><i class="fa fa-check"></i><b>3</b> Generalized Lotka-Volterra model</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#formulation"><i class="fa fa-check"></i><b>3.1</b> Formulation</a></li>
+<li class="chapter" data-level="3.2" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#a-single-population"><i class="fa fa-check"></i><b>3.2</b> A single population</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#metapopulation-dynamics"><i class="fa fa-check"></i><b>3.2.1</b> Metapopulation dynamics</a></li>
+<li class="chapter" data-level="3.2.2" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#s-i-s-model"><i class="fa fa-check"></i><b>3.2.2</b> S-I-S model</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#multi-species-dynamics"><i class="fa fa-check"></i><b>3.3</b> Multi-species dynamics</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#existence-of-an-equilibrium"><i class="fa fa-check"></i><b>3.3.1</b> Existence of an equilibrium</a></li>
+<li class="chapter" data-level="3.3.2" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#stability-of-the-coexistence-equilibrium"><i class="fa fa-check"></i><b>3.3.2</b> Stability of the coexistence equilibrium</a></li>
+<li class="chapter" data-level="3.3.3" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#types-of-dynamics"><i class="fa fa-check"></i><b>3.3.3</b> Types of dynamics</a></li>
+<li class="chapter" data-level="3.3.4" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#the-equilibrium-is-the-time-average"><i class="fa fa-check"></i><b>3.3.4</b> The equilibrium is the time-average</a></li>
+<li class="chapter" data-level="3.3.5" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#lyapunov-diagonal-stability-and-global-stability"><i class="fa fa-check"></i><b>3.3.5</b> Lyapunov diagonal stability and global stability</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#macarthurs-consumer-resource-model"><i class="fa fa-check"></i><b>3.4</b> MacArthur’s consumer-resource model</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#existence-of-an-equilibrium-1"><i class="fa fa-check"></i><b>3.4.1</b> Existence of an equilibrium</a></li>
+<li class="chapter" data-level="3.4.2" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#global-stability-1"><i class="fa fa-check"></i><b>3.4.2</b> Global stability</a></li>
+<li class="chapter" data-level="3.4.3" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#separation-of-time-scales"><i class="fa fa-check"></i><b>3.4.3</b> Separation of time-scales</a></li>
+<li class="chapter" data-level="3.4.4" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#lyapunov-function-for-symmetric-lotka-volterra"><i class="fa fa-check"></i><b>3.4.4</b> Lyapunov function for symmetric Lotka-Volterra</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#further-readings"><i class="fa fa-check"></i><b>3.5</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html"><i class="fa fa-check"></i><b>4</b> Stability of large ecological communities</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#complexity-and-stability"><i class="fa fa-check"></i><b>4.1</b> Complexity and stability</a></li>
+<li class="chapter" data-level="4.2" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#the-stability-of-random-ecosystems"><i class="fa fa-check"></i><b>4.2</b> The stability of random ecosystems</a></li>
+<li class="chapter" data-level="4.3" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#accounting-for-interaction-types"><i class="fa fa-check"></i><b>4.3</b> Accounting for interaction types</a></li>
+<li class="chapter" data-level="4.4" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#symmetric-matrices"><i class="fa fa-check"></i><b>4.4</b> Symmetric matrices</a></li>
+<li class="chapter" data-level="4.5" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#covariance-matrices"><i class="fa fa-check"></i><b>4.5</b> Covariance matrices</a></li>
+<li class="chapter" data-level="4.6" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#small-rank-perturbations"><i class="fa fa-check"></i><b>4.6</b> Small-rank perturbations</a></li>
+<li class="chapter" data-level="4.7" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#structured-matrices"><i class="fa fa-check"></i><b>4.7</b> Structured matrices</a></li>
+<li class="chapter" data-level="4.8" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#further-readings-1"><i class="fa fa-check"></i><b>4.8</b> Further readings</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="ecological-assembly.html"><a href="ecological-assembly.html"><i class="fa fa-check"></i><b>5</b> Ecological assembly</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#assembly"><i class="fa fa-check"></i><b>5.1</b> Assembly</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#what-makes-the-study-of-assembly-difficult"><i class="fa fa-check"></i><b>5.1.1</b> What makes the study of assembly difficult?</a></li>
+<li class="chapter" data-level="5.1.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#ecological-assembly-without-tears"><i class="fa fa-check"></i><b>5.1.2</b> Ecological assembly without tears</a></li>
+<li class="chapter" data-level="5.1.3" data-path="ecological-assembly.html"><a href="ecological-assembly.html#top-down-and-bottom-up-assembly"><i class="fa fa-check"></i><b>5.1.3</b> Top-down and bottom-up assembly</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#modeling-invasions"><i class="fa fa-check"></i><b>5.2</b> Modeling invasions</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#invasions-in-multispecies-communities"><i class="fa fa-check"></i><b>5.2.1</b> Invasions in multispecies communities</a></li>
+<li class="chapter" data-level="5.2.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#lyapunov-stability-and-saturated-equilibria"><i class="fa fa-check"></i><b>5.2.2</b> Lyapunov stability and saturated equilibria</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="ecological-assembly.html"><a href="ecological-assembly.html#top-down-assembly"><i class="fa fa-check"></i><b>5.3</b> Top-down assembly</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#a-trivial-case"><i class="fa fa-check"></i><b>5.3.1</b> A trivial case</a></li>
+<li class="chapter" data-level="5.3.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#simulating-final-composition"><i class="fa fa-check"></i><b>5.3.2</b> Simulating final composition</a></li>
+<li class="chapter" data-level="5.3.3" data-path="ecological-assembly.html"><a href="ecological-assembly.html#a-random-zoo"><i class="fa fa-check"></i><b>5.3.3</b> A random zoo</a></li>
+<li class="chapter" data-level="5.3.4" data-path="ecological-assembly.html"><a href="ecological-assembly.html#a-random-zoo-in-the-wild"><i class="fa fa-check"></i><b>5.3.4</b> A random zoo in the wild</a></li>
+<li class="chapter" data-level="5.3.5" data-path="ecological-assembly.html"><a href="ecological-assembly.html#assembly-and-saturated-equilibrium"><i class="fa fa-check"></i><b>5.3.5</b> Assembly and saturated equilibrium</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="ecological-assembly.html"><a href="ecological-assembly.html#network-spandrels"><i class="fa fa-check"></i><b>5.4</b> Network spandrels</a></li>
+<li class="chapter" data-level="5.5" data-path="ecological-assembly.html"><a href="ecological-assembly.html#bottom-up-assembly"><i class="fa fa-check"></i><b>5.5</b> Bottom-up assembly</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#an-assembly-graph"><i class="fa fa-check"></i><b>5.5.1</b> An assembly graph</a></li>
+<li class="chapter" data-level="5.5.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#how-many-invasions"><i class="fa fa-check"></i><b>5.5.2</b> How many invasions?</a></li>
+<li class="chapter" data-level="5.5.3" data-path="ecological-assembly.html"><a href="ecological-assembly.html#properties-of-the-assembly-graph"><i class="fa fa-check"></i><b>5.5.3</b> Properties of the assembly graph</a></li>
+<li class="chapter" data-level="5.5.4" data-path="ecological-assembly.html"><a href="ecological-assembly.html#assembly-graphs-for-glv"><i class="fa fa-check"></i><b>5.5.4</b> Assembly graphs for GLV</a></li>
+<li class="chapter" data-level="5.5.5" data-path="ecological-assembly.html"><a href="ecological-assembly.html#relationship-with-lyapunov-functions"><i class="fa fa-check"></i><b>5.5.5</b> Relationship with Lyapunov functions</a></li>
+<li class="chapter" data-level="5.5.6" data-path="ecological-assembly.html"><a href="ecological-assembly.html#how-many-assembly-endpoints"><i class="fa fa-check"></i><b>5.5.6</b> How many assembly endpoints?</a></li>
+<li class="chapter" data-level="5.5.7" data-path="ecological-assembly.html"><a href="ecological-assembly.html#build-your-own-assembly-graph"><i class="fa fa-check"></i><b>5.5.7</b> Build your own assembly graph!</a></li>
+<li class="chapter" data-level="5.5.8" data-path="ecological-assembly.html"><a href="ecological-assembly.html#conclusions"><i class="fa fa-check"></i><b>5.5.8</b> Conclusions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html"><i class="fa fa-check"></i><b>6</b> Predicting coexistence in ecological communities</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#background-diversity-and-ecosystem-functioning"><i class="fa fa-check"></i><b>6.1</b> Background: Diversity and Ecosystem Functioning</a></li>
+<li class="chapter" data-level="6.2" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#synthetic-communities-using-the-glv-model"><i class="fa fa-check"></i><b>6.2</b> Synthetic communities using the GLV model</a></li>
+<li class="chapter" data-level="6.3" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#total-biomass"><i class="fa fa-check"></i><b>6.3</b> Total biomass</a></li>
+<li class="chapter" data-level="6.4" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#hyperplanes"><i class="fa fa-check"></i><b>6.4</b> Hyperplanes</a></li>
+<li class="chapter" data-level="6.5" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#fitting-real-data"><i class="fa fa-check"></i><b>6.5</b> Fitting real data</a></li>
+<li class="chapter" data-level="6.6" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#predicting-real-data-out-of-fit"><i class="fa fa-check"></i><b>6.6</b> Predicting real data out of fit</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html"><i class="fa fa-check"></i><b>7</b> Game theory and replicator dynamics</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#game-theory"><i class="fa fa-check"></i><b>7.1</b> Game theory</a></li>
+<li class="chapter" data-level="7.2" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#two-player-matrix-games"><i class="fa fa-check"></i><b>7.2</b> Two-player matrix games</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#example-the-prisoners-dilemma"><i class="fa fa-check"></i><b>7.2.1</b> Example: the prisoner’s dilemma</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#mixed-strategies"><i class="fa fa-check"></i><b>7.3</b> Mixed strategies</a></li>
+<li class="chapter" data-level="7.4" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#nash-equilibria"><i class="fa fa-check"></i><b>7.4</b> Nash Equilibria</a></li>
+<li class="chapter" data-level="7.5" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#evolutionary-stable-strategies"><i class="fa fa-check"></i><b>7.5</b> Evolutionary stable strategies</a></li>
+<li class="chapter" data-level="7.6" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#replicator-dynamics"><i class="fa fa-check"></i><b>7.6</b> Replicator dynamics</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#invariants"><i class="fa fa-check"></i><b>7.6.1</b> Invariants</a></li>
+<li class="chapter" data-level="7.6.2" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#rock-paper-scissor"><i class="fa fa-check"></i><b>7.6.2</b> Rock-paper-scissor</a></li>
+<li class="chapter" data-level="7.6.3" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#equivalence-with-glv"><i class="fa fa-check"></i><b>7.6.3</b> Equivalence with GLV</a></li>
+<li class="chapter" data-level="7.6.4" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#hypertournament-games"><i class="fa fa-check"></i><b>7.6.4</b> Hypertournament games</a></li>
+<li class="chapter" data-level="7.6.5" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#lyapunov-function"><i class="fa fa-check"></i><b>7.6.5</b> Lyapunov function</a></li>
+<li class="chapter" data-level="7.6.6" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#higher-order-interactions"><i class="fa fa-check"></i><b>7.6.6</b> Higher-order interactions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html"><i class="fa fa-check"></i><b>8</b> Metapopulation dynamics on networks</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#metapopulations"><i class="fa fa-check"></i><b>8.1</b> Metapopulations</a></li>
+<li class="chapter" data-level="8.2" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#hanski-ovaskainen-2000"><i class="fa fa-check"></i><b>8.2</b> Hanski Ovaskainen 2000</a></li>
+<li class="chapter" data-level="8.3" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#sis-on-a-contact-network"><i class="fa fa-check"></i><b>8.3</b> SIS on a contact network</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#the-full-model"><i class="fa fa-check"></i><b>8.3.1</b> The full model</a></li>
+<li class="chapter" data-level="8.3.2" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#the-mean-field-approximation"><i class="fa fa-check"></i><b>8.3.2</b> The mean-field approximation</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html#metapopulations-on-randomly-distributed-patches"><i class="fa fa-check"></i><b>8.4</b> Metapopulations on randomly distributed patches</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html"><i class="fa fa-check"></i><b>9</b> Quasi-polynomial systems</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#global-stability-2"><i class="fa fa-check"></i><b>9.1</b> Global stability</a></li>
+<li class="chapter" data-level="9.2" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#from-qp-to-glv"><i class="fa fa-check"></i><b>9.2</b> From QP to GLV</a></li>
+<li class="chapter" data-level="9.3" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#stability-of-glv"><i class="fa fa-check"></i><b>9.3</b> Stability of GLV</a></li>
+<li class="chapter" data-level="9.4" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#stability-for-glv-embeddings"><i class="fa fa-check"></i><b>9.4</b> Stability for GLV embeddings</a></li>
+<li class="chapter" data-level="9.5" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#numerical-analysis"><i class="fa fa-check"></i><b>9.5</b> Numerical analysis</a></li>
+<li class="chapter" data-level="9.6" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#systems-with-many-equations"><i class="fa fa-check"></i><b>9.6</b> Systems with many equations</a></li>
+<li class="chapter" data-level="9.7" data-path="quasi-polynomial-systems.html"><a href="quasi-polynomial-systems.html#glv-embedding-for-non-qp-systems"><i class="fa fa-check"></i><b>9.7</b> GLV embedding for non-QP systems</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Theoretical Community Ecology</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="metapopulation-dynamics-on-networks" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">Lecture 8</span> Metapopulation dynamics on networks<a href="metapopulation-dynamics-on-networks.html#metapopulation-dynamics-on-networks" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><strong>Lesson plan</strong>:</p>
+<ol style="list-style-type: decimal">
+<li>We analyze Levins’ metapopulation model, which we’ve encountered before.</li>
+<li>We introduce the idea of a network of dispersal, and see how metapopulation persistence depends on network structure.</li>
+<li>We draw a parallel with Susceptible-Infected-Susceptible models, in which individuals play the role of habitable patches and parasites disperse on a network of contacts.</li>
+</ol>
+<div id="metapopulations" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Metapopulations<a href="metapopulation-dynamics-on-networks.html#metapopulations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In 1969, Richard Levins—then a professor at U. Chicago—proposed a simple model for a “metapopulation”, i.e., a “population of populations in which local extinctions are balanced by remigration from other populations” (<span class="citation">Levins (<a href="#ref-levins1969some">1969</a>)</span>).</p>
+<div class="boxhistory">
+<p><strong>History: Richard Levins (1930-2016)</strong></p>
+<p><img src="img/Levins.jpg" width="35%" style="display: block; margin: auto;" /></p>
+<p>Born in Brooklyn, New York, he studied agriculture and mathematics at Cornell. Early on, influenced by geneticist and polymath Haldane, he became a Marxist activist. Upon graduation, having been blacklisted as a communist (and with the Korean War raging), he moved to Puerto Rico with his wife, and set up a farm. In his spare time, he conducted experiments on fruit flies, organized anti-colonialist rallies and anti-war protests, and taught at the University of Puerto Rico. In 1964, he was invited to Cuba to help organize the biology department of the University of Havana. He received his doctorate from Columbia University in 1965. In 1967 he moved to the University of Chicago, where he joined Richard Lewontin—whith whom he established a lifelong collaboration. They both moved to Harvard in the late 1970s.</p>
+<p>It is impossible to summarize his numerous contributions to ecology, mathematics, political science, and the philosophy of science. He has inspired countless ecologists, and his approach and style are still visible in many of the research programs being carried out today. Of particular interest for this class, his theory of evolution in a changing environment (<span class="citation">Levins (<a href="#ref-levins1968evolution">1968</a>)</span>), the development of the idea of limiting similarity (<span class="citation">MacArthur and Levins (<a href="#ref-macarthur1967limiting">1967</a>)</span>), his work on metapopulation dynamics (<span class="citation">Levins (<a href="#ref-levins1969some">1969</a>)</span>), and the development of Loop Analysis (i.e., a qualitative theory for dynamical systems, <span class="citation">Puccia and Levins (<a href="#ref-puccia2013qualitative">2013</a>)</span>).</p>
+</div>
+<div class="boxpaper">
+<p><strong>Key paper: <span class="citation">Levins (<a href="#ref-levins1966strategy">1966</a>)</span></strong></p>
+<p>A must read for anyone interested in modeling (in biology and elsewhere). Just two quotes that resonate with the approach taken in these lectures:</p>
+<ul>
+<li><em>there are too many parameters to measure; some are still only vaguely defined; many would require a lifetime each for their measurement.</em></li>
+<li><em>The equations are insoluble analytically and exceed the capacity of even good computers,</em></li>
+<li><em>Even if soluble, the result expressed in the form of quotients of sums of products of parameters would have no meaning for us.</em></li>
+</ul>
+<p><span class="math inline">\(\ldots\)</span></p>
+<p><em>Therefore, we attempt to treat the same problem with several alternative models each with different simplifications but with a common biological assumption. Then, if these models, despite their different assumptions, lead to similar results we have what we can call a robust theorem which is relatively free of the details of the model. Hence our truth is the intersection of independent lies.</em></p>
+</div>
+<p>The model is very simple. Suppose that there are very many patches of suitable habitat, and that we track the proportion of patches occupied by a certain species, <span class="math inline">\(x(t)\)</span>. Two processes affect the proportion of occupied patches: <strong>extinction</strong>, turning an occupied patch into a vacant patch, and <strong>colonization</strong>, turning a vacant patch into an occupied patch. For the simplest case, suppose that occupied patches can send “propagules” to empty patches at a fixed rate <span class="math inline">\(\gamma\)</span>, and that the rate at which local populations go extinct is the same for all patches, <span class="math inline">\(\delta\)</span>.</p>
+<p>Call <span class="math inline">\(y(t) = 1 - x(t)\)</span> the proportion of vacant patches. Then, the dynamics for the occupied patches are described by the equation:</p>
+<p><span class="math display">\[
+\dfrac{d x(t)}{dt} = - \delta x(t) + \gamma x(t) y(t)
+\]</span></p>
+<p>in which we assume mass-action (like in GLV). Similarly, the equation for the proportion of vacant patches is:</p>
+<p><span class="math display">\[
+\dfrac{d y(t)}{dt} = \delta x(t) - \gamma y(t) x(t)
+\]</span></p>
+<p>Note that the two equations sum to zero (i.e., we’re in a zero-sum setting), as <span class="math inline">\(x(t) + y(t) = 1\)</span>. Then, we can turn the model into a single equation, by substituting <span class="math inline">\(y(t) = 1 - x(t)\)</span> in the first equation:</p>
+<p><span class="math display">\[
+\dfrac{d x(t)}{dt} = - \delta x(t) + \gamma x(t) (1-x(t)) = x(t)(\gamma - \delta - \gamma x(t))
+\]</span></p>
+<p>which is the usual equation for the logistic growth. As such, the equilibrium <span class="math inline">\(x^\star = (\gamma - \delta) / \gamma = 1 - \delta/\gamma\)</span> is globally stable.</p>
+<p>Calling <span class="math inline">\(S(t) = y(t)\)</span> and <span class="math inline">\(I(t) = x(t)\)</span> we obtain an SIS model in which a pathogen infect (“occupies”) individuals (“patches”). The equilibrium <span class="math inline">\(I^\star = (\gamma - \delta)/\gamma\)</span> is reached whenever <span class="math inline">\(\gamma &gt; \delta\)</span> (i.e., <span class="math inline">\(\gamma/\delta = \mathcal R_0 &gt; 1\)</span>). We carry this parallel through the lecture.</p>
+</div>
+<div id="hanski-ovaskainen-2000" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Hanski Ovaskainen 2000<a href="metapopulation-dynamics-on-networks.html#hanski-ovaskainen-2000" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In Levins’ model, all patches are connected with all other patches, such that the rate of colonization does not depend on the identity of the patch serving as the source of propagules.</p>
+<div class="boxhistory">
+<p><strong>History: Ilkka A. Hanski (1953-2016)</strong></p>
+<p><img src="img/Hanski.jpeg" width="35%" style="display: block; margin: auto;" />
+<em>Photo by Otso Ovaskainen.</em></p>
+<p>Born in Lempaala, Finland, he studied at the University of Helsinki, and received his doctorate from the University of Oxford in 1979. From 1981 to his premature death in 2016, he worked at various Finnish institutions, lastly at the Academy of Finland.</p>
+<p>His work on metapopulation theory is extremely well-known, thanks also to the amazing work on the Glanville fritillary butterfly <em>Melitaea cinxia</em>. This butterfly inhabits the dry meadows in Åland Islands archipelago—with about 4000 meadows, sampled yearly by an army of students since 1991, the fragmented landscape is an ideal testing ground for metapopulation theory.</p>
+<p>Hanski won numerous awards, and served as a strong advocate for ecological conservation.</p>
+</div>
+<p><span class="citation">Hanski and Ovaskainen (<a href="#ref-hanski2000metapopulation">2000</a>)</span> (mathematical details in <span class="citation">Ovaskainen and Hanski (<a href="#ref-ovaskainen2001spatially">2001</a>)</span>) consider a model in which patches are spread geographically, and colonization from patch <span class="math inline">\(i\)</span> to patch <span class="math inline">\(j\)</span> depends on the distance (actually, an “effective distance”) between patches. In particular, they start from Levins’ model, written for a focal patch. We take <span class="math inline">\(x_i\)</span> to be the probability that patch <span class="math inline">\(i\)</span> is occupied at time <span class="math inline">\(t\)</span> (and therefore <span class="math inline">\(1 \geq x_i \geq 0\)</span>) as:</p>
+<p><span class="math display">\[
+\dfrac{d x_i}{dt} = \text{[Colonization rate i]}(1 - x_i) - \text{[Extinction rate i]} x_i
+\]</span></p>
+<p>They also consider the patches <span class="math inline">\(a_1, \ldots, a_n\)</span> to have different “values” (i.e., support populations of different sizes). In this context, it makes sense to assume that the extinction rate in patch <span class="math inline">\(i\)</span> is <span class="math inline">\(\delta_i = \delta/a_i\)</span>. Similarly, the probability of colonization should decrease with distance, and be directly proportional to patch values; for example, one could choose <span class="math inline">\(\gamma_{ij} = \gamma e^{-\alpha D_{ij}} a_j\)</span>, where <span class="math inline">\(D\)</span> is a matrix of Euclidean distances between patches, <span class="math inline">\(\alpha\)</span> models the typical mobility of the species (i.e., the typical “dispersal bout” is of length <span class="math inline">\(1/\alpha\)</span>), and <span class="math inline">\(\gamma\)</span> is a constant. With these assumptions, the dynamics are described by:</p>
+<p><span class="math display">\[
+\dfrac{d x_i}{dt} = \gamma (1 - x_i) \sum_{j\neq i} e^{-\alpha D_{ij}} a_j x_j - \dfrac{\delta}{a_i} x_i
+\]</span></p>
+<p>Now we want to dervice a condition for the existence of a positive equilibrium (i.e., at equilibrium the species is expected with probability nonzero in all patches). At equilibrium, we have:</p>
+<p><span class="math display">\[
+\gamma (1 - x_i^\star) \sum_{j\neq i} e^{-\alpha D_{ij}} a_j x_j^\star= \dfrac{\delta}{a_i} x_i^\star
+\]</span></p>
+<p>It is convenient to multiply both sides by <span class="math inline">\(a_i\)</span>, and to define the <strong>dispersal matrix</strong> <span class="math inline">\(M\)</span>, with zero on the diagonal, and <span class="math inline">\(M_{ij} = M_{ji} = a_i a_j \gamma e^{-\alpha D_{ij}}\)</span>. Then, the equilibrium condition reads:</p>
+<p><span class="math display">\[
+(1-x_i^\star) \sum_{j}M_{ij} x^\star_j - \delta x_i^\star  = 0
+\]</span></p>
+<p>The matrix <span class="math inline">\(M\)</span> has zero on the diagonal. Then, <span class="math inline">\(\sum_{j \neq i}M_{ij}x^\star_j = \sum_{j}M_{ij}x^\star_j\)</span>. Note that then if <span class="math inline">\(\sum_{j}M_{ij}x^\star_j = 0\)</span> for any <span class="math inline">\(i\)</span>, we have <span class="math inline">\(x_i^\star = 0\)</span>. This means that patches that are disconnected (<span class="math inline">\(\sum_j M_{ij} =0\)</span>), or that are connected to patches where the species is absent (<span class="math inline">\(\sum_{j}M_{ij}x^\star_j = 0\)</span> with <span class="math inline">\(\sum_j M_{ij}&gt;0\)</span>). If, on the other hand, we assume that not all <span class="math inline">\(x_j\)</span> are zero, we can write:</p>
+<p><span class="math display">\[
+1-x_i^\star = \delta \frac{x_i^\star}{\sum_{j}M_{ij}x_j^\star}
+\]</span>
+Which can be written compactly as:</p>
+<p><span class="math display">\[
+x_i^\star = 1 - \delta \frac{x_i^\star}{(Mx^\star)_i}
+\]</span></p>
+<p>Now we need a result from the theory of nonnegative matrices (such as <span class="math inline">\(M\)</span>).</p>
+<div class="boxmath">
+<p><strong>Collatz-Wielandt formula</strong></p>
+<p>A matrix <span class="math inline">\(A\)</span> is called nonnegative <span class="math inline">\(A \geq 0\)</span> if <span class="math inline">\(A_{ij} \geq 0\)</span> for all <span class="math inline">\(i,j\)</span>. There exists a positive eigenvalue <span class="math inline">\(\rho\)</span> with associated eigenvector <span class="math inline">\(v\)</span> such that <span class="math inline">\(Av = \rho v\)</span> and <span class="math inline">\(v\)</span> has positive components (Perron-Frobenius). Moreover, <span class="math inline">\(|\rho| \geq |\lambda_i|\)</span> for all other eigenvalues, and every other eigenvector has at least a negative component. Finally, we have that for a nonnegative vector <span class="math inline">\(x\)</span></p>
+<p><span class="math display">\[
+\rho = \mathop{\max}_{x \in \mathbb R^n_{0+}, x \neq 0} \quad \mathop{\min}_{x_i \neq 0} \frac{(Ax)_i}{x_i}
+\]</span></p>
+<p>As such, <span class="math inline">\(\rho \geq \mathop{\min}_{x_i \neq 0} \frac{(Ax)_i}{x_i}\)</span>.</p>
+</div>
+<p>Because of the Collatz-Wielandt formula, we have that, whenever <span class="math inline">\(1 - \delta \frac{x_i^\star}{(Mx^\star)_i} \geq 1 -\dfrac{\delta}{\rho} \geq 0\)</span> we have all <span class="math inline">\(x_i &gt;0\)</span>. As such, in this model, the spectral radius <span class="math inline">\(\rho\)</span> plays the same role as the colonization rate in Levins’ model. The spectral radius is therefore called the <em>metapopulation capacity</em>.</p>
+<p>Note also that the same result is found for any <span class="math inline">\(M \geq 0\)</span> (not necessarily based on distances etc.).</p>
+</div>
+<div id="sis-on-a-contact-network" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> SIS on a contact network<a href="metapopulation-dynamics-on-networks.html#sis-on-a-contact-network" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Interestingly, the same results above have been derived in the context of virus spread on networks by <span class="citation">Van Mieghem et al. (<a href="#ref-van2008virus">2008</a>)</span>. We follow their derivation as it shows what type of approximations we’re making when writing the equations above.</p>
+<div id="the-full-model" class="section level3 hasAnchor" number="8.3.1">
+<h3><span class="header-section-number">8.3.1</span> The full model<a href="metapopulation-dynamics-on-networks.html#the-full-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We can imagine the process of the spread of a pathogen on a network of <span class="math inline">\(n\)</span> individuals as a graph, in which each node is a label detailing who is infected. There are <span class="math inline">\(2^n\)</span> nodes, ranging from <span class="math inline">\(V_0 = (0,0, \ldots, 0)\)</span> (the state in which the pathogen is extinct) to <span class="math inline">\(V_{2^n-1} = (1,1,\ldots, 1)\)</span> (the state in which all individuals are infected). Recovery flips a one into a zero, and infection a zero into a one (without loss of generality, we can assume only one event happens at each “time step”). We connect any two nodes in the network <span class="math inline">\(V_i \to V_j\)</span> if an event (i.e., infection, recovery) can send the system from state <span class="math inline">\(i\)</span> to state <span class="math inline">\(j\)</span>. The system therefore describes a <a href="https://en.wikipedia.org/wiki/Markov_chain">Markov Chain</a> with <span class="math inline">\(2^n\)</span> states. Note also that the state <span class="math inline">\(0\)</span> is the “coffin state” for the system (once the pathogen is extinct, there is no way to go back).</p>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-49-1.png" width="480" style="display: block; margin: auto;" /><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-49-2.png" width="480" style="display: block; margin: auto;" /></p>
+</div>
+<div id="the-mean-field-approximation" class="section level3 hasAnchor" number="8.3.2">
+<h3><span class="header-section-number">8.3.2</span> The mean-field approximation<a href="metapopulation-dynamics-on-networks.html#the-mean-field-approximation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For simplicity, make the following assumptions: a) all individuals have the same recovery rate, <span class="math inline">\(\delta\)</span>; b) the (symmetric/undirected) contact network <span class="math inline">\(A\)</span> defines who can infect whom; c) when a node/individual is infected, it attempts infecting the neighbors at a rate <span class="math inline">\(\beta\)</span>.</p>
+<p>We track the probability that individual <span class="math inline">\(i\)</span> is infected at time <span class="math inline">\(t\)</span> (mathematically, this is an expectation). In particular, take <span class="math inline">\(x_i\)</span> to be an indicator variable taking value <span class="math inline">\(1\)</span> when <span class="math inline">\(i\)</span> is infected, and <span class="math inline">\(0\)</span> when <span class="math inline">\(i\)</span> is susceptible. Then</p>
+<p><span class="math display">\[
+\dfrac{d E[x_i(t)]}{dt} = E \left[-\delta x_i(t) + \beta (1-x_i(t)) \sum_j A_{ij} x_j(t)\right]
+\]</span></p>
+<p>The <span class="math inline">\(-\delta x_i(t)\)</span> models the recovery, and when an individual is susceptible (i.e., when <span class="math inline">\((1-x_i(t)) = 1\)</span>) the neighbors (i.e., <span class="math inline">\(j\)</span> such that <span class="math inline">\(A_{ij} = 1\)</span>) attempt to infect node <span class="math inline">\(i\)</span>. Expanding (and dropping the dependency on time to keep the equation compact), we obtain:</p>
+<p><span class="math display">\[
+\dfrac{d E[x_i]}{dt} = -\delta E[x_i] + \beta \sum_j A_{ij} E[x_j]- \beta \sum_j A_{ij} E[x_i x_j]
+\]</span></p>
+<p>which looks very much like Levins’ model, with the difference that we need to choose how to deal with <span class="math inline">\(E[x_i x_j]\)</span> (a covariance/correlation). If we assume <span class="math inline">\(E[x_i x_j] \approx E[x_i] E[x_j]\)</span> (e.g., independence), we can simplify the model to:</p>
+<p><span class="math display">\[
+\dfrac{d E[x_i]}{dt} = -\delta E[x_i] + \beta (1 - E[x_i])\sum_j A_{ij} E[x_j]
+\]</span></p>
+<p>which is the same as the model of Hanski and Ovaskainen above. Interestingly, this is but an approximation of the full model described by the Markov Chain above—for example <span class="citation">Cator and Van Mieghem (<a href="#ref-cator2012second">2012</a>)</span> derive the model when tracking all the <span class="math inline">\(E[x_i x_j]\)</span>, resulting in a better approximation of the full model (at the cost of having an additional <span class="math inline">\(\binom{n}{2}\)</span>) equations.</p>
+<div class="boxhomework">
+<p><strong>Homework 8 [Long]</strong></p>
+<p>Implement an event-driven simulation of the spread of a disease on a network. The simulation approach is taken from <span class="citation">Li et al. (<a href="#ref-li2012susceptible">2012</a>)</span>:</p>
+<p>“we take a nodal-central, event-driven approach. An event can either be the curing of a node or the spreading of the infection from one node to another. Events are stored in a timeline as tickets. […] Tickets are continuously taken from the timeline and passed on to the owner. If the ticket owner is a node, the ticket indicates either a curing or a spreading event. In the case of a curing event, the node simply changes its state from infected to healthy; in the case of a spreading event, it will spread the infection to the neighbor mentioned in the ticket. If the neighbor was not already infected, it will now become infected and create one or more tickets. A newly infected node will always create a ticket for its own curing event. According to continuous-time Markov theory, the time between infection and curing is exponentially distributed with rate <span class="math inline">\(\delta\)</span> and is stored by the node for future reference. An infected node also generates spreading times at which it will spread the infection to its neighbors. The spreading times are again exponentially distributed but now with rate <span class="math inline">\(\beta\)</span>. If the spreading time does not exceed the node’s curing time, a ticket is created for the spreading event. All newly created tickets are stored in the timeline. Finally, the owner of the original ticket generates a new spreading time, which, if not exceeding its own curing time, creates a new spreading ticket for the same neighbor. If the ticket is not owned by a node, it is a system ticket.”</p>
+<p>Simulate the spread of a disease on an adjacency matrix (with at least 10 nodes and 30 connections) of your choice. Initialize the simulation by generating an infection for one of the nodes. Repeat the simulation 100 times, tracking and averaging the amount of time each node is infected.</p>
+<p><strong>Optional</strong></p>
+<p>Then write the system of differential equations above, and follow dynamics until an equilibrium is reached. Compare the results of the simulation with those from the dynamical model.</p>
+</div>
+</div>
+</div>
+<div id="metapopulations-on-randomly-distributed-patches" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> Metapopulations on randomly distributed patches<a href="metapopulation-dynamics-on-networks.html#metapopulations-on-randomly-distributed-patches" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><span class="citation">Grilli et al. (<a href="#ref-grilli2015metapopulation">2015</a>)</span> considered the case in which a) <span class="math inline">\(N\)</span> patches are uniformly, randomly arranged in a <span class="math inline">\(d-\)</span>dimensional landscape (e.g., 1-dimensional for the dunes ecosystems on the shore of Lake Michigan, 2-dimensional for an agricultural landscape; for 3 dimensions consider mountains, for 4 dimensions add time [e.g., temporary ponds in the Alps], for 5 or more dimensions, invoke string theory!)—we indicate the position of patch <span class="math inline">\(i\)</span> as <span class="math inline">\(x_i\)</span>; b) one can choose a “dispersal kernel” <span class="math inline">\(f(\|x_i-x_j\|\xi)\)</span>, c) patch values are randomly sampled from a distribution with mean 1 (which we can do w.l.o.g.) and variance <span class="math inline">\(\sigma^2\)</span>.</p>
+<p>For example, when dispersal decreases exponentially with distance (as above), we have an exponential kernel:</p>
+<p><span class="math display">\[
+f\left( \frac{|x_i-x_j|}{\xi} \right) = \exp \left( -\frac{|x_i -
+  x_j|^2}{2 \xi^2}\right)
+\]</span></p>
+<p>Because the matrices <span class="math inline">\(M\)</span> formed by a given kernel belong to the ensemble of <em>Euclidean Random Matrices</em>, one can compute an approximation for <span class="math inline">\(\rho\)</span> quite easily. In particular, for a given number of dimensions <span class="math inline">\(d\)</span>, the size of the landscape, etc., we define an “effective number of neighbors” <span class="math inline">\(n_e\)</span> and we have <span class="math inline">\(\rho \geq n_e (1 + \sigma^2)\)</span>. Take the landscape to be a hypercube with length <span class="math inline">\(L\)</span>. Then whenever the “dispersal range” <span class="math inline">\(\xi \ll L\)</span>, we can approximate</p>
+<p><span class="math display">\[
+n_e \approx \frac{N}{L^d} G_f(d) \xi^d
+\]</span></p>
+<p>Where <span class="math inline">\(G_f(d)\)</span> is a constant that depends on the kernel shape. Call <span class="math inline">\(\mu = N/L^d\)</span> to be the density of patches in the landscape. We can simplify the calculation by considering the density to be fixed, but both <span class="math inline">\(N\)</span> and <span class="math inline">\(L\)</span> tending to infinity (see SI of <span class="citation">Grilli et al. (<a href="#ref-grilli2015metapopulation">2015</a>)</span>). Then, for the exponential kernel, we have:</p>
+<p><span class="math display">\[
+\begin{split}
+n_e =&amp; \mu \int \exp \left( - \frac{\sqrt{\sum_{k=1}^d
+    x_{(k)}^{2}}}{\xi} \right) \; d x_{(1)}\cdots d x_{(d)} \\ =&amp;
+\frac{2 \pi^{d/2} \Gamma(d) }{ \Gamma(d/2) } \mu \xi^d \ ,
+\end{split}
+\]</span></p>
+<p>where <span class="math inline">\(\Gamma(d)\)</span> is the Gamma function. Similarly, for the Gaussian kernel:</p>
+<p><span class="math display">\[
+f\left( \frac{|x_i-x_j|}{\xi} \right) = \exp \left( -\frac{|x_i -
+  x_j|^2}{2 \xi^2}\right)
+\]</span></p>
+<p>we obtain:</p>
+<p><span class="math display">\[
+\begin{split}
+n_e =&amp; \mu \int \exp \left( - \frac{\sum_{k=1}^d x_{(k)}^2}{2 \xi^2}
+\right) \; d x_{(1)}\cdots d x_{(d)} \\ =&amp; (2 \pi )^{d/2} \mu
+\xi^d
+\end{split}
+\]</span></p>
+<p>and finally, for a Rectangular kernel:</p>
+<p><span class="math display">\[
+f\left( \frac{|x_i-x_j|}{\xi} \right) =
+\left\{ \begin{array}{ll} 1, &amp; |x_i - x_j| \le \xi \\ 0, &amp; |x_i - x_j| &gt; \xi \end{array} \right .
+\]</span></p>
+<p>we have</p>
+<p><span class="math display">\[
+n_e = \frac{\pi ^{d/2}}{\Gamma \left( d / 2 + 1 \right)} \mu \xi ^d
+\]</span></p>
+<p>This means for example that, when <span class="math inline">\(d=1\)</span> the exponential and the rectangular kernel have the same value of <span class="math inline">\(n_e\)</span>, while in two dimensions the Gaussian and exponential kernel have the same value of <span class="math inline">\(n_e\)</span>. This means that two large matrices built with different kernels can have approximately the same <span class="math inline">\(\rho\)</span>.</p>
+<p>Using similar techniques, one can determine that “disordered” patch arrangements always lead to higher capacity than “ordered” arrangements.</p>
+
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent" line-spacing="2">
+<div id="ref-cator2012second" class="csl-entry">
+Cator, E., and P. Van Mieghem. 2012. Second-order mean-field susceptible-infected-susceptible epidemic threshold. Physical review E 85:056111.
+</div>
+<div id="ref-grilli2015metapopulation" class="csl-entry">
+Grilli, J., G. Barabás, and S. Allesina. 2015. Metapopulation persistence in random fragmented landscapes. PLoS Comput Biol 11:e1004251.
+</div>
+<div id="ref-hanski2000metapopulation" class="csl-entry">
+Hanski, I., and O. Ovaskainen. 2000. The metapopulation capacity of a fragmented landscape. Nature 404:755–758.
+</div>
+<div id="ref-levins1966strategy" class="csl-entry">
+Levins, R. 1966. The strategy of model building in population biology. American scientist 54:421–431.
+</div>
+<div id="ref-levins1968evolution" class="csl-entry">
+Levins, R. 1968. Evolution in changing environments: Some theoretical explorations. Princeton University Press.
+</div>
+<div id="ref-levins1969some" class="csl-entry">
+Levins, R. 1969. Some demographic and genetic consequences of environmental heterogeneity for biological control. American Entomologist 15:237–240.
+</div>
+<div id="ref-li2012susceptible" class="csl-entry">
+Li, C., R. van de Bovenkamp, and P. Van Mieghem. 2012. Susceptible-infected-susceptible model: A comparison of n-intertwined and heterogeneous mean-field approximations. Physical Review E 86:026116.
+</div>
+<div id="ref-macarthur1967limiting" class="csl-entry">
+MacArthur, R., and R. Levins. 1967. The limiting similarity, convergence, and divergence of coexisting species. The american naturalist 101:377–385.
+</div>
+<div id="ref-ovaskainen2001spatially" class="csl-entry">
+Ovaskainen, O., and I. Hanski. 2001. Spatially structured metapopulation models: Global and local assessment of metapopulation capacity. Theoretical population biology 60:281–302.
+</div>
+<div id="ref-puccia2013qualitative" class="csl-entry">
+Puccia, C. J., and R. Levins. 2013. Qualitative modeling of complex systems: An introduction to loop analysis and time averaging. Harvard University Press.
+</div>
+<div id="ref-van2008virus" class="csl-entry">
+Van Mieghem, P., J. Omic, and R. Kooij. 2008. Virus spread in networks. IEEE/ACM Transactions On Networking 17:1–14.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="game-theory-and-replicator-dynamics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="quasi-polynomial-systems.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Theoretical_Community_Ecology.pdf", "Theoretical_Community_Ecology.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

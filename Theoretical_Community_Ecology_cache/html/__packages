@@ -12,3 +12,5 @@ deSolve
 latex2exp
 lubridate
 lpSolve
+MASS
+igraph
