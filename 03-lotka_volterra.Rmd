@@ -521,12 +521,12 @@ $$
 with eigenvalues $-b$ and $0$ (with multiplicity $k$). Therefore, 
 
 $$
-\begin{align}
+\begin{aligned}
 \frac{d V(z(t))}{dt} &= 1^T G \left(\frac{d z(t)}{dt} - D(z^\star) \frac{d \log z(t)}{dt} \right)\\
  &= \frac{1}{2}(z - z^\star)^T  (GA + A^T G) (z - z^\star)\\
  &= \frac{1}{2}(z - z^\star)^T  (B + B^T) (z - z^\star)\\
  &= (y - y^\star)^T  (-D(b)) (y - y^\star)
- \end{align}
+ \end{aligned}
 $$
 
 which is zero only when the resources are at equilibrium. We can invoke LaSalle's invariance principle to prove that any feasible equilibrium is stable.
@@ -547,10 +547,10 @@ In the original article, @macarthur1970species takes an interesting shortcut, wh
 We solve the equations for the resources:
 
 $$
-\begin{align}
+\begin{aligned}
 r - D(b)\, y - P\, x &=0\\
 y = D(b)^{-1} (r - P\,x)
-\end{align}
+\end{aligned}
 $$
 
 Substituting in the equations for the consumers, we obtain:

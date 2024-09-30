@@ -295,7 +295,6 @@ pl
 
 Take a $p \times n$ rectangular matrix $X$, with $p < n$ and i.i.d. coefficients with $\mathbb E[X_{ij}] = 0$ and $\mathbb E[X_{ij}^2] = 1$. When $n \to \infty$, the ratio $p/n \to y$ (i.e., the number of rows and columns grow proportionally). Then the eigenvalue distribution of the scaled covariance matrix $S = \frac{1}{n} X X^T$ converges to the Marchenko-Pastur distribution:
 
-$$
 \begin{equation}
   \mu(\lambda) = \begin{cases} \frac{1}{2 \pi \lambda y}
     \sqrt{\left((1 + \sqrt{y})^2 - \lambda \right) \left(\lambda - (1 -
@@ -303,8 +302,6 @@ $$
     \lambda \leq (1 + \sqrt{y})^2\\ 0 \; \; \;\text{ otherwise}.
   \end{cases}
 \end{equation}
-$$
-
 
 ```{r, echo=FALSE}
 n <- 1000

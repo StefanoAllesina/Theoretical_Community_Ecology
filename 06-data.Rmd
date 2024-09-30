@@ -395,17 +395,17 @@ $$
 $$
 where we have definied $b_{ij} = \theta_{ij} / \gamma_i$ for $i \neq j$, and $b_{ii} = - 1 / \gamma_i$. Note that this is exactly the same system of equations found above. As such, fitting a linear, addittive model for the biomass of each species in each plot is equivalent to finding the equilibrium strcuture of a GLV model that approximates the data.
 
-One thing to consider when modeling real data, contrary to simulated data, is the structure of the errors. For example, empirical data often contain replicates that reach slightly different densities (while this is impossible in GLV). Moreover, what is typically done in these types of experiments is to sort and measure biomass for a section of each plot, and then to multiply to extrapolate the biomass for the whole plot. As such, if the error is normally distributed for the sub-plot, then it's going to be lognormally distributed for the whole plot. Furthermore, we need to link the rows of matrix $P$ above, because when we make an error in measuring $x_j^{(k)}$, the value is reported over several values. Following @maynard2019predicting, we do the following:
+One thing to consider when modeling real data, contrary to simulated data, is the structure of the errors. For example, empirical data often contain replicates that reach slightly different densities (while this is impossible in GLV). Furthermore, we need to link the rows of matrix $P$ above, because when we make an error in measuring $x_j^{(k)}$, the value is reported over several values. Following @maynard2019predicting, we do the following:
 
 - Propose a matrix $B$
 - Compute the predicted abundance for all species in all observed assemblages (call them $\tilde{x}_j^{(k)}$)
-- Compute the SSQ: $\sum_{j, k} (\log x_j^{(k)} - \log \tilde{x}_j^{(k)})^2$
+- Compute the SSQ: $\sum_{j, k} (x_j^{(k)} -  \tilde{x}_j^{(k)})^2$
 - Search numerically for the matrix $B$ minimizing the SSQ
 
 ```{r, endpointsssq}
 # constant to penalize solutions with negative
 # abundances 
-penalization <- 100000
+penalization <- 1000
 # main fitting function
 # input: 
 # - matrix E as above (the data)
@@ -418,10 +418,11 @@ compute_SSQ <- function(B, E){
   ones <- rep(1, ncol(B)) # vector of 1s
   for (i in 1:nrow(E)){
     presence <- E[i, ] > 0
+    predicted_x <- rep(-1, sum(presence))
     # use internal calls to speed up calculation
-    predicted_x <- .Internal(La_solve(B[presence, presence, drop = FALSE], 
+    try({predicted_x <- .Internal(La_solve(B[presence, presence, drop = FALSE], 
                                       ones[presence], 
-                                      10^-6))
+                                      10^-6))},silent = TRUE)
     tildeE[i, presence] <- predicted_x
   }
   # now compute SSQ
@@ -432,7 +433,7 @@ compute_SSQ <- function(B, E){
   return(list(B = B, 
               E = E, 
               tildeE = tildeE, 
-              SSQ = sum((log(predicted) - log(observed))^2)
+              SSQ = sum((predicted - observed)^2)
               ))
 }
 # for numerical minimization
@@ -447,7 +448,8 @@ to_minimize <- function(b, E){
 
 To test this method, we are going to use the data from @kuebbing2015above, who co-cultured four species of plant in 14 out of 15 possible combinations. Let's load the data
 
-```{r, loadkueb}
+```{r, loadkueb, message=FALSE, warning=FALSE}
+library(tidyverse)
 url <- "https://github.com/dsmaynard/endpoints/raw/master/data/Kuebbing_plants/natives.csv"
 E <- as.matrix(read_csv(url))
 knitr::kable(
@@ -535,7 +537,7 @@ oof <- rowSums(E > 0) == 3
 tmp <- optim(par = as.vector(B), 
              fn = to_minimize, 
              E = Enotriplets,
-             method = "BFGS")
+             method = "Nelder-Mead")
 best_B_oof <- matrix(tmp$par, 4, 4)
 solution_oof <- compute_SSQ(best_B_oof, E)
 plot_solution(solution_oof, oof)
@@ -552,7 +554,7 @@ oof <- rowSums(E > 0) == 2
 tmp <- optim(par = as.vector(B), 
              fn = to_minimize, 
              E = Enopairs,
-             method = "BFGS")
+             method = "Nelder-Mead")
 best_B_oof2 <- matrix(tmp$par, 4, 4)
 solution_oof2 <- compute_SSQ(best_B_oof2, E)
 plot_solution(solution_oof2, oof)
@@ -569,7 +571,7 @@ oof <- rowSums(E > 0) >= 3
 tmp <- optim(par = as.vector(B), 
              fn = to_minimize, 
              E = Eonlymonopairs,
-             method = "BFGS")
+             method = "Nelder-Mead")
 best_B_oof3 <- matrix(tmp$par, 4, 4)
 solution_oof3 <- compute_SSQ(best_B_oof3, E)
 plot_solution(solution_oof3, oof)

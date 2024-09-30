@@ -1,3 +1,4 @@
+
 # Game theory and replicator dynamics
 
 ```{r, include=FALSE}
@@ -25,7 +26,7 @@ Born in London, when he was at Eaton he decided to study (independently) the wor
 **History: George R. Price (1922-1975)**
 
 ```{r, echo=FALSE,out.width = "35%"}
-knitr::include_graphics('img/Price.jpg')
+knitr::include_graphics('img/price.jpg')
 ```
 
 One of the most remarkable characters in the history of biology, he was born in New York. He studied chemistry at U. Chicago, receiving a Ph.D. in 1946 (for work connected to the Manhattan Project). He went on to take a variery of jobs: teaching chemistry at Harvard, consulting at Argonne, researching at Bell Lab, writing popular science, working on medical research at U. Minnesota, and consulting for IBM on computer graphics. 

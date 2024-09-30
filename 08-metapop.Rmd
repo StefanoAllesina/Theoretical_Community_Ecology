@@ -76,11 +76,11 @@ In Levins' model, all patches are connected with all other patches, such that th
 **History: Ilkka A. Hanski (1953-2016)**
 
 ```{r, echo=FALSE,out.width = "35%"}
-knitr::include_graphics('img/Hanski.gif')
+knitr::include_graphics('img/Hanski.jpeg')
 ```
 *Photo by Otso Ovaskainen.*
 
-Born in Lempäälä, Finland, he studied at the University of Helsinki, and received his doctorate from the University of Oxford in 1979. From 1981 to his premature death in 2016, he worked at various Finnish institutions, lastly at the Academy of Finland.
+Born in Lempaala, Finland, he studied at the University of Helsinki, and received his doctorate from the University of Oxford in 1979. From 1981 to his premature death in 2016, he worked at various Finnish institutions, lastly at the Academy of Finland.
 
 His work on metapopulation theory is extremely well-known, thanks also to the amazing work on the Glanville fritillary butterfly *Melitaea cinxia*. This butterfly inhabits the dry meadows in Åland Islands archipelago---with about 4000 meadows, sampled yearly by an army of students since 1991, the fragmented landscape is an ideal testing ground for metapopulation theory.
 
@@ -198,7 +198,7 @@ Then write the system of differential equations above, and follow dynamics until
 
 ## Metapopulations on randomly distributed patches
 
-@grilli2015metapopulation considered the case in which a) $N$ patches are uniformly, randomly arranged in a $d-$dimensional landscape (e.g., 1-dimensional for the dunes ecosystems on the shore of Lake Michigan, 2-dimensional for an agricultural landscape; for 3 dimensions consider mountains, for 4 dimensions add time [e.g., temporary ponds in the Alps], for 5 or more dimensions, invoke string theory!)---we indicate the position of patch $i$ as $x_i$; b) one can choose a "dispersal kernel" $f(|x_i−x_j|/\xi)$, c) patch values are randomly sampled from a distribution with mean 1 (which we can do w.l.o.g.) and variance $\sigma^2$. 
+@grilli2015metapopulation considered the case in which a) $N$ patches are uniformly, randomly arranged in a $d-$dimensional landscape (e.g., 1-dimensional for the dunes ecosystems on the shore of Lake Michigan, 2-dimensional for an agricultural landscape; for 3 dimensions consider mountains, for 4 dimensions add time [e.g., temporary ponds in the Alps], for 5 or more dimensions, invoke string theory!)---we indicate the position of patch $i$ as $x_i$; b) one can choose a "dispersal kernel" $f(\|x_i-x_j\|\xi)$, c) patch values are randomly sampled from a distribution with mean 1 (which we can do w.l.o.g.) and variance $\sigma^2$. 
 
 For example, when dispersal decreases exponentially with distance (as above), we have an exponential kernel:
 
