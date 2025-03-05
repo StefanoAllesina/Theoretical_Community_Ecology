@@ -23,7 +23,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2024-09-30" />
+<meta name="date" content="2025-03-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -216,10 +216,11 @@ div.csl-indent {
 <li class="chapter" data-level="3.3" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#multi-species-dynamics"><i class="fa fa-check"></i><b>3.3</b> Multi-species dynamics</a>
 <ul>
 <li class="chapter" data-level="3.3.1" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#existence-of-an-equilibrium"><i class="fa fa-check"></i><b>3.3.1</b> Existence of an equilibrium</a></li>
-<li class="chapter" data-level="3.3.2" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#stability-of-the-coexistence-equilibrium"><i class="fa fa-check"></i><b>3.3.2</b> Stability of the coexistence equilibrium</a></li>
-<li class="chapter" data-level="3.3.3" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#types-of-dynamics"><i class="fa fa-check"></i><b>3.3.3</b> Types of dynamics</a></li>
-<li class="chapter" data-level="3.3.4" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#the-equilibrium-is-the-time-average"><i class="fa fa-check"></i><b>3.3.4</b> The equilibrium is the time-average</a></li>
-<li class="chapter" data-level="3.3.5" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#lyapunov-diagonal-stability-and-global-stability"><i class="fa fa-check"></i><b>3.3.5</b> Lyapunov diagonal stability and global stability</a></li>
+<li class="chapter" data-level="3.3.2" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#types-of-dynamics"><i class="fa fa-check"></i><b>3.3.2</b> Types of dynamics</a></li>
+<li class="chapter" data-level="3.3.3" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#equilibrium-as-time-average"><i class="fa fa-check"></i><b>3.3.3</b> Equilibrium as time-average</a></li>
+<li class="chapter" data-level="3.3.4" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#coexistence-requires-a-feasible-equilibrium"><i class="fa fa-check"></i><b>3.3.4</b> Coexistence requires a feasible equilibrium</a></li>
+<li class="chapter" data-level="3.3.5" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#local-stability-of-the-coexistence-equilibrium"><i class="fa fa-check"></i><b>3.3.5</b> Local stability of the coexistence equilibrium</a></li>
+<li class="chapter" data-level="3.3.6" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#lyapunov-diagonal-stability-and-global-stability"><i class="fa fa-check"></i><b>3.3.6</b> Lyapunov diagonal stability and global stability</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#macarthurs-consumer-resource-model"><i class="fa fa-check"></i><b>3.4</b> MacArthur’s consumer-resource model</a>
 <ul>
@@ -358,10 +359,10 @@ div.csl-indent {
 </ol>
 <div id="qualitative-analysis-of-models-for-two-populations" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> Qualitative analysis of models for two populations<a href="models-for-two-populations.html#qualitative-analysis-of-models-for-two-populations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>In this section, we extend the qualitative analysis we’ve performed for a single populations to models with two populations. Many of the methods introduced below extend to the case of multiple populations.</p>
+<p>In this section, we extend the qualitative analysis we’ve performed for a single populations to models with two populations. Many of the methods introduced below extend to the case of an arbitrary number of populations.</p>
 <div id="isoclines-of-null-growth" class="section level3 hasAnchor" number="2.1.1">
 <h3><span class="header-section-number">2.1.1</span> Isoclines of null growth<a href="models-for-two-populations.html#isoclines-of-null-growth" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Take a two-dimensional model. For each equation, we can write the solution of <span class="math inline">\(dx/dt = 0\)</span> as a function of <span class="math inline">\(y\)</span>, thereby defining the curve in the <span class="math inline">\((x, y)\)</span> plane (the “phase plane”) for which the growth of species <span class="math inline">\(x\)</span> is zero. For a concrete example, take the classic predator-prey Lotka-Volterra system:</p>
+<p>Take a two-dimensional model, with variables <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. For each equation, we can write the solution of <span class="math inline">\(dx/dt = 0\)</span> as a function of <span class="math inline">\(y\)</span>, thereby defining the curve in the <span class="math inline">\((x, y)\)</span> plane (the “phase plane”) for which the growth of species <span class="math inline">\(x\)</span> is zero. For a concrete example, take the classic predator-prey Lotka-Volterra system:</p>
 <p><span class="math display">\[
 \begin{cases}
 \dfrac{d x(t)}{dt} = \rho\, x(t) - \alpha\, x(t)\, y(t)\\
@@ -372,7 +373,7 @@ div.csl-indent {
 <div class="boxhistory">
 <p><strong>History: Alfred J. Lotka (1880-1949)</strong></p>
 <p><img src="img/Lotka.jpg" width="25%" style="display: block; margin: auto;" /></p>
-<p>Alfred Lotka was born to French-speaking American parents in Lemberg (then part of the Habsburg empire, now Lviv, Ukraine). He studied in France, Germany and England, receiving a BSc in 1901 and a DSc in 1912 from Birmingham university. He moved to the US in 1902, and worked at the US Patent office, as an editor of Scientific American, and as a statistician at the Metropolitan Life Insturance Company in NYC. He wrote more than a hundred papers and five books, spanning a large range of topics. He’s best known for the book <em>Elements of Physical Biology</em>, his contributions to demography, and one of the first studies dealing with bibliometrics <span class="citation">(<a href="#ref-lotka1926frequency">Lotka 1926</a>)</span>.</p>
+<p>Alfred Lotka was born to French-speaking American parents in Lemberg (then part of the Habsburg empire, now Lviv, Ukraine). He studied in France, Germany and England, receiving a BSc in 1901 and a DSc in 1912 from Birmingham university. He moved to the US in 1902, and worked at the US Patent office, as an editor of Scientific American, and as a statistician at the Metropolitan Life Insurance Company in NYC. He wrote more than a hundred papers and five books, spanning a large range of topics. He’s best known for the book <em>Elements of Physical Biology</em>, his contributions to demography, and one of the first studies dealing with bibliometrics <span class="citation">(<a href="#ref-lotka1926frequency">Lotka 1926</a>)</span>.</p>
 <p>Starting in 1910 (reprinted as <span class="citation">Lotka (<a href="#ref-lotka2002contribution">2002</a>)</span>) he investigated coupled differential equations relating to chemical as well as ecological dynamics. In <span class="citation">Lotka (<a href="#ref-lotka1920analytical">1920</a>)</span> he studied a system of two ODEs that gave rise to perpetual oscillations: <em>“It was, therefore, with considerable surprise that the writer, on applying his method to certain special cases, found these to lead to undamped, and hence indefinitely continued, oscillations.”</em> He went on to describe <em>“1. A species of organism <span class="math inline">\(S_1\)</span>, a plant species, say, deriving its nourishment from a source presented in such large excess that the mass of the source may be considered constant during the period of time with which we are concerned. 2. A species <span class="math inline">\(S_2\)</span>, for example a herbivorous animal species, feeding on <span class="math inline">\(S_1\)</span>.”</em></p>
 <p>The equations he had derived (and then studied later in more detail) are now termed Lotka-Volterra equations.</p>
 </div>
@@ -433,8 +434,8 @@ f_i(x) \approx f_i(a) + \sum_j \left . J_{ij} \right|_{a} (x_j - a_j) +\dfrac{1}
 \dfrac{d x(t)}{dt} = f_x = x(t) \left(1 - x(t) - \alpha\, \frac{y(t)}{1+ x(t)} \right)\\
 \dfrac{d y(t)}{dt} = f_y = y(t) \left(-1 + \alpha\, \frac{x(t)}{1+ x(t)} \right)\\
 \end{cases}
-\]</span>
-The system has up to three equilibria: <span class="math inline">\((x^\star, y^\star) = (0,0)\)</span>, <span class="math inline">\((x^\star, y^\star) = (1,0)\)</span>, and, whenever <span class="math inline">\(\alpha &gt; 2\)</span>, <span class="math inline">\(\left(\frac{1}{\alpha - 1}, \frac{\alpha - 2}{(\alpha - 1)^2}\right)\)</span>. The Jacobian for this system is:</p>
+\]</span></p>
+<p>The system has up to three equilibria: <span class="math inline">\((x^\star, y^\star) = (0,0)\)</span>, <span class="math inline">\((x^\star, y^\star) = (1,0)\)</span>, and, whenever <span class="math inline">\(\alpha &gt; 2\)</span>, <span class="math inline">\(\left(\frac{1}{\alpha - 1}, \frac{\alpha - 2}{(\alpha - 1)^2}\right)\)</span>. The Jacobian for this system is:</p>
 <p><span class="math display">\[
 J = \begin{pmatrix}
 \frac{\partial f_x}{\partial x} &amp; \frac{\partial f_x}{\partial y}\\
@@ -465,17 +466,17 @@ Note that each slice of the Hessian is necessarily symmetric.</p>
 <p>Now we can approximate the dynamics at any point; for example, around the equilibrium with the prey alone:</p>
 <p><span class="math display">\[
 \dfrac{d x(t)}{dt} \approx J_{11}|_{x^\star} \Delta x + J_{12}|_{x^\star} \Delta y + \frac{1}{2} H_{x,1,1}|_{x^\star} \Delta x^2 + \frac{1}{2} H_{x,2,2}|_{x^\star} \Delta y^2 + H_{x,1,2}|_{x^\star} \Delta x \Delta y
-\]</span>
-with some calculations, we obtain:</p>
+\]</span></p>
+<p>with some calculations, we obtain:</p>
 <p><span class="math display">\[
 \dfrac{d x(t)}{dt} \approx -\Delta x (1 + 2 \Delta x) - \frac{1}{2} \alpha (1 + \Delta x) \Delta y
-\]</span>
-and similarly,</p>
+\]</span></p>
+<p>and similarly,</p>
 <p><span class="math display">\[
 \dfrac{d y(t)}{dt} \approx  \frac{1}{2} (\alpha -2 + \alpha \Delta x) \Delta y
-\]</span>
-We can see already that, when <span class="math inline">\(\Delta y &gt; 0\)</span> (the only sensible case), and <span class="math inline">\(\Delta x = 0\)</span>, the predator can invade (at least initially) whenever <span class="math inline">\(\alpha &gt; 2\)</span>.</p>
-<p>By considering higher and higher order terms, we can have an increasingly good approximation of the system—always obtaining a polynomial system.</p>
+\]</span></p>
+<p>We can see already that, when <span class="math inline">\(\Delta y &gt; 0\)</span> (the only sensible case), and <span class="math inline">\(\Delta x = 0\)</span>, the predator can invade (at least initially) whenever <span class="math inline">\(\alpha &gt; 2\)</span>.</p>
+<p>By considering higher and higher order terms, we can have an increasingly good approximation of the system—always obtaining a polynomial system of differential equations.</p>
 </div>
 <p>Suppose that a system is resting at an equilibrium <span class="math inline">\(x^\star\)</span>, and that it is slightly perturbed away from it. <span class="math inline">\(x(t) = \Delta x(t) + x^\star\)</span> is the state of the system immediately after the perturbation. Taylor-expanding around <span class="math inline">\(x^\star\)</span> and taking only the linear term, we have:</p>
 <p><span class="math display">\[
@@ -499,7 +500,7 @@ M = \left. {J} \right|_{ {x}^\star}
 <div class="boxmath">
 <p><strong>Eigenvalues and eigenvectors</strong></p>
 <p>For a matrix <span class="math inline">\(M\)</span>, we have that if <span class="math inline">\(M v = \lambda v\)</span> with <span class="math inline">\(v\)</span> different from the zero vector, then <span class="math inline">\(\lambda\)</span> is an eigenvalue and <span class="math inline">\(v\)</span> the corresponding eigenvector. Practically, you can think of a matrix as an operator that turns a vector into another vector. If the resulting vector is a rescaled version of the initial vector, then you’ve found an eigenvector of the matrix, and the rescaling factor is the associated eigenvalue.</p>
-<p>For example, show that <span class="math inline">\((1, 1)^t\)</span> is an eigenvector of the matrix:</p>
+<p>For example, show that <span class="math inline">\((1, 1)^T\)</span> is an eigenvector of the matrix:</p>
 <p><span class="math display">\[
 A =
 \begin{pmatrix}
@@ -514,7 +515,7 @@ Av = \begin{pmatrix}
 (2a + 2) v_1 - 2a v_2
 \end{pmatrix}
 \]</span></p>
-<p>if <span class="math inline">\(v = (1, 1)^t\)</span>, we have:</p>
+<p>if <span class="math inline">\(v = (1, 1)^T\)</span>, we have:</p>
 <p><span class="math display">\[
 Av = \begin{pmatrix}
 2\\
@@ -574,7 +575,7 @@ A = V \Lambda V^{-1}
 <p>If the matrix <span class="math inline">\(A\)</span> contains only real numbers (as always the case in population models), then the eigenvalues of <span class="math inline">\(A\)</span> are either real, or form pairs of complex conjugate eigenvalues of form <span class="math inline">\(\alpha \pm i\, \beta\)</span>. This means for example that all odd-sized real matrices have at least one real eigenvalue. If <span class="math inline">\(A\)</span> is real and symmetric, all eigenvalues are real, and all eigenvectors are orthogonal, and if it is diagonalizable we can write <span class="math inline">\(A = V \Lambda V^{T}\)</span>. A diagonal matrix <span class="math inline">\(A\)</span> has eigenvalues <span class="math inline">\(\lambda_i = A_{ii}\)</span></p>
 <p>If <span class="math inline">\(A\)</span> has eigenvalues <span class="math inline">\(\lambda\)</span>, <span class="math inline">\(B = \beta\, A\)</span> has eigenvalues <span class="math inline">\(\beta\, \lambda\)</span>, and <span class="math inline">\(C = A + \gamma\, I\)</span> has eigenvalues <span class="math inline">\(\lambda + \gamma\)</span>. The eigenvalues of <span class="math inline">\(A^2 = A \times A\)</span> are <span class="math inline">\(\lambda^2\)</span>, and the eigenvalues of <span class="math inline">\(A^{-1}\)</span> are <span class="math inline">\(\lambda^{-1}\)</span>. The eigenvalues of <span class="math inline">\(A^T\)</span> are the same as those of <span class="math inline">\(A\)</span> (but the eigenvectors are not the same in general). <span class="math inline">\(A + A^T\)</span> (this matrix is symmetric) has only real eigenvalues, and <span class="math inline">\(A - A^T\)</span> (this matrix is skew-symmetric) has purely imaginary eigenvalues.</p>
 <p>A matrix is positive definite if all its eigenvalues are real and positive. It is positive semi-definite if eigenvalues can be zero. The matrices <span class="math inline">\(AA^T\)</span> and <span class="math inline">\(A^T A\)</span> are positive semi-definite, and have the same eigenvalues up to some zeros (used in SVD and PCA). Correlation and covariance matrices have these form.</p>
-<p>Provided that some mild conditions are satisfied, a matrix with non-negative entries has a unique largest real eigenvalue with a corresponding eigenvector that can be chosen to have strictly positive components (<a href="https://en.wikipedia.org/wiki/Perron%E2%80%93Frobenius_theorem">Perron-Frobenius theorem</a>). A matrix with constant row sums <span class="math inline">\(\theta\)</span> has <span class="math inline">\(\theta\)</span> as the largest eigenvalue, and <span class="math inline">\(v = 1\)</span> as the corresponding eigenvector (e.g., Markov Chains).</p>
+<p>Provided that some mild conditions are satisfied, a matrix with non-negative entries has a unique largest real eigenvalue with a corresponding eigenvector that can be chosen to have strictly positive components (<a href="https://en.wikipedia.org/wiki/Perron%E2%80%93Frobenius_theorem">Perron-Frobenius theorem</a>). A matrix with constant row sums <span class="math inline">\(\theta\)</span> has <span class="math inline">\(\theta\)</span> as an eigenvalue, and <span class="math inline">\(v = 1\)</span> as the corresponding eigenvector (e.g., Markov Chains).</p>
 <p><strong>Descartes’ rule of signs</strong></p>
 <p>Take <span class="math inline">\(\alpha_i\)</span> to be the coefficients of the polynomial in standard form:</p>
 <p><span class="math display">\[
@@ -584,8 +585,8 @@ P(\lambda) = \sum_{i=0}^n \alpha_i \lambda^i
 <p><em>Example:</em></p>
 <p><span class="math display">\[
 P(\lambda) = 1 + 4 \lambda - 5 \lambda^2 + \lambda^3
-\]</span>
-we have two sign changes (the signs are <span class="math inline">\(+ + - +\)</span>), and therefore the polynomial has at most two positive real roots (i.e., either two positive roots, or zero). Taking:</p>
+\]</span></p>
+<p>we have two sign changes (the signs are <span class="math inline">\(+ + - +\)</span>), and therefore the polynomial has at most two positive real roots (i.e., either two positive roots, or zero). Taking:</p>
 <p><span class="math display">\[
 P(-\lambda) = 1 - 4 \lambda - 5 \lambda^2 - \lambda^3
 \]</span></p>
@@ -595,13 +596,13 @@ P(-\lambda) = 1 - 4 \lambda - 5 \lambda^2 - \lambda^3
 <p>The polynomial:</p>
 <p><span class="math display">\[
 P(\lambda) = \alpha_0 + \alpha_1 \lambda + \lambda^2
-\]</span>
-is stable if and only if <span class="math inline">\(\alpha_0 &gt; 0\)</span> and <span class="math inline">\(\alpha_1 &gt;0\)</span>.</p>
+\]</span></p>
+<p>is stable if and only if <span class="math inline">\(\alpha_0 &gt; 0\)</span> and <span class="math inline">\(\alpha_1 &gt;0\)</span>.</p>
 <p>The polynomial:</p>
 <p><span class="math display">\[
 P(\lambda) = \alpha_0 + \alpha_1 \lambda + \alpha_2 \lambda^2 + \lambda^3
-\]</span>
-is stable if and only if <span class="math inline">\(\alpha_i &gt; 0\quad \forall i\)</span> and <span class="math inline">\(\alpha_2 \alpha_1 &gt; \alpha_0\)</span>.</p>
+\]</span></p>
+<p>is stable if and only if <span class="math inline">\(\alpha_i &gt; 0\quad \forall i\)</span> and <span class="math inline">\(\alpha_2 \alpha_1 &gt; \alpha_0\)</span>.</p>
 </div>
 <div class="boxhomework">
 <p><strong>Homework 2a</strong></p>
@@ -658,11 +659,11 @@ V^{-1}x(t) &amp;= V^{-1}V e^{\Lambda t} V^{-1} x_0\\
 y(t) = e^{\Lambda t} y_0
 \end{aligned}
 \]</span></p>
-<p>And therefore <span class="math inline">\(y_j(t) = e^{(\lambda_j)t} y_j(0)\)</span>. Clealry, if all <span class="math inline">\(\lambda_j\)</span> are real and negative, the trajectories will die out, and the origin <span class="math inline">\(y^\star = 0\)</span> is stable. Similarly, if any eigenvalue is real and positive, then the perturbation will amplify in at least one direction. Next, we consider <span class="math inline">\(\lambda_j\)</span> to be complex. In this case, <span class="math inline">\(\lambda_j = \alpha + i\, \beta\)</span>. Using Euler’s formula, we have</p>
+<p>And therefore <span class="math inline">\(y_j(t) = e^{(\lambda_j)t} y_j(0)\)</span>. Clearly, if all <span class="math inline">\(\lambda_j\)</span> are real and negative, the trajectories will die out, and the origin <span class="math inline">\(y^\star = 0\)</span> is stable. Similarly, if any eigenvalue is real and positive, then the perturbation will amplify in at least one direction. Next, we consider <span class="math inline">\(\lambda_j\)</span> to be complex. In this case, <span class="math inline">\(\lambda_j = \alpha + i\, \beta\)</span>. Using Euler’s formula, we have</p>
 <p><span class="math display">\[
 y_j(t) = y_j(0)\, e^{(\alpha + i\, \beta) t} = y_j(0)\, e^{\alpha\, t} (\cos(\beta\, t) + i \sin(\beta\, t))
 \]</span></p>
-<p>As such, the solution will oscillate, with damped oscillations whenever <span class="math inline">\(a &lt; 0\)</span> and increasing oscillations when <span class="math inline">\(a &gt; 0\)</span>. For example, a case of damped oscillations:</p>
+<p>As such, the solution will oscillate, with damped oscillations whenever <span class="math inline">\(\alpha &lt; 0\)</span> and increasing oscillations when <span class="math inline">\(\alpha &gt; 0\)</span>. For example, a case of damped oscillations:</p>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-18-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>and of increasing oscillations:</p>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-19-1.png" width="480" style="display: block; margin: auto;" /></p>
@@ -720,11 +721,11 @@ M_c = \left . J \right|_{(\delta / \beta, \rho / \alpha)^T} = \begin{pmatrix}
 \dfrac{\beta\, \rho}{\alpha} &amp; 0
 \end{pmatrix}
 \]</span></p>
-<p>which has purely imaginary eigenvalues <span class="math inline">\(\lambda = \pm i \sqrt{\rho \, \delta}\)</span>. As such the equilibrium is not attractive nor unstable. In fact, Lotka and Volterra were (independently) able to prove that the system cycles neutrally around the equilibrium.</p>
+<p>which has purely imaginary eigenvalues <span class="math inline">\(\lambda = \pm i \sqrt{\rho \, \delta}\)</span>. As such the equilibrium is not attractive nor unstable. In fact, both Lotka and Volterra were (independently) able to prove that the system cycles neutrally around the equilibrium.</p>
 <div class="boxhistory">
 <p><strong>Vito Volterra (1860-1940)</strong></p>
 <p><img src="img/Volterra.jpg" width="25%" style="display: block; margin: auto;" /></p>
-<p>Vito Volterra was born in Ancona (then part of the Papal State) in a poor jewish family. The financial situation precipitated with the death of his father, when Vito was two. Vito and his mother went to live with relatives in Turin and then Florence. Volterra showed amazing mathematical talent at a very young age. Antonio Roiti, professor of physics in Florence, noticed the budding mathematician and hired him as his assistant, so that he could continue his studies. He went on to enroll at the Scuola Normale in Pisa, receiving a degree in Physics in 1882. At age 23 he was made full professor of Rational Mechanics in Pisa, and then in 1900 of Mathematical Physics in Rome. For thirty years, he contributed important studies in mathematics, and enriched academic life in Italy (for example, he was the first director of the National Center for Research). In 1931 he refused to take an oath of loyalty to the fascist regime (only 12 professors out of 1250 refused), and was therefore forced to resign (his take on the fascist enterprise: <em>“Empires die, but Euclid’s theorems keep their youth forever”</em>).</p>
+<p>Vito Volterra was born in Ancona (then part of the Papal State) in a poor Jewish family. The financial situation precipitated with the death of his father, when Vito was two. Vito and his mother went to live with relatives in Turin and then Florence. Volterra showed amazing mathematical talent at a very young age. Antonio Roiti, professor of physics in Florence, noticed the budding mathematician and hired him as his assistant, so that he could continue his studies. He went on to enroll at the Scuola Normale in Pisa, receiving a degree in Physics in 1882. At age 23 he was made full professor of Rational Mechanics in Pisa, and then in 1900 of Mathematical Physics in Rome. For thirty years, he contributed important studies in mathematics, and enriched academic life in Italy (for example, he was the first director of the National Center for Research). In 1931 he refused to take an oath of loyalty to the fascist regime (only 12 professors out of 1250 refused), and was therefore forced to resign (his take on the fascist enterprise: <em>“Empires die, but Euclid’s theorems keep their youth forever”</em>).</p>
 <p>His interest in mathematical ecology is due to Umberto D’Ancona (his son-in-law), who had studied the trends in fisheries in the Adriatic sea before and immediately after WWI. In 1914-1918 fisheries in the Adriatic had stopped completely because of the conflict. D’Ancona had noticed that, while herbivorous fish had remained about constant, the piscivorous fish had increased dramatically in numbers. The problem piqued Volterra who immediately published a sophisticated study, proposing the same equations studied by Lotka. In a short letter to Nature <span class="citation">(<a href="#ref-volterra1926fluctuations">Volterra 1926a</a>)</span>, he stated the so-called “Volterra’s Effect” (which he termed “Law III”): <em>“a complete closure of the fishery was a form of ‘protection’ under which the voracious fishes were much the better and prospered accordingly, but the ordinary food-fishes, on which these are accustomed to prey, were worse off than before.”</em> This brief paper was a summary of a much more extensive article <span class="citation">(<a href="#ref-volterra1926variazioni">Volterra 1926b</a>)</span>.</p>
 <p><em>Lotka-Volterra interactions</em></p>
 <p>In 1927, Lotka wrote to Nature to raise the issue that the equations studied by Volterra and the figures presented in Volterra’s brief article were identical to those found in <em>Elements of Physical Biology</em> (published in 1925). He concluded: <em>“It would be gratifying if Prof. Volterra’s publication should direct attention to a field and method of inquiry which apparently has hitherto passed almost unnoticed.”</em></p>
@@ -771,7 +772,7 @@ V(x,y) = \beta (x - x^\star \log x) + \alpha (y - y^\star \log y)
 \dfrac{dy}{dt} = y (x - 1)
 \end{cases}
 \]</span></p>
-<p>First, we find the equilibria. From the first equation, we have <span class="math inline">\(x^\star = 0\)</span>, or <span class="math inline">\(y^\star = 1 - x^\star /2\)</span>; from the second equation, we have <span class="math inline">\(y^\star = 0\)</span> or <span class="math inline">\(x^\star = 1\)</span>. Combining them, we find that either <span class="math inline">\((x^\star, y^\star)^T = (0, 0)^T\)</span> (trival), <span class="math inline">\((x^\star, y^\star)^T = (2, 0)^T\)</span> (boundary), or <span class="math inline">\((x^\star, y^\star)^T = (1, 1/2)^T\)</span> (coexistence).</p>
+<p>First, we find the equilibria. From the first equation, we have <span class="math inline">\(x^\star = 0\)</span>, or <span class="math inline">\(y^\star = 1 - x^\star /2\)</span>; from the second equation, we have <span class="math inline">\(y^\star = 0\)</span> or <span class="math inline">\(x^\star = 1\)</span>. Combining them, we find that either <span class="math inline">\((x^\star, y^\star)^T = (0, 0)^T\)</span> (trivial), <span class="math inline">\((x^\star, y^\star)^T = (2, 0)^T\)</span> (boundary), or <span class="math inline">\((x^\star, y^\star)^T = (1, 1/2)^T\)</span> (coexistence).</p>
 <p>The isoclines of zero growth are <span class="math inline">\(y = 1 - x/2\)</span> for the prey, and <span class="math inline">\(x = 1\)</span> for the predator. The Jacobian for the system is</p>
 <p><span class="math display">\[
 J = \begin{pmatrix}
@@ -779,7 +780,7 @@ J = \begin{pmatrix}
 y &amp; x -1
 \end{pmatrix}
 \]</span></p>
-<p>At the equilibrium <span class="math inline">\((x^\star, y^\star) = (1, 1/2)\)</span>, we have:</p>
+<p>At the equilibrium <span class="math inline">\((x^\star, y^\star)^T = (1, 1/2)^T\)</span>, we have:</p>
 <p><span class="math display">\[
 M = \begin{pmatrix}
 - \frac{1}{2} &amp; -1\\
@@ -794,7 +795,7 @@ p(\lambda) = \lambda^2 + \frac{1}{2} \lambda + \frac{1}{2}
 <p><span class="math display">\[
 \lambda = \dfrac{-\frac{1}{2} \pm \sqrt{\frac{1}{4} - 2}}{2} = \dfrac{-1 \pm i \sqrt{7}}{4}
 \]</span></p>
-<p>And as such small perturbations will oscillate back to equilibrium. Numerically:</p>
+<p>Therefore small perturbations will oscillate back to equilibrium. Numerically:</p>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-21-1.png" width="480" style="display: block; margin: auto;" /></p>
 <div id="global-stability" class="section level4 hasAnchor" number="2.3.2.1">
 <h4><span class="header-section-number">2.3.2.1</span> Global stability<a href="models-for-two-populations.html#global-stability" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -807,7 +808,7 @@ V(x,y) = \left(x - x^\star - x^\star \log \dfrac{x}{x^\star} \right) +
 <p><span class="math display">\[
 \dfrac{d V(x,y)}{dt} = -\dfrac{1}{2}(1-x)^2 &lt; 0
 \]</span></p>
-<p>As such, the equilibrium <span class="math inline">\((x^\star, y^\star) = (1, 1/2)\)</span> is globally stable.</p>
+<p>As such, the equilibrium <span class="math inline">\((x^\star, y^\star)^T = (1, 1/2)^T\)</span> is globally stable.</p>
 <div class="boxhomework">
 <p><strong>Homework 2b</strong></p>
 <p>Take the competitive Lotka-Volterra model:</p>

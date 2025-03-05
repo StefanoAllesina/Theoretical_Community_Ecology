@@ -3,12 +3,12 @@
 **Lesson plan**:
 
 1. We start by discussing the Generalized Lotka-Volterra model, which we are going to see over and over again in the remainder of the lectures.
-1. We discuss the existence of a "coexistence" equilibrium, as well as its local stability.
+1. We discuss the existence of equilibria in the case of $n$ populations.
 1. We show that the GLV model can give rise to all sort of dynamics, including limit cycles and chaos.
-1. Despite this fact, the persistence of all species requires the existence of a feasible equilibrium, which is the time-average of the species' densities. 
+1. We show that a positive equilibrium is necessary for coexistence, and that, when populations coexist, the equilibrium is the time-average of the trajectories.
+1. We show how to perform local stability analysis for GLV.
 1. We introduce D-stability, allowing us to write a Lyapunov function to determine global stability in GLV models.
 1. We conclude by analyzing the MacArthur's consumer-resource model, highlighting its deep connection to GLV.
-
 
 ## Formulation
 
@@ -16,13 +16,38 @@
 source("common_settings.R")
 ```
 
-We can write the Generalized Lotka-Volterra model in a compact form as:
+We can write the Generalized Lotka-Volterra model as:
 
 $$
 \dfrac{dx(t)}{dt} = D(x(t))(r + A x(t)) 
 $$
 
 where $x(t)$ is a (column) vector of length $n$ containing the densities of all populations $1, \ldots, n$ at time $t$, $r$ is a vector of "intrinsic growth rates" (or death rates, when negative), measuring the growth (decline) of population $i$ when grown alone at low density, and $A$ is a $n \times n$ matrix of interaction coefficients. We use $D(x)$ to denote the diagonal matrix with $x$ on the diagonal. 
+
+In component form, we have (dropping the dependence on $t$):
+
+$$
+\dot{x}_i = x_i \left(r_i + \sum_j A_{ij} x_j \right)
+$$
+
+Sometimes the model is written in a slightly different way, by bringing the vector $r$ outside the parenthesis:
+
+$$
+\begin{aligned}
+\dot{x}_i &= x_i \left(r_i + \sum_j A_{ij} x_j \right)\\
+&= r_i x_i \left(1 + \frac{1}{r_i} \sum_j A_{ij} x_j\right)\\
+&= r_i x_i \left(1 + \sum_j B_{ij} x_j\right)\\
+\end{aligned}
+$$
+
+where we have defined $B_{ij} = A_{ij} / r_i$. In matrix form, we obtain:
+
+$$
+\dot{x} = D(x \circ r) \left(1_n + Bx \right)
+$$
+
+where $\circ$ is the Hadamard (element by element) product. This notation is convenient when computing the equilibria of the system; the previous notation is more convenient when investigating their stability. We will alternate between the two notations, using $A$ and
+$B = D(r)^{-1} A$ for the two matrices.
 
 ## A single population
 
@@ -31,6 +56,7 @@ The simplest case to study is that of a single population, in which case the equ
 $$
 \dfrac{dx(t)}{dt} = x(t)(\rho + \alpha x(t))
 $$
+
 Note that whenever $\rho > 0$ and $\alpha < 0$ there exists a feasible equilibrium $x^\star = \rho / \alpha$. The equilibrium is globally stable (as shown using either a quadratic Lyapunov function, or the $V = x - x^\star - x^\star \log (x / x^\star)$). As we've seen before, this is a separable ODE, with solution:
 
 $$
@@ -70,31 +96,372 @@ which is again the equation for the logistic growth with $\rho = \beta - \gamma$
 
 ### Existence of an equilibrium
 
-Returning to the multi-species system, and in analogy with the single species model, we can look for stationary points (fixed points, equilibria). If the matrix $A$ is not singular, then we can look for a solution of $r + Ax = 0$ that has positive components (called a **feasible equilibrium**). **If such point exists, it is unique** and is the solution of $Ax^\star = -r$, $x^\star = -A^{-1}r$. 
+Returning to the multi-species system, and in analogy with the single species model, we can look for stationary points (fixed points, equilibria). 
 
-Suppose that the GLV has no feasible equilibrium. Then all trajectories (if bounded; some could grow to infinity) reach the boundary of $\mathbb R^n_{0+}$. Practically, this means that **to ensure coexistence of all species, it is necessary to have an equilibrium in the interior $\mathbb R^n_{+}$**. For a proof, see Theorem 5.2.1 in @hofbauer1998evolutionary.
-
-### Stability of the coexistence equilibrium
-
-Suppose that a feasible equilibrium $x^\star$ exists. For the GLV model, the Jacobian is easy to compute:
+If an equilibrium $x^\star$ in which all populations are present exists, it must be the solution of
 
 $$
-J_{ij} = \frac{\partial f_i}{\partial x_j} = A_{ij} x_i
+\begin{aligned}
+1_n + Bx^\star &= 0_n\\
+Bx^\star &= - 1_n\\
+x^\star &= -B^{-1} 1_n
+\end{aligned}
 $$
 
-and 
+when the matrix $B$ is invertible. Naturally, the equilibrium must be positive (called *feasible*) to be biologically attainable.
+
+For example, consider:
 
 $$
-J_{ii} = \frac{\partial f_i}{\partial x_i} = r_i + \sum_j A_{ij} x_j + A_{ii} x_i
+A = \begin{pmatrix}
+-4 & -1 & -3\\
+-14 & -8 & -10\\
+-6 & -15 & -13
+\end{pmatrix} \quad r = \begin{pmatrix}
+8\\
+32\\
+34
+\end{pmatrix}\quad B = D(r)^{-1}A = \begin{pmatrix}
+-\frac{1}{2} & -\frac{1}{8} & -\frac{3}{8}\\
+-\frac{7}{16} & -\frac{1}{4} & -\frac{5}{16}\\
+-\frac{3}{17} & -\frac{15}{34} & -\frac{13}{34}
+\end{pmatrix}
+$$ 
+
+There is an equilibrium when at which all populations are present:
+
+$$
+x^\star = -A^{-1} r = -B^{-1}1_n = \begin{pmatrix}
+1\\
+1\\
+1
+\end{pmatrix}
 $$
 
-At equilibrium $r_i + \sum_j A_{ij} x_j = 0$, and therefore:
+If the matrix $B$ is rank-deficient (and thus singular) there are infinitely many equilibria; for example, if the rank of $B$ is $n-1$ there are infinitely many equilibria belonging to a line in $\mathbb R^n$.
+
+When $B$ is nonsingular, the model admits at most one positive equilibrium in which all populations are present. However, there can be up to $2^n-1$ equilibria in which *one or more populations are absent/extinct*. Call $B^{(k,k)}$ the submatrix of $B$ obtained by retaining the rows and columns indexed by the set $k$. Then by solving
 
 $$
-M = \left. {J} \right|_{ {x}^\star} = D(x^\star)A
+B^{(k,k)} x^{(k)\star} = -1_{\|k\|}
 $$
 
-If the eigenvalues of $M$ have all negative real part, then $x^\star$ is locally asymptotically stable.
+we obtain an equilibrium for the subcommunity where only the populations in $k$ are present (provided that the equilibrium is feasibile).
+
+For the example above, we have:
+
+$$
+B^{(\{1,2\},\{1,2\})} = \begin{pmatrix}
+-\frac{1}{2}& -\frac{1}{8}\\
+-\frac{7}{16} & -\frac{1}{4}
+\end{pmatrix}
+$$
+
+and
+
+$$
+x^{(\{1,2\})\star} = -(B^{(\{1,2\},\{1,2\})})^{-1}1_2=\begin{pmatrix}
+\frac{16}{9}\\
+\frac{8}{9}
+\end{pmatrix}
+$$
+
+Therefore, the subsystem in which only the first two populations are present yields a feasible equilibrium.
+
+Similarly,
+
+$$
+x^{(\{1,3\})\star} = \begin{pmatrix}
+\frac{1}{17}\\
+\frac{44}{17}
+\end{pmatrix} \quad x^{(\{1\})\star} = \begin{pmatrix}
+2\\
+\end{pmatrix} \quad x^{(\{2\})\star} = \begin{pmatrix}
+4\\
+\end{pmatrix} \quad x^{(\{3\})\star} = \begin{pmatrix}
+\frac{34}{13}\\
+\end{pmatrix}
+$$
+
+The subsystem in which only populations 2 and 3 are present does not yield a feasible equilibrium.
+
+### Types of dynamics
+
+For a single population, the GLV model can yield only two outcomes: unbounded growth, or convergence to an equilibrium; if the equilibrium is $x^\star = 0$, we say that the population is extinct at the equilibrium.
+
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+#| fig-width: 7
+#| fig-height: 3
+source("dat/plot_dynamics.R")
+source("dat/check_persistence.R")
+source("dat/type_of_dynamics.R")
+pl1
+```
+
+When we have two populations, we can also observe neutral cycles (as in the classic LV predator-prey system), and bistability (i.e., one population survives, while the other goes extinct; the identity of the population going extinct depends on the initial conditions).
+
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+#| fig-width: 7
+#| fig-height: 3
+pl2
+```
+
+For three populations we can observe limit cycles.
+
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+#| fig-width: 7
+#| fig-height: 3
+pl3
+```
+
+For three or more populations (in the general case), or four or more populations (in competitive systems), we can have chaos (i.e., non-periodic oscillations).
+
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+#| fig-width: 7
+#| fig-height: 3
+pl4
+```
+
+### Equilibrium as time-average
+
+Suppose that $x(t)$ has a periodic orbit, of period $T$ (i.e., we assume
+$x(0) = x(T)$). Further, assume that the GLV has a feasible, interior
+equilibrium $x^\star$. We want to calculate the average density for each
+population:
+
+$$
+\frac{1}{T} \int_0^T x(t) dt
+$$
+
+First, we assume that $x(t) > 0$ and write the dynamics of its
+logarithm:
+
+$$
+\dfrac{d \log(x_i(t))}{dt} = \dfrac{1}{x_i(t)}\dfrac{d x_i(t)}{dt} = r_i + \sum_j A_{ij} x_j(t)
+$$
+
+In vector form:
+
+$$
+\dfrac{d \log{x(t)}}{dt}= r + A x(t)
+$$
+
+Compute the average on both sides:
+
+$$
+\frac{1}{T}\int_0^T \frac{d \log(x(t))}{dt} dt= \frac{1}{T}\int_0^T \left(r + Ax(t) \right) dt
+$$
+
+yielding:
+
+$$
+\frac{1}{T}(\log(x(T)) - \log(x(0))) = 0_n = r + A \left( \frac{1}{T} \int_0^T x(t) dt \right)
+$$
+
+Note that the l.h.s. is zero because $x(0) = x(T)$. Now rearrange:
+
+$$
+-r = A \left( \frac{1}{T} \int_0^T x(t) dt \right)
+$$
+
+Multiplying by the matrix inverse:
+
+$$
+-A^{-1} r = x^\star =  \frac{1}{T} \int_0^T x(t) dt 
+$$
+
+showing that *the average density is* in fact *the equilibrium*. With a similar argument, one can prove that if the trajectory stays in a compact space (i.e., in case of chaotic attractors), then the long-time average is still $x^\star$.
+
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+#| fig-width: 7
+#| fig-height: 3
+#| fig-cap: "Semi-transparent lines: trajectories; dashed lines: equilibrium values; solid line: (cumulative) average of trajectory."
+# use example out4.1 which is chaotic
+xstar <- solve(A,-r)
+dt1 <- out4.1 %>% as.data.frame() %>% pivot_longer(cols = -time) 
+dt1 <- dt1 %>% group_by(name) %>% mutate(avg = cummean(value)) %>% ungroup()
+ggplot(dt1) + aes(x = time, y = value, colour = name) + geom_line(linewidth = 1, alpha = 0.25) + geom_line(aes(y = avg), linetype = 1,linewidth = 1) + geom_hline(data = tibble(name = as.character(1:4), value = xstar, linewidth = 1), aes(yintercept = value, colour = name), linetype = 2) + theme_bw() + theme(legend.position = "none")
+```
+
+### Coexistence requires a feasible equilibrium
+
+A necessary condition for the coexistence of populations is the existence of a positive (feasible) equilibrium.
+
+:::boxmath
+
+**Farkas' lemma**
+
+Consider matrix $A$, of size $n \times n$, and the vector $b$, of length $n$. 
+
+Then either:
+
+$$
+\exists x \geq 0_n \quad \mid \quad Ax = b 
+$$
+
+or:
+
+$$
+\exists y \in \mathbb R^n \quad \mid \quad A^T y \geq 0_n \;\text{and}\; b^T y < 0 
+$$
+
+:::
+
+Suppose that the system does not have a feasible equilibrium, i.e., an $x^\star > 0_n$ such that $Ax^\star = -r$. Then, there must exist a $y$ such that $A^T y \geq 0_n$ and $r^T y > 0$. 
+
+But then, consider the function:
+
+$$
+P = \prod_i x_i^{y_i}
+$$
+
+The function is positive when all $x_i > 0$. Differentiating with respect to time, we find:
+
+$$
+\begin{aligned}
+\dot{P} &= \sum_i\left( y_i \dot{x}_i x_i^{y_i - 1} \prod_{j \neq i} x_j^{y_j} \right)\\
+&=\sum_i\left( y_i \frac{\dot{x}_i}{x_i} \prod_{j} x_j^{y_j} \right)\\
+&= P \sum_i y_i \left(r_i + \sum_j A_{ij} x_j\right)\\
+&= P (y^T r + y^T A x)
+\end{aligned}
+$$
+
+but by Farkas' lemma, we have that $y^T r > 0$  and $y^TA \geq 0_n^T$; then $P$ always grows in time, and eventually diverges to $\infty$. 
+
+Note that $P(t) \to \infty$ requires some $x_i^{y_i}(t) \to \infty$, which happens when either $x_i(t) \to \infty$ and $y_i > 0$ (i.e., a population grows without bound), or $x_i(t) \to 0$ and $y_i < 0$ (i.e., a population goes extinct). Thus, in the absence of an equilibrium, trajectories can either diverge to infinity, or one or more populations can go extinct.
+
+A feasible equilibrium is therefore a necessary condition for coexistence.
+
+### Local stability of the coexistence equilibrium
+
+Suppose that a feasible equilibrium $x^\star$ exists: $x^\star = -A^{-1}r > 0_n$. We have:
+
+$$
+J_{ii} = \dfrac{\partial (r_i x_i + \sum_j A_{ij} x_i x_j)}{\partial x_i}  = r_i + \sum_j A_{ij} x_j + A_{ii} x_i
+$$
+
+At equilibrium, we have:
+
+$$
+r_i + \sum_j A_{ij} x_j^\star = 0
+$$
+
+and therefore
+
+$$
+M_{ii} = \left. J_{ii} \right|_{x^\star} = A_{ii} x_i^\star
+$$
+
+Similarly,
+
+$$
+J_{ii} = \dfrac{\partial (r_i x_i + \sum_j A_{ij} x_i x_j)}{\partial x_j}  = A_{ij} x_i
+$$
+
+and thus
+
+$$
+M_{ij} = \left. J_{ij} \right|_{x^\star} = A_{ij} x_i^\star
+$$
+
+Putting them together, we obtain:
+
+$$
+M = \left. J \right|_{x^\star} = D(x^\star)A
+$$
+
+and thus the equilibrium is l.a.s. if and only if all of the eigenvalues
+of $D(x^\star)A$ have negative real part.
+
+:::boxmath
+
+**Matrix similarity**
+
+Two square matrices $A$ and $B$ are called **similar** if there exists an invertible matrix $P$ such that:
+
+$$
+B = P A P^{-1}
+$$
+
+The two matrices $A$ and $B$ share many properties; notably, they have the same eigenvalues.
+
+**Matrix congruence**
+
+Two square matrices $A$ and $B$ are called **congruent** if there exists an invertible matrix $P$ such that:
+
+$$
+B = P A P^T
+$$
+
+Further, if $A$ and $B$ are real and symmetric, then the number of positive, negative and zero eigenvalues in the two matrices are the same (Sylvester's law of inertia).
+
+:::
+
+If the matrix $A$ is symmetric, any feasible equilibrium is stable if
+and only if the eigenvalues of $A$ are all negative (i.e., $A$ is
+negative definite). To prove this, take $A = A^T$ and consider the
+similarity transformation
+
+$$
+\begin{aligned}
+D(x^\star)^{-\frac{1}{2}} D(x^\star) A D(x^\star)^{\frac{1}{2}}\\
+D(x^\star)^{\frac{1}{2}}  A D(x^\star)^{\frac{1}{2}}\\
+\end{aligned}
+$$
+
+The matrices $D(x^\star) A$ and
+$D(x^\star)^{\frac{1}{2}} A D(x^\star)^{\frac{1}{2}}$ are *similar*, and
+thus have the same eigenvalues; the matrices $A$ and
+$D(x^\star)^{\frac{1}{2}} A D(x^\star)^{\frac{1}{2}}$ are *congruent*,
+and thus have the same number of positive, negative and zero eigenvalues
+by Sylvester's law of inertia.
+
+A symmetric matrix is negative definite if all its submatrices obtained
+by deleting a set of rows and the corresponding columns are negative
+definite as well. Then, if $A = A^T$ is negative definite, a) a feasible
+equilibrium is locally stable, and b) for any subsystem, feasibility
+implies local stability.
+
+Note that this is generally not the case for nonsymmetric matrices $A$,
+in which case we could have that $A$ has all eigenvalues with a negative
+real part, while $D(x^\star)A$ has some eigenvalues with positive real
+part (or viceversa). For example, take
+
+$$
+A = \begin{pmatrix}
+-3 & 4 & 0\\
+5 & -2 & -2\\
+5 & 5 & -3
+\end{pmatrix} \quad \lambda(A) = \{-7,\frac{1}{2}(-1 \pm i \sqrt{15}) \}
+$$
+
+and the equilibrium $x^\star = (1,1,1/2)^T$ (obtained for
+$r = (-1, -2, -17/2)$); we obtain:
+
+$$
+M = D(x^\star)A = \begin{pmatrix}
+-3 & 4 & 0\\
+5 & -2 & -2\\
+\frac{5}{2} & \frac{5}{2} & -\frac{3}{2}
+\end{pmatrix} \quad \lambda(B) = \{-7,\frac{1}{4}(1 \pm i\sqrt{31}) \}
+$$
+
+Thus, the equilibrium is not locally asymptotically stable.
 
 :::boxmath
 
@@ -109,225 +476,59 @@ A matrix $A$ is called *stable* if all its eigenvalues have negative real part. 
 
 :::
 
-### Types of dynamics
-
-As we've seen before, for a single population, there are only three types of dynamics that can be displayed by a GLV model with a single species: either the population grows to infinity, shrinks to zero, or asymptotically reaches a steady state. 
-
-@smale1976differential and @hirsch1982systems showed that limit cycles are possible for three or more species, and that any dynamics can be found for competitive GLV systems with five or more species.
-
-```{r, glvfunctions, echo = FALSE}
-# Generalized Lotka-Volterra model
-GLV <- function(t, x, parameters){
-  with(as.list(c(x, parameters)), {
-    x[x < 10^-8] <- 0 # prevent numerical problems
-    dxdt <- x * (r + A %*% x)
-    list(dxdt)
-  })
-}
-# function to plot output
-plot_ODE_output <- function(out){
-  out <- as.data.frame(out)
-  colnames(out) <- c("time", paste("sp", 1:(ncol(out) -1), sep = "_"))
-  out <- as_tibble(out) %>% gather(species, density, -time)
-  pl <- ggplot(data = out) + 
-    aes(x = time, y = density, colour = species) + 
-    geom_line() + my_theme + scale_x_continuous(expression(t)) + 
-  scale_y_continuous(expression(x(t)))
-  show(pl)
-  return(out)
-}
-# general function to integrate GLV
-integrate_GLV <- function(r, A, x0, maxtime = 100, steptime = 0.5){
-  times <- seq(0, maxtime, by = steptime)
-  parameters <- list(r = r, A = A)
-  # solve numerically
-  out <- ode(y = x0, times = times, 
-           func = GLV, parms = parameters, 
-           method = "ode45")
-  # plot and make into tidy form
-  out <- plot_ODE_output(out)
-  return(out)
-}
-```
-
-A few examples taken from @barabas2016effect. First, a competitive system in which a feasible equilibrium does not exist, leading to the extinction of a species. Take 
-
-$$
-r = \begin{pmatrix} 
-1\\
-1\\
-1
-\end{pmatrix}\;\;A = -\begin{pmatrix}
-10 & 9 & 5 \\
-9 & 10 & 9\\
-5 & 9 & 10
-\end{pmatrix}
-$$
-
-The coexistence equilibrium is not feasible:
-
-$$
--A^{-1}r = \begin{pmatrix}
--\dfrac{1}{12}\\
-\dfrac{1}{4}\\
--\dfrac{1}{12}\\
-\end{pmatrix}
-$$
-
-and as such dynamics either explode or lead to a boundary equilibrium:
-
-```{r, glvex1, echo = FALSE}
-set.seed(1) # for reproducibility
-r_1 <- rep(1, 3)
-A_1 <- -matrix(c(10, 9, 5, 
-                 9, 10, 9, 
-                 5, 9, 10), 3, 3, byrow = TRUE)
-# check the existence of feasible equilibrium
-#print(solve(A_1, -r_1)) # not feasible
-x0_1 <- runif(3)
-res_1 <- integrate_GLV(r_1, A_1, x0_1)
-```
-
-Showing that species 2 goes extinct. Then, a case in which the equilibrium exists, and is attractive (stable). Take:
-
-$$
-r = \begin{pmatrix} 
-10\\
-10\\
-10
-\end{pmatrix}\;\;A = -\begin{pmatrix}
-10 & 7 & 12 \\
-15 & 10 & 8\\
-7 & 11 & 10
-\end{pmatrix}
-$$
-
-Now the coexistence equilibrium is feasible:
-
-$$
--A^{-1}r = \dfrac{1}{301}\begin{pmatrix}
-50\\
-110\\
-145\\
-\end{pmatrix}
-$$
-
-and locally stable (the eigenvalues of $D(x^\star) A)$ have negative real part). Hence, there are initial conditions for which we will eventually converge to the equilibrium:
-
-```{r, glvex2, echo = FALSE}
-set.seed(2) # for reproducibility
-r_2 <- rep(10, 3)
-A_2 <- -matrix(c(10, 7, 12, 
-                 15, 10, 8, 
-                 7, 11, 10), 3, 3, byrow = TRUE)
-# check the existence of feasible equilibrium
-#print(solve(A_2, -r_2)) # feasible
-x0_2 <- runif(3)
-res_2 <- integrate_GLV(r_2, A_2, x0_2)
-```
-
-With three competitors we can find stable limit cycles (this requires a feasible, unstable equilibrium):
-
-```{r, glvex3, echo = FALSE}
-set.seed(3) # for reproducibility
-r_3 <- rep(1, 3)
-A_3 <- -matrix(c(10, 6, 12, 
-                 14, 10, 2, 
-                 8, 18, 10), 3, 3, byrow = TRUE)
-# check the existence of feasible equilibrium
-#print(solve(A_3, -r_3)) # feasible
-x0_3 <- 0.1 * runif(3)
-res_3 <- integrate_GLV(r_3, A_3, x0_3, maxtime = 250)
-```
-
-And with four or more species we can have chaos (also here we need a feasible, unstable coexistence equilibrium):
-
-```{r, glvex4, echo = FALSE}
-set.seed(4) # for reproducibility
-r_4 <- c(1, 0.72, 1.53, 1.27)
-A_4 <- -matrix(c(1, 1.09, 1.52, 0, 
-                 0, 0.72, 0.3168, 0.9792, 
-                 3.5649, 0, 1.53, 0.7191,
-                 1.5367, 0.6477, 0.4445, 1.27), 4, 4, byrow = TRUE)
-# check the existence of feasible equilibrium
-#print(solve(A_4, -r_4)) # feasible
-x0_4 <- 0.1 * runif(4)
-res_4 <- integrate_GLV(r_4, A_4, x0_4, maxtime = 500)
-```
-
-### The equilibrium is the time-average
-
-Suppose that $x(t)$ has a periodic orbit of period $T$ (i.e., we assume $x(0) = x(T)$). Further, assume that the GLV has a feasible,  interior equilibrium $x^\star$. We want to calculate the average density for each species:
-
-$$
-\frac{1}{T} \int_0^T x(t) dt
-$$
-
-First, we assume that $x(t) > 0$ and write the dynamics of its logarithm:
-
-$$
-\dfrac{d \log(x_i(t))}{dt} = \dfrac{1}{x_i(t)}\dfrac{d x_i(t)}{dt} = r_i + \sum_j A_{ij} x_j(t)
-$$
-
-In vector form:
-
-$$
-\dfrac{d \log x(t)}{d t} = r + A x(t)
-$$
-
-Compute the average on both sides:
-
-$$
-\frac{1}{T}\int_0^T \frac{d \log(x(t))}{dt} dt= \frac{1}{T}\int_0^T \left(r + Ax \right) dt
-$$
-
-yielding:
-
-$$
-\frac{1}{T}(\log(x(T)) - \log(x(0))) = 0 = r + A \left( \frac{1}{T} \int_0^T x(t) dt \right)
-$$
-Note that the l.h.s. is zero because  $x(0) = x(T)$. Now rearrange:
-
-$$
--r = A \left( \frac{1}{T} \int_0^T x(t) dt \right)
-$$
-
-Multiplying by the matrix inverse:
-
-$$
--A^{-1} r = x^\star =  \frac{1}{T} \int_0^T x(t) dt 
-$$
-
-showing that **the average density is** in fact **the equilibrium**. With a similar argument, one can prove that if the trajectory stays in a compact space (i.e., in case of chaotic attractors), then long-time average is still $x^\star$.
-
 ### Lyapunov diagonal stability and global stability
 
-Suppose that there is a positive diagonal matrix $D(w)$ such that $D(w) A + A^T D(w)$ is negative definite (i.e., has only negative eigenvalues; the eigenvalues are real because the matrix is symmetric).  Then $A$ is **Lyapunov-diagonally stable**. If this is the case, then $A$ is stable, and any $D(w) A$ with $D(w)$ positive is also stable (called $D-$stability).
+A candidate Lyapunov function for GLV is due to Goh, and shows
+that, whenever there exists a positive diagonal matrix $D(w)$ such that
+$D(w)A^T + AD(w)$ is negative definite, then the equilibrium
+$x^\star > 0_n$ is globally stable. A matrix with this property is called **Lyapunov diagonally stable**.
 
-Further, suppose that the GLV system with parameters $A$ and $r$ has a feasible equilibrium point $x^\star$. Then the function:
+We start with the simplest case in which $w = 1_n$ and thus $D(w) = I$.
+Take the function
 
 $$
-V(x(t)) = 1^T D(w) \left( x(t) -x^\star -D(x^\star)\log (x(t) / x^\star)\right)
+V(x(t)) = \sum_i \left(x_i - x_i^\star - x_i^\star \log \frac{x_i}{x_i^\star} \right)
 $$
 
-is a Lyapunov function for the GLV system. It is clear that $V(x(t))$ is positive everywhere in the positive orthant besides at equilibrium. Then, we need to show that the function decreases along the trajectories of the system.
+The function is positive for every $x \in \mathbb {R^n}_+$, because
+$z - 1 - \log z \geq 0$ whenever $z > 0$; take $z = x_i / {x_i}^\star$
+and then multiply by ${x_i}^\star$ to prove that the function is
+nonnegative.
 
-To prove this point, we start from $r = -A x^\star$. Substituting, we can write the GLV system as $dx(t)/dt = D(x)A(x - x^\star)$; similarly, we can write $d \log x(t)/dt = A(x - x^\star)$. Taking the derivative of $V$ with respect to time:
+Differentiating with respect to time, we find:
 
 $$
 \begin{aligned}
- \frac{d V(x(t))}{dt} &= 1^T D(w) \left(\frac{d x(t)}{dt} - D(x^\star) \frac{d \log x(t)}{dt} \right)\\
- &= 1^T D(w) \left(D(x)(A (x - x^\star)  - D(x^\star) A (x - x^\star) \right)\\
- &= 1^T D(w) \left(D(x - x^\star)  A (x - x^\star) \right)\\
- &= 1^T \left(D(x - x^\star)  D(w) A (x - x^\star) \right)\\
- &= (x - x^\star)^T D(w) A (x - x^\star)\\
- &= \frac{1}{2}(x - x^\star)^T  (D(w) A + A^T D(w)) (x - x^\star)\\
+\dot{V}(x(t)) &= \sum_i \left(\dot{x}_i - x_i^\star \frac{\dot{x}_i}{x_i} \right)\\
+&= \sum_i \left(x_i (r_i + (Ax)_i) - x_i^\star (r_i + (Ax)_i)\right)\\
+&=\sum_i \Delta x_i (-(Ax^\star)_i + (Ax)_i )\\
+&=\sum_{i,j}\Delta x_i A_{ij} \Delta x_j\\
+&=\Delta x^T A \Delta x\\
+&=\frac{1}{2}\Delta x^T (A + A^T)\Delta x\\ 
 \end{aligned}
 $$
 
-A matrix $B$ is negative definite if $y^T B y < 0$ for all $y \neq 0$. As such, if $D(w) A + A^T D(w)$, then $\frac{d V(x(t))}{dt} \leq 0$, i.e., will decrease in time (starting from any $x(0)$) until the equilibrium $x^\star$ is reached. 
+Thus, if the symmetric part of $A$, $H(A) = \frac{1}{2} (A + A^T)$ is
+negative definite, then $\dot{V}(x(t))<0$ for every $\Delta x \neq 0$
+and the equilibrium is stable.
 
-The results above show that **if $A$ is Lyapunov diagonally-stable and a feasible equilibrium $x^\star$ exists, then all trajectories starting at a positive density will converge to the equilibrium**. This property is often used to prove **global stability**.
+To extend the reach of the candidate function, consider the change of
+variables:
+
+$$
+z_i = x_i / w_i \quad x_i = w_i z_i
+$$
+
+with $w_i>0$. This change of variables cannot impact the existence or
+stability of equilibria (we are simply changing the units of measure we are using
+to measure the density of each population). Then,
+
+$$
+\dot{z_i} = \frac{\dot{x}_i}{w_i} = \frac{x_i}{w_i}(r_i + (Ax)_i) = z_i(r_i + (AD(w)z)_i)=z_i(r_i + (\tilde{A}z)_i)
+$$
+
+Thus, if $H(\tilde{A}) = \frac{1}{2} (AD(w) + D(w)A^T)$ is negative
+definite, the equilibrium is stable.
 
 ## MacArthur's consumer-resource model
 

@@ -1,3 +1,4 @@
+fig:unnamed-chunk-27
 models-for-a-single-population
 types-of-dynamical-systems
 initial-value-problems
@@ -24,9 +25,10 @@ metapopulation-dynamics
 s-i-s-model
 multi-species-dynamics
 existence-of-an-equilibrium
-stability-of-the-coexistence-equilibrium
 types-of-dynamics
-the-equilibrium-is-the-time-average
+equilibrium-as-time-average
+coexistence-requires-a-feasible-equilibrium
+local-stability-of-the-coexistence-equilibrium
 lyapunov-diagonal-stability-and-global-stability
 macarthurs-consumer-resource-model
 existence-of-an-equilibrium-1

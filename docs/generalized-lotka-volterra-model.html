@@ -23,7 +23,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2024-09-30" />
+<meta name="date" content="2025-03-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -216,10 +216,11 @@ div.csl-indent {
 <li class="chapter" data-level="3.3" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#multi-species-dynamics"><i class="fa fa-check"></i><b>3.3</b> Multi-species dynamics</a>
 <ul>
 <li class="chapter" data-level="3.3.1" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#existence-of-an-equilibrium"><i class="fa fa-check"></i><b>3.3.1</b> Existence of an equilibrium</a></li>
-<li class="chapter" data-level="3.3.2" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#stability-of-the-coexistence-equilibrium"><i class="fa fa-check"></i><b>3.3.2</b> Stability of the coexistence equilibrium</a></li>
-<li class="chapter" data-level="3.3.3" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#types-of-dynamics"><i class="fa fa-check"></i><b>3.3.3</b> Types of dynamics</a></li>
-<li class="chapter" data-level="3.3.4" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#the-equilibrium-is-the-time-average"><i class="fa fa-check"></i><b>3.3.4</b> The equilibrium is the time-average</a></li>
-<li class="chapter" data-level="3.3.5" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#lyapunov-diagonal-stability-and-global-stability"><i class="fa fa-check"></i><b>3.3.5</b> Lyapunov diagonal stability and global stability</a></li>
+<li class="chapter" data-level="3.3.2" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#types-of-dynamics"><i class="fa fa-check"></i><b>3.3.2</b> Types of dynamics</a></li>
+<li class="chapter" data-level="3.3.3" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#equilibrium-as-time-average"><i class="fa fa-check"></i><b>3.3.3</b> Equilibrium as time-average</a></li>
+<li class="chapter" data-level="3.3.4" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#coexistence-requires-a-feasible-equilibrium"><i class="fa fa-check"></i><b>3.3.4</b> Coexistence requires a feasible equilibrium</a></li>
+<li class="chapter" data-level="3.3.5" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#local-stability-of-the-coexistence-equilibrium"><i class="fa fa-check"></i><b>3.3.5</b> Local stability of the coexistence equilibrium</a></li>
+<li class="chapter" data-level="3.3.6" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#lyapunov-diagonal-stability-and-global-stability"><i class="fa fa-check"></i><b>3.3.6</b> Lyapunov diagonal stability and global stability</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#macarthurs-consumer-resource-model"><i class="fa fa-check"></i><b>3.4</b> MacArthur’s consumer-resource model</a>
 <ul>
@@ -351,27 +352,46 @@ div.csl-indent {
 <p><strong>Lesson plan</strong>:</p>
 <ol style="list-style-type: decimal">
 <li>We start by discussing the Generalized Lotka-Volterra model, which we are going to see over and over again in the remainder of the lectures.</li>
-<li>We discuss the existence of a “coexistence” equilibrium, as well as its local stability.</li>
+<li>We discuss the existence of equilibria in the case of <span class="math inline">\(n\)</span> populations.</li>
 <li>We show that the GLV model can give rise to all sort of dynamics, including limit cycles and chaos.</li>
-<li>Despite this fact, the persistence of all species requires the existence of a feasible equilibrium, which is the time-average of the species’ densities.</li>
+<li>We show that a positive equilibrium is necessary for coexistence, and that, when populations coexist, the equilibrium is the time-average of the trajectories.</li>
+<li>We show how to perform local stability analysis for GLV.</li>
 <li>We introduce D-stability, allowing us to write a Lyapunov function to determine global stability in GLV models.</li>
 <li>We conclude by analyzing the MacArthur’s consumer-resource model, highlighting its deep connection to GLV.</li>
 </ol>
 <div id="formulation" class="section level2 hasAnchor" number="3.1">
 <h2><span class="header-section-number">3.1</span> Formulation<a href="generalized-lotka-volterra-model.html#formulation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>We can write the Generalized Lotka-Volterra model in a compact form as:</p>
+<p>We can write the Generalized Lotka-Volterra model as:</p>
 <p><span class="math display">\[
 \dfrac{dx(t)}{dt} = D(x(t))(r + A x(t))
 \]</span></p>
 <p>where <span class="math inline">\(x(t)\)</span> is a (column) vector of length <span class="math inline">\(n\)</span> containing the densities of all populations <span class="math inline">\(1, \ldots, n\)</span> at time <span class="math inline">\(t\)</span>, <span class="math inline">\(r\)</span> is a vector of “intrinsic growth rates” (or death rates, when negative), measuring the growth (decline) of population <span class="math inline">\(i\)</span> when grown alone at low density, and <span class="math inline">\(A\)</span> is a <span class="math inline">\(n \times n\)</span> matrix of interaction coefficients. We use <span class="math inline">\(D(x)\)</span> to denote the diagonal matrix with <span class="math inline">\(x\)</span> on the diagonal.</p>
+<p>In component form, we have (dropping the dependence on <span class="math inline">\(t\)</span>):</p>
+<p><span class="math display">\[
+\dot{x}_i = x_i \left(r_i + \sum_j A_{ij} x_j \right)
+\]</span></p>
+<p>Sometimes the model is written in a slightly different way, by bringing the vector <span class="math inline">\(r\)</span> outside the parenthesis:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\dot{x}_i &amp;= x_i \left(r_i + \sum_j A_{ij} x_j \right)\\
+&amp;= r_i x_i \left(1 + \frac{1}{r_i} \sum_j A_{ij} x_j\right)\\
+&amp;= r_i x_i \left(1 + \sum_j B_{ij} x_j\right)\\
+\end{aligned}
+\]</span></p>
+<p>where we have defined <span class="math inline">\(B_{ij} = A_{ij} / r_i\)</span>. In matrix form, we obtain:</p>
+<p><span class="math display">\[
+\dot{x} = D(x \circ r) \left(1_n + Bx \right)
+\]</span></p>
+<p>where <span class="math inline">\(\circ\)</span> is the Hadamard (element by element) product. This notation is convenient when computing the equilibria of the system; the previous notation is more convenient when investigating their stability. We will alternate between the two notations, using <span class="math inline">\(A\)</span> and
+<span class="math inline">\(B = D(r)^{-1} A\)</span> for the two matrices.</p>
 </div>
 <div id="a-single-population" class="section level2 hasAnchor" number="3.2">
 <h2><span class="header-section-number">3.2</span> A single population<a href="generalized-lotka-volterra-model.html#a-single-population" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The simplest case to study is that of a single population, in which case the equation becomes that of the logistic growth:</p>
 <p><span class="math display">\[
 \dfrac{dx(t)}{dt} = x(t)(\rho + \alpha x(t))
-\]</span>
-Note that whenever <span class="math inline">\(\rho &gt; 0\)</span> and <span class="math inline">\(\alpha &lt; 0\)</span> there exists a feasible equilibrium <span class="math inline">\(x^\star = \rho / \alpha\)</span>. The equilibrium is globally stable (as shown using either a quadratic Lyapunov function, or the <span class="math inline">\(V = x - x^\star - x^\star \log (x / x^\star)\)</span>). As we’ve seen before, this is a separable ODE, with solution:</p>
+\]</span></p>
+<p>Note that whenever <span class="math inline">\(\rho &gt; 0\)</span> and <span class="math inline">\(\alpha &lt; 0\)</span> there exists a feasible equilibrium <span class="math inline">\(x^\star = \rho / \alpha\)</span>. The equilibrium is globally stable (as shown using either a quadratic Lyapunov function, or the <span class="math inline">\(V = x - x^\star - x^\star \log (x / x^\star)\)</span>). As we’ve seen before, this is a separable ODE, with solution:</p>
 <p><span class="math display">\[
 x(t) = \frac{\rho\, {x_0}\, e^{\rho t}}{\rho- \alpha\, {x_0} \left(e^{\rho t}-1\right)}
 \]</span></p>
@@ -403,24 +423,246 @@ x(t) = \frac{\rho\, {x_0}\, e^{\rho t}}{\rho- \alpha\, {x_0} \left(e^{\rho t}-1\
 <h2><span class="header-section-number">3.3</span> Multi-species dynamics<a href="generalized-lotka-volterra-model.html#multi-species-dynamics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="existence-of-an-equilibrium" class="section level3 hasAnchor" number="3.3.1">
 <h3><span class="header-section-number">3.3.1</span> Existence of an equilibrium<a href="generalized-lotka-volterra-model.html#existence-of-an-equilibrium" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Returning to the multi-species system, and in analogy with the single species model, we can look for stationary points (fixed points, equilibria). If the matrix <span class="math inline">\(A\)</span> is not singular, then we can look for a solution of <span class="math inline">\(r + Ax = 0\)</span> that has positive components (called a <strong>feasible equilibrium</strong>). <strong>If such point exists, it is unique</strong> and is the solution of <span class="math inline">\(Ax^\star = -r\)</span>, <span class="math inline">\(x^\star = -A^{-1}r\)</span>.</p>
-<p>Suppose that the GLV has no feasible equilibrium. Then all trajectories (if bounded; some could grow to infinity) reach the boundary of <span class="math inline">\(\mathbb R^n_{0+}\)</span>. Practically, this means that <strong>to ensure coexistence of all species, it is necessary to have an equilibrium in the interior <span class="math inline">\(\mathbb R^n_{+}\)</span></strong>. For a proof, see Theorem 5.2.1 in <span class="citation">Hofbauer and Sigmund (<a href="#ref-hofbauer1998evolutionary">1998</a>)</span>.</p>
-</div>
-<div id="stability-of-the-coexistence-equilibrium" class="section level3 hasAnchor" number="3.3.2">
-<h3><span class="header-section-number">3.3.2</span> Stability of the coexistence equilibrium<a href="generalized-lotka-volterra-model.html#stability-of-the-coexistence-equilibrium" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Suppose that a feasible equilibrium <span class="math inline">\(x^\star\)</span> exists. For the GLV model, the Jacobian is easy to compute:</p>
+<p>Returning to the multi-species system, and in analogy with the single species model, we can look for stationary points (fixed points, equilibria).</p>
+<p>If an equilibrium <span class="math inline">\(x^\star\)</span> in which all populations are present exists, it must be the solution of</p>
 <p><span class="math display">\[
-J_{ij} = \frac{\partial f_i}{\partial x_j} = A_{ij} x_i
+\begin{aligned}
+1_n + Bx^\star &amp;= 0_n\\
+Bx^\star &amp;= - 1_n\\
+x^\star &amp;= -B^{-1} 1_n
+\end{aligned}
+\]</span></p>
+<p>when the matrix <span class="math inline">\(B\)</span> is invertible. Naturally, the equilibrium must be positive (called <em>feasible</em>) to be biologically attainable.</p>
+<p>For example, consider:</p>
+<p><span class="math display">\[
+A = \begin{pmatrix}
+-4 &amp; -1 &amp; -3\\
+-14 &amp; -8 &amp; -10\\
+-6 &amp; -15 &amp; -13
+\end{pmatrix} \quad r = \begin{pmatrix}
+8\\
+32\\
+34
+\end{pmatrix}\quad B = D(r)^{-1}A = \begin{pmatrix}
+-\frac{1}{2} &amp; -\frac{1}{8} &amp; -\frac{3}{8}\\
+-\frac{7}{16} &amp; -\frac{1}{4} &amp; -\frac{5}{16}\\
+-\frac{3}{17} &amp; -\frac{15}{34} &amp; -\frac{13}{34}
+\end{pmatrix}
+\]</span></p>
+<p>There is an equilibrium when at which all populations are present:</p>
+<p><span class="math display">\[
+x^\star = -A^{-1} r = -B^{-1}1_n = \begin{pmatrix}
+1\\
+1\\
+1
+\end{pmatrix}
+\]</span></p>
+<p>If the matrix <span class="math inline">\(B\)</span> is rank-deficient (and thus singular) there are infinitely many equilibria; for example, if the rank of <span class="math inline">\(B\)</span> is <span class="math inline">\(n-1\)</span> there are infinitely many equilibria belonging to a line in <span class="math inline">\(\mathbb R^n\)</span>.</p>
+<p>When <span class="math inline">\(B\)</span> is nonsingular, the model admits at most one positive equilibrium in which all populations are present. However, there can be up to <span class="math inline">\(2^n-1\)</span> equilibria in which <em>one or more populations are absent/extinct</em>. Call <span class="math inline">\(B^{(k,k)}\)</span> the submatrix of <span class="math inline">\(B\)</span> obtained by retaining the rows and columns indexed by the set <span class="math inline">\(k\)</span>. Then by solving</p>
+<p><span class="math display">\[
+B^{(k,k)} x^{(k)\star} = -1_{\|k\|}
+\]</span></p>
+<p>we obtain an equilibrium for the subcommunity where only the populations in <span class="math inline">\(k\)</span> are present (provided that the equilibrium is feasibile).</p>
+<p>For the example above, we have:</p>
+<p><span class="math display">\[
+B^{(\{1,2\},\{1,2\})} = \begin{pmatrix}
+-\frac{1}{2}&amp; -\frac{1}{8}\\
+-\frac{7}{16} &amp; -\frac{1}{4}
+\end{pmatrix}
 \]</span></p>
 <p>and</p>
 <p><span class="math display">\[
-J_{ii} = \frac{\partial f_i}{\partial x_i} = r_i + \sum_j A_{ij} x_j + A_{ii} x_i
+x^{(\{1,2\})\star} = -(B^{(\{1,2\},\{1,2\})})^{-1}1_2=\begin{pmatrix}
+\frac{16}{9}\\
+\frac{8}{9}
+\end{pmatrix}
 \]</span></p>
-<p>At equilibrium <span class="math inline">\(r_i + \sum_j A_{ij} x_j = 0\)</span>, and therefore:</p>
+<p>Therefore, the subsystem in which only the first two populations are present yields a feasible equilibrium.</p>
+<p>Similarly,</p>
 <p><span class="math display">\[
-M = \left. {J} \right|_{ {x}^\star} = D(x^\star)A
+x^{(\{1,3\})\star} = \begin{pmatrix}
+\frac{1}{17}\\
+\frac{44}{17}
+\end{pmatrix} \quad x^{(\{1\})\star} = \begin{pmatrix}
+2\\
+\end{pmatrix} \quad x^{(\{2\})\star} = \begin{pmatrix}
+4\\
+\end{pmatrix} \quad x^{(\{3\})\star} = \begin{pmatrix}
+\frac{34}{13}\\
+\end{pmatrix}
 \]</span></p>
-<p>If the eigenvalues of <span class="math inline">\(M\)</span> have all negative real part, then <span class="math inline">\(x^\star\)</span> is locally asymptotically stable.</p>
+<p>The subsystem in which only populations 2 and 3 are present does not yield a feasible equilibrium.</p>
+</div>
+<div id="types-of-dynamics" class="section level3 hasAnchor" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> Types of dynamics<a href="generalized-lotka-volterra-model.html#types-of-dynamics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For a single population, the GLV model can yield only two outcomes: unbounded growth, or convergence to an equilibrium; if the equilibrium is <span class="math inline">\(x^\star = 0\)</span>, we say that the population is extinct at the equilibrium.</p>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-23-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>When we have two populations, we can also observe neutral cycles (as in the classic LV predator-prey system), and bistability (i.e., one population survives, while the other goes extinct; the identity of the population going extinct depends on the initial conditions).</p>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-24-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>For three populations we can observe limit cycles.</p>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-25-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>For three or more populations (in the general case), or four or more populations (in competitive systems), we can have chaos (i.e., non-periodic oscillations).</p>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-26-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="equilibrium-as-time-average" class="section level3 hasAnchor" number="3.3.3">
+<h3><span class="header-section-number">3.3.3</span> Equilibrium as time-average<a href="generalized-lotka-volterra-model.html#equilibrium-as-time-average" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Suppose that <span class="math inline">\(x(t)\)</span> has a periodic orbit, of period <span class="math inline">\(T\)</span> (i.e., we assume
+<span class="math inline">\(x(0) = x(T)\)</span>). Further, assume that the GLV has a feasible, interior
+equilibrium <span class="math inline">\(x^\star\)</span>. We want to calculate the average density for each
+population:</p>
+<p><span class="math display">\[
+\frac{1}{T} \int_0^T x(t) dt
+\]</span></p>
+<p>First, we assume that <span class="math inline">\(x(t) &gt; 0\)</span> and write the dynamics of its
+logarithm:</p>
+<p><span class="math display">\[
+\dfrac{d \log(x_i(t))}{dt} = \dfrac{1}{x_i(t)}\dfrac{d x_i(t)}{dt} = r_i + \sum_j A_{ij} x_j(t)
+\]</span></p>
+<p>In vector form:</p>
+<p><span class="math display">\[
+\dfrac{d \log{x(t)}}{dt}= r + A x(t)
+\]</span></p>
+<p>Compute the average on both sides:</p>
+<p><span class="math display">\[
+\frac{1}{T}\int_0^T \frac{d \log(x(t))}{dt} dt= \frac{1}{T}\int_0^T \left(r + Ax(t) \right) dt
+\]</span></p>
+<p>yielding:</p>
+<p><span class="math display">\[
+\frac{1}{T}(\log(x(T)) - \log(x(0))) = 0_n = r + A \left( \frac{1}{T} \int_0^T x(t) dt \right)
+\]</span></p>
+<p>Note that the l.h.s. is zero because <span class="math inline">\(x(0) = x(T)\)</span>. Now rearrange:</p>
+<p><span class="math display">\[
+-r = A \left( \frac{1}{T} \int_0^T x(t) dt \right)
+\]</span></p>
+<p>Multiplying by the matrix inverse:</p>
+<p><span class="math display">\[
+-A^{-1} r = x^\star =  \frac{1}{T} \int_0^T x(t) dt
+\]</span></p>
+<p>showing that <em>the average density is</em> in fact <em>the equilibrium</em>. With a similar argument, one can prove that if the trajectory stays in a compact space (i.e., in case of chaotic attractors), then the long-time average is still <span class="math inline">\(x^\star\)</span>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-27"></span>
+<img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-27-1.png" alt="Semi-transparent lines: trajectories; dashed lines: equilibrium values; solid line: (cumulative) average of trajectory." width="672" />
+<p class="caption">
+Figure 3.1: Semi-transparent lines: trajectories; dashed lines: equilibrium values; solid line: (cumulative) average of trajectory.
+</p>
+</div>
+</div>
+<div id="coexistence-requires-a-feasible-equilibrium" class="section level3 hasAnchor" number="3.3.4">
+<h3><span class="header-section-number">3.3.4</span> Coexistence requires a feasible equilibrium<a href="generalized-lotka-volterra-model.html#coexistence-requires-a-feasible-equilibrium" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A necessary condition for the coexistence of populations is the existence of a positive (feasible) equilibrium.</p>
+<div class="boxmath">
+<p><strong>Farkas’ lemma</strong></p>
+<p>Consider matrix <span class="math inline">\(A\)</span>, of size <span class="math inline">\(n \times n\)</span>, and the vector <span class="math inline">\(b\)</span>, of length <span class="math inline">\(n\)</span>.</p>
+<p>Then either:</p>
+<p><span class="math display">\[
+\exists x \geq 0_n \quad \mid \quad Ax = b
+\]</span></p>
+<p>or:</p>
+<p><span class="math display">\[
+\exists y \in \mathbb R^n \quad \mid \quad A^T y \geq 0_n \;\text{and}\; b^T y &lt; 0
+\]</span></p>
+</div>
+<p>Suppose that the system does not have a feasible equilibrium, i.e., an <span class="math inline">\(x^\star &gt; 0_n\)</span> such that <span class="math inline">\(Ax^\star = -r\)</span>. Then, there must exist a <span class="math inline">\(y\)</span> such that <span class="math inline">\(A^T y \geq 0_n\)</span> and <span class="math inline">\(r^T y &gt; 0\)</span>.</p>
+<p>But then, consider the function:</p>
+<p><span class="math display">\[
+P = \prod_i x_i^{y_i}
+\]</span></p>
+<p>The function is positive when all <span class="math inline">\(x_i &gt; 0\)</span>. Differentiating with respect to time, we find:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\dot{P} &amp;= \sum_i\left( y_i \dot{x}_i x_i^{y_i - 1} \prod_{j \neq i} x_j^{y_j} \right)\\
+&amp;=\sum_i\left( y_i \frac{\dot{x}_i}{x_i} \prod_{j} x_j^{y_j} \right)\\
+&amp;= P \sum_i y_i \left(r_i + \sum_j A_{ij} x_j\right)\\
+&amp;= P (y^T r + y^T A x)
+\end{aligned}
+\]</span></p>
+<p>but by Farkas’ lemma, we have that <span class="math inline">\(y^T r &gt; 0\)</span> and <span class="math inline">\(y^TA \geq 0_n^T\)</span>; then <span class="math inline">\(P\)</span> always grows in time, and eventually diverges to <span class="math inline">\(\infty\)</span>.</p>
+<p>Note that <span class="math inline">\(P(t) \to \infty\)</span> requires some <span class="math inline">\(x_i^{y_i}(t) \to \infty\)</span>, which happens when either <span class="math inline">\(x_i(t) \to \infty\)</span> and <span class="math inline">\(y_i &gt; 0\)</span> (i.e., a population grows without bound), or <span class="math inline">\(x_i(t) \to 0\)</span> and <span class="math inline">\(y_i &lt; 0\)</span> (i.e., a population goes extinct). Thus, in the absence of an equilibrium, trajectories can either diverge to infinity, or one or more populations can go extinct.</p>
+<p>A feasible equilibrium is therefore a necessary condition for coexistence.</p>
+</div>
+<div id="local-stability-of-the-coexistence-equilibrium" class="section level3 hasAnchor" number="3.3.5">
+<h3><span class="header-section-number">3.3.5</span> Local stability of the coexistence equilibrium<a href="generalized-lotka-volterra-model.html#local-stability-of-the-coexistence-equilibrium" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Suppose that a feasible equilibrium <span class="math inline">\(x^\star\)</span> exists: <span class="math inline">\(x^\star = -A^{-1}r &gt; 0_n\)</span>. We have:</p>
+<p><span class="math display">\[
+J_{ii} = \dfrac{\partial (r_i x_i + \sum_j A_{ij} x_i x_j)}{\partial x_i}  = r_i + \sum_j A_{ij} x_j + A_{ii} x_i
+\]</span></p>
+<p>At equilibrium, we have:</p>
+<p><span class="math display">\[
+r_i + \sum_j A_{ij} x_j^\star = 0
+\]</span></p>
+<p>and therefore</p>
+<p><span class="math display">\[
+M_{ii} = \left. J_{ii} \right|_{x^\star} = A_{ii} x_i^\star
+\]</span></p>
+<p>Similarly,</p>
+<p><span class="math display">\[
+J_{ii} = \dfrac{\partial (r_i x_i + \sum_j A_{ij} x_i x_j)}{\partial x_j}  = A_{ij} x_i
+\]</span></p>
+<p>and thus</p>
+<p><span class="math display">\[
+M_{ij} = \left. J_{ij} \right|_{x^\star} = A_{ij} x_i^\star
+\]</span></p>
+<p>Putting them together, we obtain:</p>
+<p><span class="math display">\[
+M = \left. J \right|_{x^\star} = D(x^\star)A
+\]</span></p>
+<p>and thus the equilibrium is l.a.s. if and only if all of the eigenvalues
+of <span class="math inline">\(D(x^\star)A\)</span> have negative real part.</p>
+<div class="boxmath">
+<p><strong>Matrix similarity</strong></p>
+<p>Two square matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are called <strong>similar</strong> if there exists an invertible matrix <span class="math inline">\(P\)</span> such that:</p>
+<p><span class="math display">\[
+B = P A P^{-1}
+\]</span></p>
+<p>The two matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> share many properties; notably, they have the same eigenvalues.</p>
+<p><strong>Matrix congruence</strong></p>
+<p>Two square matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are called <strong>congruent</strong> if there exists an invertible matrix <span class="math inline">\(P\)</span> such that:</p>
+<p><span class="math display">\[
+B = P A P^T
+\]</span></p>
+<p>Further, if <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are real and symmetric, then the number of positive, negative and zero eigenvalues in the two matrices are the same (Sylvester’s law of inertia).</p>
+</div>
+<p>If the matrix <span class="math inline">\(A\)</span> is symmetric, any feasible equilibrium is stable if
+and only if the eigenvalues of <span class="math inline">\(A\)</span> are all negative (i.e., <span class="math inline">\(A\)</span> is
+negative definite). To prove this, take <span class="math inline">\(A = A^T\)</span> and consider the
+similarity transformation</p>
+<p><span class="math display">\[
+\begin{aligned}
+D(x^\star)^{-\frac{1}{2}} D(x^\star) A D(x^\star)^{\frac{1}{2}}\\
+D(x^\star)^{\frac{1}{2}}  A D(x^\star)^{\frac{1}{2}}\\
+\end{aligned}
+\]</span></p>
+<p>The matrices <span class="math inline">\(D(x^\star) A\)</span> and
+<span class="math inline">\(D(x^\star)^{\frac{1}{2}} A D(x^\star)^{\frac{1}{2}}\)</span> are <em>similar</em>, and
+thus have the same eigenvalues; the matrices <span class="math inline">\(A\)</span> and
+<span class="math inline">\(D(x^\star)^{\frac{1}{2}} A D(x^\star)^{\frac{1}{2}}\)</span> are <em>congruent</em>,
+and thus have the same number of positive, negative and zero eigenvalues
+by Sylvester’s law of inertia.</p>
+<p>A symmetric matrix is negative definite if all its submatrices obtained
+by deleting a set of rows and the corresponding columns are negative
+definite as well. Then, if <span class="math inline">\(A = A^T\)</span> is negative definite, a) a feasible
+equilibrium is locally stable, and b) for any subsystem, feasibility
+implies local stability.</p>
+<p>Note that this is generally not the case for nonsymmetric matrices <span class="math inline">\(A\)</span>,
+in which case we could have that <span class="math inline">\(A\)</span> has all eigenvalues with a negative
+real part, while <span class="math inline">\(D(x^\star)A\)</span> has some eigenvalues with positive real
+part (or viceversa). For example, take</p>
+<p><span class="math display">\[
+A = \begin{pmatrix}
+-3 &amp; 4 &amp; 0\\
+5 &amp; -2 &amp; -2\\
+5 &amp; 5 &amp; -3
+\end{pmatrix} \quad \lambda(A) = \{-7,\frac{1}{2}(-1 \pm i \sqrt{15}) \}
+\]</span></p>
+<p>and the equilibrium <span class="math inline">\(x^\star = (1,1,1/2)^T\)</span> (obtained for
+<span class="math inline">\(r = (-1, -2, -17/2)\)</span>); we obtain:</p>
+<p><span class="math display">\[
+M = D(x^\star)A = \begin{pmatrix}
+-3 &amp; 4 &amp; 0\\
+5 &amp; -2 &amp; -2\\
+\frac{5}{2} &amp; \frac{5}{2} &amp; -\frac{3}{2}
+\end{pmatrix} \quad \lambda(B) = \{-7,\frac{1}{4}(1 \pm i\sqrt{31}) \}
+\]</span></p>
+<p>Thus, the equilibrium is not locally asymptotically stable.</p>
 <div class="boxmath">
 <p><strong>D-stability and Lyapunov-Diagonal Stability</strong></p>
 <p>A matrix <span class="math inline">\(A\)</span> is called <em>stable</em> if all its eigenvalues have negative real part. A matrix <span class="math inline">\(A\)</span> is called <em>D-stable</em> if <span class="math inline">\(D(x) A\)</span> is stable for every choice of <span class="math inline">\(x\)</span> such <span class="math inline">\(x_i &gt; 0\; \forall i\)</span>. While conditions for <em>D-stability</em> are not known for matrices of size greater than 3, a <strong>sufficient</strong> condition for <em>D-stability</em> is that there exists a diagonal matrix <span class="math inline">\(D\)</span> with positive elements on the diagonal such that <span class="math inline">\(DA + A^T D\)</span> is negative definite (i.e., has negative eigenvalues).</p>
@@ -431,112 +673,48 @@ M = \left. {J} \right|_{ {x}^\star} = D(x^\star)A
 </ul>
 </div>
 </div>
-<div id="types-of-dynamics" class="section level3 hasAnchor" number="3.3.3">
-<h3><span class="header-section-number">3.3.3</span> Types of dynamics<a href="generalized-lotka-volterra-model.html#types-of-dynamics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>As we’ve seen before, for a single population, there are only three types of dynamics that can be displayed by a GLV model with a single species: either the population grows to infinity, shrinks to zero, or asymptotically reaches a steady state.</p>
-<p><span class="citation">Smale (<a href="#ref-smale1976differential">1976</a>)</span> and <span class="citation">Hirsch (<a href="#ref-hirsch1982systems">1982</a>)</span> showed that limit cycles are possible for three or more species, and that any dynamics can be found for competitive GLV systems with five or more species.</p>
-<p>A few examples taken from <span class="citation">Barabás et al. (<a href="#ref-barabas2016effect">2016</a>)</span>. First, a competitive system in which a feasible equilibrium does not exist, leading to the extinction of a species. Take</p>
+<div id="lyapunov-diagonal-stability-and-global-stability" class="section level3 hasAnchor" number="3.3.6">
+<h3><span class="header-section-number">3.3.6</span> Lyapunov diagonal stability and global stability<a href="generalized-lotka-volterra-model.html#lyapunov-diagonal-stability-and-global-stability" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A candidate Lyapunov function for GLV is due to Goh, and shows
+that, whenever there exists a positive diagonal matrix <span class="math inline">\(D(w)\)</span> such that
+<span class="math inline">\(D(w)A^T + AD(w)\)</span> is negative definite, then the equilibrium
+<span class="math inline">\(x^\star &gt; 0_n\)</span> is globally stable. A matrix with this property is called <strong>Lyapunov diagonally stable</strong>.</p>
+<p>We start with the simplest case in which <span class="math inline">\(w = 1_n\)</span> and thus <span class="math inline">\(D(w) = I\)</span>.
+Take the function</p>
 <p><span class="math display">\[
-r = \begin{pmatrix}
-1\\
-1\\
-1
-\end{pmatrix}\;\;A = -\begin{pmatrix}
-10 &amp; 9 &amp; 5 \\
-9 &amp; 10 &amp; 9\\
-5 &amp; 9 &amp; 10
-\end{pmatrix}
+V(x(t)) = \sum_i \left(x_i - x_i^\star - x_i^\star \log \frac{x_i}{x_i^\star} \right)
 \]</span></p>
-<p>The coexistence equilibrium is not feasible:</p>
-<p><span class="math display">\[
--A^{-1}r = \begin{pmatrix}
--\dfrac{1}{12}\\
-\dfrac{1}{4}\\
--\dfrac{1}{12}\\
-\end{pmatrix}
-\]</span></p>
-<p>and as such dynamics either explode or lead to a boundary equilibrium:</p>
-<p><img src="Theoretical_Community_Ecology_files/figure-html/glvex1-1.png" width="480" style="display: block; margin: auto;" /></p>
-<p>Showing that species 2 goes extinct. Then, a case in which the equilibrium exists, and is attractive (stable). Take:</p>
-<p><span class="math display">\[
-r = \begin{pmatrix}
-10\\
-10\\
-10
-\end{pmatrix}\;\;A = -\begin{pmatrix}
-10 &amp; 7 &amp; 12 \\
-15 &amp; 10 &amp; 8\\
-7 &amp; 11 &amp; 10
-\end{pmatrix}
-\]</span></p>
-<p>Now the coexistence equilibrium is feasible:</p>
-<p><span class="math display">\[
--A^{-1}r = \dfrac{1}{301}\begin{pmatrix}
-50\\
-110\\
-145\\
-\end{pmatrix}
-\]</span></p>
-<p>and locally stable (the eigenvalues of <span class="math inline">\(D(x^\star) A)\)</span> have negative real part). Hence, there are initial conditions for which we will eventually converge to the equilibrium:</p>
-<p><img src="Theoretical_Community_Ecology_files/figure-html/glvex2-1.png" width="480" style="display: block; margin: auto;" /></p>
-<p>With three competitors we can find stable limit cycles (this requires a feasible, unstable equilibrium):</p>
-<p><img src="Theoretical_Community_Ecology_files/figure-html/glvex3-1.png" width="480" style="display: block; margin: auto;" /></p>
-<p>And with four or more species we can have chaos (also here we need a feasible, unstable coexistence equilibrium):</p>
-<p><img src="Theoretical_Community_Ecology_files/figure-html/glvex4-1.png" width="480" style="display: block; margin: auto;" /></p>
-</div>
-<div id="the-equilibrium-is-the-time-average" class="section level3 hasAnchor" number="3.3.4">
-<h3><span class="header-section-number">3.3.4</span> The equilibrium is the time-average<a href="generalized-lotka-volterra-model.html#the-equilibrium-is-the-time-average" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Suppose that <span class="math inline">\(x(t)\)</span> has a periodic orbit of period <span class="math inline">\(T\)</span> (i.e., we assume <span class="math inline">\(x(0) = x(T)\)</span>). Further, assume that the GLV has a feasible, interior equilibrium <span class="math inline">\(x^\star\)</span>. We want to calculate the average density for each species:</p>
-<p><span class="math display">\[
-\frac{1}{T} \int_0^T x(t) dt
-\]</span></p>
-<p>First, we assume that <span class="math inline">\(x(t) &gt; 0\)</span> and write the dynamics of its logarithm:</p>
-<p><span class="math display">\[
-\dfrac{d \log(x_i(t))}{dt} = \dfrac{1}{x_i(t)}\dfrac{d x_i(t)}{dt} = r_i + \sum_j A_{ij} x_j(t)
-\]</span></p>
-<p>In vector form:</p>
-<p><span class="math display">\[
-\dfrac{d \log x(t)}{d t} = r + A x(t)
-\]</span></p>
-<p>Compute the average on both sides:</p>
-<p><span class="math display">\[
-\frac{1}{T}\int_0^T \frac{d \log(x(t))}{dt} dt= \frac{1}{T}\int_0^T \left(r + Ax \right) dt
-\]</span></p>
-<p>yielding:</p>
-<p><span class="math display">\[
-\frac{1}{T}(\log(x(T)) - \log(x(0))) = 0 = r + A \left( \frac{1}{T} \int_0^T x(t) dt \right)
-\]</span>
-Note that the l.h.s. is zero because <span class="math inline">\(x(0) = x(T)\)</span>. Now rearrange:</p>
-<p><span class="math display">\[
--r = A \left( \frac{1}{T} \int_0^T x(t) dt \right)
-\]</span></p>
-<p>Multiplying by the matrix inverse:</p>
-<p><span class="math display">\[
--A^{-1} r = x^\star =  \frac{1}{T} \int_0^T x(t) dt
-\]</span></p>
-<p>showing that <strong>the average density is</strong> in fact <strong>the equilibrium</strong>. With a similar argument, one can prove that if the trajectory stays in a compact space (i.e., in case of chaotic attractors), then long-time average is still <span class="math inline">\(x^\star\)</span>.</p>
-</div>
-<div id="lyapunov-diagonal-stability-and-global-stability" class="section level3 hasAnchor" number="3.3.5">
-<h3><span class="header-section-number">3.3.5</span> Lyapunov diagonal stability and global stability<a href="generalized-lotka-volterra-model.html#lyapunov-diagonal-stability-and-global-stability" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Suppose that there is a positive diagonal matrix <span class="math inline">\(D(w)\)</span> such that <span class="math inline">\(D(w) A + A^T D(w)\)</span> is negative definite (i.e., has only negative eigenvalues; the eigenvalues are real because the matrix is symmetric). Then <span class="math inline">\(A\)</span> is <strong>Lyapunov-diagonally stable</strong>. If this is the case, then <span class="math inline">\(A\)</span> is stable, and any <span class="math inline">\(D(w) A\)</span> with <span class="math inline">\(D(w)\)</span> positive is also stable (called <span class="math inline">\(D-\)</span>stability).</p>
-<p>Further, suppose that the GLV system with parameters <span class="math inline">\(A\)</span> and <span class="math inline">\(r\)</span> has a feasible equilibrium point <span class="math inline">\(x^\star\)</span>. Then the function:</p>
-<p><span class="math display">\[
-V(x(t)) = 1^T D(w) \left( x(t) -x^\star -D(x^\star)\log (x(t) / x^\star)\right)
-\]</span></p>
-<p>is a Lyapunov function for the GLV system. It is clear that <span class="math inline">\(V(x(t))\)</span> is positive everywhere in the positive orthant besides at equilibrium. Then, we need to show that the function decreases along the trajectories of the system.</p>
-<p>To prove this point, we start from <span class="math inline">\(r = -A x^\star\)</span>. Substituting, we can write the GLV system as <span class="math inline">\(dx(t)/dt = D(x)A(x - x^\star)\)</span>; similarly, we can write <span class="math inline">\(d \log x(t)/dt = A(x - x^\star)\)</span>. Taking the derivative of <span class="math inline">\(V\)</span> with respect to time:</p>
+<p>The function is positive for every <span class="math inline">\(x \in \mathbb {R^n}_+\)</span>, because
+<span class="math inline">\(z - 1 - \log z \geq 0\)</span> whenever <span class="math inline">\(z &gt; 0\)</span>; take <span class="math inline">\(z = x_i / {x_i}^\star\)</span>
+and then multiply by <span class="math inline">\({x_i}^\star\)</span> to prove that the function is
+nonnegative.</p>
+<p>Differentiating with respect to time, we find:</p>
 <p><span class="math display">\[
 \begin{aligned}
-\frac{d V(x(t))}{dt} &amp;= 1^T D(w) \left(\frac{d x(t)}{dt} - D(x^\star) \frac{d \log x(t)}{dt} \right)\\
-&amp;= 1^T D(w) \left(D(x)(A (x - x^\star)  - D(x^\star) A (x - x^\star) \right)\\
-&amp;= 1^T D(w) \left(D(x - x^\star)  A (x - x^\star) \right)\\
-&amp;= 1^T \left(D(x - x^\star)  D(w) A (x - x^\star) \right)\\
-&amp;= (x - x^\star)^T D(w) A (x - x^\star)\\
-&amp;= \frac{1}{2}(x - x^\star)^T  (D(w) A + A^T D(w)) (x - x^\star)\\
+\dot{V}(x(t)) &amp;= \sum_i \left(\dot{x}_i - x_i^\star \frac{\dot{x}_i}{x_i} \right)\\
+&amp;= \sum_i \left(x_i (r_i + (Ax)_i) - x_i^\star (r_i + (Ax)_i)\right)\\
+&amp;=\sum_i \Delta x_i (-(Ax^\star)_i + (Ax)_i )\\
+&amp;=\sum_{i,j}\Delta x_i A_{ij} \Delta x_j\\
+&amp;=\Delta x^T A \Delta x\\
+&amp;=\frac{1}{2}\Delta x^T (A + A^T)\Delta x\\
 \end{aligned}
 \]</span></p>
-<p>A matrix <span class="math inline">\(B\)</span> is negative definite if <span class="math inline">\(y^T B y &lt; 0\)</span> for all <span class="math inline">\(y \neq 0\)</span>. As such, if <span class="math inline">\(D(w) A + A^T D(w)\)</span>, then <span class="math inline">\(\frac{d V(x(t))}{dt} \leq 0\)</span>, i.e., will decrease in time (starting from any <span class="math inline">\(x(0)\)</span>) until the equilibrium <span class="math inline">\(x^\star\)</span> is reached.</p>
-<p>The results above show that <strong>if <span class="math inline">\(A\)</span> is Lyapunov diagonally-stable and a feasible equilibrium <span class="math inline">\(x^\star\)</span> exists, then all trajectories starting at a positive density will converge to the equilibrium</strong>. This property is often used to prove <strong>global stability</strong>.</p>
+<p>Thus, if the symmetric part of <span class="math inline">\(A\)</span>, <span class="math inline">\(H(A) = \frac{1}{2} (A + A^T)\)</span> is
+negative definite, then <span class="math inline">\(\dot{V}(x(t))&lt;0\)</span> for every <span class="math inline">\(\Delta x \neq 0\)</span>
+and the equilibrium is stable.</p>
+<p>To extend the reach of the candidate function, consider the change of
+variables:</p>
+<p><span class="math display">\[
+z_i = x_i / w_i \quad x_i = w_i z_i
+\]</span></p>
+<p>with <span class="math inline">\(w_i&gt;0\)</span>. This change of variables cannot impact the existence or
+stability of equilibria (we are simply changing the units of measure we are using
+to measure the density of each population). Then,</p>
+<p><span class="math display">\[
+\dot{z_i} = \frac{\dot{x}_i}{w_i} = \frac{x_i}{w_i}(r_i + (Ax)_i) = z_i(r_i + (AD(w)z)_i)=z_i(r_i + (\tilde{A}z)_i)
+\]</span></p>
+<p>Thus, if <span class="math inline">\(H(\tilde{A}) = \frac{1}{2} (AD(w) + D(w)A^T)\)</span> is negative
+definite, the equilibrium is stable.</p>
 </div>
 </div>
 <div id="macarthurs-consumer-resource-model" class="section level2 hasAnchor" number="3.4">
@@ -771,17 +949,11 @@ V( x^\star ) = \sum_i \left(s_i x_i^\star + \left(s_i x_i^\star - \sum_j B_{ij} 
 <div id="ref-baigent2016lotka" class="csl-entry">
 Baigent, S. A. 2016. Lotka-volterra dynamics: An introduction. World Scientific.
 </div>
-<div id="ref-barabas2016effect" class="csl-entry">
-Barabás, G., M. J. Michalska-Smith, and S. Allesina. 2016. The effect of intra-and interspecific competition on coexistence in multispecies communities. The American Naturalist 188:E1–E12.
-</div>
 <div id="ref-case1979global" class="csl-entry">
 Case, T. J., and R. G. Casten. 1979. Global stability and multiple domains of attraction in ecological systems. The American Naturalist 113:705–714.
 </div>
 <div id="ref-hadeler2017topics" class="csl-entry">
 Hadeler, K. P., M. C. Mackey, and A. Stevens. 2017. Topics in mathematical biology. Springer.
-</div>
-<div id="ref-hirsch1982systems" class="csl-entry">
-Hirsch, M. W. 1982. Systems of differential equations which are competitive or cooperative: I. Limit sets. SIAM Journal on Mathematical Analysis 13:167–179.
 </div>
 <div id="ref-hofbauer1998evolutionary" class="csl-entry">
 Hofbauer, J., and K. Sigmund. 1998. Evolutionary games and population dynamics. Cambridge University Press.
@@ -806,9 +978,6 @@ MacArthur, R., and R. Levins. 1967. The limiting similarity, convergence, and di
 </div>
 <div id="ref-marsland2019minimum" class="csl-entry">
 Marsland III, R., W. Cui, and P. Mehta. 2019. The minimum environmental perturbation principle: A new perspective on niche theory. arXiv preprint arXiv:1901.09673.
-</div>
-<div id="ref-smale1976differential" class="csl-entry">
-Smale, S. 1976. On the differential equations of species in competition. Journal of Mathematical Biology 3:5–7.
 </div>
 </div>
             </section>

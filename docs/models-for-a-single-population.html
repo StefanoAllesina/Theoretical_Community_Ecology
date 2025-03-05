@@ -23,7 +23,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2024-09-30" />
+<meta name="date" content="2025-03-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -216,10 +216,11 @@ div.csl-indent {
 <li class="chapter" data-level="3.3" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#multi-species-dynamics"><i class="fa fa-check"></i><b>3.3</b> Multi-species dynamics</a>
 <ul>
 <li class="chapter" data-level="3.3.1" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#existence-of-an-equilibrium"><i class="fa fa-check"></i><b>3.3.1</b> Existence of an equilibrium</a></li>
-<li class="chapter" data-level="3.3.2" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#stability-of-the-coexistence-equilibrium"><i class="fa fa-check"></i><b>3.3.2</b> Stability of the coexistence equilibrium</a></li>
-<li class="chapter" data-level="3.3.3" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#types-of-dynamics"><i class="fa fa-check"></i><b>3.3.3</b> Types of dynamics</a></li>
-<li class="chapter" data-level="3.3.4" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#the-equilibrium-is-the-time-average"><i class="fa fa-check"></i><b>3.3.4</b> The equilibrium is the time-average</a></li>
-<li class="chapter" data-level="3.3.5" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#lyapunov-diagonal-stability-and-global-stability"><i class="fa fa-check"></i><b>3.3.5</b> Lyapunov diagonal stability and global stability</a></li>
+<li class="chapter" data-level="3.3.2" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#types-of-dynamics"><i class="fa fa-check"></i><b>3.3.2</b> Types of dynamics</a></li>
+<li class="chapter" data-level="3.3.3" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#equilibrium-as-time-average"><i class="fa fa-check"></i><b>3.3.3</b> Equilibrium as time-average</a></li>
+<li class="chapter" data-level="3.3.4" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#coexistence-requires-a-feasible-equilibrium"><i class="fa fa-check"></i><b>3.3.4</b> Coexistence requires a feasible equilibrium</a></li>
+<li class="chapter" data-level="3.3.5" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#local-stability-of-the-coexistence-equilibrium"><i class="fa fa-check"></i><b>3.3.5</b> Local stability of the coexistence equilibrium</a></li>
+<li class="chapter" data-level="3.3.6" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#lyapunov-diagonal-stability-and-global-stability"><i class="fa fa-check"></i><b>3.3.6</b> Lyapunov diagonal stability and global stability</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#macarthurs-consumer-resource-model"><i class="fa fa-check"></i><b>3.4</b> MacArthur’s consumer-resource model</a>
 <ul>
@@ -351,30 +352,30 @@ div.csl-indent {
 <p><strong>Lesson plan</strong>:</p>
 <ol style="list-style-type: decimal">
 <li>We start by discussing what it means to solve an initial-value problem: the solution is an expression that allows us to calculate <span class="math inline">\(x(t)\)</span> for any <span class="math inline">\(t\)</span>. A few ecologically-relevant models can be solved explicitly, for example the exponential and logistic growth models.</li>
-<li>Because solving differential equations is a laborious process, and in many cases writing the solution is impossible or does not give us any insight on the dynamics, we introduce a graphical method that allows us to effortlessly sketch the dynamics of any ODE (i.e., models with a single equation).</li>
+<li>Because solving differential equations is a laborious process, and in many cases writing the solution is impossible, or does not give us any insight on the dynamics, we introduce a graphical method that allows us to effortlessly sketch the dynamics of any ODE (i.e., models with a single equation).</li>
 <li>This allows us to introduce essential concepts such as the notion of an equilibrium and its stability.</li>
 <li>We show that determining stability using this graphical method is equivalent to performing stability analysis via linearization around an equilibrium, a method that will be extended to systems of multiple ODEs in the next chapter.</li>
-<li>We briefly discuss the idea of bifurcation points — i.e., particular choices of parameters for which the dynamics of the system change qualitatively.</li>
-<li>We conclude by introducing the idea of Lyapunov functions, allowing us to determine global stability of an equilibrium without the need to explicitly solve the model. We will see a lot of these functions when we study larger systems.</li>
+<li>We briefly discuss the idea of bifurcation points — i.e., particular choices of parameters for which the dynamics of the system changes qualitatively.</li>
+<li>We conclude by introducing the idea of Lyapunov functions, allowing us to determine global stability of an equilibrium without the need to explicitly solve the model. We will see several of these functions when we study larger systems.</li>
 </ol>
 <div id="types-of-dynamical-systems" class="section level2 hasAnchor" number="1.1">
 <h2><span class="header-section-number">1.1</span> Types of dynamical systems<a href="models-for-a-single-population.html#types-of-dynamical-systems" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Dynamical systems describe the change of certain variables, typically in time, space or a combination of the two. They have found applications in all scientific disciplines, and were introduced in ecology and evolutionary biology at the beginning of the twentieth century.</p>
-<p>Broadly, dynamical systems can be divided into <strong>continuous</strong> (described by differential equations), and <strong>discrete</strong> (described by maps, or difference equations) models. Many models for population dynamics can be written as (systems of) first-order ordinary differential equations, i.e. equations containing functions of one (or more) independent variables and their first derivative (typically, with respect to time).</p>
-<p><strong>Ordinary</strong> means we’re not dealing with partial differential equations (used in ecology for example for reaction-diffusion equations, or spatial models). <strong>First-order</strong>, mean that they contain only the first derivative with respect to time. Here we will concentrate on <strong>autonomous</strong> systems, meaning that they are time-invariant (e.g., coefficients do not change in time). We can write these systems as:</p>
+<p>Broadly, dynamical systems can be divided into <strong>continuous</strong> (described by differential equations), and <strong>discrete</strong> (described by maps, or difference equations) models. Many models for population dynamics can be written as (systems of) first-order ordinary differential equations, i.e., equations containing functions of one (or more) independent variables and their first derivative (typically, with respect to time).</p>
+<p><strong>Ordinary</strong> means we are not dealing with partial differential equations (PDEs, used in ecology for example for reaction-diffusion equations, or spatial models). <strong>First-order</strong>, means that they contain only the first derivative with respect to time. Here we will concentrate on <strong>autonomous</strong> systems, meaning that they are time-invariant (i.e., the coefficients do not change in time). We can write these systems as:</p>
 <p><span class="math display">\[
-\dfrac{d x(t)}{d t} = f(x(t))
+\dfrac{d x(t)}{d t} = \dot{x}(t) = f(x(t))
 \]</span></p>
-<p>In general, we will examine cases in which <span class="math inline">\(f(x(t))\)</span> is a nonlinear function of <span class="math inline">\(x(t)\)</span>. We typically deal with <strong>deterministic</strong> systems, in which randomness plays no role in determining future states. Stochastic differential equations, on the other hand, include random components.</p>
+<p>In general, we will examine cases in which <span class="math inline">\(f(x(t))\)</span> is a nonlinear function of <span class="math inline">\(x(t)\)</span>. We typically deal with <strong>deterministic</strong> systems, in which randomness plays no role in determining future states. Stochastic differential equations (SDEs), on the other hand, include random components.</p>
 </div>
 <div id="initial-value-problems" class="section level2 hasAnchor" number="1.2">
 <h2><span class="header-section-number">1.2</span> Initial-value problems<a href="models-for-a-single-population.html#initial-value-problems" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Typically, we would like to track the evolution of the system in time, starting from known initial conditions. For example,</p>
+<p>Typically, we would like to track the dynamics of a population in time, starting from known initial conditions. For example,</p>
 <p><span class="math display">\[
 \dfrac{d x(t)}{d t} = f(x(t)), \;\; x(0) = x_0
 \]</span></p>
-<p>where the independent variable <span class="math inline">\(t\)</span> denotes time, and is considered non-negative. The vector <span class="math inline">\(x(t)\)</span> tracks the state of the system (e.g., the density of the species) at time <span class="math inline">\(t\)</span>, <span class="math inline">\(x(t) \in \mathbb{R}^n\)</span>, and the function <span class="math inline">\(f\)</span> models the evolution of the system, mapping <span class="math inline">\(\mathbb{R}^n \to \mathbb{R}^n\)</span>. The vector <span class="math inline">\(x_0 = x(0) \in \mathbb{R}^n\)</span> marks the <em>initial condition</em> of the system.</p>
-<p>The simplest and most common case in ecology is that in which <span class="math inline">\(f\)</span> is (infinitely) many times continuously differentiable, a.k.a. <em>smooth</em>. If this is the case, then the solution <span class="math inline">\(x(t)\)</span> exists and is unique.</p>
+<p>where the independent variable <span class="math inline">\(t\)</span> denotes time, and is considered non-negative. The vector <span class="math inline">\(x(t)\)</span> tracks the abundance or density of the populations at time <span class="math inline">\(t\)</span>, <span class="math inline">\(x(t) \in \mathbb{R}^n\)</span>, and the function <span class="math inline">\(f\)</span> models the evolution of the system, mapping <span class="math inline">\(\mathbb{R}^n \to \mathbb{R}^n\)</span>. The vector <span class="math inline">\(x_0 = x(0) \in \mathbb{R}^n\)</span> marks the <em>initial condition</em> of the system.</p>
+<p>The simplest and most common case in ecology is that in which <span class="math inline">\(f\)</span> is (infinitely) many times continuously differentiable, a.k.a. <em>smooth</em>. If this is the case, then <strong>the solution <span class="math inline">\(x(t)\)</span> exists and is unique</strong>.</p>
 <p>In ecological models, dynamics are invariant with respect to the non-negative orthant <span class="math inline">\(\mathbb{R}^n_{0+}\)</span>, i.e., the vector <span class="math inline">\(x(t)\)</span> remains non-negative whenever initialized at non-negative initial conditions <span class="math inline">\(x_0 \in \mathbb{R}^n_{0+}\)</span>. The function <span class="math inline">\(f\)</span> is <em>essentially non-negative</em> if whenever <span class="math inline">\(x_i = 0\)</span>, then <span class="math inline">\(f_i(x) \geq 0\)</span> for all <span class="math inline">\(x \in \mathbb{R}^n_{0+}\)</span>. A dynamical system is non-negative only if <span class="math inline">\(f\)</span> is essentially non-negative.</p>
 <p>We can solve the (system of) ODE(s) if we can write an explicit equation for <span class="math inline">\(x(t)\)</span> given the parameters and the initial conditions.</p>
 <p>In practice, we rarely can solve the equations we’re interested in. We can however prove that, if <span class="math inline">\(f(x(t))\)</span> is sufficiently well-behaved (technically, if <span class="math inline">\(f(x)\)</span> is Lipschitz continuous, for example, if it has bounded derivatives), then the initial-value problem above has a solution, the solution is unique, and depends continuously on the intial conditions and the parameters. This means that if we start the system at any point <span class="math inline">\(x(t)= x_t\)</span>, we cannot have multiple trajectories intersecting.</p>
@@ -384,8 +385,8 @@ div.csl-indent {
 <div class="boxhistory">
 <p><strong>History: Pierre-François Verhulst (1804-1849)</strong></p>
 <p><img src="img/Verhulst.jpg" width="25%" style="display: block; margin: auto;" /></p>
-<p>Pierre-François Verhulst was born in 1804 in Brussels, Belgium. In 1835, he became professor of mathematics at the newly-instituded Free University of Brussels.</p>
-<p>In 1838, inspired by the work of Malthus and Quetelet, he wrote a <em>Note on the law of population growth</em>, where he argued that the geometric progression imagined by Malthus would be unfeasible to sustain. He therefore introduced an <em>unknown function</em> that would slow down growth for large populations: <em>“The simplest hypothesis one can make on the form of this function is to suppose that”</em> the unknown function would be quadratic in the size of the population. He went on to solve what is now known as the “logistic growth” model and contrasted it with data for the growth of populations in various countries.</p>
+<p>Pierre-François Verhulst was born in 1804 in Brussels, Belgium. In 1835, he became professor of mathematics at the newly-instituted Free University of Brussels.</p>
+<p>In 1838, inspired by the work of Malthus and Quetelet, he wrote a <em>Note on the law of population growth</em>, where he argued that the geometric progression imagined by Malthus would be unfeasible to sustain. He therefore introduced an <em>unknown function</em> that would slow down growth for large populations: <em>“The simplest hypothesis one can make on the form of this function is to suppose that”</em> the unknown function would be quadratic in the size of the population. He went on to solve what is now known as the <em>logistic growth</em> model, and contrasted it with data for the growth of populations in various countries.</p>
 </div>
 <p>A model of ecological interest that has an explicit solution is that for the exponential growth:</p>
 <p><span class="math display">\[
@@ -394,8 +395,8 @@ div.csl-indent {
 <p>This is a <strong>separable</strong> differential equation, meaning that we can formally write:</p>
 <p><span class="math display">\[
 \dfrac{1}{x(t)} dx(t) = \rho\, dt
-\]</span>
-Integrate both sides (the left hand side in <span class="math inline">\(d x(t)\)</span>, the r.h.s. in <span class="math inline">\(dt\)</span>):</p>
+\]</span></p>
+<p>Integrate both sides (the left hand side in <span class="math inline">\(d x(t)\)</span>, the r.h.s. in <span class="math inline">\(dt\)</span>):</p>
 <p><span class="math display">\[
 \begin{aligned}
 \int \dfrac{1}{x(t)} d x(t) = \rho \int dt
@@ -414,7 +415,7 @@ x(t) = C_4 e^{\rho\, t}
 <p><span class="math display">\[
 x(t) = x_0 e^{\rho\, t}
 \]</span></p>
-<p>which is our solution. If we know the value of <span class="math inline">\(\rho\)</span> and the initial density <span class="math inline">\(x_0\)</span>, we can directly write the population density <span class="math inline">\(x(t)\)</span> for any <span class="math inline">\(t\)</span>.</p>
+<p>which is our solution. If we know the value of <span class="math inline">\(\rho\)</span> and the initial density <span class="math inline">\(x_0\)</span>, we can compute the population density <span class="math inline">\(x(t)\)</span> for any <span class="math inline">\(t\)</span>.</p>
 </div>
 <div id="solvable-model-logistic-growth" class="section level2 hasAnchor" number="1.4">
 <h2><span class="header-section-number">1.4</span> Solvable model: Logistic growth<a href="models-for-a-single-population.html#solvable-model-logistic-growth" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -472,7 +473,7 @@ where <span class="math inline">\(1 &gt; \eta &gt; 0\)</span> is the proportion 
 </div>
 <div id="qualitative-analysis-of-models-for-a-single-population" class="section level2 hasAnchor" number="1.5">
 <h2><span class="header-section-number">1.5</span> Qualitative analysis of models for a single population<a href="models-for-a-single-population.html#qualitative-analysis-of-models-for-a-single-population" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Because in general we cannot write an explicit solution for our models of interest, we attempt a qualitative analysis by: a) finding fixed points (equilibria); b) providing a qualitative description of the dynamics; c) probing the stability of fixed points; d) gaining an understanding of the system (nature of attractors, changes of behavior for different parameters) without deriving an explicit solution.</p>
+<p>Because in general we cannot write an explicit solution for our models of interest, we attempt a qualitative analysis by: a) finding fixed points (<strong>equilibria</strong>); b) providing a qualitative description of the dynamics; c) probing the stability of fixed points; d) gaining an understanding of the system (nature of attractors, changes of behavior for different parameters) without deriving an explicit solution.</p>
 <p>When we are dealing with a single population, we can use a graphical method. Simply, plot <span class="math inline">\(dx(t) /dt\)</span> against <span class="math inline">\(x(t)\)</span>. We think of <span class="math inline">\(x(t)\)</span> as moving along the <span class="math inline">\(x\)</span> axis, at a velocity determined by the <span class="math inline">\(y\)</span> coordinate. For the exponential growth function:</p>
 <p><span class="math display">\[
 \dfrac{d x(t)}{dt} = \rho \, x(t)
@@ -480,7 +481,7 @@ where <span class="math inline">\(1 &gt; \eta &gt; 0\)</span> is the proportion 
 <p>the graph becomes:</p>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-4-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>The only point where the curve intercepts the <span class="math inline">\(x\)</span> axis is <span class="math inline">\(x^\star = 0\)</span>. A point <span class="math inline">\(x^\star\)</span> for which <span class="math inline">\(\left . \dfrac{d x(t)}{dt} \right|_{x^\star} = 0\)</span> is an <strong>equilibrium</strong> (or fixed-point) for the system, meaning that if we initialize the system at <span class="math inline">\(x^\star\)</span>, it will remain there unless perturbed. Whenever we apply a (small) perturbation to a <strong>stable equilibrium</strong>, the system returns to it; when we perturb an <strong>unstable equilibrium</strong>, on the other hand, the system moves away from it.</p>
-<p>Now think of a perturbation: if we were to perturb <span class="math inline">\(x^\star = 0\)</span> by introducing a few individuals, we would find that the population starts growing (i.e., <span class="math inline">\(dx(t) / dt &gt; 0\)</span>), meaning that the point is unstable. Thus, using the graphical method introduced above, we can easily identify equilibria (i.e., where the curve intercepts the x-axis), and their stability (i.e., by determining whether the curve around the equilibrium is above or below <span class="math inline">\(d x(t)/dt = 0\)</span>).</p>
+<p>Now think of a perturbation: if we were to perturb <span class="math inline">\(x^\star = 0\)</span> by introducing a few individuals, we would find that the population starts growing (i.e., <span class="math inline">\(dx(t) / dt &gt; 0\)</span>), meaning that the equilibrium is unstable. Thus, using the graphical method introduced above, we can easily identify equilibria (i.e., points where the curve intercepts the x-axis), and their stability (i.e., by determining whether the curve around the equilibrium is above or below <span class="math inline">\(d x(t)/dt = 0\)</span>).</p>
 <p>Next, let’s consider the logistic growth equation:</p>
 <p><span class="math display">\[
 \dfrac{d x(t)}{dt} = \rho\, x(t) (1 - \alpha\, x(t)) =\rho\, x(t) - \rho\, \alpha\,x(t)^2
@@ -504,30 +505,30 @@ where <span class="math inline">\(1 &gt; \eta &gt; 0\)</span> is the proportion 
 <p>Note that bistability makes it clear that we can only apply small perturbations to the equilibrium to probe its “local” stability—for example, imagine being at <span class="math inline">\(x^\star = 1 / \alpha\)</span> and perturbing the population by bringing it below <span class="math inline">\(\gamma\)</span>; then we would find that the population goes extinct, suggesting that <span class="math inline">\(x^\star = 1 / \alpha\)</span> is “somewhat unstable”.</p>
 <div id="stability-using-derivatives" class="section level3 hasAnchor" number="1.5.1">
 <h3><span class="header-section-number">1.5.1</span> Stability using derivatives<a href="models-for-a-single-population.html#stability-using-derivatives" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>You might have noticed in the previous graphs that whenever the curve <span class="math inline">\(dx(t) /dt\)</span> is negative on the left of a point and positive on its right we find that the point is unstable, while conversely a point for which <span class="math inline">\(dx(t) /dt\)</span> is positive on the left and negative on the right is stable. We can formalize this by taking the derivative of <span class="math inline">\(dx(t) /d t\)</span> with respect to <span class="math inline">\(x(t)\)</span>, and evaluating this function at different equilibria.</p>
+<p>You might have noticed in the previous graphs that whenever the curve <span class="math inline">\(dx(t) /dt\)</span> is negative on the left of a point and positive on its right we find that the point is unstable, while, conversely, a point for which <span class="math inline">\(dx(t) /dt\)</span> is positive on the left and negative on the right is stable. We can formalize this by taking the derivative of <span class="math inline">\(dx(t) /d t\)</span> with respect to <span class="math inline">\(x(t)\)</span>, and evaluating this function at different equilibria.</p>
 <p>For example, for the exponential growth model, we have:</p>
 <p><span class="math display">\[
 \dfrac{\partial}{\partial x} \dfrac{dx}{dt} = \dfrac{\partial f(x)}{\partial x} = \dfrac{\partial (\rho x)}{\partial x} = \rho
-\]</span>
-This is always posive when <span class="math inline">\(\rho &gt; 0\)</span>, and as such the only equilibrium (<span class="math inline">\(x^\star = 0\)</span>) is unstable.</p>
+\]</span></p>
+<p>This is always positive when <span class="math inline">\(\rho &gt; 0\)</span>, and as such the only equilibrium (<span class="math inline">\(x^\star = 0\)</span>) is unstable.</p>
 <p>For the logistic growth, we find:</p>
 <p><span class="math display">\[
 \dfrac{\partial f(x)}{\partial x} = \dfrac{\partial (\rho\, x - \rho\, \alpha\, x^2)}{\partial x}  = \rho - 2 \rho\, \alpha\, x
 \]</span></p>
-<p>When we evaluate this function at the equilibrium <span class="math inline">\(x^\star = 0\)</span>, we obtain <span class="math inline">\(\rho &gt; 0\)</span>, and as such the equilibrium is unstable. Conversely, when we evaluate the fuction at <span class="math inline">\(x^\star = 1 / \alpha\)</span>, we obtain <span class="math inline">\(\rho - 2 \rho = -\rho\)</span> and therefore the equilibrium is stable.</p>
+<p>When we evaluate this function at the equilibrium <span class="math inline">\(x^\star = 0\)</span>, we obtain <span class="math inline">\(\rho &gt; 0\)</span>, and as such the equilibrium is unstable. Conversely, when we evaluate the function at <span class="math inline">\(x^\star = 1 / \alpha\)</span>, we obtain <span class="math inline">\(\rho - 2 \rho = -\rho\)</span>, and therefore the equilibrium is stable.</p>
 <p>Finally, for the model with Allee effect, we have:</p>
 <p><span class="math display">\[
 \dfrac{\partial (\rho\, x (x-\gamma)(1-\alpha\, x))}{\partial x}  = - \rho\, \gamma + 2 \rho\, x(1 + \alpha) - 3 \rho\, \alpha\, x^2
 \]</span></p>
-<p>At <span class="math inline">\(x^\star = 0\)</span>, we find <span class="math inline">\(-\rho\, \gamma\)</span> which is always negative, and as such <span class="math inline">\(x^\star = 0\)</span> is stable. At <span class="math inline">\(x^\star = \gamma\)</span> we have <span class="math inline">\(\rho\, \gamma\, (1- \gamma\, \alpha)\)</span> which is positive (as <span class="math inline">\(\gamma\, \alpha &lt; 1\)</span>) and as such is an unstable equilibrium. Finally, for <span class="math inline">\(x^\star = 1/\alpha\)</span> we have <span class="math inline">\(\rho (\gamma - 1/\alpha)\)</span> which is always negative.</p>
+<p>At <span class="math inline">\(x^\star = 0\)</span>, we find <span class="math inline">\(-\rho\, \gamma\)</span> which is always negative, and as such <span class="math inline">\(x^\star = 0\)</span> is stable. At <span class="math inline">\(x^\star = \gamma\)</span> we have <span class="math inline">\(\rho\, \gamma\, (1- \gamma\, \alpha)\)</span> which is positive (as <span class="math inline">\(\gamma\, \alpha &lt; 1\)</span>) and as such is an unstable equilibrium. Finally, for <span class="math inline">\(x^\star = 1/\alpha\)</span>, we have <span class="math inline">\(\rho (\gamma - 1/\alpha)\)</span> which is always negative.</p>
 </div>
 <div id="what-are-we-doing-when-probing-stability-using-derivatives" class="section level3 hasAnchor" number="1.5.2">
 <h3><span class="header-section-number">1.5.2</span> What are we doing when probing stability using derivatives?<a href="models-for-a-single-population.html#what-are-we-doing-when-probing-stability-using-derivatives" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>More formally, we can think of describing the dynamics of a perturbation around the equilibrium. Call <span class="math inline">\(\Delta x(t) = x(t) - x^\star\)</span>, and approximate the dynamics around the equilibrium. We want to write the dynamics of <span class="math inline">\(\Delta x(t)\)</span>. By chain rule, <span class="math inline">\(\frac{d \Delta x(t)}{dt} = \frac{d \Delta x(t)}{d x(t)} \frac{d x(t)}{dt}\)</span>, and as such</p>
+<p>More formally, we can think of describing the dynamics of a perturbation around the equilibrium. Write <span class="math inline">\(\Delta x(t) = x(t) - x^\star\)</span> for the perturbation, and approximate its dynamics around the equilibrium. We want to write the dynamics of <span class="math inline">\(\Delta x(t)\)</span>. By chain rule, <span class="math inline">\(\frac{d \Delta x(t)}{dt} = \frac{d \Delta x(t)}{d x(t)} \frac{d x(t)}{dt}\)</span>, and as such</p>
 <p><span class="math display">\[
-\frac{d \Delta x(t)}{dt} = f(\Delta x(t) + x^\star)
+\frac{d \Delta x(t)}{dt} = f(x(t)) = f(\Delta x(t) + x^\star)
 \]</span></p>
-<p>If we think of the perturbation as infinitesimally small, we can Taylor expand around <span class="math inline">\(x^\star\)</span>:</p>
+<p>In general, we are left with a problem that is as difficult as the one we had originally; however, if we are willing to consider infinitesimally small perturbations, we can Taylor expand around <span class="math inline">\(x^\star\)</span>, and approximate the dynamics of the perturbation:</p>
 <p><span class="math display">\[
 f(\Delta x(t) + x^\star) = f(x^\star) + \left . \frac{df(x)}{dx} \right |_{x^\star} \Delta x(t) + \frac{1}{2}\left . \frac{d^2 f(x)}{dx^2} \right |_{x^\star} (\Delta x(t))^2 + \ldots
 \]</span></p>
@@ -592,7 +593,7 @@ f(\Delta x(t) + x^\star) = f(x^\star) + \left . \frac{df(x)}{dx} \right |_{x^\st
 <div id="lyapunov-functions" class="section level2 hasAnchor" number="1.8">
 <h2><span class="header-section-number">1.8</span> Lyapunov functions<a href="models-for-a-single-population.html#lyapunov-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>While in many cases we cannot write an explicit solution for a (system of) differential equation(s), we might be able to determine the stability of equilibria and their basin of attraction (i.e., the set of initial conditions eventually leading to the equilibrium <span class="math inline">\(x^\star\)</span>) by considering functions that change monotonically through the dynamics.</p>
-<p>Suppose that <span class="math inline">\(\dfrac{d x(t)}{dt} =f(x(t))\)</span>, and that <span class="math inline">\(x^\star\)</span> is an equilibrium. Let <span class="math inline">\(V(x)\)</span> be a function defined in an open set <span class="math inline">\(\mathcal O\)</span> containing <span class="math inline">\(x^\star\)</span>, such that a) <span class="math inline">\(V(x^\star) = 0\)</span> and <span class="math inline">\(V(x) &gt; 0\)</span> for any <span class="math inline">\(x \in \mathcal O, x \neq x^\star\)</span>, and b) <span class="math inline">\(d V /dt \leq 0\)</span> for all <span class="math inline">\(x \in \mathcal O \neq x^\star\)</span>. Then <span class="math inline">\(V\)</span> is a <em>Lyapunov function</em> for the model, and <span class="math inline">\(x^\star\)</span> is stable. The Lyapunov function is called <em>strict</em>, and the equilibrium <span class="math inline">\(x^\star\)</span> <em>asymptotically stable</em> if <span class="math inline">\(d V /dt &lt; 0\)</span> (i.e., all trajectories starting in <span class="math inline">\(\mathcal O\)</span> will eventually reach <span class="math inline">\(x^\star\)</span>).</p>
+<p>Suppose that <span class="math inline">\(\dfrac{d x(t)}{dt} =f(x(t))\)</span>, and that <span class="math inline">\(x^\star\)</span> is an equilibrium. Let <span class="math inline">\(V(x)\)</span> be a function defined in an open set <span class="math inline">\(\mathcal O\)</span> containing <span class="math inline">\(x^\star\)</span>, such that a) <span class="math inline">\(V(x^\star) = 0\)</span> and <span class="math inline">\(V(x) &gt; 0\)</span> for any <span class="math inline">\(x \in \mathcal O, x \neq x^\star\)</span>, and b) <span class="math inline">\(d V /dt \leq 0\)</span> for all <span class="math inline">\(x \in \mathcal O \neq x^\star\)</span>. Then <span class="math inline">\(V\)</span> is a <em>Lyapunov function</em> for the model, and <span class="math inline">\(x^\star\)</span> is stable. The Lyapunov function is called <em>strict</em>, and the equilibrium <span class="math inline">\(x^\star\)</span> <em>asymptotically stable</em> if <span class="math inline">\(d V /dt &lt; 0\)</span> for all <span class="math inline">\(x \neq x^\star\)</span> (i.e., all trajectories starting in <span class="math inline">\(\mathcal O\)</span> will eventually reach <span class="math inline">\(x^\star\)</span>).</p>
 <p>While Lyapunov functions are great, because we can prove stability without the need to solve the system, there is no general rule to construct them. Often, “candidate” Lyapunov functions are available, but the process of finding the right function typically requires a lot of ingenuity and trial and errors.</p>
 <p>Fortunately, for system with a single state a quadratic function is guaranteed to solve the problem. Take the model for logistic growth (with <span class="math inline">\(\rho &gt; 0\)</span> and <span class="math inline">\(\alpha &gt; 0\)</span>), and the candidate Lyapunov function:</p>
 <p><span class="math display">\[

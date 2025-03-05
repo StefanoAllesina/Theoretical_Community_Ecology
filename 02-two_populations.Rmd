@@ -14,11 +14,11 @@ source("common_settings.R")
 
 ## Qualitative analysis of models for two populations
 
-In this section, we extend the qualitative analysis we've performed for a single populations to models with two populations. Many of the methods introduced below extend to the case of multiple populations.
+In this section, we extend the qualitative analysis we've performed for a single populations to models with two populations. Many of the methods introduced below extend to the case of an arbitrary number of populations.
 
 ### Isoclines of null growth
 
-Take a two-dimensional model. For each equation, we can write the solution of $dx/dt = 0$ as a function of $y$, thereby defining the curve in the $(x, y)$ plane (the "phase plane") for which the growth of species $x$ is zero. For a concrete example, take the classic predator-prey Lotka-Volterra system:
+Take a two-dimensional model, with variables $x$ and $y$. For each equation, we can write the solution of $dx/dt = 0$ as a function of $y$, thereby defining the curve in the $(x, y)$ plane (the "phase plane") for which the growth of species $x$ is zero. For a concrete example, take the classic predator-prey Lotka-Volterra system:
 
 $$
 \begin{cases}
@@ -36,7 +36,7 @@ where $x(t)$ is the density of the prey species at time $t$ and $y(t)$ that of t
 knitr::include_graphics('img/Lotka.jpg')
 ```
 
-Alfred Lotka was born to French-speaking American parents in Lemberg (then part of the Habsburg empire, now Lviv, Ukraine). He studied in France, Germany and England, receiving a BSc in 1901 and a DSc in 1912 from Birmingham university. He moved to the US in 1902, and worked at the US Patent office, as an editor of Scientific American, and as a statistician at the Metropolitan Life Insturance Company in NYC. He wrote more than a hundred papers and five books, spanning a large range of topics. He's best known for the book *Elements of Physical Biology*, his contributions to demography, and one of the first studies dealing with bibliometrics [@lotka1926frequency]. 
+Alfred Lotka was born to French-speaking American parents in Lemberg (then part of the Habsburg empire, now Lviv, Ukraine). He studied in France, Germany and England, receiving a BSc in 1901 and a DSc in 1912 from Birmingham university. He moved to the US in 1902, and worked at the US Patent office, as an editor of Scientific American, and as a statistician at the Metropolitan Life Insurance Company in NYC. He wrote more than a hundred papers and five books, spanning a large range of topics. He's best known for the book *Elements of Physical Biology*, his contributions to demography, and one of the first studies dealing with bibliometrics [@lotka1926frequency]. 
 
 Starting in 1910 (reprinted as @lotka2002contribution) he investigated coupled differential equations relating to chemical as well as ecological dynamics. In @lotka1920analytical he studied a system of two ODEs that gave rise to perpetual oscillations: *"It was, therefore, with considerable surprise that the writer, on applying his method to certain special cases, found these to lead to undamped, and hence indefinitely continued, oscillations."* He went on to describe *"1. A species of organism $S_1$, a plant species, say, deriving its nourishment from a source presented in such large excess that the mass of the source may be considered constant during the period of time with which we are concerned. 2. A species $S_2$, for example a herbivorous animal species, feeding on $S_1$."* 
 
@@ -184,6 +184,7 @@ $$
 \dfrac{d y(t)}{dt} = f_y = y(t) \left(-1 + \alpha\, \frac{x(t)}{1+ x(t)} \right)\\
 \end{cases}
 $$
+
 The system has up to three equilibria: $(x^\star, y^\star) = (0,0)$, $(x^\star, y^\star) = (1,0)$, and, whenever $\alpha > 2$, $\left(\frac{1}{\alpha - 1}, \frac{\alpha - 2}{(\alpha - 1)^2}\right)$. The Jacobian for this system is:
 
 $$
@@ -222,19 +223,22 @@ Now we can approximate the dynamics at any point; for example, around the equili
 $$
 \dfrac{d x(t)}{dt} \approx J_{11}|_{x^\star} \Delta x + J_{12}|_{x^\star} \Delta y + \frac{1}{2} H_{x,1,1}|_{x^\star} \Delta x^2 + \frac{1}{2} H_{x,2,2}|_{x^\star} \Delta y^2 + H_{x,1,2}|_{x^\star} \Delta x \Delta y
 $$
+
 with some calculations, we obtain:
 
 $$
 \dfrac{d x(t)}{dt} \approx -\Delta x (1 + 2 \Delta x) - \frac{1}{2} \alpha (1 + \Delta x) \Delta y
 $$
+
 and similarly, 
 
 $$
 \dfrac{d y(t)}{dt} \approx  \frac{1}{2} (\alpha -2 + \alpha \Delta x) \Delta y
 $$
+
 We can see already that, when $\Delta y > 0$ (the only sensible case), and $\Delta x = 0$, the predator can invade (at least initially) whenever $\alpha > 2$. 
 
-By considering higher and higher order terms, we can have an increasingly good approximation of the system---always obtaining a polynomial system.
+By considering higher and higher order terms, we can have an increasingly good approximation of the system---always obtaining a polynomial system of differential equations.
 
 :::
 
@@ -274,7 +278,7 @@ To solve the system, we need to recap a few important concepts from linear algeb
 
 For a matrix $M$, we have that if $M v = \lambda v$ with $v$ different from the zero vector, then $\lambda$ is an eigenvalue and $v$ the corresponding eigenvector. Practically, you can think of a matrix as an operator that turns a vector into another vector. If the resulting vector is a rescaled version of the initial vector, then you've found an eigenvector of the matrix, and the rescaling factor is the associated eigenvalue.
 
-For example, show that $(1, 1)^t$ is an eigenvector of the matrix:
+For example, show that $(1, 1)^T$ is an eigenvector of the matrix:
 
 $$
 A = 
@@ -293,7 +297,7 @@ Av = \begin{pmatrix}
 \end{pmatrix}
 $$
 
-if $v = (1, 1)^t$, we have:
+if $v = (1, 1)^T$, we have:
 
 $$
 Av = \begin{pmatrix}
@@ -380,7 +384,7 @@ If $A$ has eigenvalues $\lambda$, $B = \beta\, A$ has eigenvalues $\beta\, \lamb
 
 A matrix is positive definite if all its eigenvalues are real and positive. It is positive semi-definite if eigenvalues can be zero. The matrices $AA^T$ and $A^T A$ are positive semi-definite, and have the same eigenvalues up to some zeros (used in SVD and  PCA). Correlation and covariance matrices have these form.
 
-Provided that some mild conditions are satisfied, a matrix with non-negative entries has a unique largest real eigenvalue with a corresponding eigenvector that can be chosen to have strictly positive components ([Perron-Frobenius theorem](https://en.wikipedia.org/wiki/Perron%E2%80%93Frobenius_theorem)). A matrix with constant row sums $\theta$ has $\theta$ as the largest eigenvalue, and $v = 1$ as the corresponding eigenvector (e.g., Markov Chains).
+Provided that some mild conditions are satisfied, a matrix with non-negative entries has a unique largest real eigenvalue with a corresponding eigenvector that can be chosen to have strictly positive components ([Perron-Frobenius theorem](https://en.wikipedia.org/wiki/Perron%E2%80%93Frobenius_theorem)). A matrix with constant row sums $\theta$ has $\theta$ as an eigenvalue, and $v = 1$ as the corresponding eigenvector (e.g., Markov Chains).
 
 **Descartes' rule of signs**
 
@@ -397,6 +401,7 @@ then the number of *real positive roots* of the polynomial is at most the number
 $$
 P(\lambda) = 1 + 4 \lambda - 5 \lambda^2 + \lambda^3
 $$
+
 we have two sign changes (the signs are $+ + - +$), and therefore the polynomial has at most two positive real roots (i.e., either two positive roots, or zero). Taking:
 
 $$
@@ -404,7 +409,6 @@ P(-\lambda) = 1 - 4 \lambda - 5 \lambda^2 - \lambda^3
 $$
 
 we find a single change in signs, meaning that the polynomial has a negative real root. This polynomial has indeed one negative and two positive real roots.
-
 
 **Routh-Hurwitz criterion**
 
@@ -415,6 +419,7 @@ The polynomial:
 $$
 P(\lambda) = \alpha_0 + \alpha_1 \lambda + \lambda^2
 $$
+
 is stable if and only if $\alpha_0 > 0$ and $\alpha_1 >0$.
 
 The polynomial:
@@ -422,6 +427,7 @@ The polynomial:
 $$
 P(\lambda) = \alpha_0 + \alpha_1 \lambda + \alpha_2 \lambda^2 + \lambda^3
 $$
+
 is stable if and only if $\alpha_i > 0\quad \forall i$ and $\alpha_2 \alpha_1 > \alpha_0$.
 
 :::
@@ -513,13 +519,13 @@ y(t) = e^{\Lambda t} y_0
 \end{aligned}
 $$
 
-And therefore $y_j(t) = e^{(\lambda_j)t} y_j(0)$. Clealry, if all $\lambda_j$ are real and negative, the trajectories will die out, and the origin $y^\star = 0$ is stable. Similarly, if any eigenvalue is real and positive, then the perturbation will amplify in at least one direction. Next, we consider $\lambda_j$ to be complex. In this case, $\lambda_j = \alpha + i\, \beta$. Using Euler's formula, we have
+And therefore $y_j(t) = e^{(\lambda_j)t} y_j(0)$. Clearly, if all $\lambda_j$ are real and negative, the trajectories will die out, and the origin $y^\star = 0$ is stable. Similarly, if any eigenvalue is real and positive, then the perturbation will amplify in at least one direction. Next, we consider $\lambda_j$ to be complex. In this case, $\lambda_j = \alpha + i\, \beta$. Using Euler's formula, we have
 
 $$
 y_j(t) = y_j(0)\, e^{(\alpha + i\, \beta) t} = y_j(0)\, e^{\alpha\, t} (\cos(\beta\, t) + i \sin(\beta\, t))
 $$
 
-As such, the solution will oscillate, with damped oscillations whenever $a < 0$ and increasing oscillations when $a > 0$. For example, a case of damped oscillations:
+As such, the solution will oscillate, with damped oscillations whenever $\alpha < 0$ and increasing oscillations when $\alpha > 0$. For example, a case of damped oscillations:
 
 ```{r,echo=FALSE}
 x0 <- c(0.01, 1) # initial state
@@ -633,7 +639,7 @@ M_c = \left . J \right|_{(\delta / \beta, \rho / \alpha)^T} = \begin{pmatrix}
 \end{pmatrix} 
 $$
 
-which has purely imaginary eigenvalues $\lambda = \pm i \sqrt{\rho \, \delta}$. As such the equilibrium is not attractive nor unstable. In fact, Lotka and Volterra were (independently) able to prove that the system cycles neutrally around the equilibrium.
+which has purely imaginary eigenvalues $\lambda = \pm i \sqrt{\rho \, \delta}$. As such the equilibrium is not attractive nor unstable. In fact, both Lotka and Volterra were (independently) able to prove that the system cycles neutrally around the equilibrium.
 
 :::boxhistory
 
@@ -644,7 +650,7 @@ which has purely imaginary eigenvalues $\lambda = \pm i \sqrt{\rho \, \delta}$. 
 knitr::include_graphics("img/Volterra.jpg")
 ```
 
-Vito Volterra was born in Ancona (then part of the Papal State) in a poor jewish family. The financial situation precipitated with the death of his father, when Vito was two. Vito and his mother went to live with relatives in Turin and then Florence. Volterra showed amazing mathematical talent at a very young age. Antonio Roiti, professor of physics in Florence, noticed the budding mathematician and hired him as his assistant, so that he could continue his studies. He went on to enroll at the Scuola Normale in Pisa, receiving a degree in Physics in 1882. At age 23 he was made full professor of Rational Mechanics in Pisa, and then in 1900 of Mathematical Physics in Rome. For thirty years, he contributed important studies in mathematics, and enriched academic life in Italy (for example, he was the first director of the National Center for Research). In 1931 he refused to take an oath of loyalty to the fascist regime (only 12 professors out of 1250 refused), and was therefore forced to resign (his take on the fascist enterprise: *"Empires die, but Euclid's theorems keep their youth forever"*). 
+Vito Volterra was born in Ancona (then part of the Papal State) in a poor Jewish family. The financial situation precipitated with the death of his father, when Vito was two. Vito and his mother went to live with relatives in Turin and then Florence. Volterra showed amazing mathematical talent at a very young age. Antonio Roiti, professor of physics in Florence, noticed the budding mathematician and hired him as his assistant, so that he could continue his studies. He went on to enroll at the Scuola Normale in Pisa, receiving a degree in Physics in 1882. At age 23 he was made full professor of Rational Mechanics in Pisa, and then in 1900 of Mathematical Physics in Rome. For thirty years, he contributed important studies in mathematics, and enriched academic life in Italy (for example, he was the first director of the National Center for Research). In 1931 he refused to take an oath of loyalty to the fascist regime (only 12 professors out of 1250 refused), and was therefore forced to resign (his take on the fascist enterprise: *"Empires die, but Euclid's theorems keep their youth forever"*). 
 
 His interest in mathematical ecology is due to Umberto D'Ancona (his son-in-law), who had studied the trends in fisheries in the Adriatic sea before and immediately after WWI. In 1914-1918 fisheries in the Adriatic had stopped completely because of the conflict. D'Ancona had noticed that, while herbivorous fish had remained about constant, the piscivorous fish had increased dramatically in numbers. The problem piqued Volterra who immediately published a sophisticated study, proposing the same equations studied by Lotka. In a short letter to Nature [@volterra1926fluctuations], he stated the so-called "Volterra's Effect" (which he termed "Law III"): *"a complete closure of the fishery was a form of 'protection' under which the voracious fishes were much the better and prospered accordingly, but the ordinary food-fishes, on which these are accustomed to prey, were worse off than before."* This brief paper was a summary of a much more extensive article [@volterra1926variazioni].
 
@@ -713,7 +719,7 @@ $$
 \end{cases}
 $$
 
-First, we find the equilibria. From the first equation, we have $x^\star = 0$, or $y^\star = 1 - x^\star /2$; from the second equation, we have $y^\star = 0$ or $x^\star = 1$. Combining them, we find that either $(x^\star, y^\star)^T = (0, 0)^T$ (trival), $(x^\star, y^\star)^T = (2, 0)^T$ (boundary), or $(x^\star, y^\star)^T = (1, 1/2)^T$ (coexistence). 
+First, we find the equilibria. From the first equation, we have $x^\star = 0$, or $y^\star = 1 - x^\star /2$; from the second equation, we have $y^\star = 0$ or $x^\star = 1$. Combining them, we find that either $(x^\star, y^\star)^T = (0, 0)^T$ (trivial), $(x^\star, y^\star)^T = (2, 0)^T$ (boundary), or $(x^\star, y^\star)^T = (1, 1/2)^T$ (coexistence). 
 
 The isoclines of zero growth are $y = 1 - x/2$ for the prey, and $x = 1$ for the predator. The Jacobian for the system is
 
@@ -724,7 +730,7 @@ y & x -1
 \end{pmatrix}
 $$
 
-At the equilibrium $(x^\star, y^\star) = (1, 1/2)$, we have:
+At the equilibrium $(x^\star, y^\star)^T = (1, 1/2)^T$, we have:
 
 $$
 M = \begin{pmatrix}
@@ -745,7 +751,7 @@ $$
 \lambda = \dfrac{-\frac{1}{2} \pm \sqrt{\frac{1}{4} - 2}}{2} = \dfrac{-1 \pm i \sqrt{7}}{4}
 $$
 
-And as such small perturbations will oscillate back to equilibrium. Numerically:
+Therefore small perturbations will oscillate back to equilibrium. Numerically:
 
 ```{r, echo = FALSE}
 library(deSolve)
@@ -793,7 +799,7 @@ $$
 \dfrac{d V(x,y)}{dt} = -\dfrac{1}{2}(1-x)^2 < 0
 $$
 
-As such, the equilibrium $(x^\star, y^\star) = (1, 1/2)$ is globally stable. 
+As such, the equilibrium $(x^\star, y^\star)^T = (1, 1/2)^T$ is globally stable. 
 
 :::boxhomework
 

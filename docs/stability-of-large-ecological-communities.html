@@ -23,7 +23,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2024-09-30" />
+<meta name="date" content="2025-03-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -216,10 +216,11 @@ div.csl-indent {
 <li class="chapter" data-level="3.3" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#multi-species-dynamics"><i class="fa fa-check"></i><b>3.3</b> Multi-species dynamics</a>
 <ul>
 <li class="chapter" data-level="3.3.1" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#existence-of-an-equilibrium"><i class="fa fa-check"></i><b>3.3.1</b> Existence of an equilibrium</a></li>
-<li class="chapter" data-level="3.3.2" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#stability-of-the-coexistence-equilibrium"><i class="fa fa-check"></i><b>3.3.2</b> Stability of the coexistence equilibrium</a></li>
-<li class="chapter" data-level="3.3.3" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#types-of-dynamics"><i class="fa fa-check"></i><b>3.3.3</b> Types of dynamics</a></li>
-<li class="chapter" data-level="3.3.4" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#the-equilibrium-is-the-time-average"><i class="fa fa-check"></i><b>3.3.4</b> The equilibrium is the time-average</a></li>
-<li class="chapter" data-level="3.3.5" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#lyapunov-diagonal-stability-and-global-stability"><i class="fa fa-check"></i><b>3.3.5</b> Lyapunov diagonal stability and global stability</a></li>
+<li class="chapter" data-level="3.3.2" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#types-of-dynamics"><i class="fa fa-check"></i><b>3.3.2</b> Types of dynamics</a></li>
+<li class="chapter" data-level="3.3.3" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#equilibrium-as-time-average"><i class="fa fa-check"></i><b>3.3.3</b> Equilibrium as time-average</a></li>
+<li class="chapter" data-level="3.3.4" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#coexistence-requires-a-feasible-equilibrium"><i class="fa fa-check"></i><b>3.3.4</b> Coexistence requires a feasible equilibrium</a></li>
+<li class="chapter" data-level="3.3.5" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#local-stability-of-the-coexistence-equilibrium"><i class="fa fa-check"></i><b>3.3.5</b> Local stability of the coexistence equilibrium</a></li>
+<li class="chapter" data-level="3.3.6" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#lyapunov-diagonal-stability-and-global-stability"><i class="fa fa-check"></i><b>3.3.6</b> Lyapunov diagonal stability and global stability</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#macarthurs-consumer-resource-model"><i class="fa fa-check"></i><b>3.4</b> MacArthur’s consumer-resource model</a>
 <ul>
@@ -460,14 +461,14 @@ div.csl-indent {
     \lambda \leq (1 + \sqrt{y})^2\\ 0 \; \; \;\text{ otherwise}.
   \end{cases}
 \end{equation}\]</span></p>
-<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-26-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-31-1.png" width="480" style="display: block; margin: auto;" /></p>
 </div>
 <div id="small-rank-perturbations" class="section level2 hasAnchor" number="4.6">
 <h2><span class="header-section-number">4.6</span> Small-rank perturbations<a href="stability-of-large-ecological-communities.html#small-rank-perturbations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The basic results listed above consider matrices whose coefficients have mean
 zero. Clearly, this is rarely the case in ecological systems, and therefore for applications we need to incorporate the possibility of nonzero means. While in general one cannot compute the distribution of the eigenvalues of a sum of two matrices <span class="math inline">\({M} = {A} + {B}\)</span> from the eigenvalues of the two matrices, this calculation is possible whenever <span class="math inline">\({A}\)</span> has small-rank (i.e., few nonzero eigenvalues, or a finite amount in the limit of infinitely large sizes) and <span class="math inline">\({B}\)</span> is a large random matrix. In this case, the distribution of the eigenvalues of <span class="math inline">\({M}\)</span> will be composed by a bulk, defined by the spectrum of <span class="math inline">\({B}\)</span>, and (possibly) a few outlier eigenvalues, matching closely the nonzero eigenvalues of <span class="math inline">\({A}\)</span> (a correction is needed when the coefficients of <span class="math inline">\({B}\)</span> are correlated, <span class="citation">O’Rourke and Renfrew (<a href="#ref-o2014low">2014</a>)</span>).</p>
 <p>For example, let’s add a matrix with three nonzero eigenvalues to a large random matrix of the type studied by May:</p>
-<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-27-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-32-1.png" width="480" style="display: block; margin: auto;" /></p>
 </div>
 <div id="structured-matrices" class="section level2 hasAnchor" number="4.7">
 <h2><span class="header-section-number">4.7</span> Structured matrices<a href="stability-of-large-ecological-communities.html#structured-matrices" class="anchor-section" aria-label="Anchor link to header"></a></h2>

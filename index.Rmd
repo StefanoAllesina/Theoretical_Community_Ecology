@@ -13,7 +13,7 @@ description: "A graduate course in theoretical community ecology focusing on sys
 
 ## Approach and target audience {-}
 
-The material was prepared for the graduate class *Theoretical Community Ecology* (ECEV 43900) taught at the University of Chicago --- AY 2020/2021. Following the material requires some familiarity with calculus (multivariable integration, derivatives, chain rule) and linear algebra (vector spaces, eigenvalues, eigenvectors). Also, a good working knowledge of `R` (writing functions, working with the packages `deSolve` and `tidyverse`) is needed to follow the code (all figures are generated at runtime, and therefore the source code for these lectures contains all the code/data needed to replicate the figures).
+The material was prepared for the graduate class *Theoretical Community Ecology* (ECEV 43900) taught at the University of Chicago --- AY 2020/2021, and revised several times (last iteration, Spring 2025). Following the material requires some familiarity with calculus (multivariable integration, derivatives, chain rule) and linear algebra (vector spaces, eigenvalues, eigenvectors). Also, a good working knowledge of `R` (writing functions, working with the packages `deSolve` and `tidyverse`) is needed to follow the code (all figures are generated at runtime, and therefore the source code for these lectures contains all the code/data needed to replicate the figures).
 
 The approach taken throughout the course is to alternate between code/simulations and mathematical derivations. While several theorems are (informally) stated, proofs are included only when elementary and/or informative of the underlying biological processes.
 
@@ -25,18 +25,18 @@ The choice of themes is very opinionated, and heavily biased toward my own resea
 
 ## Notation {-}
 
-Unless specified or for obvious exceptions, Greek letters stand for scalars (i.e., real or complex numbers), lower case Roman letters for vectors, and capital Roman letters for matrices (as such $a_i$ or $A_{ij}$ are scalars). We typically work in $\mathbb{R}^n$ (the $n$-dimensional Euclidean space), $\mathbb{R}^n_+$ (i.e., the positive orthant of $\mathbb{R}^n$), or $\mathbb{R}^n_{0+}$ (non-negative orthant).  $D(x)$ is a diagonal matrix with $x$ on the diagonal. The matrix $A^T$ is the transpose of $A$. Whenever it is clear what I mean, I will drop the dependency on time of certain variables. 
+Unless specified or for obvious exceptions, Greek letters stand for scalars (i.e., real or complex numbers), lower case Roman letters for vectors, and capital Roman letters for matrices (as such $a_i$ or $A_{ij}$ are scalars). We typically work in $\mathbb{R}^n$ (the $n$-dimensional Euclidean space), $\mathbb{R}^n_+$ (i.e., the positive orthant of $\mathbb{R}^n$), or $\mathbb{R}^n_{0+}$ (non-negative orthant).  $D(x)$ is a diagonal matrix with $x$ on the diagonal. The matrix $A^T$ is the transpose of $A$. Whenever it is clear what I mean, I will drop the dependency on time of certain variables. I often use $\dot{x}$ as a shorthand for $\dfrac{d x(t)}{dt}$.
 
 The Generalized Lotka-Volterra model:
 
 $$
-\dfrac{d x_i(t)}{d t} = x_i(t) \left(a_i + \sum_{j} B_{ij} x_j(t) \right)
+\dfrac{d x_i(t)}{d t} = x_i(t) \left(r_i + \sum_{j} A_{ij} x_j(t) \right)
 $$
 
 can be written in compact form as:
 
 $$
-\dfrac{d x}{d t} = D(x) (a + B x)
+\dot{x} = D(x) (r + A x)
 $$
 
 ## Grading and code of conduct {-}
