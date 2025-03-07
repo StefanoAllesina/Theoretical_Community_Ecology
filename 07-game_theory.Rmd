@@ -7,7 +7,7 @@ source("common_settings.R")
 
 ## Game theory
 
-We briefly introduce the study of mathematical models of games, and their relations to the GLV model. While the origin of game theory can be traced back to the 1700s, modern game theory started with von Neumann's paper *On the Theory of Games of Strategy*, published in 1928, and with the subsequent 1944 book with Morgensten *Theory of Games and Economic Behavior*. John Nash's paper [@nash1950equilibrium] introduced the notion of a **Nash Equilibrium** (NE), and proved that any non-cooperative game has at least one such equilibrium. Originally, game theory was studied by economists and mathematicians, but with a series of papers in the early 1970s, and the subsequent book *Evolution and the Theory of Games* [@smith1982evolution], John Maynard Smith showed how the same tools could be used to study evolutionary dynamics, introducing the influential concept of an **Evolutionary Stable Strategy** (ESS). Evolutionary game theory was greatly advanced through the introduction of the **Replicator Equation** (RE), which, as we will see later, has strong connection with the GLV model. For a detailaed introduction to evolutionary game theory see @hofbauer1998evolutionary.
+We briefly introduce the study of mathematical models of games, and their relations to the GLV model. While the origin of game theory can be traced back to the 1700s, modern game theory started with von Neumann's paper *On the Theory of Games of Strategy*, published in 1928, and with the subsequent 1944 book with Morgensten *Theory of Games and Economic Behavior*. John Nash's paper [@nash1950equilibrium] introduced the notion of a **Nash Equilibrium** (NE), and proved that any non-cooperative game has at least one such equilibrium. Originally, game theory was studied by economists and mathematicians, but with a series of papers in the early 1970s, and the subsequent book *Evolution and the Theory of Games* [@smith1982evolution], John Maynard Smith showed how the same tools could be used to study evolutionary dynamics, introducing the influential concept of an **Evolutionary Stable Strategy** (ESS). Evolutionary game theory was greatly advanced through the introduction of the **Replicator Equation** (RE), which, as we will see later, has strong connection with the GLV model. For a detailed introduction to evolutionary game theory see @hofbauer1998evolutionary.
 
 :::boxhistory
 
@@ -17,7 +17,7 @@ We briefly introduce the study of mathematical models of games, and their relati
 knitr::include_graphics('img/Maynard_Smith.jpg')
 ```
 
-Born in London, when he was at Eaton he decided to study (independently) the work of JBS Haldane. He set out to Cambridge to study engineering, and subsequently worked as an engineer designing military aircrafts. In 1947, he had a change of hearth and decided to study *Drosophila* genetics at U.C.L. under Haldane. In 1973, based on his interaction with George Price, he formalized the concept of "Evolutionarily Stable Strategy", which became central to evolutionary game theory. His book *Evolution and the Theory of Games* (1982) was an immediate success and contributed to the birth of the field.
+Born in London, when he was at Eaton he decided to study (independently) the work of JBS Haldane. He set out to Cambridge to study engineering, and subsequently worked as an engineer designing military aircrafts. In 1947, he had a change of hearth and decided to study *Drosophila* genetics at U.C.L. under Haldane. In 1973, based on his interaction with George Price, he formalized the concept of "Evolutionary Stable Strategy", which became central to evolutionary game theory. His book *Evolution and the Theory of Games* (1982) was an immediate success and contributed to the birth of the field.
 
 :::
 
@@ -149,7 +149,7 @@ $$
 
 The RE is essentially equivalent to a GLV model in which we track frequencies instead of abundances. 
 
-Importantly, we can see $x$ as a "mixed strategy" for the symmetric game encoded in $A$. In this context, **an equilibrium of the replicator equation is a Nash Equilibrium for the game**; similarly, **a stable equilibrium for the replicator equation is an Evolutionary Stable Strategy**.
+Importantly, we can see $x$ as a "mixed strategy" for the symmetric game encoded in $A$. In this context, **a Nash Equilibrium for the game is an an equilibrium of the replicator equation**; similarly, **an Evolutionary Stable Strategy for the game is a stable equilibrium for the replicator equation**. As we will see later, the converse is not true: we could have a stable equilibrium of the RE which is not an ESS.
 
 ### Invariants
 
@@ -228,6 +228,26 @@ x0 <- rep(1/3, 3) + 0.05 * runif(3)
 x0 <- x0 / sum(x0)
 rps <- integrate_RE(A, x0)
 ```
+
+### Existence of an equilibrium
+
+### Stability of the RE
+
+First, we examine the case of a symmetric matrix of payoffs $A = A^T$. In this case, the two players have exactly the same interests---this type of games is sometimes called *partnership game*. One might expect that, given that the two players have a shared interest, the average payoff would grow in time. This is indeed the case, and in fact the average payoff is a Lyapunov function for the system.
+
+Take $A = A^T$, then the average payoff $W = x^T A x$ can only grow in time:
+
+$$
+\dot{W} = x^T A \dot{x} + \dot{x}^T A x = x^T A \dot{x} + x^T A^T \dot{x} = 2 x^T A \dot{x}
+$$
+
+Expanding $\dot{x}$, and writing this in component form, we obtain:
+
+$$
+\dot{W} = 2 x^T A D(x) (Ax - x^T A x 1)
+$$
+
+Now we note that $x^T (Ax - x^T A x 1) = x^T A x - x^T A x x^T 1 = 0$. We therefore add $x^T ((x^T A x) (Ax - ))
 
 ### Equivalence with GLV
 
