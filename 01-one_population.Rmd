@@ -27,6 +27,47 @@ $$
 
 In general, we will examine cases in which $f(x(t))$ is a nonlinear function of $x(t)$. We typically deal with **deterministic** systems, in which randomness plays no role in determining future states. Stochastic differential equations (SDEs), on the other hand, include random components.
 
+
+:::boxmath
+
+**Higher-order ODEs**
+
+Differential equations containing higher-order derivatives can be re-written as a system of first-order differential equations. 
+
+For example, consider:
+
+$$
+\frac{d^2 x(t)}{d t^2} = \alpha + \beta x(t) + \gamma \frac{d x(t)}{d t}
+$$
+
+which we can rewrite more compactly as:
+
+$$
+\ddot{x} = \alpha + \beta x + \gamma \dot{x}
+$$
+
+define the variables:
+
+$$
+\begin{aligned}
+y_1 = x\\
+y_2 = \dot{x}
+\end{aligned}
+$$
+
+thus, $\dot{y}_1 = \dot{x} = y_2$, and $\dot{y_2} = \ddot{x}$; we obtain:
+
+$$
+\begin{cases}
+\dot{y}_1 = y_2\\
+\dot{y}_2 = \alpha + \beta y_1 + \gamma y_2
+\end{cases}
+$$
+
+which is equivalent to the original equation. 
+
+:::
+
 ## Initial-value problems
 
 Typically, we would like to track the dynamics of a population in time, starting from known initial conditions. For example,
@@ -39,11 +80,11 @@ where the independent variable $t$ denotes time, and is considered non-negative.
 
 The simplest and most common case in ecology is that in which $f$ is (infinitely) many times continuously differentiable, a.k.a. *smooth*. If this is the case, then **the solution $x(t)$ exists and is unique**.
 
-In ecological models, dynamics are invariant with respect to  the non-negative orthant $\mathbb{R}^n_{0+}$, i.e., the vector $x(t)$ remains non-negative whenever initialized at non-negative initial conditions $x_0 \in \mathbb{R}^n_{0+}$. The function $f$ is *essentially non-negative* if whenever $x_i = 0$, then $f_i(x) \geq 0$ for all $x \in \mathbb{R}^n_{0+}$. A dynamical system is non-negative only if $f$ is essentially non-negative.
+In ecological models, dynamics are invariant with respect to  the non-negative orthant $\mathbb{R}^n_{0+}$, i.e., the vector $x(t)$ remains non-negative whenever initialized at non-negative initial conditions $x_0 \in \mathbb{R}^n_{0+}$. 
 
 We can solve the (system of) ODE(s) if we can write an explicit equation for $x(t)$ given the parameters and the initial conditions. 
 
-In practice, we rarely can solve the equations we're interested in. We can however prove that, if $f(x(t))$ is sufficiently well-behaved (technically, if $f(x)$ is  Lipschitz continuous, for example, if it has bounded derivatives), then the initial-value problem above has a solution, the solution is unique, and depends continuously on the intial conditions and the parameters. This means that if we start the system at any point $x(t)= x_t$, we cannot have multiple trajectories intersecting.
+In practice, we rarely can solve the equations we're interested in. We can however prove that, if $f(x(t))$ is sufficiently well-behaved (technically, if $f(x)$ is  Lipschitz continuous, for example, if it has bounded derivatives), then the initial-value problem above has a solution, the solution is unique, and depends continuously on the initial conditions and the parameters. This means that if we start the system at any point $x(t)= x_t$, we cannot have multiple trajectories intersecting.
 
 ## Solvable model: Exponential growth
 
@@ -162,7 +203,7 @@ which provides an explicit solution for this (very simple) model.
 :::boxhomework
 
 **Homework 1a**
-
+<!--
 Find the solution for the logistic growth with harvesting:
 
 $$
@@ -171,6 +212,17 @@ $$
 where $1 > \eta > 0$ is the proportion of individuals being harvested.
 
 Suppose that we want to maximize the amount we can harvest, and that we want to be able to sustain this harvest indefinitely. What level $\eta$ should we choose?
+-->
+
+Sometimes the growth of bacteria is modeled using the Gompertz model:
+
+$$
+\dfrac{d x(t)}{dt} = \alpha\, x(t) \log\left(\frac{K}{x(t)}\right) 
+$$
+
+where $\alpha$ and $K$ are positive parameters. Solve the model for initial condition $x(0) = x_0$.
+
+Simulate the growth when $K = 10$ and $\alpha = 1$, with starting conditions $x(0) = 20$ and $x(0) = 0.1$.
 
 :::
 

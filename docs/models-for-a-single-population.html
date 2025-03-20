@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Lecture 1 Models for a single population | Theoretical Community Ecology</title>
   <meta name="description" content="A graduate course in theoretical community ecology focusing on systems with multiple species." />
-  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Lecture 1 Models for a single population | Theoretical Community Ecology" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2025-03-15" />
+<meta name="date" content="2025-03-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -369,6 +369,33 @@ div.csl-indent {
 \dfrac{d x(t)}{d t} = \dot{x}(t) = f(x(t))
 \]</span></p>
 <p>In general, we will examine cases in which <span class="math inline">\(f(x(t))\)</span> is a nonlinear function of <span class="math inline">\(x(t)\)</span>. We typically deal with <strong>deterministic</strong> systems, in which randomness plays no role in determining future states. Stochastic differential equations (SDEs), on the other hand, include random components.</p>
+<div class="boxmath">
+<p><strong>Higher-order ODEs</strong></p>
+<p>Differential equations containing higher-order derivatives can be re-written as a system of first-order differential equations.</p>
+<p>For example, consider:</p>
+<p><span class="math display">\[
+\frac{d^2 x(t)}{d t^2} = \alpha + \beta x(t) + \gamma \frac{d x(t)}{d t}
+\]</span></p>
+<p>which we can rewrite more compactly as:</p>
+<p><span class="math display">\[
+\ddot{x} = \alpha + \beta x + \gamma \dot{x}
+\]</span></p>
+<p>define the variables:</p>
+<p><span class="math display">\[
+\begin{aligned}
+y_1 = x\\
+y_2 = \dot{x}
+\end{aligned}
+\]</span></p>
+<p>thus, <span class="math inline">\(\dot{y}_1 = \dot{x} = y_2\)</span>, and <span class="math inline">\(\dot{y_2} = \ddot{x}\)</span>; we obtain:</p>
+<p><span class="math display">\[
+\begin{cases}
+\dot{y}_1 = y_2\\
+\dot{y}_2 = \alpha + \beta y_1 + \gamma y_2
+\end{cases}
+\]</span></p>
+<p>which is equivalent to the original equation.</p>
+</div>
 </div>
 <div id="initial-value-problems" class="section level2 hasAnchor" number="1.2">
 <h2><span class="header-section-number">1.2</span> Initial-value problems<a href="models-for-a-single-population.html#initial-value-problems" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -378,9 +405,9 @@ div.csl-indent {
 \]</span></p>
 <p>where the independent variable <span class="math inline">\(t\)</span> denotes time, and is considered non-negative. The vector <span class="math inline">\(x(t)\)</span> tracks the abundance or density of the populations at time <span class="math inline">\(t\)</span>, <span class="math inline">\(x(t) \in \mathbb{R}^n\)</span>, and the function <span class="math inline">\(f\)</span> models the evolution of the system, mapping <span class="math inline">\(\mathbb{R}^n \to \mathbb{R}^n\)</span>. The vector <span class="math inline">\(x_0 = x(0) \in \mathbb{R}^n\)</span> marks the <em>initial condition</em> of the system.</p>
 <p>The simplest and most common case in ecology is that in which <span class="math inline">\(f\)</span> is (infinitely) many times continuously differentiable, a.k.a. <em>smooth</em>. If this is the case, then <strong>the solution <span class="math inline">\(x(t)\)</span> exists and is unique</strong>.</p>
-<p>In ecological models, dynamics are invariant with respect to the non-negative orthant <span class="math inline">\(\mathbb{R}^n_{0+}\)</span>, i.e., the vector <span class="math inline">\(x(t)\)</span> remains non-negative whenever initialized at non-negative initial conditions <span class="math inline">\(x_0 \in \mathbb{R}^n_{0+}\)</span>. The function <span class="math inline">\(f\)</span> is <em>essentially non-negative</em> if whenever <span class="math inline">\(x_i = 0\)</span>, then <span class="math inline">\(f_i(x) \geq 0\)</span> for all <span class="math inline">\(x \in \mathbb{R}^n_{0+}\)</span>. A dynamical system is non-negative only if <span class="math inline">\(f\)</span> is essentially non-negative.</p>
+<p>In ecological models, dynamics are invariant with respect to the non-negative orthant <span class="math inline">\(\mathbb{R}^n_{0+}\)</span>, i.e., the vector <span class="math inline">\(x(t)\)</span> remains non-negative whenever initialized at non-negative initial conditions <span class="math inline">\(x_0 \in \mathbb{R}^n_{0+}\)</span>.</p>
 <p>We can solve the (system of) ODE(s) if we can write an explicit equation for <span class="math inline">\(x(t)\)</span> given the parameters and the initial conditions.</p>
-<p>In practice, we rarely can solve the equations we’re interested in. We can however prove that, if <span class="math inline">\(f(x(t))\)</span> is sufficiently well-behaved (technically, if <span class="math inline">\(f(x)\)</span> is Lipschitz continuous, for example, if it has bounded derivatives), then the initial-value problem above has a solution, the solution is unique, and depends continuously on the intial conditions and the parameters. This means that if we start the system at any point <span class="math inline">\(x(t)= x_t\)</span>, we cannot have multiple trajectories intersecting.</p>
+<p>In practice, we rarely can solve the equations we’re interested in. We can however prove that, if <span class="math inline">\(f(x(t))\)</span> is sufficiently well-behaved (technically, if <span class="math inline">\(f(x)\)</span> is Lipschitz continuous, for example, if it has bounded derivatives), then the initial-value problem above has a solution, the solution is unique, and depends continuously on the initial conditions and the parameters. This means that if we start the system at any point <span class="math inline">\(x(t)= x_t\)</span>, we cannot have multiple trajectories intersecting.</p>
 </div>
 <div id="solvable-model-exponential-growth" class="section level2 hasAnchor" number="1.3">
 <h2><span class="header-section-number">1.3</span> Solvable model: Exponential growth<a href="models-for-a-single-population.html#solvable-model-exponential-growth" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -464,13 +491,23 @@ x(t) = \dfrac{x_0 \, e^{\rho\, t}}{1 + \alpha\, x_0 \, (e^{\rho\, t} - 1)}
 \]</span></p>
 <p>which provides an explicit solution for this (very simple) model.</p>
 <div class="boxhomework">
-<p><strong>Homework 1a</strong></p>
-<p>Find the solution for the logistic growth with harvesting:</p>
-<p><span class="math display">\[
+<p><strong>Homework 1a</strong>
+<!--
+Find the solution for the logistic growth with harvesting:
+
+$$
 \dfrac{d x(t)}{dt} = \rho\, x(t) (1 - \alpha\, x(t)) - \eta\, x(t)
-\]</span>
-where <span class="math inline">\(1 &gt; \eta &gt; 0\)</span> is the proportion of individuals being harvested.</p>
-<p>Suppose that we want to maximize the amount we can harvest, and that we want to be able to sustain this harvest indefinitely. What level <span class="math inline">\(\eta\)</span> should we choose?</p>
+$$
+where $1 > \eta > 0$ is the proportion of individuals being harvested.
+
+Suppose that we want to maximize the amount we can harvest, and that we want to be able to sustain this harvest indefinitely. What level $\eta$ should we choose?
+--></p>
+<p>Sometimes the growth of bacteria is modeled using the Gompertz model:</p>
+<p><span class="math display">\[
+\dfrac{d x(t)}{dt} = \alpha\, x(t) \log\left(\frac{K}{x(t)}\right)
+\]</span></p>
+<p>where <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(K\)</span> are positive parameters. Solve the model for initial condition <span class="math inline">\(x(0) = x_0\)</span>.</p>
+<p>Simulate the growth when <span class="math inline">\(K = 10\)</span> and <span class="math inline">\(\alpha = 1\)</span>, with starting conditions <span class="math inline">\(x(0) = 20\)</span> and <span class="math inline">\(x(0) = 0.1\)</span>.</p>
 </div>
 </div>
 <div id="qualitative-analysis-of-models-for-a-single-population" class="section level2 hasAnchor" number="1.5">
@@ -668,42 +705,42 @@ Strogatz, S. H. 2018. Nonlinear dynamics and chaos: With applications to physics
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-  "sharing": {
-    "github": false,
-    "facebook": true,
-    "twitter": true,
-    "linkedin": false,
-    "weibo": false,
-    "instapaper": false,
-    "vk": false,
-    "whatsapp": false,
-    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-  },
-  "fontsettings": {
-    "theme": "white",
-    "family": "sans",
-    "size": 2
-  },
-  "edit": {
-    "link": null,
-    "text": null
-  },
-  "history": {
-    "link": null,
-    "text": null
-  },
-  "view": {
-    "link": null,
-    "text": null
-  },
-  "download": ["Theoretical_Community_Ecology.pdf", "Theoretical_Community_Ecology.epub"],
-  "search": {
-    "engine": "fuse",
-    "options": null
-  },
-  "toc": {
-    "collapse": "subsection"
-  }
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Theoretical_Community_Ecology.pdf", "Theoretical_Community_Ecology.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
 });
 });
 </script>
