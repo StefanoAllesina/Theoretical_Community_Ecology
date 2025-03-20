@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Lecture 7 Game theory and replicator dynamics | Theoretical Community Ecology</title>
   <meta name="description" content="A graduate course in theoretical community ecology focusing on systems with multiple species." />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Lecture 7 Game theory and replicator dynamics | Theoretical Community Ecology" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2025-03-05" />
+<meta name="date" content="2025-03-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -299,10 +299,12 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="7.6.1" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#invariants"><i class="fa fa-check"></i><b>7.6.1</b> Invariants</a></li>
 <li class="chapter" data-level="7.6.2" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#rock-paper-scissor"><i class="fa fa-check"></i><b>7.6.2</b> Rock-paper-scissor</a></li>
-<li class="chapter" data-level="7.6.3" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#equivalence-with-glv"><i class="fa fa-check"></i><b>7.6.3</b> Equivalence with GLV</a></li>
-<li class="chapter" data-level="7.6.4" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#hypertournament-games"><i class="fa fa-check"></i><b>7.6.4</b> Hypertournament games</a></li>
-<li class="chapter" data-level="7.6.5" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#lyapunov-function"><i class="fa fa-check"></i><b>7.6.5</b> Lyapunov function</a></li>
-<li class="chapter" data-level="7.6.6" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#higher-order-interactions"><i class="fa fa-check"></i><b>7.6.6</b> Higher-order interactions</a></li>
+<li class="chapter" data-level="7.6.3" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#existence-of-an-equilibrium-2"><i class="fa fa-check"></i><b>7.6.3</b> Existence of an equilibrium</a></li>
+<li class="chapter" data-level="7.6.4" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#stability-of-the-re"><i class="fa fa-check"></i><b>7.6.4</b> Stability of the RE</a></li>
+<li class="chapter" data-level="7.6.5" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#equivalence-with-glv"><i class="fa fa-check"></i><b>7.6.5</b> Equivalence with GLV</a></li>
+<li class="chapter" data-level="7.6.6" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#hypertournament-games"><i class="fa fa-check"></i><b>7.6.6</b> Hypertournament games</a></li>
+<li class="chapter" data-level="7.6.7" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#lyapunov-function"><i class="fa fa-check"></i><b>7.6.7</b> Lyapunov function</a></li>
+<li class="chapter" data-level="7.6.8" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#higher-order-interactions"><i class="fa fa-check"></i><b>7.6.8</b> Higher-order interactions</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html"><i class="fa fa-check"></i><b>8</b> Metapopulation dynamics on networks</a>
@@ -351,16 +353,17 @@ div.csl-indent {
 <h1><span class="header-section-number">Lecture 7</span> Game theory and replicator dynamics<a href="game-theory-and-replicator-dynamics.html#game-theory-and-replicator-dynamics" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="game-theory" class="section level2 hasAnchor" number="7.1">
 <h2><span class="header-section-number">7.1</span> Game theory<a href="game-theory-and-replicator-dynamics.html#game-theory" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>We briefly introduce the study of mathematical models of games, and their relations to the GLV model. While the origin of game theory can be traced back to the 1700s, modern game theory started with von Neumann’s paper <em>On the Theory of Games of Strategy</em>, published in 1928, and with the subsequent 1944 book with Morgensten <em>Theory of Games and Economic Behavior</em>. John Nash’s paper <span class="citation">(<a href="#ref-nash1950equilibrium">Nash 1950</a>)</span> introduced the notion of a <strong>Nash Equilibrium</strong> (NE), and proved that any non-cooperative game has at least one such equilibrium. Originally, game theory was studied by economists and mathematicians, but with a series of papers in the early 1970s, and the subsequent book <em>Evolution and the Theory of Games</em> <span class="citation">(<a href="#ref-smith1982evolution">Maynard Smith 1982</a>)</span>, John Maynard Smith showed how the same tools could be used to study evolutionary dynamics, introducing the influential concept of an <strong>Evolutionary Stable Strategy</strong> (ESS). Evolutionary game theory was greatly advanced through the introduction of the <strong>Replicator Equation</strong> (RE), which, as we will see later, has strong connection with the GLV model. For a detailaed introduction to evolutionary game theory see <span class="citation">Hofbauer and Sigmund (<a href="#ref-hofbauer1998evolutionary">1998</a>)</span>.</p>
+<p>We briefly introduce the study of mathematical models of games, and their relations to the GLV model.</p>
+<p>While the origin of the discipline can be traced back to the 1700s, modern game theory started with von Neumann’s paper <em>On the Theory of Games of Strategy</em>, published in 1928, and with the subsequent 1944 book with Morgensten <em>Theory of Games and Economic Behavior</em>. John Nash’s paper <span class="citation">(<a href="#ref-nash1950equilibrium">Nash 1950</a>)</span> introduced the notion of a <strong>Nash Equilibrium</strong> (NE), and proved that any non-cooperative game has at least one such equilibrium. Originally, game theory was studied by economists and mathematicians, but with a series of papers in the early 1970s, and the subsequent book <em>Evolution and the Theory of Games</em> <span class="citation">(<a href="#ref-smith1982evolution">Maynard Smith 1982</a>)</span>, John Maynard Smith showed how the same tools could be used to study evolutionary dynamics, introducing the influential concept of an <strong>Evolutionary Stable Strategy</strong> (ESS). Evolutionary game theory was greatly advanced through the introduction of the <strong>Replicator Equation</strong> (RE), which, as we will see later, has strong connection with the GLV model. For a detailed introduction to evolutionary game theory see <span class="citation">Hofbauer and Sigmund (<a href="#ref-hofbauer1998evolutionary">1998</a>)</span>.</p>
 <div class="boxhistory">
 <p><strong>History: John Maynard Smith (1920-2004)</strong></p>
 <p><img src="img/Maynard_Smith.jpg" width="35%" style="display: block; margin: auto;" /></p>
-<p>Born in London, when he was at Eaton he decided to study (independently) the work of JBS Haldane. He set out to Cambridge to study engineering, and subsequently worked as an engineer designing military aircrafts. In 1947, he had a change of hearth and decided to study <em>Drosophila</em> genetics at U.C.L. under Haldane. In 1973, based on his interaction with George Price, he formalized the concept of “Evolutionarily Stable Strategy”, which became central to evolutionary game theory. His book <em>Evolution and the Theory of Games</em> (1982) was an immediate success and contributed to the birth of the field.</p>
+<p>Born in London, when he was at Eaton he decided to study (independently) the work of JBS Haldane. He set out to Cambridge to study engineering, and subsequently worked as an engineer designing military aircrafts. In 1947, he had a change of hearth and decided to study <em>Drosophila</em> genetics at U.C.L. under Haldane. In 1973, based on his interaction with George Price, he formalized the concept of “Evolutionary Stable Strategy”, which became central to evolutionary game theory. His book <em>Evolution and the Theory of Games</em> (1982) was an immediate success and contributed to the birth of the field.</p>
 </div>
 <div class="boxhistory">
 <p><strong>History: George R. Price (1922-1975)</strong></p>
 <p><img src="img/price.jpg" width="35%" style="display: block; margin: auto;" /></p>
-<p>One of the most remarkable characters in the history of biology, he was born in New York. He studied chemistry at U. Chicago, receiving a Ph.D. in 1946 (for work connected to the Manhattan Project). He went on to take a variery of jobs: teaching chemistry at Harvard, consulting at Argonne, researching at Bell Lab, writing popular science, working on medical research at U. Minnesota, and consulting for IBM on computer graphics.</p>
+<p>One of the most remarkable characters in the history of biology, he was born in New York. He studied chemistry at U. Chicago, receiving a PhD in 1946 (for work connected to the Manhattan Project). He went on to take a variety of jobs: teaching chemistry at Harvard, consulting at Argonne, researching at Bell Lab, writing popular science, working on medical research at U. Minnesota, and consulting for IBM on computer graphics.</p>
 <p>In 1966, he was operated for a tumor, and the operation resulted in a partial paralysis. With the money from his medical insurance, he moved to the UK to start a new life.</p>
 <p>Without any training in population genetics or statistics, he devised the Price equation, based on his readings of Hamilton’s papers on kin selection. This feat landed him a job at Galton Lab at UCL, despite his lack of credentials. His collaborations with Hamilton and Maynard-Smith led to the development of evolutionary game theory.</p>
 <p>A strong atheist from an early age, in 1970 Price had a religious experience, converted to Christianity and started (inspired by his own equation) to perform acts of random kindness to complete strangers. Having given up all his possessions, and possibly due to his stopping of thyroid treatment, Price grew depressed and committed suicide in 1975.</p>
@@ -369,7 +372,9 @@ div.csl-indent {
 </div>
 <div id="two-player-matrix-games" class="section level2 hasAnchor" number="7.2">
 <h2><span class="header-section-number">7.2</span> Two-player matrix games<a href="game-theory-and-replicator-dynamics.html#two-player-matrix-games" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>We start by anayzing games in which two players face each other, each choosing one strategy out of a set. Importantly, we consider static games in which each player makes their decision without having knowledge of the decision of the other player. Player 1 chooses a <strong>pure strategy</strong> <span class="math inline">\(s_1\)</span> from the set of pure strategies <span class="math inline">\(S_1\)</span>, while player 2 chooses <span class="math inline">\(s_2 \in S_2\)</span>. We call <span class="math inline">\(\pi_k (s_1, s_2)\)</span> the <strong>payoff</strong> for player <span class="math inline">\(k\)</span> when player 1 chooses <span class="math inline">\(s_1\)</span> and player 2 <span class="math inline">\(s_2\)</span>. In a matrix game, we can arrange the payoffs for each player in a matrix. We call <span class="math inline">\(A\)</span> the matrix of payoffs for player one and <span class="math inline">\(B\)</span> that for player two.</p>
+<p>We start by analyzing games in which two players face each other, each choosing one strategy out of a set. Importantly, we consider static games in which each player makes their decision without having knowledge of the decision of the other player.</p>
+<p>Player 1 chooses a <strong>pure strategy</strong> <span class="math inline">\(s_1\)</span> from the set of pure strategies <span class="math inline">\(S_1\)</span>, while player 2 chooses <span class="math inline">\(s_2 \in S_2\)</span>. We call <span class="math inline">\(\pi_k (s_1, s_2)\)</span> the <strong>payoff</strong> for player <span class="math inline">\(k\)</span> when player 1 chooses <span class="math inline">\(s_1\)</span> and player 2 <span class="math inline">\(s_2\)</span>.</p>
+<p>In a matrix game, we can arrange the payoffs for each player in a matrix. We call <span class="math inline">\(A\)</span> the matrix of payoffs for player one and <span class="math inline">\(B\)</span> that for player two.</p>
 <div id="example-the-prisoners-dilemma" class="section level3 hasAnchor" number="7.2.1">
 <h3><span class="header-section-number">7.2.1</span> Example: the prisoner’s dilemma<a href="game-theory-and-replicator-dynamics.html#example-the-prisoners-dilemma" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Two prisoners allegedly committed a crime, but the police do not have enough evidence to convict them. They therefore approach each prisoner separately, proposing a deal: if the prisoner confesses (“defect” the other prisoner), then their sentence will be reduced. In particular: i) if both confess (both “defect”), they are sentenced to 4 years in prison; ii) if one confesses (“defect”) and the other keeps quiet (“cooperate” with the other prisoner), then the one who has confessed is let free, and the other sentenced to 5 years; iii) if both keep quiet (“cooperate”), then they are both sentenced to two years of detention for some accessory crime.</p>
@@ -391,7 +396,7 @@ B = \begin{pmatrix}
 <p><strong>Key paper: <span class="citation">Axelrod and Hamilton (<a href="#ref-axelrod1981evolution">1981</a>)</span></strong></p>
 <p>The seminal paper in this area. Interestingly, it details the outcome of a computer-based tournament in which several programs iteratively play the prisoner’s dilemma against each other.</p>
 <p><strong>Key paper: <span class="citation">Clutton-Brock (<a href="#ref-clutton2009cooperation">2009</a>)</span></strong></p>
-<p>An opinionated review on cooperation between non-kin in animal societies. The opening <em>“As Darwin appreciated, cooperative behaviour—actions adapted to assist others that involve costs to the fitness of participants—poses a fundamental problem to the traditional theory of natural selection”</em> succinlty summarizes why the evolution of cooperation is such a central problem in biology.</p>
+<p>An opinionated review on cooperation between non-kin in animal societies. The opening <em>“As Darwin appreciated, cooperative behaviour—actions adapted to assist others that involve costs to the fitness of participants—poses a fundamental problem to the traditional theory of natural selection”</em>, a succinct summary of why the evolution of cooperation is such a central problem in biology.</p>
 <p><strong>Key paper: <span class="citation">Nowak and May (<a href="#ref-nowak1992evolutionary">1992</a>)</span></strong></p>
 <p>Nowak and May examine the case in which populations of “cooperators” and “defectors” play the prisoner’s dilemma in a spatial setting. Despite the simple setting and the deterministic nature of the simulation, they find long-term coexistence of the different populations, giving rise to amazing spatial patterns.</p>
 <p><strong>Key paper: <span class="citation">Nowak and Sigmund (<a href="#ref-nowak2005evolution">2005</a>)</span></strong></p>
@@ -444,7 +449,7 @@ x^T A x \geq y^T A x \quad \text{for all } y
 \dfrac{d x_i}{dt} = x_i (f_i - \bar{f})
 \]</span></p>
 <p>The RE is essentially equivalent to a GLV model in which we track frequencies instead of abundances.</p>
-<p>Importantly, we can see <span class="math inline">\(x\)</span> as a “mixed strategy” for the symmetric game encoded in <span class="math inline">\(A\)</span>. In this context, <strong>an equilibrium of the replicator equation is a Nash Equilibrium for the game</strong>; similarly, <strong>a stable equilibrium for the replicator equation is an Evolutionary Stable Strategy</strong>.</p>
+<p>Importantly, we can see <span class="math inline">\(x\)</span> as a “mixed strategy” for the symmetric game encoded in <span class="math inline">\(A\)</span>. In this context, <strong>a Nash Equilibrium for the game is an an equilibrium of the replicator equation</strong>; similarly, <strong>an Evolutionary Stable Strategy for the game is a stable equilibrium for the replicator equation</strong>. As we will see later, the converse is not true: we could have a stable equilibrium of the RE which is not an ESS.</p>
 <div id="invariants" class="section level3 hasAnchor" number="7.6.1">
 <h3><span class="header-section-number">7.6.1</span> Invariants<a href="game-theory-and-replicator-dynamics.html#invariants" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Adding a constant to each column of <span class="math inline">\(A\)</span> does not alter the dynamics. We have <span class="math inline">\(B = A + e b^T\)</span>, where <span class="math inline">\(e\)</span> is a vector of ones. Then:</p>
@@ -511,8 +516,24 @@ A = \begin{pmatrix}
 <span id="cb66-3"><a href="game-theory-and-replicator-dynamics.html#cb66-3" tabindex="-1"></a>rps <span class="ot">&lt;-</span> <span class="fu">integrate_RE</span>(A, x0)</span></code></pre></div>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/rps3-1.png" width="480" style="display: block; margin: auto;" /></p>
 </div>
-<div id="equivalence-with-glv" class="section level3 hasAnchor" number="7.6.3">
-<h3><span class="header-section-number">7.6.3</span> Equivalence with GLV<a href="game-theory-and-replicator-dynamics.html#equivalence-with-glv" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="existence-of-an-equilibrium-2" class="section level3 hasAnchor" number="7.6.3">
+<h3><span class="header-section-number">7.6.3</span> Existence of an equilibrium<a href="game-theory-and-replicator-dynamics.html#existence-of-an-equilibrium-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="stability-of-the-re" class="section level3 hasAnchor" number="7.6.4">
+<h3><span class="header-section-number">7.6.4</span> Stability of the RE<a href="game-theory-and-replicator-dynamics.html#stability-of-the-re" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>First, we examine the case of a symmetric matrix of payoffs <span class="math inline">\(A = A^T\)</span>. In this case, the two players have exactly the same interests—this type of games is sometimes called <em>partnership game</em>. One might expect that, given that the two players have a shared interest, the average payoff would grow in time. This is indeed the case, and in fact the average payoff is a Lyapunov function for the system.</p>
+<p>Take <span class="math inline">\(A = A^T\)</span>, then the average payoff <span class="math inline">\(W = x^T A x\)</span> can only grow in time:</p>
+<p><span class="math display">\[
+\dot{W} = x^T A \dot{x} + \dot{x}^T A x = x^T A \dot{x} + x^T A^T \dot{x} = 2 x^T A \dot{x}
+\]</span></p>
+<p>Expanding <span class="math inline">\(\dot{x}\)</span>, and writing this in component form, we obtain:</p>
+<p><span class="math display">\[
+\dot{W} = 2 x^T A D(x) (Ax - x^T A x 1)
+\]</span></p>
+<p>Now we note that <span class="math inline">\(x^T (Ax - x^T A x 1) = x^T A x - x^T A x x^T 1 = 0\)</span>. We therefore add $x^T ((x^T A x) (Ax - ))</p>
+</div>
+<div id="equivalence-with-glv" class="section level3 hasAnchor" number="7.6.5">
+<h3><span class="header-section-number">7.6.5</span> Equivalence with GLV<a href="game-theory-and-replicator-dynamics.html#equivalence-with-glv" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>For a given <span class="math inline">\(n-\)</span>species GLV system, there is an equivalent <span class="math inline">\((n+1)-\)</span>dimensional replicator equation with zeros in the last row of the matrix.</p>
 <p>Take the GLV model with <span class="math inline">\(n\)</span> species:</p>
 <p><span class="math display">\[
@@ -691,8 +712,8 @@ y_i = \dfrac{x_i}{\sum_j x_j}
 <p>In this brief paper, Page and Nowak show that the replicator-mutator equation and the Price equation are two ways of tracking general evolutionary dynamics. They discuss the connections with GLV and adaptive dynamics.</p>
 </div>
 </div>
-<div id="hypertournament-games" class="section level3 hasAnchor" number="7.6.4">
-<h3><span class="header-section-number">7.6.4</span> Hypertournament games<a href="game-theory-and-replicator-dynamics.html#hypertournament-games" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="hypertournament-games" class="section level3 hasAnchor" number="7.6.6">
+<h3><span class="header-section-number">7.6.6</span> Hypertournament games<a href="game-theory-and-replicator-dynamics.html#hypertournament-games" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The rock-paper-scissor game above is a simple case of a “hypertournament” game. Take the zero-sum payoff matrix <span class="math inline">\(A = -A^T\)</span>. Then, we have</p>
 <p><span class="math display">\[
 \sum_i \sum_j A_{ij} x_i x_j = 0
@@ -706,8 +727,8 @@ y_i = \dfrac{x_i}{\sum_j x_j}
 A x^\star = 0
 \]</span></p>
 <p>meaning that if a feasible equilibrium <span class="math inline">\(x^\star\)</span> exists, it is an eigenvector of <span class="math inline">\(A\)</span> corresponding to a zero eigenvalue.</p>
-<div id="number-of-coexisting-species" class="section level4 hasAnchor" number="7.6.4.1">
-<h4><span class="header-section-number">7.6.4.1</span> Number of coexisting species<a href="game-theory-and-replicator-dynamics.html#number-of-coexisting-species" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="number-of-coexisting-species" class="section level4 hasAnchor" number="7.6.6.1">
+<h4><span class="header-section-number">7.6.6.1</span> Number of coexisting species<a href="game-theory-and-replicator-dynamics.html#number-of-coexisting-species" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>We now show how the equations above can arise when modeling ecological dynamics. Suppose that a forest is composed of a fixed number of trees. Each time a tree dies (with rate <span class="math inline">\(d = 1\)</span> for all species), a gap in the canopy opens, and species will compete to colonize it. Let’s assume that two seeds (sampled with probability proportional to the density of the species) land in the empty patch, and that they compete to fill the gap. Call <span class="math inline">\(H_{ij}\)</span> the probability that <span class="math inline">\(i\)</span> wins when competing with <span class="math inline">\(j\)</span>; we have <span class="math inline">\(H_{ij} + H_{ji} = 1\)</span>. We can write the dynamics <span class="citation">(<a href="#ref-grilli2017higher">Grilli et al. 2017</a>)</span> as:</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -756,8 +777,8 @@ A x^\star = 0
 <p><img src="Theoretical_Community_Ecology_files/figure-html/coexistlphist-1.png" width="480" style="display: block; margin: auto;" /></p>
 </div>
 </div>
-<div id="lyapunov-function" class="section level3 hasAnchor" number="7.6.5">
-<h3><span class="header-section-number">7.6.5</span> Lyapunov function<a href="game-theory-and-replicator-dynamics.html#lyapunov-function" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="lyapunov-function" class="section level3 hasAnchor" number="7.6.7">
+<h3><span class="header-section-number">7.6.7</span> Lyapunov function<a href="game-theory-and-replicator-dynamics.html#lyapunov-function" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In the rock-paper-scissor example above, species cycled neutrally around the unique equilibrium point. To show that this is in fact the behavior of this type of RE, we write a Lyapunov function. By finding a constant of motion we can show that the species will follow closed orbits.</p>
 <p>Suppose <span class="math inline">\(x_{i}^\star &gt; 0\)</span> is the equilibrium for the system. We write:</p>
 <p><span class="math display">\[
@@ -820,8 +841,8 @@ A = \begin{pmatrix}
 </ul>
 </div>
 </div>
-<div id="higher-order-interactions" class="section level3 hasAnchor" number="7.6.6">
-<h3><span class="header-section-number">7.6.6</span> Higher-order interactions<a href="game-theory-and-replicator-dynamics.html#higher-order-interactions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="higher-order-interactions" class="section level3 hasAnchor" number="7.6.8">
+<h3><span class="header-section-number">7.6.8</span> Higher-order interactions<a href="game-theory-and-replicator-dynamics.html#higher-order-interactions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We can extend the game above to the case in which three (or more) seeds compete to fill each patch. <span class="citation">Grilli et al. (<a href="#ref-grilli2017higher">2017</a>)</span> showed that in this case, one can write the replicator equation:</p>
 <p><span class="math display">\[
 \dfrac{d x_i}{dt} = x_i \sum_{j,k} A_{ijk} x_j x_k
@@ -935,42 +956,42 @@ Page, K. M., and M. A. Nowak. 2002. Unifying evolutionary dynamics. Journal of t
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["Theoretical_Community_Ecology.pdf", "Theoretical_Community_Ecology.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["Theoretical_Community_Ecology.pdf", "Theoretical_Community_Ecology.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

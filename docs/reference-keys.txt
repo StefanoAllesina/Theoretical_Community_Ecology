@@ -86,6 +86,8 @@ evolutionary-stable-strategies
 replicator-dynamics
 invariants
 rock-paper-scissor
+existence-of-an-equilibrium-2
+stability-of-the-re
 equivalence-with-glv
 hypertournament-games
 number-of-coexisting-species

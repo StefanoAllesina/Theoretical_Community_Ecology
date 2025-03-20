@@ -7,7 +7,9 @@ source("common_settings.R")
 
 ## Game theory
 
-We briefly introduce the study of mathematical models of games, and their relations to the GLV model. While the origin of game theory can be traced back to the 1700s, modern game theory started with von Neumann's paper *On the Theory of Games of Strategy*, published in 1928, and with the subsequent 1944 book with Morgensten *Theory of Games and Economic Behavior*. John Nash's paper [@nash1950equilibrium] introduced the notion of a **Nash Equilibrium** (NE), and proved that any non-cooperative game has at least one such equilibrium. Originally, game theory was studied by economists and mathematicians, but with a series of papers in the early 1970s, and the subsequent book *Evolution and the Theory of Games* [@smith1982evolution], John Maynard Smith showed how the same tools could be used to study evolutionary dynamics, introducing the influential concept of an **Evolutionary Stable Strategy** (ESS). Evolutionary game theory was greatly advanced through the introduction of the **Replicator Equation** (RE), which, as we will see later, has strong connection with the GLV model. For a detailed introduction to evolutionary game theory see @hofbauer1998evolutionary.
+We briefly introduce the study of mathematical models of games, and their relations to the GLV model. 
+
+While the origin of the discipline can be traced back to the 1700s, modern game theory started with von Neumann's paper *On the Theory of Games of Strategy*, published in 1928, and with the subsequent 1944 book with Morgensten *Theory of Games and Economic Behavior*. John Nash's paper [@nash1950equilibrium] introduced the notion of a **Nash Equilibrium** (NE), and proved that any non-cooperative game has at least one such equilibrium. Originally, game theory was studied by economists and mathematicians, but with a series of papers in the early 1970s, and the subsequent book *Evolution and the Theory of Games* [@smith1982evolution], John Maynard Smith showed how the same tools could be used to study evolutionary dynamics, introducing the influential concept of an **Evolutionary Stable Strategy** (ESS). Evolutionary game theory was greatly advanced through the introduction of the **Replicator Equation** (RE), which, as we will see later, has strong connection with the GLV model. For a detailed introduction to evolutionary game theory see @hofbauer1998evolutionary.
 
 :::boxhistory
 
@@ -29,7 +31,7 @@ Born in London, when he was at Eaton he decided to study (independently) the wor
 knitr::include_graphics('img/price.jpg')
 ```
 
-One of the most remarkable characters in the history of biology, he was born in New York. He studied chemistry at U. Chicago, receiving a Ph.D. in 1946 (for work connected to the Manhattan Project). He went on to take a variery of jobs: teaching chemistry at Harvard, consulting at Argonne, researching at Bell Lab, writing popular science, working on medical research at U. Minnesota, and consulting for IBM on computer graphics. 
+One of the most remarkable characters in the history of biology, he was born in New York. He studied chemistry at U. Chicago, receiving a PhD in 1946 (for work connected to the Manhattan Project). He went on to take a variety of jobs: teaching chemistry at Harvard, consulting at Argonne, researching at Bell Lab, writing popular science, working on medical research at U. Minnesota, and consulting for IBM on computer graphics. 
 
 In 1966, he was operated for a tumor, and the operation resulted in a partial paralysis. With the money from his medical insurance, he moved to the UK to start a new life. 
 
@@ -43,7 +45,11 @@ The book *The Price of Altruism: George Price and the Search for the Origins of 
 
 ## Two-player matrix games
 
-We start by anayzing games in which two players face each other, each choosing one strategy out of a set. Importantly, we consider static games in which each player makes their decision without having knowledge of the decision of the other player. Player 1 chooses a **pure strategy** $s_1$ from the set of pure strategies $S_1$, while player 2 chooses $s_2 \in S_2$. We call $\pi_k (s_1, s_2)$ the **payoff** for player $k$ when player 1 chooses $s_1$ and player 2 $s_2$. In a matrix game, we can arrange the payoffs for each player in a matrix. We call $A$ the matrix of payoffs for player one and $B$ that for player two. 
+We start by analyzing games in which two players face each other, each choosing one strategy out of a set. Importantly, we consider static games in which each player makes their decision without having knowledge of the decision of the other player. 
+
+Player 1 chooses a **pure strategy** $s_1$ from the set of pure strategies $S_1$, while player 2 chooses $s_2 \in S_2$. We call $\pi_k (s_1, s_2)$ the **payoff** for player $k$ when player 1 chooses $s_1$ and player 2 $s_2$. 
+
+In a matrix game, we can arrange the payoffs for each player in a matrix. We call $A$ the matrix of payoffs for player one and $B$ that for player two. 
 
 ### Example: the prisoner's dilemma
 
@@ -76,7 +82,7 @@ The seminal paper in this area. Interestingly, it details the outcome of a compu
 
 **Key paper: @clutton2009cooperation**
 
-An opinionated review on cooperation between non-kin in animal societies. The opening *"As Darwin appreciated, cooperative behaviour---actions adapted to assist others that involve costs to the fitness of participants---poses a fundamental problem to the traditional theory of natural selection"* succinlty summarizes why the evolution of cooperation is such a central problem in biology.
+An opinionated review on cooperation between non-kin in animal societies. The opening *"As Darwin appreciated, cooperative behaviour---actions adapted to assist others that involve costs to the fitness of participants---poses a fundamental problem to the traditional theory of natural selection"*, a succinct summary of why the evolution of cooperation is such a central problem in biology.
 
 **Key paper: @nowak1992evolutionary**
 
