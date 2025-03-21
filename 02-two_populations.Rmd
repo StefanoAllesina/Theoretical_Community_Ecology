@@ -36,7 +36,7 @@ where $x(t)$ is the density of the prey species at time $t$ and $y(t)$ that of t
 knitr::include_graphics('img/Lotka.jpg')
 ```
 
-Alfred Lotka was born to French-speaking American parents in Lemberg (then part of the Habsburg empire, now Lviv, Ukraine). He studied in France, Germany and England, receiving a BSc in 1901 and a DSc in 1912 from Birmingham university. He moved to the US in 1902, and worked at the US Patent office, as an editor of Scientific American, and as a statistician at the Metropolitan Life Insurance Company in NYC. He wrote more than a hundred papers and five books, spanning a large range of topics. He's best known for the book *Elements of Physical Biology*, his contributions to demography, and one of the first studies dealing with bibliometrics [@lotka1926frequency]. 
+Alfred Lotka was born to French-speaking American parents in Lemberg (then part of the Hapsburg empire, now Lviv, Ukraine). He studied in France, Germany and England, receiving a BSc in 1901 and a DSc in 1912 from Birmingham university. He moved to the US in 1902, and worked at the US Patent office, as an editor of Scientific American, and as a statistician at the Metropolitan Life Insurance Company in NYC. He wrote more than a hundred papers and five books, spanning a large range of topics. He's best known for the book *Elements of Physical Biology*, his contributions to demography, and one of the first studies dealing with bibliometrics [@lotka1926frequency]. 
 
 Starting in 1910 (reprinted as @lotka2002contribution) he investigated coupled differential equations relating to chemical as well as ecological dynamics. In @lotka1920analytical he studied a system of two ODEs that gave rise to perpetual oscillations: *"It was, therefore, with considerable surprise that the writer, on applying his method to certain special cases, found these to lead to undamped, and hence indefinitely continued, oscillations."* He went on to describe *"1. A species of organism $S_1$, a plant species, say, deriving its nourishment from a source presented in such large excess that the mass of the source may be considered constant during the period of time with which we are concerned. 2. A species $S_2$, for example a herbivorous animal species, feeding on $S_1$."* 
 
@@ -76,7 +76,7 @@ show(pl)
 
 You can see that the population densities, when drawn in the "phase plane" cycle counterclockwise. Let's try to understand why.
 
-The equation for the prey is zero either when $x(t) = 0$ or when $\rho - \alpha\,y(t) = 0$, yielding $y(t) = \rho / \alpha$. Whenever the density of the predator $y(t) < \rho / \alpha$, prey will grow; conversely, whenever $y(t) > \rho / \alpha$, prey will decline. 
+The equation for the prey is zero either when $x(t) = 0$ or when $\rho - \alpha\,y(t) = 0$, yielding $y(t) = \rho / \alpha$. Whenever the density of the predator $y(t) < \rho / \alpha$, the prey will grow; conversely, whenever $y(t) > \rho / \alpha$, the prey will decline. 
 
 Graphically:
 
@@ -123,7 +123,7 @@ But how do we know whether dynamics will cycle toward the equilibrium, spiral aw
 
 ## Local stability analysis
 
-Suppose that a feasible (i.e., positive) equilibrium $x^\star$ exists for a given model. Then we can ask whether it is **attractive** (stable), i.e. if trajectories started at initial condition $x(0)$ will eventually reach $x^\star$. This problem is in general difficult to solve (but see below); as an alternative, we can test for **local asymptotic stability**, i.e., ask whether **the system will return to the equilibrium if perturbed infinitesimally away from it**. In general, whenever we describe an ecological community as a system of nonlinear, autonomous ODEs:
+Suppose that a feasible (i.e., positive) equilibrium $x^\star$ exists for a given model. Then we can ask whether it is **attractive** (stable), i.e., if trajectories started at initial condition $x(0)$ will eventually reach $x^\star$. This problem is in general difficult to solve (but see below); as an alternative, we can test for **local asymptotic stability**, i.e., ask whether **the system will return to the equilibrium if perturbed infinitesimally away from it**. In general, whenever we describe an ecological community as a system of nonlinear, autonomous ODEs:
 
 $$
 \frac{d x_i (t)}{d t} = f_i (x(t)) \;,
@@ -366,11 +366,11 @@ The eigenvalues are therefore $\lambda_1 = 2$ and $\lambda_2 = -(1+a)$.
 
 **Facts about eigenvalues and eigenvectors**
 
-Given a matrix $A$, of size $n \times n$, a complex number $\lambda$ is an eigenvalue of $A$ if there is a nonzero (complex) vector $v$ such that $A v = \lambda v$. The vector $v$ is called the eigenvector of $A$ associated with $\lambda$. Note that eigenvectors are defined up to multiplication: if $v$ is an eigenvector, then $\alpha\, v$, with $\alpha$ real is also an eigenvector. Often, we choose $v$ such that its norm $\sqrt{\sum_i v_i^2} = 1$ (called "unit" eigenvector).
+Given a matrix $A$, of size $n \times n$, a complex number $\lambda$ is an eigenvalue of $A$ if there is a nonzero (complex) vector $v$ such that $A v = \lambda v$. The vector $v$ is called the (right) eigenvector of $A$ associated with $\lambda$. Note that eigenvectors are defined up to multiplication: if $v$ is an eigenvector, then $\alpha\, v$, with $\alpha$ real is also an eigenvector. Often, we choose $v$ such that its norm $\sqrt{\sum_i v_i^2} = 1$ (called "unit" eigenvector).
 
-A matrix of size $n$ has at most $n$ distinct eigenvalues. If all eigenvalues are distinct then the eigenvectors are linearly independent. This means that if we build the matrix $V = (v_1, v_2, \ldots, v_n)$, then $V$ is invertible. 
+A matrix of size $n$ has at most $n$ distinct eigenvalues. If all eigenvalues are distinct, then the eigenvectors are linearly independent. This means that if we build the matrix $V = (v_1, v_2, \ldots, v_n)$, then $V$ is invertible. 
 
-Because of the fact above, and diagonalizable matrix (e.g., a sufficient condition is to have all eigenvalues distinct), then we can write:
+Because of the fact above, if a matrix is diagonalizable (e.g., a sufficient condition is to have all eigenvalues distinct), then we can write:
 
 $$
 A = V \Lambda V^{-1}
@@ -378,11 +378,11 @@ $$
 
 where $V$ is the matrix of eigenvectors, and $\Lambda$ a diagonal matrix with the eigenvalues of $A$ on the diagonal. As such, $V^{-1} A V = \Lambda$. This is a "similarity transformation", meaning that the eigenvalues of $A$ and $\Lambda$ are (obviously) the same.
 
-If the matrix $A$ contains only real numbers (as always the case in population models), then the eigenvalues of $A$ are either real, or form pairs of complex conjugate eigenvalues of form $\alpha \pm i\, \beta$. This means for example that all odd-sized real matrices have at least one real eigenvalue. If $A$ is real and symmetric, all eigenvalues are real, and all eigenvectors are orthogonal, and if it is diagonalizable we can write $A = V \Lambda V^{T}$. A diagonal matrix $A$ has eigenvalues $\lambda_i = A_{ii}$
+If the matrix $A$ contains only real numbers (as it is always the case in population models), then the eigenvalues of $A$ are either real, or form pairs of complex conjugate eigenvalues of form $\alpha \pm i\, \beta$. This means for example that all odd-sized real matrices have at least one real eigenvalue. If $A$ is real and symmetric, all eigenvalues are real, and all eigenvectors are orthogonal, and if it is diagonalizable we can write $A = V \Lambda V^{T}$. A diagonal matrix $A$ has eigenvalues $\lambda_i = A_{ii}$.
 
 If $A$ has eigenvalues $\lambda$, $B = \beta\, A$ has eigenvalues $\beta\, \lambda$, and $C = A + \gamma\, I$ has eigenvalues $\lambda + \gamma$. The eigenvalues of $A^2 = A \times A$ are $\lambda^2$, and the eigenvalues of $A^{-1}$ are $\lambda^{-1}$. The eigenvalues of $A^T$ are the same as those of $A$ (but the eigenvectors are not the same in general). $A + A^T$ (this matrix is symmetric) has only real eigenvalues, and $A - A^T$ (this matrix is skew-symmetric) has purely imaginary eigenvalues.
 
-A matrix is positive definite if all its eigenvalues are real and positive. It is positive semi-definite if eigenvalues can be zero. The matrices $AA^T$ and $A^T A$ are positive semi-definite, and have the same eigenvalues up to some zeros (used in SVD and  PCA). Correlation and covariance matrices have these form.
+A symmetric matrix is positive definite if all its eigenvalues are real and positive. If a matrix $A$ is positive definite, then $\sum_j A_{ij} x_i x_j = x^T A x \geq 0$ for all $x$, and it is exactly zero only if $x = 0$. A matrix is positive semi-definite if eigenvalues can be zero. The matrices $AA^T$ and $A^T A$ are positive semi-definite, and have the same eigenvalues up to some zeros (used in SVD and  PCA). Correlation and covariance matrices have these form.
 
 Provided that some mild conditions are satisfied, a matrix with non-negative entries has a unique largest real eigenvalue with a corresponding eigenvector that can be chosen to have strictly positive components ([Perron-Frobenius theorem](https://en.wikipedia.org/wiki/Perron%E2%80%93Frobenius_theorem)). A matrix with constant row sums $\theta$ has $\theta$ as an eigenvalue, and $v = 1$ as the corresponding eigenvector (e.g., Markov Chains).
 
@@ -445,10 +445,17 @@ S(A) = \begin{pmatrix}
 \end{pmatrix}
 $$
 
-has eigenvalues with negative real part. When a matrix is stable due to its sign-pattern (rather than specific values of the coefficients), it is called *qualitatively stable*.
+has eigenvalues with negative real part. When a matrix is stable due to its sign-pattern (rather than specific values of the coefficients), it is called *qualitatively stable* or *sign-stable*.
 
-Find all $3 \times 3$ matrices that are sign-stable. (Showing that there are no purely imaginary eigenvalues is challenging; proving that this is the case is optional).
+A matrix $A$ is sign-semistable if any matrix with signs $S(A)$ has eigenvalues with non-positive real parts. A matrix is sign-semistable if and only if:
 
+- $A_{ii} \leq 0$ for all $i$
+- $A_{ii} < 0$ for at least one $i$
+- $A_{ij} A_{ji} \leq 0$ for all $i\neq j$
+- All cyclic sequences of length $\geq 3$, for example $A_{ij} A_{jk} A_{ki}$, with $i \neq j \neq k$ are equal to zero (i.e., the graph associated with the matrix has no cycles of length three or more)
+- $\det(A) \neq 0$
+
+Find all $3 \times 3$ signed matrices $S(A)$ that are sign-semistable. 
 :::
 
 :::boxpaper
@@ -811,7 +818,15 @@ $$
 \dfrac{dx}{dt} = D(x) (r - Ax)
 $$
 
-with the coefficients of $r = (r_1, r_2)^T$ and $A$ all positive. Discuss the existence of a coexistence equilibrium and its stability. Write a Lyapunov function for the case in which $A_{11} = A_{22} > A_{12} = A_{21}$.
+with positive growth rates $r = (1, \rho)^T$, and 
+$$
+A =\begin{pmatrix}
+\alpha & \beta\\
+\beta & \alpha
+\end{pmatrix}
+$$
+. 
 
+Discuss the existence of a coexistence equilibrium and its stability. Write a Lyapunov function to prove global stability of the feasible equilibrium.
 :::
 

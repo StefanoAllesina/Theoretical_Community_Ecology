@@ -54,70 +54,6 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
-<style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
 
 <style type="text/css">
   
@@ -375,28 +311,28 @@ div.csl-indent {
 <div class="boxhistory">
 <p><strong>History: Alfred J. Lotka (1880-1949)</strong></p>
 <p><img src="img/Lotka.jpg" width="25%" style="display: block; margin: auto;" /></p>
-<p>Alfred Lotka was born to French-speaking American parents in Lemberg (then part of the Habsburg empire, now Lviv, Ukraine). He studied in France, Germany and England, receiving a BSc in 1901 and a DSc in 1912 from Birmingham university. He moved to the US in 1902, and worked at the US Patent office, as an editor of Scientific American, and as a statistician at the Metropolitan Life Insurance Company in NYC. He wrote more than a hundred papers and five books, spanning a large range of topics. He’s best known for the book <em>Elements of Physical Biology</em>, his contributions to demography, and one of the first studies dealing with bibliometrics <span class="citation">(<a href="#ref-lotka1926frequency">Lotka 1926</a>)</span>.</p>
+<p>Alfred Lotka was born to French-speaking American parents in Lemberg (then part of the Hapsburg empire, now Lviv, Ukraine). He studied in France, Germany and England, receiving a BSc in 1901 and a DSc in 1912 from Birmingham university. He moved to the US in 1902, and worked at the US Patent office, as an editor of Scientific American, and as a statistician at the Metropolitan Life Insurance Company in NYC. He wrote more than a hundred papers and five books, spanning a large range of topics. He’s best known for the book <em>Elements of Physical Biology</em>, his contributions to demography, and one of the first studies dealing with bibliometrics <span class="citation">(<a href="#ref-lotka1926frequency">Lotka 1926</a>)</span>.</p>
 <p>Starting in 1910 (reprinted as <span class="citation">Lotka (<a href="#ref-lotka2002contribution">2002</a>)</span>) he investigated coupled differential equations relating to chemical as well as ecological dynamics. In <span class="citation">Lotka (<a href="#ref-lotka1920analytical">1920</a>)</span> he studied a system of two ODEs that gave rise to perpetual oscillations: <em>“It was, therefore, with considerable surprise that the writer, on applying his method to certain special cases, found these to lead to undamped, and hence indefinitely continued, oscillations.”</em> He went on to describe <em>“1. A species of organism <span class="math inline">\(S_1\)</span>, a plant species, say, deriving its nourishment from a source presented in such large excess that the mass of the source may be considered constant during the period of time with which we are concerned. 2. A species <span class="math inline">\(S_2\)</span>, for example a herbivorous animal species, feeding on <span class="math inline">\(S_1\)</span>.”</em></p>
 <p>The equations he had derived (and then studied later in more detail) are now termed Lotka-Volterra equations.</p>
 </div>
 <p>Let’s look at a possible trajectory for the system, to gain an intuition of what can happen:</p>
-<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-14-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-3-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>You can see that the population densities, when drawn in the “phase plane” cycle counterclockwise. Let’s try to understand why.</p>
-<p>The equation for the prey is zero either when <span class="math inline">\(x(t) = 0\)</span> or when <span class="math inline">\(\rho - \alpha\,y(t) = 0\)</span>, yielding <span class="math inline">\(y(t) = \rho / \alpha\)</span>. Whenever the density of the predator <span class="math inline">\(y(t) &lt; \rho / \alpha\)</span>, prey will grow; conversely, whenever <span class="math inline">\(y(t) &gt; \rho / \alpha\)</span>, prey will decline.</p>
+<p>The equation for the prey is zero either when <span class="math inline">\(x(t) = 0\)</span> or when <span class="math inline">\(\rho - \alpha\,y(t) = 0\)</span>, yielding <span class="math inline">\(y(t) = \rho / \alpha\)</span>. Whenever the density of the predator <span class="math inline">\(y(t) &lt; \rho / \alpha\)</span>, the prey will grow; conversely, whenever <span class="math inline">\(y(t) &gt; \rho / \alpha\)</span>, the prey will decline.</p>
 <p>Graphically:</p>
-<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-15-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-4-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>Similarly, the equation for the predator is zero either when <span class="math inline">\(y(t) = 0\)</span> or when <span class="math inline">\(-\delta + \beta\, x(t) = 0\)</span>, yielding <span class="math inline">\(x(t) = \delta / \beta\)</span>. Whenever the density of the prey <span class="math inline">\(x(t) &lt; \delta / \beta\)</span>, predators will decline; conversely, whenever <span class="math inline">\(x(t) &gt; x(t) = \delta / \beta\)</span>, predators will grow.</p>
 <p>Graphically:</p>
-<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-16-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-5-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>Now let’s put the two graphs together:</p>
-<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-17-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-6-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>Clearly, a possible equilibrium of the system is <span class="math inline">\((x^\star, y^\star)^T = (0, 0)^T\)</span> (often called the “trivial” equilibrium). You can see that there is another equilibrium where the two isoclines meet <span class="math inline">\((x^\star, y^\star)^T = (\delta / \beta, \rho / \alpha)^T\)</span>, and that the dynamics will tend to cycle around the equilibrium.</p>
 <p>But how do we know whether dynamics will cycle toward the equilibrium, spiral away from it, or describe closed orbits? To answer this question, we can try to extend our linear analysis by Taylor-expanding the dynamics around the equilibrium.</p>
 </div>
 </div>
 <div id="local-stability-analysis" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> Local stability analysis<a href="models-for-two-populations.html#local-stability-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Suppose that a feasible (i.e., positive) equilibrium <span class="math inline">\(x^\star\)</span> exists for a given model. Then we can ask whether it is <strong>attractive</strong> (stable), i.e. if trajectories started at initial condition <span class="math inline">\(x(0)\)</span> will eventually reach <span class="math inline">\(x^\star\)</span>. This problem is in general difficult to solve (but see below); as an alternative, we can test for <strong>local asymptotic stability</strong>, i.e., ask whether <strong>the system will return to the equilibrium if perturbed infinitesimally away from it</strong>. In general, whenever we describe an ecological community as a system of nonlinear, autonomous ODEs:</p>
+<p>Suppose that a feasible (i.e., positive) equilibrium <span class="math inline">\(x^\star\)</span> exists for a given model. Then we can ask whether it is <strong>attractive</strong> (stable), i.e., if trajectories started at initial condition <span class="math inline">\(x(0)\)</span> will eventually reach <span class="math inline">\(x^\star\)</span>. This problem is in general difficult to solve (but see below); as an alternative, we can test for <strong>local asymptotic stability</strong>, i.e., ask whether <strong>the system will return to the equilibrium if perturbed infinitesimally away from it</strong>. In general, whenever we describe an ecological community as a system of nonlinear, autonomous ODEs:</p>
 <p><span class="math display">\[
 \frac{d x_i (t)}{d t} = f_i (x(t)) \;,
 \]</span></p>
@@ -567,16 +503,16 @@ p(\lambda) = \lambda^2 - \lambda\, \text{tr}(A) + \det(A)
 \]</span></p>
 <p>The eigenvalues are therefore <span class="math inline">\(\lambda_1 = 2\)</span> and <span class="math inline">\(\lambda_2 = -(1+a)\)</span>.</p>
 <p><strong>Facts about eigenvalues and eigenvectors</strong></p>
-<p>Given a matrix <span class="math inline">\(A\)</span>, of size <span class="math inline">\(n \times n\)</span>, a complex number <span class="math inline">\(\lambda\)</span> is an eigenvalue of <span class="math inline">\(A\)</span> if there is a nonzero (complex) vector <span class="math inline">\(v\)</span> such that <span class="math inline">\(A v = \lambda v\)</span>. The vector <span class="math inline">\(v\)</span> is called the eigenvector of <span class="math inline">\(A\)</span> associated with <span class="math inline">\(\lambda\)</span>. Note that eigenvectors are defined up to multiplication: if <span class="math inline">\(v\)</span> is an eigenvector, then <span class="math inline">\(\alpha\, v\)</span>, with <span class="math inline">\(\alpha\)</span> real is also an eigenvector. Often, we choose <span class="math inline">\(v\)</span> such that its norm <span class="math inline">\(\sqrt{\sum_i v_i^2} = 1\)</span> (called “unit” eigenvector).</p>
-<p>A matrix of size <span class="math inline">\(n\)</span> has at most <span class="math inline">\(n\)</span> distinct eigenvalues. If all eigenvalues are distinct then the eigenvectors are linearly independent. This means that if we build the matrix <span class="math inline">\(V = (v_1, v_2, \ldots, v_n)\)</span>, then <span class="math inline">\(V\)</span> is invertible.</p>
-<p>Because of the fact above, and diagonalizable matrix (e.g., a sufficient condition is to have all eigenvalues distinct), then we can write:</p>
+<p>Given a matrix <span class="math inline">\(A\)</span>, of size <span class="math inline">\(n \times n\)</span>, a complex number <span class="math inline">\(\lambda\)</span> is an eigenvalue of <span class="math inline">\(A\)</span> if there is a nonzero (complex) vector <span class="math inline">\(v\)</span> such that <span class="math inline">\(A v = \lambda v\)</span>. The vector <span class="math inline">\(v\)</span> is called the (right) eigenvector of <span class="math inline">\(A\)</span> associated with <span class="math inline">\(\lambda\)</span>. Note that eigenvectors are defined up to multiplication: if <span class="math inline">\(v\)</span> is an eigenvector, then <span class="math inline">\(\alpha\, v\)</span>, with <span class="math inline">\(\alpha\)</span> real is also an eigenvector. Often, we choose <span class="math inline">\(v\)</span> such that its norm <span class="math inline">\(\sqrt{\sum_i v_i^2} = 1\)</span> (called “unit” eigenvector).</p>
+<p>A matrix of size <span class="math inline">\(n\)</span> has at most <span class="math inline">\(n\)</span> distinct eigenvalues. If all eigenvalues are distinct, then the eigenvectors are linearly independent. This means that if we build the matrix <span class="math inline">\(V = (v_1, v_2, \ldots, v_n)\)</span>, then <span class="math inline">\(V\)</span> is invertible.</p>
+<p>Because of the fact above, if a matrix is diagonalizable (e.g., a sufficient condition is to have all eigenvalues distinct), then we can write:</p>
 <p><span class="math display">\[
 A = V \Lambda V^{-1}
 \]</span></p>
 <p>where <span class="math inline">\(V\)</span> is the matrix of eigenvectors, and <span class="math inline">\(\Lambda\)</span> a diagonal matrix with the eigenvalues of <span class="math inline">\(A\)</span> on the diagonal. As such, <span class="math inline">\(V^{-1} A V = \Lambda\)</span>. This is a “similarity transformation”, meaning that the eigenvalues of <span class="math inline">\(A\)</span> and <span class="math inline">\(\Lambda\)</span> are (obviously) the same.</p>
-<p>If the matrix <span class="math inline">\(A\)</span> contains only real numbers (as always the case in population models), then the eigenvalues of <span class="math inline">\(A\)</span> are either real, or form pairs of complex conjugate eigenvalues of form <span class="math inline">\(\alpha \pm i\, \beta\)</span>. This means for example that all odd-sized real matrices have at least one real eigenvalue. If <span class="math inline">\(A\)</span> is real and symmetric, all eigenvalues are real, and all eigenvectors are orthogonal, and if it is diagonalizable we can write <span class="math inline">\(A = V \Lambda V^{T}\)</span>. A diagonal matrix <span class="math inline">\(A\)</span> has eigenvalues <span class="math inline">\(\lambda_i = A_{ii}\)</span></p>
+<p>If the matrix <span class="math inline">\(A\)</span> contains only real numbers (as it is always the case in population models), then the eigenvalues of <span class="math inline">\(A\)</span> are either real, or form pairs of complex conjugate eigenvalues of form <span class="math inline">\(\alpha \pm i\, \beta\)</span>. This means for example that all odd-sized real matrices have at least one real eigenvalue. If <span class="math inline">\(A\)</span> is real and symmetric, all eigenvalues are real, and all eigenvectors are orthogonal, and if it is diagonalizable we can write <span class="math inline">\(A = V \Lambda V^{T}\)</span>. A diagonal matrix <span class="math inline">\(A\)</span> has eigenvalues <span class="math inline">\(\lambda_i = A_{ii}\)</span>.</p>
 <p>If <span class="math inline">\(A\)</span> has eigenvalues <span class="math inline">\(\lambda\)</span>, <span class="math inline">\(B = \beta\, A\)</span> has eigenvalues <span class="math inline">\(\beta\, \lambda\)</span>, and <span class="math inline">\(C = A + \gamma\, I\)</span> has eigenvalues <span class="math inline">\(\lambda + \gamma\)</span>. The eigenvalues of <span class="math inline">\(A^2 = A \times A\)</span> are <span class="math inline">\(\lambda^2\)</span>, and the eigenvalues of <span class="math inline">\(A^{-1}\)</span> are <span class="math inline">\(\lambda^{-1}\)</span>. The eigenvalues of <span class="math inline">\(A^T\)</span> are the same as those of <span class="math inline">\(A\)</span> (but the eigenvectors are not the same in general). <span class="math inline">\(A + A^T\)</span> (this matrix is symmetric) has only real eigenvalues, and <span class="math inline">\(A - A^T\)</span> (this matrix is skew-symmetric) has purely imaginary eigenvalues.</p>
-<p>A matrix is positive definite if all its eigenvalues are real and positive. It is positive semi-definite if eigenvalues can be zero. The matrices <span class="math inline">\(AA^T\)</span> and <span class="math inline">\(A^T A\)</span> are positive semi-definite, and have the same eigenvalues up to some zeros (used in SVD and PCA). Correlation and covariance matrices have these form.</p>
+<p>A symmetric matrix is positive definite if all its eigenvalues are real and positive. If a matrix <span class="math inline">\(A\)</span> is positive definite, then <span class="math inline">\(\sum_j A_{ij} x_i x_j = x^T A x \geq 0\)</span> for all <span class="math inline">\(x\)</span>, and it is exactly zero only if <span class="math inline">\(x = 0\)</span>. A matrix is positive semi-definite if eigenvalues can be zero. The matrices <span class="math inline">\(AA^T\)</span> and <span class="math inline">\(A^T A\)</span> are positive semi-definite, and have the same eigenvalues up to some zeros (used in SVD and PCA). Correlation and covariance matrices have these form.</p>
 <p>Provided that some mild conditions are satisfied, a matrix with non-negative entries has a unique largest real eigenvalue with a corresponding eigenvector that can be chosen to have strictly positive components (<a href="https://en.wikipedia.org/wiki/Perron%E2%80%93Frobenius_theorem">Perron-Frobenius theorem</a>). A matrix with constant row sums <span class="math inline">\(\theta\)</span> has <span class="math inline">\(\theta\)</span> as an eigenvalue, and <span class="math inline">\(v = 1\)</span> as the corresponding eigenvector (e.g., Markov Chains).</p>
 <p><strong>Descartes’ rule of signs</strong></p>
 <p>Take <span class="math inline">\(\alpha_i\)</span> to be the coefficients of the polynomial in standard form:</p>
@@ -615,8 +551,16 @@ S(A) = \begin{pmatrix}
 - &amp; 0
 \end{pmatrix}
 \]</span></p>
-<p>has eigenvalues with negative real part. When a matrix is stable due to its sign-pattern (rather than specific values of the coefficients), it is called <em>qualitatively stable</em>.</p>
-<p>Find all <span class="math inline">\(3 \times 3\)</span> matrices that are sign-stable. (Showing that there are no purely imaginary eigenvalues is challenging; proving that this is the case is optional).</p>
+<p>has eigenvalues with negative real part. When a matrix is stable due to its sign-pattern (rather than specific values of the coefficients), it is called <em>qualitatively stable</em> or <em>sign-stable</em>.</p>
+<p>A matrix <span class="math inline">\(A\)</span> is sign-semistable if any matrix with signs <span class="math inline">\(S(A)\)</span> has eigenvalues with non-positive real parts. A matrix is sign-semistable if and only if:</p>
+<ul>
+<li><span class="math inline">\(A_{ii} \leq 0\)</span> for all <span class="math inline">\(i\)</span></li>
+<li><span class="math inline">\(A_{ii} &lt; 0\)</span> for at least one <span class="math inline">\(i\)</span></li>
+<li><span class="math inline">\(A_{ij} A_{ji} \leq 0\)</span> for all <span class="math inline">\(i\neq j\)</span></li>
+<li>All cyclic sequences of length <span class="math inline">\(\geq 3\)</span>, for example <span class="math inline">\(A_{ij} A_{jk} A_{ki}\)</span>, with <span class="math inline">\(i \neq j \neq k\)</span> are equal to zero (i.e., the graph associated with the matrix has no cycles of length three or more)</li>
+<li><span class="math inline">\(\det(A) \neq 0\)</span></li>
+</ul>
+<p>Find all <span class="math inline">\(3 \times 3\)</span> signed matrices <span class="math inline">\(S(A)\)</span> that are sign-semistable.</p>
 </div>
 <div class="boxpaper">
 <p><strong>Key paper: <span class="citation">May (<a href="#ref-may1973qualitative">1973</a>)</span></strong></p>
@@ -666,9 +610,9 @@ y(t) = e^{\Lambda t} y_0
 y_j(t) = y_j(0)\, e^{(\alpha + i\, \beta) t} = y_j(0)\, e^{\alpha\, t} (\cos(\beta\, t) + i \sin(\beta\, t))
 \]</span></p>
 <p>As such, the solution will oscillate, with damped oscillations whenever <span class="math inline">\(\alpha &lt; 0\)</span> and increasing oscillations when <span class="math inline">\(\alpha &gt; 0\)</span>. For example, a case of damped oscillations:</p>
-<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-18-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-7-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>and of increasing oscillations:</p>
-<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-19-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-8-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>In fact, all the possible trajectories in planar systems can be classified using only the determinant (product of eigenvalues) and the trace (sum of the eigenvalues) of the matrix <span class="math inline">\(A\)</span>:</p>
 <p><img src="img/phase.jpg" width="95%" style="display: block; margin: auto;" /></p>
 </div>
@@ -798,7 +742,7 @@ p(\lambda) = \lambda^2 + \frac{1}{2} \lambda + \frac{1}{2}
 \lambda = \dfrac{-\frac{1}{2} \pm \sqrt{\frac{1}{4} - 2}}{2} = \dfrac{-1 \pm i \sqrt{7}}{4}
 \]</span></p>
 <p>Therefore small perturbations will oscillate back to equilibrium. Numerically:</p>
-<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-21-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-10-1.png" width="480" style="display: block; margin: auto;" /></p>
 <div id="global-stability" class="section level4 hasAnchor" number="2.3.2.1">
 <h4><span class="header-section-number">2.3.2.1</span> Global stability<a href="models-for-two-populations.html#global-stability" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>We can write a Lyapunov function for the system above. Take:</p>
@@ -817,7 +761,15 @@ V(x,y) = \left(x - x^\star - x^\star \log \dfrac{x}{x^\star} \right) +
 <p><span class="math display">\[
 \dfrac{dx}{dt} = D(x) (r - Ax)
 \]</span></p>
-<p>with the coefficients of <span class="math inline">\(r = (r_1, r_2)^T\)</span> and <span class="math inline">\(A\)</span> all positive. Discuss the existence of a coexistence equilibrium and its stability. Write a Lyapunov function for the case in which <span class="math inline">\(A_{11} = A_{22} &gt; A_{12} = A_{21}\)</span>.</p>
+<p>with positive growth rates <span class="math inline">\(r = (1, \rho)^T\)</span>, and
+<span class="math display">\[
+A =\begin{pmatrix}
+\alpha &amp; \beta\\
+\beta &amp; \alpha
+\end{pmatrix}
+\]</span>
+.</p>
+<p>Discuss the existence of a coexistence equilibrium and its stability. Write a Lyapunov function to prove global stability of the feasible equilibrium.</p>
 </div>
 
 </div>
