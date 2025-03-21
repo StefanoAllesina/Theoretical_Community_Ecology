@@ -217,12 +217,12 @@ Suppose that we want to maximize the amount we can harvest, and that we want to 
 Sometimes the growth of bacteria is modeled using the Gompertz model:
 
 $$
-\dfrac{d x(t)}{dt} = \alpha\, x(t) \log\left(\frac{K}{x(t)}\right) 
+\dfrac{d x(t)}{dt} = \alpha\, x(t) \log\left(\frac{\kappa}{x(t)}\right) 
 $$
 
-where $\alpha$ and $K$ are positive parameters. Solve the model for initial condition $x(0) = x_0$.
+where $\alpha$ and $\kappa$ are positive parameters. Solve the model for initial condition $x(0) = x_0$.
 
-Simulate the growth when $K = 10$ and $\alpha = 1$, with starting conditions $x(0) = 20$ and $x(0) = 0.1$.
+Simulate the growth when $\kappa = 10$ and $\alpha = 1$, with starting conditions $x(0) = 20$ and $x(0) = 0.1$.
 
 :::
 
@@ -467,11 +467,19 @@ ggplot(tibble(rho = rho, xstable = -sqrt(-rho), xunstable = sqrt(-rho))) +
 
 Note that the rate at which the system approaches (moves away from) the stable (unstable) equilibrium depends on $\rho$. When $\rho \ll 0$ the system moves fast, while when $\rho \to \rho_c = 0$ the system moves more slowly. This phenomenon is called "critical slowing down" and has been proposed as a generic indicator that a system is approaching a bifurcation point.
 
+:::boxpaper
+**Key paper: @ludwig1978qualitative**
+
+Models for population dynamics have been used to understand insect outbreaks, for example the eastern spruce budworm (*Choristoneura fumiferana*), which is responsible for defoliation of forests in North America.
+
+Ludwig *et al.* developed a model for the dynamics of the insect population, and performed a bifurcation analysis to understand the two regimes of either low-abundance of the insect, or massive outbreaks.
+:::
+
 :::boxhomework
 
 **Homework 1b**
 
-Draw the bifurcation diagram for logistic growth model with harvesting:
+<!-- Draw the bifurcation diagram for logistic growth model with harvesting:
 
 $$
 \dfrac{d x(t)}{dt} = \rho\, x(t) (1 - \alpha\, x(t)) - \eta\, x(t)
@@ -485,7 +493,47 @@ where $1 > \eta > 0$ is the proportion of individuals being harvested.
 - write code to solve the initial value problem from a random initial condition $x(0) \sim \mathcal U[0, 2]$ (i.e., sampled independently from a uniform distribution between 0 and 2); document the possible outcomes.
 - write code to plot the bifurcation diagram---for each value of $\eta$, mark stable and unstable equilibria.
 - what is the critical $\eta_c$ where a bifurcation occurs?
+-->
 
+The goal is to produce a bifurcation diagram for the dynamics of the spruce budworm, as detailed in the paper by Ludwig *et al.*. A nondimensional version of the model can be written as:
+
+$$
+\dfrac{d x}{dt} = \rho x \left(1 - \frac{x}{\mu}\right) - \dfrac{x^2}{1 + x^2}
+$$
+
+where $\rho$ and $\mu$ are positive parameters. 
+Depending on the values of the parameters, the model can have between one and three equilibria. The value of $\rho$ is equivalent to a growth rate, and measures how favorable is the environment for the growth of the insect population; the parameter $\mu$ limits the population size.
+
+To find the equilibria, you need to find values of $x > 0$ such that:
+
+$$
+\rho \left(1 - \frac{x}{\mu}\right) = \dfrac{x}{1 + x^2}
+$$
+or, equivalently,
+
+$$
+-\dfrac{\rho}{\mu}x^3 + \rho x^2 -\left(1+ \frac{\rho}{\mu} \right)x + \rho = 0
+$$
+
+The goal is to produce a bifurcation for the budworm model: assume that $\mu = 10$, and vary $\rho$ between $0.3$ and $0.6$ in steps of $10^{-3}$. For each value of $\rho$, solve the equation above to find the equilibria; an equilibrium is feasible only if it is real (consider values for which the imaginary part is less than $10^{-6}$ to be real, to account for the numerical error when computing the roots) and positive. 
+
+To compute the roots in `R`, you can use the function `polyroot`; for example:
+
+```
+get_roots <- function(rho, mu) {
+  # roots of the polynomial
+  # c0 + c1 x + c2 x^2 + c3 x^3 = 0
+  c3 <- -rho / mu
+  c2 <- rho
+  c1 <- -1 - rho / mu
+  c0 <- rho
+  polyroot(c(c0, c1, c2, c3))
+}
+```
+
+Plot $\rho$ on the x-axis and on the y-axis the value of the roots (use a different color for each of the three possible roots). You should observe three regimes: when $\rho$ is small (for example, at $\rho = 0.35$) there is only an equilibrium, in which the population is at low abundance; for intermediate values (for example, $\rho = 0.45$), you should find three equilibria; finally, for large values of $\rho$ (e.g., $\rho  = 0.6$), you should find a single equilibrium in which the population is at high abundance ("outbreak"). 
+
+Next, set $\mu = 10$ and $\rho = 0.45$. Plot $dx/dt$ against $x$ and classify the stability of the three equilibria.
 :::
 
 A few interesting references on detecting the approaching of a bifurcation in experimental systems:

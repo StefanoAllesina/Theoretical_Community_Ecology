@@ -23,7 +23,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2025-03-20" />
+<meta name="date" content="2025-03-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -504,10 +504,10 @@ Suppose that we want to maximize the amount we can harvest, and that we want to 
 --></p>
 <p>Sometimes the growth of bacteria is modeled using the Gompertz model:</p>
 <p><span class="math display">\[
-\dfrac{d x(t)}{dt} = \alpha\, x(t) \log\left(\frac{K}{x(t)}\right)
+\dfrac{d x(t)}{dt} = \alpha\, x(t) \log\left(\frac{\kappa}{x(t)}\right)
 \]</span></p>
-<p>where <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(K\)</span> are positive parameters. Solve the model for initial condition <span class="math inline">\(x(0) = x_0\)</span>.</p>
-<p>Simulate the growth when <span class="math inline">\(K = 10\)</span> and <span class="math inline">\(\alpha = 1\)</span>, with starting conditions <span class="math inline">\(x(0) = 20\)</span> and <span class="math inline">\(x(0) = 0.1\)</span>.</p>
+<p>where <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\kappa\)</span> are positive parameters. Solve the model for initial condition <span class="math inline">\(x(0) = x_0\)</span>.</p>
+<p>Simulate the growth when <span class="math inline">\(\kappa = 10\)</span> and <span class="math inline">\(\alpha = 1\)</span>, with starting conditions <span class="math inline">\(x(0) = 20\)</span> and <span class="math inline">\(x(0) = 0.1\)</span>.</p>
 </div>
 </div>
 <div id="qualitative-analysis-of-models-for-a-single-population" class="section level2 hasAnchor" number="1.5">
@@ -596,20 +596,55 @@ f(\Delta x(t) + x^\star) = f(x^\star) + \left . \frac{df(x)}{dx} \right |_{x^\st
 <p>We can summarize the behavior of the system for different values of <span class="math inline">\(\rho\)</span> in a <strong>bifurcation diagram</strong>: on the x-axis we have the parameter we are varying (in this case, <span class="math inline">\(\rho\)</span>), and on the y-axis we report <span class="math inline">\(x(t)\)</span>, marking the position of all the equilibria, with a solid line indicating stable equilibria and a dashed line the unstable ones:</p>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-11-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>Note that the rate at which the system approaches (moves away from) the stable (unstable) equilibrium depends on <span class="math inline">\(\rho\)</span>. When <span class="math inline">\(\rho \ll 0\)</span> the system moves fast, while when <span class="math inline">\(\rho \to \rho_c = 0\)</span> the system moves more slowly. This phenomenon is called “critical slowing down” and has been proposed as a generic indicator that a system is approaching a bifurcation point.</p>
+<div class="boxpaper">
+<p><strong>Key paper: <span class="citation">Ludwig et al. (<a href="#ref-ludwig1978qualitative">1978</a>)</span></strong></p>
+<p>Models for population dynamics have been used to understand insect outbreaks, for example the eastern spruce budworm (<em>Choristoneura fumiferana</em>), which is responsible for defoliation of forests in North America.</p>
+<p>Ludwig <em>et al.</em> developed a model for the dynamics of the insect population, and performed a bifurcation analysis to understand the two regimes of either low-abundance of the insect, or massive outbreaks.</p>
+</div>
 <div class="boxhomework">
 <p><strong>Homework 1b</strong></p>
-<p>Draw the bifurcation diagram for logistic growth model with harvesting:</p>
-<p><span class="math display">\[
+<!-- Draw the bifurcation diagram for logistic growth model with harvesting:
+
+$$
 \dfrac{d x(t)}{dt} = \rho\, x(t) (1 - \alpha\, x(t)) - \eta\, x(t)
+$$
+
+where $1 > \eta > 0$ is the proportion of individuals being harvested.
+
+*Details*
+
+- take $\rho = 1$, $\alpha = 1$ and vary $\eta$ between 0 and 1.5.
+- write code to solve the initial value problem from a random initial condition $x(0) \sim \mathcal U[0, 2]$ (i.e., sampled independently from a uniform distribution between 0 and 2); document the possible outcomes.
+- write code to plot the bifurcation diagram---for each value of $\eta$, mark stable and unstable equilibria.
+- what is the critical $\eta_c$ where a bifurcation occurs?
+-->
+<p>The goal is to produce a bifurcation diagram for the dynamics of the spruce budworm, as detailed in the paper by Ludwig <em>et al.</em>. A nondimensional version of the model can be written as:</p>
+<p><span class="math display">\[
+\dfrac{d x}{dt} = \rho x \left(1 - \frac{x}{\mu}\right) - \dfrac{x^2}{1 + x^2}
 \]</span></p>
-<p>where <span class="math inline">\(1 &gt; \eta &gt; 0\)</span> is the proportion of individuals being harvested.</p>
-<p><em>Details</em></p>
-<ul>
-<li>take <span class="math inline">\(\rho = 1\)</span>, <span class="math inline">\(\alpha = 1\)</span> and vary <span class="math inline">\(\eta\)</span> between 0 and 1.5.</li>
-<li>write code to solve the initial value problem from a random initial condition <span class="math inline">\(x(0) \sim \mathcal U[0, 2]\)</span> (i.e., sampled independently from a uniform distribution between 0 and 2); document the possible outcomes.</li>
-<li>write code to plot the bifurcation diagram—for each value of <span class="math inline">\(\eta\)</span>, mark stable and unstable equilibria.</li>
-<li>what is the critical <span class="math inline">\(\eta_c\)</span> where a bifurcation occurs?</li>
-</ul>
+<p>where <span class="math inline">\(\rho\)</span> and <span class="math inline">\(\mu\)</span> are positive parameters.
+Depending on the values of the parameters, the model can have between one and three equilibria. The value of <span class="math inline">\(\rho\)</span> is equivalent to a growth rate, and measures how favorable is the environment for the growth of the insect population; the parameter <span class="math inline">\(\mu\)</span> limits the population size.</p>
+<p>To find the equilibria, you need to find values of <span class="math inline">\(x &gt; 0\)</span> such that:</p>
+<p><span class="math display">\[
+\rho \left(1 - \frac{x}{\mu}\right) = \dfrac{x}{1 + x^2}
+\]</span>
+or, equivalently,</p>
+<p><span class="math display">\[
+-\dfrac{\rho}{\mu}x^3 + \rho x^2 -\left(1+ \frac{\rho}{\mu} \right)x + \rho = 0
+\]</span></p>
+<p>The goal is to produce a bifurcation for the budworm model: assume that <span class="math inline">\(\mu = 10\)</span>, and vary <span class="math inline">\(\rho\)</span> between <span class="math inline">\(0.3\)</span> and <span class="math inline">\(0.6\)</span> in steps of <span class="math inline">\(10^{-3}\)</span>. For each value of <span class="math inline">\(\rho\)</span>, solve the equation above to find the equilibria; an equilibrium is feasible only if it is real (consider values for which the imaginary part is less than <span class="math inline">\(10^{-6}\)</span> to be real, to account for the numerical error when computing the roots) and positive.</p>
+<p>To compute the roots in <code>R</code>, you can use the function <code>polyroot</code>; for example:</p>
+<pre><code>get_roots &lt;- function(rho, mu) {
+  # roots of the polynomial
+  # c0 + c1 x + c2 x^2 + c3 x^3 = 0
+  c3 &lt;- -rho / mu
+  c2 &lt;- rho
+  c1 &lt;- -1 - rho / mu
+  c0 &lt;- rho
+  polyroot(c(c0, c1, c2, c3))
+}</code></pre>
+<p>Plot <span class="math inline">\(\rho\)</span> on the x-axis and on the y-axis the value of the roots (use a different color for each of the three possible roots). You should observe three regimes: when <span class="math inline">\(\rho\)</span> is small (for example, at <span class="math inline">\(\rho = 0.35\)</span>) there is only an equilibrium, in which the population is at low abundance; for intermediate values (for example, <span class="math inline">\(\rho = 0.45\)</span>), you should find three equilibria; finally, for large values of <span class="math inline">\(\rho\)</span> (e.g., <span class="math inline">\(\rho = 0.6\)</span>), you should find a single equilibrium in which the population is at high abundance (“outbreak”).</p>
+<p>Next, set <span class="math inline">\(\mu = 10\)</span> and <span class="math inline">\(\rho = 0.45\)</span>. Plot <span class="math inline">\(dx/dt\)</span> against <span class="math inline">\(x\)</span> and classify the stability of the three equilibria.</p>
 </div>
 <p>A few interesting references on detecting the approaching of a bifurcation in experimental systems:</p>
 <div class="boxpaper">
@@ -671,6 +706,9 @@ V(x(t)) = x(t) - x^\star - x^\star \log \dfrac{x(t)}{x^\star}
 <div id="refs" class="references csl-bib-body hanging-indent" line-spacing="2">
 <div id="ref-dai2012generic" class="csl-entry">
 Dai, L., D. Vorselen, K. S. Korolev, and J. Gore. 2012. Generic indicators for loss of resilience before a tipping point leading to population collapse. Science 336:1175–1177.
+</div>
+<div id="ref-ludwig1978qualitative" class="csl-entry">
+Ludwig, D., D. D. Jones, C. S. Holling, and others. 1978. Qualitative analysis of insect outbreak systems: The spruce budworm and forest. Journal of animal ecology 47:315–332.
 </div>
 <div id="ref-may1976simple" class="csl-entry">
 May, R. M. 1976. Simple mathematical models with very complicated dynamics. Nature 261:459–467.

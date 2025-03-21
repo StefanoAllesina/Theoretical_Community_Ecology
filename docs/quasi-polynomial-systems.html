@@ -23,7 +23,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2025-03-20" />
+<meta name="date" content="2025-03-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -558,71 +558,71 @@ W = c_2 (P - P^\star - P^\star \log(P/P^\star))+c_3 (P/H - P^\star/H^\star - (P^
 <li>If the value is negative for every choice of <span class="math inline">\(\Delta z\)</span>, then the constants in <span class="math inline">\(D(c)\)</span> are appropriate; if not, modify <span class="math inline">\(D(c)\)</span>, trying to minimize the number of <span class="math inline">\(\Delta z\)</span> leading to a positive result.</li>
 </ul>
 <p>For example, this code finds a set of constants for the Leslie-Gower model:</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="quasi-polynomial-systems.html#cb80-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb80-2"><a href="quasi-polynomial-systems.html#cb80-2" tabindex="-1"></a><span class="co"># choose random parameters </span></span>
-<span id="cb80-3"><a href="quasi-polynomial-systems.html#cb80-3" tabindex="-1"></a><span class="co"># (of course the same can be done for specific parameters)</span></span>
-<span id="cb80-4"><a href="quasi-polynomial-systems.html#cb80-4" tabindex="-1"></a>rh <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>)</span>
-<span id="cb80-5"><a href="quasi-polynomial-systems.html#cb80-5" tabindex="-1"></a>ah <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>)</span>
-<span id="cb80-6"><a href="quasi-polynomial-systems.html#cb80-6" tabindex="-1"></a>bh <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>)</span>
-<span id="cb80-7"><a href="quasi-polynomial-systems.html#cb80-7" tabindex="-1"></a>rp <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>)</span>
-<span id="cb80-8"><a href="quasi-polynomial-systems.html#cb80-8" tabindex="-1"></a>ap <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>)</span>
-<span id="cb80-9"><a href="quasi-polynomial-systems.html#cb80-9" tabindex="-1"></a><span class="co"># compute equilibria</span></span>
-<span id="cb80-10"><a href="quasi-polynomial-systems.html#cb80-10" tabindex="-1"></a>z1s <span class="ot">&lt;-</span> ap <span class="sc">*</span> rh <span class="sc">/</span> (ap <span class="sc">*</span> bh <span class="sc">+</span> ah <span class="sc">*</span> rp)</span>
-<span id="cb80-11"><a href="quasi-polynomial-systems.html#cb80-11" tabindex="-1"></a>z2s <span class="ot">&lt;-</span> rp <span class="sc">*</span> rh <span class="sc">/</span> (ap <span class="sc">*</span> bh <span class="sc">+</span> ah <span class="sc">*</span> rp)</span>
-<span id="cb80-12"><a href="quasi-polynomial-systems.html#cb80-12" tabindex="-1"></a><span class="co"># this is the equilibrium for &quot;z3&quot;</span></span>
-<span id="cb80-13"><a href="quasi-polynomial-systems.html#cb80-13" tabindex="-1"></a>z3s <span class="ot">&lt;-</span> z2s <span class="sc">/</span> z1s</span>
-<span id="cb80-14"><a href="quasi-polynomial-systems.html#cb80-14" tabindex="-1"></a><span class="co"># now choose random values </span></span>
-<span id="cb80-15"><a href="quasi-polynomial-systems.html#cb80-15" tabindex="-1"></a>npoints <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb80-16"><a href="quasi-polynomial-systems.html#cb80-16" tabindex="-1"></a><span class="co"># for each zi</span></span>
-<span id="cb80-17"><a href="quasi-polynomial-systems.html#cb80-17" tabindex="-1"></a>z1 <span class="ot">&lt;-</span> <span class="fu">runif</span>(npoints, <span class="dv">0</span>, <span class="dv">10</span> <span class="sc">*</span> z1s)</span>
-<span id="cb80-18"><a href="quasi-polynomial-systems.html#cb80-18" tabindex="-1"></a>z2 <span class="ot">&lt;-</span> <span class="fu">runif</span>(npoints, <span class="dv">0</span>, <span class="dv">10</span> <span class="sc">*</span> z2s)</span>
-<span id="cb80-19"><a href="quasi-polynomial-systems.html#cb80-19" tabindex="-1"></a>z3 <span class="ot">&lt;-</span> z2 <span class="sc">/</span> z1</span>
-<span id="cb80-20"><a href="quasi-polynomial-systems.html#cb80-20" tabindex="-1"></a><span class="co"># now compute delta z</span></span>
-<span id="cb80-21"><a href="quasi-polynomial-systems.html#cb80-21" tabindex="-1"></a>deltaZ <span class="ot">&lt;-</span> <span class="fu">cbind</span>(z1 <span class="sc">-</span> z1s, </span>
-<span id="cb80-22"><a href="quasi-polynomial-systems.html#cb80-22" tabindex="-1"></a>                z2 <span class="sc">-</span> z2s,</span>
-<span id="cb80-23"><a href="quasi-polynomial-systems.html#cb80-23" tabindex="-1"></a>                z3 <span class="sc">-</span> z3s)</span>
-<span id="cb80-24"><a href="quasi-polynomial-systems.html#cb80-24" tabindex="-1"></a><span class="co"># compute M</span></span>
-<span id="cb80-25"><a href="quasi-polynomial-systems.html#cb80-25" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(</span>
-<span id="cb80-26"><a href="quasi-polynomial-systems.html#cb80-26" tabindex="-1"></a>  <span class="sc">-</span>bh, <span class="sc">-</span>ah, <span class="dv">0</span>,</span>
-<span id="cb80-27"><a href="quasi-polynomial-systems.html#cb80-27" tabindex="-1"></a>  <span class="dv">0</span>, <span class="dv">0</span>, <span class="sc">-</span>ap), <span class="dv">2</span>, <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb80-28"><a href="quasi-polynomial-systems.html#cb80-28" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(</span>
-<span id="cb80-29"><a href="quasi-polynomial-systems.html#cb80-29" tabindex="-1"></a>  <span class="dv">1</span>, <span class="dv">0</span>,</span>
-<span id="cb80-30"><a href="quasi-polynomial-systems.html#cb80-30" tabindex="-1"></a>  <span class="dv">0</span>, <span class="dv">1</span>,</span>
-<span id="cb80-31"><a href="quasi-polynomial-systems.html#cb80-31" tabindex="-1"></a>  <span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>), <span class="dv">3</span>, <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb80-32"><a href="quasi-polynomial-systems.html#cb80-32" tabindex="-1"></a>M <span class="ot">&lt;-</span> B <span class="sc">%*%</span> A</span>
-<span id="cb80-33"><a href="quasi-polynomial-systems.html#cb80-33" tabindex="-1"></a></span>
-<span id="cb80-34"><a href="quasi-polynomial-systems.html#cb80-34" tabindex="-1"></a><span class="co"># this is the function we want to minimize</span></span>
-<span id="cb80-35"><a href="quasi-polynomial-systems.html#cb80-35" tabindex="-1"></a>LG_to_minimize <span class="ot">&lt;-</span> <span class="cf">function</span>(const){</span>
-<span id="cb80-36"><a href="quasi-polynomial-systems.html#cb80-36" tabindex="-1"></a>  <span class="co"># keep constants positive, and </span></span>
-<span id="cb80-37"><a href="quasi-polynomial-systems.html#cb80-37" tabindex="-1"></a>  <span class="co"># with mean of 1 (for numerics)</span></span>
-<span id="cb80-38"><a href="quasi-polynomial-systems.html#cb80-38" tabindex="-1"></a>  const <span class="ot">&lt;-</span> <span class="fu">abs</span>(const) <span class="sc">/</span> <span class="fu">mean</span>(<span class="fu">abs</span>(const))</span>
-<span id="cb80-39"><a href="quasi-polynomial-systems.html#cb80-39" tabindex="-1"></a>  Dc <span class="ot">&lt;-</span> <span class="fu">diag</span>(const)</span>
-<span id="cb80-40"><a href="quasi-polynomial-systems.html#cb80-40" tabindex="-1"></a>  K <span class="ot">&lt;-</span> (Dc <span class="sc">%*%</span> M)</span>
-<span id="cb80-41"><a href="quasi-polynomial-systems.html#cb80-41" tabindex="-1"></a>  K <span class="ot">&lt;-</span> <span class="fl">0.5</span> <span class="sc">*</span> (K <span class="sc">+</span> <span class="fu">t</span>(K))</span>
-<span id="cb80-42"><a href="quasi-polynomial-systems.html#cb80-42" tabindex="-1"></a>  <span class="co"># now compute dVdt for each deltaZ</span></span>
-<span id="cb80-43"><a href="quasi-polynomial-systems.html#cb80-43" tabindex="-1"></a>  target <span class="ot">&lt;-</span> <span class="fu">apply</span>(deltaZ, <span class="dv">1</span>, </span>
-<span id="cb80-44"><a href="quasi-polynomial-systems.html#cb80-44" tabindex="-1"></a>                  <span class="cf">function</span>(dz) dz <span class="sc">%*%</span> K <span class="sc">%*%</span> dz)</span>
-<span id="cb80-45"><a href="quasi-polynomial-systems.html#cb80-45" tabindex="-1"></a>  <span class="co"># solution found</span></span>
-<span id="cb80-46"><a href="quasi-polynomial-systems.html#cb80-46" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">all</span>(target <span class="sc">&lt;</span> <span class="dv">0</span>)) <span class="fu">return</span>(<span class="sc">-</span><span class="dv">1</span>)</span>
-<span id="cb80-47"><a href="quasi-polynomial-systems.html#cb80-47" tabindex="-1"></a>  <span class="co"># otherwise, try to minimize</span></span>
-<span id="cb80-48"><a href="quasi-polynomial-systems.html#cb80-48" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">sum</span>(target[target <span class="sc">&gt;</span> <span class="dv">0</span>]))</span>
-<span id="cb80-49"><a href="quasi-polynomial-systems.html#cb80-49" tabindex="-1"></a>}</span>
-<span id="cb80-50"><a href="quasi-polynomial-systems.html#cb80-50" tabindex="-1"></a></span>
-<span id="cb80-51"><a href="quasi-polynomial-systems.html#cb80-51" tabindex="-1"></a><span class="co"># use optim to find a solution</span></span>
-<span id="cb80-52"><a href="quasi-polynomial-systems.html#cb80-52" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> <span class="fu">optim</span>(<span class="at">par =</span> <span class="fu">runif</span>(<span class="dv">3</span>), <span class="at">fn =</span> LG_to_minimize)</span>
-<span id="cb80-53"><a href="quasi-polynomial-systems.html#cb80-53" tabindex="-1"></a><span class="cf">if</span>(tmp<span class="sc">$</span>value <span class="sc">==</span> <span class="sc">-</span><span class="dv">1</span>) {</span>
-<span id="cb80-54"><a href="quasi-polynomial-systems.html#cb80-54" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Found a set of constants&quot;</span>)</span>
-<span id="cb80-55"><a href="quasi-polynomial-systems.html#cb80-55" tabindex="-1"></a>  solution <span class="ot">&lt;-</span> tmp<span class="sc">$</span>par</span>
-<span id="cb80-56"><a href="quasi-polynomial-systems.html#cb80-56" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">round</span>(<span class="fu">abs</span>(solution) <span class="sc">/</span> <span class="fu">mean</span>(<span class="fu">abs</span>(solution)),<span class="dv">3</span>))</span>
-<span id="cb80-57"><a href="quasi-polynomial-systems.html#cb80-57" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="quasi-polynomial-systems.html#cb81-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb81-2"><a href="quasi-polynomial-systems.html#cb81-2" tabindex="-1"></a><span class="co"># choose random parameters </span></span>
+<span id="cb81-3"><a href="quasi-polynomial-systems.html#cb81-3" tabindex="-1"></a><span class="co"># (of course the same can be done for specific parameters)</span></span>
+<span id="cb81-4"><a href="quasi-polynomial-systems.html#cb81-4" tabindex="-1"></a>rh <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>)</span>
+<span id="cb81-5"><a href="quasi-polynomial-systems.html#cb81-5" tabindex="-1"></a>ah <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>)</span>
+<span id="cb81-6"><a href="quasi-polynomial-systems.html#cb81-6" tabindex="-1"></a>bh <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>)</span>
+<span id="cb81-7"><a href="quasi-polynomial-systems.html#cb81-7" tabindex="-1"></a>rp <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>)</span>
+<span id="cb81-8"><a href="quasi-polynomial-systems.html#cb81-8" tabindex="-1"></a>ap <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>)</span>
+<span id="cb81-9"><a href="quasi-polynomial-systems.html#cb81-9" tabindex="-1"></a><span class="co"># compute equilibria</span></span>
+<span id="cb81-10"><a href="quasi-polynomial-systems.html#cb81-10" tabindex="-1"></a>z1s <span class="ot">&lt;-</span> ap <span class="sc">*</span> rh <span class="sc">/</span> (ap <span class="sc">*</span> bh <span class="sc">+</span> ah <span class="sc">*</span> rp)</span>
+<span id="cb81-11"><a href="quasi-polynomial-systems.html#cb81-11" tabindex="-1"></a>z2s <span class="ot">&lt;-</span> rp <span class="sc">*</span> rh <span class="sc">/</span> (ap <span class="sc">*</span> bh <span class="sc">+</span> ah <span class="sc">*</span> rp)</span>
+<span id="cb81-12"><a href="quasi-polynomial-systems.html#cb81-12" tabindex="-1"></a><span class="co"># this is the equilibrium for &quot;z3&quot;</span></span>
+<span id="cb81-13"><a href="quasi-polynomial-systems.html#cb81-13" tabindex="-1"></a>z3s <span class="ot">&lt;-</span> z2s <span class="sc">/</span> z1s</span>
+<span id="cb81-14"><a href="quasi-polynomial-systems.html#cb81-14" tabindex="-1"></a><span class="co"># now choose random values </span></span>
+<span id="cb81-15"><a href="quasi-polynomial-systems.html#cb81-15" tabindex="-1"></a>npoints <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb81-16"><a href="quasi-polynomial-systems.html#cb81-16" tabindex="-1"></a><span class="co"># for each zi</span></span>
+<span id="cb81-17"><a href="quasi-polynomial-systems.html#cb81-17" tabindex="-1"></a>z1 <span class="ot">&lt;-</span> <span class="fu">runif</span>(npoints, <span class="dv">0</span>, <span class="dv">10</span> <span class="sc">*</span> z1s)</span>
+<span id="cb81-18"><a href="quasi-polynomial-systems.html#cb81-18" tabindex="-1"></a>z2 <span class="ot">&lt;-</span> <span class="fu">runif</span>(npoints, <span class="dv">0</span>, <span class="dv">10</span> <span class="sc">*</span> z2s)</span>
+<span id="cb81-19"><a href="quasi-polynomial-systems.html#cb81-19" tabindex="-1"></a>z3 <span class="ot">&lt;-</span> z2 <span class="sc">/</span> z1</span>
+<span id="cb81-20"><a href="quasi-polynomial-systems.html#cb81-20" tabindex="-1"></a><span class="co"># now compute delta z</span></span>
+<span id="cb81-21"><a href="quasi-polynomial-systems.html#cb81-21" tabindex="-1"></a>deltaZ <span class="ot">&lt;-</span> <span class="fu">cbind</span>(z1 <span class="sc">-</span> z1s, </span>
+<span id="cb81-22"><a href="quasi-polynomial-systems.html#cb81-22" tabindex="-1"></a>                z2 <span class="sc">-</span> z2s,</span>
+<span id="cb81-23"><a href="quasi-polynomial-systems.html#cb81-23" tabindex="-1"></a>                z3 <span class="sc">-</span> z3s)</span>
+<span id="cb81-24"><a href="quasi-polynomial-systems.html#cb81-24" tabindex="-1"></a><span class="co"># compute M</span></span>
+<span id="cb81-25"><a href="quasi-polynomial-systems.html#cb81-25" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(</span>
+<span id="cb81-26"><a href="quasi-polynomial-systems.html#cb81-26" tabindex="-1"></a>  <span class="sc">-</span>bh, <span class="sc">-</span>ah, <span class="dv">0</span>,</span>
+<span id="cb81-27"><a href="quasi-polynomial-systems.html#cb81-27" tabindex="-1"></a>  <span class="dv">0</span>, <span class="dv">0</span>, <span class="sc">-</span>ap), <span class="dv">2</span>, <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb81-28"><a href="quasi-polynomial-systems.html#cb81-28" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(</span>
+<span id="cb81-29"><a href="quasi-polynomial-systems.html#cb81-29" tabindex="-1"></a>  <span class="dv">1</span>, <span class="dv">0</span>,</span>
+<span id="cb81-30"><a href="quasi-polynomial-systems.html#cb81-30" tabindex="-1"></a>  <span class="dv">0</span>, <span class="dv">1</span>,</span>
+<span id="cb81-31"><a href="quasi-polynomial-systems.html#cb81-31" tabindex="-1"></a>  <span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>), <span class="dv">3</span>, <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb81-32"><a href="quasi-polynomial-systems.html#cb81-32" tabindex="-1"></a>M <span class="ot">&lt;-</span> B <span class="sc">%*%</span> A</span>
+<span id="cb81-33"><a href="quasi-polynomial-systems.html#cb81-33" tabindex="-1"></a></span>
+<span id="cb81-34"><a href="quasi-polynomial-systems.html#cb81-34" tabindex="-1"></a><span class="co"># this is the function we want to minimize</span></span>
+<span id="cb81-35"><a href="quasi-polynomial-systems.html#cb81-35" tabindex="-1"></a>LG_to_minimize <span class="ot">&lt;-</span> <span class="cf">function</span>(const){</span>
+<span id="cb81-36"><a href="quasi-polynomial-systems.html#cb81-36" tabindex="-1"></a>  <span class="co"># keep constants positive, and </span></span>
+<span id="cb81-37"><a href="quasi-polynomial-systems.html#cb81-37" tabindex="-1"></a>  <span class="co"># with mean of 1 (for numerics)</span></span>
+<span id="cb81-38"><a href="quasi-polynomial-systems.html#cb81-38" tabindex="-1"></a>  const <span class="ot">&lt;-</span> <span class="fu">abs</span>(const) <span class="sc">/</span> <span class="fu">mean</span>(<span class="fu">abs</span>(const))</span>
+<span id="cb81-39"><a href="quasi-polynomial-systems.html#cb81-39" tabindex="-1"></a>  Dc <span class="ot">&lt;-</span> <span class="fu">diag</span>(const)</span>
+<span id="cb81-40"><a href="quasi-polynomial-systems.html#cb81-40" tabindex="-1"></a>  K <span class="ot">&lt;-</span> (Dc <span class="sc">%*%</span> M)</span>
+<span id="cb81-41"><a href="quasi-polynomial-systems.html#cb81-41" tabindex="-1"></a>  K <span class="ot">&lt;-</span> <span class="fl">0.5</span> <span class="sc">*</span> (K <span class="sc">+</span> <span class="fu">t</span>(K))</span>
+<span id="cb81-42"><a href="quasi-polynomial-systems.html#cb81-42" tabindex="-1"></a>  <span class="co"># now compute dVdt for each deltaZ</span></span>
+<span id="cb81-43"><a href="quasi-polynomial-systems.html#cb81-43" tabindex="-1"></a>  target <span class="ot">&lt;-</span> <span class="fu">apply</span>(deltaZ, <span class="dv">1</span>, </span>
+<span id="cb81-44"><a href="quasi-polynomial-systems.html#cb81-44" tabindex="-1"></a>                  <span class="cf">function</span>(dz) dz <span class="sc">%*%</span> K <span class="sc">%*%</span> dz)</span>
+<span id="cb81-45"><a href="quasi-polynomial-systems.html#cb81-45" tabindex="-1"></a>  <span class="co"># solution found</span></span>
+<span id="cb81-46"><a href="quasi-polynomial-systems.html#cb81-46" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">all</span>(target <span class="sc">&lt;</span> <span class="dv">0</span>)) <span class="fu">return</span>(<span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb81-47"><a href="quasi-polynomial-systems.html#cb81-47" tabindex="-1"></a>  <span class="co"># otherwise, try to minimize</span></span>
+<span id="cb81-48"><a href="quasi-polynomial-systems.html#cb81-48" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">sum</span>(target[target <span class="sc">&gt;</span> <span class="dv">0</span>]))</span>
+<span id="cb81-49"><a href="quasi-polynomial-systems.html#cb81-49" tabindex="-1"></a>}</span>
+<span id="cb81-50"><a href="quasi-polynomial-systems.html#cb81-50" tabindex="-1"></a></span>
+<span id="cb81-51"><a href="quasi-polynomial-systems.html#cb81-51" tabindex="-1"></a><span class="co"># use optim to find a solution</span></span>
+<span id="cb81-52"><a href="quasi-polynomial-systems.html#cb81-52" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> <span class="fu">optim</span>(<span class="at">par =</span> <span class="fu">runif</span>(<span class="dv">3</span>), <span class="at">fn =</span> LG_to_minimize)</span>
+<span id="cb81-53"><a href="quasi-polynomial-systems.html#cb81-53" tabindex="-1"></a><span class="cf">if</span>(tmp<span class="sc">$</span>value <span class="sc">==</span> <span class="sc">-</span><span class="dv">1</span>) {</span>
+<span id="cb81-54"><a href="quasi-polynomial-systems.html#cb81-54" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Found a set of constants&quot;</span>)</span>
+<span id="cb81-55"><a href="quasi-polynomial-systems.html#cb81-55" tabindex="-1"></a>  solution <span class="ot">&lt;-</span> tmp<span class="sc">$</span>par</span>
+<span id="cb81-56"><a href="quasi-polynomial-systems.html#cb81-56" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">round</span>(<span class="fu">abs</span>(solution) <span class="sc">/</span> <span class="fu">mean</span>(<span class="fu">abs</span>(solution)),<span class="dv">3</span>))</span>
+<span id="cb81-57"><a href="quasi-polynomial-systems.html#cb81-57" tabindex="-1"></a>}</span></code></pre></div>
 <p>[1] “Found a set of constants”
 [1] 0.573 1.902 0.525</p>
 <p>Which shows that a solution indeed exists. Note that, provided that the choice of <span class="math inline">\(\Delta z\)</span> is extensive enough, the constants found in this way indeed determine the global stability of the equilibrium. Typically, infinitely many choices are possible—but certain choices of constants are better than others, for example allowing for a clean analytical derivation.</p>
 <p>Naturally, the constants we have derived analytically are also appropriate:</p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="quasi-polynomial-systems.html#cb81-1" tabindex="-1"></a>c1 <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb81-2"><a href="quasi-polynomial-systems.html#cb81-2" tabindex="-1"></a>c2 <span class="ot">&lt;-</span> ap <span class="sc">*</span> bh <span class="sc">+</span> ah <span class="sc">*</span> rp</span>
-<span id="cb81-3"><a href="quasi-polynomial-systems.html#cb81-3" tabindex="-1"></a>c3 <span class="ot">&lt;-</span> ap <span class="sc">*</span> rp</span>
-<span id="cb81-4"><a href="quasi-polynomial-systems.html#cb81-4" tabindex="-1"></a><span class="fu">LG_to_minimize</span>(<span class="fu">c</span>(c1, c2, c3))</span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="quasi-polynomial-systems.html#cb82-1" tabindex="-1"></a>c1 <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb82-2"><a href="quasi-polynomial-systems.html#cb82-2" tabindex="-1"></a>c2 <span class="ot">&lt;-</span> ap <span class="sc">*</span> bh <span class="sc">+</span> ah <span class="sc">*</span> rp</span>
+<span id="cb82-3"><a href="quasi-polynomial-systems.html#cb82-3" tabindex="-1"></a>c3 <span class="ot">&lt;-</span> ap <span class="sc">*</span> rp</span>
+<span id="cb82-4"><a href="quasi-polynomial-systems.html#cb82-4" tabindex="-1"></a><span class="fu">LG_to_minimize</span>(<span class="fu">c</span>(c1, c2, c3))</span></code></pre></div>
 <p>[1] -1</p>
 </div>
 <div id="systems-with-many-equations" class="section level2 hasAnchor" number="9.6">
