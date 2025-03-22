@@ -738,6 +738,42 @@ which is zero only when the resources are at equilibrium. We can invoke LaSalle'
 
 Prove the local stability of the feasible coexistence equilibrium.
 
+*Hint:* if we have a (not necessarily symmetric) matrix $A$ such that $x^T A x < 0$  for every $x \in \mathbb R^n$, with $x\neq 0$, then the eigenvalues of $A$ have negative real part. To prove this, consider a generic eigenvector/eigenvalue of $A$:
+
+$$
+\begin{aligned}
+A v &= \lambda v\\
+A (u + i w) &= (\alpha + i \beta)(u + i w)\\
+Au + i Aw &= \alpha u  - \beta w+ i (\alpha w + \beta u)
+\end{aligned}
+$$
+Write two systems of equations, one for the real parts, and one for the imaginary parts:
+
+$$
+\begin{cases}
+Au = \alpha u - \beta w\\
+Aw = \alpha w + \beta u
+\end{cases}
+$$
+
+Multiply the first set of equations by $u^T$, and the second by $w^T$:
+
+$$
+\begin{cases}
+u^TAu = \alpha u^Tu - \beta u^Tw\\
+w^TAw = \alpha w^Tw + \beta w^Tu
+\end{cases}
+$$
+
+Sum the two equations:
+
+$$
+u^T A u +v^T A v = \alpha (u^Tu + w^T w)
+$$
+
+If we have that $x^T A x < 0$ for any $x\neq 0$, then the left-hand side is negative whenever either $u \neq 0$, $v \neq 0$, or both are nonzero. In the right-hand side, we have that $u^Tu = \sum_i u_i^2 \geq 0$, and $v^Tv \geq 0$. Moreover if $x = u + i v$ is an eigenvector, necessarily at least one of $u$ and $v$ is nonzero. Thus the left-hand side is negative, and the part in parenthesis in the right-hand side is positive. Then, $\alpha < 0$, proving that all eigenvalues have a negative real part.
+
+Use this argument to prove local stability of the consumer-resource model.
 :::
 
 
@@ -808,7 +844,7 @@ $$
 \dfrac{d V} {d t} = \sum_i \dfrac{\partial V}{\partial x_i} \dfrac{d x_i}{d t} = \sum_i x_i v_i \frac{1}{2}\left(\dfrac{\partial V}{\partial x_i} \right)^2
 $$
 
-which is always non-negative, and is zero at equilibrium. Therefore, $V(x(t))$ is maximized through the dynamics. This holds even more generally, as we will see in the next lecture and in the following homework. In a way, symmetric, competitive dynamics are "optimizing" $V$, by following a gradient. This argument can be further expanded, showing that many ecological models can be interpreted as optimization processes (@marsland2019minimum).
+which is always non-negative, and is zero at equilibrium. Therefore, $V(x(t))$ is maximized through the dynamics. This holds even more generally, as we will see in the lecture on assembly and in the following homework. In a way, symmetric, competitive dynamics are "optimizing" $V$, by following a gradient. This argument can be further expanded, showing that many ecological models can be interpreted as optimization processes (@marsland2019minimum).
 
 :::boxhomework
 

@@ -23,7 +23,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2025-03-21" />
+<meta name="date" content="2025-03-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -872,6 +872,34 @@ P^T &amp; 0_{k,k}
 <div class="boxhomework">
 <p><strong>Homework 3a</strong></p>
 <p>Prove the local stability of the feasible coexistence equilibrium.</p>
+<p><em>Hint:</em> if we have a (not necessarily symmetric) matrix <span class="math inline">\(A\)</span> such that <span class="math inline">\(x^T A x &lt; 0\)</span> for every <span class="math inline">\(x \in \mathbb R^n\)</span>, with <span class="math inline">\(x\neq 0\)</span>, then the eigenvalues of <span class="math inline">\(A\)</span> have negative real part. To prove this, consider a generic eigenvector/eigenvalue of <span class="math inline">\(A\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+A v &amp;= \lambda v\\
+A (u + i w) &amp;= (\alpha + i \beta)(u + i w)\\
+Au + i Aw &amp;= \alpha u  - \beta w+ i (\alpha w + \beta u)
+\end{aligned}
+\]</span>
+Write two systems of equations, one for the real parts, and one for the imaginary parts:</p>
+<p><span class="math display">\[
+\begin{cases}
+Au = \alpha u - \beta w\\
+Aw = \alpha w + \beta u
+\end{cases}
+\]</span></p>
+<p>Multiply the first set of equations by <span class="math inline">\(u^T\)</span>, and the second by <span class="math inline">\(w^T\)</span>:</p>
+<p><span class="math display">\[
+\begin{cases}
+u^TAu = \alpha u^Tu - \beta u^Tw\\
+w^TAw = \alpha w^Tw + \beta w^Tu
+\end{cases}
+\]</span></p>
+<p>Sum the two equations:</p>
+<p><span class="math display">\[
+u^T A u +v^T A v = \alpha (u^Tu + w^T w)
+\]</span></p>
+<p>If we have that <span class="math inline">\(x^T A x &lt; 0\)</span> for any <span class="math inline">\(x\neq 0\)</span>, then the left-hand side is negative whenever either <span class="math inline">\(u \neq 0\)</span>, <span class="math inline">\(v \neq 0\)</span>, or both are nonzero. In the right-hand side, we have that <span class="math inline">\(u^Tu = \sum_i u_i^2 \geq 0\)</span>, and <span class="math inline">\(v^Tv \geq 0\)</span>. Moreover if <span class="math inline">\(x = u + i v\)</span> is an eigenvector, necessarily at least one of <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span> is nonzero. Thus the left-hand side is negative, and the part in parenthesis in the right-hand side is positive. Then, <span class="math inline">\(\alpha &lt; 0\)</span>, proving that all eigenvalues have a negative real part.</p>
+<p>Use this argument to prove local stability of the consumer-resource model.</p>
 </div>
 </div>
 <div id="separation-of-time-scales" class="section level3 hasAnchor" number="3.4.3">
@@ -923,7 +951,7 @@ V( x^\star ) = \sum_i \left(s_i x_i^\star + \left(s_i x_i^\star - \sum_j B_{ij} 
 <p><span class="math display">\[
 \dfrac{d V} {d t} = \sum_i \dfrac{\partial V}{\partial x_i} \dfrac{d x_i}{d t} = \sum_i x_i v_i \frac{1}{2}\left(\dfrac{\partial V}{\partial x_i} \right)^2
 \]</span></p>
-<p>which is always non-negative, and is zero at equilibrium. Therefore, <span class="math inline">\(V(x(t))\)</span> is maximized through the dynamics. This holds even more generally, as we will see in the next lecture and in the following homework. In a way, symmetric, competitive dynamics are “optimizing” <span class="math inline">\(V\)</span>, by following a gradient. This argument can be further expanded, showing that many ecological models can be interpreted as optimization processes (<span class="citation">Marsland III et al. (<a href="#ref-marsland2019minimum">2019</a>)</span>).</p>
+<p>which is always non-negative, and is zero at equilibrium. Therefore, <span class="math inline">\(V(x(t))\)</span> is maximized through the dynamics. This holds even more generally, as we will see in the lecture on assembly and in the following homework. In a way, symmetric, competitive dynamics are “optimizing” <span class="math inline">\(V\)</span>, by following a gradient. This argument can be further expanded, showing that many ecological models can be interpreted as optimization processes (<span class="citation">Marsland III et al. (<a href="#ref-marsland2019minimum">2019</a>)</span>).</p>
 <div class="boxhomework">
 <p><strong>Homework 3b</strong></p>
 <p>Consider a five-species system with symmetric, stable <span class="math inline">\(B\)</span> (with all positive coefficients) and positive <span class="math inline">\(s\)</span>, yielding the feasible equilibrium <span class="math inline">\(x^\star\)</span>.</p>

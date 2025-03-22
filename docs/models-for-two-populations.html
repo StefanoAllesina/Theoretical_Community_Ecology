@@ -23,7 +23,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2025-03-21" />
+<meta name="date" content="2025-03-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,6 +54,70 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <style type="text/css">
   
@@ -316,16 +380,16 @@ div.csl-indent {
 <p>The equations he had derived (and then studied later in more detail) are now termed Lotka-Volterra equations.</p>
 </div>
 <p>Let’s look at a possible trajectory for the system, to gain an intuition of what can happen:</p>
-<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-3-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-14-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>You can see that the population densities, when drawn in the “phase plane” cycle counterclockwise. Let’s try to understand why.</p>
 <p>The equation for the prey is zero either when <span class="math inline">\(x(t) = 0\)</span> or when <span class="math inline">\(\rho - \alpha\,y(t) = 0\)</span>, yielding <span class="math inline">\(y(t) = \rho / \alpha\)</span>. Whenever the density of the predator <span class="math inline">\(y(t) &lt; \rho / \alpha\)</span>, the prey will grow; conversely, whenever <span class="math inline">\(y(t) &gt; \rho / \alpha\)</span>, the prey will decline.</p>
 <p>Graphically:</p>
-<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-4-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-15-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>Similarly, the equation for the predator is zero either when <span class="math inline">\(y(t) = 0\)</span> or when <span class="math inline">\(-\delta + \beta\, x(t) = 0\)</span>, yielding <span class="math inline">\(x(t) = \delta / \beta\)</span>. Whenever the density of the prey <span class="math inline">\(x(t) &lt; \delta / \beta\)</span>, predators will decline; conversely, whenever <span class="math inline">\(x(t) &gt; x(t) = \delta / \beta\)</span>, predators will grow.</p>
 <p>Graphically:</p>
-<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-5-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-16-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>Now let’s put the two graphs together:</p>
-<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-6-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-17-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>Clearly, a possible equilibrium of the system is <span class="math inline">\((x^\star, y^\star)^T = (0, 0)^T\)</span> (often called the “trivial” equilibrium). You can see that there is another equilibrium where the two isoclines meet <span class="math inline">\((x^\star, y^\star)^T = (\delta / \beta, \rho / \alpha)^T\)</span>, and that the dynamics will tend to cycle around the equilibrium.</p>
 <p>But how do we know whether dynamics will cycle toward the equilibrium, spiral away from it, or describe closed orbits? To answer this question, we can try to extend our linear analysis by Taylor-expanding the dynamics around the equilibrium.</p>
 </div>
@@ -610,9 +674,9 @@ y(t) = e^{\Lambda t} y_0
 y_j(t) = y_j(0)\, e^{(\alpha + i\, \beta) t} = y_j(0)\, e^{\alpha\, t} (\cos(\beta\, t) + i \sin(\beta\, t))
 \]</span></p>
 <p>As such, the solution will oscillate, with damped oscillations whenever <span class="math inline">\(\alpha &lt; 0\)</span> and increasing oscillations when <span class="math inline">\(\alpha &gt; 0\)</span>. For example, a case of damped oscillations:</p>
-<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-7-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-18-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>and of increasing oscillations:</p>
-<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-8-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-19-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>In fact, all the possible trajectories in planar systems can be classified using only the determinant (product of eigenvalues) and the trace (sum of the eigenvalues) of the matrix <span class="math inline">\(A\)</span>:</p>
 <p><img src="img/phase.jpg" width="95%" style="display: block; margin: auto;" /></p>
 </div>
@@ -742,7 +806,7 @@ p(\lambda) = \lambda^2 + \frac{1}{2} \lambda + \frac{1}{2}
 \lambda = \dfrac{-\frac{1}{2} \pm \sqrt{\frac{1}{4} - 2}}{2} = \dfrac{-1 \pm i \sqrt{7}}{4}
 \]</span></p>
 <p>Therefore small perturbations will oscillate back to equilibrium. Numerically:</p>
-<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-10-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-21-1.png" width="480" style="display: block; margin: auto;" /></p>
 <div id="global-stability" class="section level4 hasAnchor" number="2.3.2.1">
 <h4><span class="header-section-number">2.3.2.1</span> Global stability<a href="models-for-two-populations.html#global-stability" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>We can write a Lyapunov function for the system above. Take:</p>
