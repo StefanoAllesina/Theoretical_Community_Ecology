@@ -785,7 +785,7 @@ WLS(B) = \sum_r \sum_k \sum_i \left(\frac{\tilde{x}^{(k,r)}_i - x^{(k)}_i}{\sigm
 [1] -43.08928
 [1] -43.08928</p>
 <p>The model is quite successful at recovering the observed means for the community we left out.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="predicting-coexistence-in-ecological-communities.html#cb13-1" tabindex="-1"></a><span class="fu">plot_results_boxplot</span>(LOO_LN<span class="sc">$</span>observed, LOO_LN<span class="sc">$</span>predicted)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="predicting-coexistence-in-ecological-communities.html#cb13-1" tabindex="-1"></a><span class="fu">plot_results_boxplot</span>(LOO_LN<span class="sc">$</span>observed, LOO_LN<span class="sc">$</span>predicted, LOO_LN<span class="sc">$</span>infit)</span></code></pre></div>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-44-1.png" width="480" style="display: block; margin: auto;" /></p>
 </div>
 <div id="simplified-models" class="section level3 hasAnchor" number="5.7.5">

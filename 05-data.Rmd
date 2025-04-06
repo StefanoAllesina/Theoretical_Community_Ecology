@@ -674,7 +674,7 @@ LOO_LN <- run_model_LOO(datafile = "dat/Ishizawa_3_strains.csv",
 The model is quite successful at recovering the observed means for the community we left out.
 
 ```{r}
-plot_results_boxplot(LOO_LN$observed, LOO_LN$predicted)
+plot_results_boxplot(LOO_LN$observed, LOO_LN$predicted, LOO_LN$infit)
 ```
 
 ### Simplified models
