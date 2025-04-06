@@ -1,0 +1,54 @@
+---
+title: Theoretical Community Ecology
+author: "Stefano Allesina"
+nocite: |
+  @*
+format:
+  pdf:
+    toc: true
+    toc-depth: 2
+    number-sections: true
+    number-depth: 2
+    output-file: "Allesina Lecture notes"
+    output-ext:  "pdf"
+    include-in-header: 
+       - "preamble.tex"
+
+editor: source
+---
+
+```{r}
+#| echo: false
+#| eval: true
+process_qmd <- function(file, 
+                        fpath_in = "img/", 
+                        fpath_out = "img/") {
+  doc <- readLines(file)
+  #end_yaml <- which(doc == "---")[2]
+  #out_doc <- doc[seq(end_yaml+1, length(doc))]
+  out_doc <- doc
+  if (fpath_in != fpath_out) {
+    out_doc <- stringr::str_replace_all(out_doc, fpath_in, fpath_out)
+  }
+  res <- knitr::knit_child(text = out_doc, quiet = TRUE, options = list(eval = FALSE, echo = TRUE))
+  return(res)
+}
+```
+
+```{r}
+#| output: asis
+#| echo: false
+#| eval: true
+#| message: false
+idx <- process_qmd("01-one_population.Rmd")
+cat(unlist(idx), sep = '\n')
+idx <- process_qmd("02-two_populations.Rmd")
+cat(unlist(idx), sep = '\n')
+idx <- process_qmd("03-lotka_volterra.Rmd")
+cat(unlist(idx), sep = '\n')
+idx <- process_qmd("04-random.Rmd")
+cat(unlist(idx), sep = '\n')
+idx <- process_qmd("05-data.Rmd")
+cat(unlist(idx), sep = '\n')
+```
+

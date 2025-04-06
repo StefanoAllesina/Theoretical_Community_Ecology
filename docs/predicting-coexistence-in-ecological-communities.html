@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Lecture 6 Predicting coexistence in ecological communities | Theoretical Community Ecology</title>
+  <title>Lecture 5 Predicting coexistence in ecological communities | Theoretical Community Ecology</title>
   <meta name="description" content="A graduate course in theoretical community ecology focusing on systems with multiple species." />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Lecture 6 Predicting coexistence in ecological communities | Theoretical Community Ecology" />
+  <meta property="og:title" content="Lecture 5 Predicting coexistence in ecological communities | Theoretical Community Ecology" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="A graduate course in theoretical community ecology focusing on systems with multiple species." />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Lecture 6 Predicting coexistence in ecological communities | Theoretical Community Ecology" />
+  <meta name="twitter:title" content="Lecture 5 Predicting coexistence in ecological communities | Theoretical Community Ecology" />
   
   <meta name="twitter:description" content="A graduate course in theoretical community ecology focusing on systems with multiple species." />
   
@@ -23,14 +23,14 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2025-03-22" />
+<meta name="date" content="2025-04-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="ecological-assembly.html"/>
+<link rel="prev" href="stability-of-large-ecological-communities.html"/>
 <link rel="next" href="game-theory-and-replicator-dynamics.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -242,69 +242,78 @@ div.csl-indent {
 <li class="chapter" data-level="4.7" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#structured-matrices"><i class="fa fa-check"></i><b>4.7</b> Structured matrices</a></li>
 <li class="chapter" data-level="4.8" data-path="stability-of-large-ecological-communities.html"><a href="stability-of-large-ecological-communities.html#further-readings-1"><i class="fa fa-check"></i><b>4.8</b> Further readings</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="ecological-assembly.html"><a href="ecological-assembly.html"><i class="fa fa-check"></i><b>5</b> Ecological assembly</a>
+<li class="chapter" data-level="5" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html"><i class="fa fa-check"></i><b>5</b> Predicting coexistence in ecological communities</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#assembly"><i class="fa fa-check"></i><b>5.1</b> Assembly</a>
+<li class="chapter" data-level="5.1" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#background-diversity-and-ecosystem-functioning"><i class="fa fa-check"></i><b>5.1</b> Background: Diversity and Ecosystem Functioning</a></li>
+<li class="chapter" data-level="5.2" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#example-data"><i class="fa fa-check"></i><b>5.2</b> Example data</a></li>
+<li class="chapter" data-level="5.3" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#a-simple-statistical-framework"><i class="fa fa-check"></i><b>5.3</b> A simple statistical framework</a></li>
+<li class="chapter" data-level="5.4" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#the-structure-of-equilibria-in-glv"><i class="fa fa-check"></i><b>5.4</b> The structure of equilibria in GLV</a></li>
+<li class="chapter" data-level="5.5" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#predicting-coexistence"><i class="fa fa-check"></i><b>5.5</b> Predicting coexistence</a></li>
+<li class="chapter" data-level="5.6" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#scoring-matrices-b"><i class="fa fa-check"></i><b>5.6</b> Scoring matrices <span class="math inline">\(B\)</span></a></li>
+<li class="chapter" data-level="5.7" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#example"><i class="fa fa-check"></i><b>5.7</b> Example</a>
 <ul>
-<li class="chapter" data-level="5.1.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#what-makes-the-study-of-assembly-difficult"><i class="fa fa-check"></i><b>5.1.1</b> What makes the study of assembly difficult?</a></li>
-<li class="chapter" data-level="5.1.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#ecological-assembly-without-tears"><i class="fa fa-check"></i><b>5.1.2</b> Ecological assembly without tears</a></li>
-<li class="chapter" data-level="5.1.3" data-path="ecological-assembly.html"><a href="ecological-assembly.html#top-down-and-bottom-up-assembly"><i class="fa fa-check"></i><b>5.1.3</b> Top-down and bottom-up assembly</a></li>
+<li class="chapter" data-level="5.7.1" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#sum-of-squares"><i class="fa fa-check"></i><b>5.7.1</b> Sum of squares</a></li>
+<li class="chapter" data-level="5.7.2" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#weighted-leas-squares"><i class="fa fa-check"></i><b>5.7.2</b> Weighted leas squares</a></li>
+<li class="chapter" data-level="5.7.3" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#maximum-likelihood"><i class="fa fa-check"></i><b>5.7.3</b> Maximum likelihood</a></li>
+<li class="chapter" data-level="5.7.4" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#leave-one-out-cross-validation"><i class="fa fa-check"></i><b>5.7.4</b> Leave-one-out cross validation</a></li>
+<li class="chapter" data-level="5.7.5" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#simplified-models"><i class="fa fa-check"></i><b>5.7.5</b> Simplified models</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#modeling-invasions"><i class="fa fa-check"></i><b>5.2</b> Modeling invasions</a>
-<ul>
-<li class="chapter" data-level="5.2.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#invasions-in-multispecies-communities"><i class="fa fa-check"></i><b>5.2.1</b> Invasions in multispecies communities</a></li>
-<li class="chapter" data-level="5.2.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#lyapunov-stability-and-saturated-equilibria"><i class="fa fa-check"></i><b>5.2.2</b> Lyapunov stability and saturated equilibria</a></li>
+<li class="chapter" data-level="5.8" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#further-readings-2"><i class="fa fa-check"></i><b>5.8</b> Further readings</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="ecological-assembly.html"><a href="ecological-assembly.html#top-down-assembly"><i class="fa fa-check"></i><b>5.3</b> Top-down assembly</a>
+<li class="chapter" data-level="6" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html"><i class="fa fa-check"></i><b>6</b> Game theory and replicator dynamics</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#a-trivial-case"><i class="fa fa-check"></i><b>5.3.1</b> A trivial case</a></li>
-<li class="chapter" data-level="5.3.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#simulating-final-composition"><i class="fa fa-check"></i><b>5.3.2</b> Simulating final composition</a></li>
-<li class="chapter" data-level="5.3.3" data-path="ecological-assembly.html"><a href="ecological-assembly.html#a-random-zoo"><i class="fa fa-check"></i><b>5.3.3</b> A random zoo</a></li>
-<li class="chapter" data-level="5.3.4" data-path="ecological-assembly.html"><a href="ecological-assembly.html#a-random-zoo-in-the-wild"><i class="fa fa-check"></i><b>5.3.4</b> A random zoo in the wild</a></li>
-<li class="chapter" data-level="5.3.5" data-path="ecological-assembly.html"><a href="ecological-assembly.html#assembly-and-saturated-equilibrium"><i class="fa fa-check"></i><b>5.3.5</b> Assembly and saturated equilibrium</a></li>
+<li class="chapter" data-level="6.1" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#game-theory"><i class="fa fa-check"></i><b>6.1</b> Game theory</a></li>
+<li class="chapter" data-level="6.2" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#two-player-matrix-games"><i class="fa fa-check"></i><b>6.2</b> Two-player matrix games</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#example-the-prisoners-dilemma"><i class="fa fa-check"></i><b>6.2.1</b> Example: the prisoner’s dilemma</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="ecological-assembly.html"><a href="ecological-assembly.html#network-spandrels"><i class="fa fa-check"></i><b>5.4</b> Network spandrels</a></li>
-<li class="chapter" data-level="5.5" data-path="ecological-assembly.html"><a href="ecological-assembly.html#bottom-up-assembly"><i class="fa fa-check"></i><b>5.5</b> Bottom-up assembly</a>
+<li class="chapter" data-level="6.3" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#mixed-strategies"><i class="fa fa-check"></i><b>6.3</b> Mixed strategies</a></li>
+<li class="chapter" data-level="6.4" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#nash-equilibria"><i class="fa fa-check"></i><b>6.4</b> Nash Equilibria</a></li>
+<li class="chapter" data-level="6.5" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#evolutionary-stable-strategies"><i class="fa fa-check"></i><b>6.5</b> Evolutionary stable strategies</a></li>
+<li class="chapter" data-level="6.6" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#replicator-dynamics"><i class="fa fa-check"></i><b>6.6</b> Replicator dynamics</a>
 <ul>
-<li class="chapter" data-level="5.5.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#an-assembly-graph"><i class="fa fa-check"></i><b>5.5.1</b> An assembly graph</a></li>
-<li class="chapter" data-level="5.5.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#how-many-invasions"><i class="fa fa-check"></i><b>5.5.2</b> How many invasions?</a></li>
-<li class="chapter" data-level="5.5.3" data-path="ecological-assembly.html"><a href="ecological-assembly.html#properties-of-the-assembly-graph"><i class="fa fa-check"></i><b>5.5.3</b> Properties of the assembly graph</a></li>
-<li class="chapter" data-level="5.5.4" data-path="ecological-assembly.html"><a href="ecological-assembly.html#assembly-graphs-for-glv"><i class="fa fa-check"></i><b>5.5.4</b> Assembly graphs for GLV</a></li>
-<li class="chapter" data-level="5.5.5" data-path="ecological-assembly.html"><a href="ecological-assembly.html#relationship-with-lyapunov-functions"><i class="fa fa-check"></i><b>5.5.5</b> Relationship with Lyapunov functions</a></li>
-<li class="chapter" data-level="5.5.6" data-path="ecological-assembly.html"><a href="ecological-assembly.html#how-many-assembly-endpoints"><i class="fa fa-check"></i><b>5.5.6</b> How many assembly endpoints?</a></li>
-<li class="chapter" data-level="5.5.7" data-path="ecological-assembly.html"><a href="ecological-assembly.html#build-your-own-assembly-graph"><i class="fa fa-check"></i><b>5.5.7</b> Build your own assembly graph!</a></li>
-<li class="chapter" data-level="5.5.8" data-path="ecological-assembly.html"><a href="ecological-assembly.html#conclusions"><i class="fa fa-check"></i><b>5.5.8</b> Conclusions</a></li>
+<li class="chapter" data-level="6.6.1" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#invariants"><i class="fa fa-check"></i><b>6.6.1</b> Invariants</a></li>
+<li class="chapter" data-level="6.6.2" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#rock-paper-scissor"><i class="fa fa-check"></i><b>6.6.2</b> Rock-paper-scissor</a></li>
+<li class="chapter" data-level="6.6.3" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#existence-of-an-equilibrium-2"><i class="fa fa-check"></i><b>6.6.3</b> Existence of an equilibrium</a></li>
+<li class="chapter" data-level="6.6.4" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#stability-of-the-re"><i class="fa fa-check"></i><b>6.6.4</b> Stability of the RE</a></li>
+<li class="chapter" data-level="6.6.5" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#equivalence-with-glv"><i class="fa fa-check"></i><b>6.6.5</b> Equivalence with GLV</a></li>
+<li class="chapter" data-level="6.6.6" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#hypertournament-games"><i class="fa fa-check"></i><b>6.6.6</b> Hypertournament games</a></li>
+<li class="chapter" data-level="6.6.7" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#lyapunov-function"><i class="fa fa-check"></i><b>6.6.7</b> Lyapunov function</a></li>
+<li class="chapter" data-level="6.6.8" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#higher-order-interactions"><i class="fa fa-check"></i><b>6.6.8</b> Higher-order interactions</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html"><i class="fa fa-check"></i><b>6</b> Predicting coexistence in ecological communities</a>
+<li class="chapter" data-level="7" data-path="ecological-assembly.html"><a href="ecological-assembly.html"><i class="fa fa-check"></i><b>7</b> Ecological assembly</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#background-diversity-and-ecosystem-functioning"><i class="fa fa-check"></i><b>6.1</b> Background: Diversity and Ecosystem Functioning</a></li>
-<li class="chapter" data-level="6.2" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#synthetic-communities-using-the-glv-model"><i class="fa fa-check"></i><b>6.2</b> Synthetic communities using the GLV model</a></li>
-<li class="chapter" data-level="6.3" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#total-biomass"><i class="fa fa-check"></i><b>6.3</b> Total biomass</a></li>
-<li class="chapter" data-level="6.4" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#hyperplanes"><i class="fa fa-check"></i><b>6.4</b> Hyperplanes</a></li>
-<li class="chapter" data-level="6.5" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#fitting-real-data"><i class="fa fa-check"></i><b>6.5</b> Fitting real data</a></li>
-<li class="chapter" data-level="6.6" data-path="predicting-coexistence-in-ecological-communities.html"><a href="predicting-coexistence-in-ecological-communities.html#predicting-real-data-out-of-fit"><i class="fa fa-check"></i><b>6.6</b> Predicting real data out of fit</a></li>
+<li class="chapter" data-level="7.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#assembly"><i class="fa fa-check"></i><b>7.1</b> Assembly</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#what-makes-the-study-of-assembly-difficult"><i class="fa fa-check"></i><b>7.1.1</b> What makes the study of assembly difficult?</a></li>
+<li class="chapter" data-level="7.1.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#ecological-assembly-without-tears"><i class="fa fa-check"></i><b>7.1.2</b> Ecological assembly without tears</a></li>
+<li class="chapter" data-level="7.1.3" data-path="ecological-assembly.html"><a href="ecological-assembly.html#top-down-and-bottom-up-assembly"><i class="fa fa-check"></i><b>7.1.3</b> Top-down and bottom-up assembly</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html"><i class="fa fa-check"></i><b>7</b> Game theory and replicator dynamics</a>
+<li class="chapter" data-level="7.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#modeling-invasions"><i class="fa fa-check"></i><b>7.2</b> Modeling invasions</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#game-theory"><i class="fa fa-check"></i><b>7.1</b> Game theory</a></li>
-<li class="chapter" data-level="7.2" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#two-player-matrix-games"><i class="fa fa-check"></i><b>7.2</b> Two-player matrix games</a>
-<ul>
-<li class="chapter" data-level="7.2.1" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#example-the-prisoners-dilemma"><i class="fa fa-check"></i><b>7.2.1</b> Example: the prisoner’s dilemma</a></li>
+<li class="chapter" data-level="7.2.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#invasions-in-multispecies-communities"><i class="fa fa-check"></i><b>7.2.1</b> Invasions in multispecies communities</a></li>
+<li class="chapter" data-level="7.2.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#lyapunov-stability-and-saturated-equilibria"><i class="fa fa-check"></i><b>7.2.2</b> Lyapunov stability and saturated equilibria</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#mixed-strategies"><i class="fa fa-check"></i><b>7.3</b> Mixed strategies</a></li>
-<li class="chapter" data-level="7.4" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#nash-equilibria"><i class="fa fa-check"></i><b>7.4</b> Nash Equilibria</a></li>
-<li class="chapter" data-level="7.5" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#evolutionary-stable-strategies"><i class="fa fa-check"></i><b>7.5</b> Evolutionary stable strategies</a></li>
-<li class="chapter" data-level="7.6" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#replicator-dynamics"><i class="fa fa-check"></i><b>7.6</b> Replicator dynamics</a>
+<li class="chapter" data-level="7.3" data-path="ecological-assembly.html"><a href="ecological-assembly.html#top-down-assembly"><i class="fa fa-check"></i><b>7.3</b> Top-down assembly</a>
 <ul>
-<li class="chapter" data-level="7.6.1" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#invariants"><i class="fa fa-check"></i><b>7.6.1</b> Invariants</a></li>
-<li class="chapter" data-level="7.6.2" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#rock-paper-scissor"><i class="fa fa-check"></i><b>7.6.2</b> Rock-paper-scissor</a></li>
-<li class="chapter" data-level="7.6.3" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#existence-of-an-equilibrium-2"><i class="fa fa-check"></i><b>7.6.3</b> Existence of an equilibrium</a></li>
-<li class="chapter" data-level="7.6.4" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#stability-of-the-re"><i class="fa fa-check"></i><b>7.6.4</b> Stability of the RE</a></li>
-<li class="chapter" data-level="7.6.5" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#equivalence-with-glv"><i class="fa fa-check"></i><b>7.6.5</b> Equivalence with GLV</a></li>
-<li class="chapter" data-level="7.6.6" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#hypertournament-games"><i class="fa fa-check"></i><b>7.6.6</b> Hypertournament games</a></li>
-<li class="chapter" data-level="7.6.7" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#lyapunov-function"><i class="fa fa-check"></i><b>7.6.7</b> Lyapunov function</a></li>
-<li class="chapter" data-level="7.6.8" data-path="game-theory-and-replicator-dynamics.html"><a href="game-theory-and-replicator-dynamics.html#higher-order-interactions"><i class="fa fa-check"></i><b>7.6.8</b> Higher-order interactions</a></li>
+<li class="chapter" data-level="7.3.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#a-trivial-case"><i class="fa fa-check"></i><b>7.3.1</b> A trivial case</a></li>
+<li class="chapter" data-level="7.3.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#simulating-final-composition"><i class="fa fa-check"></i><b>7.3.2</b> Simulating final composition</a></li>
+<li class="chapter" data-level="7.3.3" data-path="ecological-assembly.html"><a href="ecological-assembly.html#a-random-zoo"><i class="fa fa-check"></i><b>7.3.3</b> A random zoo</a></li>
+<li class="chapter" data-level="7.3.4" data-path="ecological-assembly.html"><a href="ecological-assembly.html#a-random-zoo-in-the-wild"><i class="fa fa-check"></i><b>7.3.4</b> A random zoo in the wild</a></li>
+<li class="chapter" data-level="7.3.5" data-path="ecological-assembly.html"><a href="ecological-assembly.html#assembly-and-saturated-equilibrium"><i class="fa fa-check"></i><b>7.3.5</b> Assembly and saturated equilibrium</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="ecological-assembly.html"><a href="ecological-assembly.html#network-spandrels"><i class="fa fa-check"></i><b>7.4</b> Network spandrels</a></li>
+<li class="chapter" data-level="7.5" data-path="ecological-assembly.html"><a href="ecological-assembly.html#bottom-up-assembly"><i class="fa fa-check"></i><b>7.5</b> Bottom-up assembly</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="ecological-assembly.html"><a href="ecological-assembly.html#an-assembly-graph"><i class="fa fa-check"></i><b>7.5.1</b> An assembly graph</a></li>
+<li class="chapter" data-level="7.5.2" data-path="ecological-assembly.html"><a href="ecological-assembly.html#how-many-invasions"><i class="fa fa-check"></i><b>7.5.2</b> How many invasions?</a></li>
+<li class="chapter" data-level="7.5.3" data-path="ecological-assembly.html"><a href="ecological-assembly.html#properties-of-the-assembly-graph"><i class="fa fa-check"></i><b>7.5.3</b> Properties of the assembly graph</a></li>
+<li class="chapter" data-level="7.5.4" data-path="ecological-assembly.html"><a href="ecological-assembly.html#assembly-graphs-for-glv"><i class="fa fa-check"></i><b>7.5.4</b> Assembly graphs for GLV</a></li>
+<li class="chapter" data-level="7.5.5" data-path="ecological-assembly.html"><a href="ecological-assembly.html#relationship-with-lyapunov-functions"><i class="fa fa-check"></i><b>7.5.5</b> Relationship with Lyapunov functions</a></li>
+<li class="chapter" data-level="7.5.6" data-path="ecological-assembly.html"><a href="ecological-assembly.html#how-many-assembly-endpoints"><i class="fa fa-check"></i><b>7.5.6</b> How many assembly endpoints?</a></li>
+<li class="chapter" data-level="7.5.7" data-path="ecological-assembly.html"><a href="ecological-assembly.html#build-your-own-assembly-graph"><i class="fa fa-check"></i><b>7.5.7</b> Build your own assembly graph!</a></li>
+<li class="chapter" data-level="7.5.8" data-path="ecological-assembly.html"><a href="ecological-assembly.html#conclusions"><i class="fa fa-check"></i><b>7.5.8</b> Conclusions</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="metapopulation-dynamics-on-networks.html"><a href="metapopulation-dynamics-on-networks.html"><i class="fa fa-check"></i><b>8</b> Metapopulation dynamics on networks</a>
@@ -349,8 +358,8 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="predicting-coexistence-in-ecological-communities" class="section level1 hasAnchor" number="6">
-<h1><span class="header-section-number">Lecture 6</span> Predicting coexistence in ecological communities<a href="predicting-coexistence-in-ecological-communities.html#predicting-coexistence-in-ecological-communities" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="predicting-coexistence-in-ecological-communities" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Lecture 5</span> Predicting coexistence in ecological communities<a href="predicting-coexistence-in-ecological-communities.html#predicting-coexistence-in-ecological-communities" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p><strong>Lesson plan</strong>:</p>
 <ol style="list-style-type: decimal">
 <li>We consider the problem of co-culturing several species taken from a pool in all possible combinations.</li>
@@ -360,352 +369,199 @@ div.csl-indent {
 <li>We parameterize a simple statistical model, and draw a connection with GLV dynamics.</li>
 <li>We test whether our model is able to predict the outcomes of experiments out-of-fit.</li>
 </ol>
-<div id="background-diversity-and-ecosystem-functioning" class="section level2 hasAnchor" number="6.1">
-<h2><span class="header-section-number">6.1</span> Background: Diversity and Ecosystem Functioning<a href="predicting-coexistence-in-ecological-communities.html#background-diversity-and-ecosystem-functioning" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="background-diversity-and-ecosystem-functioning" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Background: Diversity and Ecosystem Functioning<a href="predicting-coexistence-in-ecological-communities.html#background-diversity-and-ecosystem-functioning" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="boxpaper">
 <p><strong>Key paper: <span class="citation">Tilman et al. (<a href="#ref-tilman2001diversity">2001</a>)</span></strong></p>
-<p>This paper present the results of the biodiversity-ecosystem functioning experiments carried out at Cedar Creek, Minnesota, by Tilman and collaborators. These multi-year experiments are among the largest ever carried out in ecology, and have been hugely influential. The same type of experiments have been carried out with different organisms, in the lab, and in mesocosms.</p>
+<p>This paper present the results of the biodiversity-ecosystem functioning experiments carried out at Cedar Creek, Minnesota, by Dave Tilman and collaborators. These multi-year experiments are among the largest ever carried out in ecology, and have been hugely influential. The same type of experiments have been performed with different organisms, in the lab, and in mesocosms.</p>
 </div>
 <p>Ecologists have performed large experiments in which different assemblages of species are co-cultured. These experiments have been conducted with plants (for example, Biodiversity Ecosystem Functioning experiments e.g., <span class="citation">Hector et al. (<a href="#ref-hector1999plant">1999</a>)</span> <span class="citation">Tilman et al. (<a href="#ref-tilman2001diversity">2001</a>)</span>, <span class="citation">Cadotte (<a href="#ref-cadotte2013experimental">2013</a>)</span>) and in the laboratory using protozoan, algae or bacteria. Two commonly-encountered problems in this type of experiments have to to with the scaling of the number of experiments with the number of species, and with the probability of coexistence.</p>
 <p><strong>Scale:</strong> How many communities can we form from a pool of <span class="math inline">\(n\)</span> species? We can culture a single species in isolation (<span class="math inline">\(n\)</span> possibilities), two species in pair (<span class="math inline">\(n(n-1) / 2\)</span> possibilities), and so on. The total is therefore:</p>
 <p><span class="math display">\[
 \sum_{j=1}^n \binom{n}{j} = 2^n -1
 \]</span></p>
-<p>And this is only considering the presence/absence of each species! Moreover, we might want to vary the initial conditions (e.g., starting two species at low/high abundance, equal abundance, high/low abundace), etc. Clearly, this makes trying all possible combinations unfeasible when <span class="math inline">\(n\)</span> is large enough. For example, for 10 species we can form 1023 assemblages, while with 20 more than a million!</p>
+<p>And this is only considering the presence/absence of each species! Moreover, we might want to vary the initial conditions (e.g., starting two species at low/high abundance, equal abundance, high/low abundance), etc. Clearly, this makes trying all possible combinations unfeasible when <span class="math inline">\(n\)</span> is large enough. For example, for 10 species we can form 1023 assemblages, while with 20 more than a million!</p>
 <p><strong>Coexistence:</strong> even if we could try all possible experiments, many assemblages would collapse to smaller communities because of extinctions. For example, pairs could become monocultures, triplets become pairs or monocultures, etc. As such, even if we were to try all possible combinations, we would end up observing a smaller set of “final communities”.</p>
 <p>To guide experimentation, we need a way to be able to predict the (probable) outcome of experiments without having to run them all. Here we attempt to do so by examining a handful of experimental results, and using these data to parametrize a statistical model. The model provides a way to navigate the enormous space of possibilities, thereby suggesting “good” experiments that yield a large probability of coexistence.</p>
 </div>
-<div id="synthetic-communities-using-the-glv-model" class="section level2 hasAnchor" number="6.2">
-<h2><span class="header-section-number">6.2</span> Synthetic communities using the GLV model<a href="predicting-coexistence-in-ecological-communities.html#synthetic-communities-using-the-glv-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>To set the stage for deriving a statistical model that can deal with the problems above, we start by simulating the communities that can be formed from a pool of <span class="math inline">\(n\)</span> species using the GLV model. First, we need a way to index our communities. As done before, we take a vector <span class="math inline">\(p\)</span> reporting the presence/absence of a given species in a community. To this end, we associate a label <span class="math inline">\(k \in \{1, \ldots, 2^n -1\}\)</span> with each possible community. If only taxon 1 is present (<span class="math inline">\(p = [1,0,0,\ldots,0]\)</span>), then <span class="math inline">\(k = 1\)</span>, if only taxon 2 is present (<span class="math inline">\(p =[0,1,0,\ldots,0]\)</span>) then <span class="math inline">\(k = 2\)</span>, if both taxa 1 and 2 are part of the community, <span class="math inline">\(k = 3\)</span> (<span class="math inline">\(p = [1,1,0,\ldots,0]\)</span>); in general, <span class="math inline">\(k = \sum_{i = 1}^n p_i 2^{(i-1)}\)</span> where <span class="math inline">\(p_i = 1\)</span> if taxon <span class="math inline">\(i\)</span> is in the community, and <span class="math inline">\(p_i = 0\)</span> otherwise.</p>
-<p>We can then cycle through each of the <span class="math inline">\(2^n - 1\)</span> assemblages that can be formed, and determine whether the species will coexist or not in our experiment. For simplicity, we report as coexisting any set of species for which a) the GLV equilibrium is feasible, and b) it is locally stable. We collect all the communities that are coexisting along with the abundance of all species in the matrix <span class="math inline">\(E\)</span>.</p>
-<p>In <code>R</code>:</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="predicting-coexistence-in-ecological-communities.html#cb48-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">18</span>) <span class="co"># this gives enough endpoints, but only 25</span></span>
-<span id="cb48-2"><a href="predicting-coexistence-in-ecological-communities.html#cb48-2" tabindex="-1"></a><span class="co"># take a random matrix of interactions: </span></span>
-<span id="cb48-3"><a href="predicting-coexistence-in-ecological-communities.html#cb48-3" tabindex="-1"></a><span class="co"># -Aij &lt;- U[0,1]; -Aii &lt;- Sqrt(2) + U[0,1]</span></span>
-<span id="cb48-4"><a href="predicting-coexistence-in-ecological-communities.html#cb48-4" tabindex="-1"></a><span class="co"># all interactions are competitive</span></span>
-<span id="cb48-5"><a href="predicting-coexistence-in-ecological-communities.html#cb48-5" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb48-6"><a href="predicting-coexistence-in-ecological-communities.html#cb48-6" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fu">matrix</span>(<span class="fu">runif</span>(n <span class="sc">*</span> n), n, n)</span>
-<span id="cb48-7"><a href="predicting-coexistence-in-ecological-communities.html#cb48-7" tabindex="-1"></a><span class="fu">diag</span>(A) <span class="ot">&lt;-</span> <span class="fu">diag</span>(A) <span class="sc">-</span> <span class="fu">sqrt</span>(<span class="dv">2</span>)</span>
-<span id="cb48-8"><a href="predicting-coexistence-in-ecological-communities.html#cb48-8" tabindex="-1"></a><span class="co"># choose positive growth rates</span></span>
-<span id="cb48-9"><a href="predicting-coexistence-in-ecological-communities.html#cb48-9" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">runif</span>(n) </span></code></pre></div>
-<p>Now go through all possible combinations:</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="predicting-coexistence-in-ecological-communities.html#cb49-1" tabindex="-1"></a>E <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="dv">0</span>, n) <span class="co"># matrix containing all communities</span></span>
-<span id="cb49-2"><a href="predicting-coexistence-in-ecological-communities.html#cb49-2" tabindex="-1"></a>x_template <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>, n) <span class="co"># template for row of E</span></span>
-<span id="cb49-3"><a href="predicting-coexistence-in-ecological-communities.html#cb49-3" tabindex="-1"></a><span class="cf">for</span> (k <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>(<span class="dv">2</span><span class="sc">^</span>n <span class="sc">-</span> <span class="dv">1</span>)){</span>
-<span id="cb49-4"><a href="predicting-coexistence-in-ecological-communities.html#cb49-4" tabindex="-1"></a>  p <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(<span class="fu">intToBits</span>(k)[<span class="dv">1</span><span class="sc">:</span>n]) <span class="co"># from index to presence/absence</span></span>
-<span id="cb49-5"><a href="predicting-coexistence-in-ecological-communities.html#cb49-5" tabindex="-1"></a>  presence <span class="ot">&lt;-</span> p <span class="sc">&gt;</span> <span class="dv">0</span></span>
-<span id="cb49-6"><a href="predicting-coexistence-in-ecological-communities.html#cb49-6" tabindex="-1"></a>  A_k <span class="ot">&lt;-</span> A[presence, presence, drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
-<span id="cb49-7"><a href="predicting-coexistence-in-ecological-communities.html#cb49-7" tabindex="-1"></a>  r_k <span class="ot">&lt;-</span> r[presence]</span>
-<span id="cb49-8"><a href="predicting-coexistence-in-ecological-communities.html#cb49-8" tabindex="-1"></a>  <span class="co"># check if equilibrium is feasible</span></span>
-<span id="cb49-9"><a href="predicting-coexistence-in-ecological-communities.html#cb49-9" tabindex="-1"></a>  x_k_star <span class="ot">&lt;-</span> <span class="fu">solve</span>(A_k, <span class="sc">-</span>r_k)</span>
-<span id="cb49-10"><a href="predicting-coexistence-in-ecological-communities.html#cb49-10" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">all</span>(x_k_star <span class="sc">&gt;</span> <span class="dv">0</span>)){</span>
-<span id="cb49-11"><a href="predicting-coexistence-in-ecological-communities.html#cb49-11" tabindex="-1"></a>    <span class="co"># check if equilibrium is locally stable</span></span>
-<span id="cb49-12"><a href="predicting-coexistence-in-ecological-communities.html#cb49-12" tabindex="-1"></a>    <span class="co"># a) build community matrix</span></span>
-<span id="cb49-13"><a href="predicting-coexistence-in-ecological-communities.html#cb49-13" tabindex="-1"></a>    M <span class="ot">&lt;-</span> x_k_star <span class="sc">*</span> A_k</span>
-<span id="cb49-14"><a href="predicting-coexistence-in-ecological-communities.html#cb49-14" tabindex="-1"></a>    <span class="co"># b) compute eigenvalues</span></span>
-<span id="cb49-15"><a href="predicting-coexistence-in-ecological-communities.html#cb49-15" tabindex="-1"></a>    eM <span class="ot">&lt;-</span> <span class="fu">eigen</span>(M, <span class="at">only.values =</span> <span class="cn">TRUE</span>)<span class="sc">$</span>values</span>
-<span id="cb49-16"><a href="predicting-coexistence-in-ecological-communities.html#cb49-16" tabindex="-1"></a>    <span class="co"># c) check stability</span></span>
-<span id="cb49-17"><a href="predicting-coexistence-in-ecological-communities.html#cb49-17" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">all</span>(<span class="fu">Re</span>(eM) <span class="sc">&lt;</span> <span class="dv">0</span>)){</span>
-<span id="cb49-18"><a href="predicting-coexistence-in-ecological-communities.html#cb49-18" tabindex="-1"></a>      <span class="co"># we have a feasible, stable equilibrium</span></span>
-<span id="cb49-19"><a href="predicting-coexistence-in-ecological-communities.html#cb49-19" tabindex="-1"></a>      <span class="co"># add to the set</span></span>
-<span id="cb49-20"><a href="predicting-coexistence-in-ecological-communities.html#cb49-20" tabindex="-1"></a>      tmp <span class="ot">&lt;-</span> x_template</span>
-<span id="cb49-21"><a href="predicting-coexistence-in-ecological-communities.html#cb49-21" tabindex="-1"></a>      tmp[presence] <span class="ot">&lt;-</span> x_k_star</span>
-<span id="cb49-22"><a href="predicting-coexistence-in-ecological-communities.html#cb49-22" tabindex="-1"></a>      E <span class="ot">&lt;-</span> <span class="fu">rbind</span>(E, tmp)</span>
-<span id="cb49-23"><a href="predicting-coexistence-in-ecological-communities.html#cb49-23" tabindex="-1"></a>    }</span>
-<span id="cb49-24"><a href="predicting-coexistence-in-ecological-communities.html#cb49-24" tabindex="-1"></a>  }</span>
-<span id="cb49-25"><a href="predicting-coexistence-in-ecological-communities.html#cb49-25" tabindex="-1"></a>}</span>
-<span id="cb49-26"><a href="predicting-coexistence-in-ecological-communities.html#cb49-26" tabindex="-1"></a><span class="fu">rownames</span>(E) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb49-27"><a href="predicting-coexistence-in-ecological-communities.html#cb49-27" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
-<span id="cb49-28"><a href="predicting-coexistence-in-ecological-communities.html#cb49-28" tabindex="-1"></a>  <span class="fu">as.data.frame</span>(E)</span>
-<span id="cb49-29"><a href="predicting-coexistence-in-ecological-communities.html#cb49-29" tabindex="-1"></a>)</span></code></pre></div>
+<div id="example-data" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Example data<a href="predicting-coexistence-in-ecological-communities.html#example-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>For our explorations, we are going to use recent data from Ishizawa and colleagues, which you can find here:</p>
+<p>H. Ishizawa, Y. Tashiro, D. Inoue, M. Ike, H. Futamata.
+<a href="https://doi.org/10.1073/pnas.2312396121"><em>Learning beyond-pairwise interactions enables the bottom–up prediction of microbial community structure</em></a>
+PNAS 121 (7) e2312396121 (2024).</p>
+<p>The Authors inoculated duckweed (<em>Lemna minor</em>) with synthetic bacterial communities formed by all possible combinations of seven strains. To this end, they cultured the infected duckweed in flasks for 10 days. At the end of the experiment, they plated the communities on agar plates containing antibiotics that would allow the growth only of a particular strain. In this way, they were able to measure the final density of each of the seven strains in each of the <span class="math inline">\(2^7 - 1 = 127\)</span> possible communities, and conducted each experiment in replicate. The full data set reports the outcome of 692 separate experiments!</p>
+<p>More modestly, here we are going to focus on a smaller pool of three strains taken from the seven available. We therefore have <span class="math inline">\(7\)</span> possible communities, ranging from a single strain growing in isolation to the three strains growing together. For example, a few of the measurements are:</p>
 <table>
 <thead>
 <tr class="header">
-<th align="right">V1</th>
-<th align="right">V2</th>
-<th align="right">V3</th>
-<th align="right">V4</th>
-<th align="right">V5</th>
+<th>DW067</th>
+<th>DW102</th>
+<th>DW145</th>
+<th>community</th>
+<th>replicate</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">0.3108937</td>
-<td align="right">0.0000000</td>
-<td align="right">0.0000000</td>
-<td align="right">0.0000000</td>
-<td align="right">0.0000000</td>
+<td></td>
+<td></td>
+<td>0.8</td>
+<td>1</td>
+<td>1</td>
 </tr>
 <tr class="even">
-<td align="right">0.0000000</td>
-<td align="right">0.2867824</td>
-<td align="right">0.0000000</td>
-<td align="right">0.0000000</td>
-<td align="right">0.0000000</td>
+<td></td>
+<td></td>
+<td>0.812</td>
+<td>1</td>
+<td>2</td>
 </tr>
 <tr class="odd">
-<td align="right">0.2639193</td>
-<td align="right">0.1827668</td>
-<td align="right">0.0000000</td>
-<td align="right">0.0000000</td>
-<td align="right">0.0000000</td>
+<td></td>
+<td>0.529</td>
+<td></td>
+<td>2</td>
+<td>1</td>
 </tr>
 <tr class="even">
-<td align="right">0.0000000</td>
-<td align="right">0.0000000</td>
-<td align="right">0.2942741</td>
-<td align="right">0.0000000</td>
-<td align="right">0.0000000</td>
+<td></td>
+<td>0.356</td>
+<td></td>
+<td>2</td>
+<td>2</td>
 </tr>
 <tr class="odd">
-<td align="right">0.2774446</td>
-<td align="right">0.0000000</td>
-<td align="right">0.1163966</td>
-<td align="right">0.0000000</td>
-<td align="right">0.0000000</td>
+<td></td>
+<td>0.703</td>
+<td>0.909</td>
+<td>3</td>
+<td>1</td>
 </tr>
 <tr class="even">
-<td align="right">0.0000000</td>
-<td align="right">0.1908581</td>
-<td align="right">0.2296115</td>
-<td align="right">0.0000000</td>
-<td align="right">0.0000000</td>
+<td></td>
+<td>0.395</td>
+<td>0.661</td>
+<td>3</td>
+<td>2</td>
 </tr>
 <tr class="odd">
-<td align="right">0.2472075</td>
-<td align="right">0.1544949</td>
-<td align="right">0.0834396</td>
-<td align="right">0.0000000</td>
-<td align="right">0.0000000</td>
+<td>0.386</td>
+<td>0.602</td>
+<td>0.563</td>
+<td>4</td>
+<td>1</td>
 </tr>
 <tr class="even">
-<td align="right">0.0000000</td>
-<td align="right">0.0000000</td>
-<td align="right">0.0000000</td>
-<td align="right">0.0918489</td>
-<td align="right">0.0000000</td>
-</tr>
-<tr class="odd">
-<td align="right">0.3065534</td>
-<td align="right">0.0000000</td>
-<td align="right">0.0000000</td>
-<td align="right">0.0816078</td>
-<td align="right">0.0000000</td>
-</tr>
-<tr class="even">
-<td align="right">0.0000000</td>
-<td align="right">0.2723576</td>
-<td align="right">0.0000000</td>
-<td align="right">0.0494694</td>
-<td align="right">0.0000000</td>
-</tr>
-<tr class="odd">
-<td align="right">0.2653049</td>
-<td align="right">0.1655336</td>
-<td align="right">0.0000000</td>
-<td align="right">0.0572284</td>
-<td align="right">0.0000000</td>
-</tr>
-<tr class="even">
-<td align="right">0.0000000</td>
-<td align="right">0.0000000</td>
-<td align="right">0.2928056</td>
-<td align="right">0.0536094</td>
-<td align="right">0.0000000</td>
-</tr>
-<tr class="odd">
-<td align="right">0.2736989</td>
-<td align="right">0.0000000</td>
-<td align="right">0.1169508</td>
-<td align="right">0.0674319</td>
-<td align="right">0.0000000</td>
-</tr>
-<tr class="even">
-<td align="right">0.0000000</td>
-<td align="right">0.1799253</td>
-<td align="right">0.2323978</td>
-<td align="right">0.0335017</td>
-<td align="right">0.0000000</td>
-</tr>
-<tr class="odd">
-<td align="right">0.2476419</td>
-<td align="right">0.1378836</td>
-<td align="right">0.0873999</td>
-<td align="right">0.0507067</td>
-<td align="right">0.0000000</td>
-</tr>
-<tr class="even">
-<td align="right">0.0000000</td>
-<td align="right">0.0000000</td>
-<td align="right">0.0000000</td>
-<td align="right">0.0000000</td>
-<td align="right">0.2128200</td>
-</tr>
-<tr class="odd">
-<td align="right">0.3082106</td>
-<td align="right">0.0000000</td>
-<td align="right">0.0000000</td>
-<td align="right">0.0000000</td>
-<td align="right">0.2018726</td>
-</tr>
-<tr class="even">
-<td align="right">0.0000000</td>
-<td align="right">0.2741596</td>
-<td align="right">0.0000000</td>
-<td align="right">0.0000000</td>
-<td align="right">0.1732541</td>
-</tr>
-<tr class="odd">
-<td align="right">0.2650016</td>
-<td align="right">0.1693007</td>
-<td align="right">0.0000000</td>
-<td align="right">0.0000000</td>
-<td align="right">0.1789743</td>
-</tr>
-<tr class="even">
-<td align="right">0.0000000</td>
-<td align="right">0.0000000</td>
-<td align="right">0.2777917</td>
-<td align="right">0.0000000</td>
-<td align="right">0.0303189</td>
-</tr>
-<tr class="odd">
-<td align="right">0.0000000</td>
-<td align="right">0.2006966</td>
-<td align="right">0.1965126</td>
-<td align="right">0.0000000</td>
-<td align="right">0.0547530</td>
-</tr>
-<tr class="even">
-<td align="right">0.0000000</td>
-<td align="right">0.0000000</td>
-<td align="right">0.0000000</td>
-<td align="right">0.0109366</td>
-<td align="right">0.2123335</td>
-</tr>
-<tr class="odd">
-<td align="right">0.3079627</td>
-<td align="right">0.0000000</td>
-<td align="right">0.0000000</td>
-<td align="right">0.0047112</td>
-<td align="right">0.2016718</td>
-</tr>
-<tr class="even">
-<td align="right">0.0000000</td>
-<td align="right">0.0000000</td>
-<td align="right">0.2775681</td>
-<td align="right">0.0447484</td>
-<td align="right">0.0284754</td>
-</tr>
-<tr class="odd">
-<td align="right">0.0000000</td>
-<td align="right">0.1955419</td>
-<td align="right">0.1985247</td>
-<td align="right">0.0151074</td>
-<td align="right">0.0535030</td>
+<td>0.379</td>
+<td>0.774</td>
+<td>0.293</td>
+<td>4</td>
+<td>2</td>
 </tr>
 </tbody>
 </table>
+<p>We can therefore associate each measurement with a) the strain being measured, <span class="math inline">\(i\)</span>; b) the community in which <span class="math inline">\(i\)</span> was grown, <span class="math inline">\(k\)</span>; and c) the (biological) replicate experiment, <span class="math inline">\(r\)</span>.</p>
+</div>
+<div id="a-simple-statistical-framework" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> A simple statistical framework<a href="predicting-coexistence-in-ecological-communities.html#a-simple-statistical-framework" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The simplest model we can write for this type of data is one in which the outcomes of replicate experiments are independent samples from a distribution:</p>
+<p><span class="math display">\[
+\tilde{x}^{(k,r)}_i \sim Q_i\left(x^{(k)}_i, \gamma_i^{(k)}\right)
+\]</span></p>
+<p>where <span class="math inline">\(\tilde{x}_i^{(k, r)}\)</span> is the <em>observed</em> density of population <span class="math inline">\(i\)</span> for the <span class="math inline">\(r\)</span> replicate in which population <span class="math inline">\(i\)</span> is grown in community <span class="math inline">\(k\)</span>. The value <span class="math inline">\(x_i^{(k)}\)</span> represents the <em>true</em> mean of the distribution (i.e., the average if we were to conduct many replicates—hence it does not depend on <span class="math inline">\(r\)</span>), and <span class="math inline">\(\gamma_i^{(k)}\)</span> is a parameter (or several parameters) controlling the shape of the distribution <span class="math inline">\(Q_i\)</span>.</p>
+<p>Implicitly, we are making a very strong assumption: if we observe the community <span class="math inline">\(k\)</span>, it is always found around <span class="math inline">\(x^{(k)}\)</span>—i.e., we cannot have <em>true multistability</em>, in which, depending on initial conditions, we end up with different outcomes in which all populations are present (we can still have that, depending on initial condition, the system ends up at different points/attractors, as long as they have different compositions).</p>
+<p>This model requires estimating all the <span class="math inline">\(x_i^{(k)}\)</span> and <span class="math inline">\(\gamma_i^{(k)}\)</span>, and is therefore not very useful. To make the model applicable to real data, we make another strong assumption:</p>
+<p><span class="math display">\[
+x_i^{(k)} = \alpha_i - \sum_{j \in k;\, j\neq i } \beta_{ij} x_j^{(k)}
+\]</span></p>
+<p>The interpretation is simple: if population <span class="math inline">\(i\)</span> is grown by itself, it will reach the carrying capacity <span class="math inline">\(\alpha_i\)</span>; if other species are co-cultured along with <span class="math inline">\(i\)</span>, they will change the final density of <span class="math inline">\(i\)</span> according to their density (<span class="math inline">\(x_j^{(k)}\)</span>) and an interaction term <span class="math inline">\(\beta_{ij}\)</span>.</p>
+<p>We perform some manipulations:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\sum_{j \in k;\, j\neq i } \beta_{ij} x_j^{(k)} + x_i^{(k)} &amp;= \alpha_i \\
+\sum_{j \in k;\, j\neq i } \frac{\beta_{ij}}{\alpha_i} x_j^{(k)} + \frac{1}{\alpha_i} x_i^{(k)} &amp;= 1 \\
+\sum_{j \in k;\, j\neq i } B_{ij} x_j^{(k)} + B_{ii} x_i^{(k)} &amp;= 1 \\
+\sum_{j \in k}B_{ij} x_j^{(k)} &amp;=1\\
+\left(B^{(k, k)} x^{(k)}\right)_i &amp;=1\\
+B^{(k, k)} x^{(k)} &amp;= 1_{\|k\|}
+\end{aligned}
+\]</span></p>
+<p>But this is exactly the structure of the equilibria for a GLV model, which we have introduced before.</p>
+</div>
+<div id="the-structure-of-equilibria-in-glv" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> The structure of equilibria in GLV<a href="predicting-coexistence-in-ecological-communities.html#the-structure-of-equilibria-in-glv" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Take the model:</p>
+<p><span class="math display">\[
+\dot{x} = D(x \circ r)(1_n - Bx)
+\]</span></p>
+<p>with <span class="math inline">\(r &gt; 0_n\)</span>; compute all the feasible equilibria and collect them into a matrix <span class="math inline">\(E\)</span>. For example:</p>
+<p><span class="math display">\[
+B = \begin{pmatrix}
+2 &amp; -3 &amp; 3\\
+-2 &amp; 7 &amp; -3\\
+2 &amp; -2 &amp; 2
+\end{pmatrix} \quad
+E = \begin{pmatrix}
+\frac{1}{2} &amp; 0 &amp; 0\\
+0 &amp; \frac{1}{7} &amp; 0\\
+0 &amp; 0 &amp; \frac{1}{2}\\
+\frac{5}{4} &amp;\frac{1}{2} &amp; 0\\
+0 &amp; \frac{5}{8} &amp; \frac{9}{8}\\
+\frac{1}{2} &amp; \frac{1}{2} &amp; \frac{1}{2}
+\end{pmatrix}
+\]</span></p>
+<p>where each row contains a feasible equilibrium (if it exists) corresponding to a given composition.</p>
 <div class="boxpaper">
 <p><strong>Key paper: <span class="citation">Tilman et al. (<a href="#ref-tilman1997plant">1997</a>)</span></strong></p>
 <p>We are not the first people to consider “in-silico” biodiversity experiments. Tilman and collaborators were doing the same more than twenty years ago! For a more sophisticated model, see <span class="citation">Loreau (<a href="#ref-loreau1998biodiversity">1998</a>)</span>.</p>
 </div>
-</div>
-<div id="total-biomass" class="section level2 hasAnchor" number="6.3">
-<h2><span class="header-section-number">6.3</span> Total biomass<a href="predicting-coexistence-in-ecological-communities.html#total-biomass" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Our simulated communties have much in common with BEF experiments. For example, plotting the species richness on the x-axis and the total biomass on the y-axis, we recover the typical pattern found in real experiments (<span class="citation">Hector et al. (<a href="#ref-hector1999plant">1999</a>)</span>, <span class="citation">Tilman et al. (<a href="#ref-tilman2001diversity">2001</a>)</span>, <span class="citation">Cadotte (<a href="#ref-cadotte2013experimental">2013</a>)</span>):</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="predicting-coexistence-in-ecological-communities.html#cb50-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># plotting and wrangling</span></span>
-<span id="cb50-2"><a href="predicting-coexistence-in-ecological-communities.html#cb50-2" tabindex="-1"></a>total_biomass <span class="ot">&lt;-</span> <span class="fu">rowSums</span>(E)</span>
-<span id="cb50-3"><a href="predicting-coexistence-in-ecological-communities.html#cb50-3" tabindex="-1"></a>species_richness <span class="ot">&lt;-</span> <span class="fu">rowSums</span>(E <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
-<span id="cb50-4"><a href="predicting-coexistence-in-ecological-communities.html#cb50-4" tabindex="-1"></a>BEF <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">species_richness =</span> species_richness, <span class="at">total_biomass =</span> total_biomass)</span>
-<span id="cb50-5"><a href="predicting-coexistence-in-ecological-communities.html#cb50-5" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> BEF) <span class="sc">+</span> </span>
-<span id="cb50-6"><a href="predicting-coexistence-in-ecological-communities.html#cb50-6" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> species_richness, <span class="at">y =</span> total_biomass) <span class="sc">+</span> </span>
-<span id="cb50-7"><a href="predicting-coexistence-in-ecological-communities.html#cb50-7" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>() <span class="sc">+</span> my_theme</span></code></pre></div>
-<p><img src="Theoretical_Community_Ecology_files/figure-html/glvbefplot-1.png" width="480" style="display: block; margin: auto;" /></p>
-<p>showing a modest increase in total biomass with increasing species richness.</p>
-</div>
-<div id="hyperplanes" class="section level2 hasAnchor" number="6.4">
-<h2><span class="header-section-number">6.4</span> Hyperplanes<a href="predicting-coexistence-in-ecological-communities.html#hyperplanes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>We can rewrite the GLV model as:</p>
+<p>Consider the matrix:</p>
 <p><span class="math display">\[
-\begin{aligned}
-\dfrac{dx(t)}{dt} &amp;= D(x(t))(r + A x(t))\\
-&amp;= D(r) D(x(t))(1 + B x(t))
-\end{aligned}
-\]</span>
-where we have <span class="math inline">\(b_{ij} = a_{ij} / r_i\)</span>. The equilibrium for each subset of species <span class="math inline">\(k\)</span> (if it exists) can be found as</p>
-<p><span class="math display">\[x^{(k)\star}= -(B^{(k)})^{-1} 1^{(k)}\]</span></p>
-<p>where <span class="math inline">\((B^{(k)})^{-1}\)</span> is the inverse of the <span class="math inline">\(B^{(k)}\)</span> sub-matrix of <span class="math inline">\(B\)</span> in which only the rows/columns belonging to <span class="math inline">\(k\)</span> are retained, and <span class="math inline">\(1^{(k)}\)</span> is a vector of ones with length equal to the number of species in <span class="math inline">\(k\)</span>.</p>
-<p>We now want to link the matrix <span class="math inline">\(B\)</span> with the results of the experiments, stored in matrix <span class="math inline">\(E\)</span>. Call <span class="math inline">\(x^{(k)}_i\)</span> the recorded density of taxon <span class="math inline">\(i\)</span> in community <span class="math inline">\(k\)</span> (i.e., stored in one of the rows of <span class="math inline">\(E\)</span>). We know that, whenever a feasible equilibrium exist,</p>
-<p><span class="math display">\[
-(B^{(k)}) x^{(k)}= -1^{(k)}
-\]</span>
-which can be seen as a system of as many equations as there are species in <span class="math inline">\(k\)</span>. Then, we can build a matrix <span class="math inline">\(P\)</span> where each row represents an equation of form:</p>
-<p><span class="math display">\[
-\sum_{j \in k} b_{ij} x_j^{(k)} = -1
-\]</span></p>
-<p>and we have a column for each coefficient in <span class="math inline">\(B\)</span>. For example, take three taxa, and suppose that we can culture each in isolation, and that the all assemblages coexist when co-cultured. We can write 12 equations: monocultures (<span class="math inline">\(k \in \{1, 2, 4\}\)</span>) give rise to a single equation; co-cultures of two taxa to two equations each (<span class="math inline">\(k \in \{3, 5, 6 \}\)</span>); and communities with three taxa to three independent equations (<span class="math inline">\(k = 7\)</span>). Here are the 12 equations we can write:</p>
-<p><span class="math display">\[
-\begin{aligned}
-b_{11} x_1^{(1)} &amp;= -1\\
-b_{22} x_2^{(2)} &amp;= -1\\
-b_{11} x_1^{(3)} + b_{12}x_2^{(3)} &amp;= -1\\
-b_{21} x_1^{(3)} + b_{22}x_2^{(3)} &amp;= -1\\
-b_{33} x_3^{(4)} &amp;= -1\\
-b_{11} x_1^{(5)} + b_{13} x_3^{(5)} &amp;= -1\\
-b_{31} x_1^{(5)} + b_{33} x_3^{(5)} &amp;= -1\\
-b_{22} x_2^{(6)} + b_{23} x_3^{(6)} &amp;= -1\\
-b_{32} x_2^{(6)} + b_{33} x_3^{(6)} &amp;= -1\\
-b_{11} x_1^{(7)} + b_{12} x_2^{(7)} + b_{13} x_3^{(7)} &amp; = -1\\
-b_{21} x_1^{(7)} + b_{22} x_2^{(7)} + b_{23} x_3^{(7)} &amp; = -1\\
-b_{31} x_1^{(7)} + b_{32} x_2^{(7)} + b_{33} x_3^{(7)} &amp; = -1
-\end{aligned}
-\]</span></p>
-<p>We can summarize the equations in a more compact form as <span class="math inline">\(P v(B) = - 1\)</span>:</p>
-<p><span class="math display">\[
-\begin{pmatrix}
-x_1^{(1)} &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
-0 &amp; 0 &amp; 0 &amp; 0 &amp; x_2^{(2)} &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
-x_1^{(3)} &amp; x_2^{(3)} &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
-0 &amp; 0 &amp; 0 &amp; x_1^{(3)} &amp; x_2^{(3)} &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
-0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; x_3^{(4)} \\
-x_1^{(5)} &amp; 0 &amp; x_3^{(5)} &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
-0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; x_1^{(5)} &amp; 0 &amp; x_3^{(5)} \\
-0 &amp; 0 &amp; 0 &amp; 0 &amp; x_2^{(6)} &amp; x_3^{(6)} &amp; 0 &amp; 0 &amp; 0 \\
-0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; x_2^{(6)} &amp; x_3^{(6)}\\
-x_1^{(7)} &amp; x_2^{(7)} &amp; x_3^{(7)} &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
-0 &amp; 0 &amp; 0 &amp; x_1^{(7)} &amp; x_2^{(7)} &amp; x_3^{(7)} &amp; 0 &amp; 0 &amp; 0 \\
-0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; x_1^{(7)} &amp; x_2^{(7)} &amp; x_3^{(7)}
+1_m 1_n^T - E B^T = \begin{pmatrix}
+\color{red} 0 &amp; 2 &amp; 0\\
+\frac{10}{7} &amp; \color{red} 0 &amp; \frac{9}{7}\\
+-\frac{1}{2} &amp;\frac{5}{2} &amp;\color{red}0\\
+\color{red} 0 &amp; \color{red} 0 &amp; -\frac{1}{2}\\
+-\frac{1}{2} &amp; \color{red} 0 &amp; \color{red} 0\\
+\color{red} 0 &amp;\color{red} 0 &amp;\color{red} 0  
 \end{pmatrix}
-\begin{pmatrix}
-b_{11}\\
-b_{12}\\
-b_{13}\\
-b_{21}\\
-b_{22}\\
-b_{23}\\
-b_{31}\\
-b_{32}\\
-b_{33}
+\]</span></p>
+<p>For each row, we find <span class="math inline">\(0\)</span> for the corresponding population at equilibrium (in red), and the remaining values express <span class="math inline">\((1_n - B x^{(k)})_j\)</span>, which has the same sign as the invasion growth rates for population <span class="math inline">\(j\)</span>, when <span class="math inline">\(r &gt; 0_n\)</span>. Hence, a saturated equilibrium will correspond to a row with non positive values (e.g., the community <span class="math inline">\(k=\{1,2\}\)</span> is saturated, because population 3 cannot invade when rare).</p>
+<p>Next, call <span class="math inline">\(E_i\)</span> the sub matrix obtained selecting only rows for which <span class="math inline">\(x_i^{(k)} &gt; 0\)</span>. For example, for population 1:</p>
+<p><span class="math display">\[
+E_1 = \begin{pmatrix}
+\frac{1}{2} &amp; 0 &amp; 0\\
+\frac{5}{4} &amp;\frac{1}{2} &amp; 0\\
+\frac{1}{2} &amp; \frac{1}{2} &amp; \frac{1}{2}
 \end{pmatrix}
-= -
-\begin{pmatrix}
-1\\
-1\\
-1\\
-1\\
-1\\
-1\\
-1\\
-1\\
-1\\
+\]</span>
+We have that:</p>
+<p><span class="math display">\[
+E_i B_i = 1_l
+\]</span></p>
+<p>Where <span class="math inline">\(B_i\)</span> is the <span class="math inline">\(i^\text{th}\)</span> row of <span class="math inline">\(B\)</span>, and <span class="math inline">\(l\)</span> is the number of experiments in which <span class="math inline">\(i\)</span> is present:</p>
+<p><span class="math display">\[
+E_1 B_1 = \begin{pmatrix}
+\frac{1}{2} &amp; 0 &amp; 0\\
+\frac{5}{4} &amp;\frac{1}{2} &amp; 0\\
+\frac{1}{2} &amp; \frac{1}{2} &amp; \frac{1}{2}
+\end{pmatrix} \begin{pmatrix}
+2\\
+-3\\
+3
+\end{pmatrix} = \begin{pmatrix}
 1\\
 1\\
 1
 \end{pmatrix}
 \]</span></p>
-<p>where <span class="math inline">\(v(B)\)</span> is a vectorized version of <span class="math inline">\(B\)</span>. Because we have <span class="math inline">\(n 2^{n-1} = 12\)</span> equations, and <span class="math inline">\(n^2 = 9\)</span> variables, in principle the system can be solved.</p>
+<p>Practically, this means that all the <span class="math inline">\(i^\text{th}\)</span> component of all the equilibria <span class="math inline">\(x^{(k)}\)</span> of a GLV model belong to a <em>hyperplane</em> in <span class="math inline">\(\mathbb R^n\)</span> defined by <span class="math inline">\(\sum_{j} B_{ij} x^{(k)}_j = 1\)</span>.</p>
+<p>This also means that we can recover the values of <span class="math inline">\(B_i\)</span> from the equilibria:</p>
+<p><span class="math display">\[
+B_i = E_i^{-1}1_n
+\]</span></p>
+<p>which can be computed when <span class="math inline">\(E_i\)</span> is square.</p>
 <div class="boxmath">
 <p><strong>Moore-Penrose pseudoinverses</strong></p>
 <p>For a <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(A\)</span>, the inverse is determined (when it exists), as a matrix <span class="math inline">\(A^{-1}\)</span> such that <span class="math inline">\(AA^{-1} = A^{-1}A = I\)</span>. A square matrix is invertible if its determinant (remember, the product of its eigenvalues) is nonzero. A matrix with determinant zero is called <em>singular</em> or <em>degenerate</em> and has no inverse. Singular matrices are rare, in the sense that a random matrix is “almost never” singular (this can be stated in a precise mathematical way). An invertible matrix has <em>full rank</em> (i.e., the rows [columns] are all linearly independent).</p>
@@ -718,7 +574,7 @@ A^+AA^+ = A^+
 \]</span></p>
 <p><span class="math display">\[AA^+ = (AA^+)^T\]</span>
 <span class="math display">\[A^+A = (A^+A)^T\]</span></p>
-<p>Suppose that <span class="math inline">\(A\)</span> has linearly independent columns (i.e., it is of full column rank), then <span class="math inline">\(A^T A\)</span> has full rank and is therefore invertible. In this case, we can compute the <em>left</em> pseudoinverse as</p>
+<p>Suppose that <span class="math inline">\(A\)</span> has linearly independent columns (i.e., it is of full column rank), then <span class="math inline">\(A^T A\)</span> has full rank and is therefore invertible. In this case, we can compute the <em>left</em> pseudo-inverse as</p>
 <p><span class="math display">\[A^+ = (A^T A)^{-1}A^T\]</span></p>
 <p>This is called the left inverse because <span class="math inline">\(A^+A= (A^T A)^{-1} A^T A=I\)</span>. When <span class="math inline">\(A\)</span> has independent rows, one can compute the <em>right inverse</em>. Note that a generalized inverse <span class="math inline">\(A^+\)</span> exists even if <span class="math inline">\(A\)</span> is not of full column nor full row rank, but in this case it is not unique.</p>
 <p><strong>Application: least squares</strong></p>
@@ -734,111 +590,36 @@ Xb = y
 <p><span class="math display">\[
 \hat{b} = X^{+}y
 \]</span></p>
-<p>in particular, it can be proven that the solution <span class="math inline">\(\hat{b}\)</span> minimizes the SSQ: call <span class="math inline">\(\hat{y} = X \hat{b}\)</span>, then the solution <span class="math inline">\(\hat{b}\)</span> is the parameter choice minimizing <span class="math inline">\(SSQ = \sum_i (y_i -\hat{y}_i)^2\)</span>.</p>
+<p>in particular, it can be proven that the solution <span class="math inline">\(\hat{b}\)</span> minimizes the sum of squared deviations (SSQ): call <span class="math inline">\(\hat{y} = X \hat{b}\)</span>, then the solution <span class="math inline">\(\hat{b}\)</span> is the parameter choice minimizing <span class="math inline">\(SSQ = \sum_i (y_i -\hat{y}_i)^2\)</span>.</p>
 </div>
-<p>One can recognize the equation above as a linear regression, and choose <span class="math inline">\(\widehat{v(B)} = -P^{+}1\)</span> (where <span class="math inline">\(P^{+}\)</span> is the Moore-Penrose pseudo-inverse of <span class="math inline">\(P\)</span>). Before doing that, however, we can try to simplify the calculation by rearranging the rows of <span class="math inline">\(P\)</span>:</p>
+<p>If <span class="math inline">\(E_i\)</span> is rectangular, we can use the Moore-Penrose pseudo-inverse. For example:</p>
 <p><span class="math display">\[
-\begin{pmatrix}
-x_1^{(1)} &amp; 0 &amp; 0      &amp; 0 &amp; 0 &amp; 0     &amp; 0 &amp; 0 &amp; 0 \\
-x_1^{(3)} &amp; x_2^{(3)} &amp; 0      &amp; 0 &amp; 0 &amp; 0     &amp; 0 &amp; 0 &amp; 0 \\
-x_1^{(5)} &amp; 0 &amp; x_3^{(5)}       &amp; 0 &amp; 0 &amp; 0     &amp; 0 &amp; 0 &amp; 0 \\
-x_1^{(7)} &amp; x_2^{(7)} &amp; x_3^{(7)} &amp; 0 &amp; 0 &amp; 0     &amp; 0 &amp; 0 &amp; 0 \\
-0 &amp; 0 &amp; 0     &amp; 0 &amp; x_2^{(2)} &amp; 0     &amp; 0 &amp; 0 &amp; 0 \\
-0 &amp; 0 &amp; 0     &amp; x_1^{(3)} &amp; x_2^{(3)} &amp; 0     &amp; 0 &amp; 0 &amp; 0 \\
-0 &amp; 0 &amp; 0     &amp; 0 &amp; x_2^{(6)} &amp; x_3^{(6)}     &amp; 0 &amp; 0 &amp; 0 \\
-0 &amp; 0 &amp; 0     &amp; x_1^{(7)} &amp; x_2^{(7)} &amp; x_3^{(7)} &amp; 0 &amp; 0 &amp; 0 \\
-0 &amp; 0 &amp; 0      &amp; 0 &amp; 0 &amp; 0     &amp; 0 &amp; 0 &amp; x_3^{(4)} \\
-0 &amp; 0 &amp; 0     &amp; 0 &amp; 0 &amp; 0     &amp; x_1^{(5)} &amp; 0 &amp; x_3^{(5)} \\
-0 &amp; 0 &amp; 0     &amp; 0 &amp; 0 &amp; 0        &amp; 0 &amp; x_2^{(6)} &amp; x_3^{(6)}\\
-0 &amp; 0 &amp; 0     &amp; 0 &amp; 0 &amp; 0        &amp; x_1^{(7)} &amp; x_2^{(7)} &amp; x_3^{(7)}
-\end{pmatrix}
-\begin{pmatrix}
-b_{11}\\
-b_{12}\\
-b_{13}\\
-b_{21}\\
-b_{22}\\
-b_{23}\\
-b_{31}\\
-b_{32}\\
-b_{33}
-\end{pmatrix}
-= -
-\begin{pmatrix}
-1\\
-1\\
-1\\
-1\\
-1\\
-1\\
-1\\
-1\\
-1\\
-1\\
-1\\
-1
+E_2 = \begin{pmatrix}
+0 &amp; \frac{1}{7} &amp; 0\\
+\frac{5}{4} &amp;\frac{1}{2} &amp; 0\\
+0 &amp; \frac{5}{8} &amp; \frac{9}{8}\\
+\frac{1}{2} &amp; \frac{1}{2} &amp; \frac{1}{2}
 \end{pmatrix}
 \]</span></p>
-<p>Showing that the matrix <span class="math inline">\(P\)</span> is block-diagonal, with blocks <span class="math inline">\(P_i = E_i\)</span>, where <span class="math inline">\(E_i\)</span> is the matrix <span class="math inline">\(E\)</span> in which only the rows in which species <span class="math inline">\(i\)</span> is present are retained. As such, we can solve for the matrix <span class="math inline">\(B\)</span> one row at a time:</p>
 <p><span class="math display">\[
-\begin{pmatrix}
-x_1^{(1)} &amp; 0 &amp; 0 \\
-x_1^{(3)} &amp; x_2^{(3)} &amp; 0 \\
-x_1^{(5)} &amp; 0 &amp; x_3^{(5)} \\
-x_1^{(7)} &amp; x_2^{(7)} &amp; x_3^{(7)}
-\end{pmatrix}
-\begin{pmatrix}
-b_{11}\\
-b_{12}\\
-b_{13}
-\end{pmatrix}
-= -
-\begin{pmatrix}
-1\\
-1\\
-1\\
-1
-\end{pmatrix}
+(E_2^T E_2)^{-1}E_2^T 1_4= \begin{pmatrix}
+-2 \\
+7 \\
+-3
+\end{pmatrix} = B_2
 \]</span></p>
-<p>For example:</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="predicting-coexistence-in-ecological-communities.html#cb51-1" tabindex="-1"></a><span class="co"># rescaled matrix</span></span>
-<span id="cb51-2"><a href="predicting-coexistence-in-ecological-communities.html#cb51-2" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> r <span class="sc">*</span> A</span>
-<span id="cb51-3"><a href="predicting-coexistence-in-ecological-communities.html#cb51-3" tabindex="-1"></a><span class="co"># now try to recover B from matrix E</span></span>
-<span id="cb51-4"><a href="predicting-coexistence-in-ecological-communities.html#cb51-4" tabindex="-1"></a>fitted_B <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, n, n)</span>
-<span id="cb51-5"><a href="predicting-coexistence-in-ecological-communities.html#cb51-5" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){</span>
-<span id="cb51-6"><a href="predicting-coexistence-in-ecological-communities.html#cb51-6" tabindex="-1"></a>  <span class="co"># take the matrix Ei</span></span>
-<span id="cb51-7"><a href="predicting-coexistence-in-ecological-communities.html#cb51-7" tabindex="-1"></a>  Ei <span class="ot">&lt;-</span> E[E[,i] <span class="sc">&gt;</span> <span class="dv">0</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
-<span id="cb51-8"><a href="predicting-coexistence-in-ecological-communities.html#cb51-8" tabindex="-1"></a>  <span class="co"># solve for the row (MASS::ginv computes the pseudoinverse)</span></span>
-<span id="cb51-9"><a href="predicting-coexistence-in-ecological-communities.html#cb51-9" tabindex="-1"></a>  fitted_B[i,] <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fu">rowSums</span>(MASS<span class="sc">::</span><span class="fu">ginv</span>(Ei))</span>
-<span id="cb51-10"><a href="predicting-coexistence-in-ecological-communities.html#cb51-10" tabindex="-1"></a>}</span>
-<span id="cb51-11"><a href="predicting-coexistence-in-ecological-communities.html#cb51-11" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="fu">tibble</span>(<span class="at">real =</span> <span class="fu">as.vector</span>(B),</span>
-<span id="cb51-12"><a href="predicting-coexistence-in-ecological-communities.html#cb51-12" tabindex="-1"></a>                     <span class="at">fitted =</span> <span class="fu">as.vector</span>(fitted_B))) <span class="sc">+</span> </span>
-<span id="cb51-13"><a href="predicting-coexistence-in-ecological-communities.html#cb51-13" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> real, <span class="at">y =</span> fitted) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb51-14"><a href="predicting-coexistence-in-ecological-communities.html#cb51-14" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span> <span class="dv">0</span>)</span></code></pre></div>
-<p><img src="Theoretical_Community_Ecology_files/figure-html/examplefitendpoints-1.png" width="480" style="display: block; margin: auto;" /></p>
-<p>Notice that in general the system of equations is over-determined. As such, we can fit using a subset of the experiments, and then predict the rest of the experiments out-of-fit. For example, let’s fit again using the information on monocultures and pairs only, and then predict experiment 25, in which all species but the first coexist:</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="predicting-coexistence-in-ecological-communities.html#cb52-1" tabindex="-1"></a>E_partial <span class="ot">&lt;-</span> E[<span class="fu">rowSums</span>(E<span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">&lt;</span> <span class="dv">3</span>, ]</span>
-<span id="cb52-2"><a href="predicting-coexistence-in-ecological-communities.html#cb52-2" tabindex="-1"></a>fitted_B <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, n, n)</span>
-<span id="cb52-3"><a href="predicting-coexistence-in-ecological-communities.html#cb52-3" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){</span>
-<span id="cb52-4"><a href="predicting-coexistence-in-ecological-communities.html#cb52-4" tabindex="-1"></a>  <span class="co"># take the matrix Ei</span></span>
-<span id="cb52-5"><a href="predicting-coexistence-in-ecological-communities.html#cb52-5" tabindex="-1"></a>  Ei <span class="ot">&lt;-</span> E_partial[E_partial[,i] <span class="sc">&gt;</span> <span class="dv">0</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
-<span id="cb52-6"><a href="predicting-coexistence-in-ecological-communities.html#cb52-6" tabindex="-1"></a>  <span class="co"># solve for the row</span></span>
-<span id="cb52-7"><a href="predicting-coexistence-in-ecological-communities.html#cb52-7" tabindex="-1"></a>  fitted_B[i,] <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fu">rowSums</span>(MASS<span class="sc">::</span><span class="fu">ginv</span>(Ei))</span>
-<span id="cb52-8"><a href="predicting-coexistence-in-ecological-communities.html#cb52-8" tabindex="-1"></a>}</span>
-<span id="cb52-9"><a href="predicting-coexistence-in-ecological-communities.html#cb52-9" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="fu">tibble</span>(<span class="at">real =</span> <span class="fu">as.vector</span>(B),</span>
-<span id="cb52-10"><a href="predicting-coexistence-in-ecological-communities.html#cb52-10" tabindex="-1"></a>                     <span class="at">fitted =</span> <span class="fu">as.vector</span>(fitted_B))) <span class="sc">+</span> </span>
-<span id="cb52-11"><a href="predicting-coexistence-in-ecological-communities.html#cb52-11" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> real, <span class="at">y =</span> fitted) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb52-12"><a href="predicting-coexistence-in-ecological-communities.html#cb52-12" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span> <span class="dv">0</span>)</span></code></pre></div>
-<p><img src="Theoretical_Community_Ecology_files/figure-html/examplefitendpoints2-1.png" width="480" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="predicting-coexistence-in-ecological-communities.html#cb53-1" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;predicted&quot;</span>)</span></code></pre></div>
-<p>[1] “predicted”</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="predicting-coexistence-in-ecological-communities.html#cb54-1" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">solve</span>(fitted_B[<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>], <span class="sc">-</span> <span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">4</span>)))</span></code></pre></div>
-<p>[1] 0.00000000 0.19554192 0.19852465 0.01510744 0.05350303</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="predicting-coexistence-in-ecological-communities.html#cb55-1" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;observed&quot;</span>)</span></code></pre></div>
-<p>[1] “observed”</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="predicting-coexistence-in-ecological-communities.html#cb56-1" tabindex="-1"></a>E[<span class="dv">25</span>, ]</span></code></pre></div>
-<p>[1] 0.00000000 0.19554192 0.19852465 0.01510744 0.05350303</p>
-<p>The equation <span class="math inline">\(E_i B_i = -1\)</span> shows that all the equilibria of species <span class="math inline">\(i\)</span> in a GLV system are arranged on a hyperplane.</p>
+<p>This also provides a naive method to get a draft of <span class="math inline">\(B\)</span> when only the equilibrium values are available.</p>
+<p>The method is going to return a unique solution provided that each matrix <span class="math inline">\(E_i\)</span> has rank <span class="math inline">\(n\)</span>. In practice, this means that, for each population <span class="math inline">\(i\)</span>, a) <span class="math inline">\(E_i\)</span> has at least <span class="math inline">\(n\)</span> rows (i.e., population <span class="math inline">\(i\)</span> is present at <span class="math inline">\(n\)</span> distinct equilibria), and b) each species <span class="math inline">\(j\)</span> is present in at least one equilibrium with <span class="math inline">\(i\)</span>, i.e., each pair of populations is found in at least one equilibrium.</p>
+<p>This might be a tall order when <span class="math inline">\(n\)</span> is large, and we will see how to circumvent this issue below.</p>
+</div>
+<div id="predicting-coexistence" class="section level2 hasAnchor" number="5.5">
+<h2><span class="header-section-number">5.5</span> Predicting coexistence<a href="predicting-coexistence-in-ecological-communities.html#predicting-coexistence" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Suppose that we have estimated the matrix <span class="math inline">\(B\)</span>, and that we want to determine whether a certain combination of populations can or cannot coexist. This is useful when we have sufficient data to estimate <span class="math inline">\(B\)</span>, but we have not carried out all the possible experiments—we want to predict the outcome of further experiments in advance.</p>
+<p>Then, according to our statistical model, we can take <span class="math inline">\(B^{(k,k)}\)</span> for the desired community <span class="math inline">\(k\)</span>, and take the row sums of the inverse:</p>
+<p><span class="math display">\[
+x^{(k)} = \left( B^{(k,k)} \right)^{-1} 1_{\|k\|}
+\]</span></p>
+<p>If all the components of <span class="math inline">\(x^{(k)}\)</span> are positive, we assume that this will be the outcome of the experiment. If <em>any</em> of the components is negative, on the other hand, we conclude that the populations cannot coexist.</p>
 <div class="boxhomework">
 <p><strong>Homework 6a</strong></p>
 <p>As seen above, for GLV, the matrix <span class="math inline">\(B = D(r)^{-1}A\)</span> encodes all the equilibria (feasible or unfeasible) for the model. Knowing <span class="math inline">\(B\)</span> is therefore all we need to determine the existence of a feasible equilibrium for any community we can form from the pool.</p>
@@ -848,285 +629,269 @@ b_{13}
 </ol>
 </div>
 </div>
-<div id="fitting-real-data" class="section level2 hasAnchor" number="6.5">
-<h2><span class="header-section-number">6.5</span> Fitting real data<a href="predicting-coexistence-in-ecological-communities.html#fitting-real-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Having played with synthetic data, we can start thinking about data stemming from real experiments. In particular, consider the linear, additive model:</p>
-<p><span class="math display">\[
-x_i^{(k)} = \gamma_i + \sum_{j\neq i} \theta_{ij} x_j^{(k)}
-\]</span></p>
-<p>where <span class="math inline">\(x_i^{(k)}\)</span> is the density of species <span class="math inline">\(i\)</span> in community <span class="math inline">\(k\)</span>, <span class="math inline">\(\gamma_i\)</span> models the density of <span class="math inline">\(i\)</span> when grown in isolation, and the parameters <span class="math inline">\(\theta_{ij}\)</span> model how the density of <span class="math inline">\(i\)</span> is influenced by the other species in community <span class="math inline">\(k\)</span>. Dividing both sides by <span class="math inline">\(\gamma_i\)</span> and rearranging:</p>
-<p><span class="math display">\[
-\sum_{j\neq i} (\theta_{ij} /\gamma_i) x_j^{(k)} - (1/{\gamma_i}) x_i^{(k)} = \sum_j b_{ij} x_j^{(k)} = -1
-\]</span>
-where we have definied <span class="math inline">\(b_{ij} = \theta_{ij} / \gamma_i\)</span> for <span class="math inline">\(i \neq j\)</span>, and <span class="math inline">\(b_{ii} = - 1 / \gamma_i\)</span>. Note that this is exactly the same system of equations found above. As such, fitting a linear, addittive model for the biomass of each species in each plot is equivalent to finding the equilibrium strcuture of a GLV model that approximates the data.</p>
-<p>One thing to consider when modeling real data, contrary to simulated data, is the structure of the errors. For example, empirical data often contain replicates that reach slightly different densities (while this is impossible in GLV). Furthermore, we need to link the rows of matrix <span class="math inline">\(P\)</span> above, because when we make an error in measuring <span class="math inline">\(x_j^{(k)}\)</span>, the value is reported over several values. Following <span class="citation">Maynard et al. (<a href="#ref-maynard2019predicting">2020</a>)</span>, we do the following:</p>
+<div id="scoring-matrices-b" class="section level2 hasAnchor" number="5.6">
+<h2><span class="header-section-number">5.6</span> Scoring matrices <span class="math inline">\(B\)</span><a href="predicting-coexistence-in-ecological-communities.html#scoring-matrices-b" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The paragraph above suggests a good way to score matrices in practice (i.e., when the empirically-observed matrix <span class="math inline">\(\tilde{E}\)</span> is a noisy estimate of a true matrix <span class="math inline">\(E\)</span>):</p>
 <ul>
 <li>Propose a matrix <span class="math inline">\(B\)</span></li>
-<li>Compute the predicted abundance for all species in all observed assemblages (call them <span class="math inline">\(\tilde{x}_j^{(k)}\)</span>)</li>
-<li>Compute the SSQ: <span class="math inline">\(\sum_{j, k} (x_j^{(k)} - \tilde{x}_j^{(k)})^2\)</span></li>
-<li>Search numerically for the matrix <span class="math inline">\(B\)</span> minimizing the SSQ</li>
+<li>Compute <span class="math inline">\(x^{(k)}\)</span> for each observed <span class="math inline">\(\tilde{x}^{(k,r)}\)</span></li>
+<li>Try to minimize the <em>distance</em> between the predicted and observed</li>
 </ul>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="predicting-coexistence-in-ecological-communities.html#cb57-1" tabindex="-1"></a><span class="co"># constant to penalize solutions with negative</span></span>
-<span id="cb57-2"><a href="predicting-coexistence-in-ecological-communities.html#cb57-2" tabindex="-1"></a><span class="co"># abundances </span></span>
-<span id="cb57-3"><a href="predicting-coexistence-in-ecological-communities.html#cb57-3" tabindex="-1"></a>penalization <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb57-4"><a href="predicting-coexistence-in-ecological-communities.html#cb57-4" tabindex="-1"></a><span class="co"># main fitting function</span></span>
-<span id="cb57-5"><a href="predicting-coexistence-in-ecological-communities.html#cb57-5" tabindex="-1"></a><span class="co"># input: </span></span>
-<span id="cb57-6"><a href="predicting-coexistence-in-ecological-communities.html#cb57-6" tabindex="-1"></a><span class="co"># - matrix E as above (the data)</span></span>
-<span id="cb57-7"><a href="predicting-coexistence-in-ecological-communities.html#cb57-7" tabindex="-1"></a><span class="co"># - proposed matrix B</span></span>
-<span id="cb57-8"><a href="predicting-coexistence-in-ecological-communities.html#cb57-8" tabindex="-1"></a><span class="co"># output:</span></span>
-<span id="cb57-9"><a href="predicting-coexistence-in-ecological-communities.html#cb57-9" tabindex="-1"></a><span class="co"># - predicted matrix \tilde{E}</span></span>
-<span id="cb57-10"><a href="predicting-coexistence-in-ecological-communities.html#cb57-10" tabindex="-1"></a><span class="co"># - SSQ</span></span>
-<span id="cb57-11"><a href="predicting-coexistence-in-ecological-communities.html#cb57-11" tabindex="-1"></a>compute_SSQ <span class="ot">&lt;-</span> <span class="cf">function</span>(B, E){</span>
-<span id="cb57-12"><a href="predicting-coexistence-in-ecological-communities.html#cb57-12" tabindex="-1"></a>  tildeE <span class="ot">&lt;-</span> E</span>
-<span id="cb57-13"><a href="predicting-coexistence-in-ecological-communities.html#cb57-13" tabindex="-1"></a>  ones <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span>, <span class="fu">ncol</span>(B)) <span class="co"># vector of 1s</span></span>
-<span id="cb57-14"><a href="predicting-coexistence-in-ecological-communities.html#cb57-14" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(E)){</span>
-<span id="cb57-15"><a href="predicting-coexistence-in-ecological-communities.html#cb57-15" tabindex="-1"></a>    presence <span class="ot">&lt;-</span> E[i, ] <span class="sc">&gt;</span> <span class="dv">0</span></span>
-<span id="cb57-16"><a href="predicting-coexistence-in-ecological-communities.html#cb57-16" tabindex="-1"></a>    predicted_x <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="fu">sum</span>(presence))</span>
-<span id="cb57-17"><a href="predicting-coexistence-in-ecological-communities.html#cb57-17" tabindex="-1"></a>    <span class="co"># use internal calls to speed up calculation</span></span>
-<span id="cb57-18"><a href="predicting-coexistence-in-ecological-communities.html#cb57-18" tabindex="-1"></a>    <span class="fu">try</span>({predicted_x <span class="ot">&lt;-</span> <span class="fu">.Internal</span>(<span class="fu">La_solve</span>(B[presence, presence, <span class="at">drop =</span> <span class="cn">FALSE</span>], </span>
-<span id="cb57-19"><a href="predicting-coexistence-in-ecological-communities.html#cb57-19" tabindex="-1"></a>                                      ones[presence], </span>
-<span id="cb57-20"><a href="predicting-coexistence-in-ecological-communities.html#cb57-20" tabindex="-1"></a>                                      <span class="dv">10</span><span class="sc">^-</span><span class="dv">6</span>))},<span class="at">silent =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb57-21"><a href="predicting-coexistence-in-ecological-communities.html#cb57-21" tabindex="-1"></a>    tildeE[i, presence] <span class="ot">&lt;-</span> predicted_x</span>
-<span id="cb57-22"><a href="predicting-coexistence-in-ecological-communities.html#cb57-22" tabindex="-1"></a>  }</span>
-<span id="cb57-23"><a href="predicting-coexistence-in-ecological-communities.html#cb57-23" tabindex="-1"></a>  <span class="co"># now compute SSQ</span></span>
-<span id="cb57-24"><a href="predicting-coexistence-in-ecological-communities.html#cb57-24" tabindex="-1"></a>  observed <span class="ot">&lt;-</span> E[E <span class="sc">&gt;</span> <span class="dv">0</span>]</span>
-<span id="cb57-25"><a href="predicting-coexistence-in-ecological-communities.html#cb57-25" tabindex="-1"></a>  <span class="co"># penalize negatives</span></span>
-<span id="cb57-26"><a href="predicting-coexistence-in-ecological-communities.html#cb57-26" tabindex="-1"></a>  predicted <span class="ot">&lt;-</span> tildeE[E <span class="sc">&gt;</span> <span class="dv">0</span>]</span>
-<span id="cb57-27"><a href="predicting-coexistence-in-ecological-communities.html#cb57-27" tabindex="-1"></a>  predicted[predicted <span class="sc">&lt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> penalization</span>
-<span id="cb57-28"><a href="predicting-coexistence-in-ecological-communities.html#cb57-28" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">B =</span> B, </span>
-<span id="cb57-29"><a href="predicting-coexistence-in-ecological-communities.html#cb57-29" tabindex="-1"></a>              <span class="at">E =</span> E, </span>
-<span id="cb57-30"><a href="predicting-coexistence-in-ecological-communities.html#cb57-30" tabindex="-1"></a>              <span class="at">tildeE =</span> tildeE, </span>
-<span id="cb57-31"><a href="predicting-coexistence-in-ecological-communities.html#cb57-31" tabindex="-1"></a>              <span class="at">SSQ =</span> <span class="fu">sum</span>((predicted <span class="sc">-</span> observed)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb57-32"><a href="predicting-coexistence-in-ecological-communities.html#cb57-32" tabindex="-1"></a>              ))</span>
-<span id="cb57-33"><a href="predicting-coexistence-in-ecological-communities.html#cb57-33" tabindex="-1"></a>}</span>
-<span id="cb57-34"><a href="predicting-coexistence-in-ecological-communities.html#cb57-34" tabindex="-1"></a><span class="co"># for numerical minimization</span></span>
-<span id="cb57-35"><a href="predicting-coexistence-in-ecological-communities.html#cb57-35" tabindex="-1"></a>to_minimize <span class="ot">&lt;-</span> <span class="cf">function</span>(b, E){</span>
-<span id="cb57-36"><a href="predicting-coexistence-in-ecological-communities.html#cb57-36" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">ncol</span>(E)</span>
-<span id="cb57-37"><a href="predicting-coexistence-in-ecological-communities.html#cb57-37" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">compute_SSQ</span>(</span>
-<span id="cb57-38"><a href="predicting-coexistence-in-ecological-communities.html#cb57-38" tabindex="-1"></a>    <span class="fu">matrix</span>(b, n, n),</span>
-<span id="cb57-39"><a href="predicting-coexistence-in-ecological-communities.html#cb57-39" tabindex="-1"></a>    E</span>
-<span id="cb57-40"><a href="predicting-coexistence-in-ecological-communities.html#cb57-40" tabindex="-1"></a>  )<span class="sc">$</span>SSQ)</span>
-<span id="cb57-41"><a href="predicting-coexistence-in-ecological-communities.html#cb57-41" tabindex="-1"></a>}</span></code></pre></div>
-<p>To test this method, we are going to use the data from <span class="citation">Kuebbing et al. (<a href="#ref-kuebbing2015above">2015</a>)</span>, who co-cultured four species of plant in 14 out of 15 possible combinations. Let’s load the data</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="predicting-coexistence-in-ecological-communities.html#cb58-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb58-2"><a href="predicting-coexistence-in-ecological-communities.html#cb58-2" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://github.com/dsmaynard/endpoints/raw/master/data/Kuebbing_plants/natives.csv&quot;</span></span>
-<span id="cb58-3"><a href="predicting-coexistence-in-ecological-communities.html#cb58-3" tabindex="-1"></a>E <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(<span class="fu">read_csv</span>(url))</span>
-<span id="cb58-4"><a href="predicting-coexistence-in-ecological-communities.html#cb58-4" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
-<span id="cb58-5"><a href="predicting-coexistence-in-ecological-communities.html#cb58-5" tabindex="-1"></a><span class="fu">head</span>(E)</span>
-<span id="cb58-6"><a href="predicting-coexistence-in-ecological-communities.html#cb58-6" tabindex="-1"></a>)</span></code></pre></div>
-<table>
-<thead>
-<tr class="header">
-<th align="right">as</th>
-<th align="right">fa</th>
-<th align="right">la</th>
-<th align="right">po</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">1.4711</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-</tr>
-<tr class="even">
-<td align="right">1.7968</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-</tr>
-<tr class="odd">
-<td align="right">1.8993</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-</tr>
-<tr class="even">
-<td align="right">2.0634</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-</tr>
-<tr class="odd">
-<td align="right">2.2665</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-</tr>
-<tr class="even">
-<td align="right">2.3062</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-</tr>
-</tbody>
-</table>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="predicting-coexistence-in-ecological-communities.html#cb59-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
-<span id="cb59-2"><a href="predicting-coexistence-in-ecological-communities.html#cb59-2" tabindex="-1"></a><span class="fu">tail</span>(E)</span>
-<span id="cb59-3"><a href="predicting-coexistence-in-ecological-communities.html#cb59-3" tabindex="-1"></a>)</span></code></pre></div>
-<table>
-<thead>
-<tr class="header">
-<th align="left"></th>
-<th align="right">as</th>
-<th align="right">fa</th>
-<th align="right">la</th>
-<th align="right">po</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">[135,]</td>
-<td align="right">1.1219</td>
-<td align="right">1.8011</td>
-<td align="right">0.2390</td>
-<td align="right">1.4065</td>
-</tr>
-<tr class="even">
-<td align="left">[136,]</td>
-<td align="right">1.4751</td>
-<td align="right">1.3486</td>
-<td align="right">0.2474</td>
-<td align="right">1.5491</td>
-</tr>
-<tr class="odd">
-<td align="left">[137,]</td>
-<td align="right">0.6021</td>
-<td align="right">1.9389</td>
-<td align="right">0.1817</td>
-<td align="right">2.7487</td>
-</tr>
-<tr class="even">
-<td align="left">[138,]</td>
-<td align="right">0.8973</td>
-<td align="right">1.6002</td>
-<td align="right">0.1156</td>
-<td align="right">3.2293</td>
-</tr>
-<tr class="odd">
-<td align="left">[139,]</td>
-<td align="right">3.0384</td>
-<td align="right">1.4442</td>
-<td align="right">0.4590</td>
-<td align="right">1.5490</td>
-</tr>
-<tr class="even">
-<td align="left">[140,]</td>
-<td align="right">2.9240</td>
-<td align="right">2.3903</td>
-<td align="right">0.2379</td>
-<td align="right">4.3230</td>
-</tr>
-</tbody>
-</table>
-<p>And let’s try to find a good numerical solution starting from the identity matrix:</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="predicting-coexistence-in-ecological-communities.html#cb60-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2</span>)</span>
-<span id="cb60-2"><a href="predicting-coexistence-in-ecological-communities.html#cb60-2" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">4</span>)</span>
-<span id="cb60-3"><a href="predicting-coexistence-in-ecological-communities.html#cb60-3" tabindex="-1"></a><span class="fu">diag</span>(B) <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb60-4"><a href="predicting-coexistence-in-ecological-communities.html#cb60-4" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> <span class="fu">optim</span>(<span class="at">par =</span> <span class="fu">as.vector</span>(B), </span>
-<span id="cb60-5"><a href="predicting-coexistence-in-ecological-communities.html#cb60-5" tabindex="-1"></a>             <span class="at">fn =</span> to_minimize, </span>
-<span id="cb60-6"><a href="predicting-coexistence-in-ecological-communities.html#cb60-6" tabindex="-1"></a>             <span class="at">E =</span> E,</span>
-<span id="cb60-7"><a href="predicting-coexistence-in-ecological-communities.html#cb60-7" tabindex="-1"></a>             <span class="at">method =</span> <span class="st">&quot;BFGS&quot;</span>)</span>
-<span id="cb60-8"><a href="predicting-coexistence-in-ecological-communities.html#cb60-8" tabindex="-1"></a>best_B <span class="ot">&lt;-</span> <span class="fu">matrix</span>(tmp<span class="sc">$</span>par, <span class="dv">4</span>, <span class="dv">4</span>)</span>
-<span id="cb60-9"><a href="predicting-coexistence-in-ecological-communities.html#cb60-9" tabindex="-1"></a>solution <span class="ot">&lt;-</span> <span class="fu">compute_SSQ</span>(best_B, E)</span></code></pre></div>
-<p>Now let’s write code to show a nice plot of the predicted vs. observed values for all communities:</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="predicting-coexistence-in-ecological-communities.html#cb61-1" tabindex="-1"></a>plot_solution <span class="ot">&lt;-</span> <span class="cf">function</span>(solution, <span class="at">oof =</span> <span class="cn">NULL</span>){</span>
-<span id="cb61-2"><a href="predicting-coexistence-in-ecological-communities.html#cb61-2" tabindex="-1"></a>  <span class="co"># add a column with community composition</span></span>
-<span id="cb61-3"><a href="predicting-coexistence-in-ecological-communities.html#cb61-3" tabindex="-1"></a>  spnames <span class="ot">&lt;-</span> <span class="fu">colnames</span>(solution<span class="sc">$</span>E)</span>
-<span id="cb61-4"><a href="predicting-coexistence-in-ecological-communities.html#cb61-4" tabindex="-1"></a>  community <span class="ot">&lt;-</span> <span class="fu">apply</span>(solution<span class="sc">$</span>E, <span class="dv">1</span>, <span class="cf">function</span>(x) <span class="fu">paste</span>(spnames[x <span class="sc">&gt;</span> <span class="dv">0</span>], <span class="at">collapse =</span> <span class="st">&quot;_&quot;</span>))</span>
-<span id="cb61-5"><a href="predicting-coexistence-in-ecological-communities.html#cb61-5" tabindex="-1"></a>  <span class="co"># work with observed data</span></span>
-<span id="cb61-6"><a href="predicting-coexistence-in-ecological-communities.html#cb61-6" tabindex="-1"></a>  E <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(solution<span class="sc">$</span>E) <span class="sc">%&gt;%</span> </span>
-<span id="cb61-7"><a href="predicting-coexistence-in-ecological-communities.html#cb61-7" tabindex="-1"></a>    <span class="fu">add_column</span>(<span class="at">community =</span> community) <span class="sc">%&gt;%</span> </span>
-<span id="cb61-8"><a href="predicting-coexistence-in-ecological-communities.html#cb61-8" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">experiment =</span> <span class="fu">row_number</span>())</span>
-<span id="cb61-9"><a href="predicting-coexistence-in-ecological-communities.html#cb61-9" tabindex="-1"></a>  toplot <span class="ot">&lt;-</span> E <span class="sc">%&gt;%</span> <span class="fu">gather</span>(species, observed_biomass, <span class="sc">-</span>experiment, <span class="sc">-</span>community) <span class="sc">%&gt;%</span> </span>
-<span id="cb61-10"><a href="predicting-coexistence-in-ecological-communities.html#cb61-10" tabindex="-1"></a>    <span class="fu">filter</span>(observed_biomass <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
-<span id="cb61-11"><a href="predicting-coexistence-in-ecological-communities.html#cb61-11" tabindex="-1"></a>  <span class="co"># now the predicted data</span></span>
-<span id="cb61-12"><a href="predicting-coexistence-in-ecological-communities.html#cb61-12" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(oof)){</span>
-<span id="cb61-13"><a href="predicting-coexistence-in-ecological-communities.html#cb61-13" tabindex="-1"></a>    tildeE <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(solution<span class="sc">$</span>tildeE) <span class="sc">%&gt;%</span></span>
-<span id="cb61-14"><a href="predicting-coexistence-in-ecological-communities.html#cb61-14" tabindex="-1"></a>      <span class="fu">add_column</span>(<span class="at">community =</span> community) <span class="sc">%&gt;%</span> </span>
-<span id="cb61-15"><a href="predicting-coexistence-in-ecological-communities.html#cb61-15" tabindex="-1"></a>      <span class="fu">gather</span>(species, predicted_biomass, <span class="sc">-</span>community) <span class="sc">%&gt;%</span> </span>
-<span id="cb61-16"><a href="predicting-coexistence-in-ecological-communities.html#cb61-16" tabindex="-1"></a>      <span class="fu">distinct</span>()</span>
-<span id="cb61-17"><a href="predicting-coexistence-in-ecological-communities.html#cb61-17" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb61-18"><a href="predicting-coexistence-in-ecological-communities.html#cb61-18" tabindex="-1"></a>    tildeE <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(solution<span class="sc">$</span>tildeE) <span class="sc">%&gt;%</span></span>
-<span id="cb61-19"><a href="predicting-coexistence-in-ecological-communities.html#cb61-19" tabindex="-1"></a>      <span class="fu">add_column</span>(<span class="at">community =</span> community, <span class="at">oof =</span> oof) <span class="sc">%&gt;%</span> </span>
-<span id="cb61-20"><a href="predicting-coexistence-in-ecological-communities.html#cb61-20" tabindex="-1"></a>      <span class="fu">gather</span>(species, predicted_biomass, <span class="sc">-</span>community, <span class="sc">-</span>oof) <span class="sc">%&gt;%</span> </span>
-<span id="cb61-21"><a href="predicting-coexistence-in-ecological-communities.html#cb61-21" tabindex="-1"></a>      <span class="fu">distinct</span>()</span>
-<span id="cb61-22"><a href="predicting-coexistence-in-ecological-communities.html#cb61-22" tabindex="-1"></a>  }</span>
-<span id="cb61-23"><a href="predicting-coexistence-in-ecological-communities.html#cb61-23" tabindex="-1"></a>  <span class="co"># join the two data sets</span></span>
-<span id="cb61-24"><a href="predicting-coexistence-in-ecological-communities.html#cb61-24" tabindex="-1"></a>  toplot <span class="ot">&lt;-</span> toplot <span class="sc">%&gt;%</span> </span>
-<span id="cb61-25"><a href="predicting-coexistence-in-ecological-communities.html#cb61-25" tabindex="-1"></a>    <span class="fu">inner_join</span>(tildeE, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;community&quot;</span>, <span class="st">&quot;species&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb61-26"><a href="predicting-coexistence-in-ecological-communities.html#cb61-26" tabindex="-1"></a>    <span class="fu">filter</span>(observed_biomass <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
-<span id="cb61-27"><a href="predicting-coexistence-in-ecological-communities.html#cb61-27" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(oof)){</span>
-<span id="cb61-28"><a href="predicting-coexistence-in-ecological-communities.html#cb61-28" tabindex="-1"></a>    pl <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> toplot) <span class="sc">+</span> </span>
-<span id="cb61-29"><a href="predicting-coexistence-in-ecological-communities.html#cb61-29" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> species, <span class="at">fill =</span> species) <span class="sc">+</span> </span>
-<span id="cb61-30"><a href="predicting-coexistence-in-ecological-communities.html#cb61-30" tabindex="-1"></a>    <span class="fu">geom_violin</span>(<span class="fu">aes</span>(<span class="at">y =</span> observed_biomass), <span class="at">draw_quantiles =</span> <span class="fl">0.5</span>, <span class="at">scale =</span> <span class="st">&quot;width&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb61-31"><a href="predicting-coexistence-in-ecological-communities.html#cb61-31" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> predicted_biomass)) <span class="sc">+</span> </span>
-<span id="cb61-32"><a href="predicting-coexistence-in-ecological-communities.html#cb61-32" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>community, <span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb61-33"><a href="predicting-coexistence-in-ecological-communities.html#cb61-33" tabindex="-1"></a>    <span class="fu">scale_y_log10</span>(<span class="st">&quot;biomass&quot;</span>)</span>
-<span id="cb61-34"><a href="predicting-coexistence-in-ecological-communities.html#cb61-34" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb61-35"><a href="predicting-coexistence-in-ecological-communities.html#cb61-35" tabindex="-1"></a>    pl <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> toplot) <span class="sc">+</span> </span>
-<span id="cb61-36"><a href="predicting-coexistence-in-ecological-communities.html#cb61-36" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> species, <span class="at">fill =</span> species) <span class="sc">+</span> </span>
-<span id="cb61-37"><a href="predicting-coexistence-in-ecological-communities.html#cb61-37" tabindex="-1"></a>    <span class="fu">geom_violin</span>(<span class="fu">aes</span>(<span class="at">y =</span> observed_biomass, <span class="at">alpha =</span> <span class="fu">I</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.9</span> <span class="sc">*</span> oof)), </span>
-<span id="cb61-38"><a href="predicting-coexistence-in-ecological-communities.html#cb61-38" tabindex="-1"></a>                <span class="at">draw_quantiles =</span> <span class="fl">0.5</span>, <span class="at">scale =</span> <span class="st">&quot;width&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb61-39"><a href="predicting-coexistence-in-ecological-communities.html#cb61-39" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> predicted_biomass)) <span class="sc">+</span> </span>
-<span id="cb61-40"><a href="predicting-coexistence-in-ecological-communities.html#cb61-40" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>community, <span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb61-41"><a href="predicting-coexistence-in-ecological-communities.html#cb61-41" tabindex="-1"></a>    <span class="fu">scale_y_log10</span>(<span class="st">&quot;biomass&quot;</span>)</span>
-<span id="cb61-42"><a href="predicting-coexistence-in-ecological-communities.html#cb61-42" tabindex="-1"></a>  }</span>
-<span id="cb61-43"><a href="predicting-coexistence-in-ecological-communities.html#cb61-43" tabindex="-1"></a>  <span class="fu">return</span>(pl)</span>
-<span id="cb61-44"><a href="predicting-coexistence-in-ecological-communities.html#cb61-44" tabindex="-1"></a>}</span>
-<span id="cb61-45"><a href="predicting-coexistence-in-ecological-communities.html#cb61-45" tabindex="-1"></a><span class="fu">plot_solution</span>(solution)</span></code></pre></div>
-<p><img src="Theoretical_Community_Ecology_files/figure-html/plotendpoints-1.png" width="480" style="display: block; margin: auto;" /></p>
-</div>
-<div id="predicting-real-data-out-of-fit" class="section level2 hasAnchor" number="6.6">
-<h2><span class="header-section-number">6.6</span> Predicting real data out of fit<a href="predicting-coexistence-in-ecological-communities.html#predicting-real-data-out-of-fit" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Exactly as done for the GLV simulated data, we can attempt fitting the matrix <span class="math inline">\(B\)</span> using only part of the experimental data, and then predict the rest out-of-fit. This is a powerful test to make sure that a) we have chosen a good structure for the statistical model, and b) we are not overfitting. For example, let’s try to predict all triplets out of fit. First, we fit the model using only the information about monocultures, pairs, and the quadruplet (11 experiments); then, we use the fitted matrix to predict all of the data and plot:</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="predicting-coexistence-in-ecological-communities.html#cb62-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb62-2"><a href="predicting-coexistence-in-ecological-communities.html#cb62-2" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">4</span>)</span>
-<span id="cb62-3"><a href="predicting-coexistence-in-ecological-communities.html#cb62-3" tabindex="-1"></a><span class="fu">diag</span>(B) <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb62-4"><a href="predicting-coexistence-in-ecological-communities.html#cb62-4" tabindex="-1"></a>Enotriplets <span class="ot">&lt;-</span> E[<span class="fu">rowSums</span>(E <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">!=</span> <span class="dv">3</span>, ]</span>
-<span id="cb62-5"><a href="predicting-coexistence-in-ecological-communities.html#cb62-5" tabindex="-1"></a>oof <span class="ot">&lt;-</span> <span class="fu">rowSums</span>(E <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">==</span> <span class="dv">3</span></span>
-<span id="cb62-6"><a href="predicting-coexistence-in-ecological-communities.html#cb62-6" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> <span class="fu">optim</span>(<span class="at">par =</span> <span class="fu">as.vector</span>(B), </span>
-<span id="cb62-7"><a href="predicting-coexistence-in-ecological-communities.html#cb62-7" tabindex="-1"></a>             <span class="at">fn =</span> to_minimize, </span>
-<span id="cb62-8"><a href="predicting-coexistence-in-ecological-communities.html#cb62-8" tabindex="-1"></a>             <span class="at">E =</span> Enotriplets,</span>
-<span id="cb62-9"><a href="predicting-coexistence-in-ecological-communities.html#cb62-9" tabindex="-1"></a>             <span class="at">method =</span> <span class="st">&quot;Nelder-Mead&quot;</span>)</span>
-<span id="cb62-10"><a href="predicting-coexistence-in-ecological-communities.html#cb62-10" tabindex="-1"></a>best_B_oof <span class="ot">&lt;-</span> <span class="fu">matrix</span>(tmp<span class="sc">$</span>par, <span class="dv">4</span>, <span class="dv">4</span>)</span>
-<span id="cb62-11"><a href="predicting-coexistence-in-ecological-communities.html#cb62-11" tabindex="-1"></a>solution_oof <span class="ot">&lt;-</span> <span class="fu">compute_SSQ</span>(best_B_oof, E)</span>
-<span id="cb62-12"><a href="predicting-coexistence-in-ecological-communities.html#cb62-12" tabindex="-1"></a><span class="fu">plot_solution</span>(solution_oof, oof)</span></code></pre></div>
-<p><img src="Theoretical_Community_Ecology_files/figure-html/kuebnumerics2-1.png" width="480" style="display: block; margin: auto;" /></p>
-<p>Repeat excluding all the pairs:</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="predicting-coexistence-in-ecological-communities.html#cb63-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb63-2"><a href="predicting-coexistence-in-ecological-communities.html#cb63-2" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">4</span>)</span>
-<span id="cb63-3"><a href="predicting-coexistence-in-ecological-communities.html#cb63-3" tabindex="-1"></a><span class="fu">diag</span>(B) <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb63-4"><a href="predicting-coexistence-in-ecological-communities.html#cb63-4" tabindex="-1"></a>Enopairs <span class="ot">&lt;-</span> E[<span class="fu">rowSums</span>(E <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">!=</span> <span class="dv">2</span>, ]</span>
-<span id="cb63-5"><a href="predicting-coexistence-in-ecological-communities.html#cb63-5" tabindex="-1"></a>oof <span class="ot">&lt;-</span> <span class="fu">rowSums</span>(E <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">==</span> <span class="dv">2</span></span>
-<span id="cb63-6"><a href="predicting-coexistence-in-ecological-communities.html#cb63-6" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> <span class="fu">optim</span>(<span class="at">par =</span> <span class="fu">as.vector</span>(B), </span>
-<span id="cb63-7"><a href="predicting-coexistence-in-ecological-communities.html#cb63-7" tabindex="-1"></a>             <span class="at">fn =</span> to_minimize, </span>
-<span id="cb63-8"><a href="predicting-coexistence-in-ecological-communities.html#cb63-8" tabindex="-1"></a>             <span class="at">E =</span> Enopairs,</span>
-<span id="cb63-9"><a href="predicting-coexistence-in-ecological-communities.html#cb63-9" tabindex="-1"></a>             <span class="at">method =</span> <span class="st">&quot;Nelder-Mead&quot;</span>)</span>
-<span id="cb63-10"><a href="predicting-coexistence-in-ecological-communities.html#cb63-10" tabindex="-1"></a>best_B_oof2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(tmp<span class="sc">$</span>par, <span class="dv">4</span>, <span class="dv">4</span>)</span>
-<span id="cb63-11"><a href="predicting-coexistence-in-ecological-communities.html#cb63-11" tabindex="-1"></a>solution_oof2 <span class="ot">&lt;-</span> <span class="fu">compute_SSQ</span>(best_B_oof2, E)</span>
-<span id="cb63-12"><a href="predicting-coexistence-in-ecological-communities.html#cb63-12" tabindex="-1"></a><span class="fu">plot_solution</span>(solution_oof2, oof)</span></code></pre></div>
-<p><img src="Theoretical_Community_Ecology_files/figure-html/kuebnumerics3-1.png" width="480" style="display: block; margin: auto;" /></p>
-<p>Of course, we might push this too far. For example, a popular way to attempt parameterizing models is to consider only monocultures and pairs:</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="predicting-coexistence-in-ecological-communities.html#cb64-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb64-2"><a href="predicting-coexistence-in-ecological-communities.html#cb64-2" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">4</span>)</span>
-<span id="cb64-3"><a href="predicting-coexistence-in-ecological-communities.html#cb64-3" tabindex="-1"></a><span class="fu">diag</span>(B) <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb64-4"><a href="predicting-coexistence-in-ecological-communities.html#cb64-4" tabindex="-1"></a>Eonlymonopairs <span class="ot">&lt;-</span> E[<span class="fu">rowSums</span>(E <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">&lt;</span> <span class="dv">3</span>, ]</span>
-<span id="cb64-5"><a href="predicting-coexistence-in-ecological-communities.html#cb64-5" tabindex="-1"></a>oof <span class="ot">&lt;-</span> <span class="fu">rowSums</span>(E <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">&gt;=</span> <span class="dv">3</span></span>
-<span id="cb64-6"><a href="predicting-coexistence-in-ecological-communities.html#cb64-6" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> <span class="fu">optim</span>(<span class="at">par =</span> <span class="fu">as.vector</span>(B), </span>
-<span id="cb64-7"><a href="predicting-coexistence-in-ecological-communities.html#cb64-7" tabindex="-1"></a>             <span class="at">fn =</span> to_minimize, </span>
-<span id="cb64-8"><a href="predicting-coexistence-in-ecological-communities.html#cb64-8" tabindex="-1"></a>             <span class="at">E =</span> Eonlymonopairs,</span>
-<span id="cb64-9"><a href="predicting-coexistence-in-ecological-communities.html#cb64-9" tabindex="-1"></a>             <span class="at">method =</span> <span class="st">&quot;Nelder-Mead&quot;</span>)</span>
-<span id="cb64-10"><a href="predicting-coexistence-in-ecological-communities.html#cb64-10" tabindex="-1"></a>best_B_oof3 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(tmp<span class="sc">$</span>par, <span class="dv">4</span>, <span class="dv">4</span>)</span>
-<span id="cb64-11"><a href="predicting-coexistence-in-ecological-communities.html#cb64-11" tabindex="-1"></a>solution_oof3 <span class="ot">&lt;-</span> <span class="fu">compute_SSQ</span>(best_B_oof3, E)</span>
-<span id="cb64-12"><a href="predicting-coexistence-in-ecological-communities.html#cb64-12" tabindex="-1"></a><span class="fu">plot_solution</span>(solution_oof3, oof)</span></code></pre></div>
-<p><img src="Theoretical_Community_Ecology_files/figure-html/kuebnumerics4-1.png" width="480" style="display: block; margin: auto;" /></p>
-<p>You can see that we predict a lack of coexistence for the system with all four species, while experimentally we have observed coexistence in all ten replicates. <span class="citation">Maynard et al. (<a href="#ref-maynard2019predicting">2020</a>)</span> have demonstrated that experimental designs mixing high- and low-abundance experiments provide the best fit while minimizing the number of experiments.</p>
+<p>Naturally, this algorithm relies on a notion of distance. The simplest choice would be to choose <span class="math inline">\(B\)</span> such that the sum of squared deviations is minimized:</p>
+<p><span class="math display">\[
+SSQ(B) = \sum_r \sum_k \sum_i \left(\tilde{x}^{(k,r)}_i - x^{(k)}_i \right)^2
+\]</span></p>
+<p>When the values of <span class="math inline">\(\tilde{x}^{(k)}_i\)</span> vary considerably (as expected when populations interact), minimizing the SSQ will favor matrices that match closely the rows of <span class="math inline">\(\tilde{E}\)</span> containing large values, such that a 10% error on a small value of <span class="math inline">\(\tilde{x}^{(k)}_i\)</span> “counts” less than a 1% error for a large value.</p>
+<p>If we want to put all rows on the same footing, we can implement a Weighted Least Squares scheme, in which</p>
+<p><span class="math display">\[
+WLS(B) = \sum_r \sum_k \sum_i \left(\frac{\tilde{x}^{(k,r)}_i - x^{(k)}_i}{\sigma^{(k)}_i} \right)^2
+\]</span></p>
+<p>where deviations are weighted by the respective standard deviation (for simplicity, we can take <span class="math inline">\(\sigma_i^{(k)} = \sqrt{ \mathbb E\left((\tilde{x}_i^{(k,r)})^2 \right) - \left( \mathbb E\left(\tilde{x}_i^{(k,r)} \right)\right)^2}\)</span>.</p>
+<p>Finally, we can have a likelihood-based approach in which we are trying to maximize the sum of log-likelihoods:</p>
+<p><span class="math display">\[
+\mathcal L(B) = \sum_r \sum_k \sum_i \log P\left(\tilde{x}^{(k,r)}_i|x^{(k)}_i, \gamma_i^{(k)} \right)
+\]</span></p>
+<p>where <span class="math inline">\(P(x|\mu, \gamma)\)</span> is the density of a probability distribution function whose shape is controlled by parameters <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\gamma\)</span>.</p>
 <div class="boxpaper">
 <p><strong>Key paper: <span class="citation">Loreau and Hector (<a href="#ref-loreau2001partitioning">2001</a>)</span></strong></p>
 <p>Ecologists are fond of the idea of partitioning effects into (hopefully) orthogonal components that have a clear biological interpretation. In this influential paper, Loreau and Hector show how the effect of diversity on functioning can be partitioned into “selection” (dominance of species with particular traits) vs. “complementarity” (increased resource use due to niche partitioning). As for any interesting idea, critics abound—and some are over the top (<span class="citation">Pillai and Gouhier (<a href="#ref-pillai2019not">2019a</a>)</span>), leading to rebuttals of rebuttals (<span class="citation">Loreau and Hector (<a href="#ref-loreau2019not">2019</a>)</span>, <span class="citation">Wagg et al. (<a href="#ref-wagg2019not">2019</a>)</span>, <span class="citation">Pillai and Gouhier (<a href="#ref-pillai2019not3">2019b</a>)</span>, <span class="citation">Pillai and Gouhier (<a href="#ref-pillai2019not2">2019c</a>)</span>)…</p>
 </div>
+</div>
+<div id="example" class="section level2 hasAnchor" number="5.7">
+<h2><span class="header-section-number">5.7</span> Example<a href="predicting-coexistence-in-ecological-communities.html#example" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We are going to use the code accompanying the paper</p>
+<ul>
+<li>Skwara, A., Lemos‐Costa, P., Miller, Z.R. and Allesina, S., 2023. <a href="https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.14028">Modelling ecological communities when composition is manipulated experimentally</a>. Methods in Ecology and Evolution, 14(2), pp.696-707.</li>
+</ul>
+<p>which you can find here</p>
+<p><a href="https://github.com/StefanoAllesina/skwara_et_al_2022/"><code>https://github.com/StefanoAllesina/skwara_et_al_2022/</code></a></p>
+<p>we have slightly massaged the code for this tutorial.</p>
+<div id="sum-of-squares" class="section level3 hasAnchor" number="5.7.1">
+<h3><span class="header-section-number">5.7.1</span> Sum of squares<a href="predicting-coexistence-in-ecological-communities.html#sum-of-squares" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>First, we are going to use all the data to find a matrix <span class="math inline">\(B\)</span> that best encodes the density of the populations. To this end, we try to minimize the SSQ</p>
+<p><span class="math display">\[
+SSQ(B) = \sum_r \sum_k \sum_i \left(\tilde{x}^{(k,r)}_i - x^{(k)}_i \right)^2
+\]</span></p>
+<p>This can be accomplished by calling:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="predicting-coexistence-in-ecological-communities.html#cb2-1" tabindex="-1"></a>full_SSQ <span class="ot">&lt;-</span> <span class="fu">run_model</span>(</span>
+<span id="cb2-2"><a href="predicting-coexistence-in-ecological-communities.html#cb2-2" tabindex="-1"></a>  <span class="at">datafile =</span> <span class="st">&quot;dat/Ishizawa_3_strains.csv&quot;</span>, <span class="co"># csv file containing the data to be fit</span></span>
+<span id="cb2-3"><a href="predicting-coexistence-in-ecological-communities.html#cb2-3" tabindex="-1"></a>  <span class="at">model =</span> <span class="st">&quot;full&quot;</span>, <span class="co"># estimate B allowing each coefficient to take the best value</span></span>
+<span id="cb2-4"><a href="predicting-coexistence-in-ecological-communities.html#cb2-4" tabindex="-1"></a>  <span class="at">goalf =</span> <span class="st">&quot;SSQ&quot;</span>, <span class="co"># minimize Sum of Squared Deviations</span></span>
+<span id="cb2-5"><a href="predicting-coexistence-in-ecological-communities.html#cb2-5" tabindex="-1"></a>  <span class="at">pars =</span> <span class="cn">NULL</span>, <span class="co"># start from Identity matrix</span></span>
+<span id="cb2-6"><a href="predicting-coexistence-in-ecological-communities.html#cb2-6" tabindex="-1"></a>  <span class="at">skipEM =</span> <span class="cn">TRUE</span> <span class="co"># go directly to numerical optimization</span></span>
+<span id="cb2-7"><a href="predicting-coexistence-in-ecological-communities.html#cb2-7" tabindex="-1"></a>)</span></code></pre></div>
+<p>[1] “numerical search”
+[1] 1.289597
+[1] 1.289597
+[1] 1.289597
+[1] 1.289597
+[1] 1.289597
+[1] 1.289597
+[1] 1.289597
+[1] 1.289597
+[1] 1.289597
+[1] 1.289597</p>
+<p>The values being printed are the SSQ after each round of numerical optimization (in this case, the calculation converges immediately to the solution).</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="predicting-coexistence-in-ecological-communities.html#cb3-1" tabindex="-1"></a><span class="fu">plot_results_boxplot</span>(full_SSQ<span class="sc">$</span>observed, full_SSQ<span class="sc">$</span>predicted)</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-36-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>The boxplots show the data (points), as well as the corresponding boxplots, with the horizontal line being the median value of <span class="math inline">\(\tilde{x}_i^{(k,r)}\)</span> across <span class="math inline">\(r\)</span>, the triangle shows the location of the empirical mean. The circle marks the fitted mean value for the combination of strain/community, obtained computing <span class="math inline">\(\left(B^{(k,k)}\right)^{-1}1_{\|k\|}\)</span>. As you can see, we can find a matrix <span class="math inline">\(B\)</span> that recapitulates the observed means quite well.</p>
+<p>Let’s plot the predicted vs. observed values:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="predicting-coexistence-in-ecological-communities.html#cb4-1" tabindex="-1"></a><span class="fu">plot_pred_obs</span>(full_SSQ)</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-37-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>Where the points mark the predicted vs observed means, and the crosses the full data. The dashed line is the 1:1 line.</p>
+</div>
+<div id="weighted-leas-squares" class="section level3 hasAnchor" number="5.7.2">
+<h3><span class="header-section-number">5.7.2</span> Weighted leas squares<a href="predicting-coexistence-in-ecological-communities.html#weighted-leas-squares" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We can repeat the calculation, but this time trying to minimize</p>
+<p><span class="math display">\[
+WLS(B) = \sum_r \sum_k \sum_i \left(\frac{\tilde{x}^{(k,r)}_i - x^{(k)}_i}{\sigma^{(k)}_i} \right)^2
+\]</span></p>
+<p>by calling:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="predicting-coexistence-in-ecological-communities.html#cb5-1" tabindex="-1"></a>full_WLS <span class="ot">&lt;-</span> <span class="fu">run_model</span>(</span>
+<span id="cb5-2"><a href="predicting-coexistence-in-ecological-communities.html#cb5-2" tabindex="-1"></a>  <span class="at">datafile =</span> <span class="st">&quot;dat/Ishizawa_3_strains.csv&quot;</span>, <span class="co"># csv file containing the data to be fit</span></span>
+<span id="cb5-3"><a href="predicting-coexistence-in-ecological-communities.html#cb5-3" tabindex="-1"></a>  <span class="at">model =</span> <span class="st">&quot;full&quot;</span>, <span class="co"># estimate B allowing each coefficient to take the best value</span></span>
+<span id="cb5-4"><a href="predicting-coexistence-in-ecological-communities.html#cb5-4" tabindex="-1"></a>  <span class="at">goalf =</span> <span class="st">&quot;WLS&quot;</span>, </span>
+<span id="cb5-5"><a href="predicting-coexistence-in-ecological-communities.html#cb5-5" tabindex="-1"></a>  <span class="at">pars =</span> <span class="cn">NULL</span>, <span class="co"># start from Identity matrix</span></span>
+<span id="cb5-6"><a href="predicting-coexistence-in-ecological-communities.html#cb5-6" tabindex="-1"></a>  <span class="at">skipEM =</span> <span class="cn">TRUE</span>, <span class="co"># go directly to numerical optimization</span></span>
+<span id="cb5-7"><a href="predicting-coexistence-in-ecological-communities.html#cb5-7" tabindex="-1"></a>)</span></code></pre></div>
+<p>[1] “numerical search”
+[1] 67.07833
+[1] 67.07833
+[1] 67.07833
+[1] 67.07833
+[1] 67.07833
+[1] 67.07833
+[1] 67.07833
+[1] 67.07833
+[1] 67.07833
+[1] 67.07833</p>
+<p>Plotting:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="predicting-coexistence-in-ecological-communities.html#cb6-1" tabindex="-1"></a><span class="fu">plot_results_boxplot</span>(full_WLS<span class="sc">$</span>observed, full_WLS<span class="sc">$</span>predicted)</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-39-1.png" width="480" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="predicting-coexistence-in-ecological-communities.html#cb7-1" tabindex="-1"></a><span class="fu">plot_pred_obs</span>(full_WLS)</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-39-2.png" width="480" style="display: block; margin: auto;" /></p>
+<p>Notice that the points have moved slightly—this is because we are penalizing deviations differently depending on the measured variance (and thus points with a higher variance can depart more strongly from the 1:1 line).</p>
+</div>
+<div id="maximum-likelihood" class="section level3 hasAnchor" number="5.7.3">
+<h3><span class="header-section-number">5.7.3</span> Maximum likelihood<a href="predicting-coexistence-in-ecological-communities.html#maximum-likelihood" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Now we take a different approach, and take the observations to be independent samples from a log-normal distribution:</p>
+<p><span class="math display">\[
+\tilde{x}_i^{(k,r)} \sim LN(x_i^{(k)}, \sigma_i)
+\]</span></p>
+<p>i.e., we take each variable to have a mean determined by the corresponding <span class="math inline">\(x_i^{(k)}\)</span>, and a variance parameter that depends only on strain identity.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="predicting-coexistence-in-ecological-communities.html#cb8-1" tabindex="-1"></a>full_LN <span class="ot">&lt;-</span> <span class="fu">run_model</span>(</span>
+<span id="cb8-2"><a href="predicting-coexistence-in-ecological-communities.html#cb8-2" tabindex="-1"></a>  <span class="at">datafile =</span> <span class="st">&quot;dat/Ishizawa_3_strains.csv&quot;</span>, <span class="co"># csv file containing the data to be fit</span></span>
+<span id="cb8-3"><a href="predicting-coexistence-in-ecological-communities.html#cb8-3" tabindex="-1"></a>  <span class="at">model =</span> <span class="st">&quot;full&quot;</span>, <span class="co"># estimate B allowing each coefficient to take the best value</span></span>
+<span id="cb8-4"><a href="predicting-coexistence-in-ecological-communities.html#cb8-4" tabindex="-1"></a>  <span class="at">goalf =</span> <span class="st">&quot;LikLN&quot;</span>, </span>
+<span id="cb8-5"><a href="predicting-coexistence-in-ecological-communities.html#cb8-5" tabindex="-1"></a>  <span class="at">pars =</span> <span class="cn">NULL</span>, <span class="co"># start from Identity matrix</span></span>
+<span id="cb8-6"><a href="predicting-coexistence-in-ecological-communities.html#cb8-6" tabindex="-1"></a>  <span class="at">skipEM =</span> <span class="cn">TRUE</span> <span class="co"># go directly to numerical optimization</span></span>
+<span id="cb8-7"><a href="predicting-coexistence-in-ecological-communities.html#cb8-7" tabindex="-1"></a>)</span></code></pre></div>
+<p>[1] “numerical search”
+[1] -49.19108
+[1] -49.19108
+[1] -49.19108
+[1] -49.19108
+[1] -49.19108
+[1] -49.19108
+[1] -49.19108
+[1] -49.19108
+[1] -49.19108
+[1] -49.19108</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="predicting-coexistence-in-ecological-communities.html#cb9-1" tabindex="-1"></a><span class="fu">plot_results_boxplot</span>(full_LN<span class="sc">$</span>observed, full_LN<span class="sc">$</span>predicted)</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-41-1.png" width="480" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="predicting-coexistence-in-ecological-communities.html#cb10-1" tabindex="-1"></a><span class="fu">plot_pred_obs</span>(full_LN)</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-41-2.png" width="480" style="display: block; margin: auto;" /></p>
+<p>Also in this case, we obtain a good fit.</p>
+</div>
+<div id="leave-one-out-cross-validation" class="section level3 hasAnchor" number="5.7.4">
+<h3><span class="header-section-number">5.7.4</span> Leave-one-out cross validation<a href="predicting-coexistence-in-ecological-communities.html#leave-one-out-cross-validation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The ultimate test for this type of model is to be able to predict experimental results before running the experiment.</p>
+<p>In our case, we can try to leave out one of the 7 communities:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="predicting-coexistence-in-ecological-communities.html#cb11-1" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;dat/Ishizawa_3_strains.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="predicting-coexistence-in-ecological-communities.html#cb12-1" tabindex="-1"></a>LOO_LN <span class="ot">&lt;-</span> <span class="fu">run_model_LOO</span>(<span class="at">datafile =</span> <span class="st">&quot;dat/Ishizawa_3_strains.csv&quot;</span>, </span>
+<span id="cb12-2"><a href="predicting-coexistence-in-ecological-communities.html#cb12-2" tabindex="-1"></a>                        <span class="at">model =</span> <span class="st">&quot;full&quot;</span>, <span class="at">goalf =</span> <span class="st">&quot;LikLN&quot;</span>, </span>
+<span id="cb12-3"><a href="predicting-coexistence-in-ecological-communities.html#cb12-3" tabindex="-1"></a>                        <span class="at">pars =</span> <span class="cn">NULL</span>, <span class="at">skipEM =</span> <span class="cn">TRUE</span>, <span class="at">plot_results =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb12-4"><a href="predicting-coexistence-in-ecological-communities.html#cb12-4" tabindex="-1"></a>                        <span class="at">LOO_row_num =</span>  <span class="dv">40</span> <span class="co"># exclude all experiments with this community</span></span>
+<span id="cb12-5"><a href="predicting-coexistence-in-ecological-communities.html#cb12-5" tabindex="-1"></a>)</span></code></pre></div>
+<p>[1] “numerical search”
+[1] -43.08928
+[1] -43.08928
+[1] -43.08928
+[1] -43.08928
+[1] -43.08928
+[1] -43.08928
+[1] -43.08928
+[1] -43.08928
+[1] -43.08928
+[1] -43.08928</p>
+<p>The model is quite successful at recovering the observed means for the community we left out.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="predicting-coexistence-in-ecological-communities.html#cb13-1" tabindex="-1"></a><span class="fu">plot_results_boxplot</span>(LOO_LN<span class="sc">$</span>observed, LOO_LN<span class="sc">$</span>predicted)</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-44-1.png" width="480" style="display: block; margin: auto;" /></p>
+</div>
+<div id="simplified-models" class="section level3 hasAnchor" number="5.7.5">
+<h3><span class="header-section-number">5.7.5</span> Simplified models<a href="predicting-coexistence-in-ecological-communities.html#simplified-models" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We have seen in the lecture that this approach estimates all <span class="math inline">\(n^2\)</span> coefficients of the matrix <span class="math inline">\(B\)</span>. For the approach to be successful, we need to have observed enough combinations of populations growing together (each population must be present in at least <span class="math inline">\(n\)</span> experiments with distinct compositions, each pair of populations must appear in at least one final community). When the number of populations in the pool is large, and experiments are few, this approach is unfeasible. We can therefore try to simplify the model to reduce the number of parameters.</p>
+<p>The idea brought forward by Skwara <em>et al.</em> is to approximate the matrix <span class="math inline">\(B\)</span> as the sum of a diagonal matrix and a low-rank matrix. For example, a version of the model with only <span class="math inline">\(n + 1\)</span> parameters reads:</p>
+<p><span class="math display">\[
+B = D(s) + \alpha 1_n1_n^T
+\]</span></p>
+<p>i.e., a model in which each diagonal element <span class="math inline">\(B_{ii} = s_i + \alpha\)</span> has its own parameter (and thus can take arbitrary values), while the off-diagonals are all the same (i.e., each population has the same “mean-field” effect on all others).</p>
+<p>A more general model using <span class="math inline">\(3 n - 1\)</span> parameters reads:</p>
+<p><span class="math display">\[
+B = D(s) + u v^T
+\]</span></p>
+<p>in which the diagonal coefficients <span class="math inline">\(B_{ii} = s_i + u_i v_i\)</span> can take arbitrary values, while the off-diagonal elements <span class="math inline">\(B_{ij} = u_i v_j\)</span> are constrained; the effect of species <span class="math inline">\(j\)</span> on <span class="math inline">\(i\)</span> depends on two values: <span class="math inline">\(v_i\)</span> that measures how strongly species <span class="math inline">\(i\)</span> respond to the presence of other species, and <span class="math inline">\(v_j\)</span> that measures the magnitude of the typical effect of species <span class="math inline">\(j\)</span>. Either <span class="math inline">\(u\)</span> or <span class="math inline">\(v\)</span> can be taken as unitary (i.e., <span class="math inline">\(\sum_i v_i^2 = 1\)</span>) without loss of generality, thereby bringing the total number of parameters to <span class="math inline">\(3n-1\)</span>. When the number of populations is small, this approach does not lead to big gains (e.g., for <span class="math inline">\(n=3\)</span> we have 8 parameters instead of 9), but the reduction in parameters is substantial when <span class="math inline">\(n\)</span> becomes larger (e.g., for the whole data set, <span class="math inline">\(n=7\)</span>, and thus we would use 20 parameters instead of 49).</p>
+<p>Another advantage of this approach is that we can write the inverse in linear time, thereby removing the only big computational hurdle of the approach:</p>
+<p><span class="math display">\[\begin{aligned}
+B^{-1} 1_n&amp;= (D(s) + u v^T)^{-1}1_n\\
+&amp;= \left(D(s)^{-1} - \frac{1}{1 + v^TD(s)^{-1}u}D(s)^{-1} u v^TD(s)^{-1}\right)1_n\\ &amp;= D(s)^{-1}\left(1_n - \frac{v^T D(s)^{-1}1_n}{1 + v^TD(s)^{-1}u} u\right)
+\end{aligned}
+\]</span></p>
+<p>These models can be derived from the consumer-resource framework that you have seen in class.</p>
+<p>We can test different versions of the simplified model. A model with only the diagonal and an extra parameter performs very poorly:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="predicting-coexistence-in-ecological-communities.html#cb14-1" tabindex="-1"></a>diag_a11 <span class="ot">&lt;-</span> <span class="fu">run_model</span>(</span>
+<span id="cb14-2"><a href="predicting-coexistence-in-ecological-communities.html#cb14-2" tabindex="-1"></a>  <span class="at">datafile =</span> <span class="st">&quot;dat/Ishizawa_3_strains.csv&quot;</span>, <span class="co"># csv file containing the data to be fit</span></span>
+<span id="cb14-3"><a href="predicting-coexistence-in-ecological-communities.html#cb14-3" tabindex="-1"></a>  <span class="at">model =</span> <span class="st">&quot;diag_a11t&quot;</span>,</span>
+<span id="cb14-4"><a href="predicting-coexistence-in-ecological-communities.html#cb14-4" tabindex="-1"></a>  <span class="at">goalf =</span> <span class="st">&quot;LikLN&quot;</span>, </span>
+<span id="cb14-5"><a href="predicting-coexistence-in-ecological-communities.html#cb14-5" tabindex="-1"></a>  <span class="at">pars =</span> <span class="cn">NULL</span>, <span class="co"># start from Identity matrix</span></span>
+<span id="cb14-6"><a href="predicting-coexistence-in-ecological-communities.html#cb14-6" tabindex="-1"></a>  <span class="at">skipEM =</span> <span class="cn">TRUE</span></span>
+<span id="cb14-7"><a href="predicting-coexistence-in-ecological-communities.html#cb14-7" tabindex="-1"></a>)</span></code></pre></div>
+<p>[1] “numerical search”
+[1] -22.62175
+[1] -22.62175
+[1] -22.62175
+[1] -22.62175
+[1] -22.62175
+[1] -22.62175
+[1] -22.62175
+[1] -22.62175
+[1] -22.62175
+[1] -22.62175</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="predicting-coexistence-in-ecological-communities.html#cb15-1" tabindex="-1"></a><span class="fu">plot_pred_obs</span>(diag_a11)</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-46-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>A model with symmetric interactions, <span class="math inline">\(B = D(s) + vv^T\)</span> does slightly better:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="predicting-coexistence-in-ecological-communities.html#cb16-1" tabindex="-1"></a>diag_vvt <span class="ot">&lt;-</span> <span class="fu">run_model</span>(</span>
+<span id="cb16-2"><a href="predicting-coexistence-in-ecological-communities.html#cb16-2" tabindex="-1"></a>  <span class="at">datafile =</span> <span class="st">&quot;dat/Ishizawa_3_strains.csv&quot;</span>, <span class="co"># csv file containing the data to be fit</span></span>
+<span id="cb16-3"><a href="predicting-coexistence-in-ecological-communities.html#cb16-3" tabindex="-1"></a>  <span class="at">model =</span> <span class="st">&quot;diag_vvt&quot;</span>,</span>
+<span id="cb16-4"><a href="predicting-coexistence-in-ecological-communities.html#cb16-4" tabindex="-1"></a>  <span class="at">goalf =</span> <span class="st">&quot;LikLN&quot;</span>, </span>
+<span id="cb16-5"><a href="predicting-coexistence-in-ecological-communities.html#cb16-5" tabindex="-1"></a>  <span class="at">pars =</span> <span class="cn">NULL</span>, <span class="co"># start from Identity matrix</span></span>
+<span id="cb16-6"><a href="predicting-coexistence-in-ecological-communities.html#cb16-6" tabindex="-1"></a>  <span class="at">skipEM =</span> <span class="cn">TRUE</span></span>
+<span id="cb16-7"><a href="predicting-coexistence-in-ecological-communities.html#cb16-7" tabindex="-1"></a>)</span></code></pre></div>
+<p>[1] “numerical search”
+[1] -38.12933
+[1] -38.36503
+[1] -38.37226
+[1] -38.38069
+[1] -38.38508
+[1] -38.39331
+[1] -38.39618
+[1] -38.39655
+[1] -38.39655
+[1] -38.39655</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="predicting-coexistence-in-ecological-communities.html#cb17-1" tabindex="-1"></a><span class="fu">plot_pred_obs</span>(diag_vvt)</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-48-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>And, finally, the model with 8 parameters, <span class="math inline">\(B = D(s) + vw^T\)</span>:</p>
+<p>A model with symmetric interactions, <span class="math inline">\(B = D(s) + vv^T\)</span> does slightly better:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="predicting-coexistence-in-ecological-communities.html#cb18-1" tabindex="-1"></a>diag_vwt <span class="ot">&lt;-</span> <span class="fu">run_model</span>(</span>
+<span id="cb18-2"><a href="predicting-coexistence-in-ecological-communities.html#cb18-2" tabindex="-1"></a>  <span class="at">datafile =</span> <span class="st">&quot;dat/Ishizawa_3_strains.csv&quot;</span>, <span class="co"># csv file containing the data to be fit</span></span>
+<span id="cb18-3"><a href="predicting-coexistence-in-ecological-communities.html#cb18-3" tabindex="-1"></a>  <span class="at">model =</span> <span class="st">&quot;diag_vwt&quot;</span>,</span>
+<span id="cb18-4"><a href="predicting-coexistence-in-ecological-communities.html#cb18-4" tabindex="-1"></a>  <span class="at">goalf =</span> <span class="st">&quot;LikLN&quot;</span>, </span>
+<span id="cb18-5"><a href="predicting-coexistence-in-ecological-communities.html#cb18-5" tabindex="-1"></a>  <span class="at">pars =</span> <span class="cn">NULL</span>, <span class="co"># start from Identity matrix</span></span>
+<span id="cb18-6"><a href="predicting-coexistence-in-ecological-communities.html#cb18-6" tabindex="-1"></a>  <span class="at">skipEM =</span> <span class="cn">TRUE</span></span>
+<span id="cb18-7"><a href="predicting-coexistence-in-ecological-communities.html#cb18-7" tabindex="-1"></a>)</span></code></pre></div>
+<p>[1] “numerical search”
+[1] -34.87107
+[1] -49.06619
+[1] -49.06753
+[1] -49.0681
+[1] -49.0681
+[1] -49.0681
+[1] -49.0681
+[1] -49.06811
+[1] -49.06811
+[1] -49.06811</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="predicting-coexistence-in-ecological-communities.html#cb19-1" tabindex="-1"></a><span class="fu">plot_pred_obs</span>(diag_vwt)</span></code></pre></div>
+<p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-50-1.png" width="480" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="further-readings-2" class="section level2 hasAnchor" number="5.8">
+<h2><span class="header-section-number">5.8</span> Further readings<a href="predicting-coexistence-in-ecological-communities.html#further-readings-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The backbone of the statistical model can be found in numerous articles, which converged to the same solution starting from different angles:</p>
+<ul>
+<li><p>Xiao, Y., Angulo, M. T., Friedman, J., Waldor, M. K., Weiss, S. T., &amp; Liu, Y.-Y. (2017). <a href="https://www.nature.com/articles/s41467-017-02090-2">Mapping the ecological networks of microbial communities</a>. Nature Communications, 8(1), 1–12.</p></li>
+<li><p>Fort, H. (2018). <a href="https://www.sciencedirect.com/science/article/abs/pii/S0304380018303053">On predicting species yields in multispecies communities: Quantifying the accuracy of the linear Lotka-Volterra generalized model</a>. Ecological Modelling, 387, 154–162.</p></li>
+<li><p>Maynard, D. S., Miller, Z. R., &amp; Allesina, S. (2020). <a href="https://www.nature.com/articles/s41559-019-1059-z">Predicting coexistence in experimental ecological communities</a>. Nature Ecology &amp; Evolution, 4(1), 91–100.</p></li>
+<li><p>Ansari, A. F., Reddy, Y., Raut, J., &amp; Dixit, N. M. (2021). <a href="https://www.nature.com/articles/s43588-021-00131-x">An efficient and scalable top-down method for predicting structures of microbial communities</a>. Nature Computational Science, 1(9), 619–628.</p></li>
+<li><p>Davis, J.D., Olivença, D.V., Brown, S.P. and Voit, E.O., (2022). <a href="https://www.frontiersin.org/journals/systems-biology/articles/10.3389/fsysb.2022.1021897/full">Methods of quantifying interactions among populations using Lotka-Volterra models</a>. Frontiers in Systems Biology, 2, p.1021897.</p></li>
+</ul>
+<p>For the tutorial, we are going to closely follow:</p>
+<ul>
+<li>Skwara, A., Lemos‐Costa, P., Miller, Z.R. and Allesina, S., 2023. <a href="https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.14028">Modelling ecological communities when composition is manipulated experimentally</a>. Methods in Ecology and Evolution, 14(2), pp.696-707.</li>
+</ul>
+<p>The same method can be extended to provide a simple test for phylogenetic effects on competition/growth:</p>
+<ul>
+<li>Lemos‐Costa, P., Miller, Z.R. and Allesina, S., 2024. <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/ele.14490">Phylogeny structures species’ interactions in experimental ecological communities</a>. Ecology Letters, 27(8), p.e14490.</li>
+</ul>
 
 </div>
 </div>
@@ -1138,9 +903,6 @@ Cadotte, M. W. 2013. Experimental evidence that evolutionarily diverse assemblag
 <div id="ref-hector1999plant" class="csl-entry">
 Hector, A., B. Schmid, C. Beierkuhnlein, M. Caldeira, M. Diemer, P. Dimitrakopoulos, J. Finn, H. Freitas, P. Giller, J. Good, and others. 1999. Plant diversity and productivity experiments in european grasslands. science 286:1123–1127.
 </div>
-<div id="ref-kuebbing2015above" class="csl-entry">
-Kuebbing, S. E., A. T. Classen, N. J. Sanders, and D. Simberloff. 2015. Above-and below-ground effects of plant diversity depend on species origin: An experimental test with multiple invaders. New Phytologist 208:727–735.
-</div>
 <div id="ref-loreau1998biodiversity" class="csl-entry">
 Loreau, M. 1998. Biodiversity and ecosystem functioning: A mechanistic model. Proceedings of the National Academy of Sciences 95:5632–5636.
 </div>
@@ -1149,9 +911,6 @@ Loreau, M., and A. Hector. 2001. Partitioning selection and complementarity in b
 </div>
 <div id="ref-loreau2019not" class="csl-entry">
 Loreau, M., and A. Hector. 2019. Not even wrong: Comment by loreau and hector. Ecology 100:e02794.
-</div>
-<div id="ref-maynard2019predicting" class="csl-entry">
-Maynard, D. S., Z. R. Miller, and S. Allesina. 2020. Predicting coexistence in experimental ecological communities. Nature Ecology &amp; Evolution 4:91–100.
 </div>
 <div id="ref-pillai2019not3" class="csl-entry">
 Pillai, P., and T. C. Gouhier. 2019b. Not even wrong: Reply to loreau and hector. arXiv preprint arXiv:1910.13563.
@@ -1177,7 +936,7 @@ Wagg, C., K. E. Barry, M. J. O’Brien, A. McKenzie-Gopsill, C. Roscher, N. Eise
           </div>
         </div>
       </div>
-<a href="ecological-assembly.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="stability-of-large-ecological-communities.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="game-theory-and-replicator-dynamics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
