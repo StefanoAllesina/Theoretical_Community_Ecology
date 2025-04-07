@@ -23,7 +23,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2025-04-06" />
+<meta name="date" content="2025-04-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -221,6 +221,7 @@ div.csl-indent {
 <li class="chapter" data-level="3.3.4" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#coexistence-requires-a-feasible-equilibrium"><i class="fa fa-check"></i><b>3.3.4</b> Coexistence requires a feasible equilibrium</a></li>
 <li class="chapter" data-level="3.3.5" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#local-stability-of-the-coexistence-equilibrium"><i class="fa fa-check"></i><b>3.3.5</b> Local stability of the coexistence equilibrium</a></li>
 <li class="chapter" data-level="3.3.6" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#lyapunov-diagonal-stability-and-global-stability"><i class="fa fa-check"></i><b>3.3.6</b> Lyapunov diagonal stability and global stability</a></li>
+<li class="chapter" data-level="3.3.7" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#saturated-equilibria"><i class="fa fa-check"></i><b>3.3.7</b> Saturated equilibria</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="generalized-lotka-volterra-model.html"><a href="generalized-lotka-volterra-model.html#macarthurs-consumer-resource-model"><i class="fa fa-check"></i><b>3.4</b> MacArthur’s consumer-resource model</a>
 <ul>
@@ -726,6 +727,71 @@ to measure the density of each population). Then,</p>
 \]</span></p>
 <p>Thus, if <span class="math inline">\(H(\tilde{A}) = \frac{1}{2} (AD(w) + D(w)A^T)\)</span> is negative
 definite, the equilibrium is stable.</p>
+</div>
+<div id="saturated-equilibria" class="section level3 hasAnchor" number="3.3.7">
+<h3><span class="header-section-number">3.3.7</span> Saturated equilibria<a href="generalized-lotka-volterra-model.html#saturated-equilibria" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We say that an equilibrium <span class="math inline">\(\bar{x}\)</span> is saturated if we have that some populations (say <span class="math inline">\(y\)</span>) are coexisting at a stable equilibrium, while the rest of the populations (say <span class="math inline">\(z\)</span>) are extinct and <strong>cannot reinvade the system from low abundance</strong>. As such, saturated equilibria are <strong>locally stable</strong> with respect to the reintroduction of the extinct populations.</p>
+<p>When Goh’s function holds, we can prove that dynamics starting from positive conditions <span class="math inline">\(x(t)&gt;0_n\)</span> will converge to a <em>saturated equilibrium</em> <span class="math inline">\(\tilde{x}\)</span> characterized by two conditions. We have <span class="math inline">\(n\)</span> populations, and at the saturated equilibrium the populations in set <span class="math inline">\(k\)</span> coexist at a globally stable equilibrium, and the remaining populations, belonging to set <span class="math inline">\(n-k\)</span> are extinct, and cannot re-invade the system starting from low abundance.</p>
+<p>Without loss of generality, we can order the populations such that the first <span class="math inline">\(\|k\|\)</span> populations are those that coexist at the saturated equilibrium, and the remaining <span class="math inline">\(\| n- k\|\)</span> are those extinct at the saturated equilibrium. We partition all variables according to the two sets:</p>
+<p><span class="math display">\[
+x = \begin{pmatrix}
+y\\
+z
+\end{pmatrix} \quad \tilde{x} = \begin{pmatrix}
+y^\star\\
+0_{n-k}
+\end{pmatrix} \quad A = \begin{pmatrix}
+\mathfrak A &amp; \mathfrak B\\
+\mathfrak C &amp; \mathfrak D
+\end{pmatrix}\quad r = \begin{pmatrix}
+\mathfrak r\\
+\mathfrak s
+\end{pmatrix}
+\]</span></p>
+<p>We consider a minor modification of Goh’s function:</p>
+<p><span class="math display">\[
+V(x (t)) = \sum_{i \in k} \left(y_i - y_i^\star - y_i^\star \log \frac{y_i}{y_i^\star} \right) +
+\sum_{i \in n-k} z_i
+\]</span></p>
+<p>Differentiating with respect to time, we obtain:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\dot{V}(x(t)) &amp;= \sum_{i \in k} \left(\dot{y}_i - y_i^\star \frac{\dot{y}_i}{y_i} \right)+\sum_{i \in n-k} \dot{z}_i\\
+&amp;=\Delta y^T(\mathfrak r + \mathfrak A y + \mathfrak Bz) + z^T(\mathfrak s + \mathfrak C y+ \mathfrak D z)
+\end{aligned}
+\]</span></p>
+<p>Now we substitute <span class="math inline">\(\mathfrak r = -\mathfrak A y^\star\)</span>, and add and subtract <span class="math inline">\(z^T \mathfrak C y^\star\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\dot{V}(x(t)) &amp;=\Delta y^T(-\mathfrak A y^\star + \mathfrak A y + \mathfrak Bz) + z^T(\mathfrak s + \mathfrak C y+ \mathfrak D z  + \mathfrak C y^\star - \mathfrak C y^\star)\\
+&amp;=\Delta y^T(\mathfrak A \Delta y + \mathfrak Bz) + z^T(\mathfrak s + \mathfrak C \Delta y+ \mathfrak D z  + \mathfrak C y^\star)
+\end{aligned}
+\]</span></p>
+<p>Now we write the function as the sum of two parts:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\dot{V}(x(t)) &amp;= (\Delta y^T \mathfrak A \Delta y + \Delta y^T \mathfrak B z + z^T \mathfrak C \Delta y + z^T \mathfrak D z) + z^T(s + \mathfrak C y^\star)\\
+&amp;= \begin{pmatrix}
+\Delta y\\
+z
+\end{pmatrix}^T \begin{pmatrix}
+\mathfrak A &amp; \mathfrak B\\
+\mathfrak C &amp; \mathfrak D
+\end{pmatrix}\begin{pmatrix}
+\Delta y\\
+z
+\end{pmatrix}+ z^T(s + \mathfrak C y^\star)\\\\
+&amp;= \begin{pmatrix}
+\Delta y\\
+z
+\end{pmatrix}^T A\begin{pmatrix}
+\Delta y\\
+z
+\end{pmatrix}+ z^T(s + \mathfrak C y^\star)\\\\
+\end{aligned}
+\]</span></p>
+<p>Whenever <span class="math inline">\(H(A) = \frac{1}{2}(A + A^T)\)</span> is negative definite, then the first term is negative for any choice of <span class="math inline">\(y\)</span> and <span class="math inline">\(z\)</span>. Examining the second term, we see that <span class="math inline">\(\mathfrak s + \mathfrak C y^\star\)</span> measures the invasion growth rate of the populations in the set <span class="math inline">\(n-k\)</span> when they are attempting to invade the community that is resting at <span class="math inline">\(y^\star\)</span>. Thus, if we can find a saturated equilibrium, it is globally stable and will be reached for any <span class="math inline">\(x(0) &gt; 0_n\)</span>.</p>
+<p>This derivation can be extended by considering a diagonal matrix <span class="math inline">\(D(w)\)</span> with <span class="math inline">\(w &gt;0_n\)</span>, as done above.</p>
 </div>
 </div>
 <div id="macarthurs-consumer-resource-model" class="section level2 hasAnchor" number="3.4">

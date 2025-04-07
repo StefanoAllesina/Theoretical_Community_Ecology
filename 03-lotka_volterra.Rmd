@@ -530,6 +530,84 @@ $$
 Thus, if $H(\tilde{A}) = \frac{1}{2} (AD(w) + D(w)A^T)$ is negative
 definite, the equilibrium is stable.
 
+### Saturated equilibria 
+
+We say that an equilibrium $\bar{x}$ is saturated if we have that some populations (say $y$) are coexisting at a stable equilibrium, while the rest of the populations (say $z$) are extinct and **cannot reinvade the system from low abundance**. As such, saturated equilibria are **locally stable** with respect to the reintroduction of the extinct populations.
+
+When Goh's function holds, we can prove that dynamics starting from positive conditions $x(t)>0_n$ will converge to a *saturated equilibrium* $\tilde{x}$ characterized by two conditions. We have $n$ populations, and at the saturated equilibrium the populations in set $k$ coexist at a globally stable equilibrium, and the remaining populations, belonging to set $n-k$ are extinct, and cannot re-invade the system starting from low abundance.
+
+Without loss of generality, we can order the populations such that the first $\|k\|$ populations are those that coexist at the saturated equilibrium, and the remaining $\| n- k\|$ are those extinct at the saturated equilibrium. We partition all variables according to the two sets:
+
+$$
+x = \begin{pmatrix}
+y\\
+z
+\end{pmatrix} \quad \tilde{x} = \begin{pmatrix}
+y^\star\\
+0_{n-k}
+\end{pmatrix} \quad A = \begin{pmatrix}
+\mathfrak A & \mathfrak B\\
+\mathfrak C & \mathfrak D
+\end{pmatrix}\quad r = \begin{pmatrix}
+\mathfrak r\\
+\mathfrak s
+\end{pmatrix}
+$$
+
+We consider a minor modification of Goh's function:
+
+$$
+V(x (t)) = \sum_{i \in k} \left(y_i - y_i^\star - y_i^\star \log \frac{y_i}{y_i^\star} \right) + 
+\sum_{i \in n-k} z_i
+$$
+
+Differentiating with respect to time, we obtain:
+
+$$
+\begin{aligned}
+\dot{V}(x(t)) &= \sum_{i \in k} \left(\dot{y}_i - y_i^\star \frac{\dot{y}_i}{y_i} \right)+\sum_{i \in n-k} \dot{z}_i\\
+&=\Delta y^T(\mathfrak r + \mathfrak A y + \mathfrak Bz) + z^T(\mathfrak s + \mathfrak C y+ \mathfrak D z)
+\end{aligned}
+$$
+
+Now we substitute $\mathfrak r = -\mathfrak A y^\star$, and add and subtract $z^T \mathfrak C y^\star$:
+
+$$
+\begin{aligned}
+\dot{V}(x(t)) &=\Delta y^T(-\mathfrak A y^\star + \mathfrak A y + \mathfrak Bz) + z^T(\mathfrak s + \mathfrak C y+ \mathfrak D z  + \mathfrak C y^\star - \mathfrak C y^\star)\\
+&=\Delta y^T(\mathfrak A \Delta y + \mathfrak Bz) + z^T(\mathfrak s + \mathfrak C \Delta y+ \mathfrak D z  + \mathfrak C y^\star)
+\end{aligned}
+$$
+
+Now we write the function as the sum of two parts:
+
+$$
+\begin{aligned}
+\dot{V}(x(t)) &= (\Delta y^T \mathfrak A \Delta y + \Delta y^T \mathfrak B z + z^T \mathfrak C \Delta y + z^T \mathfrak D z) + z^T(s + \mathfrak C y^\star)\\
+&= \begin{pmatrix}
+\Delta y\\
+z
+\end{pmatrix}^T \begin{pmatrix}
+\mathfrak A & \mathfrak B\\
+\mathfrak C & \mathfrak D
+\end{pmatrix}\begin{pmatrix}
+\Delta y\\
+z
+\end{pmatrix}+ z^T(s + \mathfrak C y^\star)\\\\
+&= \begin{pmatrix}
+\Delta y\\
+z
+\end{pmatrix}^T A\begin{pmatrix}
+\Delta y\\
+z
+\end{pmatrix}+ z^T(s + \mathfrak C y^\star)\\\\
+\end{aligned}
+$$
+
+Whenever $H(A) = \frac{1}{2}(A + A^T)$ is negative definite, then the first term is negative for any choice of $y$ and $z$. Examining the second term, we see that $\mathfrak s + \mathfrak C y^\star$ measures the invasion growth rate of the populations in the set $n-k$ when they are attempting to invade the community that is resting at $y^\star$. Thus, if we can find a saturated equilibrium, it is globally stable and will be reached for any $x(0) > 0_n$.
+
+This derivation can be extended by considering a diagonal matrix $D(w)$ with $w >0_n$, as done above.
+
 ## MacArthur's consumer-resource model
 
 :::boxhistory

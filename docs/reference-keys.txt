@@ -30,6 +30,7 @@ equilibrium-as-time-average
 coexistence-requires-a-feasible-equilibrium
 local-stability-of-the-coexistence-equilibrium
 lyapunov-diagonal-stability-and-global-stability
+saturated-equilibria
 macarthurs-consumer-resource-model
 existence-of-an-equilibrium-1
 global-stability-1
