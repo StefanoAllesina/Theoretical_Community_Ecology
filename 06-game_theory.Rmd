@@ -7,7 +7,7 @@ source("common_settings.R")
 
 ## Game theory
 
-We briefly introduce the study of mathematical models of games, and their relations to the GLV model. 
+We briefly introduce the study of game theory, the science of strategic interactions, and its relation to the GLV model. 
 
 While the origin of the discipline can be traced back to the 1700s, modern game theory started with von Neumann's paper *On the Theory of Games of Strategy*, published in 1928, and with the subsequent 1944 book with Morgensten *Theory of Games and Economic Behavior*. John Nash's paper [@nash1950equilibrium] introduced the notion of a **Nash Equilibrium** (NE), and proved that any non-cooperative game has at least one such equilibrium. Originally, game theory was studied by economists and mathematicians, but with a series of papers in the early 1970s, and the subsequent book *Evolution and the Theory of Games* [@smith1982evolution], John Maynard Smith showed how the same tools could be used to study evolutionary dynamics, introducing the influential concept of an **Evolutionary Stable Strategy** (ESS). Evolutionary game theory was greatly advanced through the introduction of the **Replicator Equation** (RE), which, as we will see later, has strong connection with the GLV model. For a detailed introduction to evolutionary game theory see @hofbauer1998evolutionary.
 
@@ -43,17 +43,17 @@ The book *The Price of Altruism: George Price and the Search for the Origins of 
 
 :::
 
-## Two-player matrix games
+## Bimatrix games
 
-We start by analyzing games in which two players face each other, each choosing one strategy out of a set. Importantly, we consider static games in which each player makes their decision without having knowledge of the decision of the other player. 
+We start by analyzing games in which two players face each other; the two players simultaneously choose a strategy out of a set. Importantly, we consider static games in which each player makes their decision without having knowledge of the decision of the other player. 
 
 Player 1 chooses a **pure strategy** $s_1$ from the set of pure strategies $S_1$, while player 2 chooses $s_2 \in S_2$. We call $\pi_k (s_1, s_2)$ the **payoff** for player $k$ when player 1 chooses $s_1$ and player 2 $s_2$. 
 
-In a matrix game, we can arrange the payoffs for each player in a matrix. We call $A$ the matrix of payoffs for player one and $B$ that for player two. 
+In a matrix game, we can arrange the payoffs for each player in a matrix. We call $A$ the matrix of payoffs for player one (the row player) and $B$ that for player two (the column player). 
 
 ### Example: the prisoner's dilemma
 
-Two prisoners allegedly committed a crime, but the police do not have enough evidence to convict them. They therefore approach each prisoner separately, proposing a deal: if the prisoner confesses ("defect" the other prisoner), then their sentence will be reduced. In particular: i) if both confess (both "defect"), they are sentenced to 4 years in prison; ii) if one confesses ("defect") and the other keeps quiet ("cooperate" with the other prisoner), then the one who has confessed is let free, and the other sentenced to 5 years; iii) if both keep quiet ("cooperate"), then they are both sentenced to two years of detention for some accessory crime.
+Two prisoners allegedly committed a crime, but the police do not have enough evidence to convict them. They therefore approach each prisoner separately, proposing a deal: if the prisoner confesses ("defects" the other prisoner), then their sentence will be reduced. In particular: i) if both confess (both "defect"), they are sentenced to 4 years in prison; ii) if one confesses ("defects") and the other keeps quiet ("cooperates" with the other prisoner), then the one who has confessed is let free, and the other sentenced to 5 years; iii) if both keep quiet ("cooperate"), then they are both sentenced to two years of detention for some accessory crime.
 
 In matrix form, we have (rows for pl 1 strategy C/D; cols for pl 2 strategy):
 
@@ -96,81 +96,210 @@ Cooperation can evolve via indirect reciprocity (I help you in the hope that som
 
 ## Mixed strategies
 
-Above, the player could choose one out of two strategies. A generalization of this situation is one in which players play **mixed strategies**, i.e., play a given strategy at random according to a set of probabilities. Call $x_i$ the probability that player 1 plays strategy $i$; then $x_i \geq 0$, and $\sum_i x_i = 1$. Similarly, $y_i$ is the probability that player 2 plays strategy $i$. A natural choice for the payoff of player 1 is therefore:
+Above, the player could choose one out of two strategies. A generalization of this situation is one in which players play **mixed strategies**, i.e., play a given strategy at random according to a set of probabilities. Call $p_i$ the probability that player 1 plays strategy $i$; then $p_i \geq 0$, and $\sum_i p_i = 1$. Similarly, $q_i$ is the probability that player 2 plays strategy $i$. A natural choice for the payoff of player 1 is therefore:
 
 $$
-\sum_{i=1}^m \sum_{j = 1}^n x_i y_j \pi_1 (s_i, s_j) = x^T A y
+\sum_{i=1}^m \sum_{j = 1}^n p_i q_j \pi_1 (s_i, s_j) = p^T A q
 $$
 
-which amounts to the expected payoff for player 1. Similarly, we have $y^T B x$ for player 2.
+which amounts to the expected payoff for player 1. Similarly, we have $q^T B^T p$ for player 2.
 
-A mixed strategy $x$ is dominated by mixed strategy $\tilde{x}$ if $\tilde{x}^T A y \geq x^T A y$ for every $y$. The condition can be written as $(\tilde{x} - x)^T A y \geq 0$.
+A mixed strategy $p$ is dominated by mixed strategy $\tilde{p}$ if $\tilde{p}^T A q \geq p^T A q$ for every $q$. The condition can be written as $(\tilde{p} - p)^T A q \geq 0$.
 
 ## Nash Equilibria
 
-A pair of mixed strategies $\tilde{x}$ and $\tilde{y}$ is called a Nash Equilibrium for a two person matrix game if:
+A pair of mixed strategies $p^\star$ and $q^\star$ is called a Nash Equilibrium for a two person matrix game if:
 
 $$
 \begin{aligned}
-\tilde{x}^T A \tilde{y} \geq x^T A \tilde{y} &\quad \text{for all } x\\
-\tilde{y}^T B \tilde{x} \geq y^T B \tilde{x} &\quad \text{for all } y
+{p^\star}^T A {q^\star} \geq p^T A {q^\star} &\quad \text{for all } p\\
+{q^\star}^T B^T {p^\star} \geq q^T B^T {p^\star} &\quad \text{for all } q
 \end{aligned}
 $$
 
-Nash proved that every non-cooperative game has at least one Nash Equilibrium.
+John Nash proved that every non-cooperative game has at least one Nash Equilibrium.
+
+## Symmetric bimatrix games
+
+The prisoner's dilemma above is an example of a symmetric bimatrix game, in which the matrix of payoffs is the same for both players ($A = B$), and the two players have access to the same set of strategies. Nash proof extends to symmetric games: every symmetric bimatrix game has at least one Nash equilibrium when considering mixed strategies. The condition for a Nash equilibrium becomes:
+
+$$
+{p^\star}^TA{p^\star} \geq p^TA{p^\star} \quad \text{for all } p
+$$
 
 ## Evolutionary stable strategies
 
-In the context of evolution, one can consider $x$ to be the proportion of individuals (e.g., of different species, or phenotypes) displaying different characteristics. When playing against each other, they win or lose, and their payoffs are invested in reproduction. Because the different "strategies" (populations, phenotypes) play against each other, the payoff matrix is the same for all players, and encoded in matrix $A$. 
+Consider a symmetric bimatrix game $A$ and a Nash equilibrium $\tilde{x}$. In the context of evolution, one might imagine that "mutants" are generated, playing a variation on $\tilde{x}$. A Nash equilibrium is *evolutionary stable* if it has a higher payoff than nearby mutants. The concept of an Evolutionary Stable Strategy (ESS) was introduced by Maynard-Smith and Price. 
 
-In this context, a strategy $x$ is called an evolutionary stable strategy if two conditions are met:
+We write a mutant as the sum of two strategies: the Nash equilibrium $\tilde{x}$, and an arbitrary strategy $x$: $y = (1 -\epsilon) \tilde{x} + \epsilon x$. The value $0\leq \epsilon \leq 1$ determines how close the mutant is to the Nash equilibrium. 
 
-$$
-x^T A x \geq y^T A x \quad \text{for all } y
-$$
+We want to determine whether:
 
-meaning that $x$ plays against itself not worse than any other strategy, and
+HERE MISSING!
 
-$$
-\text{If } y \neq x \text{ then } y^T A x = x^T A x \text{ implies } x^T A y > y^T A y
-$$
-
-meaning that if $y$ plays as well as $x$ against $x$, then $x$ plays against $y$ better than $y$ against itself.
 
 Next, we connect NE and ESS with dynamical systems.
 
 ## Replicator dynamics
 
-The replicator equation for this type of games can be written as:
+Consider a population composed of individuals, such that individuals of type $i$ always play strategy $i$. We denote $p_i(t)$ as the frequency of individuals of type $i$ at time $t$. When two individuals of type $i$ and $j$ meet, the individual of type $i$ receives the payoff $A_{ij}$. Then the expected payoff for an individual of type $i$ is:
 
 $$
-\dfrac{d x_i}{dt} = x_i \left( \sum_j A_{ij} x_j - \sum_{jk} x_j A_{jk} x_k \right)
+\sum_j A_{ij} p_j(t) = (Ap(t))_i
 $$
 
-If we define $f = A x$ as a vector reporting the "fitness" of each population at time $t$, and $\bar{f} =  \sum_{jk} x_j A_{jk} x_k = x^T A x$ as the average fitness at time $t$ we can write the replicator equation more compactly as:
+We then assume that the payoff is invested in reproduction, making $(Ap)_i = f_i$ the *fitness* of type $i$. Because we are tracking frequencies, if a type increases in frequency, necessarily another type must decline in frequencies. A natural choice is therefore to subtract from the fitness of type $i$ the expected fitness across all types. 
 
 $$
-\dfrac{d x_i}{dt} = x_i (f_i - \bar{f})
+\sum_{i,j} A_{ij} p_i(t) p_j(t) = p^T A p = \bar{f}
 $$
 
-The RE is essentially equivalent to a GLV model in which we track frequencies instead of abundances. 
+We can write the per-capita growth rate of type $i$ as:
 
-Importantly, we can see $x$ as a "mixed strategy" for the symmetric game encoded in $A$. In this context, **a Nash Equilibrium for the game is an an equilibrium of the replicator equation**; similarly, **an Evolutionary Stable Strategy for the game is a stable equilibrium for the replicator equation**. As we will see later, the converse is not true: we could have a stable equilibrium of the RE which is not an ESS.
+$$
+\dfrac{\dot{p}_i}{p_i} = f_i - \bar{f}
+$$
 
-### Invariants
+Thus obtaining the *replicator equation*:
 
-Adding a constant to each column of $A$ does not alter the dynamics. We have $B = A + e b^T$, where $e$ is a vector of ones. Then:
+$$
+\dfrac{d p_i}{dt} = p_i \left( \sum_j A_{ij} p_j - \sum_{jk} p_j A_{jk} p_k \right) = p_i((Ap)_i - p^T Ap) = p_i(f_i -\bar{f})
+$$
+
+As we will see, the RE is essentially equivalent to a GLV model in which we track frequencies instead of abundances. 
+
+Importantly, we can see $p$ as a "mixed strategy" for the symmetric game encoded in $A$. In this context, **a Nash Equilibrium for the game is an an equilibrium of the replicator equation**; similarly, **an Evolutionary Stable Strategy for the game is a stable equilibrium for the replicator equation**. As we will see later, the converse is not true: we could have a stable equilibrium of the RE which is not an ESS.
+
+### Nash equilibria are equilibria of the RE
+
+Consider an equilibrium in which all types are present: we will say that the equilibrium is in the interior of the simplex, $p^\star \in \Delta_{\text{int}}$. The simplex is the space of $p_i \geq 0$, such that $\sum_j p_j =1^T p = 1$. The interior of the simplex is the set of $p$ such that $p_i > 0$ and $1^T p = 1$. 
+
+$p^\star$ is a Nash equilibrium iff:
+
+$$
+{p^\star}^T A{p^\star} \geq {p}^T A{p^\star} \quad \forall p \in \Delta
+$$
+
+$p^\star \in \Delta_{\text{int}}$ is an equilibrium of the RE if:
+
+$$
+A p^\star = ({p^\star}^T A p^\star)  1_n
+$$
+
+i.e., if all types have the same fitness $f_i = \bar{f}$ at $p^\star$. But then:
+
+$$
+Ap^\star = \bar{f} 1_n
+$$
+
+Plugging this into the definition of Nash equilibrium, we have:
 
 $$
 \begin{aligned}
-x_i \left( \sum_j B_{ij} x_j - \sum_{kj} x_k B_{kj} x_j \right) & = x_i \left( \sum_j (A_{ij} + b_j) x_j - \sum_{kj} x_k (A_{kj} + b_j) x_j \right)\\
-&= x_i \left(\sum_j A_{ij} x_j + \sum_j b_j x_j  - \sum_{kj} x_k A_{kj} x_j - \sum_{kj} x_k b_{j} x_j \right)\\
-&= x_i \left(\sum_j A_{ij} x_j + \sum_j b_j x_j  - \sum_{kj} x_k A_{kj} x_j - \sum_{j} b_{j} x_j \right)\\
-&= x_i \left(\sum_j A_{ij} x_j - \sum_{kj} x_k A_{kj} x_j \right)\\
+{p^\star}^T A{p^\star} &\geq {p}^T A{p^\star}\\
+\bar{f} {p^\star}^T 1_n &\geq \bar{f} p^T 1_n\\
+\bar{f} &\geq \bar{f}
 \end{aligned}
 $$
 
-Similarly, multiplying each column of $A$ by a (possibly different) positive constant does not alter dynamics (it just rescales time). As such, if $A_2 = A_1 D + eb^T$ the replicator equations formed using $A_1$ and $A_2$ are equivalent.
+which is true: a Nash equilibrium in the interior of the simplex is also an equilibrium point for the replicator equation.
+
+### ESS are globally stable equilibria of the RE
+
+Next, we consider the definition of an ESS in the interior of the simplex:
+
+$$
+\begin{aligned}
+{p^\star}^T A p &\geq p^T A p\\
+p^T A p - {p^\star}^T A p &\leq 0
+\end{aligned}
+$$
+
+together with the candidate Lyapunov function:
+
+$$
+V = -\sum_j p_j^\star \log \dfrac{p_j}{p_j^\star} \geq 0
+$$
+We differentiate with respect to time, obtaining:
+
+$$
+\begin{aligned}
+\dot{V} &= -\sum_j p_j^\star \dfrac{\dot{p}_j}{p_j}\\
+&=-\sum_j p_j^\star ((Ap)_j - p^T A p)\\
+&=\left(-\sum_j p_j^\star A p_j\right) + p^TAp\\
+&=-{p^\star}^T A p + p^T Ap
+\end{aligned}
+$$
+
+Showing that $\dot{V}$ is decreasing in time if and only if $p^\star$ is an ESS. Hence evolutionary stability implies dynamical global stability of $p^\star$.
+
+
+
+
+### Stability of the RE with symmetric $A$
+
+First, we examine the case of a symmetric matrix of payoffs $A = A^T$. In this case, the two players have exactly the same interests---this type of games is sometimes called *partnership game*. One might expect that, given that the two players have a shared interest, the average payoff would grow in time. This is indeed the case, and in fact the average payoff is a Lyapunov function for the system.
+
+Take $A = A^T$, then the average payoff $W = p^T A p$ can only grow in time:
+
+$$
+\dot{W} = p^T A \dot{p} + \dot{p}^T A p = p^T A \dot{p} + p^T A^T \dot{p} = 2 p^T A \dot{p}
+$$
+
+Expanding $\dot{p}$, we obtain:
+
+$$
+\dot{W} = 2 p^T A D(p) (Ap - p^T A p 1)
+$$
+
+Now we note that $x^T (Ax - x^T A x 1) = x^T A x - x^T A x x^T 1 = 0$.  
+
+
+FINISH HERE!!!
+
+### Invariants
+
+Adding a constant to each column of $A$ does not alter the dynamics. We have $B = A + 1_n b^T$; Then:
+
+$$
+\begin{aligned}
+\dot{p}_i &= p_i ((Bp)_i - p^T Bp)\\
+&= p_i ((Ap)_i + b^T p - p^T A p - p^T1_n b^T p)\\
+&= p_i ((Ap)_i + b^T p - p^T A p - b^T p)\\
+&= p_i ((Ap)_i - p^T A p)
+\end{aligned}
+$$
+Showing that $\dot{p}$ (and thus the dynamics) is unchanged. 
+
+Similarly, defining:
+
+$$
+q_i = \dfrac{w_i p_i}{\sum_j w_j p_j}
+$$
+
+does not alter the dynamics: we can map the trajectories of $p$ on those of $q$ and vice-versa. This is called the *projective transformation* in Hofbauer and Sigmund (exercise 7.1.3). We have:
+
+$$
+\begin{aligned}
+\dot{q}_i &= \dfrac{w_i \dot{p}_i}{\sum_k w_k p_k} - \dfrac{w_i p_i}{\sum_k w_k p_k} \sum_j \dfrac{w_j \dot{p}_j}{\sum_k w_k p_j}\\
+&=q_i \left((Ap)_i - p^T A p \right) - q_i \sum_j q_j \left((Ap)_j - p^T A p \right)\\
+&=q_i \left((Ap)_i - p^T A p - q^T Ap + p^TAp\right)\\
+&=q_i \left((Ap)_i - q^T Ap \right)\\
+&=q_i \left((AD(w)^{-1}D(w)p)_i - q^T AD(w)^{-1}D(w)p \right)\\
+&=(\textstyle\sum_j w_j p_j ) q_i \left((AD(w)^{-1}q)_i - q^T A D(w)^{-1}q\right)\\
+&=(\textstyle\sum_j w_j p_j ) q_i \left((Bq)_i - q^T B q\right)\\
+\end{aligned}
+$$
+where we have defined $B = A D(w)^{-1}$. Finally, we rescale time by $\sum_j w_j p_j > 0$, obtaining:
+
+$$
+\dot{q}_i = q_i ((Bq)_i - q^T B q)
+$$
+
+Thus, if we have $B = AD(w)^{-1}$, we have that the replicator equation in $A, p$ and that in $B, q$ are equivalent (e.g., the type of dynamics is the same, the existence/stability of equilibria is unchanged, etc.). 
+By combining the two invariants, we find that $B = (A + 1b^T)D(w)^{-1}$, for $b \in \mathbb R^n$ and $w \in \mathbb R^n_+$ yields a RE that is equivalent to that in $A$. 
+
+Very interestingly, the notion of ESS is not closed under the second invariant: we can have a $p^\star$ that is not an ESS, and choose $w > 0_n$ such that $q^\star$ is an ESS (and viceversa). I have recently wrote a paper exploiting this fact to extend the reach of the Lyapunov function above. 
 
 ### Rock-paper-scissor
 
@@ -186,7 +315,7 @@ $$
 
 We start the population at a random initial condition, and track dynamics:
 
-```{r, refuctions}
+```{r, refuctions, echo=FALSE}
 # define the differential equation
 RE <-function(t, x, parameters){
   with(as.list(c(x, parameters)), {
@@ -222,38 +351,21 @@ rps <- integrate_RE(A, x0)
 
 What if we start all populations at the same density?
 
-```{r, rps2}
+```{r, rps2, echo = FALSE}
 x0 <- rep(1 / 3, 3)
 rps <- integrate_RE(A, x0)
 ```
 
 And if they are close to the 1/3?
 
-```{r, rps3}
+```{r, rps3, echo=FALSE}
 x0 <- rep(1/3, 3) + 0.05 * runif(3)
 x0 <- x0 / sum(x0)
 rps <- integrate_RE(A, x0)
 ```
 
-### Existence of an equilibrium
+We can try our candidate Lyapunov function to show that indeed we have neutral cycles, determined by the initial conditions.
 
-### Stability of the RE
-
-First, we examine the case of a symmetric matrix of payoffs $A = A^T$. In this case, the two players have exactly the same interests---this type of games is sometimes called *partnership game*. One might expect that, given that the two players have a shared interest, the average payoff would grow in time. This is indeed the case, and in fact the average payoff is a Lyapunov function for the system.
-
-Take $A = A^T$, then the average payoff $W = x^T A x$ can only grow in time:
-
-$$
-\dot{W} = x^T A \dot{x} + \dot{x}^T A x = x^T A \dot{x} + x^T A^T \dot{x} = 2 x^T A \dot{x}
-$$
-
-Expanding $\dot{x}$, and writing this in component form, we obtain:
-
-$$
-\dot{W} = 2 x^T A D(x) (Ax - x^T A x 1)
-$$
-
-Now we note that $x^T (Ax - x^T A x 1) = x^T A x - x^T A x x^T 1 = 0$. We therefore add $x^T ((x^T A x) (Ax - ))
 
 ### Equivalence with GLV
 

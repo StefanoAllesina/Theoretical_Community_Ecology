@@ -116,3 +116,8 @@ stability-for-glv-embeddings
 numerical-analysis
 systems-with-many-equations
 glv-embedding-for-non-qp-systems
+bimatrix-games
+symmetric-bimatrix-games
+nash-equilibria-are-equilibria-of-the-re
+ess-are-globally-stable-equilibria-of-the-re
+stability-of-the-re-with-symmetric-a
