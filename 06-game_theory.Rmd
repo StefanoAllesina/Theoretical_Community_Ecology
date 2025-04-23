@@ -129,15 +129,29 @@ $$
 
 ## Evolutionary stable strategies
 
-Consider a symmetric bimatrix game $A$ and a Nash equilibrium $\tilde{x}$. In the context of evolution, one might imagine that "mutants" are generated, playing a variation on $\tilde{x}$. A Nash equilibrium is *evolutionary stable* if it has a higher payoff than nearby mutants. The concept of an Evolutionary Stable Strategy (ESS) was introduced by Maynard-Smith and Price. 
+Consider a symmetric bimatrix game, defined by matrix $A$, and a Nash equilibrium $p^\star$. In the context of evolution, one might imagine that "mutants" are generated, playing a variation on $p^\star$. A Nash equilibrium is *evolutionary stable* if it yields a higher payoff than nearby mutants. The concept of an Evolutionary Stable Strategy (ESS) was introduced by Maynard-Smith and Price. 
 
-We write a mutant as the sum of two strategies: the Nash equilibrium $\tilde{x}$, and an arbitrary strategy $x$: $y = (1 -\epsilon) \tilde{x} + \epsilon x$. The value $0\leq \epsilon \leq 1$ determines how close the mutant is to the Nash equilibrium. 
+We write the mutant as $p$ and the Nash equilibrium as $p^\star$. When the mutant arises, the population is composed mostly of the $p^\star$; we model the state of the population as $q = (1 -\epsilon) p^\star + \epsilon p$. The value $0\leq \epsilon \leq 1$ determines how rare the mutant is. We want to determine whether the expected payoff for $p$ when the population is $q$ is lower than that of the $p^\star$:
 
-We want to determine whether:
+$$
+\begin{aligned}
+p^T A q &< {p^\star}^T A q\\
+p^T A ((1 -\epsilon) p^\star + \epsilon p) &< {p^\star}^T A (1 -\epsilon) p^\star + \epsilon p\\
+(1 - \epsilon) p^T A p^\star + \epsilon p^T A p &< (1-\epsilon){p^\star}^T A p^\star + \epsilon {p^\star}^T A p\\
+(1-\epsilon) ({p^\star}^T A p^\star-p^T A p^\star) + \epsilon ({p^\star}^T A p-p^T A p)&>0
 
-HERE MISSING!
+\end{aligned}
+$$
+If this inequality is met, then the mutant cannot grow when rare (i.e., invade). Note that the first term is always greater than or equal to zero when $p^\star$ is a Nash equilibrium. Thus, for sufficiently small $\epsilon$, as long as the first term is positive, we have evolutionary stability. However, the first term could be zero (there is another "best reply" to $p^\star$), in which case we need the second term to be positive, yielding:
 
+For $p \neq p^\star$, and for $p$ such that ${p^\star}^T A p^\star = p^T A p^\star$, then
 
+$$
+\begin{aligned}
+{p^\star}^T A p-p^T A p &> 0\\
+{p^\star}^T A p &> p^T A p
+\end{aligned}
+$$
 Next, we connect NE and ESS with dynamical systems.
 
 ## Replicator dynamics
@@ -233,12 +247,9 @@ $$
 
 Showing that $\dot{V}$ is decreasing in time if and only if $p^\star$ is an ESS. Hence evolutionary stability implies dynamical global stability of $p^\star$.
 
-
-
-
 ### Stability of the RE with symmetric $A$
 
-First, we examine the case of a symmetric matrix of payoffs $A = A^T$. In this case, the two players have exactly the same interests---this type of games is sometimes called *partnership game*. One might expect that, given that the two players have a shared interest, the average payoff would grow in time. This is indeed the case, and in fact the average payoff is a Lyapunov function for the system.
+We examine the special case of a symmetric matrix of payoffs $A = A^T$. In this case, the two players have exactly the same interests---this type of games is sometimes called *partnership game*. One might expect that, given that the two players have a shared interest, the average payoff would grow in time. This is indeed the case, and in fact the average payoff is a Lyapunov function for the system.
 
 Take $A = A^T$, then the average payoff $W = p^T A p$ can only grow in time:
 
@@ -246,16 +257,19 @@ $$
 \dot{W} = p^T A \dot{p} + \dot{p}^T A p = p^T A \dot{p} + p^T A^T \dot{p} = 2 p^T A \dot{p}
 $$
 
-Expanding $\dot{p}$, we obtain:
+It is convenient to write $f = Ap = A^T p$ (the fitness vector) and the average fitness $p^T A p = p^T f = \bar{f}$. But then, $\dot{p} = D(p) (f - \bar{f} 1_n)$, and
 
 $$
-\dot{W} = 2 p^T A D(p) (Ap - p^T A p 1)
+\begin{aligned}
+\dot{W} &= 2 (p^T A D(p) (f - \bar{f} 1_n))\\
+&= 2(f^T D(p) f - f^Tp \bar{f} )\\
+&= 2\left(p^T D(f)f - \bar{f}^2 \right)\\
+&= 2 \left(p^T f^2 - \bar{f}^2 \right)\\
+&= 2 (\mathbb E[f_i^2] -  \mathbb E[f_i]^2)\geq0
+\end{aligned}
 $$
 
-Now we note that $x^T (Ax - x^T A x 1) = x^T A x - x^T A x x^T 1 = 0$.  
-
-
-FINISH HERE!!!
+Note the parallel with MacArthur's Lyapunov function (which was in fact suggested by Kimura, inspired by Fisher's fundamental theorem of natural selection). See @baez2021fundamental for a discussion of Fisher's theorem in the context of the replicator equation.
 
 ### Invariants
 
