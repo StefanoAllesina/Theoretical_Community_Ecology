@@ -94,7 +94,7 @@ Cooperation can evolve via indirect reciprocity (I help you in the hope that som
 
 :::
 
-## Mixed strategies
+### Mixed strategies
 
 Above, the player could choose one out of two strategies. A generalization of this situation is one in which players play **mixed strategies**, i.e., play a given strategy at random according to a set of probabilities. Call $p_i$ the probability that player 1 plays strategy $i$; then $p_i \geq 0$, and $\sum_i p_i = 1$. Similarly, $q_i$ is the probability that player 2 plays strategy $i$. A natural choice for the payoff of player 1 is therefore:
 
@@ -104,11 +104,9 @@ $$
 
 which amounts to the expected payoff for player 1. Similarly, we have $q^T B^T p$ for player 2.
 
-A mixed strategy $p$ is dominated by mixed strategy $\tilde{p}$ if $\tilde{p}^T A q \geq p^T A q$ for every $q$. The condition can be written as $(\tilde{p} - p)^T A q \geq 0$.
+### Nash Equilibria
 
-## Nash Equilibria
-
-A pair of mixed strategies $p^\star$ and $q^\star$ is called a Nash Equilibrium for a two person matrix game if:
+A pair of mixed strategies $p^\star$ and $q^\star$ is called a Nash Equilibrium for a bimatrix game if:
 
 $$
 \begin{aligned}
@@ -119,15 +117,15 @@ $$
 
 John Nash proved that every non-cooperative game has at least one Nash Equilibrium.
 
-## Symmetric bimatrix games
+### Symmetric bimatrix games
 
-The prisoner's dilemma above is an example of a symmetric bimatrix game, in which the matrix of payoffs is the same for both players ($A = B$), and the two players have access to the same set of strategies. Nash proof extends to symmetric games: every symmetric bimatrix game has at least one Nash equilibrium when considering mixed strategies. The condition for a Nash equilibrium becomes:
+The prisoner's dilemma above is an example of a symmetric bimatrix game, in which the matrix of payoffs is the same for both players ($A = B$), and the two players have access to the same set of strategies. Nash proof extends to symmetric games: every symmetric bimatrix game has at least one symmetric Nash equilibrium when considering mixed strategies (note that here "symmetry" refers to the fact that the optimal stategy is the same for all players---the matrix $A$ needs not to be symmetric). The condition for a Nash equilibrium becomes:
 
 $$
 {p^\star}^TA{p^\star} \geq p^TA{p^\star} \quad \text{for all } p
 $$
 
-## Evolutionary stable strategies
+### Evolutionary stable strategies
 
 Consider a symmetric bimatrix game, defined by matrix $A$, and a Nash equilibrium $p^\star$. In the context of evolution, one might imagine that "mutants" are generated, playing a variation on $p^\star$. A Nash equilibrium is *evolutionary stable* if it yields a higher payoff than nearby mutants. The concept of an Evolutionary Stable Strategy (ESS) was introduced by Maynard-Smith and Price. 
 
@@ -142,7 +140,7 @@ p^T A ((1 -\epsilon) p^\star + \epsilon p) &< {p^\star}^T A (1 -\epsilon) p^\sta
 
 \end{aligned}
 $$
-If this inequality is met, then the mutant cannot grow when rare (i.e., invade). Note that the first term is always greater than or equal to zero when $p^\star$ is a Nash equilibrium. Thus, for sufficiently small $\epsilon$, as long as the first term is positive, we have evolutionary stability. However, the first term could be zero (there is another "best reply" to $p^\star$), in which case we need the second term to be positive, yielding:
+If this inequality is met, then the mutant cannot grow when rare (i.e., invade). Note that the first term is always greater than or equal to zero when $p^\star$ is a Nash equilibrium. Thus, for sufficiently small $\epsilon$, as long as the first term is positive, we have evolutionary stability. However, the first term could be exactly zero (this happens when there is an alternative "best reply" to $p^\star$), in which case we need the second term to be positive, yielding:
 
 For $p \neq p^\star$, and for $p$ such that ${p^\star}^T A p^\star = p^T A p^\star$, then
 
@@ -200,7 +198,7 @@ $$
 A p^\star = ({p^\star}^T A p^\star)  1_n
 $$
 
-i.e., if all types have the same fitness $f_i = \bar{f}$ at $p^\star$. But then:
+i.e., if all types have the same fitness at $p^\star$, we have $f_i = (Ap^\star)_i = \bar{f}$. But then:
 
 $$
 Ap^\star = \bar{f} 1_n
@@ -234,6 +232,7 @@ together with the candidate Lyapunov function:
 $$
 V = -\sum_j p_j^\star \log \dfrac{p_j}{p_j^\star} \geq 0
 $$
+
 We differentiate with respect to time, obtaining:
 
 $$
@@ -269,7 +268,7 @@ $$
 \end{aligned}
 $$
 
-Note the parallel with MacArthur's Lyapunov function (which was in fact suggested by Kimura, inspired by Fisher's fundamental theorem of natural selection). See @baez2021fundamental for a discussion of Fisher's theorem in the context of the replicator equation.
+Fisher's fundamental theorem of natural selection, which states that "The rate of increase in fitness of any organism at any time is equal to its genetic variance in fitness at that time". What we have shown is that, for partnership games, indeed the rate of increase $\dot{W}$ of the average fitness ($W$) is indeed determined by $\mathbb E[f_i^2] -  \mathbb E[f_i]^2 = \mathbb {Var}[f_i]$. Note the parallel with MacArthur's Lyapunov function (which was in fact suggested by Kimura, who was aware of Fisher's theorem). See @baez2021fundamental for a discussion of Fisher's theorem in the context of the replicator equation.
 
 ### Invariants
 
@@ -313,7 +312,7 @@ $$
 Thus, if we have $B = AD(w)^{-1}$, we have that the replicator equation in $A, p$ and that in $B, q$ are equivalent (e.g., the type of dynamics is the same, the existence/stability of equilibria is unchanged, etc.). 
 By combining the two invariants, we find that $B = (A + 1b^T)D(w)^{-1}$, for $b \in \mathbb R^n$ and $w \in \mathbb R^n_+$ yields a RE that is equivalent to that in $A$. 
 
-Very interestingly, the notion of ESS is not closed under the second invariant: we can have a $p^\star$ that is not an ESS, and choose $w > 0_n$ such that $q^\star$ is an ESS (and viceversa). I have recently wrote a paper exploiting this fact to extend the reach of the Lyapunov function above. 
+Very interestingly, the notion of ESS is not closed under the second invariant: we can have a $p^\star$ that is not an ESS, and choose $w > 0_n$ such that $q^\star$ is an ESS (and viceversa). I have recently written a paper exploiting this fact to extend the reach of the Lyapunov function above. 
 
 ### Rock-paper-scissor
 
@@ -370,7 +369,7 @@ x0 <- rep(1 / 3, 3)
 rps <- integrate_RE(A, x0)
 ```
 
-And if they are close to the 1/3?
+And if they are close to $p_i = \frac{1}{3}$ for all $i$?
 
 ```{r, rps3, echo=FALSE}
 x0 <- rep(1/3, 3) + 0.05 * runif(3)
@@ -380,6 +379,22 @@ rps <- integrate_RE(A, x0)
 
 We can try our candidate Lyapunov function to show that indeed we have neutral cycles, determined by the initial conditions.
 
+$$
+V = -\sum_i p_i^\star \log \dfrac{p_i}{p_i^\star}
+$$
+
+and
+
+$$
+\begin{aligned}
+\dot{V} &= -{p^\star}^T A p + p^T Ap\\
+&=-p^TA^Tp^\star + 0\\
+&= p^T A p^\star\\
+&=0
+\end{aligned}
+$$
+
+Showing that $V$ is conserved through the dynamics (as in the classic Lotka-Volterra predator-prey system) and thus set by the initial conditions.
 
 ### Equivalence with GLV
 
@@ -391,7 +406,7 @@ $$
 \dfrac{d x}{dt} = D(x)(r + A x)
 $$
 
-and add a "new species" $x_{n + 1}$ such that $x_{n+1}(0) = 1$; define $\tilde{x} = \{x, x_{n+1} \}$ and the matrix:
+and add a "new species" $x_{n + 1}$ such that $x_{n+1}(0) = 1$, and $\dot{x}_{n+1} = 0$; define $\tilde{x} = \{x, x_{n+1} \}$ and the matrix:
 
 $$
 \tilde{A}=\begin{pmatrix}
@@ -424,9 +439,9 @@ $$
 \end{aligned}
 $$
 
-Finally, you rescale time using $\sum_j x_j$ to obtain the replicator equation. To show this is indeed the case, let's take our functions for integrating GLV:
+Finally, you rescale time using $\sum_j x_j$ to obtain the replicator equation. To show this is indeed the case, let's consider the GLV system:
 
-```{r, glvfunctions2}
+```{r, glvfunctions2, echo = FALSE}
 # Generalized Lotka-Volterra model
 GLV <- function(t, x, parameters){
   with(as.list(c(x, parameters)), {
@@ -449,9 +464,22 @@ integrate_GLV <- function(r, A, x0, maxtime = 100, steptime = 0.5){
 }
 ```
 
-And integrate the simple system:
+$$
+r = \begin{pmatrix}
+1\\
+2\\
+3
+\end{pmatrix} \quad A=
+\begin{pmatrix}
+-1 & \frac{1}{2} & \frac{1}{10}\\
+-\frac{7}{10} & -2 & 0\\
+-\frac{3}{10} & 0 & -5
+\end{pmatrix}
+$$
 
-```{r, exampleglvtore1}
+And compute the trajectory, when starting at $x(0) = (1/10, 3, 1)^T$:
+
+```{r, exampleglvtore1, echo = FALSE}
 r <- c(1, 2, 3)
 A <- matrix(c(-1, 0.5, 0.1,
               -0.7, -2, 0,
@@ -460,9 +488,9 @@ x0 <- c(0.1, 3, 1)
 glvex <- integrate_GLV(r, A, x0)
 ```
 
-And now build the corresponding replicator equation. The matrix of payoffs $\tilde{A}$ becomes:
+Now build the corresponding replicator equation. The matrix of payoffs $\tilde{A}$ becomes:
 
-```{r, redynamicsfromglv}
+```{r, redynamicsfromglv, echo=FALSE}
 Atilde <- matrix(0, 4, 4)
 Atilde[1:3, 1:3] <- A
 Atilde[1:3, 4] <- r
@@ -472,9 +500,9 @@ $$
 `r write_matex2(Atilde)` 
 $$
 
-Integrate the dynamics:
+Integrate the dynamics of the replicator equation:
 
-```{r, redynamicsfromglv2}
+```{r, redynamicsfromglv2, echo = FALSE}
 y0 <- c(x0, 1) # add an extra "species"
 y0 <- y0 / sum(y0) # project on the simplex
 reex <- integrate_RE(Atilde, y0)
@@ -482,21 +510,26 @@ reex <- integrate_RE(Atilde, y0)
 
 Now let's look at the equilibrium of the GLV model:
 
-```{r, equilglv}
+```{r, equilglv, echo = FALSE}
 knitr::kable(glvex %>% filter(time == 100))
 ```
 
-And recover it from the RE equation (just divide by the density of the extra "species"):
+This is the final state of the RE:
 
-```{r, equilglvre}
+```{r, equilglvre, echo = FALSE}
 knitr::kable(reex %>% filter(time == 40))
+```
+
+By dividing for the value of the last "species", we recover the equilibrium for GLV:
+
+```{r, equilglvre2, echo = FALSE}
 knitr::kable(reex %>% filter(time == 40) %>%
                mutate(density = density / tail(density, 1)) )
 ```
 
-Not only the equilibria are the same, but also the dynamics are the same once time has been properly rescaled. Similarly, for each RE system we can always recover a matrix with zero in the last row by applying the transformations detailed above, and therefore recover the corresponding GLV. For example, take the matrix for the RPS above, and make each coefficient in the last row zero by adding the appropriate constant to each column. Then one recovers some sort of a predator-prey system:
+Not only the equilibria are the same, but also the trajectories are the same once time has been properly rescaled. Similarly, for each RE system we can always recover a matrix with zero in the last row by applying the transformations detailed above, and therefore recover the corresponding GLV. For example, take the matrix for the RPS above, and make each coefficient in the last row zero by adding the appropriate constant to each column. Then one recovers some sort of a predator-prey system:
 
-```{r, exampleretoglv1}
+```{r, exampleretoglv1, echo=FALSE}
 r <- c(-1, 1)
 A <- matrix(c(-1, 2,
               -2, 1), 2, 2, byrow = TRUE)
@@ -514,27 +547,27 @@ In this brief paper, Page and Nowak show that the replicator-mutator equation an
 
 :::
 
-### Hypertournament games
+## Hypertournament games
 
 The rock-paper-scissor game above is a simple case of a "hypertournament" game. Take the zero-sum payoff matrix $A = -A^T$. Then, we have 
 
 $$
-\sum_i \sum_j A_{ij} x_i x_j = 0
+\sum_i \sum_j A_{ij} p_i p_j = 0
 $$
 
 and the RE simplifies to
 
 $$
-\dfrac{d x}{dt} = D(x) A x
+\dfrac{d p}{dt} = D(p) A p
 $$
 
-At equilibrium, either some elements of $x$ are zero, or
+At equilibrium, either some elements of $p$ are zero, or
 
 $$
-A x^\star = 0
+A p^\star = 0
 $$
 
-meaning that if a feasible equilibrium $x^\star$ exists, it is an eigenvector of $A$ corresponding to a zero eigenvalue.
+meaning that if an equilibrium $p^\star \in \Delta_\text{int}$ exists, it is an eigenvector of $A$ corresponding to a zero eigenvalue.
 
 #### Number of coexisting species
 
@@ -542,19 +575,19 @@ We now show how the equations above can arise when modeling ecological dynamics.
 
 $$
 \begin{aligned}
-  \dfrac{d x_i}{dt} &= x_i \left(\sum_j 2 H_{ij} x_j - 1 \right) \\
-  &=x_i \sum_j (2 H_{ij} x_j - x_j) \\
-  &= x_i \sum_j (H_{ij} x_j  + (1 - H_{ji}) x_j - x_j) \\
-  &= x_i \sum_j (H_{ij} - H_{ji}) x_j \\
-  &= x_i  \sum_j A_{ij} x_j
+  \dfrac{d p_i}{dt} &= p_i \left(\sum_j 2 H_{ij} p_j - 1 \right) \\
+  &= p_i \sum_j (2 H_{ij} p_j - p_j) \\
+  &= p_i \sum_j (H_{ij} p_j  + (1 - H_{ji}) p_j - p_j) \\
+  &= p_i \sum_j (H_{ij} - H_{ji}) p_j \\
+  &= p_i  \sum_j A_{ij} p_j
 \end{aligned}
 $$
 
-I.e., we recover the RE for a zero-sum game. What happens if we draw $H$ (and therefore $A$) at random? @allesina2011competitive and @grilli2017higher applied the results of @fisher1995optimal and @brandl2017distribution to show that, when $n$ species compete, the probability of observing $k$ coexisting is $p(k|n) = \binom{n}{k} 2^{1-n}$ when $k$ is odd, and $p(k|n) = 0$ when $k$ is even.
+I.e., we recover the RE for a zero-sum game. What happens if we draw $H$ (and therefore $A$) at random? @allesina2011competitive and @grilli2017higher applied the results of @fisher1995optimal and @brandl2017distribution to show that, when $n$ species compete, the probability of observing $k$ coexisting species/strategies is $p(k|n) = \binom{n}{k} 2^{1-n}$ when $k$ is odd, and $p(k|n) = 0$ when $k$ is even.
 
 Importantly, to find the set of coexisting species we do not need to integrate dynamics. One can use linear programming to solve for the set of species that will coexist.
 
-```{r, coexistlp}
+```{r, coexistlp, echo=FALSE}
 library(lpSolve)
 # Build a random matrix H such that H_ij + H_ji = 1
 random_H <- function(n){
@@ -576,9 +609,9 @@ find_optimal_strategy <- function(H){
 }
 ```
 
-Now let's try to count how many species suvive when starting with 10:
+Now let's try to count how many species survive when starting with 10:
 
-```{r, coexistlphist}
+```{r, coexistlphist, echo=FALSE}
 n <- 10
 num_simulations <- 5000
 results <- tibble(simulation = 1:num_simulations, coexisting = 0)
@@ -596,38 +629,38 @@ ggplot(data = results) +
 
 ### Lyapunov function
 
-In the rock-paper-scissor example above, species cycled neutrally around the unique equilibrium point. To show that this is in fact the behavior of this type of RE, we write a Lyapunov function. By finding a constant of motion we can show that the species will follow closed orbits.
+In the rock-paper-scissor example above, species cycled neutrally around the unique equilibrium point. To show that this is in fact the behavior of this type of RE, we write the usual Lyapunov function. By finding a constant of motion we can show that the species will follow closed orbits, exactly as found for the rock-paper-scissors game.
 
-Suppose $x_{i}^\star > 0$ is the equilibrium for the system. We write:
+Suppose $p_{i}^\star > 0$ is the equilibrium for the system. We write:
 
 $$
-V(x) = -\sum_i x_i^\star \log \frac{x_i}{x_i^\star} .
+V(p) = -\sum_i p_i^\star \log \frac{p_i}{p_i^\star} .
 $$
 
-Because of [Gibbs' inequality](https://en.wikipedia.org/wiki/Gibbs%27_inequality), $V(x) \geq 0$ for any $x$, and is equal to zero only if $x = x^\star$.  Note also that at equilibrium $2 \sum_j H_{ij} x_j^\star = 1$. We write:
+Because of [Gibbs' inequality](https://en.wikipedia.org/wiki/Gibbs%27_inequality), $V(p) \geq 0$ for any $p$, and is equal to zero only if $p = p^\star$.  Note also that at equilibrium $2 \sum_j H_{ij} p_j^\star = 1$. We write:
 
 $$
 \begin{aligned}
-  \dfrac{d V}{d t} &= \sum_i \dfrac{\partial V}{\partial x_i}
-  \dfrac{d x_i}{d t}\\
-  &= - \sum_i \frac{x_i^\star}{x_i} \dfrac{d x_i}{d t} \\
-  &= -2 \sum_{i,j} x_i^\star H_{ij}x_j + \sum_i x_i^\star\\
-  &= -2 \sum_{i,j} x_i^\star H_{ij}x_j + 1\\
-  &= \sum_j \left(-2 \sum_i H_{ij}x_i^\star \right) x_j + 1\\
-  &= \sum_j \left(-2 \sum_i (1 - H_{ji}) x_i^\star \right) x_j + 1\\
-  &= \sum_j \left(-2 \sum_i x_i^\star + 2 \sum_i H_{ji} x_i^\star \right) x_j
+  \dfrac{d V}{d t} &= \sum_i \dfrac{\partial V}{\partial p_i}
+  \dfrac{d p_i}{d t}\\
+  &= - \sum_i \frac{p_i^\star}{p_i} \dfrac{d p_i}{d t} \\
+  &= -2 \sum_{i,j} p_i^\star H_{ij}p_j + \sum_i p_i^\star\\
+  &= -2 \sum_{i,j} p_i^\star H_{ij}p_j + 1\\
+  &= \sum_j \left(-2 \sum_i H_{ij}p_i^\star \right) p_j + 1\\
+  &= \sum_j \left(-2 \sum_i (1 - H_{ji}) p_i^\star \right) p_j + 1\\
+  &= \sum_j \left(-2 \sum_i p_i^\star + 2 \sum_i H_{ji} p_i^\star \right) p_j
   + 1 \\
-  &= \sum_j \left(-2 + 1 \right) x_j  + 1 \\
-  &=- \sum_j x_j + 1\\
+  &= \sum_j \left(-2 + 1 \right) p_j  + 1 \\
+  &=- \sum_j p_j + 1\\
   &= 0 
 \end{aligned}
 $$
 
-We have found a constant of motion, meaning that the system will follow closed orbits. Hence, unless we start the system precisely at $x^\star$, the abundances will cycle neutrally around the equilibrium.
+We have found a constant of motion, meaning that the system will follow closed orbits. Hence, unless we start the system precisely at $p^\star$, the abundances will cycle neutrally around the equilibrium.
 
 Let's try with a larger system:
 
-```{r, reneutral}
+```{r, reneutral, echo=FALSE}
 n <- 5
 # search for random H yielding all species coexisting
 i <- 0
@@ -680,12 +713,12 @@ As seen above, generally zero-sum matrix games will lead to an odd number of spe
 We can extend the game above to the case in which three (or more) seeds compete to fill each patch. @grilli2017higher showed that in this case, one can write the replicator equation:
 
 $$
-\dfrac{d x_i}{dt} = x_i \sum_{j,k} A_{ijk} x_j x_k
+\dfrac{d p_i}{dt} = p_i \sum_{j,k} A_{ijk} p_j p_k
 $$
 
 where the tensor $A$ (a three-dimensional matrix) encodes the effect of a pair of species ($j$ and $k$) on the density of $i$. Importantly, one can choose the tensor such that the equilibrium is the same as for the two-player replicator equation: take $A_{ijk} = 2 H_{ij} H_{ik} - H_{ji} H_{jk} - H_{ki} H_{kj}$, which can be derived from first principles by writing the stochastic dynamics. What is surprising is that, while the equilibrium is unchanged, the dynamics are now globally stable:
 
-```{r, rehoi}
+```{r, rehoi, echo=FALSE}
 # Now payoff is a tensor
 RE_3 <- function(t, x, parameters){
   with(as.list(c(x, parameters)), {
@@ -724,9 +757,9 @@ integrate_RE_3 <- function(H, x0, maxtime = 40, steptime = 0.05){
 fivespp <- integrate_RE_3(H, x0, maxtime = 800, steptime = 0.1)
 ```
 
-And the rock-paper-scissors:
+And the three-player rock-paper-scissors:
 
-```{r, rpshoi}
+```{r, rpshoi, echo=FALSE}
 H <- matrix(c(1/2, 1, 0,
               0, 1/2, 1,
               1, 0, 1/2), 3, 3, byrow = TRUE)
@@ -734,3 +767,72 @@ x0 <- runif(3)
 x0 <- x0 / sum(x0)
 rps <- integrate_RE_3(H, x0, maxtime = 50, steptime = 0.1)
 ```
+
+
+When assuming the same death rates for all species/strategies, and the payoff structure is as detailed above, the usual Lyapunov function can be used to prove stability.
+
+$$
+\dfrac{d p_i}{d t} = p_i \left(  \sum_{j, k} \left(
+2 H_{ij} H_{ik} + H_{ij} H_{jk} + H_{ik} H_{kj} \right)  p_j
+p_k - 1 \right) =
+p_i \left( 2 \sum_{j, k} \left(
+H_{ij} H_{ik} + H_{ij} H_{jk} \right)  p_j
+p_k - 1 \right)
+$$ 
+
+$$
+  \dfrac{d p_i }{d t} = p_i  \sum_{j,k} P_{ijk} p_j p_k
+$$ 
+where the coefficient $P_{ijk} = 2 H_{ij} H_{ik} - H_{ji} H_{jk} - H_{ki} H_{kj}$. We write:
+
+$$
+\begin{aligned}
+  p_i \left(\sum_{j,k} \left( 2 H_{ij} H_{ik} + H_{ij} H_{jk} + H_{ik} H_{kj}\right) p_j
+  p_k - 1 \right) &= p_i \sum_{j,k} (2 H_{ij} H_{ik} +H_{ij} H_{jk} + H_{ik} H_{kj}
+    -1) p_j p_k \\
+  &= p_i \sum_{j,k} (2 H_{ij} H_{ik} + (1- H_{ji}) H_{jk} + (1 - H_{ki})
+    H_{kj} - 1) p_j p_k\\
+  &= p_i \sum_{j,k} (2 H_{ij} H_{ik} - H_{ji} H_{jk} - H_{ki} H_{kj} ) p_j
+    p_k\\
+  &=p_i  \sum_{j,k} P_{ijk} p_j p_k\\
+\end{aligned}
+$$
+Now we want to show that now an equilibrium $p^\star > 0$ is globally stable. 
+
+$$
+\begin{aligned}
+  \dfrac{d V}{d t} &= - \sum_i \frac{p_i^\star}{p_i} \dfrac{d p_i}{d t} \\
+  &= -2 \sum_{i,j,k} \left( p_i^\star H_{ij} H_{jk} p_j p_k + p_i^\star
+  H_{ij} H_{ik} p_j p_k \right) + \sum_i p_i^\star  \\
+  &= -2 \sum_{j, k}  \left(\sum_i p_i^\star H_{ij} \right) H_{jk} p_j
+  p_k - 2 \sum_i p_i^\star \left( \sum_j H_{ij} p_j \right)^2 + 1  \\
+  &= -2 \sum_{j, k}  \frac{1}{2} H_{jk} p_j p_k - 2 \sum_i p_i^\star
+  \left( \sum_j H_{ij} p_j \right)^2 + 1  \\
+  &= -\frac{1}{2} - 2 \sum_i p_i^\star \left( \sum_j H_{ij} p_j
+  \right)^2 + 1 \\
+  &= - 2 \sum_i p_i^\star \left( \sum_j H_{ij} p_j \right)^2 + \frac{1}{2} ,
+\end{aligned}
+$$
+
+
+where we used $\sum_i p_i^\star H_{ij} = \frac{1}{2}$ and $\sum_{jk} H_{jk} p_j p_k = \frac{1}{2}$.  Next we introduce $\xi_j = p_j-p^\star_j$ (note that $\sum_j \xi_j =0$ by definition), obtaining
+
+$$
+\begin{aligned}
+  \dfrac{d V}{d t} &=  - 2 \sum_i p_i^\star \left( \sum_j H_{ij}
+  (p^\star_j+\xi_j) \right)^2 + \frac{1}{2} \\
+  &=  - 2 \sum_i p_i^\star \left( \frac{1}{2} + \sum_j H_{ij} \xi_j
+  \right)^2 + \frac{1}{2} \\
+  &=  -\frac{1}{2} - 2 \sum_i p_i^\star  \sum_j H_{ij} \xi_j -2 \sum_i
+  p_i^\star \left( \sum_j H_{ij} \xi_j \right)^2  + \frac{1}{2} \\
+  &=  - 2 \sum_j  \left(\sum_i p_i^\star  H_{ij} \right) \xi_j -2
+  \sum_i p_i^\star \left( \sum_j H_{ij} \xi_j \right)^2  \\
+  &=  - \sum_j  \xi_j - 2 \sum_i p_i^\star \left( \sum_j H_{ij} \xi_j
+  \right)^2  \\
+  &= - 2 \sum_i p_i^\star \left( \sum_j H_{ij} \xi_j \right)^2 \leq 0
+\end{aligned}
+$$
+
+for any choice of $\xi$, and therefore, for any value of $p$. Assuming that the matrix $\mathbf{H}$ is of full rank, $d V / d t = 0$ only if $\xi = 0$, i.e., only if $p = p^\star$.  Since $V(p)\geq 0$ for any $p$ and $V(p)=0$ only if $p=p^\star$, $d V / d t \leq 0$ implies that $p=p^\star$ is a globally stable fixed point.
+
+
