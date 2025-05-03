@@ -2,7 +2,7 @@
 
 **Lesson plan**:
 
-1. We have seen in the previous lecture that a large ecological community will almost invariably be unstable, possibly leading to extinctions. It is therefore natural to ask what happens when either a feasible equilibrium does not exist, or it is unstable. In particular, we want to know how many species can persist.
+1. We have seen in the previous lectures that a large ecological community will almost invariably be unstable, possibly leading to extinctions. It is therefore natural to ask what happens when either a feasible equilibrium does not exist, or it is unstable. In particular, we want to know how many species can persist.
 1. We discuss the problem of assembly, and why is it so challenging to study analytically. 
 1. We introduce a few assumptions that make the problem tractable and at the same time non trivial.
 1. We compute how many species will coexist in a GLV with random parameters, and see how we can study assembly by drawing an "assembly graph"
@@ -13,7 +13,7 @@ We call **ecological assembly** the process by which **ecological communities ar
 
 Historically, this type of island-mainland models (based on species) have been contrasted with "trait-environment" models, in which species' traits, rather than identity are the focus of the dynamics. In such models, ideas such as "environmental filtering" (i.e., the pruning of species that cannot grow in the local environment) and "trait underdispersion" (i.e., the fact that the filtering imposed by the environment results in a convergence in traits) arise naturally. When thinking of communities of competitors (e.g., different species of plants), then we might think that species' interactions will also play a role---because species need to be different enough to coexist, this would generate "trait overdispersion" (due to limiting similarity). For a very opinionated summary of 25 years of discussions on these themes (1975-2000), see @weiher2001ecological (but first read the review @gotelli1999communities, stating that the language and tone of the introduction is "an embarrassment to the discipline").
 
-The idea of assembly was first introduced in ecology by the pioneers of "succession". For example, in 1899 Henry Chandler Cowles studied the vegetation development in the Indiana Dunes---sand dunes are first colonized by "pioneer" species of plants, which are then overgrown by different vegetation in older dunes. Because dunes are regularly disrupted by wind, one could make a "space-for-time" substitution and reconstruct the development of the vegetation as a "chronosequence". Importantly, Cowles (and then Clements) held the view that succession would be a strongly ordered, "determinisitc" process by which communities tended to a certain "climax" state. In the 1920s, Henry Gleason challenged this view, advocating for a much greater role for chance.
+The idea of assembly was first introduced in ecology by the pioneers of "succession". For example, in 1899 Henry Chandler Cowles studied the vegetation development in the Indiana Dunes---sand dunes are first colonized by "pioneer" species of plants, which are then overgrown by different vegetation in older dunes. Because dunes are regularly disrupted by wind, one could make a "space-for-time" substitution and reconstruct the development of the vegetation as a "chronosequence". Importantly, Cowles (and then Clements) held the view that succession would be a strongly ordered, "deterministic" process by which communities tended to a certain "climax" state. In the 1920s, Henry Gleason challenged this view, advocating for a much greater role for chance.
 
 :::boxhistory
 
@@ -154,48 +154,162 @@ an equilibrium $\bar{x}$ for which a) the $x^{(k)}$ is feasible and stable (when
 
 ### Lyapunov stability and saturated equilibria
 
-We have seen in previous section that, whenever there exists a matrix $C$ such that $CA + A^T C$ is negative definite and we have a feasible equilibrium $x^\star$ then the equilibrium is globally stable. Now we consider the case in which a feasible equilibrium does not exist. However, we can prove that a **saturated equilibrium** exists and is unique: we have an equilibrium $\bar{x}$ in which some components are positive and some are zero such that $k$ species coexist at a globally stable equilibrium, and the remaining $(n-k)$ species cannot invade it. 
+We have seen in previous section that, whenever there exists a diagonal matrix  with positive coefficients on the diagonal $C$ such that $CA + A^T C$ is negative definite, and we have a feasible equilibrium $x^\star$, then the equilibrium is globally stable.
 
-Following @hofbauer1998evolutionary (section 15.3), we assume that all species $x_i > 0$, and write:
-
-$$
-V(x) = \sum_i c_i (x_i - \bar{x_i} -\bar{x}_i \log x_i / \bar{x_i} )
-$$
-
-where for simplicity, we take $0 \log{x /0} = 0$. Note that this is always positive whenever $x \neq \bar{x}$.
-
-We derive with respect to time, obtaining:
-
-$$
-\begin{aligned}
-\dfrac{dV(x)}{dt} &= \sum_i c_i \left(\frac{d x_i}{dt} - \bar{x}_i \frac{d \log x_i}{dt} \right) \\
-&= \sum_i c_i \left( x_i - \bar{x}_i \right)  \left( r_i + \sum_j A_{ij} x_j \right) \\
-&= \sum_i c_i \left( x_i  - \bar{x}_i \right)  \left( r_i + \sum_j A_{ij} (x_j - \bar{x}_j) +  \sum_j A_{ij} \bar{x}_j \right) \\
-&= \sum_{i,j} \left( x_i  - \bar{x}_i \right) c_i A_{ij} \left( x_j - \bar{x}_j \right) + \sum_i c_i \left( x_i - \bar{x}_i\right) \left(r_i + \sum_j A_{ij} \bar{x}_j \right)
-\end{aligned}
-$$
-
-The first term is negative for all $x \neq \bar{x}$ (because $CA$ is negative definite), and is zero at the saturated equilibrium point (because $x = \bar{x}$). 
-
-The second term is zero for all $\bar{x}_i > 0$: $r_i + \sum_j A_{ij} \bar{x}_j = 0$, given that $\bar{x}_i$ is an equilibrium for the species at positive density. For the remaining species (for which $\bar{x}_i = 0$), this amounts to the invasion criterion above, and must therefore be negative at the saturated equilibrium $\bar{x}$, yielding again a negative term. 
-
-As such $V(x)$ is a Lyapunov function for the system, assuming negative values everywhere but at $\bar{x}$.
+Now we consider the case in which a feasible equilibrium does not exist. However, we have proven that a **saturated equilibrium** exists and is unique: we have an equilibrium $\bar{x}$ in which some components are positive and some are zero such that $k$ species coexist at a globally stable equilibrium, and the remaining $(n-k)$ species cannot invade it. 
 
 ## Top-down assembly
 
 To begin our explorations of assembly, we consider the case in which all species are introduced in the habitat at the same time, and at arbitrary initial densities.
 
-Here we investigate the simplest case in which dynamics are given by the GLV model, $A$ is symmetric and stable (and therefore Lyapunov Diagonally stable) matrix with random coefficients, and $r$ is a vector of growth rates with random coefficients. For simplicity, we take the off-diagonal elements of $A$ and the growth rates from a normal distribution centered at zero (the same would be found for any distribution symmetric about zero). This case was studied by @servan2018coexistence.
+Here we investigate the simplest case in which dynamics are given by the GLV model, the (stable) matrix of interactions has random coefficients, and the growth rates are also random. For simplicity, we take the off-diagonal elements of $A$ and the growth rates from a distribution centered at zero. This case was studied by @servan2018coexistence.
 
-First, we are going to consider a trivial case, then simulate a more complex one, and finally outline the proof in @servan2018coexistence.
+First, we are going to consider a trivial case, then consider a more complex one, and finally outline the proof in @servan2018coexistence.
 
 ### A trivial case
 
-Suppose that the growth rates are drawn from a normal distribution centered at zero, and that the matrix $A$ is diagonal and stable (i.e., species do not interact with each other; each species is self regulating). As such, a species will persist if and only if $r_i > 0$. If we draw the growth rates from any distribution centered at zero, then the probability of having a positive growth rate is $1/2$. Therefore, the number of coexisting species will follow the binomial distribution with parameters $n$ and $1/2$.
+Suppose we take $n$ populations, each growing according to:
+
+$$
+\dot{x}_i = x_i (r_i - A_{ii} x_i)
+$$
+
+with $A_{ii} > 0$. We assume that the growth rates are sampled independently from a distribution: $r_i \sim Q$, a distribution with mean $0$, $\mathbb E(r_i) = 0$ and symmetric about its mean, such that $\phi(r_i) = \phi(-r_i)$, where $\phi(\cdot)$ is the p.d.f. of distribution $Q$. For example, we could choose $r_i \sim \mathcal N(0, \sigma^2)$, or $r_i \sim \mathcal U[-1, 1]$. Naturally, whenever $r_i > 0$, the population will grow to $x_i^\star = r_i / A_{ii}$. If $r_i < 0$, on the other hand, the population will go extinct. Because of the symmetry around zero, each population has therefore probability $1/2$ of persisting. When we have $n$ populations, the number of coexisting populations $\|k\|$ is a random variable following the binomial distribution:
+
+$$
+p(\|k\| | n) = \binom{n}{\|k\|} \frac{1}{2^n}\quad \|k\| \sim \mathcal B\left(n, \frac{1}{2}\right)
+$$
+
+### The random zoo
+
+Now consider a GLV model with random parameters. We choose $r_i$ from a distribution with mean zero and symmetric about the mean, and each interaction $A_{ij}$ from a distribution with mean zero and symmetric about the mean. Moreover, we add a constant to the diagonal of the matrix such that the symmetric part of $A$, $H(A) = \frac{1}{2} (A + A^T)$ is positive definite. As we have seen before, this means that dynamics will always converge to a saturated equilibrium. 
+
+We now introduce a family of $2^n$ matrices $S_i$, with:
+
+$$
+\begin{aligned}
+S_1 &= \begin{pmatrix}
+1 & 0 & 0 & \cdots & 0\\
+0 & 1 & 0 & \cdots & 0\\
+0 & 0 & 0 & \cdots & 0\\
+\vdots & \vdots & \vdots &\ddots &\vdots\\
+0 & 0 & 0 & 0 &1
+\end{pmatrix} = I_n\\
+S_2 &= \begin{pmatrix}
+-1 & 0 & 0 & \cdots & 0\\
+0 & 1 & 0 & \cdots & 0\\
+0 & 0 & 1 & \cdots & 0\\
+\vdots & \vdots & \vdots &\ddots &\vdots\\
+0 & 0 & 0 & 0 &1
+\end{pmatrix} \\
+S_3 &= \begin{pmatrix}
+1 & 0 & 0 & \cdots & 0\\
+0 & -1 & 0 & \cdots & 0\\
+0 & 0 & 1 & \cdots & 0\\
+\vdots & \vdots & \vdots &\ddots &\vdots\\
+0 & 0 & 0 & 0 &1
+\end{pmatrix} \\
+S_4 &= \begin{pmatrix}
+-1 & 0 & 0 & \cdots & 0\\
+0 & -1 & 0 & \cdots & 0\\
+0 & 0 & 1 & \cdots & 0\\
+\vdots & \vdots & \vdots &\ddots &\vdots\\
+0 & 0 & 0 & 0 &1
+\end{pmatrix}\\
+\vdots\\
+S_{2^n} &= \begin{pmatrix}
+-1 & 0 & 0 & \cdots & 0\\
+0 & -1 & 0 & \cdots & 0\\
+0 & 0 & -1 & \cdots & 0\\
+\vdots & \vdots & \vdots &\ddots &\vdots\\
+0 & 0 & 0 & 0 &-1
+\end{pmatrix} = -I_n\\
+\end{aligned}
+$$
+
+These matrices, called *signature matrices* are their own inverse (a matrix with this property is called *involutory*), and therefore, we have that $S_i S_i = S_i^2 = I_n$. Geometrically, these matrices represent a reflection in each of the axes corresponding to the negated rows or columns.
+
+We then consider what happens when we transform the parameters by multiplying them by $S_i$. Take an arbitrary GLV system, and solve for the $x$ that makes $r - Ax = 0_n$:
+
+$$
+x = A^{-1} r
+$$
+
+The vector is a feasible equilibrium for the system if $x > 0_n$. Now consider the transformed system:
+
+$$
+r' = S_i r \quad A' = S_iAS_i
+$$
+
+Note that $A'$ is similar to $A$, and therefore has the same eigenvalues; moreover, $\phi(r') = \phi(r)$ and $\phi(A') = \phi(A)$, because of symmetry. Now compute the new solution
+
+$$
+\begin{aligned}
+x' &= (A')^{-1} r'\\ 
+&= (S_iAS_i)^{-1} S_i r\\ 
+&=S_iA^{-1}S_i S_i r\\
+&=S_iA^{-1}r\\
+&= S_i x
+\end{aligned}
+$$
+
+That is, the transformation changes the sign of the components of $x$ corresponding to the negative coefficients in $S_i$. Hence, for any possible choice of $r$ and $A$, there is only one possible choice of $S_i$ that makes the equilibrium feasible. Because all matrices $A'$ and all vectors $r'$ have the same probability/density, then the probability of having a positive $x$ is exactly $1/2^n$. Thus, a system with random parameters and a strongly stable matrix of interactions has the same probability of feasibility as that of a system in which populations are not interacting!
+
+We have seen that when $A$ is such that $H(A)$ is negative definite, dynamics always converge to a saturated equilibrium. We want to compute the probability of finding a saturated equilibrium, in which populations belonging to set $k$ coexist, and the remaining populations cannot invade when rare. 
+
+We thus divide $x$, $r$ and $A$ as:
+
+$$
+x = \begin{pmatrix}
+y\\
+z
+\end{pmatrix} \quad \tilde{x} = \begin{pmatrix}
+y^\star\\
+0_{\|n-k\|}
+\end{pmatrix} \quad A = \begin{pmatrix}
+\mathfrak A & \mathfrak B\\
+\mathfrak C & \mathfrak D
+\end{pmatrix}\quad r = \begin{pmatrix}
+\mathfrak r\\
+\mathfrak s
+\end{pmatrix}
+$$
+
+We also divide $S_i$ into:
+
+$$
+S_i = \begin{pmatrix}
+S_{i}^{(k)} & 0_{\|k\|, \|n-k\|}\\
+0_{\|n-k\|, \|n\|} & S_{i}^{(n-k)}
+\end{pmatrix}
+$$
+
+When we use the signature matrix, the vector $\mathfrak s$ and the matrix $\mathfrak C$ become:
+
+$$
+\mathfrak s' = S_i^{(n-k)} \mathfrak s\quad \mathfrak C' = S_i^{(n-k)} \mathfrak C S_i^{(k)}
+$$
+
+The feasibility and nonivasibility condition, for a given choice of $S_i$ read:
+
+$$
+\begin{cases}
+y' = S_i^{(k)} (\mathfrak A^{-1}\mathfrak r) > 0_{\|k\|}\\
+D(z)^{-1} z =S_i^{(n-k)}(\mathfrak s + \mathfrak C y') < 0_{\|n-k\|}\\
+\end{cases}
+$$
+
+There is only one choice out of $2^{\|k\|}$ that makes $y' > 0_{\|k\|}$; moreover, there is only one choice of $S_i^{(n-k)}$ that fulfills the noninvasibility condition, out of $2^{\|n-k\|}$ equiprobable choices. Then, we have that the probability of finding exactly $\|k\|$ populations coexisting at the saturated equilibrium, with the remaining $\|n-k\|$ that cannot invade is exactly $1/(2^{\|k\|} \cdot 2^{\|n-k\|}) = 1/2^n$. The number of coexisting populations at the saturated equilibrium follows the binomial distribution:
+
+$$
+p(\|k\| | n) = \binom{n}{\|k\|} \frac{1}{2^n}\quad \|k\| \sim \mathcal B\left(n, \frac{1}{2}\right)
+$$
+
+exactly as for the non-interacting case.
 
 ### Simulating final composition
 
-Now, let's simulate cases in which species do interact with each other, but $A$ is still D-stable. First, we load some functions to integrate GLV dynamics and plot results:
+This section details how the problem above can be simulated efficiently. First, we load some functions to integrate GLV dynamics and plot results:
 
 ```{r, glvfunctionsrz, message=FALSE, warning=FALSE}
 source("dat/general_code_assembly.R")
@@ -253,16 +367,12 @@ out$ts %>%
 )
 ```
 
-As you can see, the system still goes to the same equilibrium, with 3 and 5 extinct. Turns out, for this type of system, one does not even need to integrate dynamics: the Lemke–Howson algorithm can be adapted to solve the problem efficiently [@servan2018coexistence] (this is an efficient algorithm to find Nash equilibria in a game---we will hear more about this in the next lecture). I have coded up the algorithm already, and you can load the function `get_final_composition(A, r)` by typing:
+As you can see, the system still goes to the same equilibrium, with 3 and 5 extinct. Turns out, for this type of system, one does not even need to integrate dynamics: the Lemke–Howson algorithm can be adapted to solve the problem efficiently [@servan2018coexistence] (this is an efficient algorithm to find Nash equilibria in a game). I have coded up the algorithm already, and you can load the function `get_final_composition(A, r)` by typing:
 
 ```{r rndzooex3}
 source("dat/L-H.R")
 get_final_composition(A, r) # use LH instead of integrating dynamics
 ```
-
-### A random zoo
-
-In the case above, 5 species persisted. We can ask how many species will coexist in general under this parametrization. A good metaphor is that of the random zoo: take a large zoo, open all the cages, and return after fifty years. How many species will you find?
 
 To simulate the random zoo, we take random matrices and random growth rates with $n$ species, and tally the number of coexisting species over several simulations:
 
@@ -293,40 +403,6 @@ show(pl)
 
 We find again that the number of coexisting species follows the binomial distribution with parameters $n$ and $1/2$ (i.e., exactly the same result found for non interacting species). 
 
-This can be proven using a clever strategy devised by Carlos. To illustrate it, let's show that the probability of having all species coexisting is $1 / 2^n$. For this, we need $x^\star = -A^{-1}r$ to be feasible (then the equilibrium is reached because of the stability of $A$).
-
-For each possible $A$ (invertible) and $r$, we have that the vector $- A^{-1}r$ will display a certain pattern of signs. Proving that the probability that all $n$ species coexist is $1 / 2^n$ amounts to proving that all sign patterns are equally probable. To this end, define the matrix $D_k = (-1)^{\delta_{ik}} \delta_{ij}$. This matrix is like the identity matrix, but with element $k$ of the diagonal set to $-1$ instead of $1$. We have that:
-
-$$
-(D_k A D_k) D_k x^\star = -D_k r
-$$
-
-That is, by setting the $k^\text{th}$ element of $D_k$ to -1, we flip the sign of the $k^\text{th}$ component of $x^\star$. For example:
-
-```{r proofrz, warning=FALSE}
-set.seed(2)
-A <- build_LDstable(3)
-r <- build_randomr(3)
-# the equilibrium is not feasible
-solve(A, -r)
-# build matrix D_1
-D_1 <- diag(c(-1, 1, 1))
-# the multiplication changes the sign of a component of the solution
-# making the equilibrium feasible
-as.numeric(solve(D_1 %*% A %*% D_1, -D_1 %*% r))
-```
-
-Because of the symmetry assumption (i.e., we sampled all growth rates and off-diagonal elements from a distribution centered at zero), $(D_k A D_k)$ has the same distribution as $A$, and $D_k r$ the same distribution as $r$. In fact, one can see that $(D_k A D_k)$ is also a similarity transformation, implying that the eigenvalues of $A$ and $(D_k A D_k)$ are the same (i.e., the operation preserves stability):
-
-```{r proofrzsimilarity}
-eigen(A)$values
-eigen(D_1 %*% A %*% D_1)$values
-```
-
-We can repeat the operation several times, connecting each possible starting point to the feasible solution. Therefore, the probability of all species coexisting amounts to the probability of having chosen the "right" sequence of $D_k$, which happens with probability $1 / 2^n$. Notice that the same proof holds when the coefficients of $A$ are sampled in pairs from a bivariate distribution (rather than having symmetric matrices), as long as the distribution is centered at zero, and the matrix is Lyapunov-Diagonally stable (@servan2018coexistence). Using the same argument, one can prove that, under this parametrization, the probability of observing $k$ species coexisting and $n -k$ not being able to invade is exactly $\binom{n}{k} \frac{1}{2^n}$ (@servan2018coexistence).
-
-We can complicate the model substantially, but the results are qualitatively unchanged: the more species ones put in, the more species one finds after dynamics have elapsed. The proportion of species surviving depends on the choice of the distributions for the growth rates and interactions.
-
 ### A random zoo in the wild
 
 One might object that the derivations above have no parallel in reality. However, they can be seen as a simplified version of an experiment done routinely by ecologists. Take for example the work of @bittleston2020context. They sampled bacterial communities from ten different pitcher plants, and cultured them in the laboratory on a synthetic medium. They tracked the change of richness in time. This is their Figure 2 (look at panel b):
@@ -338,7 +414,17 @@ url <- "https://media.springernature.com/full/springer-static/image/art%3A10.103
 
 The more the species present at day 3 (i.e., once those with a negative growth rate had disappeared), the more one would find after two months---and the relationship is linear!
 
-### Assembly and saturated equilibrium
+## Bottom-up assembly
+
+> Mother Nature, of course, does not assemble her networks by throwing *n* species together in one go. It makes more sense to assume that she adds one species after another through successive invasions. 
+>
+> @sigmuiud1995darwin
+
+Having considered the case in which all species are thrown into the habitat at the same time (**top-down** assembly), we consider a process in which we start from the "bare ground" and build our community from the **bottom-up**.
+
+Note that in top-down assembly, any feasible equilibrium can be achieved by starting with the appropriate initial conditions; being slightly less generous, we can think of being able to assemble from the top-down any "persistent" (e.g., stable), feasible community we can form from the pool. It makes therefore sense to ask whether these same states can or cannot be accessed when assembling the community from the ground up.
+
+### Simulating bottom-up assembly
 
 Now let's make it more complicated: we assemble an ecological community from the ground up. At each step, we introduce a species at low abundance, starting from an empty community. We then compute the new equilibrium, completing a step of the assembly:
 
@@ -414,7 +500,7 @@ In fact, given enough time, any assembly history for a symmetric, stable matrix 
 
 Interestingly, this is not the case when the matrix is not symmetric. @servan2018coexistence conjectured however that the probability of finding a system whose final composition cannot be assembled one species at a time decreases rapidly with the size of the pool, as long as $A$ is Lyapunov Diagonally stable.
 
-## Network spandrels
+### Network spandrels
 
 What is the network structure of the assembled community vs. that of the initial pool? Can we detect a signature of the forces acting on the community such that some species can persist, while other go extinct? To answer these questions, we start by considering a larger pool of species:
 
@@ -504,16 +590,6 @@ plot_eigen(A_pruned)
 
 Meaning that if our matrix $A$ is structured, we will recover a structured matrix after pruning, while if $A$ is unstructured, we will recover an unstructured matrix. @maynard2018network showed that a well-defined network structure could be a "network spandrel" (cfr. @gould1979spandrels and @sole2006network) arising from the way new species are introduced, rather than a "signature of stability". 
 
-## Bottom-up assembly
-
-> Mother Nature, of course, does not assemble her networks by throwing *n* species together in one go. It makes more sense to assume that she adds one species after another through successive invasions. 
->
-> @sigmuiud1995darwin
-
-Having considered the case in which all species are thrown into the habitat at the same time (**top-down** assembly), we consider a process in which we start from the "bare ground" and build our community from the **bottom-up**.
-
-Note that in top-down assembly, any feasible equilibrium can be achieved by starting with the appropriate initial conditions; being slightly less generous, we can think of being able to assemble from the top-down any "persistent" (e.g., stable), feasible community we can form from the pool. It makes therefore sense to ask whether these same states can or cannot be accessed when assembling the community from the ground up.
-
 ### An assembly graph
 
 In GLV, a given (sub-)community has at most one feasible equilibrium; that is, there is **no true multi-stability in GLV**: we can find the system at different stable states, but **they have to differ in composition**. Because of this fact, we can devise a scheme to label the possible states our community can be in. 
@@ -593,7 +669,7 @@ Community "29" is composed of species 1, 3, 4, 5. We can assemble this state wit
 This fact has important consequences: for example, we can assemble the final state without the need for "transient invaders" (or "stepping stone species", i.e., species that allow the assembly to proceed, but then disappear). Recently @amor2020transient demonstrated experimentally the occurrence of transient invaders: they co-cultured  *Corynebacterium ammoniagenes* (Ca) and *Lactobacillus plantarum* (Lp) and showed that one species displaces the other, with the identity of the winner depending on initial conditions (bistability). When the environment is dominated by Lp, Ca cannot invade. However, if first we introduce *Pseudomonas chlororaphis* (Pc), and then invade with Ca, Lp-dominated environments can be invaded by Ca---and Pc disappears without a trace. This is their Figure 1:
 
 ```{r, echo=FALSE}
-url <- "https://www.science.org/cms/10.1126/sciadv.aay8676/asset/5202f7c2-62ae-4f14-9348-ae19799842aa/assets/graphic/aay8676-f1.jpeg"
+url <- "https://www.science.org/cms/10.1126/sciadv.aay8676/asset/6521bd02-6546-403f-bfa8-5914e49e7dbb/assets/graphic/aay8676-f1.jpeg"
 ```
 <center><img src="`r url`"></center>
 

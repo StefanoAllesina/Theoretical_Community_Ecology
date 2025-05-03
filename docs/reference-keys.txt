@@ -89,12 +89,12 @@ invasions-in-multispecies-communities
 lyapunov-stability-and-saturated-equilibria
 top-down-assembly
 a-trivial-case
+the-random-zoo
 simulating-final-composition
-a-random-zoo
 a-random-zoo-in-the-wild
-assembly-and-saturated-equilibrium
-network-spandrels
 bottom-up-assembly
+simulating-bottom-up-assembly
+network-spandrels
 an-assembly-graph
 how-many-invasions
 properties-of-the-assembly-graph
