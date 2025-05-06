@@ -137,7 +137,6 @@ p^T A q &< {p^\star}^T A q\\
 p^T A ((1 -\epsilon) p^\star + \epsilon p) &< {p^\star}^T A (1 -\epsilon) p^\star + \epsilon p\\
 (1 - \epsilon) p^T A p^\star + \epsilon p^T A p &< (1-\epsilon){p^\star}^T A p^\star + \epsilon {p^\star}^T A p\\
 (1-\epsilon) ({p^\star}^T A p^\star-p^T A p^\star) + \epsilon ({p^\star}^T A p-p^T A p)&>0
-
 \end{aligned}
 $$
 If this inequality is met, then the mutant cannot grow when rare (i.e., invade). Note that the first term is always greater than or equal to zero when $p^\star$ is a Nash equilibrium. Thus, for sufficiently small $\epsilon$, as long as the first term is positive, we have evolutionary stability. However, the first term could be exactly zero (this happens when there is an alternative "best reply" to $p^\star$), in which case we need the second term to be positive, yielding:

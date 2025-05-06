@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Lecture 6 Game theory and replicator dynamics | Theoretical Community Ecology</title>
   <meta name="description" content="A graduate course in theoretical community ecology focusing on systems with multiple species." />
-  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Lecture 6 Game theory and replicator dynamics | Theoretical Community Ecology" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Stefano Allesina" />
 
 
-<meta name="date" content="2025-05-03" />
+<meta name="date" content="2025-05-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -447,15 +447,14 @@ B = \begin{pmatrix}
 <h3><span class="header-section-number">6.2.5</span> Evolutionary stable strategies<a href="game-theory-and-replicator-dynamics.html#evolutionary-stable-strategies" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Consider a symmetric bimatrix game, defined by matrix <span class="math inline">\(A\)</span>, and a Nash equilibrium <span class="math inline">\(p^\star\)</span>. In the context of evolution, one might imagine that “mutants” are generated, playing a variation on <span class="math inline">\(p^\star\)</span>. A Nash equilibrium is <em>evolutionary stable</em> if it yields a higher payoff than nearby mutants. The concept of an Evolutionary Stable Strategy (ESS) was introduced by Maynard-Smith and Price.</p>
 <p>We write the mutant as <span class="math inline">\(p\)</span> and the Nash equilibrium as <span class="math inline">\(p^\star\)</span>. When the mutant arises, the population is composed mostly of the <span class="math inline">\(p^\star\)</span>; we model the state of the population as <span class="math inline">\(q = (1 -\epsilon) p^\star + \epsilon p\)</span>. The value <span class="math inline">\(0\leq \epsilon \leq 1\)</span> determines how rare the mutant is. We want to determine whether the expected payoff for <span class="math inline">\(p\)</span> when the population is <span class="math inline">\(q\)</span> is lower than that of the <span class="math inline">\(p^\star\)</span>:</p>
-$$
-<span class="math display">\[\begin{aligned}
+<p><span class="math display">\[
+\begin{aligned}
 p^T A q &amp;&lt; {p^\star}^T A q\\
 p^T A ((1 -\epsilon) p^\star + \epsilon p) &amp;&lt; {p^\star}^T A (1 -\epsilon) p^\star + \epsilon p\\
 (1 - \epsilon) p^T A p^\star + \epsilon p^T A p &amp;&lt; (1-\epsilon){p^\star}^T A p^\star + \epsilon {p^\star}^T A p\\
 (1-\epsilon) ({p^\star}^T A p^\star-p^T A p^\star) + \epsilon ({p^\star}^T A p-p^T A p)&amp;&gt;0
-
-\end{aligned}\]</span>
-<p>$$
+\end{aligned}
+\]</span>
 If this inequality is met, then the mutant cannot grow when rare (i.e., invade). Note that the first term is always greater than or equal to zero when <span class="math inline">\(p^\star\)</span> is a Nash equilibrium. Thus, for sufficiently small <span class="math inline">\(\epsilon\)</span>, as long as the first term is positive, we have evolutionary stability. However, the first term could be exactly zero (this happens when there is an alternative “best reply” to <span class="math inline">\(p^\star\)</span>), in which case we need the second term to be positive, yielding:</p>
 <p>For <span class="math inline">\(p \neq p^\star\)</span>, and for <span class="math inline">\(p\)</span> such that <span class="math inline">\({p^\star}^T A p^\star = p^T A p^\star\)</span>, then</p>
 <p><span class="math display">\[
@@ -988,42 +987,42 @@ Page, K. M., and M. A. Nowak. 2002. Unifying evolutionary dynamics. Journal of t
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-  "sharing": {
-    "github": false,
-    "facebook": true,
-    "twitter": true,
-    "linkedin": false,
-    "weibo": false,
-    "instapaper": false,
-    "vk": false,
-    "whatsapp": false,
-    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-  },
-  "fontsettings": {
-    "theme": "white",
-    "family": "sans",
-    "size": 2
-  },
-  "edit": {
-    "link": null,
-    "text": null
-  },
-  "history": {
-    "link": null,
-    "text": null
-  },
-  "view": {
-    "link": null,
-    "text": null
-  },
-  "download": ["Theoretical_Community_Ecology.pdf", "Theoretical_Community_Ecology.epub"],
-  "search": {
-    "engine": "fuse",
-    "options": null
-  },
-  "toc": {
-    "collapse": "subsection"
-  }
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Theoretical_Community_Ecology.pdf", "Theoretical_Community_Ecology.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
 });
 });
 </script>

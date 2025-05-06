@@ -284,7 +284,7 @@ If all the components of $x^{(k)}$ are positive, we assume that this will be the
 
 :::boxhomework
 
-**Homework 6a**
+**Homework 5a**
 
 As seen above, for GLV, the matrix $B = D(r)^{-1}A$ encodes all the equilibria (feasible or unfeasible) for the model. Knowing $B$ is therefore all we need to determine the existence of a feasible equilibrium for any community we can form from the pool.
 
