@@ -571,7 +571,7 @@ Suppose that we want to maximize the amount we can harvest, and that we want to 
 <p>When we evaluate this function at the equilibrium <span class="math inline">\(x^\star = 0\)</span>, we obtain <span class="math inline">\(\rho &gt; 0\)</span>, and as such the equilibrium is unstable. Conversely, when we evaluate the function at <span class="math inline">\(x^\star = 1 / \alpha\)</span>, we obtain <span class="math inline">\(\rho - 2 \rho = -\rho\)</span>, and therefore the equilibrium is stable.</p>
 <p>Finally, for the model with Allee effect, we have:</p>
 <p><span class="math display">\[
-\dfrac{\partial (\rho\, x (x-\gamma)(1-\alpha\, x))}{\partial x}  = - \rho\, \gamma + 2 \rho\, x(1 + \alpha) - 3 \rho\, \alpha\, x^2
+\dfrac{\partial (\rho\, x (x-\gamma)(1-\alpha\, x))}{\partial x}  = - \rho\, \gamma + 2 \rho\, x(1 + \alpha \gamma) - 3 \rho\, \alpha\, x^2
 \]</span></p>
 <p>At <span class="math inline">\(x^\star = 0\)</span>, we find <span class="math inline">\(-\rho\, \gamma\)</span> which is always negative, and as such <span class="math inline">\(x^\star = 0\)</span> is stable. At <span class="math inline">\(x^\star = \gamma\)</span> we have <span class="math inline">\(\rho\, \gamma\, (1- \gamma\, \alpha)\)</span> which is positive (as <span class="math inline">\(\gamma\, \alpha &lt; 1\)</span>) and as such is an unstable equilibrium. Finally, for <span class="math inline">\(x^\star = 1/\alpha\)</span>, we have <span class="math inline">\(\rho (\gamma - 1/\alpha)\)</span> which is always negative.</p>
 </div>
@@ -693,7 +693,7 @@ V(x(t)) = (x(t) - x^\star)^2
 \]</span></p>
 <p>The derivative is negative whenever <span class="math inline">\(x(t) &gt; 0\)</span> and <span class="math inline">\(x(t) \neq x^\star\)</span>:</p>
 <p><span class="math display">\[
-\dfrac{d V(x(t))}{d t} = 2 \rho\, x(t) \left(x(t) - \dfrac{1}{\alpha}\right) (1 - \alpha\, x(t))= -\dfrac{\rho\, x(t)}{\alpha}\left(x(t) - \dfrac{1}{\alpha}\right)^2
+\dfrac{d V(x(t))}{d t} = 2 \rho\, x(t) \left(x(t) - \dfrac{1}{\alpha}\right) (1 - \alpha\, x(t))= -\rho\,\alpha\, x(t)\left(x(t) - \dfrac{1}{\alpha}\right)^2
 \]</span></p>
 <p>and as such <span class="math inline">\(x^\star\)</span> is asymptotically stable. The basin of attraction (i.e., where the Lyapunov function has the desired properties) is <span class="math inline">\(x \in \mathbb{R}_+\)</span>. There can be several alternative Lyapunov functions.</p>
 <p>A classic candidate Lyapunov function for the Lotka-Volterra model we are going to see many times in the lecture notes starts from a logarithmic inequality: if <span class="math inline">\(y&gt;0\)</span>, then <span class="math inline">\(\log y \leq y- 1\)</span>, and thus <span class="math inline">\(y - 1 -\log y \geq 0\)</span>. Take <span class="math inline">\(y = \frac{x}{x^\star}\)</span>, with <span class="math inline">\(x\)</span> and <span class="math inline">\(x^\star\)</span> positive. Then,</p>
@@ -702,7 +702,7 @@ V(x(t)) = (x(t) - x^\star)^2
 \]</span></p>
 <p>Now multiply by <span class="math inline">\(x^\star\)</span>, obtaining:</p>
 <p><span class="math display">\[
-x - x^\star - \log x^\star \frac{x}{x^\star} \geq 0
+x - x^\star - x^\star \log  \frac{x}{x^\star} \geq 0
 \]</span></p>
 <p>We can use this as our Lyapunov function for the logistic growth model:</p>
 <p><span class="math display">\[

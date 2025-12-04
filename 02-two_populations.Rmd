@@ -88,7 +88,7 @@ pl + geom_hline(yintercept = g / a, linetype = 2, colour = "red") +
   geom_segment(x = 1.3, xend = 1.5, y = 1.9, yend = 1.9, arrow = myrarrow, colour = "red")
 ```
 
-Similarly, the equation for the predator is zero either when $y(t) = 0$ or when $-\delta + \beta\, x(t) = 0$, yielding $x(t) = \delta / \beta$. Whenever the density of the prey $x(t) < \delta / \beta$, predators will decline; conversely, whenever $x(t) > x(t) = \delta / \beta$, predators will grow.
+Similarly, the equation for the predator is zero either when $y(t) = 0$ or when $-\delta + \beta\, x(t) = 0$, yielding $x(t) = \delta / \beta$. Whenever the density of the prey $x(t) < \delta / \beta$, predators will decline; conversely, whenever $x(t) > \delta / \beta$, predators will grow.
 
 Graphically:
 
@@ -701,7 +701,7 @@ $$
 \beta (x - x^\star \log x) + \alpha (y - y^\star \log y) = C
 $$
 
-This means that the system has a constant of motion (a.k.a. "first integral"): the value of $C$ depends on the initial conditions, and then the system will cycle around the equilibrium in closed orbits. Note that a) $C>0$ if the initial conditions are different from the equilibrium; b) $C = C_m > 0$ if we are at equilibrium; and therefore c) $C \geq C_m$ for all (positive) initial conditions.
+This means that the system has a constant of motion (a.k.a. "first integral"): the value of $C$ depends on the initial conditions, and then the system will cycle around the equilibrium in closed orbits. Note that a) $C>0$ if the initial conditions are different from the equilibrium; b) $C = C_m$ if we are at equilibrium; and therefore c) $C \geq C_m$ for all (positive) initial conditions.
 
 We can use $C$ as a Lyapunov function: 
 

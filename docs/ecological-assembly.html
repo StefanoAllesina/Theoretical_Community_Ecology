@@ -1141,7 +1141,7 @@ V(x) = 2 \sum_i r_i x_i + \sum_{i,j} A_{ij} x_i x_j
 <li>call <span class="math inline">\(S\)</span> the feasible, stable community we are considering, and add species <span class="math inline">\(j\)</span> (or multiple species), and check that <span class="math inline">\(j\)</span> can invade when rare. If it cannot, move to the next neighbor; If it can, there are two cases:
 <ul>
 <li>if the community <span class="math inline">\(\{S, j\} = S&#39;\)</span> is feasible and stable, draw an edge <span class="math inline">\(S \to S&#39;\)</span></li>
-<li>if the community <span class="math inline">\(\{S, j\} = S&#39;\)</span> is not feasible and stable, the system will collapse to a smaller sub-community; to determine which sub-community it will collapse to, <strong>check all the possible sub-communities</strong> of <span class="math inline">\(S&#39;\)</span>, and take the one with the greatest <span class="math inline">\(V(x^\star)\)</span>, <span class="math inline">\(S&#39;&#39;\)</span>. Draw an an edge <span class="math inline">\(S \to S&#39;&#39;\)</span></li>
+<li>if the community <span class="math inline">\(\{S, j\} = S&#39;\)</span> is not feasible and stable, the system will collapse to a smaller sub-community; to determine which sub-community it will collapse to, <strong>check all the possible sub-communities</strong> of <span class="math inline">\(S&#39;\)</span>, and take the one with the greatest <span class="math inline">\(V(x^\star)\)</span>, <span class="math inline">\(S&#39;&#39;\)</span>. Draw an edge <span class="math inline">\(S \to S&#39;&#39;\)</span></li>
 </ul></li>
 </ul>
 <p>Can a better (faster, more efficient) algorithm be devised?</p>

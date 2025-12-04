@@ -179,7 +179,7 @@ $$
 
 As we will see, the RE is essentially equivalent to a GLV model in which we track frequencies instead of abundances. 
 
-Importantly, we can see $p$ as a "mixed strategy" for the symmetric game encoded in $A$. In this context, **a Nash Equilibrium for the game is an an equilibrium of the replicator equation**; similarly, **an Evolutionary Stable Strategy for the game is a stable equilibrium for the replicator equation**. As we will see later, the converse is not true: we could have a stable equilibrium of the RE which is not an ESS.
+Importantly, we can see $p$ as a "mixed strategy" for the symmetric game encoded in $A$. In this context, **a Nash Equilibrium for the game is an equilibrium of the replicator equation**; similarly, **an Evolutionary Stable Strategy for the game is a stable equilibrium for the replicator equation**. As we will see later, the converse is not true: we could have a stable equilibrium of the RE which is not an ESS.
 
 ### Nash equilibria are equilibria of the RE
 

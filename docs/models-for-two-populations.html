@@ -399,7 +399,7 @@ div.csl-indent {
 <p>The equation for the prey is zero either when <span class="math inline">\(x(t) = 0\)</span> or when <span class="math inline">\(\rho - \alpha\,y(t) = 0\)</span>, yielding <span class="math inline">\(y(t) = \rho / \alpha\)</span>. Whenever the density of the predator <span class="math inline">\(y(t) &lt; \rho / \alpha\)</span>, the prey will grow; conversely, whenever <span class="math inline">\(y(t) &gt; \rho / \alpha\)</span>, the prey will decline.</p>
 <p>Graphically:</p>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-15-1.png" width="480" style="display: block; margin: auto;" /></p>
-<p>Similarly, the equation for the predator is zero either when <span class="math inline">\(y(t) = 0\)</span> or when <span class="math inline">\(-\delta + \beta\, x(t) = 0\)</span>, yielding <span class="math inline">\(x(t) = \delta / \beta\)</span>. Whenever the density of the prey <span class="math inline">\(x(t) &lt; \delta / \beta\)</span>, predators will decline; conversely, whenever <span class="math inline">\(x(t) &gt; x(t) = \delta / \beta\)</span>, predators will grow.</p>
+<p>Similarly, the equation for the predator is zero either when <span class="math inline">\(y(t) = 0\)</span> or when <span class="math inline">\(-\delta + \beta\, x(t) = 0\)</span>, yielding <span class="math inline">\(x(t) = \delta / \beta\)</span>. Whenever the density of the prey <span class="math inline">\(x(t) &lt; \delta / \beta\)</span>, predators will decline; conversely, whenever <span class="math inline">\(x(t) &gt; \delta / \beta\)</span>, predators will grow.</p>
 <p>Graphically:</p>
 <p><img src="Theoretical_Community_Ecology_files/figure-html/unnamed-chunk-16-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>Now let’s put the two graphs together:</p>
@@ -777,7 +777,7 @@ M_c = \left . J \right|_{(\delta / \beta, \rho / \alpha)^T} = \begin{pmatrix}
 <p><span class="math display">\[
 \beta (x - x^\star \log x) + \alpha (y - y^\star \log y) = C
 \]</span></p>
-<p>This means that the system has a constant of motion (a.k.a. “first integral”): the value of <span class="math inline">\(C\)</span> depends on the initial conditions, and then the system will cycle around the equilibrium in closed orbits. Note that a) <span class="math inline">\(C&gt;0\)</span> if the initial conditions are different from the equilibrium; b) <span class="math inline">\(C = C_m &gt; 0\)</span> if we are at equilibrium; and therefore c) <span class="math inline">\(C \geq C_m\)</span> for all (positive) initial conditions.</p>
+<p>This means that the system has a constant of motion (a.k.a. “first integral”): the value of <span class="math inline">\(C\)</span> depends on the initial conditions, and then the system will cycle around the equilibrium in closed orbits. Note that a) <span class="math inline">\(C&gt;0\)</span> if the initial conditions are different from the equilibrium; b) <span class="math inline">\(C = C_m\)</span> if we are at equilibrium; and therefore c) <span class="math inline">\(C \geq C_m\)</span> for all (positive) initial conditions.</p>
 <p>We can use <span class="math inline">\(C\)</span> as a Lyapunov function:</p>
 <p><span class="math display">\[
 V(x,y) = \beta (x - x^\star \log x) + \alpha (y - y^\star \log y)

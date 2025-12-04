@@ -370,7 +370,7 @@ $$
 Similarly,
 
 $$
-J_{ii} = \dfrac{\partial (r_i x_i + \sum_j A_{ij} x_i x_j)}{\partial x_j}  = A_{ij} x_i
+J_{ij} = \dfrac{\partial (r_i x_i + \sum_j A_{ij} x_i x_j)}{\partial x_j}  = A_{ij} x_i
 $$
 
 and thus
@@ -899,7 +899,7 @@ $$
 Note that $\sum_i s_i x_i > 0$ and that whenever $B$ is stable (and because it's symmetric, negative definite), $- \sum_{ij} B_{ij} x_i x_j > 0$. At equilibrium, we have:
 
 $$
-V( x^\star ) = \sum_i \left(s_i x_i^\star + \left(s_i x_i^\star - \sum_j B_{ij} x_j^\star \right) \right) = \sum_i s_i x_i^\star
+V( x^\star ) = \sum_i \left(s_i x_i^\star + \left(s_i x_i^\star - x_i^\star \sum_j B_{ij} x_j^\star \right) \right) = \sum_i s_i x_i^\star
 $$
 
 It is of particular interest the case in which $s_i = 1$ for all $i$ and $V(x^\star)$ is simply the total biomass of the system at equilibrium. 

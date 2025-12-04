@@ -772,7 +772,7 @@ Currently, the algorithm can be sketched as:
 - now go through all the feasible, stable communities; for each determine the "neighbor" communities that can be reached with (say, one) invasion(s). 
 - call $S$ the feasible, stable community we are considering, and add species $j$ (or multiple species), and check that $j$ can invade when rare. If it cannot, move to the next neighbor; If it can, there are two cases:
   - if the community $\{S, j\} = S'$ is feasible and stable, draw an edge $S \to S'$
-  - if the community $\{S, j\} = S'$ is not feasible and stable, the system will collapse to a smaller sub-community; to determine which sub-community it will collapse to, **check all the possible sub-communities** of $S'$, and take the one with the greatest $V(x^\star)$, $S''$. Draw an an edge $S \to S''$
+  - if the community $\{S, j\} = S'$ is not feasible and stable, the system will collapse to a smaller sub-community; to determine which sub-community it will collapse to, **check all the possible sub-communities** of $S'$, and take the one with the greatest $V(x^\star)$, $S''$. Draw an edge $S \to S''$
 
 Can a better (faster, more efficient) algorithm be devised?
 

@@ -24,7 +24,7 @@ This paper present the results of the biodiversity-ecosystem functioning experim
 
 :::
 
-Ecologists have performed large experiments in which different assemblages of species are co-cultured. These experiments have been conducted with plants (for example, Biodiversity Ecosystem Functioning experiments e.g., @hector1999plant @tilman2001diversity, @cadotte2013experimental) and in the laboratory using protozoan, algae or bacteria. Two commonly-encountered problems in this type of experiments have to to with the scaling of the number of experiments with the number of species, and with the probability of coexistence.
+Ecologists have performed large experiments in which different assemblages of species are co-cultured. These experiments have been conducted with plants (for example, Biodiversity Ecosystem Functioning experiments e.g., @hector1999plant @tilman2001diversity, @cadotte2013experimental) and in the laboratory using protozoan, algae or bacteria. Two commonly-encountered problems in this type of experiments have to do with the scaling of the number of experiments with the number of species, and with the probability of coexistence.
 
 **Scale:** How many communities can we form from a pool of $n$ species? We can culture a single species in isolation ($n$ possibilities), two species in pair ($n(n-1) / 2$ possibilities), and so on. The total is therefore:
 
@@ -740,8 +740,6 @@ plot_pred_obs(diag_vvt)
 ```
 
 And, finally, the model with 8 parameters, $B = D(s) + vw^T$:
-
-A model with symmetric interactions, $B = D(s) + vv^T$ does slightly better:
 
 ```{r, warning=FALSE, message=FALSE}
 diag_vwt <- run_model(

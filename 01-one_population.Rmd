@@ -357,7 +357,7 @@ When we evaluate this function at the equilibrium $x^\star = 0$, we obtain $\rho
 Finally, for the model with Allee effect, we have:
 
 $$
-\dfrac{\partial (\rho\, x (x-\gamma)(1-\alpha\, x))}{\partial x}  = - \rho\, \gamma + 2 \rho\, x(1 + \alpha) - 3 \rho\, \alpha\, x^2
+\dfrac{\partial (\rho\, x (x-\gamma)(1-\alpha\, x))}{\partial x}  = - \rho\, \gamma + 2 \rho\, x(1 + \alpha \gamma) - 3 \rho\, \alpha\, x^2
 $$
 
 At $x^\star = 0$, we find $-\rho\, \gamma$ which is always negative, and as such $x^\star = 0$ is stable. At $x^\star = \gamma$ we have $\rho\, \gamma\, (1- \gamma\, \alpha)$ which is positive (as $\gamma\, \alpha < 1$) and as such is an unstable equilibrium. Finally, for $x^\star = 1/\alpha$, we have $\rho (\gamma - 1/\alpha)$ which is always negative.
@@ -587,7 +587,7 @@ $$
 The derivative is negative whenever $x(t) > 0$ and $x(t) \neq x^\star$:
 
 $$
-\dfrac{d V(x(t))}{d t} = 2 \rho\, x(t) \left(x(t) - \dfrac{1}{\alpha}\right) (1 - \alpha\, x(t))= -\dfrac{\rho\, x(t)}{\alpha}\left(x(t) - \dfrac{1}{\alpha}\right)^2
+\dfrac{d V(x(t))}{d t} = 2 \rho\, x(t) \left(x(t) - \dfrac{1}{\alpha}\right) (1 - \alpha\, x(t))= -\rho\,\alpha\, x(t)\left(x(t) - \dfrac{1}{\alpha}\right)^2
 $$
 
 and as such $x^\star$ is asymptotically stable. The basin of attraction (i.e., where the Lyapunov function has the desired properties) is $x \in \mathbb{R}_+$. There can be several alternative Lyapunov functions.
@@ -601,7 +601,7 @@ $$
 Now multiply by $x^\star$, obtaining:
 
 $$
-x - x^\star - \log x^\star \frac{x}{x^\star} \geq 0
+x - x^\star - x^\star \log  \frac{x}{x^\star} \geq 0
 $$
 
 We can use this as our Lyapunov function for the logistic growth model:

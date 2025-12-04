@@ -611,7 +611,7 @@ M_{ii} = \left. J_{ii} \right|_{x^\star} = A_{ii} x_i^\star
 \]</span></p>
 <p>Similarly,</p>
 <p><span class="math display">\[
-J_{ii} = \dfrac{\partial (r_i x_i + \sum_j A_{ij} x_i x_j)}{\partial x_j}  = A_{ij} x_i
+J_{ij} = \dfrac{\partial (r_i x_i + \sum_j A_{ij} x_i x_j)}{\partial x_j}  = A_{ij} x_i
 \]</span></p>
 <p>and thus</p>
 <p><span class="math display">\[
@@ -1015,7 +1015,7 @@ V(x(t)) = 2 \sum_i s_i x_i - \sum_{ij} B_{ij} x_i x_j
 \]</span></p>
 <p>Note that <span class="math inline">\(\sum_i s_i x_i &gt; 0\)</span> and that whenever <span class="math inline">\(B\)</span> is stable (and because it’s symmetric, negative definite), <span class="math inline">\(- \sum_{ij} B_{ij} x_i x_j &gt; 0\)</span>. At equilibrium, we have:</p>
 <p><span class="math display">\[
-V( x^\star ) = \sum_i \left(s_i x_i^\star + \left(s_i x_i^\star - \sum_j B_{ij} x_j^\star \right) \right) = \sum_i s_i x_i^\star
+V( x^\star ) = \sum_i \left(s_i x_i^\star + \left(s_i x_i^\star - x_i^\star \sum_j B_{ij} x_j^\star \right) \right) = \sum_i s_i x_i^\star
 \]</span></p>
 <p>It is of particular interest the case in which <span class="math inline">\(s_i = 1\)</span> for all <span class="math inline">\(i\)</span> and <span class="math inline">\(V(x^\star)\)</span> is simply the total biomass of the system at equilibrium.</p>
 <p>Now, let’s take the derivative of <span class="math inline">\(V(x(t))\)</span> with respect to <span class="math inline">\(x_i\)</span>:</p>
